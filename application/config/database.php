@@ -71,13 +71,63 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | the query builder class.
 */
 
+//
+//$active_group = 'default';
+//$query_builder = TRUE;
+//
+//$db['default'] = array(
+//	'dsn'	=> '',
+//	'hostname' => 'localhost',
+//	'username' => '',
+//	'password' => '',
+//	'database' => '',
+//	'dbdriver' => 'mysqli',
+//	'dbprefix' => '',
+//	'pconnect' => FALSE,
+//	'db_debug' => (ENVIRONMENT !== 'production'),
+//	'cache_on' => FALSE,
+//	'cachedir' => '',
+//	'char_set' => 'utf8',
+//	'dbcollat' => 'utf8_general_ci',
+//	'swap_pre' => '',
+//	'encrypt' => FALSE,
+//	'compress' => FALSE,
+//	'stricton' => FALSE,
+//	'failover' => array(),
+//	'save_queries' => TRUE
+//);
+
+
 $active_group = 'default';
 $query_builder = TRUE;
+
+//$db['default'] = array(
+//	'dsn'	=> '',
+//	'hostname' => 'localhost',
+//	'username' => 'admin_casabet',
+//	'password' => 'NseIVFFkiK',
+//	'database' => 'admin_casabet',
+//	'dbdriver' => 'mysqli',
+//	'dbprefix' => '',
+//	'DB_PREFIX' => '',
+//	'pconnect' => FALSE,
+//	'db_debug' => (ENVIRONMENT !== 'production'),
+//	'cache_on' => FALSE,
+//	'cachedir' => APPPATH . 'cache/db/',
+//	'char_set' => 'utf8',
+//	'dbcollat' => 'utf8_general_ci',
+//	'swap_pre' => '',
+//	'encrypt' => FALSE,
+//	'compress' => FALSE,
+//	'stricton' => FALSE,
+//	'failover' => array(),
+//	'save_queries' => TRUE
+//);
 
 $db['default'] = array(
 	'dsn'	=> '',
 	'hostname' => 'localhost',
-	'username' => 'admin',
+	'username' => 'casa_register',
 	'password' => '1234',
 	'database' => 'casa_register',
 	'dbdriver' => 'mysqli',

@@ -164,7 +164,7 @@ class CI_Form_validation {
 	 * @param	array	$errors
 	 * @return	CI_Form_validation
 	 */
-	public function set_rules($field, $label = '', $rules = array(), $errors = array())
+	public function set_rules($field, $label = null, $rules = null, $errors = array())
 	{
 		// No reason to set rules if we have no POST data
 		// or a validation array has not been specified
@@ -196,6 +196,10 @@ class CI_Form_validation {
 			}
 
 			return $this;
+		}
+		elseif ( ! isset($rules))
+		{
+			throw new BadMethodCallException('Form_validation: set_rules() called without a $rules parameter');
 		}
 
 		// No fields or no rules? Nothing to do...
@@ -1484,38 +1488,6 @@ class CI_Form_validation {
 	// --------------------------------------------------------------------
 
 	/**
-	 * Prep data for form
-	 *
-	 * This function allows HTML to be safely shown in a form.
-	 * Special characters are converted.
-	 *
-	 * @deprecated	3.0.6	Not used anywhere within the framework and pretty much useless
-	 * @param	mixed	$data	Input data
-	 * @return	mixed
-	 */
-	public function prep_for_form($data)
-	{
-		if ($this->_safe_form_data === FALSE OR empty($data))
-		{
-			return $data;
-		}
-
-		if (is_array($data))
-		{
-			foreach ($data as $key => $val)
-			{
-				$data[$key] = $this->prep_for_form($val);
-			}
-
-			return $data;
-		}
-
-		return str_replace(array("'", '"', '<', '>'), array('&#39;', '&quot;', '&lt;', '&gt;'), stripslashes($data));
-	}
-
-	// --------------------------------------------------------------------
-
-	/**
 	 * Prep URL
 	 *
 	 * @param	string
@@ -1523,12 +1495,7 @@ class CI_Form_validation {
 	 */
 	public function prep_url($str = '')
 	{
-		if ($str === 'http://' OR $str === '')
-		{
-			return '';
-		}
-
-		if (strpos($str, 'http://') !== 0 && strpos($str, 'https://') !== 0)
+		if ($str !== '' && stripos($str, 'http://') !== 0 && stripos($str, 'https://') !== 0)
 		{
 			return 'http://'.$str;
 		}
