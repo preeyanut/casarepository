@@ -1,0 +1,232 @@
+@font-face {
+	font-family: mm3;
+	src: url('../fonts/mm3.ttf');
+	src: url('../fonts/mm3.eot?#iefix') format('embedded-opentype');
+	font-weight: normal;
+	font-style: normal;
+
+}
+
+
+
+
+@font-face {
+	font-family: bangna-new;
+	src: url('../fonts/bangna-new.ttf'),
+	url('../fonts/bangna-new.eot?#iefix') format('embedded-opentype');
+	font-weight: normal;
+	font-style: normal;
+
+}
+body{
+	margin: 0;
+	/*background: url('../img/restaurant.jpg') no-repeat center center fixed;*/
+	background-size: cover;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	font-size: 100%;
+	font-family: bangna-new, sans-serif,mm3;
+	font-size: 100%;
+}
+
+.centered {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	/* bring your own prefixes */
+	transform: translate(-50%, -50%);
+}
+
+.account-container {
+	width: 380px; 
+	display: block;
+
+	
+	/*background: #f9f9f9;*/
+	
+	border: 1px solid #d5d5d5;
+	
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+
+	box-shadow:  0px 0px 2px #dadada, inset 0px -3px 0px #e6e6e6;
+}
+
+.content {
+	padding: 16px 28px 23px;
+} 
+
+.login-fields {
+	
+}
+
+.login-fields .field {
+	margin-bottom: 1.25em;
+}
+
+.login-fields label {
+	display: none;
+}
+
+.login-fields input {
+	font-family: bangna-new;
+	font-size: 13px;
+	color: #8e8d8d;
+	padding: 11px 15px 10px 20px;
+	background-color: #fdfdfd;
+	width: 100%;
+	display: block;
+	margin: 0;
+	box-shadow: inset 2px 2px 4px #f1f1f1;
+}
+
+.username-field
+{
+	/*border-radius: 5px 20px 5px;*/
+	border: 1px solid;
+}
+
+.password-field
+{
+	/*border-radius: 5px 20px 5px;*/
+	border: 1px solid;
+}
+
+
+
+
+.login-actions {
+	float: left;
+	
+	width: 100%;
+	
+	margin-top: -1em;
+	margin-bottom: 1.25em;
+}
+
+.login-social {
+	float: left;
+	
+	padding: 10px 0 15px;
+	
+	border: 1px dotted #CCC;
+	border-right: none;
+	border-left: none;	
+}
+
+span.login-checkbox {
+	float: left;
+	margin-top: 31px;
+}
+
+span.login-checkbox > input[type='checkbox'] {
+    opacity: 0;
+    float: left;
+    width: 15px;
+}
+
+span.login-checkbox > input[type='checkbox'] + label {    
+    clear: none;
+    
+	height: 15px; 
+	display: block;
+    padding: 0 0 0 22px;
+    margin: 0;
+    
+    font-size: 12px;
+    line-height: 1.2em;
+
+    cursor: pointer;
+}
+
+span.login-checkbox > input[type='checkbox']:checked + label {	
+	background-position: 0 -15px;
+}
+
+/** Text Under Box**/
+.login-extra {
+	display: block; 
+	width: 300px; 
+	margin: 1.5em auto;
+	 
+	text-align: left;
+	line-height: 19px; 
+	
+	text-shadow: 1px 1px 0px #fff; 	
+}
+
+
+.account-container h1 {
+	margin-bottom: .4em;
+	
+	color: #525252;
+}
+
+.button {-webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; display: inline-block; float: right; margin-top: 18px;}
+
+
+
+/*for  Mobile 480 iphone4 ,5*/
+@media (max-width: 480px) {
+	  body{
+		  font-size: 100%;
+	  }
+	.account-container {
+		width: 100%;
+	}
+
+	.centered {
+		position: fixed;
+		top: 50%;
+		left: 50%;
+		/* bring your own prefixes */
+		transform: translate(-50%, -50%);
+	}
+	
+	.login-fields input {
+		width: 160px;
+	}
+	
+	.login-social {
+		width: 100%;
+	}
+	
+	.twitter {
+		display: block;
+		margin-bottom: 1em;
+	}
+	
+
+	
+}
+
+.opacity{
+
+	/* Theoretically for IE 8 & 9 (more valid) */
+	/* ...but not required as filter works too */
+	/* should come BEFORE filter */
+	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+
+	/* This works in IE 8 & 9 too */
+	/* ... but also 5, 6, 7 */
+	filter: alpha(opacity=90);
+
+	/* Older than Firefox 0.9 */
+	-moz-opacity:0.9;
+
+	/* Safari 1.x (pre WebKit!) */
+	-khtml-opacity: 0.9;
+
+	/* Modern!
+    /* Firefox 0.9+, Safari 2?, Chrome any?
+    /* Opera 9+, IE 9+ */
+	opacity: 0.9;
+}
+.btn-login{
+	width: 100%;
+	background-color: #000000;
+	border-color: #000000;
+	height: 40px;
+}

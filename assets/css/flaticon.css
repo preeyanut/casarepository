@@ -1,0 +1,420 @@
+@font-face {
+	font-family: "Flaticon";
+	src: url("../fonts/flaticon.eot");
+	src: url("../fonts/flaticon.eot#iefix") format("embedded-opentype"),
+	url("../fonts/flaticon.woff") format("woff"),
+	url("../fonts/flaticon.ttf") format("truetype"),
+	url("../fonts/flaticon.svg") format("svg");
+	font-weight: normal;
+	font-style: normal;
+}
+.flaticon {
+    display: inline-block;
+    font: normal normal normal 14px/1 Flaticon;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transform: translate(0, 0);
+}
+/* makes the font 33% larger relative to the icon container */
+.flaticon-lg {
+    font-size: 1.33333333em;
+    line-height: 0.75em;
+    vertical-align: -15%;
+}
+
+.flaticon-2x {
+    font-size: 2em;
+}
+.flaticon-3x {
+    font-size: 3em;
+}
+.flaticon-4x {
+    font-size: 4em;
+}
+.flaticon-5x {
+    font-size: 5em;
+}
+.flaticon-6x{
+    font-size: 6em;
+}
+
+.flaticon-alcohol34:before {
+	content: "\e000";
+}
+.flaticon-alcohol35:before {
+	content: "\e001";
+}
+.flaticon-alcohol36:before {
+	content: "\e002";
+}
+.flaticon-alcohol37:before {
+	content: "\e003";
+}
+.flaticon-alcohol38:before {
+	content: "\e004";
+}
+.flaticon-alcohol39:before {
+	content: "\e005";
+}
+.flaticon-alcohol42:before {
+	content: "\e006";
+}
+.flaticon-alcoholic:before {
+	content: "\e007";
+}
+.flaticon-apple54:before {
+	content: "\e008";
+}
+.flaticon-apple55:before {
+	content: "\e009";
+}
+.flaticon-baked2:before {
+	content: "\e00a";
+}
+.flaticon-beer:before {
+	content: "\e00b";
+}
+.flaticon-beer34:before {
+	content: "\e00c";
+}
+.flaticon-beer4:before {
+	content: "\e00d";
+}
+.flaticon-beer5:before {
+	content: "\e00e";
+}
+.flaticon-beers1:before {
+	content: "\e00f";
+}
+.flaticon-birthday10:before {
+	content: "\e010";
+}
+.flaticon-birthday20:before {
+	content: "\e011";
+}
+.flaticon-bottle24:before {
+	content: "\e012";
+}
+.flaticon-bowls8:before {
+	content: "\e013";
+}
+.flaticon-bread14:before {
+	content: "\e014";
+}
+.flaticon-breads:before {
+	content: "\e015";
+}
+.flaticon-broccoli:before {
+	content: "\e016";
+}
+.flaticon-caffeine1:before {
+	content: "\e017";
+}
+.flaticon-casino18:before {
+	content: "\e018";
+}
+.flaticon-cheese14:before {
+	content: "\e019";
+}
+.flaticon-chef15:before {
+	content: "\e01a";
+}
+.flaticon-chicken7:before {
+	content: "\e01b";
+}
+.flaticon-chilis:before {
+	content: "\e01c";
+}
+.flaticon-cinema83:before {
+	content: "\e01d";
+}
+.flaticon-cocktail17:before {
+	content: "\e01e";
+}
+.flaticon-cocktail32:before {
+	content: "\e01f";
+}
+.flaticon-cocktails1:before {
+	content: "\e020";
+}
+.flaticon-coffee10:before {
+	content: "\e021";
+}
+.flaticon-coffee20:before {
+	content: "\e022";
+}
+.flaticon-coffee26:before {
+	content: "\e023";
+}
+.flaticon-coffee50:before {
+	content: "\e024";
+}
+.flaticon-coffeecup6:before {
+	content: "\e025";
+}
+.flaticon-coffeeshop:before {
+	content: "\e026";
+}
+.flaticon-coffeeshop29:before {
+	content: "\e027";
+}
+.flaticon-condiment1:before {
+	content: "\e028";
+}
+.flaticon-cook4:before {
+	content: "\e029";
+}
+.flaticon-cooking15:before {
+	content: "\e02a";
+}
+.flaticon-covered16:before {
+	content: "\e02b";
+}
+.flaticon-cup74:before {
+	content: "\e02c";
+}
+.flaticon-cutlery22:before {
+	content: "\e02d";
+}
+.flaticon-cutlery23:before {
+	content: "\e02e";
+}
+.flaticon-cutlery6:before {
+	content: "\e02f";
+}
+.flaticon-dessert4:before {
+	content: "\e030";
+}
+.flaticon-drink110:before {
+	content: "\e031";
+}
+.flaticon-drink165:before {
+	content: "\e032";
+}
+.flaticon-drink193:before {
+	content: "\e033";
+}
+.flaticon-drink194:before {
+	content: "\e034";
+}
+.flaticon-drink24:before {
+	content: "\e035";
+}
+.flaticon-drink81:before {
+	content: "\e036";
+}
+.flaticon-drinks29:before {
+	content: "\e037";
+}
+.flaticon-drinks30:before {
+	content: "\e038";
+}
+.flaticon-drinks31:before {
+	content: "\e039";
+}
+.flaticon-drinks32:before {
+	content: "\e03a";
+}
+.flaticon-drinks33:before {
+	content: "\e03b";
+}
+.flaticon-drinks34:before {
+	content: "\e03c";
+}
+.flaticon-drinks35:before {
+	content: "\e03d";
+}
+.flaticon-drinks36:before {
+	content: "\e03e";
+}
+.flaticon-drinks37:before {
+	content: "\e03f";
+}
+.flaticon-drinks39:before {
+	content: "\e040";
+}
+.flaticon-fast-food:before {
+	content: "\e041";
+}
+.flaticon-fastfood1:before {
+	content: "\e042";
+}
+.flaticon-fastfood12:before {
+	content: "\e043";
+}
+.flaticon-fish52:before {
+	content: "\e044";
+}
+.flaticon-food53:before {
+	content: "\e045";
+}
+.flaticon-fruit106:before {
+	content: "\e046";
+}
+.flaticon-fruit139:before {
+	content: "\e047";
+}
+.flaticon-fruit140:before {
+	content: "\e048";
+}
+.flaticon-fruit141:before {
+	content: "\e049";
+}
+.flaticon-fruit142:before {
+	content: "\e04a";
+}
+.flaticon-fruit143:before {
+	content: "\e04b";
+}
+.flaticon-fruit144:before {
+	content: "\e04c";
+}
+.flaticon-fruit42:before {
+	content: "\e04d";
+}
+.flaticon-fruit72:before {
+	content: "\e04e";
+}
+.flaticon-glass15:before {
+	content: "\e04f";
+}
+.flaticon-glass35:before {
+	content: "\e050";
+}
+.flaticon-glass6:before {
+	content: "\e051";
+}
+.flaticon-hamburger3:before {
+	content: "\e052";
+}
+.flaticon-healthy-food4:before {
+	content: "\e053";
+}
+.flaticon-healthy-food5:before {
+	content: "\e054";
+}
+.flaticon-hot-food:before {
+	content: "\e055";
+}
+.flaticon-hot50:before {
+	content: "\e056";
+}
+.flaticon-hot51:before {
+	content: "\e057";
+}
+.flaticon-hot56:before {
+	content: "\e058";
+}
+.flaticon-hotdrink14:before {
+	content: "\e059";
+}
+.flaticon-hotdrink31:before {
+	content: "\e05a";
+}
+.flaticon-hotdrink32:before {
+	content: "\e05b";
+}
+.flaticon-ice51:before {
+	content: "\e05c";
+}
+.flaticon-italian-food:before {
+	content: "\e05d";
+}
+.flaticon-italian1:before {
+	content: "\e05e";
+}
+.flaticon-jar2:before {
+	content: "\e05f";
+}
+.flaticon-ketchup4:before {
+	content: "\e060";
+}
+.flaticon-kitchen114:before {
+	content: "\e061";
+}
+.flaticon-kitchenpack60:before {
+	content: "\e062";
+}
+.flaticon-lunch10:before {
+	content: "\e063";
+}
+.flaticon-lunch4:before {
+	content: "\e064";
+}
+.flaticon-meal8:before {
+	content: "\e065";
+}
+.flaticon-menu21:before {
+	content: "\e066";
+}
+.flaticon-muffin1:before {
+	content: "\e067";
+}
+.flaticon-mug14:before {
+	content: "\e068";
+}
+.flaticon-pizza3:before {
+	content: "\e069";
+}
+.flaticon-plate17:before {
+	content: "\e06a";
+}
+.flaticon-plate7:before {
+	content: "\e06b";
+}
+.flaticon-popcorn6:before {
+	content: "\e06c";
+}
+.flaticon-refreshing12:before {
+	content: "\e06d";
+}
+.flaticon-restaurant51:before {
+	content: "\e06e";
+}
+.flaticon-salad:before {
+	content: "\e06f";
+}
+.flaticon-salt10:before {
+	content: "\e070";
+}
+.flaticon-sandwich:before {
+	content: "\e071";
+}
+.flaticon-sprig2:before {
+	content: "\e072";
+}
+.flaticon-steak:before {
+	content: "\e073";
+}
+.flaticon-sweet111:before {
+	content: "\e074";
+}
+.flaticon-sweet9:before {
+	content: "\e075";
+}
+.flaticon-tea24:before {
+	content: "\e076";
+}
+.flaticon-turkey7:before {
+	content: "\e077";
+}
+.flaticon-vegan:before {
+	content: "\e078";
+}
+.flaticon-vegetables4:before {
+	content: "\e079";
+}
+.flaticon-wedding11:before {
+	content: "\e07a";
+}
+.flaticon-wheat10:before {
+	content: "\e07b";
+}
+.flaticon-wine47:before {
+	content: "\e07c";
+}
+.flaticon-wine65:before {
+	content: "\e07d";
+}

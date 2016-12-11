@@ -1,0 +1,23 @@
+.editbox
+{
+    display:none
+}
+td
+{
+    padding:7px;
+}
+.editbox
+{
+    font-size:14px;
+    width:270px;
+    background-color:#ffffcc;
+
+    border:solid 1px #000;
+    padding:4px;
+}
+.edit_tr:hover
+{
+   /* background:url(../img/edit.png) right no-repeat #80C8E5;*/
+    background: #47b8ff;
+    cursor:pointer;
+}

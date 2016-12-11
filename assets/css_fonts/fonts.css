@@ -1,0 +1,38 @@
+@font-face {
+    font-family: Pacifico;
+    src: url('../fonts/Pacifico.ttf'),
+    url('../fonts/Pacifico.eot?#iefix') format('embedded-opentype');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: mm3;
+    src: url('../fonts/mm3.ttf');
+    src: url('../fonts/mm3.eot?#iefix') format('embedded-opentype');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+@font-face {
+    font-family: bangna-new;
+    src: url('../fonts/bangna-new.ttf'),
+    url('../fonts/bangna-new.eot?#iefix') format('embedded-opentype');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: "Flaticon";
+    src: url("../icon/food-icons/flaticon.eot");
+    src: url("../icon/food-icons/flaticon.eot#iefix") format("embedded-opentype"),
+    url("../icon/food-icons/flaticon.woff") format("woff"),
+    url("../icon/food-icons/flaticon.ttf") format("truetype"),
+    url("../icon/food-icons/flaticon.svg") format("svg");
+    font-weight: normal;
+    font-style: normal;
+}
