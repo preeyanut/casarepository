@@ -24,10 +24,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 
-//$config['base_url'] = 'http://localhost/casaregister/';
+//$config['base_url'] = 'http://localhost/casarepository/';
 
-$allowed_domains = array('http://localhost/casaregister/', 'domain2.tld');
-$default_domain  = 'http://localhost/casaregister/';
+$allowed_domains = array('http://localhost/casarepository/', 'domain2.tld');
+$default_domain  = 'http://localhost/casarepository/';
 
 if (in_array($_SERVER['HTTP_HOST'], $allowed_domains, TRUE))
 {
