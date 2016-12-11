@@ -24,7 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 
-//$config['base_url'] = 'http://localhost/casaregister/';
+//$config['base_url'] = 'http://localhost/casarepository/';
 
 $allowed_domains = array('http://localhost/casarepository/', 'domain2.tld');
 $default_domain  = 'http://localhost/casarepository/';

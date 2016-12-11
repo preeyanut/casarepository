@@ -483,11 +483,11 @@
                     </a>
                     <ul class="treeview-menu">
                         <!--                        --><?php //if (in_array("bank_list", $access_permission)) { ?>
-                        <li><a href="<?= base_url(); ?>blog"><i class="fa fa-circle-o"></i> หมวดหมู่ทั้งหมด</a>
+                        <li><a href="<?= base_url(); ?>category"><i class="fa fa-circle-o"></i> หมวดหมู่ทั้งหมด</a>
                         </li>
                         <!--                        --><?php //} ?>
                         <!--                        --><?php //if (in_array("addnew", $access_permission)) { ?>
-                        <li><a href="<?= base_url(); ?>blog/get_form"><i class="fa fa-circle-o"></i> เพิ่มหมวดหมู่ใหม่</a>
+                        <li><a href="<?= base_url(); ?>category/get_form"><i class="fa fa-circle-o"></i> เพิ่มหมวดหมู่ใหม่</a>
                         </li>
                         <!--                        --><?php //} ?>
                         <!--                        --><?php //if (in_array("change_password", $access_permission)) { ?>
@@ -505,16 +505,16 @@
                 <li class="treeview">
                     <a href="#">
                         <i class="	fa fa-list"></i>
-                        <span>ประเภท</span>
+                        <span>ประเภทหมวดหมู่</span>
                         <span class="label label-primary pull-right"></span>
                     </a>
                     <ul class="treeview-menu">
                         <!--                        --><?php //if (in_array("bank_list", $access_permission)) { ?>
-                        <li><a href="<?= base_url(); ?>blog/blog_list"><i class="fa fa-circle-o"></i> ประเภททั้งหมด</a>
+                        <li><a href="<?= base_url(); ?>category_type"><i class="fa fa-circle-o"></i> ประเภททั้งหมด</a>
                         </li>
                         <!--                        --><?php //} ?>
                         <!--                        --><?php //if (in_array("addnew", $access_permission)) { ?>
-                        <li><a href="<?= base_url(); ?>blog_list/getForm"><i class="fa fa-circle-o"></i> เพิ่มประเภทใหม่</a>
+                        <li><a href="<?= base_url(); ?>category_type/get_form"><i class="fa fa-circle-o"></i> เพิ่มประเภทใหม่</a>
                         </li>
                         <!--                        --><?php //} ?>
                         <!--                        --><?php //if (in_array("change_password", $access_permission)) { ?>

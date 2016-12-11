@@ -19,14 +19,11 @@ class Bank_list extends CI_Controller
 
     public function index()
     {
-
         $this->getall();
-
     }
 
     public function getall()
     {
-
         $all_data = $this->Bank_list_model->search_filter($this->input->post("txtSearch"), 0, 10, -1, -1);
 
         $total_user = $this->Bank_list_model->count();

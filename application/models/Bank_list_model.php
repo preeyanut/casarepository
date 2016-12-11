@@ -56,12 +56,12 @@ class Bank_list_model extends CI_Model
         return $result;
     }
 
-    public function search_filter($txtSearch, $start_filter, $filter_number, $user_status)
+    public function search_filter($txtSearch, $start_filter, $filter_number, $status)
     {
 
         $str_sql = "";
-        if ($user_status != "") {
-            $str_sql .= " AND  bank_list_status = " . $user_status;
+        if ($status != "") {
+            $str_sql .= " AND  bank_list_status = " . $status;
         }
         $query = $this->db->query("SELECT DISTINCT * "
             . " from bank_list "
