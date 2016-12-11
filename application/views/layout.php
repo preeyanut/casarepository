@@ -743,7 +743,7 @@
                     </li>
 
                     <li class="treeview">
-                        <a href="#">
+                        <a href="<?= base_url(); ?>config_group/get_form">
                             <i class="fa fa-gears"></i>
                             <span>ขั้นสูง</span>
                             <span class="label label-primary pull-right"></span>
