@@ -338,9 +338,10 @@
 
 <script type="application/javascript">
 
+	console.log('<?= base_url();?>');
 	$(document).on("click", "#button-login", function () {
 		$.ajax({
-			url: '<?php echo base_url(); ?>login/validateForm',
+			url: '<?= base_url(); ?>login/validateForm',
 			type: 'post',
 			data: $('input '),
 			dataType: 'json',

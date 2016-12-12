@@ -126,10 +126,11 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
+//	'hostname' => '45.125.195.205',
 	'hostname' => 'localhost',
 	'username' => 'admin',
 	'password' => '1234',
-	'database' => 'casa_register',
+	'database' => 'casa98db',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'DB_PREFIX' => '',

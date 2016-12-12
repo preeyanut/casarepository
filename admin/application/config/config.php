@@ -24,31 +24,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 
-//$config['base_url'] = 'http://localhost/casarepository/';
-
-$allowed_domains = array('http://localhost/casarepository/', 'domain2.tld');
-$default_domain  = 'http://localhost/casarepository/';
-
-if (in_array($_SERVER['HTTP_HOST'], $allowed_domains, TRUE))
-{
-    $domain = $_SERVER['HTTP_HOST'];
-}
-else
-{
-    $domain = $default_domain;
-}
-
-if ( ! empty($_SERVER['HTTPS']))
-{
-    $config['base_url'] = "https://".$_SERVER['HTTP_HOST']; $config['base_url'] .= str_replace(basename
-($_SERVER['SCRIPT_NAME']),"",$_SERVER['SCRIPT_NAME']);
-}
-else
-{
-    $config['base_url'] = "http://".$_SERVER['HTTP_HOST']; $config['base_url'] .= str_replace(basename
-($_SERVER['SCRIPT_NAME']),"",$_SERVER['SCRIPT_NAME']);
-}
-
+//$config['base_url'] = 'https://www.tded24.com/casa98th2/admin/';
+$config['base_url'] = 'http://45.125.195.205:8008/admin';
+//
+//$config['base_url'] = 'http://localhost/casarepository/admin';
 
 /*
 |--------------------------------------------------------------------------
@@ -77,7 +56,8 @@ $config['index_page'] = '';
 |
 | WARNING: If you set this to 'PATH_INFO', URIs will always be URL-decoded!
 */
-$config['uri_protocol']	= 'REQUEST_URI';
+//$config['uri_protocol'] = 'REQUEST_URI';
+$config['uri_protocol'] = 'REQUEST_URI';
 
 /*
 |--------------------------------------------------------------------------
@@ -102,7 +82,7 @@ $config['url_suffix'] = '';
 | than english.
 |
 */
-$config['language']	= 'english';
+$config['language'] = 'english';
 
 /*
 |--------------------------------------------------------------------------
@@ -185,7 +165,6 @@ $config['composer_autoload'] = FALSE;
 |
 */
 $config['permitted_uri_chars'] = 'a-z 0-9~%.:_\-?-???????????????????????';
-
 
 
 /*
@@ -410,11 +389,11 @@ $config['sess_regenerate_destroy'] = FALSE;
 |       'cookie_httponly') will also affect sessions.
 |
 */
-$config['cookie_prefix']	= '';
-$config['cookie_domain']	= '';
-$config['cookie_path']		= '/';
-$config['cookie_secure']	= FALSE;
-$config['cookie_httponly'] 	= FALSE;
+$config['cookie_prefix'] = '';
+$config['cookie_domain'] = '';
+$config['cookie_path'] = '/';
+$config['cookie_secure'] = FALSE;
+$config['cookie_httponly'] = FALSE;
 
 /*
 |--------------------------------------------------------------------------
@@ -532,5 +511,5 @@ $config['rewrite_short_tags'] = FALSE;
 $config['proxy_ips'] = '';
 
 $config['modules_locations'] = array(
-    APPPATH.'modules/' => '../modules/',
+    APPPATH . 'modules/' => '../modules/',
 );
