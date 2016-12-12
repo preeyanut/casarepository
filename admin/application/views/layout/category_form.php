@@ -29,16 +29,16 @@
                     <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" id="form"
                           class=" box-body">
 
-                        <input type="hidden" name="category_list_id" value="<?php echo $category_id; ?>"
+                        <input type="hidden" name="category_id" value="<?php echo $category_id; ?>"
                                id="category_id" class="form-control"/>
 
                         <div class="row">
 
-                            <div class="form-group required col-md-12">
-                                <div class="col-md-2" align="right">
+                            <div class="form-group required col-md-12 col-xs-12">
+                                <div class="col-md-2 col-xs-2" align="right">
                                     <label class=" control-label" for="input-category-name">ชื่อหมวดหมู่</label>
                                 </div>
-                                <div class="col-md-10 ">
+                                <div class="col-md-10 col-xs-10">
                                     <div class="">
                                         <input type="text" name="category_name" value="<?php echo $category_name; ?>"
                                                placeholder="ชื่อหมวดหมู่" id="input-category-name"
@@ -48,13 +48,13 @@
                                 </div>
                             </div>
 
-                            <div class="form-group col-md-12">
-                                <div class="col-md-2" align="right">
-                                    <label class=" control-label" for="input-status">ประเภท</label>
+                            <div class="form-group col-md-12 col-xs-12">
+                                <div class="col-md-2 col-xs-2" align="right">
+                                    <label class=" control-label" for="input-type">ประเภท</label>
                                 </div>
-                                <div class="col-md-10">
+                                <div class="col-md-10 col-xs-10">
                                     <div class="">
-                                        <select name="category_status" id="input-status" class="form-control">
+                                        <select name="type_id" id="input-type" class="form-control">
                                             <?php for($i=0;$i<count($type_id);$i++){ ?>
                                                 <option value="<?php echo $type_id[$i];?>" <?php if ($type_id[$i] == $category_type_id) { ?>
                                                     selected="selected" <?php } ?> >
@@ -66,11 +66,11 @@
                                 </div>
                             </div>
 
-                            <div class="form-group required col-md-12">
-                                <div class="col-md-2" align="right">
+                            <div class="form-group required col-md-12 col-xs-12">
+                                <div class="col-md-2 col-xs-2" align="right">
                                     <label class=" control-label" for="input-category-icon">ไอคอน</label>
                                 </div>
-                                <div class="col-md-10">
+                                <div class="col-md-10 col-xs-10">
                                     <div class="">
                                         <input type="text" name="category_icon" value="<?php echo $category_icon; ?>"
                                                placeholder="ไอคอน" id="input-category-icon"
@@ -80,11 +80,11 @@
                                 </div>
                             </div>
 
-                            <div class="form-group required col-md-12">
-                                <div class="col-md-2" align="right">
+                            <div class="form-group required col-md-12 col-xs-12">
+                                <div class="col-md-2 col-xs-2" align="right">
                                     <label class=" control-label" for="input-priority">ระดับ</label>
                                 </div>
-                                <div class="col-md-10">
+                                <div class="col-md-10 col-xs-10">
                                     <div class="">
                                         <input type="text" name="priority_level" value="<?php echo $priority_level; ?>"
                                                placeholder="ระดับ" id="input-priority"
@@ -94,11 +94,11 @@
                                 </div>
                             </div>
 
-                            <div class="form-group required col-md-12">
-                                <div class="col-md-2" align="right">
+                            <div class="form-group required col-md-12 col-xs-12">
+                                <div class="col-md-2 col-xs-2" align="right">
                                     <label class=" control-label" for="create_date">วันที่เพิ่ม</label>
                                 </div>
-                                <div class="col-md-10">
+                                <div class="col-md-10 col-xs-10">
                                     <div class="">
                                         <input type="text" name="create_date" value="<?php echo $create_date; ?>"
                                                placeholder="<?php echo date("Y-m-d H:i:s"); ?>" id="create_date"
@@ -109,11 +109,11 @@
                                 </div>
                             </div>
 
-                            <div class="form-group required col-md-12">
-                                <div class="col-md-2" align="right">
+                            <div class="form-group required col-md-12 col-xs-12">
+                                <div class="col-md-2 col-xs-2" align="right">
                                     <label class=" control-label" for="input-create-by">เพิ่มโดย</label>
                                 </div>
-                                <div class="col-md-10">
+                                <div class="col-md-10 col-xs-10">
                                     <div class="">
                                         <input type="text" name="create_by"
                                                value="<?php for ($i = 0; $i < count($user_id); $i++) {
@@ -128,11 +128,11 @@
                                 </div>
                             </div>
 
-                            <div class="form-group required col-md-12">
-                                <div class="col-md-2" align="right">
+                            <div class="form-group required col-md-12 col-xs-12">
+                                <div class="col-md-2 col-xs-2" align="right">
                                     <label class=" control-label" for="input-keyword-thai">Meta keyword thai</label>
                                 </div>
-                                <div class="col-md-10">
+                                <div class="col-md-10 col-xs-10">
                                     <div class="">
                                         <input type="text" name="meta_keyword_thai" value="<?php echo $meta_keyword_thai; ?>"
                                                placeholder="meta keyword thai" id="input-keyword-thai"
@@ -142,11 +142,11 @@
                                 </div>
                             </div>
 
-                            <div class="form-group required col-md-12">
-                                <div class="col-md-2" align="right">
+                            <div class="form-group required col-md-12 col-xs-12">
+                                <div class="col-md-2 col-xs-2" align="right">
                                     <label class=" control-label" for="input-keyword-eng">Meta keyword eng</label>
                                 </div>
-                                <div class="col-md-10">
+                                <div class="col-md-10 col-xs-10">
                                     <div class="">
                                         <input type="text" name="meta_keyword_eng" value="<?php echo $meta_keyword_eng; ?>"
                                                placeholder="meta keyword eng" id="input-keyword-eng"
@@ -156,11 +156,11 @@
                                 </div>
                             </div>
 
-                            <div class="form-group required col-md-12">
-                                <div class="col-md-2" align="right">
+                            <div class="form-group required col-md-12 col-xs-12">
+                                <div class="col-md-2 col-xs-2" align="right">
                                     <label class=" control-label" for="input-description-thai">Meta description thai</label>
                                 </div>
-                                <div class="col-md-10">
+                                <div class="col-md-10 col-xs-10">
                                     <div class="">
                                         <input type="text" name="meta_description_thai"
                                                value="<?php echo $meta_description_thai; ?>"
@@ -171,11 +171,11 @@
                                 </div>
                             </div>
 
-                            <div class="form-group required col-md-12">
-                                <div class="col-md-2" align="right">
+                            <div class="form-group required col-md-12 col-xs-12">
+                                <div class="col-md-2 col-xs-2" align="right">
                                     <label class=" control-label" for="input-description-eng">Meta description eng</label>
                                 </div>
-                                <div class="col-md-10">
+                                <div class="col-md-10 col-xs-10">
                                     <div class="">
                                         <input type="text" name="meta_description_eng" value="<?php echo $meta_description_eng; ?>"
                                                placeholder="meta description eng" id="input-description-eng"
@@ -185,11 +185,11 @@
                                 </div>
                             </div>
 
-                            <div class="form-group col-md-12">
-                                <div class="col-md-2" align="right">
+                            <div class="form-group col-md-12 col-xs-12">
+                                <div class="col-md-2 col-xs-2" align="right">
                                     <label class=" control-label" for="input-status">สถานะ</label>
                                 </div>
-                                <div class="col-md-10">
+                                <div class="col-md-10 col-xs-10">
                                     <div class="">
                                         <select name="category_status" id="input-status" class="form-control">
 
@@ -209,9 +209,9 @@
                                 </div>
                             </div>
 
-                            <div class="form-group col-md-12">
-                                <div class="col-md-2" align="right"></div>
-                                <div class="col-md-10">
+                            <div class="form-group col-md-12 col-xs-12">
+                                <div class="col-md-2 col-xs-2" align="right"></div>
+                                <div class="col-md-10 col-xs-10">
                                     <div class="">
                                         <button type="button" id="button-save" class="btn btn-primary"> บันทึก</button>
                                         <button type="reset" id="btn-reset" class="btn btn-default">ยกเลิก</button>

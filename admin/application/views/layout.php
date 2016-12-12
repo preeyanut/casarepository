@@ -12,7 +12,7 @@
     <link href="<?= base_url() ?>assets/css/flaticon.css" rel="stylesheet">
     <link href="<?= base_url() ?>assets/css/css_ajax.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="<?= base_url() ?>assets/css/jquery.datetimepicker.css"/>
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css"><!-- font icon-->
     <script src="<?= base_url() ?>assets/js/jquery-2.1.4.min.js"></script>
     <script id="moneyScript" src="<?= base_url() ?>assets/js/jquery.maskMoney.min.js"></script>
 
@@ -84,6 +84,10 @@
             font-size: 17px;
             line-height: 2;
             /*font-weight: 700;*/
+        }
+
+        .text-disable{
+            color: #8a0004;
         }
 
     </style>

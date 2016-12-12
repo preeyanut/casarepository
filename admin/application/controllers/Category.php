@@ -110,6 +110,7 @@ class Category extends CI_Controller
 
             $data['category_id'] = "";
             $data['category_name'] = "";
+            $data['category_type_id'] = "";
             $data['type_id'] = "";
             $data['category_icon'] ="";
             $data['priority_level'] = "";
@@ -147,7 +148,7 @@ class Category extends CI_Controller
         if ($this->input->post()) {
             $data["category_id"] = $this->Category_model->add_category($this->input->post());
         }
-
+//        var_dump($this->input->post());
         $jsonResult['Result'] = true;
         //$jsonResult['error'] = "";
         $jsonResult['Data'] = $data;
@@ -157,7 +158,7 @@ class Category extends CI_Controller
     public function edit_category()
     {
         if ($this->input->post()) {
-            $data["category_id"] = $this->category_model->edit_category($this->input->post());
+            $data["category_id"] = $this->Category_model->edit_category($this->input->post());
         }
 
         $jsonResult['Result'] = true;
@@ -229,11 +230,11 @@ class Category extends CI_Controller
             $this->error['meta_keyword_eng'] = "กรุณากรอกข้อมูล";
         }
 
-        if ((strlen($this->input->post('meta_description_thai')) < 3) || (strlen($this->input->post('meta_description_thai')) > 255)) {
+        if ((strlen($this->input->post('meta_description_thai')) < 3) || (strlen($this->input->post('meta_description_thai')) > 500)) {
             $this->error['meta_description_thai'] = "กรุณากรอกข้อมูล";
         }
 
-        if ((strlen($this->input->post('meta_description_eng')) < 3) || (strlen($this->input->post('meta_description_eng')) > 255)) {
+        if ((strlen($this->input->post('meta_description_eng')) < 3) || (strlen($this->input->post('meta_description_eng')) > 500)) {
             $this->error['meta_description_eng'] = "กรุณากรอกข้อมูล";
         }
 

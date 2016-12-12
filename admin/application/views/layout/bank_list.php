@@ -21,8 +21,8 @@
                 <!-- Horizontal Form -->
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <div class="col-md-11"><h3 class="box-title">Bank List</h3></div>
-                        <div class="col-md-1">
+                        <div class="col-md-11 col-xs-9"><h3 class="box-title">Bank List</h3></div>
+                        <div class="col-md-1 col-xs-2">
                             <a href="<?= base_url() ?>bank_list/getForm">
                                 <button type="button" name="button-add" style="width: 100px"
                                         id="button-add" class="btn btn-primary ">New
@@ -32,11 +32,11 @@
                     </div>
                     <div class="box-header with-border" style="background-color:#ccc;">
                         <div class="form-group form-horizontal">
-                            <div class="col-sm-8 form-horizontal">
-                                <div class="col-sm-4" style="float: left;">
-                                    <label class=" control-label" for="input-search" style="float: left">จำนวน
-                                        : </label>
-                                    <div class="col-sm-8">
+                            <div class="col-md-8 col-xs-8 form-horizontal">
+                                <div class="col-md-4 col-xs-6" style="float: left;">
+                                    <label class="col-sm-3 col-xs-3 control-label" for="input-search"
+                                           style="float: left">จำนวน </label>
+                                    <div class="col-sm-6 col-xs-9">
                                         <select id="filter-number" name="table_summay_master_length"
                                                 aria-controls="table_summay_master"
                                                 class="form-control input-sm input-xsmall input-inline">
@@ -48,10 +48,11 @@
                                     </div>
                                     <label class="control-label" for="input-search">แถว </label>
                                 </div>
-                                <div class="col-sm-4" style="float: left;">
-                                    <label class=" control-label" for="input-search" style="float: left">สถานะ
-                                        : </label>
-                                    <div class="col-sm-8">
+
+                                <div class="col-md-4 col-xs-6" style="float: left;">
+                                    <label class="col-sm-3 col-xs-3 control-label" for="input-search"
+                                           style="float: left">สถานะ </label>
+                                    <div class="col-md-9 col-xs-9">
                                         <select id="filter-status" name="table_summay_master_length"
                                                 aria-controls="table_summay_master"
                                                 class="form-control input-sm input-xsmall input-inline">
@@ -62,9 +63,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-sm-4 text-right">
-                                <label class="col-sm-3 control-label" for="input-search">ค้นหา : </label>
-                                <div class="col-sm-9">
+                            <div class="col-sm-4 col-xs-4 text-right">
+                                <label class="col-sm-3 col-xs-3 control-label" for="input-search">ค้นหา </label>
+                                <div class="col-sm-9 col-xs-9">
                                     <input type="text" name="search" placeholder="ค้นหา" id="input-search"
                                            class="form-control"/>
                                 </div>
@@ -114,11 +115,13 @@
                                                     }
                                                 } ?>
                                             </td>
-                                            <td class="text-center"><?php if ($bank['bank_list_status'] == 0) {
-                                                    echo "ปิดการใช้งาน";
-                                                } else {
-                                                    echo "เปิดใช้งาน";
-                                                } ?></td>
+
+                                            <?php if ($bank['bank_list_status'] == 0) { ?>
+                                                <td class="text-center text-disable">ปิดการใช้งาน</td>
+                                            <?php } else { ?>
+                                                <td class="text-center">เปิดใช้งาน</td>
+                                            <?php } ?>
+
                                             <td class="text-center">
                                                 <button type="button"
                                                         name="button-edit<?php echo $bank['bank_list_id']; ?>"
@@ -191,7 +194,7 @@
     init_event({
         fn: [readyFn],
         controlerPaging: 'bank_list/get_paging',
-        functionPaging: search,
+        functionPaging: search_user,
         disEvent: ["click,.button-edit"]
     });
 
@@ -239,15 +242,10 @@
 
                     switch (bank_list.bank_list_status) {
                         case 0:
-                            color_status = "#00A65A";
-                            str_status = "ทั้งหมด";
-                            break;
-                        case 1:
-                            color_status = "#DD4B39";
+                            color_status = "#8a0004";
                             str_status = "ปิดการใช้งาน";
                             break;
-                        case 2 :
-                            color_status = "#CCCCCC";
+                        case 1:
                             str_status = "เปิดใช้งาน";
                             break;
                     }
@@ -256,9 +254,9 @@
                         + "<td class='text-center'>" + (i + 1) + "</td>"
                         + "<td class='text-center'>" + bank.bank_list_name + "</td>"
                         + "<td class='text-center'>" + bank.create_date + "</td>"
-                        + "<td class='text-center'>" + bank.username + "</td>"
+                        + "<td class='text-center'>" + bank.create_by + "</td>"
                         + "<td class='text-center'>" + bank.update_date + "</td>"
-                        + "<td class='text-center'>" + bank.username + "</td>"
+                        + "<td class='text-center'>" + bank.update_by + "</td>"
                         + "<td class='text-center' style='color: " + color_status + "'>"
                         + str_status + "</td>"
                         + "</tr>";
@@ -273,14 +271,14 @@
         });
     }
 
-    function search() {
+    function search_user() {
         var txtSearch = $("#input-search").val();
         var filterNumber = $("#filter-number").val();
         var filterPage = $("#filter-page").val();
         var filterStatus = $("#filter-status").val();
 
         $.ajax({
-            url: '<?php echo base_url(); ?>bank_list/search',
+            url: '<?php echo base_url(); ?>bank_list/search_user',
             type: 'post',
             data: "txtSearch=" + txtSearch + "&filter-number=" + filterNumber + "&filter-page=" + filterPage + "&filter-status=" + filterStatus,
             dataType: 'json',
@@ -294,30 +292,27 @@
                 var banks = data["list"];
                 $("#tbody").empty();
                 for (var i = 0; i < banks.length; i++) {
-                    var bank = banks[i];
+                    var bank = banks[i]
                     var color_status = "";
                     var str_status = "";
+
                     switch (Number(bank.bank_list_status)) {
                         case 0:
-                            color_status = "#00A65A";
-                            str_status = "ปกติ";
+                            color_status = "#8a0004";
+                            str_status = "ปิดการใช้งาน";
                             break;
                         case 1:
-                            color_status = "#DD4B39";
-                            str_status = "ถูกระงับ";
-                            break;
-                        case 2 :
-                            color_status = "#CCCCCC";
-                            str_status = "ปิดใช้งาน";
+                            str_status = "เปิดใช้งาน";
                             break;
                     }
+
                     var html = "<tr class='tr_id" + bank.bank_list_id + "'  >"
                         + "<td class='text-center'>" + (i + 1) + "</td>"
                         + "<td class='text-center'>" + bank.bank_list_name + "</td>"
                         + "<td class='text-center'>" + bank.create_date + "</td>"
-                        + "<td class='text-center'>" + bank.username + "</td>"
+                        + "<td class='text-center'>" + bank.create_by + "</td>"
                         + "<td class='text-center'>" + bank.update_date + "</td>"
-                        + "<td class='text-center'>" + bank.username + "</td>"
+                        + "<td class='text-center'>" + bank.update_by + "</td>"
                         + "<td class='text-center' style='color: " + color_status + "'>"
                         + str_status + "</td>"
                         + " <td class='text-center'><button type='button' name='button-edit" + bank.bank_list_id + "' "

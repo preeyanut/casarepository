@@ -19,7 +19,7 @@ class Category_model extends CI_Model
 
         $data_array = array(
             'category_name' => $data['category_name'],
-            'type_id' => $data['category_type_id'],
+            'type_id' => $data['type_id'],
             'category_icon' => $data['category_icon'],
             'priority_level' => $data['priority_level'],
             'category_status' => $data['category_status'],
@@ -46,11 +46,18 @@ class Category_model extends CI_Model
 
         $this->db->query("UPDATE `" . "" . "category` SET "
             . " category_name = '" . $data['category_name'] . "'"
-            . " type_id = '" . $data['category_type_id'] . "'"
-            . ", priority_level = '" . 1 . "'"
+            . ", type_id = '" . $data['type_id'] . "'"
+            . ", priority_level = '" . $data['priority_level'] . "'"
             . ", category_status = '" . (int)$data['category_status'] . "'"
+
             . ", update_date = '" .  date("Y-m-d H:i:s") . "'"
             . ", update_by = '" . $this->session->userdata("user_id") . "'"
+
+            . ", meta_keyword_thai = '". $data['meta_keyword_thai']. "'"
+            . ", meta_keyword_eng = '" . $data['meta_keyword_eng']. "'"
+            . ", meta_description_thai = '" . $data['meta_description_thai']. "'"
+            . ", meta_description_eng = '" . $data['meta_description_eng'] . "'"
+
             . " WHERE  category_id = '" . (int)$data['category_id'] . "'");
 
     }

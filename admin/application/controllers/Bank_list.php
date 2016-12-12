@@ -108,7 +108,7 @@ class Bank_list extends CI_Controller
         echo json_encode($jsonResult);
     }
 
-    public function search()
+    public function search_user()
     {
 
         $filter_number = $this->input->post("filter-number");

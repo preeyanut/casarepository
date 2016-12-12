@@ -21,8 +21,8 @@
                 <!-- Horizontal Form -->
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <div class="col-md-11"><h3 class="box-title">Category Type</h3></div>
-                        <div class="col-md-1">
+                        <div class="col-md-11 col-xs-9"><h3 class="box-title">Category Type</h3></div>
+                        <div class="col-md-1 col-xs-2">
                             <a href="<?= base_url() ?>category_type/get_form">
                                 <button type="button" name="button-add" style="width: 100px"
                                         id="button-add" class="btn btn-primary ">New
@@ -32,11 +32,10 @@
                     </div>
                     <div class="box-header with-border" style="background-color:#ccc;">
                         <div class="form-group form-horizontal">
-                            <div class="col-sm-8 form-horizontal">
-                                <div class="col-sm-4" style="float: left;">
-                                    <label class=" control-label" for="input-search" style="float: left">จำนวน
-                                        : </label>
-                                    <div class="col-sm-8">
+                            <div class="col-md-8 col-xs-8 form-horizontal">
+                                <div class="col-md-4 col-xs-6" style="float: left;">
+                                    <label class="col-sm-3 col-xs-3 control-label" for="input-search" style="float: left">จำนวน </label>
+                                    <div class="col-sm-6 col-xs-9">
                                         <select id="filter-number" name="table_summay_master_length"
                                                 aria-controls="table_summay_master"
                                                 class="form-control input-sm input-xsmall input-inline">
@@ -48,10 +47,10 @@
                                     </div>
                                     <label class="control-label" for="input-search">แถว </label>
                                 </div>
-                                <div class="col-sm-4" style="float: left;">
-                                    <label class=" control-label" for="input-search" style="float: left">สถานะ
-                                        : </label>
-                                    <div class="col-sm-8">
+
+                                <div class="col-md-4 col-xs-6" style="float: left;">
+                                    <label class="col-sm-3 col-xs-3 control-label" for="input-search" style="float: left">สถานะ </label>
+                                    <div class="col-md-9 col-xs-9">
                                         <select id="filter-status" name="table_summay_master_length"
                                                 aria-controls="table_summay_master"
                                                 class="form-control input-sm input-xsmall input-inline">
@@ -62,9 +61,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-sm-4 text-right">
-                                <label class="col-sm-3 control-label" for="input-search">ค้นหา : </label>
-                                <div class="col-sm-9">
+                            <div class="col-sm-4 col-xs-4 text-right">
+                                <label class="col-sm-3 col-xs-3 control-label" for="input-search">ค้นหา </label>
+                                <div class="col-sm-9 col-xs-9">
                                     <input type="text" name="search" placeholder="ค้นหา" id="input-search"
                                            class="form-control"/>
                                 </div>
@@ -254,13 +253,14 @@
                             break;
                     }
 
-                    var html = "<tr class='tr_id" + bank.type_id + "'  style='cursor: pointer;'>"
+                    var html = "<tr class='tr_id" + type.type_id + "'  style='cursor: pointer;'>"
                         + "<td class='text-center'>" + (i + 1) + "</td>"
-                        + "<td class='text-center'>" + bank.type_name + "</td>"
-                        + "<td class='text-center'>" + bank.create_date + "</td>"
-                        + "<td class='text-center'>" + bank.username + "</td>"
-                        + "<td class='text-center'>" + bank.update_date + "</td>"
-                        + "<td class='text-center'>" + bank.username + "</td>"
+                        + "<td class='text-center'>" + type.type_name + "</td>"
+                        + "<td class='text-center'>" + type.priority_level + "</td>"
+                        + "<td class='text-center'>" + type.create_date + "</td>"
+                        + "<td class='text-center'>" + type.username + "</td>"
+                        + "<td class='text-center'>" + type.update_date + "</td>"
+                        + "<td class='text-center'>" + type.username + "</td>"
                         + "<td class='text-center' style='color: " + color_status + "'>"
                         + str_status + "</td>"
                         + "</tr>";
@@ -293,13 +293,13 @@
             },
             success: function (json) {
                 var data = json.Data;
-                var banks = data["list"];
+                var types = data["list"];
                 $("#tbody").empty();
-                for (var i = 0; i < banks.length; i++) {
-                    var bank = banks[i];
+                for (var i = 0; i < types.length; i++) {
+                    var type = types[i];
                     var color_status = "";
                     var str_status = "";
-                    switch (Number(bank.type_status)) {
+                    switch (Number(type.type_status)) {
                         case 0:
                             color_status = "#00A65A";
                             str_status = "ปกติ";
@@ -313,16 +313,17 @@
                             str_status = "ปิดใช้งาน";
                             break;
                     }
-                    var html = "<tr class='tr_id" + bank.type_id + "'  >"
+                    var html = "<tr class='tr_id" + type.type_id + "'  >"
                         + "<td class='text-center'>" + (i + 1) + "</td>"
-                        + "<td class='text-center'>" + bank.type_name + "</td>"
-                        + "<td class='text-center'>" + bank.create_date + "</td>"
-                        + "<td class='text-center'>" + bank.username + "</td>"
-                        + "<td class='text-center'>" + bank.update_date + "</td>"
-                        + "<td class='text-center'>" + bank.username + "</td>"
+                        + "<td class='text-center'>" + type.type_name + "</td>"
+                        + "<td class='text-center'>" + type.priority_level + "</td>"
+                        + "<td class='text-center'>" + type.create_date + "</td>"
+                        + "<td class='text-center'>" + type.username + "</td>"
+                        + "<td class='text-center'>" + type.update_date + "</td>"
+                        + "<td class='text-center'>" + type.username + "</td>"
                         + "<td class='text-center' style='color: " + color_status + "'>"
                         + str_status + "</td>"
-                        + " <td class='text-center'><button type='button' name='button-edit" + bank.type_id + "' "
+                        + " <td class='text-center'><button type='button' name='button-edit" + type.type_id + "' "
                         + " id='button-edit' class='btn btn-warning button-edit'>แก้ไข</button></td>"
                         + "</tr>";
                     $("#tbody").append(html);

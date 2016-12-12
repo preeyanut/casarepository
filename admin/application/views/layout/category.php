@@ -21,8 +21,8 @@
                 <!-- Horizontal Form -->
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <div class="col-md-11"><h3 class="box-title">Category List</h3></div>
-                        <div class="col-md-1">
+                        <div class="col-md-11 col-xs-9"><h3 class="box-title">Category List</h3></div>
+                        <div class="col-md-1 col-xs-2">
                             <a href="<?= base_url() ?>category/get_form">
                                 <button type="button" name="button-add" style="width: 100px"
                                         id="button-add" class="btn btn-primary ">New
@@ -32,11 +32,10 @@
                     </div>
                     <div class="box-header with-border" style="background-color:#ccc;">
                         <div class="form-group form-horizontal">
-                            <div class="col-sm-8 form-horizontal">
-                                <div class="col-sm-4" style="float: left;">
-                                    <label class=" control-label" for="input-search" style="float: left">จำนวน
-                                        : </label>
-                                    <div class="col-sm-8">
+                            <div class="col-md-8 col-xs-8 form-horizontal">
+                                <div class="col-md-4 col-xs-6" style="float: left;">
+                                    <label class="col-sm-3 col-xs-3 control-label" for="input-search" style="float: left">จำนวน </label>
+                                    <div class="col-sm-6 col-xs-9">
                                         <select id="filter-number" name="table_summay_master_length"
                                                 aria-controls="table_summay_master"
                                                 class="form-control input-sm input-xsmall input-inline">
@@ -48,10 +47,10 @@
                                     </div>
                                     <label class="control-label" for="input-search">แถว </label>
                                 </div>
-                                <div class="col-sm-4" style="float: left;">
-                                    <label class=" control-label" for="input-search" style="float: left">สถานะ
-                                        : </label>
-                                    <div class="col-sm-8">
+
+                                <div class="col-md-4 col-xs-6" style="float: left;">
+                                    <label class="col-sm-3 col-xs-3 control-label" for="input-search" style="float: left">สถานะ </label>
+                                    <div class="col-md-9 col-xs-9">
                                         <select id="filter-status" name="table_summay_master_length"
                                                 aria-controls="table_summay_master"
                                                 class="form-control input-sm input-xsmall input-inline">
@@ -62,9 +61,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-sm-4 text-right">
-                                <label class="col-sm-3 control-label" for="input-search">ค้นหา : </label>
-                                <div class="col-sm-9">
+                            <div class="col-sm-4 col-xs-4 text-right">
+                                <label class="col-sm-3 col-xs-3 control-label" for="input-search">ค้นหา </label>
+                                <div class="col-sm-9 col-xs-9">
                                     <input type="text" name="search" placeholder="ค้นหา" id="input-search"
                                            class="form-control"/>
                                 </div>
@@ -123,11 +122,13 @@
                                                     }
                                                 } ?>
                                             </td>
-                                            <td class="text-center"><?php if ($category['category_status'] == 0) {
-                                                    echo "ปิดการใช้งาน";
-                                                } else {
-                                                    echo "เปิดใช้งาน";
-                                                } ?></td>
+
+                                            <?php if ($category['category_status'] == 0) { ?>
+                                                <td class="text-center text-disable">ปิดการใช้งาน</td>
+                                            <?php } else { ?>
+                                                <td class="text-center">เปิดใช้งาน</td>
+                                            <?php } ?>
+
                                             <td class="text-center">
                                                 <button type="button"
                                                         name="button-edit<?php echo $category['category_id']; ?>"
