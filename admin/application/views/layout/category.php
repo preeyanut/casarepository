@@ -60,7 +60,7 @@
                                         </select>
                                     </div>
                                 </div>
-                                
+
                             </div>
                             <div class="col-sm-4 col-xs-4 text-right">
                                 <label class="col-sm-3 col-xs-3 control-label" for="input-search">ค้นหา </label>
@@ -96,12 +96,12 @@
                                     $count = 1; ?>
                                     <?php foreach ($groups as $category) { ?>
                                         <tr id="tr_id<?php echo $category['category_id']; ?>" class="tr_id">
-
+                                            <?php $icon = "zmdi zmdi-assignment-account";?>
                                             <td class="text-center"><?php echo $count;
                                                 $count++; ?></td>
                                             <td class="text-center"><?php echo $category['category_name']; ?></td>
                                             <td class="text-center"><?php echo $category['type_name'];?></td>
-                                            <td class="text-center"><?php echo $category['category_icon']; ?></td>
+                                            <td class="text-center"><i class="<?php echo $icon;?> zmdi-hc-2x"></i></td>
                                             <td class="text-center"><?php echo $category['priority_level']; ?></td>
                                             <td class="text-center"><?php echo $category['create_date']; ?></td>
                                             <td class="text-center"><?php echo $category['create_by_name'];?></td>

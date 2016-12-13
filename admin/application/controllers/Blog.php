@@ -8,11 +8,11 @@ class Blog extends CI_Controller
         parent::__construct();
         $this->load->model('Blog_model');
 
-//        $this->load->library('auth_check');
-//
-//        if (!$this->auth_check->hasPermission('access', 'user')) {
-//            redirect('permission');
-//        }
+        $this->load->library('auth_check');
+
+        if (!$this->auth_check->hasPermission('access', 'user')) {
+            redirect('permission');
+        }
     }
 
     public function index()
