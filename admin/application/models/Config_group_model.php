@@ -4,7 +4,11 @@ class Config_group_model extends CI_Model
 {
     public function getall()
     {
-        $query = $this->db->query("SELECT * FROM config_webpage_group");
+        $query = $this->db->query("SELECT config_webpage_group.*,CONCAT(u1.firstname, ' ', u1.lastname) as create_by_name "
+            . " ,CONCAT(u2.firstname, ' ', u2.lastname)  as update_by_name "
+            . " from config_webpage_group "
+            . " inner join  user as u1 on u1.user_id = config_webpage_group.create_by "
+            . " inner join  user as u2 on u2.user_id = config_webpage_group.update_by ");
         return $query->result_array();
     }
 
@@ -17,9 +21,9 @@ class Config_group_model extends CI_Model
         $this->load->library('encrypt');
 
         $data_array = array(
-            'config_group_name' => $data['config_group_name'],
             'config_group_id' => (int)$data['config_group_id'],
-            'priority_level' => 1,
+            'config_group_name' => $data['config_group_name'],
+            'priority_level' => (int)$data['priority_level'],
             'config_group_status' => (int)$data['config_group_status'],
             'create_date' => date("Y-m-d H:i:s"),
             'create_by' => $this->session->userdata("user_id"),
@@ -38,7 +42,7 @@ class Config_group_model extends CI_Model
 
         $this->db->query("UPDATE `" . "" . "config_webpage_group` SET "
             . " config_group_name = '" . $data['config_group_name'] . "'"
-            . ", priority_level = '" . 1 . "'"
+            . ", priority_level = '" . (int)$data['priority_level'] . "'"
             . ", config_group_status = '" . (int)$data['config_group_status'] . "'"
             . ", update_date = '" .  date("Y-m-d H:i:s") . "'"
             . ", update_by = '" . $this->session->userdata("user_id") . "'"

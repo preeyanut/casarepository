@@ -2096,3 +2096,1312 @@ DEBUG - 2016-12-13 08:22:00 --> Global POST, GET and COOKIE data sanitized
 DEBUG - 2016-12-13 08:22:00 --> Global POST, GET and COOKIE data sanitized
 DEBUG - 2016-12-13 08:22:00 --> Total execution time: 0.0581
 DEBUG - 2016-12-13 08:22:00 --> Total execution time: 0.0851
+DEBUG - 2016-12-13 08:35:55 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 08:35:55 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2016-12-13 08:35:55 --> Query error: Unknown table 'config_webpage_group' - Invalid query: SELECT config_webpage_group.*,CONCAT(u1.firstname, ' ', u1.lastname) as create_by_name  ,CONCAT(u2.firstname, ' ', u2.lastname)  as update_by_name  from bank_list  inner join  user as u1 on u1.user_id = config_webpage_group.create_by  inner join  user as u2 on u2.user_id = config_webpage_group.update_by 
+DEBUG - 2016-12-13 08:36:44 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 08:36:44 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2016-12-13 08:36:44 --> Severity: Notice --> Undefined variable: list C:\wamp64\www\casarepository\admin\application\views\layout\config_group.php 130
+DEBUG - 2016-12-13 08:36:44 --> Total execution time: 0.0459
+DEBUG - 2016-12-13 08:37:14 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 08:37:14 --> No URI present. Default controller set.
+DEBUG - 2016-12-13 08:37:14 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 08:46:56 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 08:46:56 --> No URI present. Default controller set.
+DEBUG - 2016-12-13 08:46:56 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2016-12-13 08:46:56 --> Severity: Notice --> Undefined variable: period_lotto C:\wamp64\www\casarepository\admin\application\views\login.php 200
+DEBUG - 2016-12-13 08:46:56 --> Total execution time: 0.0483
+DEBUG - 2016-12-13 08:46:59 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 08:46:59 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 08:46:59 --> Total execution time: 0.0406
+DEBUG - 2016-12-13 08:46:59 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 08:46:59 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 08:46:59 --> Total execution time: 0.1201
+DEBUG - 2016-12-13 08:46:59 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 08:46:59 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 08:46:59 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-13 08:46:59 --> Encryption: Auto-configured driver 'openssl'.
+ERROR - 2016-12-13 08:46:59 --> Severity: Notice --> Undefined variable: user_credit C:\wamp64\www\casarepository\admin\application\views\layout\dashboard.php 51
+ERROR - 2016-12-13 08:46:59 --> Severity: Notice --> Undefined variable: user_total_buy C:\wamp64\www\casarepository\admin\application\views\layout\dashboard.php 65
+ERROR - 2016-12-13 08:46:59 --> Severity: Notice --> Undefined variable: user_credit_balance C:\wamp64\www\casarepository\admin\application\views\layout\dashboard.php 79
+ERROR - 2016-12-13 08:46:59 --> Severity: Notice --> Undefined variable: user_balance C:\wamp64\www\casarepository\admin\application\views\layout\dashboard.php 93
+DEBUG - 2016-12-13 08:46:59 --> Total execution time: 0.0703
+DEBUG - 2016-12-13 08:47:01 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 08:47:01 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2016-12-13 08:47:01 --> Severity: Notice --> Undefined variable: priority_level C:\wamp64\www\casarepository\admin\application\views\layout\config_group.php 57
+ERROR - 2016-12-13 08:47:01 --> Severity: Notice --> Undefined index: name C:\wamp64\www\casarepository\admin\application\views\layout\config_group.php 151
+ERROR - 2016-12-13 08:47:01 --> Severity: Notice --> Undefined index: name C:\wamp64\www\casarepository\admin\application\views\layout\config_group.php 151
+ERROR - 2016-12-13 08:47:01 --> Severity: Notice --> Undefined index: name C:\wamp64\www\casarepository\admin\application\views\layout\config_group.php 151
+DEBUG - 2016-12-13 08:47:01 --> Total execution time: 0.0715
+DEBUG - 2016-12-13 08:47:01 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 08:47:01 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2016-12-13 08:47:01 --> Severity: Notice --> Undefined variable: priority_level C:\wamp64\www\casarepository\admin\application\views\layout\config_group.php 57
+ERROR - 2016-12-13 08:47:01 --> Severity: Notice --> Undefined index: name C:\wamp64\www\casarepository\admin\application\views\layout\config_group.php 151
+ERROR - 2016-12-13 08:47:01 --> Severity: Notice --> Undefined index: name C:\wamp64\www\casarepository\admin\application\views\layout\config_group.php 151
+ERROR - 2016-12-13 08:47:01 --> Severity: Notice --> Undefined index: name C:\wamp64\www\casarepository\admin\application\views\layout\config_group.php 151
+DEBUG - 2016-12-13 08:47:01 --> Total execution time: 0.0706
+DEBUG - 2016-12-13 08:48:37 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 08:48:37 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2016-12-13 08:48:37 --> Severity: Notice --> Undefined variable: priority_level C:\wamp64\www\casarepository\admin\application\views\layout\config_group.php 57
+ERROR - 2016-12-13 08:48:37 --> Severity: Notice --> Undefined index: name C:\wamp64\www\casarepository\admin\application\views\layout\config_group.php 150
+ERROR - 2016-12-13 08:48:37 --> Severity: Notice --> Undefined index: name C:\wamp64\www\casarepository\admin\application\views\layout\config_group.php 150
+ERROR - 2016-12-13 08:48:37 --> Severity: Notice --> Undefined index: name C:\wamp64\www\casarepository\admin\application\views\layout\config_group.php 150
+DEBUG - 2016-12-13 08:48:37 --> Total execution time: 0.0500
+DEBUG - 2016-12-13 08:49:10 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 08:49:10 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2016-12-13 08:49:10 --> Severity: Notice --> Undefined variable: priority_level C:\wamp64\www\casarepository\admin\application\views\layout\config_group.php 57
+ERROR - 2016-12-13 08:49:10 --> Severity: Notice --> Undefined index: name C:\wamp64\www\casarepository\admin\application\views\layout\config_group.php 150
+ERROR - 2016-12-13 08:49:10 --> Severity: Notice --> Undefined index: name C:\wamp64\www\casarepository\admin\application\views\layout\config_group.php 150
+ERROR - 2016-12-13 08:49:10 --> Severity: Notice --> Undefined index: name C:\wamp64\www\casarepository\admin\application\views\layout\config_group.php 150
+DEBUG - 2016-12-13 08:49:10 --> Total execution time: 0.0630
+DEBUG - 2016-12-13 08:51:06 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 08:51:06 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2016-12-13 08:51:06 --> Severity: Notice --> Undefined variable: priority_level C:\wamp64\www\casarepository\admin\application\views\layout\config_group.php 57
+DEBUG - 2016-12-13 08:51:06 --> Total execution time: 0.0500
+DEBUG - 2016-12-13 08:51:08 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 08:51:08 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2016-12-13 08:51:08 --> Severity: Notice --> Undefined variable: priority_level C:\wamp64\www\casarepository\admin\application\views\layout\config_group.php 57
+DEBUG - 2016-12-13 08:51:08 --> Total execution time: 0.0442
+DEBUG - 2016-12-13 08:51:09 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 08:51:09 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2016-12-13 08:51:09 --> Severity: Notice --> Undefined variable: priority_level C:\wamp64\www\casarepository\admin\application\views\layout\config_group.php 57
+DEBUG - 2016-12-13 08:51:09 --> Total execution time: 0.0454
+DEBUG - 2016-12-13 08:51:10 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 08:51:10 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2016-12-13 08:51:10 --> Severity: Notice --> Undefined variable: priority_level C:\wamp64\www\casarepository\admin\application\views\layout\config_group.php 57
+DEBUG - 2016-12-13 08:51:10 --> Total execution time: 0.0635
+DEBUG - 2016-12-13 08:51:43 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 08:51:43 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2016-12-13 08:51:43 --> Severity: Notice --> Undefined variable: priority_level C:\wamp64\www\casarepository\admin\application\views\layout\config_group.php 57
+DEBUG - 2016-12-13 08:51:44 --> Total execution time: 0.0445
+DEBUG - 2016-12-13 08:51:50 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 08:51:50 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 08:51:50 --> Total execution time: 0.0423
+DEBUG - 2016-12-13 08:54:05 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 08:54:05 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2016-12-13 08:54:05 --> Severity: Notice --> Undefined variable: priority_level C:\wamp64\www\casarepository\admin\application\views\layout\config_group.php 57
+DEBUG - 2016-12-13 08:54:05 --> Total execution time: 0.0441
+DEBUG - 2016-12-13 08:54:40 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 08:54:40 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 08:54:40 --> Total execution time: 0.0665
+DEBUG - 2016-12-13 08:55:34 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 08:55:34 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 08:55:34 --> Total execution time: 0.0444
+DEBUG - 2016-12-13 08:57:01 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 08:57:01 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 08:57:01 --> Total execution time: 0.0538
+DEBUG - 2016-12-13 08:57:39 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 08:57:39 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 08:57:39 --> Total execution time: 0.0417
+DEBUG - 2016-12-13 08:58:22 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 08:58:22 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2016-12-13 08:58:22 --> Severity: Notice --> Undefined variable: type C:\wamp64\www\casarepository\admin\application\views\layout\config_group.php 141
+ERROR - 2016-12-13 08:58:22 --> Severity: Notice --> Undefined variable: type C:\wamp64\www\casarepository\admin\application\views\layout\config_group.php 142
+ERROR - 2016-12-13 08:58:22 --> Severity: Notice --> Undefined variable: type C:\wamp64\www\casarepository\admin\application\views\layout\config_group.php 143
+ERROR - 2016-12-13 08:58:22 --> Severity: Notice --> Undefined variable: type C:\wamp64\www\casarepository\admin\application\views\layout\config_group.php 144
+ERROR - 2016-12-13 08:58:22 --> Severity: Notice --> Undefined variable: type C:\wamp64\www\casarepository\admin\application\views\layout\config_group.php 141
+ERROR - 2016-12-13 08:58:22 --> Severity: Notice --> Undefined variable: type C:\wamp64\www\casarepository\admin\application\views\layout\config_group.php 142
+ERROR - 2016-12-13 08:58:22 --> Severity: Notice --> Undefined variable: type C:\wamp64\www\casarepository\admin\application\views\layout\config_group.php 143
+ERROR - 2016-12-13 08:58:22 --> Severity: Notice --> Undefined variable: type C:\wamp64\www\casarepository\admin\application\views\layout\config_group.php 144
+ERROR - 2016-12-13 08:58:22 --> Severity: Notice --> Undefined variable: type C:\wamp64\www\casarepository\admin\application\views\layout\config_group.php 141
+ERROR - 2016-12-13 08:58:22 --> Severity: Notice --> Undefined variable: type C:\wamp64\www\casarepository\admin\application\views\layout\config_group.php 142
+ERROR - 2016-12-13 08:58:22 --> Severity: Notice --> Undefined variable: type C:\wamp64\www\casarepository\admin\application\views\layout\config_group.php 143
+ERROR - 2016-12-13 08:58:22 --> Severity: Notice --> Undefined variable: type C:\wamp64\www\casarepository\admin\application\views\layout\config_group.php 144
+DEBUG - 2016-12-13 08:58:22 --> Total execution time: 0.0548
+DEBUG - 2016-12-13 08:58:35 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 08:58:35 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 08:58:35 --> Total execution time: 0.0437
+DEBUG - 2016-12-13 08:59:06 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 08:59:06 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2016-12-13 08:59:06 --> Severity: Notice --> Undefined index: type_status C:\wamp64\www\casarepository\admin\application\views\layout\config_group.php 145
+ERROR - 2016-12-13 08:59:06 --> Severity: Notice --> Undefined index: type_status C:\wamp64\www\casarepository\admin\application\views\layout\config_group.php 145
+ERROR - 2016-12-13 08:59:06 --> Severity: Notice --> Undefined index: type_status C:\wamp64\www\casarepository\admin\application\views\layout\config_group.php 145
+DEBUG - 2016-12-13 08:59:06 --> Total execution time: 0.0679
+DEBUG - 2016-12-13 08:59:19 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 08:59:19 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 08:59:19 --> Total execution time: 0.0733
+DEBUG - 2016-12-13 09:09:42 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:09:42 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:09:42 --> Total execution time: 0.0506
+DEBUG - 2016-12-13 09:10:12 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:10:12 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:10:12 --> Total execution time: 0.0939
+DEBUG - 2016-12-13 09:10:37 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:10:37 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:10:37 --> Total execution time: 0.0421
+DEBUG - 2016-12-13 09:11:32 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:11:32 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2016-12-13 09:11:32 --> Severity: Notice --> Undefined property: Config_group::$User_model C:\wamp64\www\casarepository\admin\application\controllers\Config_group.php 55
+ERROR - 2016-12-13 09:11:32 --> Severity: Error --> Call to a member function get_user_all() on null C:\wamp64\www\casarepository\admin\application\controllers\Config_group.php 55
+DEBUG - 2016-12-13 09:13:43 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:13:43 --> No URI present. Default controller set.
+DEBUG - 2016-12-13 09:13:43 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:13:43 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:13:43 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:13:43 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-13 09:13:43 --> Encryption: Auto-configured driver 'openssl'.
+ERROR - 2016-12-13 09:13:43 --> Severity: Notice --> Undefined variable: user_credit C:\wamp64\www\casarepository\admin\application\views\layout\dashboard.php 51
+ERROR - 2016-12-13 09:13:43 --> Severity: Notice --> Undefined variable: user_total_buy C:\wamp64\www\casarepository\admin\application\views\layout\dashboard.php 65
+ERROR - 2016-12-13 09:13:43 --> Severity: Notice --> Undefined variable: user_credit_balance C:\wamp64\www\casarepository\admin\application\views\layout\dashboard.php 79
+ERROR - 2016-12-13 09:13:43 --> Severity: Notice --> Undefined variable: user_balance C:\wamp64\www\casarepository\admin\application\views\layout\dashboard.php 93
+DEBUG - 2016-12-13 09:13:43 --> Total execution time: 0.0560
+DEBUG - 2016-12-13 09:13:47 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:13:47 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:13:47 --> Total execution time: 0.0451
+DEBUG - 2016-12-13 09:13:47 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:13:47 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:13:47 --> Total execution time: 0.0684
+DEBUG - 2016-12-13 09:14:52 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:14:52 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:14:52 --> Total execution time: 0.0423
+DEBUG - 2016-12-13 09:14:52 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:14:52 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2016-12-13 09:14:52 --> Severity: Notice --> Undefined index: config_group_status C:\wamp64\www\casarepository\admin\application\models\Config_group_model.php 27
+DEBUG - 2016-12-13 09:14:52 --> Total execution time: 0.0422
+DEBUG - 2016-12-13 09:15:21 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:15:21 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:15:21 --> Total execution time: 0.0376
+DEBUG - 2016-12-13 09:15:21 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:15:21 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2016-12-13 09:15:21 --> Severity: Notice --> Undefined index: config_group_status C:\wamp64\www\casarepository\admin\application\models\Config_group_model.php 27
+DEBUG - 2016-12-13 09:15:21 --> Total execution time: 0.0510
+DEBUG - 2016-12-13 09:16:03 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:16:03 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:16:03 --> Total execution time: 0.0392
+DEBUG - 2016-12-13 09:16:03 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:16:03 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2016-12-13 09:16:03 --> Severity: Notice --> Undefined index: config_group_status C:\wamp64\www\casarepository\admin\application\models\Config_group_model.php 27
+DEBUG - 2016-12-13 09:16:03 --> Total execution time: 0.0643
+DEBUG - 2016-12-13 09:16:06 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:16:06 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:16:06 --> Total execution time: 0.0415
+DEBUG - 2016-12-13 09:16:07 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:16:07 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:16:07 --> Total execution time: 0.0388
+DEBUG - 2016-12-13 09:16:13 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:16:13 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:16:13 --> Total execution time: 0.0382
+DEBUG - 2016-12-13 09:16:13 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:16:13 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2016-12-13 09:16:13 --> Severity: Notice --> Undefined index: config_group_status C:\wamp64\www\casarepository\admin\application\models\Config_group_model.php 27
+DEBUG - 2016-12-13 09:16:13 --> Total execution time: 0.0459
+DEBUG - 2016-12-13 09:18:32 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:18:32 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:18:32 --> Total execution time: 0.0446
+DEBUG - 2016-12-13 09:19:16 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:19:16 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:19:16 --> Total execution time: 0.0464
+DEBUG - 2016-12-13 09:19:16 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:19:16 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:19:16 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:19:16 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:19:16 --> Total execution time: 0.0450
+DEBUG - 2016-12-13 09:19:16 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:19:16 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:19:16 --> Total execution time: 0.0804
+DEBUG - 2016-12-13 09:19:16 --> Total execution time: 0.0768
+DEBUG - 2016-12-13 09:19:17 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:19:17 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:19:17 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:19:17 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:19:17 --> Total execution time: 0.0523
+DEBUG - 2016-12-13 09:19:17 --> Total execution time: 0.0944
+DEBUG - 2016-12-13 09:19:28 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:19:28 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:19:28 --> Total execution time: 0.0437
+DEBUG - 2016-12-13 09:19:30 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:19:30 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:19:30 --> Total execution time: 0.0457
+DEBUG - 2016-12-13 09:19:31 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:19:31 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:19:31 --> Total execution time: 0.0511
+DEBUG - 2016-12-13 09:19:33 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:19:33 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2016-12-13 09:19:33 --> Severity: Notice --> Undefined property: Config_group::$User_model C:\wamp64\www\casarepository\admin\application\controllers\Config_group.php 55
+ERROR - 2016-12-13 09:19:33 --> Severity: Error --> Call to a member function get_user_all() on null C:\wamp64\www\casarepository\admin\application\controllers\Config_group.php 55
+DEBUG - 2016-12-13 09:19:48 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:19:48 --> No URI present. Default controller set.
+DEBUG - 2016-12-13 09:19:48 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:19:48 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:19:48 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:19:48 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-13 09:19:48 --> Encryption: Auto-configured driver 'openssl'.
+ERROR - 2016-12-13 09:19:48 --> Severity: Notice --> Undefined variable: user_credit C:\wamp64\www\casarepository\admin\application\views\layout\dashboard.php 51
+ERROR - 2016-12-13 09:19:48 --> Severity: Notice --> Undefined variable: user_total_buy C:\wamp64\www\casarepository\admin\application\views\layout\dashboard.php 65
+ERROR - 2016-12-13 09:19:48 --> Severity: Notice --> Undefined variable: user_credit_balance C:\wamp64\www\casarepository\admin\application\views\layout\dashboard.php 79
+ERROR - 2016-12-13 09:19:48 --> Severity: Notice --> Undefined variable: user_balance C:\wamp64\www\casarepository\admin\application\views\layout\dashboard.php 93
+DEBUG - 2016-12-13 09:19:48 --> Total execution time: 0.0690
+DEBUG - 2016-12-13 09:19:51 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:19:51 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:19:51 --> Total execution time: 0.0449
+DEBUG - 2016-12-13 09:19:52 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:19:52 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:19:52 --> Total execution time: 0.0645
+DEBUG - 2016-12-13 09:24:43 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:24:43 --> No URI present. Default controller set.
+DEBUG - 2016-12-13 09:24:43 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:24:43 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:24:43 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:24:43 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-13 09:24:43 --> Encryption: Auto-configured driver 'openssl'.
+ERROR - 2016-12-13 09:24:43 --> Severity: Notice --> Undefined variable: user_credit C:\wamp64\www\casarepository\admin\application\views\layout\dashboard.php 51
+ERROR - 2016-12-13 09:24:43 --> Severity: Notice --> Undefined variable: user_total_buy C:\wamp64\www\casarepository\admin\application\views\layout\dashboard.php 65
+ERROR - 2016-12-13 09:24:43 --> Severity: Notice --> Undefined variable: user_credit_balance C:\wamp64\www\casarepository\admin\application\views\layout\dashboard.php 79
+ERROR - 2016-12-13 09:24:43 --> Severity: Notice --> Undefined variable: user_balance C:\wamp64\www\casarepository\admin\application\views\layout\dashboard.php 93
+DEBUG - 2016-12-13 09:24:43 --> Total execution time: 0.0624
+DEBUG - 2016-12-13 09:24:46 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:24:46 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:24:46 --> Total execution time: 0.0436
+DEBUG - 2016-12-13 09:24:46 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:24:46 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:24:46 --> Total execution time: 0.0509
+DEBUG - 2016-12-13 09:24:51 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:24:51 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2016-12-13 09:24:51 --> Severity: Notice --> Undefined property: Config_group::$User_model C:\wamp64\www\casarepository\admin\application\controllers\Config_group.php 55
+ERROR - 2016-12-13 09:24:51 --> Severity: Error --> Call to a member function get_user_all() on null C:\wamp64\www\casarepository\admin\application\controllers\Config_group.php 55
+DEBUG - 2016-12-13 09:25:42 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:25:42 --> No URI present. Default controller set.
+DEBUG - 2016-12-13 09:25:42 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:25:42 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:25:42 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:25:42 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-13 09:25:42 --> Encryption: Auto-configured driver 'openssl'.
+ERROR - 2016-12-13 09:25:42 --> Severity: Notice --> Undefined variable: user_credit C:\wamp64\www\casarepository\admin\application\views\layout\dashboard.php 51
+ERROR - 2016-12-13 09:25:42 --> Severity: Notice --> Undefined variable: user_total_buy C:\wamp64\www\casarepository\admin\application\views\layout\dashboard.php 65
+ERROR - 2016-12-13 09:25:42 --> Severity: Notice --> Undefined variable: user_credit_balance C:\wamp64\www\casarepository\admin\application\views\layout\dashboard.php 79
+ERROR - 2016-12-13 09:25:42 --> Severity: Notice --> Undefined variable: user_balance C:\wamp64\www\casarepository\admin\application\views\layout\dashboard.php 93
+DEBUG - 2016-12-13 09:25:42 --> Total execution time: 0.0937
+DEBUG - 2016-12-13 09:25:44 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:25:44 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:25:44 --> Total execution time: 0.0434
+DEBUG - 2016-12-13 09:25:44 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:25:44 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:25:44 --> Total execution time: 0.0484
+DEBUG - 2016-12-13 09:25:59 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:25:59 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:25:59 --> Total execution time: 0.0400
+DEBUG - 2016-12-13 09:25:59 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:25:59 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2016-12-13 09:25:59 --> Severity: Notice --> Undefined index: config_group_status C:\wamp64\www\casarepository\admin\application\models\Config_group_model.php 27
+DEBUG - 2016-12-13 09:25:59 --> Total execution time: 0.0615
+DEBUG - 2016-12-13 09:28:20 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:28:20 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:28:20 --> Total execution time: 0.0385
+DEBUG - 2016-12-13 09:28:20 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:28:20 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2016-12-13 09:28:20 --> Severity: Notice --> Undefined index: config_group_status C:\wamp64\www\casarepository\admin\application\models\Config_group_model.php 27
+DEBUG - 2016-12-13 09:28:20 --> Total execution time: 0.0639
+DEBUG - 2016-12-13 09:28:23 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:28:23 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:28:23 --> Total execution time: 0.0493
+DEBUG - 2016-12-13 09:28:42 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:28:42 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:28:42 --> Total execution time: 0.0385
+DEBUG - 2016-12-13 09:28:42 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:28:42 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2016-12-13 09:28:42 --> Severity: Notice --> Undefined index: config_group_status C:\wamp64\www\casarepository\admin\application\models\Config_group_model.php 27
+DEBUG - 2016-12-13 09:28:42 --> Total execution time: 0.0417
+DEBUG - 2016-12-13 09:29:56 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:29:56 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:29:56 --> Total execution time: 0.0389
+DEBUG - 2016-12-13 09:29:56 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:29:56 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2016-12-13 09:29:56 --> Severity: Notice --> Undefined index: config_group_status C:\wamp64\www\casarepository\admin\application\models\Config_group_model.php 27
+DEBUG - 2016-12-13 09:29:56 --> Total execution time: 0.0446
+DEBUG - 2016-12-13 09:29:59 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:29:59 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:29:59 --> Total execution time: 0.0434
+DEBUG - 2016-12-13 09:30:04 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:30:04 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:30:04 --> Total execution time: 0.0417
+DEBUG - 2016-12-13 09:30:04 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:30:04 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2016-12-13 09:30:04 --> Severity: Notice --> Undefined index: config_group_status C:\wamp64\www\casarepository\admin\application\models\Config_group_model.php 27
+DEBUG - 2016-12-13 09:30:04 --> Total execution time: 0.0609
+DEBUG - 2016-12-13 09:30:08 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:30:08 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:30:08 --> Total execution time: 0.0432
+DEBUG - 2016-12-13 09:32:36 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:32:36 --> No URI present. Default controller set.
+DEBUG - 2016-12-13 09:32:36 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:32:36 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:32:36 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:32:36 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-13 09:32:36 --> Encryption: Auto-configured driver 'openssl'.
+ERROR - 2016-12-13 09:32:36 --> Severity: Notice --> Undefined variable: user_credit C:\wamp64\www\casarepository\admin\application\views\layout\dashboard.php 51
+ERROR - 2016-12-13 09:32:36 --> Severity: Notice --> Undefined variable: user_total_buy C:\wamp64\www\casarepository\admin\application\views\layout\dashboard.php 65
+ERROR - 2016-12-13 09:32:36 --> Severity: Notice --> Undefined variable: user_credit_balance C:\wamp64\www\casarepository\admin\application\views\layout\dashboard.php 79
+ERROR - 2016-12-13 09:32:36 --> Severity: Notice --> Undefined variable: user_balance C:\wamp64\www\casarepository\admin\application\views\layout\dashboard.php 93
+DEBUG - 2016-12-13 09:32:36 --> Total execution time: 0.0736
+DEBUG - 2016-12-13 09:32:39 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:32:39 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:32:39 --> Total execution time: 0.0546
+DEBUG - 2016-12-13 09:32:39 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:32:39 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:32:39 --> Total execution time: 0.0500
+DEBUG - 2016-12-13 09:32:49 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:32:49 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:32:49 --> Total execution time: 0.0408
+DEBUG - 2016-12-13 09:32:49 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:32:49 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2016-12-13 09:32:49 --> Severity: Notice --> Undefined index: config_group_status C:\wamp64\www\casarepository\admin\application\models\Config_group_model.php 27
+DEBUG - 2016-12-13 09:32:49 --> Total execution time: 0.0613
+DEBUG - 2016-12-13 09:32:58 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:32:58 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:32:58 --> Total execution time: 0.0424
+DEBUG - 2016-12-13 09:33:03 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:33:03 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:33:03 --> Total execution time: 0.0405
+DEBUG - 2016-12-13 09:33:09 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:33:09 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:33:09 --> Total execution time: 0.0395
+DEBUG - 2016-12-13 09:33:09 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:33:09 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2016-12-13 09:33:09 --> Severity: Notice --> Undefined index: config_group_status C:\wamp64\www\casarepository\admin\application\models\Config_group_model.php 27
+DEBUG - 2016-12-13 09:33:09 --> Total execution time: 0.0570
+DEBUG - 2016-12-13 09:38:51 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:38:51 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:38:51 --> Total execution time: 0.0465
+DEBUG - 2016-12-13 09:39:41 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:39:41 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:39:41 --> Total execution time: 0.0391
+DEBUG - 2016-12-13 09:39:41 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:39:41 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:39:41 --> Total execution time: 0.0401
+DEBUG - 2016-12-13 09:39:45 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:39:45 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:39:45 --> Total execution time: 0.0426
+DEBUG - 2016-12-13 09:39:55 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:39:55 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2016-12-13 09:39:55 --> Severity: Notice --> Undefined property: Config_group::$User_model C:\wamp64\www\casarepository\admin\application\controllers\Config_group.php 55
+ERROR - 2016-12-13 09:39:55 --> Severity: Error --> Call to a member function get_user_all() on null C:\wamp64\www\casarepository\admin\application\controllers\Config_group.php 55
+DEBUG - 2016-12-13 09:40:23 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:40:23 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:40:23 --> Total execution time: 0.0442
+DEBUG - 2016-12-13 09:40:36 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:40:36 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:40:36 --> Total execution time: 0.0385
+DEBUG - 2016-12-13 09:40:36 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:40:37 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:40:37 --> Total execution time: 0.0559
+DEBUG - 2016-12-13 09:40:39 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:40:39 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:40:39 --> Total execution time: 0.0406
+DEBUG - 2016-12-13 09:40:39 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:40:39 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:40:39 --> Total execution time: 0.0478
+DEBUG - 2016-12-13 09:40:46 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:40:46 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:40:46 --> Total execution time: 0.0393
+DEBUG - 2016-12-13 09:40:46 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:40:46 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:40:46 --> Total execution time: 0.0593
+DEBUG - 2016-12-13 09:40:48 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:40:48 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:40:48 --> Total execution time: 0.0434
+DEBUG - 2016-12-13 09:40:49 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:40:49 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:40:49 --> Total execution time: 0.0620
+DEBUG - 2016-12-13 09:42:00 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:42:00 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:42:00 --> Total execution time: 0.0453
+DEBUG - 2016-12-13 09:42:03 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:42:03 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:42:03 --> Total execution time: 0.0505
+DEBUG - 2016-12-13 09:42:03 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:42:03 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:42:03 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:42:03 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:42:04 --> Total execution time: 0.0457
+DEBUG - 2016-12-13 09:42:04 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:42:04 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:42:04 --> Total execution time: 0.0756
+DEBUG - 2016-12-13 09:42:04 --> Total execution time: 0.0839
+DEBUG - 2016-12-13 09:42:04 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:42:04 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:42:04 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:42:04 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:42:04 --> Total execution time: 0.0431
+DEBUG - 2016-12-13 09:42:04 --> Total execution time: 0.0767
+DEBUG - 2016-12-13 09:42:11 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:42:11 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:42:11 --> Total execution time: 0.0427
+DEBUG - 2016-12-13 09:42:14 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:42:14 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:42:14 --> Total execution time: 0.0393
+DEBUG - 2016-12-13 09:42:14 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:42:14 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:42:14 --> Total execution time: 0.0449
+DEBUG - 2016-12-13 09:42:20 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:42:20 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:42:21 --> Total execution time: 0.0474
+DEBUG - 2016-12-13 09:42:21 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:42:21 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:42:21 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:42:21 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:42:21 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:42:21 --> Total execution time: 0.0565
+DEBUG - 2016-12-13 09:42:21 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:42:21 --> Total execution time: 0.0854
+DEBUG - 2016-12-13 09:42:21 --> Total execution time: 0.0721
+DEBUG - 2016-12-13 09:42:21 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:42:21 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:42:21 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:42:21 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:42:21 --> Total execution time: 0.0472
+DEBUG - 2016-12-13 09:42:21 --> Total execution time: 0.0786
+DEBUG - 2016-12-13 09:42:24 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:42:25 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:42:25 --> Total execution time: 0.0542
+DEBUG - 2016-12-13 09:42:27 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:42:27 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:42:27 --> Total execution time: 0.0446
+DEBUG - 2016-12-13 09:42:27 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:42:27 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:42:27 --> Total execution time: 0.0390
+DEBUG - 2016-12-13 09:42:31 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:42:31 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:42:31 --> Total execution time: 0.0456
+DEBUG - 2016-12-13 09:42:31 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:42:31 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:42:31 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:42:31 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:42:31 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:42:31 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:42:31 --> Total execution time: 0.0467
+DEBUG - 2016-12-13 09:42:31 --> Total execution time: 0.0797
+DEBUG - 2016-12-13 09:42:31 --> Total execution time: 0.0845
+DEBUG - 2016-12-13 09:42:31 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:42:31 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:42:31 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:42:31 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:42:31 --> Total execution time: 0.0459
+DEBUG - 2016-12-13 09:42:31 --> Total execution time: 0.0835
+DEBUG - 2016-12-13 09:42:46 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:42:46 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:42:46 --> Total execution time: 0.0468
+DEBUG - 2016-12-13 09:42:46 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:42:46 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:42:46 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:42:46 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:42:46 --> Total execution time: 0.0478
+DEBUG - 2016-12-13 09:42:46 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:42:46 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:42:46 --> Total execution time: 0.0788
+DEBUG - 2016-12-13 09:42:46 --> Total execution time: 0.0693
+DEBUG - 2016-12-13 09:42:47 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:42:47 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:42:47 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:42:47 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:42:47 --> Total execution time: 0.0509
+DEBUG - 2016-12-13 09:42:47 --> Total execution time: 0.0790
+DEBUG - 2016-12-13 09:42:49 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:42:49 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:42:49 --> Total execution time: 0.0437
+DEBUG - 2016-12-13 09:42:52 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:42:52 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:42:52 --> Total execution time: 0.0410
+DEBUG - 2016-12-13 09:42:58 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:42:58 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:42:58 --> Total execution time: 0.0638
+DEBUG - 2016-12-13 09:42:58 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:42:58 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:42:58 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:42:58 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:42:59 --> Total execution time: 0.0468
+DEBUG - 2016-12-13 09:42:59 --> Total execution time: 0.0848
+DEBUG - 2016-12-13 09:43:09 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:43:09 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:43:09 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-13 09:43:09 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-13 09:43:09 --> Total execution time: 0.0520
+DEBUG - 2016-12-13 09:43:09 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:43:09 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:43:09 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-13 09:43:09 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-13 09:43:09 --> Total execution time: 0.0635
+DEBUG - 2016-12-13 09:43:14 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:43:14 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:43:14 --> Total execution time: 0.0456
+DEBUG - 2016-12-13 09:43:14 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:43:14 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:43:14 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:43:14 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:43:14 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:43:14 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:43:14 --> Total execution time: 0.0531
+DEBUG - 2016-12-13 09:43:14 --> Total execution time: 0.0814
+DEBUG - 2016-12-13 09:43:14 --> Total execution time: 0.0886
+DEBUG - 2016-12-13 09:43:15 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:43:15 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:43:15 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:43:15 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:43:15 --> Total execution time: 0.0436
+DEBUG - 2016-12-13 09:43:15 --> Total execution time: 0.0739
+DEBUG - 2016-12-13 09:43:18 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:43:18 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:43:18 --> Total execution time: 0.0427
+DEBUG - 2016-12-13 09:43:22 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:43:22 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:43:22 --> Total execution time: 0.0404
+DEBUG - 2016-12-13 09:43:22 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:43:22 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:43:22 --> Total execution time: 0.0647
+DEBUG - 2016-12-13 09:43:25 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:43:25 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:43:25 --> Total execution time: 0.0440
+DEBUG - 2016-12-13 09:43:25 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:43:25 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:43:25 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:43:25 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:43:25 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:43:25 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:43:25 --> Total execution time: 0.0529
+DEBUG - 2016-12-13 09:43:25 --> Total execution time: 0.0887
+DEBUG - 2016-12-13 09:43:25 --> Total execution time: 0.0986
+DEBUG - 2016-12-13 09:43:26 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:43:26 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:43:26 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:43:26 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:43:26 --> Total execution time: 0.0517
+DEBUG - 2016-12-13 09:43:26 --> Total execution time: 0.0824
+DEBUG - 2016-12-13 09:43:29 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:43:29 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:43:29 --> Total execution time: 0.0433
+DEBUG - 2016-12-13 09:43:32 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:43:32 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:43:32 --> Total execution time: 0.0386
+DEBUG - 2016-12-13 09:43:32 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:43:32 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:43:32 --> Total execution time: 0.0505
+DEBUG - 2016-12-13 09:43:40 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:43:40 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:43:40 --> Total execution time: 0.0451
+DEBUG - 2016-12-13 09:43:40 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:43:40 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:43:40 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:43:40 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:43:40 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:43:40 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:43:40 --> Total execution time: 0.0538
+DEBUG - 2016-12-13 09:43:40 --> Total execution time: 0.0876
+DEBUG - 2016-12-13 09:43:40 --> Total execution time: 0.0958
+DEBUG - 2016-12-13 09:43:41 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:43:41 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:43:41 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:43:41 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:43:41 --> Total execution time: 0.0441
+DEBUG - 2016-12-13 09:43:41 --> Total execution time: 0.0811
+DEBUG - 2016-12-13 09:51:36 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:51:36 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:51:36 --> Total execution time: 0.0435
+DEBUG - 2016-12-13 09:51:36 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:51:36 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:51:36 --> Total execution time: 0.0473
+DEBUG - 2016-12-13 09:55:50 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:55:50 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2016-12-13 09:55:50 --> Severity: Notice --> Undefined variable: list C:\wamp64\www\casarepository\admin\application\views\layout\config_group.php 136
+DEBUG - 2016-12-13 09:55:50 --> Total execution time: 0.0643
+DEBUG - 2016-12-13 09:55:51 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:55:51 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2016-12-13 09:55:51 --> Severity: Notice --> Undefined variable: list C:\wamp64\www\casarepository\admin\application\views\layout\config_group.php 136
+DEBUG - 2016-12-13 09:55:51 --> Total execution time: 0.0542
+DEBUG - 2016-12-13 09:56:02 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:56:02 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:56:02 --> Total execution time: 0.0446
+DEBUG - 2016-12-13 09:56:02 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:56:02 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:56:02 --> Total execution time: 0.0458
+DEBUG - 2016-12-13 09:58:03 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:58:03 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2016-12-13 09:58:03 --> Severity: Notice --> Undefined property: Config_group::$User_model C:\wamp64\www\casarepository\admin\application\controllers\Config_group.php 55
+ERROR - 2016-12-13 09:58:03 --> Severity: Error --> Call to a member function get_user_all() on null C:\wamp64\www\casarepository\admin\application\controllers\Config_group.php 55
+DEBUG - 2016-12-13 09:59:39 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:59:39 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 09:59:39 --> Total execution time: 0.0435
+DEBUG - 2016-12-13 09:59:43 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 09:59:43 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2016-12-13 09:59:43 --> Severity: Notice --> Undefined property: Config_group::$User_model C:\wamp64\www\casarepository\admin\application\controllers\Config_group.php 55
+ERROR - 2016-12-13 09:59:43 --> Severity: Error --> Call to a member function get_user_all() on null C:\wamp64\www\casarepository\admin\application\controllers\Config_group.php 55
+DEBUG - 2016-12-13 10:04:09 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:04:09 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2016-12-13 10:04:09 --> Severity: Error --> Call to undefined method Config_group_model::search_filter() C:\wamp64\www\casarepository\admin\application\controllers\Config_group.php 25
+DEBUG - 2016-12-13 10:04:23 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:04:23 --> No URI present. Default controller set.
+DEBUG - 2016-12-13 10:04:23 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:04:24 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:04:24 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:04:24 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:04:24 --> No URI present. Default controller set.
+DEBUG - 2016-12-13 10:04:24 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:04:24 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-13 10:04:24 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-13 10:04:24 --> UTF-8 Support Enabled
+ERROR - 2016-12-13 10:04:24 --> Severity: Notice --> Undefined variable: user_credit C:\wamp64\www\casarepository\admin\application\views\layout\dashboard.php 51
+ERROR - 2016-12-13 10:04:24 --> Severity: Notice --> Undefined variable: user_total_buy C:\wamp64\www\casarepository\admin\application\views\layout\dashboard.php 65
+ERROR - 2016-12-13 10:04:24 --> Severity: Notice --> Undefined variable: user_credit_balance C:\wamp64\www\casarepository\admin\application\views\layout\dashboard.php 79
+DEBUG - 2016-12-13 10:04:24 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2016-12-13 10:04:24 --> Severity: Notice --> Undefined variable: user_balance C:\wamp64\www\casarepository\admin\application\views\layout\dashboard.php 93
+DEBUG - 2016-12-13 10:04:24 --> Total execution time: 0.1086
+DEBUG - 2016-12-13 10:04:24 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-13 10:04:24 --> Encryption: Auto-configured driver 'openssl'.
+ERROR - 2016-12-13 10:04:24 --> Severity: Notice --> Undefined variable: user_credit C:\wamp64\www\casarepository\admin\application\views\layout\dashboard.php 51
+ERROR - 2016-12-13 10:04:24 --> Severity: Notice --> Undefined variable: user_total_buy C:\wamp64\www\casarepository\admin\application\views\layout\dashboard.php 65
+ERROR - 2016-12-13 10:04:24 --> Severity: Notice --> Undefined variable: user_credit_balance C:\wamp64\www\casarepository\admin\application\views\layout\dashboard.php 79
+ERROR - 2016-12-13 10:04:24 --> Severity: Notice --> Undefined variable: user_balance C:\wamp64\www\casarepository\admin\application\views\layout\dashboard.php 93
+DEBUG - 2016-12-13 10:04:24 --> Total execution time: 0.0703
+DEBUG - 2016-12-13 10:04:25 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:04:25 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:04:25 --> Total execution time: 0.0458
+DEBUG - 2016-12-13 10:04:26 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:04:26 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:04:26 --> Total execution time: 0.0580
+DEBUG - 2016-12-13 10:04:27 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:04:27 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2016-12-13 10:04:27 --> Severity: Error --> Call to undefined method Config_group_model::search_filter() C:\wamp64\www\casarepository\admin\application\controllers\Config_group.php 25
+DEBUG - 2016-12-13 10:08:24 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:08:24 --> No URI present. Default controller set.
+DEBUG - 2016-12-13 10:08:24 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:08:24 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:08:24 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:08:24 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-13 10:08:24 --> Encryption: Auto-configured driver 'openssl'.
+ERROR - 2016-12-13 10:08:24 --> Severity: Notice --> Undefined variable: user_credit C:\wamp64\www\casarepository\admin\application\views\layout\dashboard.php 51
+ERROR - 2016-12-13 10:08:24 --> Severity: Notice --> Undefined variable: user_total_buy C:\wamp64\www\casarepository\admin\application\views\layout\dashboard.php 65
+ERROR - 2016-12-13 10:08:24 --> Severity: Notice --> Undefined variable: user_credit_balance C:\wamp64\www\casarepository\admin\application\views\layout\dashboard.php 79
+ERROR - 2016-12-13 10:08:24 --> Severity: Notice --> Undefined variable: user_balance C:\wamp64\www\casarepository\admin\application\views\layout\dashboard.php 93
+DEBUG - 2016-12-13 10:08:24 --> Total execution time: 0.0782
+DEBUG - 2016-12-13 10:08:25 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:08:25 --> No URI present. Default controller set.
+DEBUG - 2016-12-13 10:08:25 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:08:25 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:08:25 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:08:25 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-13 10:08:25 --> Encryption: Auto-configured driver 'openssl'.
+ERROR - 2016-12-13 10:08:25 --> Severity: Notice --> Undefined variable: user_credit C:\wamp64\www\casarepository\admin\application\views\layout\dashboard.php 51
+ERROR - 2016-12-13 10:08:25 --> Severity: Notice --> Undefined variable: user_total_buy C:\wamp64\www\casarepository\admin\application\views\layout\dashboard.php 65
+ERROR - 2016-12-13 10:08:25 --> Severity: Notice --> Undefined variable: user_credit_balance C:\wamp64\www\casarepository\admin\application\views\layout\dashboard.php 79
+ERROR - 2016-12-13 10:08:25 --> Severity: Notice --> Undefined variable: user_balance C:\wamp64\www\casarepository\admin\application\views\layout\dashboard.php 93
+DEBUG - 2016-12-13 10:08:25 --> Total execution time: 0.0777
+DEBUG - 2016-12-13 10:08:27 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:08:27 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:08:27 --> Total execution time: 0.0527
+DEBUG - 2016-12-13 10:08:27 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:08:27 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:08:27 --> Total execution time: 0.0620
+DEBUG - 2016-12-13 10:08:30 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:08:30 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2016-12-13 10:08:30 --> Severity: Error --> Call to undefined method Config_group_model::search_filter() C:\wamp64\www\casarepository\admin\application\controllers\Config_group.php 25
+DEBUG - 2016-12-13 10:08:47 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:08:47 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2016-12-13 10:08:47 --> Severity: Notice --> Undefined variable: list C:\wamp64\www\casarepository\admin\application\views\layout\config_group.php 136
+DEBUG - 2016-12-13 10:08:47 --> Total execution time: 0.0437
+DEBUG - 2016-12-13 10:09:06 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:09:06 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:09:06 --> Total execution time: 0.0408
+DEBUG - 2016-12-13 10:09:06 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:09:06 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:09:06 --> Total execution time: 0.0642
+DEBUG - 2016-12-13 10:09:09 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:09:09 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:09:09 --> Total execution time: 0.0532
+DEBUG - 2016-12-13 10:09:09 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:09:09 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:09:09 --> Total execution time: 0.0437
+DEBUG - 2016-12-13 10:09:15 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:09:15 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2016-12-13 10:09:15 --> Severity: Notice --> Undefined variable: list C:\wamp64\www\casarepository\admin\application\views\layout\config_group.php 136
+DEBUG - 2016-12-13 10:09:15 --> Total execution time: 0.0436
+DEBUG - 2016-12-13 10:09:19 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:09:19 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:09:19 --> Total execution time: 0.0500
+DEBUG - 2016-12-13 10:09:19 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:09:19 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:09:19 --> Total execution time: 0.0700
+DEBUG - 2016-12-13 10:14:50 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:14:50 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:14:50 --> Total execution time: 0.0686
+DEBUG - 2016-12-13 10:14:59 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:14:59 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:14:59 --> Total execution time: 0.0592
+DEBUG - 2016-12-13 10:15:02 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:15:02 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:15:02 --> Total execution time: 0.0388
+DEBUG - 2016-12-13 10:15:02 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:15:02 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:15:03 --> Total execution time: 0.0392
+DEBUG - 2016-12-13 10:15:11 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:15:11 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:15:11 --> Total execution time: 0.0425
+DEBUG - 2016-12-13 10:15:11 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:15:11 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:15:11 --> Total execution time: 0.0584
+DEBUG - 2016-12-13 10:15:38 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:15:38 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:15:38 --> Total execution time: 0.0705
+DEBUG - 2016-12-13 10:15:38 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:15:38 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:15:38 --> Total execution time: 0.0586
+DEBUG - 2016-12-13 10:15:40 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:15:40 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2016-12-13 10:15:40 --> Severity: Notice --> Undefined property: Config_group::$User_model C:\wamp64\www\casarepository\admin\application\controllers\Config_group.php 115
+ERROR - 2016-12-13 10:15:40 --> Severity: Error --> Call to a member function get_user_all() on null C:\wamp64\www\casarepository\admin\application\controllers\Config_group.php 115
+DEBUG - 2016-12-13 10:17:14 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:17:14 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2016-12-13 10:17:14 --> Severity: Notice --> Undefined variable: list C:\wamp64\www\casarepository\admin\application\views\layout\config_group.php 136
+DEBUG - 2016-12-13 10:17:14 --> Total execution time: 0.0440
+DEBUG - 2016-12-13 10:17:33 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:17:33 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:17:33 --> Total execution time: 0.0427
+DEBUG - 2016-12-13 10:17:41 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:17:41 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:17:41 --> Total execution time: 0.0420
+DEBUG - 2016-12-13 10:17:49 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:17:49 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:17:49 --> Total execution time: 0.0436
+DEBUG - 2016-12-13 10:17:50 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:17:50 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:17:50 --> Total execution time: 0.0626
+DEBUG - 2016-12-13 10:17:52 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:17:52 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:17:52 --> Total execution time: 0.0525
+DEBUG - 2016-12-13 10:17:52 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:17:52 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:17:52 --> Total execution time: 0.0571
+DEBUG - 2016-12-13 10:18:08 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:18:08 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:18:08 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-13 10:18:08 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-13 10:18:09 --> Total execution time: 0.0954
+DEBUG - 2016-12-13 10:18:09 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:18:09 --> No URI present. Default controller set.
+DEBUG - 2016-12-13 10:18:09 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2016-12-13 10:18:09 --> Severity: Notice --> Undefined variable: period_lotto C:\wamp64\www\casarepository\admin\application\views\login.php 200
+DEBUG - 2016-12-13 10:18:09 --> Total execution time: 0.0576
+DEBUG - 2016-12-13 10:18:13 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:18:13 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:18:13 --> Total execution time: 0.0404
+DEBUG - 2016-12-13 10:18:13 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:18:13 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:18:13 --> Total execution time: 0.0761
+DEBUG - 2016-12-13 10:18:15 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:18:15 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:18:15 --> Total execution time: 0.0372
+DEBUG - 2016-12-13 10:18:15 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:18:15 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:18:15 --> Total execution time: 0.0698
+DEBUG - 2016-12-13 10:18:18 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:18:18 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:18:18 --> Total execution time: 0.0374
+DEBUG - 2016-12-13 10:18:18 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:18:18 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:18:19 --> Total execution time: 0.0423
+DEBUG - 2016-12-13 10:18:32 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:18:32 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:18:32 --> Total execution time: 0.0377
+DEBUG - 2016-12-13 10:18:32 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:18:32 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:18:32 --> Total execution time: 0.0419
+DEBUG - 2016-12-13 10:18:37 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:18:37 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:18:37 --> Total execution time: 0.0461
+DEBUG - 2016-12-13 10:18:37 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:18:37 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:18:37 --> Total execution time: 0.0710
+DEBUG - 2016-12-13 10:18:42 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:18:42 --> No URI present. Default controller set.
+DEBUG - 2016-12-13 10:18:42 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2016-12-13 10:18:42 --> Severity: Notice --> Undefined variable: period_lotto C:\wamp64\www\casarepository\admin\application\views\login.php 200
+DEBUG - 2016-12-13 10:18:42 --> Total execution time: 0.0414
+DEBUG - 2016-12-13 10:18:45 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:18:45 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:18:45 --> Total execution time: 0.0471
+DEBUG - 2016-12-13 10:18:45 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:18:45 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:18:45 --> Total execution time: 0.1456
+DEBUG - 2016-12-13 10:18:45 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:18:45 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:18:45 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-13 10:18:45 --> Encryption: Auto-configured driver 'openssl'.
+ERROR - 2016-12-13 10:18:45 --> Severity: Notice --> Undefined variable: user_credit C:\wamp64\www\casarepository\admin\application\views\layout\dashboard.php 51
+ERROR - 2016-12-13 10:18:45 --> Severity: Notice --> Undefined variable: user_total_buy C:\wamp64\www\casarepository\admin\application\views\layout\dashboard.php 65
+ERROR - 2016-12-13 10:18:45 --> Severity: Notice --> Undefined variable: user_credit_balance C:\wamp64\www\casarepository\admin\application\views\layout\dashboard.php 79
+ERROR - 2016-12-13 10:18:45 --> Severity: Notice --> Undefined variable: user_balance C:\wamp64\www\casarepository\admin\application\views\layout\dashboard.php 93
+DEBUG - 2016-12-13 10:18:45 --> Total execution time: 0.0683
+DEBUG - 2016-12-13 10:18:47 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:18:47 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:18:47 --> Total execution time: 0.0436
+DEBUG - 2016-12-13 10:18:47 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:18:47 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:18:47 --> Total execution time: 0.0444
+DEBUG - 2016-12-13 10:21:04 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:21:04 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2016-12-13 10:21:04 --> Severity: Notice --> Undefined property: Config_group::$User_model C:\wamp64\www\casarepository\admin\application\controllers\Config_group.php 111
+ERROR - 2016-12-13 10:21:04 --> Severity: Error --> Call to a member function get_user_all() on null C:\wamp64\www\casarepository\admin\application\controllers\Config_group.php 111
+DEBUG - 2016-12-13 10:21:39 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:21:39 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:21:39 --> Total execution time: 0.0423
+DEBUG - 2016-12-13 10:26:14 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:26:14 --> No URI present. Default controller set.
+DEBUG - 2016-12-13 10:26:14 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:26:14 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:26:15 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:26:15 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-13 10:26:15 --> Encryption: Auto-configured driver 'openssl'.
+ERROR - 2016-12-13 10:26:15 --> Severity: Notice --> Undefined variable: user_credit C:\wamp64\www\casarepository\admin\application\views\layout\dashboard.php 51
+ERROR - 2016-12-13 10:26:15 --> Severity: Notice --> Undefined variable: user_total_buy C:\wamp64\www\casarepository\admin\application\views\layout\dashboard.php 65
+ERROR - 2016-12-13 10:26:15 --> Severity: Notice --> Undefined variable: user_credit_balance C:\wamp64\www\casarepository\admin\application\views\layout\dashboard.php 79
+ERROR - 2016-12-13 10:26:15 --> Severity: Notice --> Undefined variable: user_balance C:\wamp64\www\casarepository\admin\application\views\layout\dashboard.php 93
+DEBUG - 2016-12-13 10:26:15 --> Total execution time: 0.0768
+DEBUG - 2016-12-13 10:26:18 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:26:18 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:26:18 --> Total execution time: 0.0879
+DEBUG - 2016-12-13 10:26:18 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:26:18 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:26:18 --> Total execution time: 0.0733
+DEBUG - 2016-12-13 10:26:26 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:26:26 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:26:26 --> Total execution time: 0.0453
+DEBUG - 2016-12-13 10:26:29 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:26:29 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:26:29 --> Total execution time: 0.0465
+DEBUG - 2016-12-13 10:26:29 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:26:29 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:26:29 --> Total execution time: 0.0596
+DEBUG - 2016-12-13 10:26:31 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:26:31 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:26:31 --> Total execution time: 0.0667
+DEBUG - 2016-12-13 10:26:32 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:26:32 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:26:32 --> Total execution time: 0.0594
+DEBUG - 2016-12-13 10:26:52 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:26:52 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:26:52 --> Total execution time: 0.0708
+DEBUG - 2016-12-13 10:26:55 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:26:55 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:26:55 --> Total execution time: 0.0423
+DEBUG - 2016-12-13 10:26:55 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:26:55 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:26:55 --> Total execution time: 0.0422
+DEBUG - 2016-12-13 10:26:59 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:26:59 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:26:59 --> Total execution time: 0.0670
+DEBUG - 2016-12-13 10:27:00 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:27:00 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:27:00 --> Total execution time: 0.0642
+DEBUG - 2016-12-13 10:28:40 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:28:40 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:28:40 --> Total execution time: 0.0967
+DEBUG - 2016-12-13 10:28:40 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:28:40 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:28:40 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:28:40 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:28:40 --> Total execution time: 0.0614
+DEBUG - 2016-12-13 10:28:40 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:28:40 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:28:40 --> Total execution time: 0.1261
+DEBUG - 2016-12-13 10:28:40 --> Total execution time: 0.0737
+DEBUG - 2016-12-13 10:28:41 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:28:41 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:28:41 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:28:41 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:28:41 --> Total execution time: 0.0628
+DEBUG - 2016-12-13 10:28:41 --> Total execution time: 0.1062
+DEBUG - 2016-12-13 10:28:45 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:28:45 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:28:45 --> Total execution time: 0.0601
+DEBUG - 2016-12-13 10:28:50 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:28:50 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:28:50 --> Total execution time: 0.0634
+DEBUG - 2016-12-13 10:28:50 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:28:50 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:28:50 --> Total execution time: 0.0689
+DEBUG - 2016-12-13 10:28:53 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:28:53 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:28:53 --> Total execution time: 0.0515
+DEBUG - 2016-12-13 10:28:53 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:28:53 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:28:53 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:28:53 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:28:53 --> Total execution time: 0.0470
+DEBUG - 2016-12-13 10:28:54 --> Total execution time: 0.1176
+DEBUG - 2016-12-13 10:28:54 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:28:54 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:28:54 --> Total execution time: 0.0512
+DEBUG - 2016-12-13 10:28:54 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:28:54 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:28:54 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:28:54 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:28:54 --> Total execution time: 0.0503
+DEBUG - 2016-12-13 10:28:54 --> Total execution time: 0.0961
+DEBUG - 2016-12-13 10:28:59 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:28:59 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:28:59 --> Total execution time: 0.0597
+DEBUG - 2016-12-13 10:29:07 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:29:07 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:29:07 --> Total execution time: 0.0433
+DEBUG - 2016-12-13 10:29:07 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:29:07 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:29:07 --> Total execution time: 0.0512
+DEBUG - 2016-12-13 10:29:10 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:29:10 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:29:10 --> Total execution time: 0.0806
+DEBUG - 2016-12-13 10:29:11 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:29:11 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:29:11 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:29:11 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:29:11 --> Total execution time: 0.0560
+DEBUG - 2016-12-13 10:29:11 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:29:11 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:29:11 --> Total execution time: 0.0984
+DEBUG - 2016-12-13 10:29:11 --> Total execution time: 0.0896
+DEBUG - 2016-12-13 10:29:11 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:29:11 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:29:11 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:29:11 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:29:11 --> Total execution time: 0.0713
+DEBUG - 2016-12-13 10:29:11 --> Total execution time: 0.1029
+DEBUG - 2016-12-13 10:33:20 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:33:20 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:33:20 --> Total execution time: 0.0514
+DEBUG - 2016-12-13 10:33:20 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:33:20 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:33:20 --> Total execution time: 0.0598
+DEBUG - 2016-12-13 10:34:00 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:34:00 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:34:00 --> Total execution time: 0.0997
+DEBUG - 2016-12-13 10:34:00 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:34:00 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:34:00 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:34:00 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:34:00 --> Total execution time: 0.0596
+DEBUG - 2016-12-13 10:34:00 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:34:00 --> Total execution time: 0.0946
+DEBUG - 2016-12-13 10:34:00 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:34:00 --> Total execution time: 0.0574
+DEBUG - 2016-12-13 10:34:01 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:34:01 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:34:01 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:34:01 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:34:01 --> Total execution time: 0.0598
+DEBUG - 2016-12-13 10:34:01 --> Total execution time: 0.1002
+DEBUG - 2016-12-13 10:34:03 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:34:03 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:34:03 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:34:03 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:34:03 --> Total execution time: 0.0578
+DEBUG - 2016-12-13 10:34:03 --> Total execution time: 0.1085
+DEBUG - 2016-12-13 10:34:05 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:34:05 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:34:05 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:34:05 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:34:05 --> Total execution time: 0.0655
+DEBUG - 2016-12-13 10:34:05 --> Total execution time: 0.1033
+DEBUG - 2016-12-13 10:34:07 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:34:07 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:34:07 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:34:07 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:34:07 --> Total execution time: 0.0679
+DEBUG - 2016-12-13 10:34:07 --> Total execution time: 0.1147
+DEBUG - 2016-12-13 10:36:59 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:36:59 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:36:59 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:36:59 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:36:59 --> Total execution time: 0.0504
+DEBUG - 2016-12-13 10:36:59 --> Total execution time: 0.1193
+DEBUG - 2016-12-13 10:37:01 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:37:01 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:37:01 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:37:01 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:37:01 --> Total execution time: 0.0817
+DEBUG - 2016-12-13 10:37:01 --> Total execution time: 0.1317
+DEBUG - 2016-12-13 10:37:03 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:37:03 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:37:03 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:37:03 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:37:03 --> Total execution time: 0.0712
+DEBUG - 2016-12-13 10:37:03 --> Total execution time: 0.1022
+DEBUG - 2016-12-13 10:37:06 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:37:06 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:37:06 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:37:06 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:37:06 --> Total execution time: 0.0563
+DEBUG - 2016-12-13 10:37:06 --> Total execution time: 0.1193
+DEBUG - 2016-12-13 10:37:08 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:37:08 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:37:08 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:37:08 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:37:08 --> Total execution time: 0.0563
+DEBUG - 2016-12-13 10:37:08 --> Total execution time: 0.1187
+DEBUG - 2016-12-13 10:37:10 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:37:10 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:37:10 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:37:10 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:37:10 --> Total execution time: 0.0664
+DEBUG - 2016-12-13 10:37:10 --> Total execution time: 0.1274
+DEBUG - 2016-12-13 10:37:12 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:37:12 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:37:12 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:37:12 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:37:12 --> Total execution time: 0.0603
+DEBUG - 2016-12-13 10:37:12 --> Total execution time: 0.1021
+DEBUG - 2016-12-13 10:37:14 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:37:14 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:37:14 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:37:14 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:37:14 --> Total execution time: 0.0628
+DEBUG - 2016-12-13 10:37:14 --> Total execution time: 0.1105
+DEBUG - 2016-12-13 10:40:48 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:40:48 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:40:48 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-13 10:40:48 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-13 10:40:48 --> Total execution time: 0.0873
+DEBUG - 2016-12-13 10:40:48 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:40:48 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:40:48 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:40:48 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:40:48 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-13 10:40:48 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-13 10:40:48 --> Total execution time: 0.0722
+DEBUG - 2016-12-13 10:40:48 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:40:48 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:40:48 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-13 10:40:48 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-13 10:40:48 --> Total execution time: 0.0996
+DEBUG - 2016-12-13 10:40:48 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-13 10:40:48 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-13 10:40:48 --> Total execution time: 0.0821
+DEBUG - 2016-12-13 10:40:48 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:40:48 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:40:48 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:40:48 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:40:49 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-13 10:40:49 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-13 10:40:49 --> Total execution time: 0.0559
+DEBUG - 2016-12-13 10:40:49 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-13 10:40:49 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-13 10:40:49 --> Total execution time: 0.1100
+DEBUG - 2016-12-13 10:40:54 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:40:54 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:40:54 --> Total execution time: 0.0581
+DEBUG - 2016-12-13 10:40:54 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:40:54 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:40:54 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:40:54 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:40:54 --> Total execution time: 0.0533
+DEBUG - 2016-12-13 10:40:54 --> Total execution time: 0.0951
+DEBUG - 2016-12-13 10:40:54 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:40:54 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:40:54 --> Total execution time: 0.0617
+DEBUG - 2016-12-13 10:40:54 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:40:54 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:40:54 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:40:54 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:40:54 --> Total execution time: 0.0529
+DEBUG - 2016-12-13 10:40:54 --> Total execution time: 0.0876
+DEBUG - 2016-12-13 10:40:59 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:40:59 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:40:59 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:40:59 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:40:59 --> Total execution time: 0.0814
+DEBUG - 2016-12-13 10:40:59 --> Total execution time: 0.1168
+DEBUG - 2016-12-13 10:41:00 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:41:00 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:41:00 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:41:00 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:41:01 --> Total execution time: 0.0800
+DEBUG - 2016-12-13 10:41:01 --> Total execution time: 0.1259
+DEBUG - 2016-12-13 10:41:01 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:41:01 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:41:01 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:41:01 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:41:01 --> Total execution time: 0.0715
+DEBUG - 2016-12-13 10:41:01 --> Total execution time: 0.1150
+DEBUG - 2016-12-13 10:41:05 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:41:05 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:41:05 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:41:05 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:41:05 --> Total execution time: 0.0741
+DEBUG - 2016-12-13 10:41:05 --> Total execution time: 0.1212
+DEBUG - 2016-12-13 10:46:35 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:46:35 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:46:35 --> Total execution time: 0.0712
+DEBUG - 2016-12-13 10:46:35 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 10:46:35 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 10:46:35 --> Total execution time: 0.0665
+DEBUG - 2016-12-13 11:00:54 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 11:00:54 --> No URI present. Default controller set.
+DEBUG - 2016-12-13 11:00:55 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 11:00:55 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 11:00:55 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 11:00:55 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-13 11:00:55 --> Encryption: Auto-configured driver 'openssl'.
+ERROR - 2016-12-13 11:00:55 --> Severity: Notice --> Undefined variable: user_credit C:\wamp64\www\casarepository\admin\application\views\layout\dashboard.php 51
+ERROR - 2016-12-13 11:00:55 --> Severity: Notice --> Undefined variable: user_total_buy C:\wamp64\www\casarepository\admin\application\views\layout\dashboard.php 65
+ERROR - 2016-12-13 11:00:55 --> Severity: Notice --> Undefined variable: user_credit_balance C:\wamp64\www\casarepository\admin\application\views\layout\dashboard.php 79
+ERROR - 2016-12-13 11:00:55 --> Severity: Notice --> Undefined variable: user_balance C:\wamp64\www\casarepository\admin\application\views\layout\dashboard.php 93
+DEBUG - 2016-12-13 11:00:55 --> Total execution time: 0.0584
+DEBUG - 2016-12-13 11:00:58 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 11:00:58 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 11:00:58 --> Total execution time: 0.0505
+DEBUG - 2016-12-13 11:00:58 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 11:00:58 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 11:00:58 --> Total execution time: 0.0641
+DEBUG - 2016-12-13 11:01:06 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 11:01:06 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 11:01:06 --> Total execution time: 0.0753
+DEBUG - 2016-12-13 11:01:07 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 11:01:07 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 11:01:07 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 11:01:07 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 11:01:07 --> Total execution time: 0.0589
+DEBUG - 2016-12-13 11:01:07 --> Total execution time: 0.0979
+DEBUG - 2016-12-13 11:01:15 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 11:01:15 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 11:01:15 --> Total execution time: 0.0819
+DEBUG - 2016-12-13 11:01:16 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 11:01:16 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 11:01:16 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 11:01:16 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 11:01:16 --> Total execution time: 0.0540
+DEBUG - 2016-12-13 11:01:16 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 11:01:16 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 11:01:16 --> Total execution time: 0.1008
+DEBUG - 2016-12-13 11:01:16 --> Total execution time: 0.0905
+DEBUG - 2016-12-13 11:01:16 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 11:01:16 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 11:01:16 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 11:01:16 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 11:01:16 --> Total execution time: 0.0553
+DEBUG - 2016-12-13 11:01:17 --> Total execution time: 0.1203
+DEBUG - 2016-12-13 11:02:22 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 11:02:22 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2016-12-13 11:02:22 --> Severity: Notice --> Undefined variable: count C:\wamp64\www\casarepository\admin\application\views\layout\config_group.php 140
+ERROR - 2016-12-13 11:02:22 --> Severity: Notice --> Undefined variable: count C:\wamp64\www\casarepository\admin\application\views\layout\config_group.php 141
+DEBUG - 2016-12-13 11:02:22 --> Total execution time: 0.0533
+DEBUG - 2016-12-13 11:02:22 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 11:02:22 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2016-12-13 11:02:22 --> Severity: Notice --> Undefined variable: count C:\wamp64\www\casarepository\admin\application\views\layout\config_group.php 140
+ERROR - 2016-12-13 11:02:22 --> Severity: Notice --> Undefined variable: count C:\wamp64\www\casarepository\admin\application\views\layout\config_group.php 141
+DEBUG - 2016-12-13 11:02:22 --> Total execution time: 0.0782
+DEBUG - 2016-12-13 11:03:29 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 11:03:29 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2016-12-13 11:03:29 --> Severity: Notice --> Undefined variable: count C:\wamp64\www\casarepository\admin\application\views\layout\config_group.php 140
+ERROR - 2016-12-13 11:03:29 --> Severity: Notice --> Undefined variable: count C:\wamp64\www\casarepository\admin\application\views\layout\config_group.php 141
+DEBUG - 2016-12-13 11:03:29 --> Total execution time: 0.0608
+DEBUG - 2016-12-13 11:04:32 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 11:04:32 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2016-12-13 11:04:32 --> Severity: Notice --> Undefined variable: count C:\wamp64\www\casarepository\admin\application\views\layout\config_group.php 140
+ERROR - 2016-12-13 11:04:32 --> Severity: Notice --> Undefined variable: count C:\wamp64\www\casarepository\admin\application\views\layout\config_group.php 141
+DEBUG - 2016-12-13 11:04:32 --> Total execution time: 0.0811
+DEBUG - 2016-12-13 11:05:11 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 11:05:11 --> No URI present. Default controller set.
+DEBUG - 2016-12-13 11:05:11 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 11:05:11 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 11:05:11 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 11:05:11 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-13 11:05:11 --> Encryption: Auto-configured driver 'openssl'.
+ERROR - 2016-12-13 11:05:11 --> Severity: Notice --> Undefined variable: user_credit C:\wamp64\www\casarepository\admin\application\views\layout\dashboard.php 51
+ERROR - 2016-12-13 11:05:11 --> Severity: Notice --> Undefined variable: user_total_buy C:\wamp64\www\casarepository\admin\application\views\layout\dashboard.php 65
+ERROR - 2016-12-13 11:05:11 --> Severity: Notice --> Undefined variable: user_credit_balance C:\wamp64\www\casarepository\admin\application\views\layout\dashboard.php 79
+ERROR - 2016-12-13 11:05:11 --> Severity: Notice --> Undefined variable: user_balance C:\wamp64\www\casarepository\admin\application\views\layout\dashboard.php 93
+DEBUG - 2016-12-13 11:05:11 --> Total execution time: 0.0782
+DEBUG - 2016-12-13 11:05:15 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 11:05:15 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2016-12-13 11:05:15 --> Severity: Notice --> Undefined variable: count C:\wamp64\www\casarepository\admin\application\views\layout\config_group.php 140
+ERROR - 2016-12-13 11:05:15 --> Severity: Notice --> Undefined variable: count C:\wamp64\www\casarepository\admin\application\views\layout\config_group.php 141
+DEBUG - 2016-12-13 11:05:15 --> Total execution time: 0.0655
+DEBUG - 2016-12-13 11:05:15 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 11:05:15 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2016-12-13 11:05:15 --> Severity: Notice --> Undefined variable: count C:\wamp64\www\casarepository\admin\application\views\layout\config_group.php 140
+ERROR - 2016-12-13 11:05:15 --> Severity: Notice --> Undefined variable: count C:\wamp64\www\casarepository\admin\application\views\layout\config_group.php 141
+DEBUG - 2016-12-13 11:05:15 --> Total execution time: 0.0732
+DEBUG - 2016-12-13 11:05:49 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 11:05:49 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2016-12-13 11:05:49 --> Severity: Notice --> Undefined variable: count C:\wamp64\www\casarepository\admin\application\views\layout\config_group.php 140
+ERROR - 2016-12-13 11:05:49 --> Severity: Notice --> Undefined variable: count C:\wamp64\www\casarepository\admin\application\views\layout\config_group.php 141
+DEBUG - 2016-12-13 11:05:49 --> Total execution time: 0.0635
+DEBUG - 2016-12-13 11:06:14 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 11:06:14 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2016-12-13 11:06:14 --> Severity: Notice --> Undefined variable: count C:\wamp64\www\casarepository\admin\application\views\layout\config_group.php 140
+ERROR - 2016-12-13 11:06:14 --> Severity: Notice --> Undefined variable: count C:\wamp64\www\casarepository\admin\application\views\layout\config_group.php 141
+DEBUG - 2016-12-13 11:06:14 --> Total execution time: 0.0521
+DEBUG - 2016-12-13 11:06:45 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 11:06:45 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 11:06:45 --> Total execution time: 0.0470
+DEBUG - 2016-12-13 11:06:52 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 11:06:52 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 11:06:52 --> Total execution time: 0.0538
+DEBUG - 2016-12-13 11:06:52 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 11:06:52 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 11:06:52 --> Total execution time: 0.0607
+DEBUG - 2016-12-13 11:06:54 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 11:06:54 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2016-12-13 11:06:54 --> Severity: Notice --> Undefined variable: count C:\wamp64\www\casarepository\admin\application\views\layout\config_group.php 140
+ERROR - 2016-12-13 11:06:54 --> Severity: Notice --> Undefined variable: count C:\wamp64\www\casarepository\admin\application\views\layout\config_group.php 141
+DEBUG - 2016-12-13 11:06:54 --> Total execution time: 0.0701
+DEBUG - 2016-12-13 11:07:06 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 11:07:06 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 11:07:06 --> Total execution time: 0.0436
+DEBUG - 2016-12-13 11:07:06 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 11:07:06 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 11:07:06 --> Total execution time: 0.0546
+DEBUG - 2016-12-13 11:07:10 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 11:07:10 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 11:07:10 --> Total execution time: 0.0573
+DEBUG - 2016-12-13 11:07:10 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 11:07:10 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 11:07:10 --> Total execution time: 0.0561
+DEBUG - 2016-12-13 11:07:13 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 11:07:13 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2016-12-13 11:07:13 --> Severity: Notice --> Undefined variable: count C:\wamp64\www\casarepository\admin\application\views\layout\config_group.php 140
+ERROR - 2016-12-13 11:07:13 --> Severity: Notice --> Undefined variable: count C:\wamp64\www\casarepository\admin\application\views\layout\config_group.php 141
+DEBUG - 2016-12-13 11:07:13 --> Total execution time: 0.0729
+DEBUG - 2016-12-13 11:07:40 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 11:07:40 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2016-12-13 11:07:40 --> Severity: Notice --> Undefined variable: count C:\wamp64\www\casarepository\admin\application\views\layout\config_group.php 140
+ERROR - 2016-12-13 11:07:40 --> Severity: Notice --> Undefined variable: count C:\wamp64\www\casarepository\admin\application\views\layout\config_group.php 141
+DEBUG - 2016-12-13 11:07:40 --> Total execution time: 0.0495
+DEBUG - 2016-12-13 11:08:45 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 11:08:45 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2016-12-13 11:08:45 --> Severity: Notice --> Undefined variable: count C:\wamp64\www\casarepository\admin\application\views\layout\config_group.php 140
+ERROR - 2016-12-13 11:08:45 --> Severity: Notice --> Undefined variable: count C:\wamp64\www\casarepository\admin\application\views\layout\config_group.php 141
+DEBUG - 2016-12-13 11:08:45 --> Total execution time: 0.0707
+DEBUG - 2016-12-13 11:08:50 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 11:08:50 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2016-12-13 11:08:50 --> Severity: Error --> Call to undefined method Config_group_model::search_filter() C:\wamp64\www\casarepository\admin\application\controllers\Config_group.php 25
+DEBUG - 2016-12-13 11:09:36 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 11:09:36 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2016-12-13 11:09:36 --> Severity: Notice --> Undefined variable: count C:\wamp64\www\casarepository\admin\application\views\layout\config_group.php 140
+ERROR - 2016-12-13 11:09:36 --> Severity: Notice --> Undefined variable: count C:\wamp64\www\casarepository\admin\application\views\layout\config_group.php 141
+DEBUG - 2016-12-13 11:09:36 --> Total execution time: 0.0518
+DEBUG - 2016-12-13 11:10:12 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 11:10:12 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2016-12-13 11:10:12 --> Severity: Error --> Call to undefined method Config_group_model::search_filter() C:\wamp64\www\casarepository\admin\application\controllers\Config_group.php 25
+DEBUG - 2016-12-13 11:11:24 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 11:11:24 --> No URI present. Default controller set.
+DEBUG - 2016-12-13 11:11:24 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 11:11:24 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 11:11:24 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-13 11:11:24 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-13 11:11:24 --> Encryption: Auto-configured driver 'openssl'.
+ERROR - 2016-12-13 11:11:24 --> Severity: Notice --> Undefined variable: user_credit C:\wamp64\www\casarepository\admin\application\views\layout\dashboard.php 51
+ERROR - 2016-12-13 11:11:24 --> Severity: Notice --> Undefined variable: user_total_buy C:\wamp64\www\casarepository\admin\application\views\layout\dashboard.php 65
+ERROR - 2016-12-13 11:11:24 --> Severity: Notice --> Undefined variable: user_credit_balance C:\wamp64\www\casarepository\admin\application\views\layout\dashboard.php 79
+ERROR - 2016-12-13 11:11:24 --> Severity: Notice --> Undefined variable: user_balance C:\wamp64\www\casarepository\admin\application\views\layout\dashboard.php 93
+DEBUG - 2016-12-13 11:11:24 --> Total execution time: 0.0780
+DEBUG - 2016-12-13 11:11:27 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 11:11:27 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2016-12-13 11:11:27 --> Severity: Notice --> Undefined variable: count C:\wamp64\www\casarepository\admin\application\views\layout\config_group.php 140
+ERROR - 2016-12-13 11:11:27 --> Severity: Notice --> Undefined variable: count C:\wamp64\www\casarepository\admin\application\views\layout\config_group.php 141
+DEBUG - 2016-12-13 11:11:27 --> Total execution time: 0.0767
+DEBUG - 2016-12-13 11:11:28 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 11:11:28 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2016-12-13 11:11:28 --> Severity: Notice --> Undefined variable: count C:\wamp64\www\casarepository\admin\application\views\layout\config_group.php 140
+ERROR - 2016-12-13 11:11:28 --> Severity: Notice --> Undefined variable: count C:\wamp64\www\casarepository\admin\application\views\layout\config_group.php 141
+DEBUG - 2016-12-13 11:11:28 --> Total execution time: 0.0634
+DEBUG - 2016-12-13 11:11:39 --> UTF-8 Support Enabled
+DEBUG - 2016-12-13 11:11:39 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2016-12-13 11:11:39 --> Severity: Notice --> Undefined variable: count C:\wamp64\www\casarepository\admin\application\views\layout\config_group.php 140
+ERROR - 2016-12-13 11:11:39 --> Severity: Notice --> Undefined variable: count C:\wamp64\www\casarepository\admin\application\views\layout\config_group.php 141
+DEBUG - 2016-12-13 11:11:39 --> Total execution time: 0.0740

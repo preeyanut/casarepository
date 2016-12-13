@@ -34,35 +34,54 @@
 
                         <div class="row">
 
-                            <div class="form-group required col-md-4">
-                                <label class=" control-label" for="input-config-name">Webpage Name</label>
-
-                                <div class="">
-                                    <input type="text" name="config_group_name" value="<?php echo $config_group_name; ?>"
-                                           placeholder="Webpage Name" id="input-config-name"
-                                           class="form-control"/>
+                            <div class="form-group required col-md-12 col-xs-12">
+                                <div class="col-md-2 col-xs-2" align="right">
+                                    <label class=" control-label" for="input-type-name">Webpage Name</label>
                                 </div>
-                                <div class="text-danger"></div>
+                                <div class="col-md-10 col-xs-10">
+                                    <div class="">
+                                        <input type="text" name="config_group_name" value="<?php echo $config_group_name; ?>"
+                                               placeholder="Webpage Name" id="input-config-name"
+                                               class="form-control"/>
+                                    </div>
+                                    <div class="text-danger"></div>
+                                </div>
                             </div>
 
-                            <div class="form-group col-md-2">
-                                <label class=" control-label" for="input-status">สถานะ</label>
+                            <div class="form-group required col-md-12 col-xs-12">
+                                <div class="col-md-2 col-xs-2" align="right">
+                                    <label class=" control-label" for="input-priority-level">ลำดับความสำคัญ</label>
+                                </div>
+                                <div class="col-md-10 col-xs-10">
+                                    <div class="">
+                                        <input type="text" name="priority_level" value="<?php echo $priority_level; ?>"
+                                               placeholder="ลำดับความสำคัญ" id="input-priority-level"
+                                               class="form-control"/>
+                                    </div>
+                                    <div class="text-danger"></div>
+                                </div>
+                            </div>
 
-                                <div class="">
-                                    <select name="config_group_status" id="input-status" class="form-control">
+                            <div class="form-group col-md-12 col-xs-12">
+                                <div class="col-md-2 col-xs-2" align="right">
+                                    <label class=" control-label" for="input-status">สถานะ</label>
+                                </div>
+                                <div class="col-md-10 col-xs-10">
+                                    <div class="">
+                                        <select name="config_group_status" id="input-status" class="form-control">
+                                            <option
+                                                    value="0" <?php if ($config_group_status == 0) { ?>
+                                                selected="selected" <?php } ?> >
+                                                ปิดการใช้งาน
+                                            </option>
+                                            <option
+                                                    value="1" <?php if ($config_group_status == 1) { ?>
+                                                selected="selected" <?php } ?>>
+                                                เปิดใช้งาน
+                                            </option>
 
-                                        <option
-                                            value="0" <?php if ($config_group_status == 0) { ?>
-                                            selected="selected" <?php } ?> >
-                                            ปิดการใช้งาน
-                                        </option>
-                                        <option
-                                            value="1" <?php if ($config_group_status == 1) { ?>
-                                            selected="selected" <?php } ?>>
-                                            เปิดใช้งาน
-                                        </option>
-
-                                    </select>
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
 
@@ -79,6 +98,83 @@
                 <!-- /.box -->
             </div>
             <!--/.col (left) -->
+
+            <!-- list webname-->
+            <div class="container-content col-md-12">
+                <!-- Horizontal Form -->
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">List Webpage Name</h3>
+                    </div>
+                    <div class="box-header with-border" style="background-color:#ccc;">
+                        <div class="form-group form-horizontal">
+                            <label class="col-sm-3 control-label" for="input-search">ค้นหา : </label>
+                            <div class="col-sm-9">
+                                <input type="text" name="search" placeholder="ค้นหา" id="input-search"
+                                       class="form-control"/>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.box-header -->
+                    <!-- form start -->
+                    <form action="<?php //echo $delete; ?>" method="post" enctype="multipart/form-data" id="form">
+                        <div class="table-responsive  box-body ">
+                            <table class="table table-bordered table-hover">
+                                <thead>
+                                <tr>
+                                    <td class="text-center">ลำดับ</td>
+                                    <td class="text-center">Config Group Name</td>
+                                    <td class="text-center">ความสำคัญ</td>
+                                    <td class="text-center">วันที่เพิ่ม</td>
+                                    <td class="text-center">พนักงานที่เพิ่ม</td>
+                                    <td class="text-center">แก้ไขล่าสุด</td>
+                                    <td class="text-center">พนักงานที่แก้ไข</td>
+                                    <td class="text-center">สถานะ</td>
+                                    <td class="text-center">จัดการ</td>
+                                </tr>
+                                </thead>
+                                <tbody id="tbody">
+                                <?php if ($list) { ?>
+                                    <?php foreach ($list as $config_group) { ?>
+                                        <tr>
+                                            <td class="text-center"><?php echo $count;
+                                                $count++; ?></td>
+                                            <td class="text-center"><?php echo $config_group['config_group_name']; ?></td>
+                                            <td class="text-center"><?php echo $config_group['priority_level']; ?></td>
+                                            <td class="text-center"><?php echo $config_group['create_date']; ?></td>
+                                            <td class="text-center"><?php echo $config_group['create_by_name'];?></td>
+                                            <td class="text-center"><?php echo $config_group['update_date']; ?></td>
+                                            <td class="text-center"><?php echo $config_group['update_by_name'];?></td>
+                                            <td class="text-center"><?php if ($config_group['config_group_status'] == 0) {
+                                                    echo "ปิดการใช้งาน";
+                                                } else {
+                                                    echo "เปิดใช้งาน";
+                                                } ?></td>
+                                            <td class="text-center">
+                                                <button type="button"
+                                                        name="button-edit-<?php echo $config_group['config_group_id']; ?>"
+                                                        id="button-edit"
+                                                        class="btn btn-warning button-edit">แก้ไข
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    <?php } ?>
+                                <?php } else { ?>
+                                    <tr>
+                                        <td class="text-center" colspan="5"><?php // echo $text_no_results; ?></td>
+                                    </tr>
+                                <?php } ?>
+                                </tbody>
+                            </table>
+                        </div>
+                    </form>
+                </div>
+                <!-- /.box -->
+
+            </div>
+
+            <!-- list webname-->
+
         </div>
 
         <div class="display-none">
@@ -99,67 +195,6 @@
 
 </div>
 
-<!-- list webname-->
-<div class="container-content col-md-12">
-    <!-- Horizontal Form -->
-    <div class="box box-primary">
-        <div class="box-header with-border">
-            <h3 class="box-title">List Webpage Name</h3>
-        </div>
-        <div class="box-header with-border" style="background-color:#ccc;">
-            <div class="form-group form-horizontal">
-                <label class="col-sm-3 control-label" for="input-search">ค้นหา : </label>
-                <div class="col-sm-9">
-                    <input type="text" name="search" placeholder="ค้นหา" id="input-search"
-                           class="form-control"/>
-                </div>
-            </div>
-        </div>
-        <!-- /.box-header -->
-        <!-- form start -->
-        <form action="<?php //echo $delete; ?>" method="post" enctype="multipart/form-data" id="form">
-            <div class="table-responsive  box-body ">
-                <table class="table table-bordered table-hover">
-                    <thead>
-                    <tr>
-                        <td class="text-left">Config Group Name</td>
-                        <td class="text-left">จัดการ</td>
-                    </tr>
-                    </thead>
-                    <tbody id="tbody">
-                    <?php if ($list) { ?>
-                        <?php foreach ($list as $config_group) { ?>
-                            <tr>
-                                <td class="text-left"><?php echo $config_group['name']; ?></td>
-                                <td class="text-left">
-                                    <button type="button"
-                                            name="button-edit-<?php echo $config_group['config_group_id']; ?>"
-                                            id="button-edit"
-                                            class="btn btn-warning button-edit">แก้ไข
-                                    </button>
-                                    <button type="button"
-                                            name="button-delete-<?php echo $config_group['config_group_id']; ?>"
-                                            id="button-delete"
-                                            class="btn btn-danger button-delete">ลบ
-                                    </button>
-                                </td>
-                            </tr>
-                        <?php } ?>
-                    <?php } else { ?>
-                        <tr>
-                            <td class="text-center" colspan="5"><?php // echo $text_no_results; ?></td>
-                        </tr>
-                    <?php } ?>
-                    </tbody>
-                </table>
-            </div>
-        </form>
-    </div>
-    <!-- /.box -->
-
-</div>
-
-<!-- list webname-->
 
 <script type="application/javascript">
 
@@ -298,7 +333,7 @@
 
     $(document).on("click", ".button-delete", function () {
         var config_group_id = this.name.replace("button-delete-", "");
-        var result = confirm("ยืนยันการลบข้อมูลกลุ่มพนักงาน");
+        var result = confirm("ยืนยันการลบข้อมูล");
         if (result == true) {
             $.ajax({
                 url: '<?php echo base_url(); ?>config_group/delete_config_group',
@@ -324,39 +359,55 @@
 
     });
 
-    function reload_List_ConfigGroup() {
-        $("#tbody").empty();
 
+    function reload_config_group(config_group_id) {
+        $("#tbody").empty();
         $.ajax({
-            url: '<?php echo base_url(); ?>config_group/get_all_config_group',
+            url: '<?php echo base_url(); ?>config_group/get_all',
             type: 'post',
             data: "config_group_id=" + config_group_id,
             dataType: 'json',
             crossDomain: true,
             beforeSend: function () {
-                //  $('#button-delete').button('loading');
             },
             complete: function () {
-                //$('#button-delete').button('reset');
             },
             success: function (json) {
                 var data = json.Data;
                 var config_groups = data["list"];
 
+                $("#tbody").empty();
                 for (var i = 0; i < config_groups.length; i++) {
                     var config_group = config_groups[i];
-                    var html = "<tr>"
-                        + "<td class='text-left'>" + config_group.config_group_id + "</td>"
-                        + "<td class='text-left'>" + config_group.config_group_name + "</td>"
-                        + "<td class='text-left'>"
-                        + "<button type='button' name='button-edit-" + config_group.config_group_id + "' id='button-edit' "
-                        + " class='btn btn-warning button-edit'>แก้ไข</button>"
-                        + " <button type='button' name='button-delete-" + config_group.config_group_id + "' id='button-delete' "
-                        + " class='btn btn-danger button-delete'>ลบ</button>"
-                        + "</td>"
+
+                    var color_status = "";
+                    var str_status = "";
+
+                    switch (config_group.config_group_status) {
+                        case 0:
+                            color_status = "#8a0004";
+                            str_status = "ปิดการใช้งาน";
+                            break;
+                        case 1:
+                            str_status = "เปิดใช้งาน";
+                            break;
+                    }
+
+                    var html = "<tr class='tr_id" + config_group.config_group_id + "'  style='cursor: pointer;'>"
+                        + "<td class='text-center'>" + (i + 1) + "</td>"
+                        + "<td class='text-center'>" + config_group.config_group_name + "</td>"
+                        + "<td class='text-center'>" + config_group.priority_level + "</td>"
+                        + "<td class='text-center'>" + config_group.create_date + "</td>"
+                        + "<td class='text-center'>" + config_group.create_by_name + "</td>"
+                        + "<td class='text-center'>" + config_group.update_date + "</td>"
+                        + "<td class='text-center'>" + config_group.update_by_name + "</td>"
+                        + "<td class='text-center' style='color: " + color_status + "'>"
+                        + str_status + "</td>"
                         + "</tr>";
+
                     $("#tbody").append(html);
                 }
+                alert("get  OK");
             },
             error: function (xhr, ajaxOptions, thrownError) {
                 alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
@@ -364,6 +415,61 @@
         });
     }
 
-    var interval;
+    function search_config_group() {
+        var txtSearch = $("#input-search").val();
+        var filterNumber = $("#filter-number").val();
+        var filterPage = $("#filter-page").val();
+        var filterStatus = $("#filter-status").val();
+
+        $.ajax({
+            url: '<?php echo base_url(); ?>config_group/search_config',
+            type: 'post',
+            data: "txtSearch=" + txtSearch + "&filter-number=" + filterNumber + "&filter-page=" + filterPage + "&filter-status=" + filterStatus,
+            dataType: 'json',
+            crossDomain: true,
+            beforeSend: function () {
+            },
+            complete: function () {
+            },
+            success: function (json) {
+                var data = json.Data;
+                var configs = data["list"];
+                $("#tbody").empty();
+                for (var i = 0; i < configs.length; i++) {
+                    var config_group = config_groups[i];
+
+                    var color_status = "";
+                    var str_status = "";
+                    switch (Number(config_group.config_group_status)) {
+                        case 0:
+                            color_status = "#8a0004";
+                            str_status = "ปิดการใช้งาน";
+                            break;
+                        case 1:
+                            str_status = "เปิดใช้งาน";
+                            break;
+                    }
+                    var html = "<tr class='tr_id" + config_group.config_group_id + "'  >"
+                        + "<td class='text-center'>" + (i + 1) + "</td>"
+                        + "<td class='text-center'>" + config_group.config_group_name + "</td>"
+                        + "<td class='text-center'>" + config_group.priority_level + "</td>"
+                        + "<td class='text-center'>" + config_group.create_date + "</td>"
+                        + "<td class='text-center'>" + config_group.create_by_name + "</td>"
+                        + "<td class='text-center'>" + config_group.update_date + "</td>"
+                        + "<td class='text-center'>" + config_group.update_by_name + "</td>"
+                        + "<td class='text-center' style='color: " + color_status + "'>"
+                        + str_status + "</td>"
+                        + " <td class='text-center'><button type='button' name='button-edit" + config_group.config_group_id + "' "
+                        + " id='button-edit' class='btn btn-warning button-edit'>แก้ไข</button></td>"
+                        + "</tr>";
+                    $("#tbody").append(html);
+                }
+                label_format_number();
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+            }
+        });
+    }
 
 </script>

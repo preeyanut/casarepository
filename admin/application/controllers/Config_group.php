@@ -17,7 +17,67 @@ class Config_group extends CI_Controller
 
     public function index()
     {
-        $this->get_form();
+        $this->get_list();
+    }
+
+    public function get_list()
+    {
+        $all_data = $this->Config_group_model->search_filter($this->input->post("txtSearch"), 0, 10, -1, -1);
+
+        $total_user = $this->Config_group_model->count();
+        $paging = (int)$total_user / 10;
+        $over_page = $total_user % 10;
+        if ($paging == 0) {
+            $paging = 1;
+        }
+        if ($over_page != 0) {
+            $paging++;
+        }
+
+        $data["list"] = $this->Config_group_model->getall();
+        $data_user = $this->User_model->get_user_all();
+
+        for($i=0;$i<count($data_user);$i++) {
+            $data['user_id'][] = $data_user[$i]['user_id'];
+            $data['username'][] = $data_user[$i]['username'];
+        }
+
+        $data["paging"] = $paging;
+
+        $data["list"] = $all_data;
+
+        //var_dump($data);
+
+        $data["layout"] = 'layout/config_group';
+
+        $this->load->view('layout', $data);
+    }
+
+    public function search_config_group()
+    {
+
+        $filter_number = $this->input->post("filter-number");
+        $page = $this->input->post("filter-page");
+        $status = $this->input->post("filter-status");
+
+        if ($page > 0) {
+            $page--;
+        }
+
+//        $result = array();
+        if ($filter_number == -1) {
+            $result = $this->Config_group_model->getall();
+        } else {
+            $start_filter = $filter_number * $page;
+            $result = $this->Config_group_model->search_filter($this->input->post("txtSearch"), $start_filter, $filter_number, $status);
+        }
+
+        $data["list"] = $result;
+
+        $jsonResult['Result'] = true;
+        $jsonResult['Data'] = $data;
+
+        echo json_encode($jsonResult);
     }
 
 
@@ -61,10 +121,11 @@ class Config_group extends CI_Controller
 
                 foreach ($data_info as $info) {
                     $data['config_group_name'] = $info['config_group_name'];
+                    $data['priority_level'] = $info['priority_level'];
                     $data['config_group_status'] = $info['config_group_status'];
                 }
                 for($i=0;$i<count($data_user);$i++) {
-                    $data['user_id'][] = $data_user[$i]['user_id'];
+                   $data['user_id'][] = $data_user[$i]['user_id'];
                     $data['username'][] = $data_user[$i]['username'];
                 }
             }
@@ -75,16 +136,17 @@ class Config_group extends CI_Controller
 
             $data['config_group_id'] = "";
             $data['config_group_name'] = "";
+            $data['priority_level'] = "";
             $data['config_group_status'] = "";
 
             $data['create_by'] = $this->input->get('user_id');
 
             $data["action"] = base_url() . "config_group/add_config_group";
 
-            $data["groups"] = $this->Config_group_model->getall();
+            //$data["list"] = $this->Config_group_model->getall();
 
         }
-//        var_dump($data);
+        $data["list"] = $this->Config_group_model->getall();
         $data["layout"] = 'layout/config_group';
 
         $this->load->view('layout', $data);
@@ -97,11 +159,12 @@ class Config_group extends CI_Controller
         $data["list"] = $this->Config_group_model->getall();
 
         $jsonResult['Result'] = true;
+        //$jsonResult['error'] = "";
         $jsonResult['Data'] = $data;
 
         echo json_encode($jsonResult);
-    }
 
+    }
 
     public function validate_form()
     {
@@ -116,6 +179,33 @@ class Config_group extends CI_Controller
 
         $jsonResult['Result'] = true;
         $jsonResult['Data'] = "";
+
+        echo json_encode($jsonResult);
+    }
+
+    public function search_config()
+    {
+
+        $filter_number = $this->input->post("filter-number");
+        $page = $this->input->post("filter-page");
+        $status = $this->input->post("filter-status");
+
+        if ($page > 0) {
+            $page--;
+        }
+
+//        $result = array();
+        if ($filter_number == -1) {
+            $result = $this->Config_group_model->getall();
+        } else {
+            $start_filter = $filter_number * $page;
+            $result = $this->Config_group_model->search_filter($this->input->post("txtSearch"), $start_filter, $filter_number, $status);
+        }
+
+        $data["list"] = $result;
+
+        $jsonResult['Result'] = true;
+        $jsonResult['Data'] = $data;
 
         echo json_encode($jsonResult);
     }
