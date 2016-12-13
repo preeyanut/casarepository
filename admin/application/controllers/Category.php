@@ -10,11 +10,14 @@ class Category extends CI_Controller
         $this->load->model('Category_type_model');
         $this->load->model('User_model');
 
-//        $this->load->library('auth_check');
-//
-//        if (!$this->auth_check->hasPermission('access', 'user')) {
-//            redirect('permission');
-//        }
+        $this->load->library('ckeditor');
+        $this->load->library('ckfinder');
+
+        $this->load->library('auth_check');
+
+        if (!$this->auth_check->hasPermission('access', 'user')) {
+            redirect('permission');
+        }
     }
 
     public function index()
@@ -242,7 +245,7 @@ class Category extends CI_Controller
         }
 
         if ((strlen($this->input->post('category_icon')) < 3) || (strlen($this->input->post('category_icon')) > 255)) {
-            $this->error['category_icon'] = "กรุณาาเลือกไอคอน";
+            $this->error['category_icon'] = "กรุณาเลือกไอคอน";
         }
 
         if ((strlen($this->input->post('priority_level')) < 1) || (strlen($this->input->post('priority_level')) > 255)) {

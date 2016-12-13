@@ -10,11 +10,11 @@ class Bank_list extends CI_Controller
         $this->load->model('Bank_list_model');
         $this->load->model('User_model');
 
-//        $this->load->library('auth_check');
+        $this->load->library('auth_check');
 
-//        if (!$this->auth_check->hasPermission('access', 'customer')) {
-//            redirect('permission');
-//        }
+        if (!$this->auth_check->hasPermission('access', 'customer')) {
+            redirect('permission');
+        }
     }
 
     public function index()

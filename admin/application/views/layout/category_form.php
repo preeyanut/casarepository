@@ -72,9 +72,33 @@
                                 </div>
                                 <div class="col-md-10 col-xs-10">
                                     <div class="">
-                                        <input type="text" name="category_icon" value="<?php echo $category_icon; ?>"
-                                               placeholder="ไอคอน" id="input-category-icon"
-                                               class="form-control"/>
+<!--                                        <input type="text" name="category_icon" value="--><?php //echo $category_icon; ?><!--"-->
+<!--                                               placeholder="ไอคอน" id="input-category-icon"-->
+<!--                                               class="form-control"/>-->
+<!--                                        --><?php //for($i=0;$i<count($icon);$i++){?>
+<!--                                            <option value="--><?php //echo $icon[$i];?><!--" --><?php //if ($icon[$i] == $category_type_id) { ?>
+<!--                                                selected="selected" --><?php //} ?><!-- >-->
+<!--                                                --><?php //echo $type_name[$i];?>
+<!--                                            </option>-->
+<!--                                        --><?php //}?>
+                                        <select name="type_id" id="input-type" class="form-control">
+                                            <option value="1" selected="selected" ><i class="fa fa-address-book-o"></i></option>
+                                            <option value="2" selected="selected" ><i class="fa fa-area-chart"></i></option>
+                                            <option value="3" selected="selected" ><i class="fa fa-book"></i></option>
+                                            <option value="4" selected="selected" ><i class="fa fa-camera"></i></option>
+                                            <option value="5" selected="selected" ><i class="fa fa-film"></i></option>
+                                            <option value="6" selected="selected" ><i class="fa fa-university"></i></option>
+                                            <option value="7" selected="selected" ><i class="fa fa-file-text-o"></i></option>
+                                            <option value="8" selected="selected" ><i class="fa fa-calendar-o"></i></option>
+                                            <option value="9" selected="selected" ><i class="fa fa-clone"></i></option>
+                                            <option value="10" selected="selected" ><i class="fa fa-cubes"></i></option>
+                                            <option value="11" selected="selected" ><i class="fa fa-child"></i></option>
+                                            <option value="12" selected="selected" ><i class="fa fa-fax"></i></option>
+                                            <option value="13" selected="selected" ><i class="fa fa-file-video-o"></i></option>
+                                            <option value="14" selected="selected" ><i class="fa fa-file-image-o"></i></option>
+                                            <option value="15" selected="selected" ><i class="fa fa-map-o"></i></option>
+                                        </select>
+
                                     </div>
                                     <div class="text-danger"></div>
                                 </div>

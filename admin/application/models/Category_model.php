@@ -8,9 +8,11 @@ class Category_model extends CI_Model
         $query = $this->db->query("SELECT category.*,CONCAT(u1.firstname, ' ', u1.lastname) as create_by_name "
             . " ,CONCAT(u2.firstname, ' ', u2.lastname)  as update_by_name "
             . " ,category_type.type_name as type_name "
+            . " ,icon.icon_class as icon "
             . " from category "
             . " inner join  user as u1 on u1.user_id = category.create_by "
             . " inner join  user as u2 on u2.user_id = category.update_by "
+            . " inner join  icon on icon.icon_id = category.category_icon "
             . " inner join  category_type on category_type.type_id = category.type_id");
         return $query->result_array();
     }
@@ -79,9 +81,11 @@ class Category_model extends CI_Model
         $query = $this->db->query("SELECT category.*,CONCAT(u1.firstname, ' ', u1.lastname) as create_by_name "
             . " ,CONCAT(u2.firstname, ' ', u2.lastname)  as update_by_name "
             . " ,category_type.type_name as type_name "
+            . " ,icon.icon_class as icon "
             . " from category "
             . " inner join  user as u1 on u1.user_id = category.create_by "
             . " inner join  user as u2 on u2.user_id = category.update_by "
+            . " inner join  icon on icon.icon_id = category.category_icon "
             . " inner join  category_type on category_type.type_id = category.type_id"
             . " WHERE  category_name  Like '%" . $txtSearch . "%' "
             . $str_sql
