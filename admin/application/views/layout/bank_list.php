@@ -66,7 +66,7 @@
                             <div class="col-sm-4 col-xs-4 text-right">
                                 <label class="col-sm-3 col-xs-3 control-label" for="input-search">ค้นหา </label>
                                 <div class="col-sm-9 col-xs-9">
-                                    <input type="text" name="search" placeholder="ค้นหา" id="input-search"
+                                    <input type="text" name="search" placeholder="กรุณาใส่ชื่อธนาคาร เพื่อค้นหา" id="input-search"
                                            class="form-control"/>
                                 </div>
                             </div>
@@ -100,21 +100,9 @@
                                                 $count++; ?></td>
                                             <td class="text-center"><?php echo $bank['bank_list_name']; ?></td>
                                             <td class="text-center"><?php echo $bank['create_date']; ?></td>
-                                            <td class="text-center">
-                                                <?php for ($i = 0; $i < count($user_id); $i++) {
-                                                    if ($bank['create_by'] == $user_id[$i]) {
-                                                        echo $username[$i];
-                                                    }
-                                                } ?>
-                                            </td>
+                                            <td class="text-center"><?php echo $bank['create_by_name'];?></td>
                                             <td class="text-center"><?php echo $bank['update_date']; ?></td>
-                                            <td class="text-center">
-                                                <?php for ($i = 0; $i < count($user_id); $i++) {
-                                                    if ($bank['update_by'] == $user_id[$i]) {
-                                                        echo $username[$i];
-                                                    }
-                                                } ?>
-                                            </td>
+                                            <td class="text-center"><?php echo $bank['update_by_name'];?></td>
 
                                             <?php if ($bank['bank_list_status'] == 0) { ?>
                                                 <td class="text-center text-disable">ปิดการใช้งาน</td>
@@ -254,9 +242,9 @@
                         + "<td class='text-center'>" + (i + 1) + "</td>"
                         + "<td class='text-center'>" + bank.bank_list_name + "</td>"
                         + "<td class='text-center'>" + bank.create_date + "</td>"
-                        + "<td class='text-center'>" + bank.create_by + "</td>"
+                        + "<td class='text-center'>" + bank.create_by_name + "</td>"
                         + "<td class='text-center'>" + bank.update_date + "</td>"
-                        + "<td class='text-center'>" + bank.update_by + "</td>"
+                        + "<td class='text-center'>" + bank.update_by_name + "</td>"
                         + "<td class='text-center' style='color: " + color_status + "'>"
                         + str_status + "</td>"
                         + "</tr>";
@@ -277,6 +265,7 @@
         var filterPage = $("#filter-page").val();
         var filterStatus = $("#filter-status").val();
 
+        console.log('00000000000');
         $.ajax({
             url: '<?php echo base_url(); ?>bank_list/search_user',
             type: 'post',
@@ -290,9 +279,11 @@
             success: function (json) {
                 var data = json.Data;
                 var banks = data["list"];
+                console.log(json);
                 $("#tbody").empty();
                 for (var i = 0; i < banks.length; i++) {
                     var bank = banks[i]
+
                     var color_status = "";
                     var str_status = "";
 
@@ -310,9 +301,9 @@
                         + "<td class='text-center'>" + (i + 1) + "</td>"
                         + "<td class='text-center'>" + bank.bank_list_name + "</td>"
                         + "<td class='text-center'>" + bank.create_date + "</td>"
-                        + "<td class='text-center'>" + bank.create_by + "</td>"
+                        + "<td class='text-center'>" + bank.create_by_name+ "</td>"
                         + "<td class='text-center'>" + bank.update_date + "</td>"
-                        + "<td class='text-center'>" + bank.update_by + "</td>"
+                        + "<td class='text-center'>" + bank.update_by_name + "</td>"
                         + "<td class='text-center' style='color: " + color_status + "'>"
                         + str_status + "</td>"
                         + " <td class='text-center'><button type='button' name='button-edit" + bank.bank_list_id + "' "

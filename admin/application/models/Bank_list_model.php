@@ -5,7 +5,11 @@ class Bank_list_model extends CI_Model
 
     public function getall()
     {
-        $query = $this->db->query("SELECT * FROM bank_list");
+        $query = $this->db->query("SELECT bank_list.*,CONCAT(u1.firstname, ' ', u1.lastname) as create_by_name "
+            . " ,CONCAT(u2.firstname, ' ', u2.lastname)  as update_by_name "
+            . " from bank_list "
+            . " inner join  user as u1 on u1.user_id = bank_list.create_by "
+            . " inner join  user as u2 on u2.user_id = bank_list.update_by ");
         return $query->result_array();
     }
 
@@ -60,12 +64,17 @@ class Bank_list_model extends CI_Model
     {
 
         $str_sql = "";
-        if ($status != "") {
+        if ($status != '-1' && $status != '') {
             $str_sql .= " AND  bank_list_status = " . $status;
         }
-        $query = $this->db->query("SELECT DISTINCT * "
+
+        $query = $this->db->query("SELECT bank_list.*,CONCAT(u1.firstname, ' ', u1.lastname) as create_by_name "
+            . " ,CONCAT(u2.firstname, ' ', u2.lastname)  as update_by_name "
             . " from bank_list "
+            . " inner join  user as u1 on u1.user_id = bank_list.create_by "
+            . " inner join  user as u2 on u2.user_id = bank_list.update_by "
             . " WHERE  bank_list_name  Like '%" . $txtSearch . "%' "
+
             . $str_sql
             . " Limit " . $start_filter . ", " . $filter_number . " "
         );
@@ -77,8 +86,8 @@ class Bank_list_model extends CI_Model
     {
 
         $str_sql = "";
-        if ($filter_status != "" || $filter_status != 'undefined') {
-            $str_sql .= " AND  bank_list_status = 1"  ;
+        if ($filter_status != '-1') {
+            $str_sql .= " AND  bank_list_status = " . $filter_status;
         }
 
         $query = $this->db->query("SELECT DISTINCT *, (select count(*) from bank_list ) as total FROM `" . "" . "bank_list` "

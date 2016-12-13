@@ -4,7 +4,14 @@ class Category_type_model extends CI_Model
 {
     public function getall()
     {
-        $query = $this->db->query("SELECT * FROM category_type");
+//        $query = $this->db->query("SELECT * FROM category_type");
+//        return $query->result_array();
+
+        $query = $this->db->query("SELECT category_type.*,CONCAT(u1.firstname, ' ', u1.lastname) as create_by_name "
+            . " ,CONCAT(u2.firstname, ' ', u2.lastname)  as update_by_name "
+            . " from category_type "
+            . " inner join  user as u1 on u1.user_id = category_type.create_by "
+            . " inner join  user as u2 on u2.user_id = category_type.update_by ");
         return $query->result_array();
     }
 
@@ -25,13 +32,31 @@ class Category_type_model extends CI_Model
     public function search_filter($txtSearch, $start_filter, $filter_number, $status)
     {
 
+//        $str_sql = "";
+//        if ($status != "") {
+//            $str_sql .= " AND  type_status = " . $status;
+//        }
+//        $query = $this->db->query("SELECT DISTINCT * "
+//            . " from category_type "
+//            . " WHERE  type_name  Like '%" . $txtSearch . "%' "
+//            . $str_sql
+//            . " Limit " . $start_filter . ", " . $filter_number . " "
+//        );
+//
+//        return $query->result_array();
+
         $str_sql = "";
-        if ($status != "") {
+        if ($status != '-1' && $status != '') {
             $str_sql .= " AND  type_status = " . $status;
         }
-        $query = $this->db->query("SELECT DISTINCT * "
+
+        $query = $this->db->query("SELECT category_type.*,CONCAT(u1.firstname, ' ', u1.lastname) as create_by_name "
+            . " ,CONCAT(u2.firstname, ' ', u2.lastname)  as update_by_name "
             . " from category_type "
+            . " inner join  user as u1 on u1.user_id = category_type.create_by "
+            . " inner join  user as u2 on u2.user_id = category_type.update_by "
             . " WHERE  type_name  Like '%" . $txtSearch . "%' "
+
             . $str_sql
             . " Limit " . $start_filter . ", " . $filter_number . " "
         );

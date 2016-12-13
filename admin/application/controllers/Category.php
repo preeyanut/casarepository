@@ -62,6 +62,33 @@ class Category extends CI_Controller
         $this->load->view('layout', $data);
     }
 
+    public function search_user()
+    {
+
+        $filter_number = $this->input->post("filter-number");
+        $page = $this->input->post("filter-page");
+        $status = $this->input->post("filter-status");
+
+        if ($page > 0) {
+            $page--;
+        }
+
+//        $result = array();
+        if ($filter_number == -1) {
+            $result = $this->Category_model->getall();
+        } else {
+            $start_filter = $filter_number * $page;
+            $result = $this->Category_model->search_filter($this->input->post("txtSearch"), $start_filter, $filter_number, $status);
+        }
+
+        $data["list"] = $result;
+
+        $jsonResult['Result'] = true;
+        $jsonResult['Data'] = $data;
+
+        echo json_encode($jsonResult);
+    }
+
     public function get_form()
     {
         $data_user = $this->User_model->get_user_all();

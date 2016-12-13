@@ -60,6 +60,7 @@
                                         </select>
                                     </div>
                                 </div>
+                                
                             </div>
                             <div class="col-sm-4 col-xs-4 text-right">
                                 <label class="col-sm-3 col-xs-3 control-label" for="input-search">ค้นหา </label>
@@ -99,29 +100,13 @@
                                             <td class="text-center"><?php echo $count;
                                                 $count++; ?></td>
                                             <td class="text-center"><?php echo $category['category_name']; ?></td>
-                                            <td class="text-center"><?php for ($i = 0; $i < count($type_id); $i++) {
-                                                if($type_id[$i] == $category['type_id']){
-                                                    echo $type_name[$i];
-                                                }
-                                                }; ?></td>
+                                            <td class="text-center"><?php echo $category['type_name'];?></td>
                                             <td class="text-center"><?php echo $category['category_icon']; ?></td>
                                             <td class="text-center"><?php echo $category['priority_level']; ?></td>
                                             <td class="text-center"><?php echo $category['create_date']; ?></td>
-                                            <td class="text-center">
-                                                <?php for ($i = 0; $i < count($user_id); $i++) {
-                                                    if ($category['create_by'] == $user_id[$i]) {
-                                                        echo $username[$i];
-                                                    }
-                                                } ?>
-                                            </td>
+                                            <td class="text-center"><?php echo $category['create_by_name'];?></td>
                                             <td class="text-center"><?php echo $category['update_date']; ?></td>
-                                            <td class="text-center">
-                                                <?php for ($i = 0; $i < count($user_id); $i++) {
-                                                    if ($category['update_by'] == $user_id[$i]) {
-                                                        echo $username[$i];
-                                                    }
-                                                } ?>
-                                            </td>
+                                            <td class="text-center"><?php echo $category['update_by_name'];?></td>
 
                                             <?php if ($category['category_status'] == 0) { ?>
                                                 <td class="text-center text-disable">ปิดการใช้งาน</td>
@@ -201,7 +186,7 @@
     init_event({
         fn: [readyFn],
         controlerPaging: 'category/get_paging',
-        functionPaging: search,
+        functionPaging: search_user,
         disEvent: ["click,.button-edit"]
     });
 
@@ -249,15 +234,10 @@
 
                     switch (category.category_status) {
                         case 0:
-                            color_status = "#00A65A";
-                            str_status = "ทั้งหมด";
-                            break;
-                        case 1:
-                            color_status = "#DD4B39";
+                            color_status = "#8a0004";
                             str_status = "ปิดการใช้งาน";
                             break;
-                        case 2 :
-                            color_status = "#CCCCCC";
+                        case 1:
                             str_status = "เปิดใช้งาน";
                             break;
                     }
@@ -265,10 +245,13 @@
                     var html = "<tr class='tr_id" + category.category_id + "'  style='cursor: pointer;'>"
                         + "<td class='text-center'>" + (i + 1) + "</td>"
                         + "<td class='text-center'>" + category.category_name + "</td>"
+                        + "<td class='text-center'>" + category.type_name + "</td>"
+                        + "<td class='text-center'>" + category.category_icon + "</td>"
+                        + "<td class='text-center'>" + category.priority_level + "</td>"
                         + "<td class='text-center'>" + category.create_date + "</td>"
-                        + "<td class='text-center'>" + category.username + "</td>"
+                        + "<td class='text-center'>" + category.create_by_name + "</td>"
                         + "<td class='text-center'>" + category.update_date + "</td>"
-                        + "<td class='text-center'>" + category.username + "</td>"
+                        + "<td class='text-center'>" + category.update_by_name + "</td>"
                         + "<td class='text-center' style='color: " + color_status + "'>"
                         + str_status + "</td>"
                         + "</tr>";
@@ -283,14 +266,14 @@
         });
     }
 
-    function search() {
+    function search_user() {
         var txtSearch = $("#input-search").val();
         var filterNumber = $("#filter-number").val();
         var filterPage = $("#filter-page").val();
         var filterStatus = $("#filter-status").val();
 
         $.ajax({
-            url: '<?php echo base_url(); ?>category/search',
+            url: '<?php echo base_url(); ?>category/search_user',
             type: 'post',
             data: "txtSearch=" + txtSearch + "&filter-number=" + filterNumber + "&filter-page=" + filterPage + "&filter-status=" + filterStatus,
             dataType: 'json',
@@ -309,25 +292,23 @@
                     var str_status = "";
                     switch (Number(category.category_status)) {
                         case 0:
-                            color_status = "#00A65A";
-                            str_status = "ปกติ";
+                            color_status = "#8a0004";
+                            str_status = "ปิดการใช้งาน";
                             break;
                         case 1:
-                            color_status = "#DD4B39";
-                            str_status = "ถูกระงับ";
-                            break;
-                        case 2 :
-                            color_status = "#CCCCCC";
-                            str_status = "ปิดใช้งาน";
+                            str_status = "เปิดใช้งาน";
                             break;
                     }
                     var html = "<tr class='tr_id" + category.category_id + "'  >"
                         + "<td class='text-center'>" + (i + 1) + "</td>"
                         + "<td class='text-center'>" + category.category_name + "</td>"
+                        + "<td class='text-center'>" + category.type_name + "</td>"
+                        + "<td class='text-center'>" + category.category_icon + "</td>"
+                        + "<td class='text-center'>" + category.priority_level + "</td>"
                         + "<td class='text-center'>" + category.create_date + "</td>"
-                        + "<td class='text-center'>" + category.username + "</td>"
+                        + "<td class='text-center'>" + category.create_by_name + "</td>"
                         + "<td class='text-center'>" + category.update_date + "</td>"
-                        + "<td class='text-center'>" + category.username + "</td>"
+                        + "<td class='text-center'>" + category.update_by_name + "</td>"
                         + "<td class='text-center' style='color: " + color_status + "'>"
                         + str_status + "</td>"
                         + " <td class='text-center'><button type='button' name='button-edit" + category.category_id + "' "

@@ -171,6 +171,34 @@ class Category_type extends CI_Controller
         echo json_encode($jsonResult);
     }
 
+    public function search()
+    {
+
+        $filter_number = $this->input->post("filter-number");
+        $page = $this->input->post("filter-page");
+        $status = $this->input->post("filter-status");
+
+        if ($page > 0) {
+            $page--;
+        }
+
+//        $result = array();
+        if ($filter_number == -1) {
+            $result = $this->Category_type_model->getall();
+        } else {
+            $start_filter = $filter_number * $page;
+            $result = $this->Category_type_model->search_filter($this->input->post("txtSearch"), $start_filter, $filter_number, $status);
+        }
+
+        $data["list"] = $result;
+
+        $jsonResult['Result'] = true;
+        $jsonResult['Data'] = $data;
+
+        echo json_encode($jsonResult);
+    }
+
+
     public function validate_form()
     {
 

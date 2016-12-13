@@ -100,21 +100,9 @@
                                             <td class="text-center"><?php echo $type['type_name']; ?></td>
                                             <td class="text-center"><?php echo $type['priority_level']; ?></td>
                                             <td class="text-center"><?php echo $type['create_date']; ?></td>
-                                            <td class="text-center">
-                                                <?php for ($i = 0; $i < count($user_id); $i++) {
-                                                    if ($type['create_by'] == $user_id[$i]) {
-                                                        echo $username[$i];
-                                                    }
-                                                } ?>
-                                            </td>
+                                            <td class="text-center"><?php echo $type['create_by_name'];?></td>
                                             <td class="text-center"><?php echo $type['update_date']; ?></td>
-                                            <td class="text-center">
-                                                <?php for ($i = 0; $i < count($user_id); $i++) {
-                                                    if ($type['update_by'] == $user_id[$i]) {
-                                                        echo $username[$i];
-                                                    }
-                                                } ?>
-                                            </td>
+                                            <td class="text-center"><?php echo $type['update_by_name'];?></td>
                                             <td class="text-center"><?php if ($type['type_status'] == 0) {
                                                     echo "ปิดการใช้งาน";
                                                 } else {
@@ -192,7 +180,7 @@
     init_event({
         fn: [readyFn],
         controlerPaging: 'category_type/get_paging',
-        functionPaging: search,
+        functionPaging: search_user,
         disEvent: ["click,.button-edit"]
     });
 
@@ -240,15 +228,10 @@
 
                     switch (category_type.type_status) {
                         case 0:
-                            color_status = "#00A65A";
-                            str_status = "ทั้งหมด";
-                            break;
-                        case 1:
-                            color_status = "#DD4B39";
+                            color_status = "#8a0004";
                             str_status = "ปิดการใช้งาน";
                             break;
-                        case 2 :
-                            color_status = "#CCCCCC";
+                        case 1:
                             str_status = "เปิดใช้งาน";
                             break;
                     }
@@ -258,9 +241,9 @@
                         + "<td class='text-center'>" + type.type_name + "</td>"
                         + "<td class='text-center'>" + type.priority_level + "</td>"
                         + "<td class='text-center'>" + type.create_date + "</td>"
-                        + "<td class='text-center'>" + type.username + "</td>"
+                        + "<td class='text-center'>" + type.create_by_name + "</td>"
                         + "<td class='text-center'>" + type.update_date + "</td>"
-                        + "<td class='text-center'>" + type.username + "</td>"
+                        + "<td class='text-center'>" + type.update_by_name + "</td>"
                         + "<td class='text-center' style='color: " + color_status + "'>"
                         + str_status + "</td>"
                         + "</tr>";
@@ -275,7 +258,7 @@
         });
     }
 
-    function search() {
+    function search_user() {
         var txtSearch = $("#input-search").val();
         var filterNumber = $("#filter-number").val();
         var filterPage = $("#filter-page").val();
@@ -301,16 +284,11 @@
                     var str_status = "";
                     switch (Number(type.type_status)) {
                         case 0:
-                            color_status = "#00A65A";
-                            str_status = "ปกติ";
+                            color_status = "#8a0004";
+                            str_status = "ปิดการใช้งาน";
                             break;
                         case 1:
-                            color_status = "#DD4B39";
-                            str_status = "ถูกระงับ";
-                            break;
-                        case 2 :
-                            color_status = "#CCCCCC";
-                            str_status = "ปิดใช้งาน";
+                            str_status = "เปิดใช้งาน";
                             break;
                     }
                     var html = "<tr class='tr_id" + type.type_id + "'  >"
@@ -318,9 +296,9 @@
                         + "<td class='text-center'>" + type.type_name + "</td>"
                         + "<td class='text-center'>" + type.priority_level + "</td>"
                         + "<td class='text-center'>" + type.create_date + "</td>"
-                        + "<td class='text-center'>" + type.username + "</td>"
+                        + "<td class='text-center'>" + type.create_by_name + "</td>"
                         + "<td class='text-center'>" + type.update_date + "</td>"
-                        + "<td class='text-center'>" + type.username + "</td>"
+                        + "<td class='text-center'>" + type.update_by_name + "</td>"
                         + "<td class='text-center' style='color: " + color_status + "'>"
                         + str_status + "</td>"
                         + " <td class='text-center'><button type='button' name='button-edit" + type.type_id + "' "

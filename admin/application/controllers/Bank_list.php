@@ -73,7 +73,6 @@ class Bank_list extends CI_Controller
 
         $filter_number = $this->input->post("filter-number");
         $page = $this->input->post("filter-page");
-
         $status = $this->input->post("filter-status");
 
         if ($filter_number == -1) {
@@ -101,6 +100,7 @@ class Bank_list extends CI_Controller
                 $page++;
             }
         }
+//        var_dump($this->input->post("filter-number"),$this->input->post("filter-page"),$this->input->post("filter-status"));
 
         $data["paging"] = $page;
         $jsonResult['Data'] = $data;
@@ -113,7 +113,7 @@ class Bank_list extends CI_Controller
 
         $filter_number = $this->input->post("filter-number");
         $page = $this->input->post("filter-page");
-        $status = $this->input->post("filter-user-status");
+        $status = $this->input->post("filter-status");
 
         if ($page > 0) {
             $page--;
