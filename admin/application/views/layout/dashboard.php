@@ -15,6 +15,8 @@
             <div class="form-group form-horizontal">
                 <div class="col-sm-12 form-horizontal ">
                     <div class="col-sm-4 center-horizontal" style="float: left;">
+
+                        <?php  echo $this->ckeditor->editor('', ''); ?>
 <!--                        <label class=" control-label" for="input-search" style="float: left">งวดวันที่-->
 <!--                            : </label>-->
 <!--                        <div class="col-sm-8">-->
