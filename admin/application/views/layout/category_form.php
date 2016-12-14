@@ -55,12 +55,12 @@
                                 <div class="col-md-10 col-xs-10">
                                     <div class="">
                                         <select name="type_id" id="input-type" class="form-control">
-                                            <?php for($i=0;$i<count($type_id);$i++){ ?>
-                                                <option value="<?php echo $type_id[$i];?>" <?php if ($type_id[$i] == $category_type_id) { ?>
+                                            <?php for ($i = 0; $i < count($type_id); $i++) { ?>
+                                                <option value="<?php echo $type_id[$i]; ?>" <?php if ($type_id[$i] == $category_type_id) { ?>
                                                     selected="selected" <?php } ?> >
-                                                    <?php echo $type_name[$i];?>
+                                                    <?php echo $type_name[$i]; ?>
                                                 </option>
-                                            <?php }?>
+                                            <?php } ?>
                                         </select>
                                     </div>
                                 </div>
@@ -68,39 +68,33 @@
 
                             <div class="form-group required col-md-12 col-xs-12">
                                 <div class="col-md-2 col-xs-2" align="right">
-                                    <label class=" control-label" for="input-category-icon">ไอคอน</label>
+                                    <label class=" control-label" for="input-category-icon"> ไอคอน</label>
                                 </div>
                                 <div class="col-md-10 col-xs-10">
-                                    <div class="">
-<!--                                        <input type="text" name="category_icon" value="--><?php //echo $category_icon; ?><!--"-->
-<!--                                               placeholder="ไอคอน" id="input-category-icon"-->
-<!--                                               class="form-control"/>-->
-<!--                                        --><?php //for($i=0;$i<count($icon);$i++){?>
-<!--                                            <option value="--><?php //echo $icon[$i];?><!--" --><?php //if ($icon[$i] == $category_type_id) { ?>
-<!--                                                selected="selected" --><?php //} ?><!-- >-->
-<!--                                                --><?php //echo $type_name[$i];?>
-<!--                                            </option>-->
-<!--                                        --><?php //}?>
-                                        <select name="type_id" id="input-type" class="form-control">
-                                            <option value="1" selected="selected" ><i class="fa fa-address-book-o"></i></option>
-                                            <option value="2" selected="selected" ><i class="fa fa-area-chart"></i></option>
-                                            <option value="3" selected="selected" ><i class="fa fa-book"></i></option>
-                                            <option value="4" selected="selected" ><i class="fa fa-camera"></i></option>
-                                            <option value="5" selected="selected" ><i class="fa fa-film"></i></option>
-                                            <option value="6" selected="selected" ><i class="fa fa-university"></i></option>
-                                            <option value="7" selected="selected" ><i class="fa fa-file-text-o"></i></option>
-                                            <option value="8" selected="selected" ><i class="fa fa-calendar-o"></i></option>
-                                            <option value="9" selected="selected" ><i class="fa fa-clone"></i></option>
-                                            <option value="10" selected="selected" ><i class="fa fa-cubes"></i></option>
-                                            <option value="11" selected="selected" ><i class="fa fa-child"></i></option>
-                                            <option value="12" selected="selected" ><i class="fa fa-fax"></i></option>
-                                            <option value="13" selected="selected" ><i class="fa fa-file-video-o"></i></option>
-                                            <option value="14" selected="selected" ><i class="fa fa-file-image-o"></i></option>
-                                            <option value="15" selected="selected" ><i class="fa fa-map-o"></i></option>
-                                        </select>
-
-                                    </div>
-                                    <div class="text-danger"></div>
+                                        <div class="col-md-1 col-xs-1"><input type="radio" name="category_icon" value="1" <?php if($category_icon == 1){echo "checked=\"checked\"";}?>>
+                                            <i class="fa fa-address-book-o"></i></div>
+                                        <div class="col-md-1 col-xs-1"><input type="radio" name="category_icon" value="2" <?php if($category_icon == 2){echo "checked=\"checked\"";}?>>
+                                            <i class="fa fa-area-chart"></i></div>
+                                        <div class="col-md-1 col-xs-1"><input type="radio" name="category_icon" value="3" <?php if($category_icon == 3){echo "checked=\"checked\"";}?>>
+                                            <i class="fa fa-book"></i></div>
+                                        <div class="col-md-1 col-xs-1"><input type="radio" name="category_icon" value="4" <?php if($category_icon == 4){echo "checked=\"checked\"";}?>>
+                                            <i class="fa fa-camera"></i></div>
+                                        <div class="col-md-1 col-xs-1"><input type="radio" name="category_icon" value="5" <?php if($category_icon == 5){echo "checked=\"checked\"";}?>>
+                                            <i class="fa fa-film"></i></div>
+                                        <div class="col-md-1 col-xs-1"><input type="radio" name="category_icon" value="6" <?php if($category_icon == 6){echo "checked=\"checked\"";}?>>
+                                            <i class="fa fa-university"></i></div>
+                                        <div class="col-md-1 col-xs-1"><input type="radio" name="category_icon" value="7" <?php if($category_icon == 7){echo "checked=\"checked\"";}?>>
+                                            <i class="fa fa-file-text-o"></i></div>
+                                        <div class="col-md-1 col-xs-1"><input type="radio" name="category_icon" value="8" <?php if($category_icon == 8){echo "checked=\"checked\"";}?>>
+                                            <i class="fa fa-calendar-o"></i></div>
+                                        <div class="col-md-1 col-xs-1"><input type="radio" name="category_icon" value="9" <?php if($category_icon == 9){echo "checked=\"checked\"";}?>>
+                                            <i class="fa fa-clone"></i></div>
+                                        <div class="col-md-1 col-xs-1"><input type="radio" name="category_icon" value="10" <?php if($category_icon == 10){echo "checked=\"checked\"";}?>>
+                                            <i class="fa fa-cubes"></i></div>
+                                        <div class="col-md-1 col-xs-1"><input type="radio" name="category_icon" value="11" <?php if($category_icon == 11){echo "checked=\"checked\"";}?>>
+                                            <i class="fa fa-child"></i></div>
+                                        <div class="col-md-1 col-xs-1"><input type="radio" name="category_icon" value="12" <?php if($category_icon == 12){echo "checked=\"checked\"";}?>>
+                                            <i class="fa fa-fax"></i></div>
                                 </div>
                             </div>
 
@@ -125,7 +119,7 @@
                                 <div class="col-md-10 col-xs-10">
                                     <div class="">
                                         <input type="text" name="create_date" value="<?php echo $create_date; ?>"
-                                               placeholder="<?php echo date("Y-m-d H:i:s"); ?>" id="create_date"
+                                               id="create_date"
                                                disabled
                                                class="form-control"/>
                                     </div>
@@ -140,11 +134,37 @@
                                 <div class="col-md-10 col-xs-10">
                                     <div class="">
                                         <input type="text" name="create_by"
-                                               value="<?php for ($i = 0; $i < count($user_id); $i++) {
-                                                   if ($this->session->userdata("user_id") == $user_id[$i]) {
-                                                       echo $username[$i];
-                                                   }
-                                               } ?>"
+                                               value="<?php echo $create_by_name ?>"
+                                               id="input-create-by" disabled
+                                               class="form-control"/>
+                                    </div>
+                                    <div class="text-danger"></div>
+                                </div>
+                            </div>
+
+                            <div class="form-group required col-md-12 col-xs-12">
+                                <div class="col-md-2 col-xs-2" align="right">
+                                    <label class=" control-label" for="create_date">วันที่แก้ไขล่าสุด</label>
+                                </div>
+                                <div class="col-md-10 col-xs-10">
+                                    <div class="">
+                                        <input type="text" name="create_date" value="<?php echo $update_date; ?>"
+                                               id="create_date"
+                                               disabled
+                                               class="form-control"/>
+                                    </div>
+                                    <div class="text-danger"></div>
+                                </div>
+                            </div>
+
+                            <div class="form-group required col-md-12 col-xs-12">
+                                <div class="col-md-2 col-xs-2" align="right">
+                                    <label class=" control-label" for="input-create-by">แก้ไขโดย</label>
+                                </div>
+                                <div class="col-md-10 col-xs-10">
+                                    <div class="">
+                                        <input type="text" name="create_by"
+                                               value="<?php echo $update_by_name ?>"
                                                id="input-create-by" disabled
                                                class="form-control"/>
                                     </div>
@@ -158,7 +178,8 @@
                                 </div>
                                 <div class="col-md-10 col-xs-10">
                                     <div class="">
-                                        <input type="text" name="meta_keyword_thai" value="<?php echo $meta_keyword_thai; ?>"
+                                        <input type="text" name="meta_keyword_thai"
+                                               value="<?php echo $meta_keyword_thai; ?>"
                                                placeholder="meta keyword thai" id="input-keyword-thai"
                                                class="form-control"/>
                                     </div>
@@ -172,7 +193,8 @@
                                 </div>
                                 <div class="col-md-10 col-xs-10">
                                     <div class="">
-                                        <input type="text" name="meta_keyword_eng" value="<?php echo $meta_keyword_eng; ?>"
+                                        <input type="text" name="meta_keyword_eng"
+                                               value="<?php echo $meta_keyword_eng; ?>"
                                                placeholder="meta keyword eng" id="input-keyword-eng"
                                                class="form-control"/>
                                     </div>
@@ -182,7 +204,8 @@
 
                             <div class="form-group required col-md-12 col-xs-12">
                                 <div class="col-md-2 col-xs-2" align="right">
-                                    <label class=" control-label" for="input-description-thai">Meta description thai</label>
+                                    <label class=" control-label" for="input-description-thai">Meta description
+                                        thai</label>
                                 </div>
                                 <div class="col-md-10 col-xs-10">
                                     <div class="">
@@ -197,11 +220,13 @@
 
                             <div class="form-group required col-md-12 col-xs-12">
                                 <div class="col-md-2 col-xs-2" align="right">
-                                    <label class=" control-label" for="input-description-eng">Meta description eng</label>
+                                    <label class=" control-label" for="input-description-eng">Meta description
+                                        eng</label>
                                 </div>
                                 <div class="col-md-10 col-xs-10">
                                     <div class="">
-                                        <input type="text" name="meta_description_eng" value="<?php echo $meta_description_eng; ?>"
+                                        <input type="text" name="meta_description_eng"
+                                               value="<?php echo $meta_description_eng; ?>"
                                                placeholder="meta description eng" id="input-description-eng"
                                                class="form-control"/>
                                     </div>
@@ -237,8 +262,10 @@
                                 <div class="col-md-2 col-xs-2" align="right"></div>
                                 <div class="col-md-10 col-xs-10">
                                     <div class="">
-                                        <button type="button" id="button-save" class="btn btn-primary"> บันทึก</button>
+                                        <button type="button" id="button-save" class="btn btn-primary">บันทึก</button>
                                         <button type="reset" id="btn-reset" class="btn btn-default">ยกเลิก</button>
+                                        <!--                                        <a href="-->
+                                        <?php //echo base_url();?><!--category/get_list"> <button id="btn-back" class="btn btn-warning">ออกจากหน้านี้</button></a>-->
                                     </div>
                                 </div>
                             </div>
@@ -278,7 +305,6 @@
     });
 
     function readyLoad() {
-        $('#input-user-credit').maskMoney();
         $('.input-number').maskMoney();
     }
 

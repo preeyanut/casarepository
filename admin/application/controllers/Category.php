@@ -10,9 +10,6 @@ class Category extends CI_Controller
         $this->load->model('Category_type_model');
         $this->load->model('User_model');
 
-        $this->load->library('ckeditor');
-        $this->load->library('ckfinder');
-
         $this->load->library('auth_check');
 
         if (!$this->auth_check->hasPermission('access', 'user')) {
@@ -44,12 +41,12 @@ class Category extends CI_Controller
         $data["groups"] = $this->Category_model->getall();
         $data_user = $this->User_model->get_user_all();
 
-        for($i=0;$i<count($data_user);$i++) {
+        for ($i = 0; $i < count($data_user); $i++) {
             $data['user_id'][] = $data_user[$i]['user_id'];
             $data['username'][] = $data_user[$i]['username'];
         }
 
-        for($i=0;$i<count($data_type);$i++) {
+        for ($i = 0; $i < count($data_type); $i++) {
             $data['type_id'][] = $data_type[$i]['type_id'];
             $data['type_name'][] = $data_type[$i]['type_name'];
         }
@@ -101,7 +98,6 @@ class Category extends CI_Controller
 
             $data_info = $this->Category_model->get_data($this->input->get('category_id'));
 
-
 //            var_dump($data_info, $data_user);
             if (!empty($data_info)) {
 
@@ -113,8 +109,11 @@ class Category extends CI_Controller
                     $data['category_icon'] = $info['category_icon'];
                     $data['priority_level'] = $info['priority_level'];
                     $data['category_status'] = $info['category_status'];
+
                     $data['create_date'] = $info['create_date'];
-                    $data['create_by'] = $info['create_by'];
+                    $data['create_by_name'] = $info['create_by_name'];
+                    $data['update_date'] = $info['update_date'];
+                    $data['update_by_name'] = $info['update_by_name'];
 
                     $data['meta_keyword_thai'] = $info['meta_keyword_thai'];
                     $data['meta_keyword_eng'] = $info['meta_keyword_eng'];
@@ -123,12 +122,7 @@ class Category extends CI_Controller
 
                 }
 
-                for($i=0;$i<count($data_user);$i++) {
-                    $data['user_id'][] = $data_user[$i]['user_id'];
-                    $data['username'][] = $data_user[$i]['username'];
-                }
-
-                for($i=0;$i<count($data_type);$i++) {
+                for ($i = 0; $i < count($data_type); $i++) {
                     $data['type_id'][] = $data_type[$i]['type_id'];
                     $data['type_name'][] = $data_type[$i]['type_name'];
                 }
@@ -142,22 +136,21 @@ class Category extends CI_Controller
             $data['category_name'] = "";
             $data['category_type_id'] = "";
             $data['type_id'] = "";
-            $data['category_icon'] ="";
+            $data['category_icon'] = "";
             $data['priority_level'] = "";
             $data['category_status'] = "";
+
             $data['create_date'] = "";
+            $data['create_by_name'] = "";
+            $data['update_date'] = "";
+            $data['update_by_name'] = "";
 
             $data['meta_keyword_thai'] = "";
             $data['meta_keyword_eng'] = "";
             $data['meta_description_thai'] = "";
             $data['meta_description_eng'] = "";
 
-            for($i=0;$i<count($data_user);$i++) {
-                $data['user_id'][] = $data_user[$i]['user_id'];
-                $data['username'][] = $data_user[$i]['username'];
-            }
-
-            for($i=0;$i<count($data_type);$i++) {
+            for ($i = 0; $i < count($data_type); $i++) {
                 $data['type_id'][] = $data_type[$i]['type_id'];
                 $data['type_name'][] = $data_type[$i]['type_name'];
             }
@@ -178,7 +171,6 @@ class Category extends CI_Controller
         if ($this->input->post()) {
             $data["category_id"] = $this->Category_model->add_category($this->input->post());
         }
-//        var_dump($this->input->post());
         $jsonResult['Result'] = true;
         //$jsonResult['error'] = "";
         $jsonResult['Data'] = $data;
@@ -187,6 +179,8 @@ class Category extends CI_Controller
 
     public function edit_category()
     {
+//        var_dump($this->input->post());
+
         if ($this->input->post()) {
             $data["category_id"] = $this->Category_model->edit_category($this->input->post());
         }

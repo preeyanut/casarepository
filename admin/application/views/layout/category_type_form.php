@@ -131,7 +131,6 @@
     });
 
     function readyLoad() {
-        $('#input-user-credit').maskMoney();
         $('.input-number').maskMoney();
     }
 
@@ -217,7 +216,6 @@
                 $('#button-save').button('reset');
             },
             success: function (json) {
-
                 alert("เพิ่มข้อมูลเสร็จสิ้น");
             },
             error: function (xhr, ajaxOptions, thrownError) {

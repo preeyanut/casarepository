@@ -17,7 +17,9 @@ class Blog extends CI_Controller
 
     public function index()
     {
-        $this->get_form();
+        $data["layout"] = 'layout/blog';
+
+        $this->load->view('layout', $data);
     }
 
     public function get_form()

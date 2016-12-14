@@ -34,7 +34,8 @@
                         <div class="form-group form-horizontal">
                             <div class="col-md-8 col-xs-8 form-horizontal">
                                 <div class="col-md-4 col-xs-6" style="float: left;">
-                                    <label class="col-sm-3 col-xs-3 control-label" for="input-search" style="float: left">จำนวน </label>
+                                    <label class="col-sm-3 col-xs-3 control-label" for="input-search"
+                                           style="float: left">จำนวน </label>
                                     <div class="col-sm-6 col-xs-9">
                                         <select id="filter-number" name="table_summay_master_length"
                                                 aria-controls="table_summay_master"
@@ -49,7 +50,8 @@
                                 </div>
 
                                 <div class="col-md-4 col-xs-6" style="float: left;">
-                                    <label class="col-sm-3 col-xs-3 control-label" for="input-search" style="float: left">สถานะ </label>
+                                    <label class="col-sm-3 col-xs-3 control-label" for="input-search"
+                                           style="float: left">สถานะ </label>
                                     <div class="col-md-9 col-xs-9">
                                         <select id="filter-status" name="table_summay_master_length"
                                                 aria-controls="table_summay_master"
@@ -96,17 +98,42 @@
                                     $count = 1; ?>
                                     <?php foreach ($groups as $category) { ?>
                                         <tr id="tr_id<?php echo $category['category_id']; ?>" class="tr_id">
-                                            <?php $icon = "zmdi zmdi-assignment-account";?>
                                             <td class="text-center"><?php echo $count;
                                                 $count++; ?></td>
                                             <td class="text-center"><?php echo $category['category_name']; ?></td>
-                                            <td class="text-center"><?php echo $category['type_name'];?></td>
-                                            <td class="text-center"><i class="<?php echo $icon;?> zmdi-hc-2x"></i></td>
+                                            <td class="text-center"><?php echo $category['type_name']; ?></td>
+                                            <td class="text-center"><i
+                                                        class="<?php if ($category['category_icon'] == 1) {
+                                                            echo "fa fa-address-book-o";
+                                                        } elseif ($category['category_icon'] == 2) {
+                                                            echo "fa fa-area-chart";
+                                                        } elseif ($category['category_icon'] == 3) {
+                                                            echo "fa fa-book";
+                                                        } elseif ($category['category_icon'] == 4) {
+                                                            echo "fa fa-camera";
+                                                        } elseif ($category['category_icon'] == 5) {
+                                                            echo "fa fa-film";
+                                                        } elseif ($category['category_icon'] == 6) {
+                                                            echo "fa fa-university";
+                                                        } elseif ($category['category_icon'] == 7) {
+                                                            echo "fa fa-file-text-o";
+                                                        } elseif ($category['category_icon'] == 8) {
+                                                            echo "fa fa-calendar-o";
+                                                        } elseif ($category['category_icon'] == 9) {
+                                                            echo "fa fa-clone";
+                                                        } elseif ($category['category_icon'] == 10) {
+                                                            echo "fa fa-cubes";
+                                                        } elseif ($category['category_icon'] == 11) {
+                                                            echo "fa fa-child";
+                                                        } elseif ($category['category_icon'] == 12) {
+                                                            echo "fa fa-fax";
+                                                        } ?>"></i>
+                                            </td>
                                             <td class="text-center"><?php echo $category['priority_level']; ?></td>
                                             <td class="text-center"><?php echo $category['create_date']; ?></td>
-                                            <td class="text-center"><?php echo $category['create_by_name'];?></td>
+                                            <td class="text-center"><?php echo $category['create_by_name']; ?></td>
                                             <td class="text-center"><?php echo $category['update_date']; ?></td>
-                                            <td class="text-center"><?php echo $category['update_by_name'];?></td>
+                                            <td class="text-center"><?php echo $category['update_by_name']; ?></td>
 
                                             <?php if ($category['category_status'] == 0) { ?>
                                                 <td class="text-center text-disable">ปิดการใช้งาน</td>
@@ -242,11 +269,50 @@
                             break;
                     }
 
+                    switch (category.category_icon) {
+                        case 1:
+                            icon = "<i class=\"fa fa-address-book-o\"></i>";
+                            break;
+                        case 2:
+                            icon = "<i class=\"fa fa-area-chart\"></i>";
+                            break;
+                        case 3:
+                            icon = "<i class=\"fa fa-book\"></i>";
+                            break;
+                        case 4:
+                            icon = "<i class=\"fa fa-camera\"></i>";
+                            break;
+                        case 5:
+                            icon = "<i class=\"fa fa-film\"></i>";
+                            break;
+                        case 6:
+                            icon = "<i class=\"fa fa-university\"></i>";
+                            break;
+                        case 7:
+                            icon = "<i class=\"fa fa-file-text-o\"></i>";
+                            break;
+                        case 8:
+                            icon = "<i class=\"fa fa-calendar-o\"></i>";
+                            break;
+                        case 9:
+                            icon = "<i class=\"fa fa-clone\"></i>";
+                            break;
+                        case 10:
+                            icon = "<i class=\"fa fa-cubes\"></i>";
+                            break;
+                        case 11:
+                            icon = "<i class=\"fa fa-child\"></i>";
+                            break;
+                        case 12:
+                            icon = "<i class=\"fa fa-fax\"></i>";
+                            break;
+                    }
+
                     var html = "<tr class='tr_id" + category.category_id + "'  style='cursor: pointer;'>"
                         + "<td class='text-center'>" + (i + 1) + "</td>"
                         + "<td class='text-center'>" + category.category_name + "</td>"
                         + "<td class='text-center'>" + category.type_name + "</td>"
-                        + "<td class='text-center'>" + category.category_icon + "</td>"
+                        + "<td class='text-center'>" + icon + "</td>"
                         + "<td class='text-center'>" + category.priority_level + "</td>"
                         + "<td class='text-center'>" + category.create_date + "</td>"
                         + "<td class='text-center'>" + category.create_by_name + "</td>"
@@ -299,11 +365,51 @@
                             str_status = "เปิดใช้งาน";
                             break;
                     }
+
+                    switch (Number(category.category_icon)) {
+                        case 1:
+                            icon = "<i class=\"fa fa-address-book-o\"></i>";
+                            break;
+                        case 2:
+                            icon = "<i class=\"fa fa-area-chart\"></i>";
+                            break;
+                        case 3:
+                            icon = "<i class=\"fa fa-book\"></i>";
+                            break;
+                        case 4:
+                            icon = "<i class=\"fa fa-camera\"></i>";
+                            break;
+                        case 5:
+                            icon = "<i class=\"fa fa-film\"></i>";
+                            break;
+                        case 6:
+                            icon = "<i class=\"fa fa-university\"></i>";
+                            break;
+                        case 7:
+                            icon = "<i class=\"fa fa-file-text-o\"></i>";
+                            break;
+                        case 8:
+                            icon = "<i class=\"fa fa-calendar-o\"></i>";
+                            break;
+                        case 9:
+                            icon = "<i class=\"fa fa-clone\"></i>";
+                            break;
+                        case 10:
+                            icon = "<i class=\"fa fa-cubes\"></i>";
+                            break;
+                        case 11:
+                            icon = "<i class=\"fa fa-child\"></i>";
+                            break;
+                        case 12:
+                            icon = "<i class=\"fa fa-fax\"></i>";
+                            break;
+                    }
+
                     var html = "<tr class='tr_id" + category.category_id + "'  >"
                         + "<td class='text-center'>" + (i + 1) + "</td>"
                         + "<td class='text-center'>" + category.category_name + "</td>"
                         + "<td class='text-center'>" + category.type_name + "</td>"
-                        + "<td class='text-center'>" + category.category_icon + "</td>"
+                        + "<td class='text-center'>" + icon + "</td>"
                         + "<td class='text-center'>" + category.priority_level + "</td>"
                         + "<td class='text-center'>" + category.create_date + "</td>"
                         + "<td class='text-center'>" + category.create_by_name + "</td>"
