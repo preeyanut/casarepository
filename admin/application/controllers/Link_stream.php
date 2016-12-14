@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Config_group extends CI_Controller
+class Link_stream extends CI_Controller
 {
     public function __construct()
     {
@@ -72,54 +72,56 @@ class Config_group extends CI_Controller
     public function get_form()
     {
 
-        if ($this->input->get('config_group_id')) {
+        if ($this->input->get('link_id')) {
 
-            $data_info = $this->Config_group_model->get_data($this->input->get('config_group_id'));
+            $data_info = $this->Link_stream_model->get_data($this->input->get('link_id'));
             //$data_user = $this->User_model->get_user_all();
 
 //            var_dump($data_info, $data_user);
             if (!empty($data_info)) {
 
-                $data['config_group_id'] = $this->input->get('config_group_id');
+                $data['link_id'] = $this->input->get('link_id');
 
                 foreach ($data_info as $info) {
-                    $data['config_group_name'] = $info['config_group_name'];
+                    $data['link_channel'] = $info['link_channel'];
                     $data['priority_level'] = $info['priority_level'];
-                    $data['config_group_status'] = $info['config_group_status'];
+                    $data['link_status'] = $info['link_status'];
+                    $data['youtube_link'] = $info['youtube_link'];
 
                 }
-               //for($i=0;$i<count($data_user);$i++) {
-                    //$data['user_id'][] = $data_user[$i]['user_id'];
-                    //$data['username'][] = $data_user[$i]['username'];
-               //}
+                //for($i=0;$i<count($data_user);$i++) {
+                //$data['user_id'][] = $data_user[$i]['user_id'];
+                //$data['username'][] = $data_user[$i]['username'];
+                //}
             }
 
-            $data["action"] = base_url() . "config_group/edit_config_group";
+            $data["action"] = base_url() . "link_stream/edit_link_stream";
 
         } else {
 
-            $data['config_group_id'] = "";
-            $data['config_group_name'] = "";
+            $data['link_id'] = "";
+            $data['link_channel'] = "";
             $data['priority_level'] = "";
-            $data['config_group_status'] = "";
+            $data['link_status'] = "";
+            $data['youtube_link']= "";
             $data['create_by'] = $this->input->get('user_id');
 
-            $data["action"] = base_url() . "config_group/add_config_group";
+            $data["action"] = base_url() . "link_stream/add_link_stream";
 
-            //$data["list"] = $this->Config_group_model->getall();
+            //$data["list"] = $this->Link_stream_model->getall();
 
         }
-        $data["list"] = $this->Config_group_model->getall();
-        $data["layout"] = 'layout/config_group';
+        //$data["list"] = $this->Link_stream_model->getall();
+        $data["layout"] = 'layout/link_stream_form';
 
         $this->load->view('layout', $data);
     }
 
 
-    public function add_config_group()
+    public function add_link_stream()
     {
         if ($this->input->post()) {
-            $data["config_group_id"] = $this->Config_group_model->add_config_group($this->input->post());
+            $data["link_id"] = $this->Link_stream_model->add_link_stream($this->input->post());
         }
 
         $jsonResult['Result'] = true;
@@ -128,10 +130,10 @@ class Config_group extends CI_Controller
         echo json_encode($jsonResult);
     }
 
-    public function edit_config_group()
+    public function edit_link_stream()
     {
         if ($this->input->post()) {
-            $data["config_group_id"] = $this->Config_group_model->edit_config_group($this->input->post());
+            $data["link_id"] = $this->Link_stream_model->edit_link_stream($this->input->post());
         }
 
         $jsonResult['Result'] = true;

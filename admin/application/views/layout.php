@@ -561,6 +561,63 @@
                 </li>
                 <!--                --><?php //} ?>
 
+<<<<<<< HEAD
+=======
+                <!--                --><?php
+                //                if (in_array("my_balance", $access_permission) || in_array("change_password", $access_permission)) {
+                //                    ?>
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-play-circle-o"></i>
+                        <span>Live Stream</span>
+                        <span class="label label-primary pull-right"></span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <!--                        --><?php //if (in_array("bank_list", $access_permission)) { ?>
+                        <li><a href="<?= base_url(); ?>blog/blog_list"><i class="fa fa-circle-o"></i> รายการทั้งหมด</a>
+                        </li>
+                        <!--                        --><?php //} ?>
+                        <!--                        --><?php //if (in_array("addnew", $access_permission)) { ?>
+                        <li><a href="<?= base_url(); ?>blog_list/getForm"><i class="fa fa-circle-o"></i> เพิ่มรายการใหม่</a>
+                        </li>
+                        <!--                        --><?php //} ?>
+                        <!--                        --><?php //if (in_array("change_password", $access_permission)) { ?>
+                        <!--                            <li><a href="-->
+                        <? //= base_url(); ?><!--list_result"><i class="fa fa-circle-o"></i> ผลสลากรางวัล</a>-->
+                        <!--                            </li>-->
+                        <!--                        --><?php //} ?>
+                    </ul>
+                </li>
+                <!--                --><?php //} ?>
+
+                <!--                --><?php
+                //                if (in_array("my_balance", $access_permission) || in_array("change_password", $access_permission)) {
+                //                    ?>
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-chain"></i>
+                        <span>Link</span>
+                        <span class="label label-primary pull-right"></span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <!--                        --><?php //if (in_array("bank_list", $access_permission)) { ?>
+                        <li><a href="<?= base_url(); ?>blog/blog_list"><i class="fa fa-circle-o"></i> รายการทั้งหมด</a>
+                        </li>
+                        <!--                        --><?php //} ?>
+                        <!--                        --><?php //if (in_array("addnew", $access_permission)) { ?>
+                        <li><a href="<?= base_url(); ?>link_stream/get_form"><i class="fa fa-circle-o"></i> เพิ่มรายการใหม่</a>
+                        </li>
+                        <!--                        --><?php //} ?>
+                        <!--                        --><?php //if (in_array("change_password", $access_permission)) { ?>
+                        <!--                            <li><a href="-->
+                        <? //= base_url(); ?><!--list_result"><i class="fa fa-circle-o"></i> ผลสลากรางวัล</a>-->
+                        <!--                            </li>-->
+                        <!--                        --><?php //} ?>
+                    </ul>
+                </li>
+                <!--                --><?php //} ?>
+
+>>>>>>> 9cd887fb34f2bef243ae81d3b6a386bc40947907
                 <?php
                 if (in_array("my_balance", $access_permission) || in_array("change_password", $access_permission)) {
                     ?>
@@ -686,7 +743,7 @@
                     </li>
 
                     <li class="treeview">
-                        <a href="#">
+                        <a href="<?= base_url(); ?>config/get_form">
                             <i class="fa fa-gear"></i>
                             <span>ตั้งค่าเว็บ</span>
                             <span class="label label-primary pull-right"></span>
