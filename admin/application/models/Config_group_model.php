@@ -53,4 +53,52 @@ class Config_group_model extends CI_Model
     public function delete_config_group($config_group_id) {
         $this->db->query("DELETE FROM `" . "" . "config_webpage_group` WHERE config_group_id = '" . (int)$config_group_id . "'");
     }
+
+    public function count()
+    {
+        $query = $this->db->query("SELECT COUNT(*) AS total FROM `" . "" . "config_webpage_group`");
+
+        $result = $query->result_array();
+
+        return $result;
+    }
+
+    public function search_filter($txtSearch, $start_filter, $filter_number, $status)
+    {
+
+        $str_sql = "";
+        if ($status != '-1' && $status != '') {
+            $str_sql .= " AND  config_group_status = " . $status;
+        }
+
+        $query = $this->db->query("SELECT config_webpage_group.*,CONCAT(u1.firstname, ' ', u1.lastname) as create_by_name "
+            . " ,CONCAT(u2.firstname, ' ', u2.lastname)  as update_by_name "
+            . " from config_webpage_group "
+            . " inner join  user as u1 on u1.user_id = config_webpage_group.create_by "
+            . " inner join  user as u2 on u2.user_id = config_webpage_group.update_by "
+            . " WHERE  config_group_name  Like '%" . $txtSearch . "%' "
+
+            . $str_sql
+            . " Limit " . $start_filter . ", " . $filter_number . " "
+        );
+
+        return $query->result_array();
+    }
+
+    public function get_total_by_search($txtSearch, $start_filter, $filter_number, $filter_status)
+    {
+
+        $str_sql = "";
+        if ($filter_status != '-1') {
+            $str_sql .= " AND  config_group_status = " . $filter_status;
+        }
+
+        $query = $this->db->query("SELECT DISTINCT *, (select count(*) from config_webpage_group ) as total FROM `" . "" . "config_webpage_group` "
+            . " WHERE  config_group_name  Like '%" . $txtSearch . "%' "
+            . $str_sql
+            . " Limit " . $start_filter . ", " . $filter_number . " "
+        );
+
+        return $query->row_array('total');
+    }
 }

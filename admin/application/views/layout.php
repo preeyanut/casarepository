@@ -602,7 +602,7 @@
                         </li>
                         <!--                        --><?php //} ?>
                         <!--                        --><?php //if (in_array("addnew", $access_permission)) { ?>
-                        <li><a href="<?= base_url(); ?>blog_list/getForm"><i class="fa fa-circle-o"></i> เพิ่มรายการใหม่</a>
+                        <li><a href="<?= base_url(); ?>link_stream/get_form"><i class="fa fa-circle-o"></i> เพิ่มรายการใหม่</a>
                         </li>
                         <!--                        --><?php //} ?>
                         <!--                        --><?php //if (in_array("change_password", $access_permission)) { ?>
@@ -739,7 +739,7 @@
                     </li>
 
                     <li class="treeview">
-                        <a href="#">
+                        <a href="<?= base_url(); ?>config/get_form">
                             <i class="fa fa-gear"></i>
                             <span>ตั้งค่าเว็บ</span>
                             <span class="label label-primary pull-right"></span>
