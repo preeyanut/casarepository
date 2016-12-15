@@ -72,6 +72,13 @@ class Category_model extends CI_Model
 
     }
 
+    public function delete_category($category_id)
+    {
+        $this->load->library('encrypt');
+
+        $this->db->query("DELETE FROM category WHERE category_id = ". $category_id) ;
+    }
+
     public function search_filter($txtSearch, $start_filter, $filter_number, $status)
     {
 
