@@ -561,8 +561,7 @@
                 </li>
                 <!--                --><?php //} ?>
 
-<<<<<<< HEAD
-=======
+
                 <!--                --><?php
                 //                if (in_array("my_balance", $access_permission) || in_array("change_password", $access_permission)) {
                 //                    ?>
@@ -617,7 +616,6 @@
                 </li>
                 <!--                --><?php //} ?>
 
->>>>>>> 9cd887fb34f2bef243ae81d3b6a386bc40947907
                 <?php
                 if (in_array("my_balance", $access_permission) || in_array("change_password", $access_permission)) {
                     ?>
