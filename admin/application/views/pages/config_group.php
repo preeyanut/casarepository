@@ -28,73 +28,73 @@
                     <!-- /.box-header -->
                     <!-- form start -->
                     <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" id="form"
-                          class=" box-body">
+                                    class=" box-body">
 
-                        <input type="hidden" name="config_group_id" value="<?php echo $config_group_id; ?>"
-                               id="config_group_id" class="form-control"/>
+                            <input type="hidden" name="config_group_id" value="<?php echo $config_group_id; ?>"
+                                   id="config_group_id" class="form-control"/>
 
-                        <div class="row">
+                            <div class="row">
 
-                            <div class="form-group required col-md-12 col-xs-12">
-                                <div class="col-md-2 col-xs-2" align="right">
-                                    <label class=" control-label" for="input-type-name">Webpage Name</label>
-                                </div>
-                                <div class="col-md-10 col-xs-10">
-                                    <div class="">
-                                        <input type="text" name="config_group_name" value="<?php echo $config_group_name; ?>"
-                                               placeholder="Webpage Name" id="input-config-name"
-                                               class="form-control"/>
+                                <div class="form-group required col-md-12 col-xs-12">
+                                    <div class="col-md-2 col-xs-2" align="right">
+                                        <label class=" control-label" for="input-type-name">Webpage Name</label>
                                     </div>
-                                    <div class="text-danger"></div>
-                                </div>
-                            </div>
-
-                            <div class="form-group required col-md-12 col-xs-12">
-                                <div class="col-md-2 col-xs-2" align="right">
-                                    <label class=" control-label" for="input-priority-level">ลำดับความสำคัญ</label>
-                                </div>
-                                <div class="col-md-10 col-xs-10">
-                                    <div class="">
-                                        <input type="text" name="priority_level" value="<?php echo $priority_level; ?>"
-                                               placeholder="ลำดับความสำคัญ" id="input-priority-level"
-                                               class="form-control"/>
-                                    </div>
-                                    <div class="text-danger"></div>
-                                </div>
-                            </div>
-
-                            <div class="form-group col-md-12 col-xs-12">
-                                <div class="col-md-2 col-xs-2" align="right">
-                                    <label class=" control-label" for="input-status">สถานะ</label>
-                                </div>
-                                <div class="col-md-10 col-xs-10">
-                                    <div class="">
-                                        <select name="config_group_status" id="input-status" class="form-control">
-                                            <option
-                                                    value="0" <?php if ($config_group_status == 0) { ?>
-                                                selected="selected" <?php } ?> >
-                                                ปิดการใช้งาน
-                                            </option>
-                                            <option
-                                                    value="1" <?php if ($config_group_status == 1) { ?>
-                                                selected="selected" <?php } ?>>
-                                                เปิดใช้งาน
-                                            </option>
-
-                                        </select>
+                                    <div class="col-md-10 col-xs-10">
+                                        <div class="">
+                                            <input type="text" name="config_group_name" value="<?php echo $config_group_name; ?>"
+                                                   placeholder="Webpage Name" id="input-config-name"
+                                                   class="form-control"/>
+                                        </div>
+                                        <div class="text-danger"></div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <div class="form-group col-md-6" style="text-align: right;">
-                                <br>
-                                <div class="">
-                                    <button type="button" id="button-save" class="btn btn-primary"> บันทึก</button>
-                                    <button type="reset" id="btn-reset" class="btn btn-default">ยกเลิก</button>
+                                <div class="form-group required col-md-12 col-xs-12">
+                                    <div class="col-md-2 col-xs-2" align="right">
+                                        <label class=" control-label" for="input-priority-level">ลำดับความสำคัญ</label>
+                                    </div>
+                                    <div class="col-md-10 col-xs-10">
+                                        <div class="">
+                                            <input type="text" name="priority_level" value="<?php echo $priority_level; ?>"
+                                                   placeholder="ลำดับความสำคัญ" id="input-priority-level"
+                                                   class="form-control"/>
+                                        </div>
+                                        <div class="text-danger"></div>
+                                    </div>
                                 </div>
-                            </div>
 
-                        </div>
+                                <div class="form-group col-md-12 col-xs-12">
+                                    <div class="col-md-2 col-xs-2" align="right">
+                                        <label class=" control-label" for="input-status">สถานะ</label>
+                                    </div>
+                                    <div class="col-md-10 col-xs-10">
+                                        <div class="">
+                                            <select name="config_group_status" id="input-status" class="form-control">
+                                                <option
+                                                        value="0" <?php if ($config_group_status == 0) { ?>
+                                                    selected="selected" <?php } ?> >
+                                                    ปิดการใช้งาน
+                                                </option>
+                                                <option
+                                                        value="1" <?php if ($config_group_status == 1) { ?>
+                                                    selected="selected" <?php } ?>>
+                                                    เปิดใช้งาน
+                                                </option>
+
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group col-md-6" style="text-align: right;">
+                                    <br>
+                                    <div class="">
+                                        <button type="button" id="button-save" class="btn btn-primary"> บันทึก</button>
+                                        <button type="reset" id="btn-reset" class="btn btn-default">ยกเลิก</button>
+                                    </div>
+                                </div>
+
+                            </div>
                 </div>
                 <!-- /.box -->
             </div>
@@ -154,7 +154,7 @@
 
 
                     <!-- form start -->
-                    <form action="<?php //echo $delete; ?>" method="post" enctype="multipart/form-data" id="form">
+                    <form action="<?php  ?>" method="post" enctype="multipart/form-data" id="form">
                         <div class="table-responsive  box-body ">
                             <table class="table table-bordered table-hover">
                                 <thead>

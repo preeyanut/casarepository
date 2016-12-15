@@ -10,14 +10,12 @@ class Config extends CI_Controller
         $this->load->model('Config_group_model');
         $this->load->model('User_model');
 
-        $this->load->library('ckeditor');
-        $this->load->library('ckfinder');
 
-        $this->load->library('auth_check');
-
-        if (!$this->auth_check->hasPermission('access', 'user')) {
-            redirect('permission');
-        }
+//        $this->load->library('auth_check');
+//
+//        if (!$this->auth_check->hasPermission('access', 'user')) {
+//            redirect('permission');
+//        }
     }
 
     public function index()
@@ -32,12 +30,13 @@ class Config extends CI_Controller
         $data_user = $this->User_model->get_user_all();
         $data_config_group = $this->Config_group_model->getall();
 
-        if ($this->input->get('config_group_id')) {
+        if ($this->input->get('config_id')) {
 
             $data_info = $this->Config_model->get_data($this->input->get('config_id'));
 
 
-//            var_dump($data_info, $data_user);
+            //var_dump($data_info, $data_user);
+            var_dump($data_info);
             if (!empty($data_info)) {
 
                 $data['config_id'] = $this->input->get('config_id');
@@ -67,23 +66,24 @@ class Config extends CI_Controller
                     $data['create_by'] = $info['create_by'];
 
                 }
-                for($i=0;$i<count($data_user);$i++) {
+                for ($i = 0; $i < count($data_user); $i++) {
                     $data['user_id'][] = $data_user[$i]['user_id'];
                     $data['username'][] = $data_user[$i]['username'];
                 }
 
-                for($i=0;$i<count($data_config_group);$i++) {
+                for ($i = 0; $i < count($data_config_group); $i++) {
                     $data['config_group_id'][] = $data_config_group[$i]['config_group_id'];
                     $data['config_group_name'][] = $data_config_group[$i]['config_group_name'];
                 }
             }
 
-            $data["action"] = base_url() . "config_group/edit_config_group";
+            $data["action"] = base_url() . "config/edit_config";
 
         } else {
 
             $data['config_id'] = "";
             $data['config_group_id'] = "";
+            $data['config_title'] = "";
             $data['priority_level'] = "";
             $data['meta_keyword'] = "";
             $data['meta_description'] = "";
@@ -102,17 +102,17 @@ class Config extends CI_Controller
             $data['body_tags'] = "";
             $data['create_by'] = $this->input->get('user_id');
 
-             for($i=0;$i<count($data_user);$i++) {
-                 $data['user_id'][] = $data_user[$i]['user_id'];
-                 $data['username'][] = $data_user[$i]['username'];
-             }
+            for ($i = 0; $i < count($data_user); $i++) {
+                $data['user_id'][] = $data_user[$i]['user_id'];
+                $data['username'][] = $data_user[$i]['username'];
+            }
 
-            for($i=0;$i<count($data_config_group);$i++) {
+            for ($i = 0; $i < count($data_config_group); $i++) {
                 $data['config_group_id'][] = $data_config_group[$i]['config_group_id'];
                 $data['config_group_name'][] = $data_config_group[$i]['config_group_name'];
             }
 
-            $data["action"] = base_url() . "config_group/add_config_group";
+            $data["action"] = base_url() . "config/add_config";
 
             //$data["list"] = $this->Config_group_model->getall();
 
@@ -124,7 +124,8 @@ class Config extends CI_Controller
     }
 
 
-    public function add_config_group()
+    public
+    function add_config_group()
     {
         if ($this->input->post()) {
             $data["config_id"] = $this->Config_model->add_config_group($this->input->post());
@@ -136,7 +137,8 @@ class Config extends CI_Controller
         echo json_encode($jsonResult);
     }
 
-    public function edit_config_group()
+    public
+    function edit_config_group()
     {
         if ($this->input->post()) {
             $data["config_id"] = $this->Config_model->edit_config_group($this->input->post());
@@ -149,7 +151,8 @@ class Config extends CI_Controller
     }
 
 
-    public function validate_form()
+    public
+    function validate_form()
     {
 
         if ((strlen($this->input->post('config_group_name')) < 3) || (strlen($this->input->post('config_group_name')) > 255)) {

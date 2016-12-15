@@ -13,6 +13,7 @@ class Config_model extends CI_Model
         return $query->result_array();
     }
 
+
     public function add_config($data){
         $this->load->library('encrypt');
 
