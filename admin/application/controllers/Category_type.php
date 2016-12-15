@@ -48,11 +48,9 @@ class Category_type extends CI_Controller
 
         $data["list"] = $all_data;
 
-//        var_dump($data);
+        $data["page"] = 'pages/category_type';
 
-        $data["layout"] = 'layout/category_type';
-
-        $this->load->view('layout', $data);
+        $this->load->view('template', $data);
 
     }
 
@@ -99,20 +97,21 @@ class Category_type extends CI_Controller
     public function get_form()
     {
 
-        if ($this->input->get('type_id')) {
+        if ($this->input->get('category_type_id')) {
 
-            $data_info = $this->Category_type_model->get_data($this->input->get('type_id'));
+            $data_info = $this->Category_type_model->get_data($this->input->get('category_type_id'));
             $data_user = $this->User_model->get_user_all();
 
 //            var_dump($data_info, $data_user);
             if (!empty($data_info)) {
 
-                $data['type_id'] = $this->input->get('type_id');
+                $data['category_type_id'] = $this->input->get('category_type_id');
 
                 foreach ($data_info as $info) {
-                    $data['type_id'] = $info['type_id'];
-                    $data['type_name'] = $info['type_name'];
-                    $data['priority_level'] = $info['priority_level'];
+                    $data['category_type_id'] = $info['category_type_id'];
+                    $data['category_type_name'] = $info['category_type_name'];
+                    $data['category_type_status'] = $info['category_type_status'];
+                    $data['prioriy_level'] = $info['priority_level'];
                     $data['type_status'] = $info['type_status'];
 
                     $data['create_date'] = $info['create_date'];
@@ -128,8 +127,10 @@ class Category_type extends CI_Controller
 
         } else {
 
-            $data['type_id'] = "";
-            $data['type_name'] = "";
+            $data['category_type_id'] = "";
+            $data['category_type_name'] = "";
+            $data['category_type_status'] = "";
+
             $data['priority_level'] = "";
             $data['type_status'] = "";
 
@@ -141,28 +142,52 @@ class Category_type extends CI_Controller
             $data["groups"] = $this->Category_type_model->getall();
 
         }
-//        var_dump($data);
-        $data["layout"] = 'layout/category_type_form';
 
-        $this->load->view('layout', $data);
+        $data["category_field"] = $this->Category_type_model->get_category_field($data['category_type_id']);
+
+        $data["page"] = 'pages/category_type_form';
+
+        $this->load->view('template', $data);
     }
 
     public function add_type()
     {
+        $result =false;
         if ($this->input->post()) {
-            $data["type_id"] = $this->Category_type_model->add_type($this->input->post());
+            $data["category_type_id"] = $this->Category_type_model->add_type($this->input->post());
+            if($data["category_type_id"]){
+                $result = true;
+            }
         }
 
-        $jsonResult['Result'] = true;
+        $jsonResult['Result'] = $result;
         //$jsonResult['error'] = "";
         $jsonResult['Data'] = $data;
         echo json_encode($jsonResult);
     }
 
+    public function add_category_field()
+    {
+        $result =false;
+        if ($this->input->post()) {
+            $all_category_field = $this->input->post('category_field');
+            foreach($all_category_field as $item){
+                $data["category_field_id"] = $this->Category_type_model->add_category_field($item);
+            }
+            $result =true;
+        }
+
+        $jsonResult['Result'] = $result;
+        $jsonResult['Data'] = $data;
+        echo json_encode($jsonResult);
+    }
+
+
+
     public function edit_type()
     {
         if ($this->input->post()) {
-            $data["type_id"] = $this->Category_type_model->edit_type($this->input->post());
+            $data["category_type_id"] = $this->Category_type_model->edit_type($this->input->post());
         }
 
         $jsonResult['Result'] = true;
@@ -202,8 +227,8 @@ class Category_type extends CI_Controller
     public function validate_form()
     {
 
-        if ((strlen($this->input->post('type_name')) < 3) || (strlen($this->input->post('type_name')) > 255)) {
-            $this->error['type_name'] = "กรุณากรอกชื่อประเภท";
+        if ((strlen($this->input->post('category_type_name')) < 3) || (strlen($this->input->post('category_type_name')) > 255)) {
+            $this->error['category_type_name'] = "กรุณากรอกชื่อประเภท";
         }
 
         if ((strlen($this->input->post('priority_level')) < 1) || (strlen($this->input->post('priority_level')) > 255)) {

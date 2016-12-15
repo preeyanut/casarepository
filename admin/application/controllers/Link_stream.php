@@ -49,9 +49,9 @@ class Link_stream extends CI_Controller
 
 //        var_dump($data);
 
-        $data["layout"] = 'layout/config_group';
+        $data["page"] = 'pages/config_group';
 
-        $this->load->view('layout', $data);
+        $this->load->view('template', $data);
 
     }
 
@@ -112,9 +112,9 @@ class Link_stream extends CI_Controller
 
         }
         //$data["list"] = $this->Link_stream_model->getall();
-        $data["layout"] = 'layout/link_stream_form';
+        $data["page"] = 'pages/link_stream_form';
 
-        $this->load->view('layout', $data);
+        $this->load->view('template', $data);
     }
 
 

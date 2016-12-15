@@ -49,9 +49,9 @@ class Config_group extends CI_Controller
 
 //        var_dump($data);
 
-        $data["layout"] = 'layout/config_group';
+        $data["page"] = 'pages/config_group';
 
-        $this->load->view('layout', $data);
+        $this->load->view('template', $data);
 
     }
 
@@ -110,9 +110,9 @@ class Config_group extends CI_Controller
 
         }
         $data["list"] = $this->Config_group_model->getall();
-        $data["layout"] = 'layout/config_group';
+        $data["page"] = 'pages/config_group';
 
-        $this->load->view('layout', $data);
+        $this->load->view('template', $data);
     }
 
 

@@ -1,10 +1,16 @@
+<?php
+if ($this->input->post('custom_load') === 'true') {
+    $this->load->view($page);
+    return;
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Casa Register</title>
+    <title>Casa98thailand</title>
     <link href="<?= base_url() ?>assets/css/bootstrap.css" rel="stylesheet">
     <link href="<?= base_url() ?>assets/css/main.css" rel="stylesheet">
     <link href="<?= base_url() ?>assets/css/font-awesome.css" rel="stylesheet">
@@ -305,7 +311,7 @@
             <!-- mini logo for sidebar mini 50x50 pixels -->
             <span class="logo-mini"><b>CSB</b></span>
             <!-- logo for regular state and mobile devices -->
-            <span class="logo-lg"><b></b>Casabet</span>
+            <span class="logo-lg"><b></b>CASA98THAILAND</span>
         </a>
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="navbar navbar-static-top" style="background-color: #313131;">
@@ -368,7 +374,7 @@
 
     <div class="marquee-casabet">
         <marquee>
-            <p class="text-marquee">!!! ยินดีต้อนรับเข้าสู่ Casabet เว็บแทงหวยออนไลน์ ที่ราคาดีที่สุด </p></marquee>
+            <p class="text-marquee">!!! ยินดีต้อนรับเข้าสู่ Casa98thailand เว็บแทงหวยออนไลน์ ที่ราคาดีที่สุด </p></marquee>
     </div>
     <!-- Left side column. contains the logo and sidebar -->
     <aside class="main-sidebar">
@@ -875,7 +881,7 @@
 
     <!-- Content Wrapper. Contains page content -->
     <div id='disp_paste' class="content-wrapper" style="background-color: #FFFFFF;">
-        <?php $this->load->view($layout); ?>
+        <?php $this->load->view($page); ?>
         <!-- Content Header (Page header) -->
         <!-- /.content -->
     </div>

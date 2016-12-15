@@ -123,8 +123,8 @@ class User_group extends CI_Controller {
 			$data['modify'] = array();
 		}
 
-		$data["layout"]='layout/user_group';
-		$this->load->view('layout',$data);
+		$data["page"] = 'pages/user_group';
+		$this->load->view('pages',$data);
 	}
 
 	public function validate_form() {

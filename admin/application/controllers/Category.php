@@ -57,9 +57,9 @@ class Category extends CI_Controller
 
 //        var_dump($data);
 
-        $data["layout"] = 'layout/category';
+        $data["page"] = 'pages/category';
 
-        $this->load->view('layout', $data);
+        $this->load->view('template', $data);
     }
 
     public function search_user()
@@ -160,10 +160,11 @@ class Category extends CI_Controller
             $data["groups"] = $this->Category_model->getall();
 
         }
-//        var_dump($data);
-        $data["layout"] = 'layout/category_form';
 
-        $this->load->view('layout', $data);
+
+        $data["page"] = 'pages/category_form';
+
+        $this->load->view('template', $data);
     }
 
     public function add_category()

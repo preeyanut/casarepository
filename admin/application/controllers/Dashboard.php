@@ -25,12 +25,9 @@ class Dashboard extends CI_Controller
 
         $this->load->model('User_model');
         $this->load->model('Dashboard_model');
-//        $this->load->model('Buy_lotto_model');
-//        $this->load->model('Result_model');
 
         $this->load->library('auth_check');
 
-        $this->load->library('ckfinder');
 
         if (!$this->auth_check->hasPermission('access', 'dashboard')) {
             redirect('permission');
@@ -45,29 +42,12 @@ class Dashboard extends CI_Controller
     public function getForm()
     {
 
-        $user_info = $this->User_model->get_user($this->session->userdata("user_id"));
-
-        $data['user_group_id'] = $user_info;
-
-
-        echo "0000";
-//        $this->load->library('CKEditor');
-//        $this->load->library('ckfinder');
-
-//        //configure base path of ckeditor folder
-//        $this->ckeditor->basePath = base_url() . 'assets/ckeditor/';
-//        $this->ckeditor->config['language'] = 'en';
-//        $this->ckeditor->config['height'] = '400';
-//        $this->ckeditor->returnOutput = true;
+//        $user_info = $this->User_model->get_user($this->session->userdata("user_id"));
 //
-//        //configure ckfinder with ckeditor config
-//        $this->ckfinder->BasePath = base_url() . 'assets/ckfinder/';
-//        $this->ckfinder->SetupCKEditor($this->ckeditor, base_url() . 'assets/ckfinder/');
+//        $data['user_group_id'] = $user_info;
 
-        $data["layout"] = 'layout/dashboard';
-
-        echo "1111";
-        $this->load->view('layout', $data);
+        $data["page"] = 'pages/dashboard';
+        $this->load->view('template', $data);
 
     }
 
