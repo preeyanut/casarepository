@@ -90,9 +90,9 @@
                                 </thead>
                                 <tbody id="tbody">
                                 <?php //echo var_dump($list) ; ?>
-                                <?php if ($groups) {
+                                <?php if ($list) {
                                     $count = 1; ?>
-                                    <?php foreach ($groups as $type) { ?>
+                                    <?php foreach ($list as $type) { ?>
                                         <tr id="tr_id<?php echo $type['type_id']; ?>" class="tr_id">
 
                                             <td class="text-center"><?php echo $count;

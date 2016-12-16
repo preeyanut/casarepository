@@ -54,7 +54,11 @@ class Bank_list_model extends CI_Model
     public function delete_bank($bank_id){
         $this->load->library('encrypt');
 
+<<<<<<< HEAD
+        $this->db->query("DELETE FROM bank_list WHERE bank_list_id = ". $bank_id) ;
+=======
          $this->db->query("DELETE FROM bank_list WHERE bank_list_id = ". $bank_id) ;
+>>>>>>> 70cc9b958668d79e3b31725afc2f2ec8f9967036
 
     }
 

@@ -64,12 +64,16 @@
 
                                         <option
                                                 value="0" <?php if ($bank_list_status == 0) { ?>
-                                                selected="selected" <?php } ?> >
+                                            selected="selected" <?php } ?> >
                                             ปิดการใช้งาน
                                         </option>
                                         <option
                                                 value="1" <?php if ($bank_list_status == 1) { ?>
+<<<<<<< HEAD
+                                            selected="selected" <?php } ?> >
+=======
                                                 selected="selected" <?php } ?> >
+>>>>>>> 70cc9b958668d79e3b31725afc2f2ec8f9967036
                                             เปิดใช้งาน
                                         </option>
 
@@ -207,7 +211,7 @@
             },
             success: function (json) {
 
-                 alert("เพิ่มข้อมูลเสร็จสิ้น");
+                alert("เพิ่มข้อมูลเสร็จสิ้น");
             },
             error: function (xhr, ajaxOptions, thrownError) {
                 alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
@@ -230,7 +234,7 @@
                 $('#button-save').button('reset');
             },
             success: function (json) {
-                 alert("แก้ไขข้อมูลเสร็จสิ้น");
+                alert("แก้ไขข้อมูลเสร็จสิ้น");
             },
             error: function (xhr, ajaxOptions, thrownError) {
                 alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);

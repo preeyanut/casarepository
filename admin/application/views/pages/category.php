@@ -101,7 +101,7 @@
                                             <td class="text-center"><?php echo $count;
                                                 $count++; ?></td>
                                             <td class="text-center"><?php echo $category['category_name']; ?></td>
-                                            <td class="text-center"><?php echo $category['type_name']; ?></td>
+                                            <td class="text-center"><?php echo $category['category_type_name']; ?></td>
                                             <td class="text-center"><i
                                                         class="<?php if ($category['category_icon'] == 1) {
                                                             echo "fa fa-address-book-o";
@@ -314,7 +314,7 @@
 
                     var html = "<tr class='tr_id" + category.category_id + "'  style='cursor: pointer;'>"
                         + "<td class='text-center'>" + (i + 1) + "</td>"
-                        + "<td class='text-center'>" + category.category_name + "</td>"
+                        + "<td class='text-center'>" + category.category_category_name + "</td>"
                         + "<td class='text-center'>" + category.type_name + "</td>"
                         + "<td class='text-center'>" + icon + "</td>"
                         + "<td class='text-center'>" + category.priority_level + "</td>"
@@ -412,7 +412,7 @@
                     var html = "<tr class='tr_id" + category.category_id + "'  >"
                         + "<td class='text-center'>" + (i + 1) + "</td>"
                         + "<td class='text-center'>" + category.category_name + "</td>"
-                        + "<td class='text-center'>" + category.type_name + "</td>"
+                        + "<td class='text-center'>" + category.category_type_name + "</td>"
                         + "<td class='text-center'>" + icon + "</td>"
                         + "<td class='text-center'>" + category.priority_level + "</td>"
                         + "<td class='text-center'>" + category.create_date + "</td>"

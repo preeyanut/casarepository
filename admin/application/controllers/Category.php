@@ -39,16 +39,10 @@ class Category extends CI_Controller
         }
 
         $data["groups"] = $this->Category_model->getall();
-        $data_user = $this->User_model->get_user_all();
-
-        for ($i = 0; $i < count($data_user); $i++) {
-            $data['user_id'][] = $data_user[$i]['user_id'];
-            $data['username'][] = $data_user[$i]['username'];
-        }
 
         for ($i = 0; $i < count($data_type); $i++) {
-            $data['type_id'][] = $data_type[$i]['type_id'];
-            $data['type_name'][] = $data_type[$i]['type_name'];
+            $data['category_type_id'][] = $data_type[$i]['category_type_id'];
+            $data['category_type_name'][] = $data_type[$i]['category_type_name'];
         }
 
         $data["paging"] = $paging;
@@ -103,7 +97,7 @@ class Category extends CI_Controller
 
                 foreach ($data_info as $info) {
                     $data['category_name'] = $info['category_name'];
-                    $data['category_type_id'] = $info['type_id'];
+                    $data['type_id'] = $info['type_id'];
                     $data['category_icon'] = $info['category_icon'];
                     $data['priority_level'] = $info['priority_level'];
                     $data['category_status'] = $info['category_status'];
@@ -121,8 +115,8 @@ class Category extends CI_Controller
                 }
 
                 for ($i = 0; $i < count($data_type); $i++) {
-                    $data['type_id'][] = $data_type[$i]['type_id'];
-                    $data['type_name'][] = $data_type[$i]['type_name'];
+                    $data['category_type_id'][] = $data_type[$i]['category_type_id'];
+                    $data['category_type_name'][] = $data_type[$i]['category_type_name'];
                 }
             }
 
@@ -132,7 +126,6 @@ class Category extends CI_Controller
 
             $data['category_id'] = "";
             $data['category_name'] = "";
-            $data['category_type_id'] = "";
             $data['type_id'] = "";
             $data['category_icon'] = "";
             $data['priority_level'] = "";
@@ -149,8 +142,8 @@ class Category extends CI_Controller
             $data['meta_description_eng'] = "";
 
             for ($i = 0; $i < count($data_type); $i++) {
-                $data['type_id'][] = $data_type[$i]['type_id'];
-                $data['type_name'][] = $data_type[$i]['type_name'];
+                $data['category_type_id'][] = $data_type[$i]['category_type_id'];
+                $data['category_type_name'][] = $data_type[$i]['category_type_name'];
             }
 
             $data["action"] = base_url() . "category/add_category";
@@ -158,7 +151,6 @@ class Category extends CI_Controller
             $data["groups"] = $this->Category_model->getall();
 
         }
-
 
         $data["page"] = 'pages/category_form';
 
@@ -194,8 +186,11 @@ class Category extends CI_Controller
 
     public function delete_category()
     {
+<<<<<<< HEAD
+=======
 //        var_dump($this->input->post());
 
+>>>>>>> 70cc9b958668d79e3b31725afc2f2ec8f9967036
         if ($this->input->get('category_id')) {
             $data["category_id"] = $this->Category_model->delete_category($this->input->get('category_id'));
         }
@@ -254,9 +249,15 @@ class Category extends CI_Controller
 //            $this->error['category_icon'] = "กรุณาเลือกไอคอน";
 //        }
 
+<<<<<<< HEAD
+        if (empty($this->input->post('category_icon'))){
+            $this->error['category_icon'] = "กรุณาเลือกไอคอน";
+        }
+=======
 //        if ($this->input->post('category_icon')){
 //            $this->error['category_icon'] = "กรุณาเลือกไอคอน";
 //        }
+>>>>>>> 70cc9b958668d79e3b31725afc2f2ec8f9967036
 
         if ((strlen($this->input->post('priority_level')) < 1) || (strlen($this->input->post('priority_level')) > 255)) {
             $this->error['priority_level'] = "กรุณากรอกระดับความสำคัญ";
