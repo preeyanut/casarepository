@@ -66,7 +66,8 @@
                             <div class="col-sm-4 col-xs-4 text-right">
                                 <label class="col-sm-3 col-xs-3 control-label" for="input-search">ค้นหา </label>
                                 <div class="col-sm-9 col-xs-9">
-                                    <input type="text" name="search" placeholder="กรุณาใส่ชื่อธนาคาร เพื่อค้นหา" id="input-search"
+                                    <input type="text" name="search" placeholder="กรุณาใส่ชื่อธนาคาร เพื่อค้นหา"
+                                           id="input-search"
                                            class="form-control"/>
                                 </div>
                             </div>
@@ -102,9 +103,9 @@
                                             <td class="text-center"><?php echo $bank['bank_list_name']; ?></td>
                                             <td class="text-center"><?php echo $bank['priority_level']; ?></td>
                                             <td class="text-center"><?php echo $bank['create_date']; ?></td>
-                                            <td class="text-center"><?php echo $bank['create_by_name'];?></td>
+                                            <td class="text-center"><?php echo $bank['create_by_name']; ?></td>
                                             <td class="text-center"><?php echo $bank['update_date']; ?></td>
-                                            <td class="text-center"><?php echo $bank['update_by_name'];?></td>
+                                            <td class="text-center"><?php echo $bank['update_by_name']; ?></td>
 
                                             <?php if ($bank['bank_list_status'] == 0) { ?>
                                                 <td class="text-center text-disable">ปิดการใช้งาน</td>
@@ -185,32 +186,54 @@
 
 <script type="application/javascript">
 
+    //    init_event({
+    //        fn: [readyFn],
+    //        controlerPaging: 'bank_list/get_paging',
+    //        functionPaging: search_user,
+    //        disEvent: ["click,.button-edit,.button-delete"]
+    //    });
+
     init_event({
-        fn: [readyFn],
-        controlerPaging: 'bank_list/get_paging',
-        functionPaging: search_user,
-        disEvent: ["click,.button-edit,.button-delete"]
+        document_on: [
+            'keyup,#input-search'
+            , 'change,#filter-number'
+            , 'change,#filter-status'
+            , 'click,.button-edit'
+            , 'click,.paging'
+        ], document_ready: [
+            get_paging
+        ]
     });
 
-    function readyFn() {
+//    function formatNumber(number) {
+//        var p = number.toFixed(2).split(".");
+//        var minus = p[0].substring(0, 1);
+//        if (minus == "-") {
+//            p[0] = p[0].substring(1, p[0].length);
+//            return "-" + p[0].split("").reverse().reduce(function (acc, number, i, orig) {
+//                    return number + (i && !(i % 3) ? "," : "") + acc;
+//                }, "") + "." + p[1];
+//        }
+//        else {
+//            return "" + p[0].split("").reverse().reduce(function (acc, number, i, orig) {
+//                    return number + (i && !(i % 3) ? "," : "") + acc;
+//                }, "") + "." + p[1];
+//        }
+//    }
+    $(document).on("keyup", "#input-search", function () {
+        search_user();
         get_paging();
-    }
+    });
 
-    function formatNumber(number) {
-        var p = number.toFixed(2).split(".");
-        var minus = p[0].substring(0, 1);
-        if (minus == "-") {
-            p[0] = p[0].substring(1, p[0].length);
-            return "-" + p[0].split("").reverse().reduce(function (acc, number, i, orig) {
-                    return number + (i && !(i % 3) ? "," : "") + acc;
-                }, "") + "." + p[1];
-        }
-        else {
-            return "" + p[0].split("").reverse().reduce(function (acc, number, i, orig) {
-                    return number + (i && !(i % 3) ? "," : "") + acc;
-                }, "") + "." + p[1];
-        }
-    }
+    $(document).on("change", "#filter-number", function () {
+        search_user();
+        get_paging();
+    });
+
+    $(document).on("change", "#filter-status", function () {
+        search_user();
+        get_paging();
+    });
 
     function reload_bank_list(bank_list_id) {
         $("#tbody").empty();
@@ -270,6 +293,40 @@
         });
     }
 
+    $(document).on("click", ".button-edit", function () {
+        var bank_list_id = this.name.replace("button-edit", "");
+        window.open("<?php echo base_url(); ?>bank_list/getForm?bank_list_id=" + bank_list_id, "_self");
+    });
+
+    $(document).on("click", ".button-delete", function () {
+
+        var bank_list_id = this.name.replace("button-delete", "");
+        window.open("<?php echo base_url(); ?>bank_list/delete_bank?bank_list_id=" + bank_list_id, "_self");
+    });
+
+    $(document).on("click", ".paging", function () {
+        var page_number = this.id.replace("page", "");
+        $(".paging").css("background-color", "#ffffff");
+        var max_page = $('.container-paging').find('li').length;
+        var current_page = $("#filter-page").val();
+        if (current_page == 0) {
+            current_page = 1;
+        }
+        if (page_number == "-1" && current_page > 1) {
+            $("#filter-page").val(current_page - 1);
+            $("#page" + (current_page - 1)).css("background-color", "#eeeeee");
+        } else if (page_number == "+1" && current_page < max_page) {
+            $("#filter-page").val(Number(current_page) + 1);
+            $("#page" + (Number(current_page) + 1)).css("background-color", "#eeeeee");
+        } else if (page_number != "-1" && page_number != "+1") {
+            $("#filter-page").val(page_number);
+            $("#page" + page_number).css("background-color", "#eeeeee");
+        } else {
+            $("#page" + (Number(current_page))).css("background-color", "#eeeeee");
+        }
+        search_user();
+    });
+
     function search_user() {
         var txtSearch = $("#input-search").val();
         var filterNumber = $("#filter-number").val();
@@ -313,7 +370,7 @@
                         + "<td class='text-center'>" + bank.bank_list_name + "</td>"
                         + "<td class='text-center'>" + bank.priority_level + "</td>"
                         + "<td class='text-center'>" + bank.create_date + "</td>"
-                        + "<td class='text-center'>" + bank.create_by_name+ "</td>"
+                        + "<td class='text-center'>" + bank.create_by_name + "</td>"
                         + "<td class='text-center'>" + bank.update_date + "</td>"
                         + "<td class='text-center'>" + bank.update_by_name + "</td>"
                         + "<td class='text-center' style='color: " + color_status + "'>"
@@ -364,17 +421,4 @@
             }
         });
     }
-
-    $(document).on("click", ".button-edit", function () {
-        var bank_list_id = this.name.replace("button-edit", "");
-        window.open("<?php echo base_url(); ?>bank_list/getForm?bank_list_id=" + bank_list_id, "_self");
-    });
-
-    $(document).on("click", ".button-delete", function () {
-
-        var bank_list_id = this.name.replace("button-delete", "");
-        window.open("<?php echo base_url(); ?>bank_list/delete_bank?bank_list_id=" + bank_list_id, "_self");
-    });
-
-
 </script>
