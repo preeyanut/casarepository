@@ -15,13 +15,14 @@ class Config_model extends CI_Model
 
 
     public function add_config($data){
+
+
         $this->load->library('encrypt');
 
         $data_array = array(
             'config_id' => (int)$data['config_id'],
             'config_group_id' => (int)$data['config_group_id'],
             'config_title' => $data['config_title'],
-            'priority_level' => (int)$data['priority_level'],
             'meta_keyword' => $data['meta_keyword'],
             'meta_description' => $data['meta_description'],
             'login_link' => $data['login_link'],
@@ -45,7 +46,7 @@ class Config_model extends CI_Model
             'update_by' => $this->session->userdata("user_id")
         );
 
-        $this->db->insert('config_group', $data_array);
+        $this->db->insert('config_webpage', $data_array);
         $insert_id = $this->db->insert_id();
 
         return $insert_id;

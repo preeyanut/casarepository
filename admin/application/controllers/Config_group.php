@@ -148,6 +148,10 @@ class Config_group extends CI_Controller
             $this->error['config_group_name'] = "กรุณากรอกชื่อwebpage";
         }
 
+        if ((strlen($this->input->post('priority_level')) < 3) || (strlen($this->input->post('priority_level')) > 255)) {
+            $this->error['priority_level'] = "กรุณากรอกลำดับความสำคัญ";
+        }
+
         if (isset($this->error)) {
             $jsonResult['error'] = $this->error;
         }
