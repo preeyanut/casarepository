@@ -54,11 +54,11 @@
                                 </div>
                                 <div class="col-md-10 col-xs-10">
                                     <div class="">
-                                        <select name="type_id" id="input-type" class="form-control">
-                                            <?php for ($i = 0; $i < count($type_id); $i++) { ?>
-                                                <option value="<?php echo $type_id[$i]; ?>" <?php if ($type_id[$i] == $category_type_id) { ?>
+                                        <select name="type_id" id="input-type" class="form-control selectpicker">
+                                            <?php for ($i = 0; $i < count($category_type_id); $i++) { ?>
+                                                <option value="<?php echo $category_type_id[$i]; ?>" <?php if ($category_type_id[$i] == $type_id) { ?>
                                                     selected="selected" <?php } ?> >
-                                                    <?php echo $type_name[$i]; ?>
+                                                    <?php echo $category_type_name[$i]; ?>
                                                 </option>
                                             <?php } ?>
                                         </select>
@@ -68,34 +68,37 @@
 
                             <div class="form-group required col-md-12 col-xs-12">
                                 <div class="col-md-2 col-xs-2" align="right">
-                                    <label class=" control-label" for="input-category-icon"> ไอคอน</label>
+                                    <label class="control-label" for="input-category-icon"> ไอคอน</label>
                                 </div>
                                 <div class="col-md-10 col-xs-10">
-                                        <div class="col-md-1 col-xs-1"><input type="radio" name="category_icon" value="1" <?php if($category_icon == 1){echo "checked=\"checked\"";}?>>
-                                            <i class="fa fa-address-book-o"></i></div>
-                                        <div class="col-md-1 col-xs-1"><input type="radio" name="category_icon" value="2" <?php if($category_icon == 2){echo "checked=\"checked\"";}?>>
-                                            <i class="fa fa-area-chart"></i></div>
-                                        <div class="col-md-1 col-xs-1"><input type="radio" name="category_icon" value="3" <?php if($category_icon == 3){echo "checked=\"checked\"";}?>>
-                                            <i class="fa fa-book"></i></div>
-                                        <div class="col-md-1 col-xs-1"><input type="radio" name="category_icon" value="4" <?php if($category_icon == 4){echo "checked=\"checked\"";}?>>
-                                            <i class="fa fa-camera"></i></div>
-                                        <div class="col-md-1 col-xs-1"><input type="radio" name="category_icon" value="5" <?php if($category_icon == 5){echo "checked=\"checked\"";}?>>
-                                            <i class="fa fa-film"></i></div>
-                                        <div class="col-md-1 col-xs-1"><input type="radio" name="category_icon" value="6" <?php if($category_icon == 6){echo "checked=\"checked\"";}?>>
-                                            <i class="fa fa-university"></i></div>
-                                        <div class="col-md-1 col-xs-1"><input type="radio" name="category_icon" value="7" <?php if($category_icon == 7){echo "checked=\"checked\"";}?>>
-                                            <i class="fa fa-file-text-o"></i></div>
-                                        <div class="col-md-1 col-xs-1"><input type="radio" name="category_icon" value="8" <?php if($category_icon == 8){echo "checked=\"checked\"";}?>>
-                                            <i class="fa fa-calendar-o"></i></div>
-                                        <div class="col-md-1 col-xs-1"><input type="radio" name="category_icon" value="9" <?php if($category_icon == 9){echo "checked=\"checked\"";}?>>
-                                            <i class="fa fa-clone"></i></div>
-                                        <div class="col-md-1 col-xs-1"><input type="radio" name="category_icon" value="10" <?php if($category_icon == 10){echo "checked=\"checked\"";}?>>
-                                            <i class="fa fa-cubes"></i></div>
-                                        <div class="col-md-1 col-xs-1"><input type="radio" name="category_icon" value="11" <?php if($category_icon == 11){echo "checked=\"checked\"";}?>>
-                                            <i class="fa fa-child"></i></div>
-                                        <div class="col-md-1 col-xs-1"><input type="radio" name="category_icon" value="12" <?php if($category_icon == 12){echo "checked=\"checked\"";}?>>
-                                            <i class="fa fa-fax"></i></div>
+                                    <select name="category_icon" class="form-control selectpicker">
+                                        <option data-icon="fa fa-address-book-o" value="1" <?php if ($category_icon == 1) { ?>
+                                            selected="selected" <?php } ?>></option>
+                                        <option data-icon="fa fa-area-chart" value="2" <?php if ($category_icon == 2) { ?>
+                                            selected="selected" <?php } ?>></option>
+                                        <option data-icon="fa fa-book" value="3" <?php if ($category_icon == 3) { ?>
+                                            selected="selected" <?php } ?>></option>
+                                        <option data-icon="fa fa-camera" value="4" <?php if ($category_icon == 4) { ?>
+                                            selected="selected" <?php } ?>></option>
+                                        <option data-icon="fa fa-film" value="5" <?php if ($category_icon == 5) { ?>
+                                            selected="selected" <?php } ?>></option>
+                                        <option data-icon="fa fa-university" value="6" <?php if ($category_icon == 6) { ?>
+                                            selected="selected" <?php } ?>></option>
+                                        <option data-icon="fa fa-file-text-o" value="7" <?php if ($category_icon == 7) { ?>
+                                            selected="selected" <?php } ?>></option>
+                                        <option data-icon="fa fa-calendar-o" value="8" <?php if ($category_icon == 8) { ?>
+                                            selected="selected" <?php } ?>></option>
+                                        <option data-icon="fa fa-clone" value="9" <?php if ($category_icon == 9) { ?>
+                                            selected="selected" <?php } ?>></option>
+                                        <option data-icon="fa fa-cubes" value="10" <?php if ($category_icon == 10) { ?>
+                                            selected="selected" <?php } ?>></option>
+                                        <option data-icon="fa fa-child" value="11" <?php if ($category_icon == 11) { ?>
+                                            selected="selected" <?php } ?>></option>
+                                        <option data-icon="fa fa-fax" value="12" <?php if ($category_icon == 12) { ?>
+                                            selected="selected" <?php } ?>></option>
+                                    </select>
                                 </div>
+                                <div class="text-danger"></div>
                             </div>
 
                             <div class="form-group required col-md-12 col-xs-12">
@@ -112,65 +115,68 @@
                                 </div>
                             </div>
 
-                            <div class="form-group required col-md-12 col-xs-12">
-                                <div class="col-md-2 col-xs-2" align="right">
-                                    <label class=" control-label" for="create_date">วันที่เพิ่ม</label>
-                                </div>
-                                <div class="col-md-10 col-xs-10">
-                                    <div class="">
-                                        <input type="text" name="create_date" value="<?php echo $create_date; ?>"
-                                               id="create_date"
-                                               disabled
-                                               class="form-control"/>
+                            <?php if($category_id != '') { ?>
+                                <div class="form-group required col-md-12 col-xs-12">
+                                    <div class="col-md-2 col-xs-2" align="right">
+                                        <label class=" control-label" for="create_date">วันที่เพิ่ม</label>
                                     </div>
-                                    <div class="text-danger"></div>
+                                    <div class="col-md-10 col-xs-10">
+                                        <div class="">
+                                            <input type="text" name="create_date" value="<?php echo $create_date; ?>"
+                                                   id="create_date"
+                                                   disabled
+                                                   class="form-control"/>
+                                        </div>
+                                        <div class="text-danger"></div>
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="form-group required col-md-12 col-xs-12">
-                                <div class="col-md-2 col-xs-2" align="right">
-                                    <label class=" control-label" for="input-create-by">เพิ่มโดย</label>
-                                </div>
-                                <div class="col-md-10 col-xs-10">
-                                    <div class="">
-                                        <input type="text" name="create_by"
-                                               value="<?php echo $create_by_name ?>"
-                                               id="input-create-by" disabled
-                                               class="form-control"/>
+                                <div class="form-group required col-md-12 col-xs-12">
+                                    <div class="col-md-2 col-xs-2" align="right">
+                                        <label class=" control-label" for="input-create-by">เพิ่มโดย</label>
                                     </div>
-                                    <div class="text-danger"></div>
+                                    <div class="col-md-10 col-xs-10">
+                                        <div class="">
+                                            <input type="text" name="create_by"
+                                                   value="<?php echo $create_by_name ?>"
+                                                   id="input-create-by" disabled
+                                                   class="form-control"/>
+                                        </div>
+                                        <div class="text-danger"></div>
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="form-group required col-md-12 col-xs-12">
-                                <div class="col-md-2 col-xs-2" align="right">
-                                    <label class=" control-label" for="create_date">วันที่แก้ไขล่าสุด</label>
-                                </div>
-                                <div class="col-md-10 col-xs-10">
-                                    <div class="">
-                                        <input type="text" name="create_date" value="<?php echo $update_date; ?>"
-                                               id="create_date"
-                                               disabled
-                                               class="form-control"/>
+                                <div class="form-group required col-md-12 col-xs-12">
+                                    <div class="col-md-2 col-xs-2" align="right">
+                                        <label class=" control-label" for="create_date">วันที่แก้ไขล่าสุด</label>
                                     </div>
-                                    <div class="text-danger"></div>
+                                    <div class="col-md-10 col-xs-10">
+                                        <div class="">
+                                            <input type="text" name="create_date" value="<?php echo $update_date; ?>"
+                                                   id="create_date"
+                                                   disabled
+                                                   class="form-control"/>
+                                        </div>
+                                        <div class="text-danger"></div>
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="form-group required col-md-12 col-xs-12">
-                                <div class="col-md-2 col-xs-2" align="right">
-                                    <label class=" control-label" for="input-create-by">แก้ไขโดย</label>
-                                </div>
-                                <div class="col-md-10 col-xs-10">
-                                    <div class="">
-                                        <input type="text" name="create_by"
-                                               value="<?php echo $update_by_name ?>"
-                                               id="input-create-by" disabled
-                                               class="form-control"/>
+                                <div class="form-group required col-md-12 col-xs-12">
+                                    <div class="col-md-2 col-xs-2" align="right">
+                                        <label class=" control-label" for="input-create-by">แก้ไขโดย</label>
                                     </div>
-                                    <div class="text-danger"></div>
+                                    <div class="col-md-10 col-xs-10">
+                                        <div class="">
+                                            <input type="text" name="create_by"
+                                                   value="<?php echo $update_by_name ?>"
+                                                   id="input-create-by" disabled
+                                                   class="form-control"/>
+                                        </div>
+                                        <div class="text-danger"></div>
+                                    </div>
                                 </div>
-                            </div>
+
+                            <?php }?>
 
                             <div class="form-group required col-md-12 col-xs-12">
                                 <div class="col-md-2 col-xs-2" align="right">
@@ -264,13 +270,12 @@
                                     <div class="">
                                         <button type="button" id="button-save" class="btn btn-primary">บันทึก</button>
                                         <button type="reset" id="btn-reset" class="btn btn-default">ยกเลิก</button>
-                                        <!--                                        <a href="-->
-                                        <?php //echo base_url();?><!--category/get_list"> <button id="btn-back" class="btn btn-warning">ออกจากหน้านี้</button></a>-->
                                     </div>
                                 </div>
                             </div>
 
                         </div>
+                    </form>
                 </div>
                 <!-- /.box -->
             </div>

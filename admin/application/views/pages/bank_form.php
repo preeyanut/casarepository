@@ -34,7 +34,7 @@
 
                         <div class="row">
 
-                            <div class="form-group required col-md-4">
+                            <div class="form-group required col-md-4 col-xs-4">
                                 <label class=" control-label" for="input-bank-name">ชื่อธนาคาร</label>
 
                                 <div class="">
@@ -45,7 +45,18 @@
                                 <div class="text-danger"></div>
                             </div>
 
-                            <div class="form-group col-md-2">
+                            <div class="form-group required col-md-2 col-xs-2">
+                                <label class=" control-label" for="input-priority">ความสำคัญ</label>
+
+                                <div class="">
+                                    <input type="text" name="priority_level" value="<?php echo $priority_level; ?>"
+                                           placeholder="ความสำคัญ" id="input-priority"
+                                           class="form-control"/>
+                                </div>
+                                <div class="text-danger"></div>
+                            </div>
+
+                            <div class="form-group col-md-2 col-xs-2">
                                 <label class=" control-label" for="input-status">สถานะ</label>
 
                                 <div class="">
@@ -53,12 +64,12 @@
 
                                         <option
                                                 value="0" <?php if ($bank_list_status == 0) { ?>
-                                                selected="selected" <?php } ?> >
+                                            selected="selected" <?php } ?> >
                                             ปิดการใช้งาน
                                         </option>
                                         <option
                                                 value="1" <?php if ($bank_list_status == 1) { ?>
-                                                selected="selected" <?php } ?>>
+                                            selected="selected" <?php } ?> >
                                             เปิดใช้งาน
                                         </option>
 
@@ -66,7 +77,7 @@
                                 </div>
                             </div>
 
-                            <div class="form-group col-md-6" style="text-align: right;">
+                            <div class="form-group col-md-4 col-xs-4" style="text-align: right;">
                                 <br>
                                 <div class="">
                                     <button type="button" id="button-save" class="btn btn-primary"> บันทึก</button>
@@ -184,7 +195,7 @@
             },
             success: function (json) {
 
-                 alert("เพิ่มข้อมูลเสร็จสิ้น");
+                alert("เพิ่มข้อมูลเสร็จสิ้น");
             },
             error: function (xhr, ajaxOptions, thrownError) {
                 alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
@@ -207,7 +218,7 @@
                 $('#button-save').button('reset');
             },
             success: function (json) {
-                 alert("แก้ไขข้อมูลเสร็จสิ้น");
+                alert("แก้ไขข้อมูลเสร็จสิ้น");
             },
             error: function (xhr, ajaxOptions, thrownError) {
                 alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);

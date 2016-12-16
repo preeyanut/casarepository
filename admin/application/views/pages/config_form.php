@@ -26,51 +26,52 @@
                     </div>
 
                     <!-- /.box-header -->
-                    <div class="row">
+                    <!-- form start -->
+                    <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" id="form"
+                          class=" box-body">
 
-                        <br>
-                        <div class="form-group col-md-12 col-xs-12">
-                            <div class="col-md-2 col-xs-2" align="right">
-                                <label class=" control-label" for="input-type">Config Group</label>
-                            </div>
-                            <div class="col-md-4 col-xs-4">
-                                <div class="">
-                                    <select name="config_id" id="select-config" class="form-control" onchange="">
-                                        <?php for ($i = 0; $i < count($config_group_id); $i++) { ?>
-                                            <option value="<?php echo $config_group_id[$i]; ?>" <?php if ($config_group_id[$i] == $config_id) { ?>
-                                                selected="selected" <?php } ?> >
-                                                <?php echo $config_group_name[$i]; ?>
-                                            </option>
-                                        <?php } ?>
-                                    </select>
+                        <input type="hidden" name="config_id" value="<?php echo $config_id; ?>"
+                               id="config_id" class="form-control"/>
+
+                        <div class="row">
+
+                            <div class="form-group col-md-12 col-xs-12">
+                                <div class="col-md-2 col-xs-2" align="right">
+                                    <label class=" control-label" for="input-type">Config Group</label>
+                                </div>
+                                <div class="col-md-4 col-xs-4">
+                                    <div class="">
+                                        <select name="config_id" id="select-config" class="form-control"
+                                                onchange="change_config()">
+                                            <?php for ($i = 0; $i < count($config_group_id); $i++) { ?>
+                                                <option value="<?php echo $config_group_id[$i]; ?>" <?php if ($config_group_id[$i] == $config_id) { ?>
+                                                    selected="selected" <?php } ?> >
+                                                    <?php echo $config_group_name[$i]; ?>
+                                                </option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <!-- /.box -->
-
-                        <br>
-                        <br>
-                        <!-- Fronted Setting Form-->
-                        <div class="content-boxed">
+                            <!-- /.box -->
+                            <br>
+                            <br>
                             <hr>
-                            <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data"
-                                  id="fronted-form" class=" box-body">
 
-                                <input type="hidden" name="config_id" value="<?php echo $config_id; ?>"
-                                       id="config_id" class="form-control"/>
-
+                            <!-- Fronted Setting Form-->
+                            <div class="content-boxed" id="frontend-form">
                                 <div class="row">
 
                                     <div class="form-group required col-md-12 col-xs-12">
                                         <div class="col-md-2 col-xs-2" align="right">
                                             <label class=" control-label" for="input-type-name">Title</label>
                                         </div>
-                                        <div class="col-md-10 col-xs-10">
+                                        <div class="col-md-6 col-xs-6">
                                             <div class="">
                                                 <input type="text" name="config_title"
                                                        value="<?php echo $config_title; ?>"
-                                                       placeholder="Title" id="input-config-title"
+                                                       placeholder="" id="input-config-title"
                                                        class="form-control"/>
                                             </div>
                                             <div class="text-danger"></div>
@@ -81,7 +82,7 @@
                                         <div class="col-md-2 col-xs-2" align="right">
                                             <label class=" control-label" for="input-type-name">Favicon</label>
                                         </div>
-                                        <div class="col-md-10 col-xs-10">
+                                        <div class="col-md-6 col-xs-6">
                                             <div class="">
                                                 <input type="text" name="config_image"
                                                        value="<?php echo $config_image; ?>"
@@ -97,11 +98,11 @@
                                             <label class=" control-label"
                                                    for="input-meta-keyword">Meta Keyword</label>
                                         </div>
-                                        <div class="col-md-10 col-xs-10">
+                                        <div class="col-md-6 col-xs-6">
                                             <div class="">
                                                 <textarea type="text" name="meta_keyword"
-                                                       value="<?php echo $meta_keyword; ?>"
-                                                       placeholder="" id="input-meta-keyword"
+                                                          value="<?php echo $meta_keyword; ?>"
+                                                          placeholder="" id="input-meta-keyword"
                                                           class="form-control"></textarea>
                                             </div>
                                             <div class="text-danger"></div>
@@ -113,7 +114,7 @@
                                             <label class=" control-label"
                                                    for="input-meta-description">Meta Description</label>
                                         </div>
-                                        <div class="col-md-10 col-xs-10">
+                                        <div class="col-md-6 col-xs-6">
                                             <div class="">
                                                 <textarea type="text" name="meta_description"
                                                           value="<?php echo $meta_description; ?>"
@@ -129,12 +130,12 @@
                                             <label class=" control-label"
                                                    for="input-login-link">Login Link</label>
                                         </div>
-                                        <div class="col-md-10 col-xs-10">
+                                        <div class="col-md-6 col-xs-6">
                                             <div class="">
                                                 <input type="text" name="login_link"
-                                                          value="<?php echo $login_link; ?>"
-                                                          placeholder="" id="input-login-link"
-                                                          class="form-control"/>
+                                                       value="<?php echo $login_link; ?>"
+                                                       placeholder="" id="input-login-link"
+                                                       class="form-control"/>
                                             </div>
                                             <div class="text-danger"></div>
                                         </div>
@@ -143,9 +144,9 @@
                                     <div class="form-group required col-md-12 col-xs-12">
                                         <div class="col-md-2 col-xs-2" align="right">
                                             <label class=" control-label"
-                                                   for="input-login-link">Line ID</label>
+                                                   for="input-line-id">Line ID</label>
                                         </div>
-                                        <div class="col-md-10 col-xs-10">
+                                        <div class="col-md-6 col-xs-6">
                                             <div class="">
                                                 <input type="text" name="line_id"
                                                        value="<?php echo $line_id; ?>"
@@ -161,7 +162,7 @@
                                             <label class=" control-label"
                                                    for="input-telephone">Telephone Number</label>
                                         </div>
-                                        <div class="col-md-10 col-xs-10">
+                                        <div class="col-md-6 col-xs-6">
                                             <div class="">
                                                 <input type="text" name="telephone"
                                                        value="<?php echo $telephone; ?>"
@@ -177,7 +178,7 @@
                                             <label class=" control-label"
                                                    for="input-facebook">Facebook</label>
                                         </div>
-                                        <div class="col-md-10 col-xs-10">
+                                        <div class="col-md-6 col-xs-6">
                                             <div class="">
                                                 <input type="text" name="facebook"
                                                        value="<?php echo $facebook; ?>"
@@ -191,13 +192,13 @@
                                     <div class="form-group required col-md-12 col-xs-12">
                                         <div class="col-md-2 col-xs-2" align="right">
                                             <label class=" control-label"
-                                                   for="input-google-plus">Google Plus</label>
+                                                   for="input-google">Google Plus</label>
                                         </div>
-                                        <div class="col-md-10 col-xs-10">
+                                        <div class="col-md-6 col-xs-6">
                                             <div class="">
                                                 <input type="text" name="google-plus"
                                                        value="<?php echo $googleplus; ?>"
-                                                       placeholder="" id="input-google-plus"
+                                                       placeholder="" id="input-google"
                                                        class="form-control"/>
                                             </div>
                                             <div class="text-danger"></div>
@@ -209,7 +210,7 @@
                                             <label class=" control-label"
                                                    for="input-instagram">Instagram</label>
                                         </div>
-                                        <div class="col-md-10 col-xs-10">
+                                        <div class="col-md-6 col-xs-6">
                                             <div class="">
                                                 <input type="text" name="instagram"
                                                        value="<?php echo $instagram; ?>"
@@ -225,7 +226,7 @@
                                             <label class=" control-label"
                                                    for="input-youtube">Youtube</label>
                                         </div>
-                                        <div class="col-md-10 col-xs-10">
+                                        <div class="col-md-6 col-xs-6">
                                             <div class="">
                                                 <input type="text" name="youtube"
                                                        value="<?php echo $youtube; ?>"
@@ -241,10 +242,10 @@
                                             <label class=" control-label"
                                                    for="input-twitter">Twitter</label>
                                         </div>
-                                        <div class="col-md-10 col-xs-10">
+                                        <div class="col-md-6 col-xs-6">
                                             <div class="">
                                                 <input type="text" name="twitter"
-                                                       value="<?php echo $youtube; ?>"
+                                                       value="<?php echo $twitter; ?>"
                                                        placeholder="" id="input-twitter"
                                                        class="form-control"/>
                                             </div>
@@ -255,7 +256,7 @@
                                     <div class="form-group col-md-6" style="text-align: center;">
                                         <br>
                                         <div class="">
-                                            <button type="button" id="button-save" class="btn btn-primary"> บันทึก
+                                            <button type="button" id="button-save" class="btn btn-primary" name="button-save"> บันทึก
                                             </button>
                                             <button type="reset" id="btn-reset" class="btn btn-default">ยกเลิก</button>
                                         </div>
@@ -263,56 +264,47 @@
 
                                 </div>
 
-                            </form>
-                        </div>
+                            </div>
 
 
-                        <!-- Contact Setting Form-->
+                            <!-- Contact Setting Form-->
 
-                        <div class="content-boxed">
-                            <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data"
-                                  id="contact-form" class=" box-body">
-
-                                <input type="hidden" name="config_id" value="<?php echo $config_id; ?>"
-                                       id="config_id" class="form-control"/>
-
+                            <div class="content-boxed" id="contact-form">
                                 <div class="row">
 
                                     <div class="form-group required col-md-12 col-xs-12">
                                         <div class="col-md-2 col-xs-2" align="right">
                                             <label class=" control-label" for="input-type-name">Content</label>
                                         </div>
-                                        <div class="col-md-10 col-xs-10">
+                                        <div class="col-md-6 col-xs-6">
                                             <div class="">
-                                                <input type="text" name="config_content"
-                                                       value="<?php echo $config_content; ?>"
-                                                       placeholder="" id="input-config-content"
-                                                       class="form-control"/>
+                                                <textarea id="edittext" name="config_content"
+                                                          value="<?php echo $config_content; ?>"
+                                                          placeholder="" id="input-config-content"
+                                                          class="form-control"></textarea>
                                             </div>
                                             <div class="text-danger"></div>
                                         </div>
                                     </div>
 
 
-                                    <div class="form-group col-md-6" style="text-align: center;">
+                                    <!--<div class="form-group col-md-6" style="text-align: center;">
                                         <br>
                                         <div class="">
                                             <button type="button" id="button-save" class="btn btn-primary"> บันทึก
                                             </button>
                                             <button type="reset" id="btn-reset" class="btn btn-default">ยกเลิก</button>
                                         </div>
-                                    </div>
+                                    </div>-->
 
                                 </div>
 
-                            </form>
+                            </div>
+
+                            <!-- Contact Setting Form-->
+
                         </div>
-
-                        <!-- Contact Setting Form-->
-
-
-                    </div>
-
+                    </form>
                 </div>
                 <!--/.col (left) -->
             </div>
@@ -338,22 +330,172 @@
 </div>
 
 
-<script>
+<script type="text/javascript">
+
+    init_event({
+        fn: [readyFn],
+        controlerPaging: 'config_group/get_paging',
+        functionPaging: search_user,
+        disEvent: ["click,#button-save","click,.button-edit"]
+
+    });
+
+    function readyFn() {
+        get_paging();
+    }
 
 
-    //$("#select-config").change(function () {
-        //$("#fronted_form").toggle("slow", function () {
-        //});
-    //});
+    function formatNumber(number) {
+        var p = number.toFixed(2).split(".");
+        var minus = p[0].substring(0, 1);
+        if (minus == "-") {
+            p[0] = p[0].substring(1, p[0].length);
+            return "-" + p[0].split("").reverse().reduce(function (acc, number, i, orig) {
+                    return number + (i && !(i % 3) ? "," : "") + acc;
+                }, "") + "." + p[1];
+        }
+        else {
+            return "" + p[0].split("").reverse().reduce(function (acc, number, i, orig) {
+                    return number + (i && !(i % 3) ? "," : "") + acc;
+                }, "") + "." + p[1];
+        }
+    }
 
-    $(document).ready(function() {
-        $("#select-config").change(function() {
+    $(document).on("click", "#button-save", function () {
+        $.ajax({
+            url: '<?php echo base_url(); ?>config_group/validate_form',
+            type: 'post',
+            data: $('input , select'),
+            dataType: 'json',
+            crossDomain: true,
+            beforeSend: function () {
+                $('#button-save').button('loading');
+            },
+            complete: function () {
+                $('#button-save').button('reset');
+            },
+            success: function (json) {
+                //alert("OK");
 
-            $("#fronted-form").toggle("slow");
-            //$("#contact-form").toggle();
+                $('.alert, .text-danger').remove();
+                $('.form-group').removeClass('has-error');
 
+                if (json['error']) {
+
+                    var p = 0;
+                    for (var i = 0; i < Object.keys(json['error']).length; i++) {
+                        var input_name = Object.keys(json['error'])[i];
+                        $("input[name='" + input_name + "']").after('<div class="text-danger">' + json['error'][input_name] + '</div>');
+                        $("select[name='" + input_name + "']").after('<div class="text-danger">' + json['error'][input_name] + '</div>');
+                        p++;
+                    }
+
+                    // Highlight any found errors
+                    $('.text-danger').parentsUntil('.form-group').parent().addClass('has-error');
+                } else {
+
+                    if ($('input[name="config_group_id"]').val()) {
+                        edit_config_group();
+                    } else {
+                        add_config_group();
+                    }
+
+                    $('#button-refresh').trigger('click');
+                    $('#content > .container-fluid').prepend('<div class="alert alert-success"><i class="fa fa-check-circle"></i> ' + json['success'] + ' <button type="button" class="close" data-dismiss="alert">&times;</button></div>');
+
+                }
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+            }
         });
     });
 
+    $(document).on("click", ".button-edit", function () {
+        var config_group_id = this.name.replace("button-edit-", "");
+        window.open("<?php echo base_url(); ?>config_group?config_group_id=" + config_group_id, "_self");
+    });
+
+
+    function add_config() {
+        $.ajax({
+            url: '<?php echo base_url(); ?>config/add_config',
+            type: 'post',
+            data: $('input , select'),
+            dataType: 'json',
+            crossDomain: true,
+            beforeSend: function () {
+                $('#button-save').button('loading');
+            },
+            complete: function () {
+                $('#button-save').button('reset');
+            },
+            success: function (json) {
+
+                alert("เพิ่มข้อมูลเสร็จสิ้น");
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+            }
+        });
+    }
+
+    function edit_config() {
+        var config_id = $('input[name="config_id"]').val();
+        $.ajax({
+            url: '<?php echo base_url(); ?>config/edit_config',
+            type: 'post',
+            data: $('input , select'),
+            dataType: 'json',
+            crossDomain: true,
+            beforeSend: function () {
+                $('#button-save').button('loading');
+            },
+            complete: function () {
+                $('#button-save').button('reset');
+            },
+            success: function (json) {
+                alert("แก้ไขข้อมูลเสร็จสิ้น");
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+            }
+        });
+    }
+
+
+
+
+    <!-- dropdown change -->
+
+    $(document).ready(function () {
+        change_config();
+        $("#select-config").change(function () {
+            change_config();
+        });
+    });
+
+    function change_config() {
+        var sel = document.getElementById('select-config');
+        var opts = sel.options[sel.selectedIndex].text;
+
+
+        if (opts == 'Frontend Setting') {
+            document.getElementById('contact-form').style.display = 'none';
+            document.getElementById('frontend-form').style.display = 'block';
+        }
+        else if (opts == 'Contact Setting') {
+            document.getElementById('frontend-form').style.display = 'none';
+            document.getElementById('contact-form').style.display = 'block';
+        }
+    }
 
 </script>
+
+
+<!--Edittext-->
+<!--<script src="<?= base_url(); ?>assets/ckeditor/ckeditor.js"></script>
+
+<script type="text/javascript">
+    CKEDITOR.replace( 'edittext' );
+</script></script>-->

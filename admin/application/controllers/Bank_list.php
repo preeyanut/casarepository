@@ -24,11 +24,12 @@ class Bank_list extends CI_Controller
 
     public function getall()
     {
-        $all_data = $this->Bank_list_model->search_filter($this->input->post("txtSearch"), 0, 10, -1, -1);
+        $all_data = $this->Bank_list_model->search_filter($this->input->post("txtSearch"), 0, 10, -1);
 
         $total_user = $this->Bank_list_model->count();
         $paging = (int)$total_user / 10;
         $over_page = $total_user % 10;
+
         if ($paging == 0) {
             $paging = 1;
         }
@@ -37,12 +38,6 @@ class Bank_list extends CI_Controller
         }
 
         $data["groups"] = $this->Bank_list_model->getall();
-        $data_user = $this->User_model->get_user_all();
-
-        for($i=0;$i<count($data_user);$i++) {
-            $data['user_id'][] = $data_user[$i]['user_id'];
-            $data['username'][] = $data_user[$i]['username'];
-        }
 
         $data["paging"] = $paging;
 
@@ -100,7 +95,6 @@ class Bank_list extends CI_Controller
                 $page++;
             }
         }
-//        var_dump($this->input->post("filter-number"),$this->input->post("filter-page"),$this->input->post("filter-status"));
 
         $data["paging"] = $page;
         $jsonResult['Data'] = $data;
@@ -159,6 +153,15 @@ class Bank_list extends CI_Controller
         echo json_encode($jsonResult);
     }
 
+    public function delete_bank()
+    {
+        if ($this->input->get('bank_list_id')) {
+            $data["bank_list_id"] = $this->Bank_list_model->delete_bank($this->input->get('bank_list_id'));
+        }
+
+        $this->getall();
+    }
+
     public function getForm()
     {
 
@@ -175,6 +178,7 @@ class Bank_list extends CI_Controller
                 foreach ($data_info as $info) {
                     $data['bank_list_name'] = $info['bank_list_name'];
                     $data['bank_list_status'] = $info['bank_list_status'];
+                    $data['priority_level'] = $info['priority_level'];
                 }
                 for($i=0;$i<count($data_user);$i++) {
                     $data['user_id'][] = $data_user[$i]['user_id'];
@@ -188,6 +192,7 @@ class Bank_list extends CI_Controller
 
             $data['bank_list_id'] = "";
             $data['bank_list_name'] = "";
+            $data['priority_level'] = "";
             $data['bank_list_status'] = "";
 
             $data['create_by'] = $this->input->get('user_id');
@@ -208,6 +213,10 @@ class Bank_list extends CI_Controller
 
         if ((strlen($this->input->post('bank_name')) < 3) || (strlen($this->input->post('bank_name')) > 255)) {
             $this->error['bank_name'] = "กรุณากรอกชื่อธนาคาร";
+        }
+
+        if ((strlen($this->input->post('priority_level')) < 1) || (strlen($this->input->post('priority_level')) > 255)) {
+            $this->error['priority_level'] = "กรุณากรอกความสำคัญ";
         }
 
         if (isset($this->error)) {
