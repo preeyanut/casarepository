@@ -208,18 +208,6 @@
 
 <script type="application/javascript">
 
-    init_event({
-        fn: [readyFn],
-        controlerPaging: 'list_user/get_paging',
-        functionPaging: search_user,
-        disEvent: ["click,.button-edit"]
-    });
-
-    function readyFn(){
-        get_paging();
-        label_red_color();
-    }
-
     function formatNumber(number){
         var p = number.toFixed(2).split(".");
         var minus = p[0].substring(0, 1);

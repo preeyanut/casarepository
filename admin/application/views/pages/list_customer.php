@@ -452,18 +452,6 @@
 
 <script type="application/javascript">
 
-    init_event({
-        fn: [readyLoad],
-        disEvent: ["click,#button-save", "focusout,#minimum", "focusout,#reward", "focusout,#maximum", "focusout,#commission"
-            , "focusout,#tbody-setting-default input", "focusout,#input-customer-credit", "change,.my_percent_customer"
-            , "change,.sub_percent_customer", "focusout,.my_percent_customer", "focusout.sub_percent_customer"]
-    });
-
-    function readyLoad() {
-        $('#input-customer-credit').maskMoney();
-        $('.input-number').maskMoney();
-    }
-
     function format_to_money() {
         var input_type_number = $('.input-number');
 

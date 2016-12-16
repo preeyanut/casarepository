@@ -27,4 +27,5 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 *.sublime-project
 .svn/
 admin/application/logs/log-2016-12-12.php
-admin/application/logs/log-2016-12-15.php
+admin/application/logs/log-2016-12-16.php
+admin/application/views/layout/category_type_form.php

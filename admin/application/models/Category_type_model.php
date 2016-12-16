@@ -4,6 +4,9 @@ class Category_type_model extends CI_Model
 {
     public function getall()
     {
+//        $query = $this->db->query("SELECT * FROM category_type");
+//        return $query->result_array();
+
         $query = $this->db->query("SELECT category_type.*,CONCAT(u1.firstname, ' ', u1.lastname) as create_by_name "
             . " ,CONCAT(u2.firstname, ' ', u2.lastname)  as update_by_name "
             . " from category_type "
@@ -12,7 +15,8 @@ class Category_type_model extends CI_Model
         return $query->result_array();
     }
 
-    public function get_data($id){
+    public function get_data($id)
+    {
         $query = $this->db->query("SELECT * FROM category_type WHERE category_type_id = " . $id);
         return $query->result_array();
     }
@@ -28,7 +32,6 @@ class Category_type_model extends CI_Model
 
     public function search_filter($txtSearch, $start_filter, $filter_number, $status)
     {
-
         $str_sql = "";
         if ($status != '-1' && $status != '') {
             $str_sql .= " AND  category_type_status = " . $status;
@@ -53,10 +56,10 @@ class Category_type_model extends CI_Model
 
         $str_sql = "";
         if ($filter_status != "" || $filter_status != 'undefined') {
-            $str_sql .= " AND  category_type_status = 1"  ;
+            $str_sql .= " AND  category_type_status = 1";
         }
 
-        $query = $this->db->query("SELECT DISTINCT *, (select count(*) from category_type ) as total FROM `" . "" . "category_type` "
+        $query = $this->db->query("SELECT DISTINCT *, (select count(*) from category_type where  category_type_name  Like '%" . $txtSearch . "%' ) as total FROM `" . "" . "category_type` "
             . " WHERE  category_type_name  Like '%" . $txtSearch . "%' "
             . $str_sql
             . " Limit " . $start_filter . ", " . $filter_number . " "
@@ -65,7 +68,8 @@ class Category_type_model extends CI_Model
         return $query->row_array('total');
     }
 
-    public function add_type($data){
+    public function add_category_type($data)
+    {
 
         $data_array = array(
             'category_type_name' => $data['category_type_name'],
@@ -82,8 +86,8 @@ class Category_type_model extends CI_Model
         return $insert_id;
     }
 
-    public function add_category_field($data){
-
+    public function add_category_field($data)
+    {
         $data_array = array(
             'category_type_id' => $data['category_type_id'],
             'field_name' => $data['field_name'],
@@ -94,31 +98,39 @@ class Category_type_model extends CI_Model
             'update_date' => date("Y-m-d H:i:s"),
             'update_by' => $this->session->userdata("user_id")
         );
-
         $this->db->insert('category_field', $data_array);
         $insert_id = $this->db->insert_id();
-
         return $insert_id;
     }
 
 
-    public function edit_type($data){
-        $this->load->library('encrypt');
-
-        $this->db->query("UPDATE `" . "" . "category_type` SET "
-            . " category_type_name = '" . $data['category_type_name'] . "'"
-            . ", priority_level = '" . $data['priority_level'] . "'"
-            . ", category_type_status = '" . (int)$data['category_type_status'] . "'"
-            . ", update_date = '" .  date("Y-m-d H:i:s") . "'"
-            . ", update_by = '" . $this->session->userdata("user_id") . "'"
-            . " WHERE  category_type_id = '" . (int)$data['category_type_id'] . "'");
-
+    public function edit_category_type($data)
+    {
+        $data_array = array(
+            'category_type_name' => $data['category_type_name'],
+            'category_type_status' => $data['category_type_status'],
+            'update_date' => date("Y-m-d H:i:s"),
+            'update_by' => $this->session->userdata("user_id")
+        );
+        $this->db->where('category_type_id', $data['category_type_id']);
+        $result = $this->db->update('category_type', $data_array);
+        return $result;
     }
 
-    public function get_category_field($category_field_id){
+    public function delete_category_field($category_type_id)
+    {
+
+        $this->db->where('category_type_id', $category_type_id);
+        $result = $this->db->delete('category_field');
+
+        return $result;
+    }
+
+    public function get_category_field($category_type_id)
+    {
 
         $this->db->select('*');
-        $this->db->where('category_field_id', $category_field_id);
+        $this->db->where('category_type_id', $category_type_id);
         $query = $this->db->get('category_field');
 
         return $query->result_array();

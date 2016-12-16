@@ -950,3 +950,35 @@ background:#fff;
 .td-input{
     background-color: #feffbf;
 }
+
+.table-bordered, .table-bordered > thead > tr > th, .table-bordered > tbody > tr > th, .table-bordered > tfoot > tr > th, .table-bordered > thead > tr > td, .table-bordered > tbody > tr > td, .table-bordered > tfoot > tr > td {
+    border: 1px solid #b3b3b3 !important;
+}
+
+.table thead {
+    background-color: #ceebff;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.marquee-casabet {
+    /*margin-top: 50px;*/
+    /*position: fixed;*/
+    background: -webkit-linear-gradient(-214deg, #ebb948, #d2a450, #fad880, #d38f3d);
+    background: -o-linear-gradient(-214deg, #ebb948, #d2a450, #fad880, #d38f3d);
+    background: -moz-linear-gradient(-214deg, #ebb948, #d2a450, #fad880, #d38f3d);
+    background: linear-gradient(-214deg, #ebb948, #d2a450, #fad880, #d38f3d);
+    width: 100%;
+    height: 35px;
+}
+
+.text-marquee {
+    color: #e01b1b;
+    font-size: 17px;
+    line-height: 2;
+    /*font-weight: 700;*/
+}
+
+.text-disable{
+    color: #8a0004;
+}
