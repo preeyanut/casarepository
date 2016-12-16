@@ -63,9 +63,16 @@
                             <div class="content-boxed" id="frontend-form">
                                 <div class="row">
 
+
+                                    <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" id="form"
+                                          class=" box-body">
+
+                                        <input type="hidden" name="config_id" value="<?php echo $config_id; ?>"
+                                               id="config_id" class="form-control"/>
+
                                     <div class="form-group required col-md-12 col-xs-12">
                                         <div class="col-md-2 col-xs-2" align="right">
-                                            <label class=" control-label" for="input-type-name">Title</label>
+                                            <label class=" control-label" for="input-config-title">Title</label>
                                         </div>
                                         <div class="col-md-6 col-xs-6">
                                             <div class="">
@@ -80,7 +87,7 @@
 
                                     <div class="form-group required col-md-12 col-xs-12">
                                         <div class="col-md-2 col-xs-2" align="right">
-                                            <label class=" control-label" for="input-type-name">Favicon</label>
+                                            <label class=" control-label" for="input-config-image">Favicon</label>
                                         </div>
                                         <div class="col-md-6 col-xs-6">
                                             <div class="">
@@ -333,23 +340,22 @@
 <script type="text/javascript">
 
     init_event({
-        fn: [readyFn],
-        controlerPaging: 'config_group/get_paging',
-        functionPaging: search_user,
+        fn: [readyLoad],
         disEvent: ["click,#button-save","click,.button-edit"]
-
     });
 
-    function readyFn() {
-        get_paging();
+    function readyLoad() {
+        $('.input-number').maskMoney();
     }
 
 
     function formatNumber(number) {
+        //var int_number = Number(number);
         var p = number.toFixed(2).split(".");
         var minus = p[0].substring(0, 1);
         if (minus == "-") {
             p[0] = p[0].substring(1, p[0].length);
+
             return "-" + p[0].split("").reverse().reduce(function (acc, number, i, orig) {
                     return number + (i && !(i % 3) ? "," : "") + acc;
                 }, "") + "." + p[1];
@@ -361,9 +367,10 @@
         }
     }
 
+
     $(document).on("click", "#button-save", function () {
         $.ajax({
-            url: '<?php echo base_url(); ?>config_group/validate_form',
+            url: '<?php echo base_url(); ?>config/validate_form',
             type: 'post',
             data: $('input , select'),
             dataType: 'json',
@@ -394,10 +401,10 @@
                     $('.text-danger').parentsUntil('.form-group').parent().addClass('has-error');
                 } else {
 
-                    if ($('input[name="config_group_id"]').val()) {
-                        edit_config_group();
+                    if ($('input[name="config_id"]').val()) {
+                        edit_group();
                     } else {
-                        add_config_group();
+                        add_group();
                     }
 
                     $('#button-refresh').trigger('click');
@@ -411,10 +418,10 @@
         });
     });
 
-    $(document).on("click", ".button-edit", function () {
-        var config_group_id = this.name.replace("button-edit-", "");
-        window.open("<?php echo base_url(); ?>config_group?config_group_id=" + config_group_id, "_self");
-    });
+    //$(document).on("click", ".button-edit", function () {
+        //var config_id = this.name.replace("button-edit-", "");
+        //window.open("<?php echo base_url(); ?>config?config_id=" + config_id, "_self");
+    //});
 
 
     function add_config() {
