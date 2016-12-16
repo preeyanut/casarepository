@@ -24,8 +24,6 @@ class List_user extends CI_Controller {
 		parent::__construct();
 		$this->load->model('User_model');
 		$this->load->model('User_group_model');
-		//$this->load->model('user_type_model');
-		//$this->load->model('Brand_model');
 		$this->load->library('auth_check');
 
 		if (!$this->auth_check->hasPermission('access', 'list_user')) {
@@ -40,32 +38,25 @@ class List_user extends CI_Controller {
 
 	public function get_form(){
 
-		//$all_user = $this->User_model->search_user_filter($this->input->post("txtSearch"),0,10,-1,-1);
+		$data_user = $this->User_model->search_filter($this->input->post("txtSearch"), 0, 10, -1, -1);
 
-		$all_user = $this->User_model->search_user_filter($this->input->post("txtSearch"),0,10,-1,-1);
-		//get_all_my_sub_user();
-		
-		//$all_user = array();
-	  //array_push($all_user,$this->get_under_user(array(13)));
-
-		$total_user = $this->User_model->get_total_users();
-		$paging = (int)$total_user/10;
-		$over_page = $total_user%10;
-		if($paging==0){
-			$paging=1;
+		$total_user = $this->User_model->count();
+		$paging = (int)$total_user / 10;
+		$over_page = $total_user % 10;
+		if ($paging == 0) {
+			$paging = 1;
 		}
-		if($over_page!=0){
+		if ($over_page != 0) {
 			$paging++;
 		}
 
-		$data["user_groups"] = $this->User_group_model->get_all_user_group();
-
 		$data["paging"] = $paging;
 
-		$data["list"] = $all_user;
+		$data["list"] = $data_user;
 
 		$data["page"] = 'pages/list_user';
-		$this->load->view('pages',$data);
+
+		$this->load->view('template', $data);
 	}
 
 	private function get_under_user($arr_main_user_id){
@@ -153,27 +144,25 @@ class List_user extends CI_Controller {
 
 		$filter_number = $this->input->post("filter-number");
 		$page = $this->input->post("filter-page");
+		$status = $this->input->post("filter-status");
 
-		$user_status = $this->input->post("filter-user-status");
-		$user_group = $this->input->post("filter-user-group");
+		if ($filter_number == -1) {
+			$page = 1;
+		} else {
+			$start_filter = $filter_number * $page;
+			$total_user = $this->User_model->get_total_by_search($this->input->post("txtSearch"), $start_filter, $filter_number, $status);
 
-
-		if($filter_number==-1){
-			$page=1;
-		}else {
-			$start_filter = $filter_number*$page;
-			$total_user = $this->User_model->get_total_users_by_search($this->input->post("txtSearch"),$start_filter,$filter_number,$user_status,$user_group);
-			if(!isset($total_user["total"])){
-				$data["paging"] = 0;
+			if (!isset($total_user["total"])) {
+				$data["paging"] = 1;
 				$jsonResult['Data'] = $data;
 				echo json_encode($jsonResult);
 				return;
 			}
 			$paging = (int)((int)$total_user["total"] / (int)$filter_number);
 			$over_page = (int)((int)$total_user["total"] % (int)$filter_number);
-			$page = 0;
 
-			//echo "--".$total_user["total"] ."--".$paging."---".$over_page;
+//            echo var_dump($total_user);
+//            exit(0);
 			if ($paging == 0) {
 				$page = 1;
 			} else {
@@ -184,7 +173,6 @@ class List_user extends CI_Controller {
 				$page++;
 			}
 		}
-
 
 		$data["paging"] = $page;
 		$jsonResult['Data'] = $data;

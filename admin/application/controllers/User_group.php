@@ -37,7 +37,6 @@ class User_group extends CI_Controller {
 	}
 
 	public function get_form(){
-		//$this->input->post();
 		if($this->input->get('user_group_id')) {
 
 			$user_group_info = $this->User_group_model->get_user_group($this->input->get('user_group_id'));
@@ -45,8 +44,6 @@ class User_group extends CI_Controller {
 				$user_group_info['permission'] = json_decode($user_group_info['permission'], true);
 			}
 
-//			echo var_dump($user_group_info);
-//			exit(0);
 		if (!empty($user_group_info)) {
 				$data['user_group_id'] = $user_group_info['user_group_id'];
 				$data['name'] = $user_group_info['name'];
@@ -60,8 +57,6 @@ class User_group extends CI_Controller {
 		}
 
 		$data["user_groups"] = $this->User_group_model->get_all_user_group();
-
-		//$data["list"] = $this->User_model->getAllUser();
 
 		$data["list"]  = $this->User_group_model->get_all_user_group();
 
@@ -124,7 +119,7 @@ class User_group extends CI_Controller {
 		}
 
 		$data["page"] = 'pages/user_group';
-		$this->load->view('pages',$data);
+		$this->load->view('template',$data);
 	}
 
 	public function validate_form() {
