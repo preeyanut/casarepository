@@ -91,14 +91,12 @@ class Category extends CI_Controller
 
     public function get_form()
     {
-        $data_user = $this->User_model->get_user_all();
         $data_type = $this->Category_type_model->getall();
 
         if ($this->input->get('category_id') != "") {
 
             $data_info = $this->Category_model->get_data($this->input->get('category_id'));
 
-//            var_dump($data_info, $data_user);
             if (!empty($data_info)) {
 
                 $data['category_id'] = $this->input->get('category_id');
@@ -171,6 +169,8 @@ class Category extends CI_Controller
         if ($this->input->post()) {
             $data["category_id"] = $this->Category_model->add_category($this->input->post());
         }
+
+//        var_dump($_POST["category_icon"]);
         $jsonResult['Result'] = true;
         //$jsonResult['error'] = "";
         $jsonResult['Data'] = $data;
@@ -189,6 +189,17 @@ class Category extends CI_Controller
         //$jsonResult['error'] = "";
         $jsonResult['Data'] = $data;
         echo json_encode($jsonResult);
+    }
+
+    public function delete_category()
+    {
+//        var_dump($this->input->post());
+
+        if ($this->input->get('category_id')) {
+            $data["category_id"] = $this->Category_model->delete_category($this->input->get('category_id'));
+        }
+
+        $this->get_list();
     }
 
     public function get_paging()
@@ -238,9 +249,13 @@ class Category extends CI_Controller
             $this->error['category_name'] = "กรุณากรอกชื่อหมวดหมู่";
         }
 
-        if ((strlen($this->input->post('category_icon')) < 3) || (strlen($this->input->post('category_icon')) > 255)) {
-            $this->error['category_icon'] = "กรุณาเลือกไอคอน";
-        }
+//        if ((strlen($this->input->post('category_icon')) < 3) || (strlen($this->input->post('category_icon')) > 255)) {
+//            $this->error['category_icon'] = "กรุณาเลือกไอคอน";
+//        }
+
+//        if ($this->input->post('category_icon')){
+//            $this->error['category_icon'] = "กรุณาเลือกไอคอน";
+//        }
 
         if ((strlen($this->input->post('priority_level')) < 1) || (strlen($this->input->post('priority_level')) > 255)) {
             $this->error['priority_level'] = "กรุณากรอกระดับความสำคัญ";

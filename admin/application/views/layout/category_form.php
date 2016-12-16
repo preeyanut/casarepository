@@ -68,34 +68,17 @@
 
                             <div class="form-group required col-md-12 col-xs-12">
                                 <div class="col-md-2 col-xs-2" align="right">
-                                    <label class=" control-label" for="input-category-icon"> ไอคอน</label>
+                                    <label class="control-label" for="input-category-icon"> ไอคอน</label>
                                 </div>
-                                <div class="col-md-10 col-xs-10">
-                                        <div class="col-md-1 col-xs-1"><input type="radio" name="category_icon" value="1" <?php if($category_icon == 1){echo "checked=\"checked\"";}?>>
-                                            <i class="fa fa-address-book-o"></i></div>
-                                        <div class="col-md-1 col-xs-1"><input type="radio" name="category_icon" value="2" <?php if($category_icon == 2){echo "checked=\"checked\"";}?>>
-                                            <i class="fa fa-area-chart"></i></div>
-                                        <div class="col-md-1 col-xs-1"><input type="radio" name="category_icon" value="3" <?php if($category_icon == 3){echo "checked=\"checked\"";}?>>
-                                            <i class="fa fa-book"></i></div>
-                                        <div class="col-md-1 col-xs-1"><input type="radio" name="category_icon" value="4" <?php if($category_icon == 4){echo "checked=\"checked\"";}?>>
-                                            <i class="fa fa-camera"></i></div>
-                                        <div class="col-md-1 col-xs-1"><input type="radio" name="category_icon" value="5" <?php if($category_icon == 5){echo "checked=\"checked\"";}?>>
-                                            <i class="fa fa-film"></i></div>
-                                        <div class="col-md-1 col-xs-1"><input type="radio" name="category_icon" value="6" <?php if($category_icon == 6){echo "checked=\"checked\"";}?>>
-                                            <i class="fa fa-university"></i></div>
-                                        <div class="col-md-1 col-xs-1"><input type="radio" name="category_icon" value="7" <?php if($category_icon == 7){echo "checked=\"checked\"";}?>>
-                                            <i class="fa fa-file-text-o"></i></div>
-                                        <div class="col-md-1 col-xs-1"><input type="radio" name="category_icon" value="8" <?php if($category_icon == 8){echo "checked=\"checked\"";}?>>
-                                            <i class="fa fa-calendar-o"></i></div>
-                                        <div class="col-md-1 col-xs-1"><input type="radio" name="category_icon" value="9" <?php if($category_icon == 9){echo "checked=\"checked\"";}?>>
-                                            <i class="fa fa-clone"></i></div>
-                                        <div class="col-md-1 col-xs-1"><input type="radio" name="category_icon" value="10" <?php if($category_icon == 10){echo "checked=\"checked\"";}?>>
-                                            <i class="fa fa-cubes"></i></div>
-                                        <div class="col-md-1 col-xs-1"><input type="radio" name="category_icon" value="11" <?php if($category_icon == 11){echo "checked=\"checked\"";}?>>
-                                            <i class="fa fa-child"></i></div>
-                                        <div class="col-md-1 col-xs-1"><input type="radio" name="category_icon" value="12" <?php if($category_icon == 12){echo "checked=\"checked\"";}?>>
-                                            <i class="fa fa-fax"></i></div>
+                                <div class="col-md-10 col-xs-10" data-type="radio">
+                                    <input type="radio" name="category_icon" value="1" <?php if($category_icon == 1){echo "checked";}?> >
+                                    <i class="fa fa-address-book-o"></i>
+                                    <input type="radio" name="category_icon" value="2" <?php if($category_icon == 2){echo "checked";}?> >
+                                    <i class="fa fa-address-book-o"></i>
+                                    <input type="radio" name="category_icon" value="3" <?php if($category_icon == 3){echo "checked";}?> >
+                                    <i class="fa fa-address-book-o"></i>
                                 </div>
+                                <div class="text-danger"></div>
                             </div>
 
                             <div class="form-group required col-md-12 col-xs-12">
@@ -111,6 +94,8 @@
                                     <div class="text-danger"></div>
                                 </div>
                             </div>
+
+                            <?php if($category_id != '') { ?>
 
                             <div class="form-group required col-md-12 col-xs-12">
                                 <div class="col-md-2 col-xs-2" align="right">
@@ -171,6 +156,8 @@
                                     <div class="text-danger"></div>
                                 </div>
                             </div>
+
+                            <?php }?>
 
                             <div class="form-group required col-md-12 col-xs-12">
                                 <div class="col-md-2 col-xs-2" align="right">
@@ -264,13 +251,12 @@
                                     <div class="">
                                         <button type="button" id="button-save" class="btn btn-primary">บันทึก</button>
                                         <button type="reset" id="btn-reset" class="btn btn-default">ยกเลิก</button>
-                                        <!--                                        <a href="-->
-                                        <?php //echo base_url();?><!--category/get_list"> <button id="btn-back" class="btn btn-warning">ออกจากหน้านี้</button></a>-->
                                     </div>
                                 </div>
                             </div>
 
                         </div>
+                    </form>
                 </div>
                 <!-- /.box -->
             </div>

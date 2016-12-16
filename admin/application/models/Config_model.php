@@ -38,10 +38,6 @@ class Config_model extends CI_Model
             'youtube' => $data['youtube'],
             'twitter' => $data['twitter'],
 
-            //for statistic setting
-            'head_tags' => $data['head_tags'],
-            'body_tags' => $data['body_tags'],
-
 
             'create_date' => date("Y-m-d H:i:s"),
             'create_by' => $this->session->userdata("user_id"),

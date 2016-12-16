@@ -35,7 +35,8 @@
                             </div>
                             <div class="col-md-4 col-xs-4">
                                 <div class="">
-                                    <select name="config_id" id="select-config" class="form-control" onchange="">
+                                    <select name="config_id" id="select-config" class="form-control"
+                                            onchange="change_config()">
                                         <?php for ($i = 0; $i < count($config_group_id); $i++) { ?>
                                             <option value="<?php echo $config_group_id[$i]; ?>" <?php if ($config_group_id[$i] == $config_id) { ?>
                                                 selected="selected" <?php } ?> >
@@ -52,7 +53,7 @@
                         <br>
                         <br>
                         <!-- Fronted Setting Form-->
-                        <div class="content-boxed">
+                        <div class="content-boxed" id="fronted-form">
                             <hr>
                             <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data"
                                   id="fronted-form" class=" box-body">
@@ -100,8 +101,8 @@
                                         <div class="col-md-10 col-xs-10">
                                             <div class="">
                                                 <textarea type="text" name="meta_keyword"
-                                                       value="<?php echo $meta_keyword; ?>"
-                                                       placeholder="" id="input-meta-keyword"
+                                                          value="<?php echo $meta_keyword; ?>"
+                                                          placeholder="" id="input-meta-keyword"
                                                           class="form-control"></textarea>
                                             </div>
                                             <div class="text-danger"></div>
@@ -132,9 +133,9 @@
                                         <div class="col-md-10 col-xs-10">
                                             <div class="">
                                                 <input type="text" name="login_link"
-                                                          value="<?php echo $login_link; ?>"
-                                                          placeholder="" id="input-login-link"
-                                                          class="form-control"/>
+                                                       value="<?php echo $login_link; ?>"
+                                                       placeholder="" id="input-login-link"
+                                                       class="form-control"/>
                                             </div>
                                             <div class="text-danger"></div>
                                         </div>
@@ -269,7 +270,7 @@
 
                         <!-- Contact Setting Form-->
 
-                        <div class="content-boxed">
+                        <div class="content-boxed" id="contact-form">
                             <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data"
                                   id="contact-form" class=" box-body">
 
@@ -340,20 +341,36 @@
 
 <script>
 
+    //$(document).ready(function() {
+    //$("#select-config").change(function() {
 
-    //$("#select-config").change(function () {
-        //$("#fronted_form").toggle("slow", function () {
-        //});
+    // $("#fronted-form").toggle("slow");
+    //$("#contact-form").toggle();
+
     //});
+    // });
 
-    $(document).ready(function() {
-        $("#select-config").change(function() {
-
-            $("#fronted-form").toggle("slow");
-            //$("#contact-form").toggle();
-
+    $(document).ready(function () {
+        change_config();
+        $("#select-config").change(function () {
+            change_config();
         });
     });
+
+    function change_config() {
+        var sel = document.getElementById('select-config');
+        var opts = sel.options[sel.selectedIndex].text;
+
+        if (opts == 'Frontend Setting') {
+            document.getElementById('fronted-form').style.display = 'blog';
+            document.getElementById('contact-form').style.display = 'none';
+        }
+        else if (opts == 'Contact Setting') {
+            document.getElementById('contact-form').style.display = 'blog';
+            document.getElementById('fronted-form').style.display = 'none';
+        }
+
+    }
 
 
 </script>

@@ -58,8 +58,7 @@ class Config extends CI_Controller
                     $data['instagram'] = $info['instagram'];
                     $data['youtube'] = $info['youtube'];
                     $data['twitter'] = $info['twitter'];
-                    $data['head_tags'] = $info['head_tags'];
-                    $data['body_tags'] = $info['body_tags'];
+
 
 
                     $data['create_date'] = $info['create_date'];
@@ -98,8 +97,6 @@ class Config extends CI_Controller
             $data['instagram'] = "";
             $data['youtube'] = "";
             $data['twitter'] = "";
-            $data['head_tags'] = "";
-            $data['body_tags'] = "";
             $data['create_by'] = $this->input->get('user_id');
 
             for ($i = 0; $i < count($data_user); $i++) {

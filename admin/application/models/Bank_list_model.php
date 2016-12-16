@@ -24,7 +24,7 @@ class Bank_list_model extends CI_Model
         $data_array = array(
             'bank_list_name' => $data['bank_name'],
             'bank_list_id' => (int)$data['bank_list_id'],
-            'priority_level' => 1,
+            'priority_level' => $data['priority_level'],
             'bank_list_status' => (int)$data['bank_list_status'],
             'create_date' => date("Y-m-d H:i:s"),
             'create_by' => $this->session->userdata("user_id"),
@@ -43,11 +43,18 @@ class Bank_list_model extends CI_Model
 
         $this->db->query("UPDATE `" . "" . "bank_list` SET "
             . " bank_list_name = '" . $data['bank_name'] . "'"
-            . ", priority_level = '" . 1 . "'"
+            . ", priority_level = '" . $data['priority_level'] . "'"
             . ", bank_list_status = '" . (int)$data['bank_list_status'] . "'"
             . ", update_date = '" .  date("Y-m-d H:i:s") . "'"
             . ", update_by = '" . $this->session->userdata("user_id") . "'"
             . " WHERE  bank_list_id = '" . (int)$data['bank_list_id'] . "'");
+
+    }
+
+    public function delete_bank($bank_id){
+        $this->load->library('encrypt');
+
+         $this->db->query("DELETE FROM bank_list WHERE bank_list_id = ". $bank_id) ;
 
     }
 
