@@ -177,6 +177,8 @@
     init_event({
         document_on:[
             'keyup,#input-search'
+            ,'change,#filter-number'
+            ,'change,#filter-status'
             ,'click,.button-edit'
             ,'click,.paging'
         ],document_ready:[
