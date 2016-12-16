@@ -88,7 +88,7 @@
             }
         });
 
-        $('.sidebar-menu').find('a').bind('click', function (ev) {
+        $(document).on('click','.sidebar-menu a',function(ev){
             var urls = $(this)[0].href;
             if (urls.indexOf('#') !== -1) {
                 return;
@@ -100,7 +100,6 @@
             }, 'casa98thailand', urls);
             load_custom_page(urls);
         });
-
 
         function load_custom_page(urls) {
             remove_init_event();
