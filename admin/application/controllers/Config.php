@@ -9,6 +9,8 @@ class Config extends CI_Controller
         $this->load->model('Config_model');
         $this->load->model('Config_group_model');
         $this->load->model('User_model');
+        $this->load->library('ckeditor');
+        $this->load->library('ckfinder');
 
 
 //        $this->load->library('auth_check');
@@ -36,7 +38,6 @@ class Config extends CI_Controller
 
 
             //var_dump($data_info, $data_user);
-            var_dump($data_info);
             if (!empty($data_info)) {
 
                 $data['config_id'] = $this->input->get('config_id');
@@ -44,7 +45,6 @@ class Config extends CI_Controller
                 foreach ($data_info as $info) {
                     $data['config_title'] = $info['config_title'];
                     $data['config_group_id'] = $info['config_group_id'];
-                    $data['priority_level'] = $info['priority_level'];
                     $data['meta_keyword'] = $info['meta_keyword'];
                     $data['meta_description'] = $info['meta_description'];
                     $data['login_link'] = $info['login_link'];
@@ -58,7 +58,6 @@ class Config extends CI_Controller
                     $data['instagram'] = $info['instagram'];
                     $data['youtube'] = $info['youtube'];
                     $data['twitter'] = $info['twitter'];
-
 
 
                     $data['create_date'] = $info['create_date'];
@@ -83,7 +82,6 @@ class Config extends CI_Controller
             $data['config_id'] = "";
             $data['config_group_id'] = "";
             $data['config_title'] = "";
-            $data['priority_level'] = "";
             $data['meta_keyword'] = "";
             $data['meta_description'] = "";
             $data['login_link'] = "";
@@ -121,11 +119,10 @@ class Config extends CI_Controller
     }
 
 
-    public
-    function add_config_group()
+    public function add_config()
     {
         if ($this->input->post()) {
-            $data["config_id"] = $this->Config_model->add_config_group($this->input->post());
+            $data["config_id"] = $this->Config_model->add_config($this->input->post());
         }
 
         $jsonResult['Result'] = true;
@@ -134,11 +131,10 @@ class Config extends CI_Controller
         echo json_encode($jsonResult);
     }
 
-    public
-    function edit_config_group()
+    public function edit_config()
     {
         if ($this->input->post()) {
-            $data["config_id"] = $this->Config_model->edit_config_group($this->input->post());
+            $data["config_id"] = $this->Config_model->edit_config($this->input->post());
         }
 
         $jsonResult['Result'] = true;
@@ -148,12 +144,51 @@ class Config extends CI_Controller
     }
 
 
-    public
-    function validate_form()
+    public function validate_form()
     {
 
-        if ((strlen($this->input->post('config_group_name')) < 3) || (strlen($this->input->post('config_group_name')) > 255)) {
-            $this->error['config_group_name'] = "กรุณากรอกชื่อwebpage";
+        if ((strlen($this->input->post('config_title')) < 3) || (strlen($this->input->post('config_title')) > 255)) {
+            $this->error['config_title'] = "กรุณากรอกข้อมูล title";
+        }
+
+        if ((strlen($this->input->post('meta_keyword')) < 3) || (strlen($this->input->post('meta_keyword')) > 255)) {
+            $this->error['meta_keyword'] = "กรุณากรอกข้อมูล meta_keyword";
+        }
+
+        if ((strlen($this->input->post('meta_description')) < 3) || (strlen($this->input->post('meta_description')) > 255)) {
+            $this->error['meta_description'] = "กรุณากรอกข้อมูล meta_description";
+        }
+
+        if ((strlen($this->input->post('login_link')) < 3) || (strlen($this->input->post('login_link')) > 255)) {
+            $this->error['login_link'] = "กรุณากรอกข้อมูล login link";
+        }
+
+        if ((strlen($this->input->post('line_id')) < 3) || (strlen($this->input->post('line_id')) > 255)) {
+            $this->error['line_id'] = "กรุณากรอกข้อมูล line id";
+        }
+
+        if ((strlen($this->input->post('telephone')) < 3) || (strlen($this->input->post('telephone')) > 255)) {
+            $this->error['telephone'] = "กรุณากรอกข้อมูลเบอร์โทรศัพท์";
+        }
+
+        if ((strlen($this->input->post('facebook')) < 3) || (strlen($this->input->post('facebook')) > 255)) {
+            $this->error['facebook'] = "กรุณากรอกข้อมูล facebook";
+        }
+
+        if ((strlen($this->input->post('google-plus')) < 3) || (strlen($this->input->post('google-plus')) > 255)) {
+            $this->error['google-plus'] = "กรุณากรอกข้อมูล googleplus";
+        }
+
+        if ((strlen($this->input->post('instagram')) < 3) || (strlen($this->input->post('instagram')) > 255)) {
+            $this->error['instagram'] = "กรุณากรอกข้อมูล instagram";
+        }
+
+        if ((strlen($this->input->post('youtube')) < 3) || (strlen($this->input->post('youtube')) > 255)) {
+            $this->error['youtube'] = "กรุณากรอกข้อมูล youtube";
+        }
+
+        if ((strlen($this->input->post('twitter')) < 3) || (strlen($this->input->post('twitter')) > 255)) {
+            $this->error['twitter'] = "กรุณากรอกข้อมูล twitter";
         }
 
         if (isset($this->error)) {
