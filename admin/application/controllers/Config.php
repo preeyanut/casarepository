@@ -9,15 +9,13 @@ class Config extends CI_Controller
         $this->load->model('Config_model');
         $this->load->model('Config_group_model');
         $this->load->model('User_model');
-        $this->load->library('ckeditor');
-        $this->load->library('ckfinder');
 
 
-//        $this->load->library('auth_check');
-//
-//        if (!$this->auth_check->hasPermission('access', 'user')) {
-//            redirect('permission');
-//        }
+        $this->load->library('auth_check');
+
+        if (!$this->auth_check->hasPermission('access', 'user')) {
+            redirect('permission');
+        }
     }
 
     public function index()

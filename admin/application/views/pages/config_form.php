@@ -64,210 +64,213 @@
                                 <div class="row">
 
 
-                                    <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" id="form"
+                                    <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data"
+                                          id="form"
                                           class=" box-body">
 
                                         <input type="hidden" name="config_id" value="<?php echo $config_id; ?>"
                                                id="config_id" class="form-control"/>
 
-                                    <div class="form-group required col-md-12 col-xs-12">
-                                        <div class="col-md-2 col-xs-2" align="right">
-                                            <label class=" control-label" for="input-config-title">Title</label>
-                                        </div>
-                                        <div class="col-md-6 col-xs-6">
-                                            <div class="">
-                                                <input type="text" name="config_title"
-                                                       value="<?php echo $config_title; ?>"
-                                                       placeholder="" id="input-config-title"
-                                                       class="form-control"/>
+                                        <div class="form-group required col-md-12 col-xs-12">
+                                            <div class="col-md-2 col-xs-2" align="right">
+                                                <label class=" control-label" for="input-config-title">Title</label>
                                             </div>
-                                            <div class="text-danger"></div>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group required col-md-12 col-xs-12">
-                                        <div class="col-md-2 col-xs-2" align="right">
-                                            <label class=" control-label" for="input-config-image">Favicon</label>
-                                        </div>
-                                        <div class="col-md-6 col-xs-6">
-                                            <div class="">
-                                                <input type="text" name="config_image"
-                                                       value="<?php echo $config_image; ?>"
-                                                       placeholder="" id="input-config-image"
-                                                       class="form-control"/>
+                                            <div class="col-md-6 col-xs-6">
+                                                <div class="">
+                                                    <input type="text" name="config_title"
+                                                           value="<?php echo $config_title; ?>"
+                                                           placeholder="" id="input-config-title"
+                                                           class="form-control"/>
+                                                </div>
+                                                <div class="text-danger"></div>
                                             </div>
-                                            <div class="text-danger"></div>
                                         </div>
-                                    </div>
 
-                                    <div class="form-group required col-md-12 col-xs-12">
-                                        <div class="col-md-2 col-xs-2" align="right">
-                                            <label class=" control-label"
-                                                   for="input-meta-keyword">Meta Keyword</label>
+                                        <div class="form-group required col-md-12 col-xs-12">
+                                            <div class="col-md-2 col-xs-2" align="right">
+                                                <label class=" control-label" for="input-config-image">Favicon</label>
+                                            </div>
+                                            <div class="col-md-6 col-xs-6">
+                                                <div class="">
+                                                    <input type="text" name="config_image"
+                                                           value="<?php echo $config_image; ?>"
+                                                           placeholder="" id="input-config-image"
+                                                           class="form-control"/>
+                                                </div>
+                                                <div class="text-danger"></div>
+                                            </div>
                                         </div>
-                                        <div class="col-md-6 col-xs-6">
-                                            <div class="">
+
+                                        <div class="form-group required col-md-12 col-xs-12">
+                                            <div class="col-md-2 col-xs-2" align="right">
+                                                <label class=" control-label"
+                                                       for="input-meta-keyword">Meta Keyword</label>
+                                            </div>
+                                            <div class="col-md-6 col-xs-6">
+                                                <div class="">
                                                 <textarea type="text" name="meta_keyword"
                                                           value="<?php echo $meta_keyword; ?>"
                                                           placeholder="" id="input-meta-keyword"
                                                           class="form-control"></textarea>
+                                                </div>
+                                                <div class="text-danger"></div>
                                             </div>
-                                            <div class="text-danger"></div>
                                         </div>
-                                    </div>
 
-                                    <div class="form-group required col-md-12 col-xs-12">
-                                        <div class="col-md-2 col-xs-2" align="right">
-                                            <label class=" control-label"
-                                                   for="input-meta-description">Meta Description</label>
-                                        </div>
-                                        <div class="col-md-6 col-xs-6">
-                                            <div class="">
+                                        <div class="form-group required col-md-12 col-xs-12">
+                                            <div class="col-md-2 col-xs-2" align="right">
+                                                <label class=" control-label"
+                                                       for="input-meta-description">Meta Description</label>
+                                            </div>
+                                            <div class="col-md-6 col-xs-6">
+                                                <div class="">
                                                 <textarea type="text" name="meta_description"
                                                           value="<?php echo $meta_description; ?>"
                                                           placeholder="" id="input-meta-description"
                                                           class="form-control"></textarea>
+                                                </div>
+                                                <div class="text-danger"></div>
                                             </div>
-                                            <div class="text-danger"></div>
                                         </div>
-                                    </div>
 
-                                    <div class="form-group required col-md-12 col-xs-12">
-                                        <div class="col-md-2 col-xs-2" align="right">
-                                            <label class=" control-label"
-                                                   for="input-login-link">Login Link</label>
+                                        <div class="form-group required col-md-12 col-xs-12">
+                                            <div class="col-md-2 col-xs-2" align="right">
+                                                <label class=" control-label"
+                                                       for="input-login-link">Login Link</label>
+                                            </div>
+                                            <div class="col-md-6 col-xs-6">
+                                                <div class="">
+                                                    <input type="text" name="login_link"
+                                                           value="<?php echo $login_link; ?>"
+                                                           placeholder="" id="input-login-link"
+                                                           class="form-control"/>
+                                                </div>
+                                                <div class="text-danger"></div>
+                                            </div>
                                         </div>
-                                        <div class="col-md-6 col-xs-6">
+
+                                        <div class="form-group required col-md-12 col-xs-12">
+                                            <div class="col-md-2 col-xs-2" align="right">
+                                                <label class=" control-label"
+                                                       for="input-line-id">Line ID</label>
+                                            </div>
+                                            <div class="col-md-6 col-xs-6">
+                                                <div class="">
+                                                    <input type="text" name="line_id"
+                                                           value="<?php echo $line_id; ?>"
+                                                           placeholder="" id="input-line-id"
+                                                           class="form-control"/>
+                                                </div>
+                                                <div class="text-danger"></div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group required col-md-12 col-xs-12">
+                                            <div class="col-md-2 col-xs-2" align="right">
+                                                <label class=" control-label"
+                                                       for="input-telephone">Telephone Number</label>
+                                            </div>
+                                            <div class="col-md-6 col-xs-6">
+                                                <div class="">
+                                                    <input type="text" name="telephone"
+                                                           value="<?php echo $telephone; ?>"
+                                                           placeholder="" id="input-telephone"
+                                                           class="form-control"/>
+                                                </div>
+                                                <div class="text-danger"></div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group required col-md-12 col-xs-12">
+                                            <div class="col-md-2 col-xs-2" align="right">
+                                                <label class=" control-label"
+                                                       for="input-facebook">Facebook</label>
+                                            </div>
+                                            <div class="col-md-6 col-xs-6">
+                                                <div class="">
+                                                    <input type="text" name="facebook"
+                                                           value="<?php echo $facebook; ?>"
+                                                           placeholder="" id="input-facebook"
+                                                           class="form-control"/>
+                                                </div>
+                                                <div class="text-danger"></div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group required col-md-12 col-xs-12">
+                                            <div class="col-md-2 col-xs-2" align="right">
+                                                <label class=" control-label"
+                                                       for="input-google">Google Plus</label>
+                                            </div>
+                                            <div class="col-md-6 col-xs-6">
+                                                <div class="">
+                                                    <input type="text" name="google-plus"
+                                                           value="<?php echo $googleplus; ?>"
+                                                           placeholder="" id="input-google"
+                                                           class="form-control"/>
+                                                </div>
+                                                <div class="text-danger"></div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group required col-md-12 col-xs-12">
+                                            <div class="col-md-2 col-xs-2" align="right">
+                                                <label class=" control-label"
+                                                       for="input-instagram">Instagram</label>
+                                            </div>
+                                            <div class="col-md-6 col-xs-6">
+                                                <div class="">
+                                                    <input type="text" name="instagram"
+                                                           value="<?php echo $instagram; ?>"
+                                                           placeholder="" id="input-instagram"
+                                                           class="form-control"/>
+                                                </div>
+                                                <div class="text-danger"></div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group required col-md-12 col-xs-12">
+                                            <div class="col-md-2 col-xs-2" align="right">
+                                                <label class=" control-label"
+                                                       for="input-youtube">Youtube</label>
+                                            </div>
+                                            <div class="col-md-6 col-xs-6">
+                                                <div class="">
+                                                    <input type="text" name="youtube"
+                                                           value="<?php echo $youtube; ?>"
+                                                           placeholder="" id="input-youtube"
+                                                           class="form-control"/>
+                                                </div>
+                                                <div class="text-danger"></div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group required col-md-12 col-xs-12">
+                                            <div class="col-md-2 col-xs-2" align="right">
+                                                <label class=" control-label"
+                                                       for="input-twitter">Twitter</label>
+                                            </div>
+                                            <div class="col-md-6 col-xs-6">
+                                                <div class="">
+                                                    <input type="text" name="twitter"
+                                                           value="<?php echo $twitter; ?>"
+                                                           placeholder="" id="input-twitter"
+                                                           class="form-control"/>
+                                                </div>
+                                                <div class="text-danger"></div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group col-md-6" style="text-align: center;">
+                                            <br>
                                             <div class="">
-                                                <input type="text" name="login_link"
-                                                       value="<?php echo $login_link; ?>"
-                                                       placeholder="" id="input-login-link"
-                                                       class="form-control"/>
+                                                <button type="button" id="button-save" class="btn btn-primary"
+                                                        name="button-save"> บันทึก
+                                                </button>
+                                                <button type="reset" id="btn-reset" class="btn btn-default">ยกเลิก
+                                                </button>
                                             </div>
-                                            <div class="text-danger"></div>
                                         </div>
-                                    </div>
-
-                                    <div class="form-group required col-md-12 col-xs-12">
-                                        <div class="col-md-2 col-xs-2" align="right">
-                                            <label class=" control-label"
-                                                   for="input-line-id">Line ID</label>
-                                        </div>
-                                        <div class="col-md-6 col-xs-6">
-                                            <div class="">
-                                                <input type="text" name="line_id"
-                                                       value="<?php echo $line_id; ?>"
-                                                       placeholder="" id="input-line-id"
-                                                       class="form-control"/>
-                                            </div>
-                                            <div class="text-danger"></div>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group required col-md-12 col-xs-12">
-                                        <div class="col-md-2 col-xs-2" align="right">
-                                            <label class=" control-label"
-                                                   for="input-telephone">Telephone Number</label>
-                                        </div>
-                                        <div class="col-md-6 col-xs-6">
-                                            <div class="">
-                                                <input type="text" name="telephone"
-                                                       value="<?php echo $telephone; ?>"
-                                                       placeholder="" id="input-telephone"
-                                                       class="form-control"/>
-                                            </div>
-                                            <div class="text-danger"></div>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group required col-md-12 col-xs-12">
-                                        <div class="col-md-2 col-xs-2" align="right">
-                                            <label class=" control-label"
-                                                   for="input-facebook">Facebook</label>
-                                        </div>
-                                        <div class="col-md-6 col-xs-6">
-                                            <div class="">
-                                                <input type="text" name="facebook"
-                                                       value="<?php echo $facebook; ?>"
-                                                       placeholder="" id="input-facebook"
-                                                       class="form-control"/>
-                                            </div>
-                                            <div class="text-danger"></div>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group required col-md-12 col-xs-12">
-                                        <div class="col-md-2 col-xs-2" align="right">
-                                            <label class=" control-label"
-                                                   for="input-google">Google Plus</label>
-                                        </div>
-                                        <div class="col-md-6 col-xs-6">
-                                            <div class="">
-                                                <input type="text" name="google-plus"
-                                                       value="<?php echo $googleplus; ?>"
-                                                       placeholder="" id="input-google"
-                                                       class="form-control"/>
-                                            </div>
-                                            <div class="text-danger"></div>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group required col-md-12 col-xs-12">
-                                        <div class="col-md-2 col-xs-2" align="right">
-                                            <label class=" control-label"
-                                                   for="input-instagram">Instagram</label>
-                                        </div>
-                                        <div class="col-md-6 col-xs-6">
-                                            <div class="">
-                                                <input type="text" name="instagram"
-                                                       value="<?php echo $instagram; ?>"
-                                                       placeholder="" id="input-instagram"
-                                                       class="form-control"/>
-                                            </div>
-                                            <div class="text-danger"></div>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group required col-md-12 col-xs-12">
-                                        <div class="col-md-2 col-xs-2" align="right">
-                                            <label class=" control-label"
-                                                   for="input-youtube">Youtube</label>
-                                        </div>
-                                        <div class="col-md-6 col-xs-6">
-                                            <div class="">
-                                                <input type="text" name="youtube"
-                                                       value="<?php echo $youtube; ?>"
-                                                       placeholder="" id="input-youtube"
-                                                       class="form-control"/>
-                                            </div>
-                                            <div class="text-danger"></div>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group required col-md-12 col-xs-12">
-                                        <div class="col-md-2 col-xs-2" align="right">
-                                            <label class=" control-label"
-                                                   for="input-twitter">Twitter</label>
-                                        </div>
-                                        <div class="col-md-6 col-xs-6">
-                                            <div class="">
-                                                <input type="text" name="twitter"
-                                                       value="<?php echo $twitter; ?>"
-                                                       placeholder="" id="input-twitter"
-                                                       class="form-control"/>
-                                            </div>
-                                            <div class="text-danger"></div>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group col-md-6" style="text-align: center;">
-                                        <br>
-                                        <div class="">
-                                            <button type="button" id="button-save" class="btn btn-primary" name="button-save"> บันทึก
-                                            </button>
-                                            <button type="reset" id="btn-reset" class="btn btn-default">ยกเลิก</button>
-                                        </div>
-                                    </div>
 
                                 </div>
 
@@ -339,9 +342,11 @@
 
 <script type="text/javascript">
 
+
+    init_event({document_on: ['click,#button-add-field', 'click,#button-save', 'click,.button-delete']});
     init_event({
         fn: [readyLoad],
-        disEvent: ["click,#button-save","click,.button-edit"]
+        disEvent: ["click,#button-save", "click,.button-edit"]
     });
 
     function readyLoad() {
@@ -419,8 +424,8 @@
     });
 
     //$(document).on("click", ".button-edit", function () {
-        //var config_id = this.name.replace("button-edit-", "");
-        //window.open("<?php echo base_url(); ?>config?config_id=" + config_id, "_self");
+    //var config_id = this.name.replace("button-edit-", "");
+    //window.open("<?php echo base_url(); ?>config?config_id=" + config_id, "_self");
     //});
 
 
@@ -469,8 +474,6 @@
             }
         });
     }
-
-
 
 
     <!-- dropdown change -->

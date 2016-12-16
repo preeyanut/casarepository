@@ -5730,3 +5730,61 @@ DEBUG - 2016-12-16 10:13:59 --> Total execution time: 0.0971
 =======
 >>>>>>> 24e42c856e4ef585dda981e2df0a136cfb9fd140
 >>>>>>> 8670dd10f70a120b997b5f648d9c8efce99ae39e
+DEBUG - 2016-12-16 10:31:38 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 10:31:38 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 10:31:38 --> Total execution time: 0.0668
+DEBUG - 2016-12-16 10:31:38 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 10:31:38 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2016-12-16 10:31:38 --> 404 Page Not Found: Assets/css
+DEBUG - 2016-12-16 10:31:45 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 10:31:45 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 10:31:45 --> Total execution time: 0.0724
+DEBUG - 2016-12-16 10:31:45 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 10:31:45 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2016-12-16 10:31:45 --> 404 Page Not Found: Assets/css
+DEBUG - 2016-12-16 10:31:53 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 10:31:53 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 10:31:53 --> Total execution time: 0.0496
+DEBUG - 2016-12-16 10:31:55 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 10:31:55 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 10:31:55 --> Total execution time: 0.0552
+DEBUG - 2016-12-16 10:39:12 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 10:39:12 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 10:39:12 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 10:39:12 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 10:39:12 --> Total execution time: 0.0611
+DEBUG - 2016-12-16 10:39:16 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 10:39:16 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 10:39:16 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 10:39:16 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 10:39:16 --> Total execution time: 0.0743
+DEBUG - 2016-12-16 10:39:16 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 10:39:17 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 10:39:17 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 10:39:17 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 10:39:17 --> Total execution time: 0.0614
+DEBUG - 2016-12-16 10:39:28 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 10:39:28 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 10:39:28 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 10:39:28 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 10:39:28 --> Total execution time: 0.0623
+DEBUG - 2016-12-16 10:39:46 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 10:39:46 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2016-12-16 10:39:46 --> 404 Page Not Found: Assets/css
+DEBUG - 2016-12-16 10:40:19 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 10:40:19 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 10:40:19 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 10:40:19 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 10:40:27 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 10:40:27 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 10:40:27 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 10:40:27 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 10:40:27 --> Total execution time: 0.0808
+DEBUG - 2016-12-16 10:40:34 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 10:40:34 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 10:40:34 --> Total execution time: 0.0597
+DEBUG - 2016-12-16 10:40:48 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 10:40:48 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 10:40:48 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 10:40:48 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 10:40:48 --> Total execution time: 0.1115
