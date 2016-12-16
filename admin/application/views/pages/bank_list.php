@@ -81,6 +81,7 @@
                                 <tr>
                                     <td class="text-center">ลำดับ</td>
                                     <td class="text-center">ธนาคาร</td>
+                                    <td class="text-center">ความสำคัญ</td>
                                     <td class="text-center">วันที่เพิ่ม</td>
                                     <td class="text-center">พนักงานที่เพิ่ม</td>
                                     <td class="text-center">แก้ไขล่าสุด</td>
@@ -91,14 +92,15 @@
                                 </thead>
                                 <tbody id="tbody">
                                 <?php //echo var_dump($list) ; ?>
-                                <?php if ($groups) {
+                                <?php if ($list) {
                                     $count = 1; ?>
-                                    <?php foreach ($groups as $bank) { ?>
+                                    <?php foreach ($list as $bank) { ?>
                                         <tr id="tr_id<?php echo $bank['bank_list_id']; ?>" class="tr_id">
 
                                             <td class="text-center"><?php echo $count;
                                                 $count++; ?></td>
                                             <td class="text-center"><?php echo $bank['bank_list_name']; ?></td>
+                                            <td class="text-center"><?php echo $bank['priority_level']; ?></td>
                                             <td class="text-center"><?php echo $bank['create_date']; ?></td>
                                             <td class="text-center"><?php echo $bank['create_by_name'];?></td>
                                             <td class="text-center"><?php echo $bank['update_date']; ?></td>
@@ -114,6 +116,10 @@
                                                 <button type="button"
                                                         name="button-edit<?php echo $bank['bank_list_id']; ?>"
                                                         id="button-edit" class="btn btn-warning button-edit">แก้ไข
+                                                </button>
+                                                <button type="button"
+                                                        name="button-delete<?php echo $bank['bank_list_id']; ?>"
+                                                        id="button-delete" class="btn btn-danger button-delete">ลบ
                                                 </button>
                                             </td>
 
@@ -183,7 +189,7 @@
         fn: [readyFn],
         controlerPaging: 'bank_list/get_paging',
         functionPaging: search_user,
-        disEvent: ["click,.button-edit"]
+        disEvent: ["click,.button-edit,.button-delete"]
     });
 
     function readyFn() {
@@ -241,12 +247,17 @@
                     var html = "<tr class='tr_id" + bank.bank_list_id + "'  style='cursor: pointer;'>"
                         + "<td class='text-center'>" + (i + 1) + "</td>"
                         + "<td class='text-center'>" + bank.bank_list_name + "</td>"
+                        + "<td class='text-center'>" + bank.priority_level + "</td>"
                         + "<td class='text-center'>" + bank.create_date + "</td>"
                         + "<td class='text-center'>" + bank.create_by_name + "</td>"
                         + "<td class='text-center'>" + bank.update_date + "</td>"
                         + "<td class='text-center'>" + bank.update_by_name + "</td>"
                         + "<td class='text-center' style='color: " + color_status + "'>"
                         + str_status + "</td>"
+                        + " <td class='text-center'><button type='button' name='button-edit" + bank.bank_list_id + "' "
+                        + " id='button-edit' class='btn btn-warning button-edit'>แก้ไข</button>"
+                        + " <button type='button' name='button-delete" + bank.bank_list_id + "' "
+                        + " id='button-delete' class='btn btn-danger button-delete'>ลบ</button></td>"
                         + "</tr>";
 
                     $("#tbody").append(html);
@@ -265,7 +276,7 @@
         var filterPage = $("#filter-page").val();
         var filterStatus = $("#filter-status").val();
 
-        console.log('00000000000');
+//        console.log('00000000000');
         $.ajax({
             url: '<?php echo base_url(); ?>bank_list/search_user',
             type: 'post',
@@ -300,6 +311,7 @@
                     var html = "<tr class='tr_id" + bank.bank_list_id + "'  >"
                         + "<td class='text-center'>" + (i + 1) + "</td>"
                         + "<td class='text-center'>" + bank.bank_list_name + "</td>"
+                        + "<td class='text-center'>" + bank.priority_level + "</td>"
                         + "<td class='text-center'>" + bank.create_date + "</td>"
                         + "<td class='text-center'>" + bank.create_by_name+ "</td>"
                         + "<td class='text-center'>" + bank.update_date + "</td>"
@@ -307,7 +319,9 @@
                         + "<td class='text-center' style='color: " + color_status + "'>"
                         + str_status + "</td>"
                         + " <td class='text-center'><button type='button' name='button-edit" + bank.bank_list_id + "' "
-                        + " id='button-edit' class='btn btn-warning button-edit'>แก้ไข</button></td>"
+                        + " id='button-edit' class='btn btn-warning button-edit'>แก้ไข</button>"
+                        + " <button type='button' name='button-delete" + bank.bank_list_id + "' "
+                        + " id='button-delete' class='btn btn-danger button-delete'>ลบ</button></td>"
                         + "</tr>";
                     $("#tbody").append(html);
                 }
@@ -355,5 +369,12 @@
         var bank_list_id = this.name.replace("button-edit", "");
         window.open("<?php echo base_url(); ?>bank_list/getForm?bank_list_id=" + bank_list_id, "_self");
     });
+
+    $(document).on("click", ".button-delete", function () {
+
+        var bank_list_id = this.name.replace("button-delete", "");
+        window.open("<?php echo base_url(); ?>bank_list/delete_bank?bank_list_id=" + bank_list_id, "_self");
+    });
+
 
 </script>
