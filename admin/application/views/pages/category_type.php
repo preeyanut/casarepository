@@ -189,6 +189,16 @@
         get_paging();
     });
 
+    $(document).on("change", "#filter-number", function () {
+        search_user();
+        get_paging();
+    });
+
+    $(document).on("change", "#filter-status", function () {
+        search_user();
+        get_paging();
+    });
+
     $(document).on("click", ".button-edit", function () {
         var category_type_id = this.name.replace("button-edit", "");
         window.open("<?php echo base_url(); ?>category_type/get_form?category_type_id=" + category_type_id, "_self");
