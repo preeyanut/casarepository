@@ -45,9 +45,9 @@ class Bank_list extends CI_Controller
 
 //        var_dump($data);
 
-        $data["layout"] = 'layout/bank_list';
+        $data["page"] = 'pages/bank_list';
 
-        $this->load->view('layout', $data);
+        $this->load->view('template', $data);
 
     }
 
@@ -203,9 +203,9 @@ class Bank_list extends CI_Controller
 
         }
 //        var_dump($data);
-        $data["layout"] = 'layout/bank_form';
+        $data["page"] = 'pages/bank_form';
 
-        $this->load->view('layout', $data);
+        $this->load->view('template', $data);
     }
 
     public function validate_form()

@@ -13,6 +13,6 @@ class Permission extends CI_Controller
             "layout"=>"errors/html/error_permission",
         );
 
-        $this->load->view('layout',$data);
+        $this->load->view('pages',$data);
     }
 }

@@ -64,8 +64,8 @@ class List_user extends CI_Controller {
 
 		$data["list"] = $all_user;
 
-		$data["layout"]='layout/list_user';
-		$this->load->view('layout',$data);
+		$data["page"] = 'pages/list_user';
+		$this->load->view('pages',$data);
 	}
 
 	private function get_under_user($arr_main_user_id){

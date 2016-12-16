@@ -16,7 +16,7 @@ class Category_type_model extends CI_Model
     }
 
     public function get_data($id){
-        $query = $this->db->query("SELECT * FROM category_type WHERE type_id = " . $id);
+        $query = $this->db->query("SELECT * FROM category_type WHERE category_type_id = " . $id);
         return $query->result_array();
     }
 
@@ -34,11 +34,11 @@ class Category_type_model extends CI_Model
 
 //        $str_sql = "";
 //        if ($status != "") {
-//            $str_sql .= " AND  type_status = " . $status;
+//            $str_sql .= " AND  category_type_status = " . $status;
 //        }
 //        $query = $this->db->query("SELECT DISTINCT * "
 //            . " from category_type "
-//            . " WHERE  type_name  Like '%" . $txtSearch . "%' "
+//            . " WHERE  category_type_name  Like '%" . $txtSearch . "%' "
 //            . $str_sql
 //            . " Limit " . $start_filter . ", " . $filter_number . " "
 //        );
@@ -47,7 +47,7 @@ class Category_type_model extends CI_Model
 
         $str_sql = "";
         if ($status != '-1' && $status != '') {
-            $str_sql .= " AND  type_status = " . $status;
+            $str_sql .= " AND  category_type_status = " . $status;
         }
 
         $query = $this->db->query("SELECT category_type.*,CONCAT(u1.firstname, ' ', u1.lastname) as create_by_name "
@@ -55,7 +55,7 @@ class Category_type_model extends CI_Model
             . " from category_type "
             . " inner join  user as u1 on u1.user_id = category_type.create_by "
             . " inner join  user as u2 on u2.user_id = category_type.update_by "
-            . " WHERE  type_name  Like '%" . $txtSearch . "%' "
+            . " WHERE  category_type_name  Like '%" . $txtSearch . "%' "
 
             . $str_sql
             . " Limit " . $start_filter . ", " . $filter_number . " "
@@ -69,11 +69,11 @@ class Category_type_model extends CI_Model
 
         $str_sql = "";
         if ($filter_status != "" || $filter_status != 'undefined') {
-            $str_sql .= " AND  type_status = 1"  ;
+            $str_sql .= " AND  category_type_status = 1"  ;
         }
 
         $query = $this->db->query("SELECT DISTINCT *, (select count(*) from category_type ) as total FROM `" . "" . "category_type` "
-            . " WHERE  type_name  Like '%" . $txtSearch . "%' "
+            . " WHERE  category_type_name  Like '%" . $txtSearch . "%' "
             . $str_sql
             . " Limit " . $start_filter . ", " . $filter_number . " "
         );
@@ -82,12 +82,10 @@ class Category_type_model extends CI_Model
     }
 
     public function add_type($data){
-        $this->load->library('encrypt');
 
         $data_array = array(
-            'type_name' => $data['type_name'],
-            'priority_level' => $data['priority_level'],
-            'type_status' => (int)$data['type_status'],
+            'category_type_name' => $data['category_type_name'],
+            'category_type_status' => (int)$data['category_type_status'],
             'create_date' => date("Y-m-d H:i:s"),
             'create_by' => $this->session->userdata("user_id"),
             'update_date' => date("Y-m-d H:i:s"),
@@ -100,17 +98,46 @@ class Category_type_model extends CI_Model
         return $insert_id;
     }
 
+    public function add_category_field($data){
+
+        $data_array = array(
+            'category_type_id' => $data['category_type_id'],
+            'field_name' => $data['field_name'],
+            'field_type' => $data['field_type'],
+            'field_id' => $data['field_id'],
+            'create_date' => date("Y-m-d H:i:s"),
+            'create_by' => $this->session->userdata("user_id"),
+            'update_date' => date("Y-m-d H:i:s"),
+            'update_by' => $this->session->userdata("user_id")
+        );
+
+        $this->db->insert('category_field', $data_array);
+        $insert_id = $this->db->insert_id();
+
+        return $insert_id;
+    }
+
+
     public function edit_type($data){
         $this->load->library('encrypt');
 
         $this->db->query("UPDATE `" . "" . "category_type` SET "
-            . " type_name = '" . $data['type_name'] . "'"
+            . " category_type_name = '" . $data['category_type_name'] . "'"
             . ", priority_level = '" . $data['priority_level'] . "'"
-            . ", type_status = '" . (int)$data['type_status'] . "'"
+            . ", category_type_status = '" . (int)$data['category_type_status'] . "'"
             . ", update_date = '" .  date("Y-m-d H:i:s") . "'"
             . ", update_by = '" . $this->session->userdata("user_id") . "'"
-            . " WHERE  type_id = '" . (int)$data['type_id'] . "'");
+            . " WHERE  category_type_id = '" . (int)$data['category_type_id'] . "'");
 
+    }
+
+    public function get_category_field($category_field_id){
+
+        $this->db->select('*');
+        $this->db->where('category_field_id', $category_field_id);
+        $query = $this->db->get('category_field');
+
+        return $query->result_array();
     }
 
 }

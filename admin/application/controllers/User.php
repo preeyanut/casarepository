@@ -110,9 +110,9 @@ class User extends CI_Controller
        // echo var_dump($data) ;
 
 
-        $data["layout"] = 'layout/user';
+        $data["page"] = 'pages/user';
 
-        $this->load->view('layout', $data);
+        $this->load->view('template', $data);
     }
 
     public function validate_form()

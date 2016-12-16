@@ -115,9 +115,9 @@ class Config extends CI_Controller
 
         }
         //$data["list"] = $this->Config_group_model->getall();
-        $data["layout"] = 'layout/config_form';
+        $data["page"] = 'pages/config_form';
 
-        $this->load->view('layout', $data);
+        $this->load->view('template', $data);
     }
 
 

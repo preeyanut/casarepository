@@ -137,7 +137,6 @@
                                 </div>
 
                                 <ul class="pagination" style="visibility: visible;">
-
                                     <li class="next">
                                         <a class="paging" href="#" id="page+1" title="Next"><i
                                                 class="fa fa-angle-right"></i></a>

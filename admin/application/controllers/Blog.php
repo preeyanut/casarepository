@@ -17,9 +17,9 @@ class Blog extends CI_Controller
 
     public function index()
     {
-        $data["layout"] = 'layout/blog';
+        $data["page"] = 'pages/blog';
 
-        $this->load->view('layout', $data);
+        $this->load->view('template', $data);
     }
 
     public function get_form()
@@ -87,8 +87,8 @@ class Blog extends CI_Controller
         }
         $data["user_groups"] = $this->User_group_model->get_all_user_group();
 
-        $data["layout"] = 'layout/user';
+        $data["page"] = 'pages/user';
 
-        $this->load->view('layout', $data);
+        $this->load->view('template', $data);
     }
 }
