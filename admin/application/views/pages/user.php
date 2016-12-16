@@ -199,49 +199,11 @@
 
 <script type="application/javascript">
 
-    function format_to_money() {
-        var input_type_number = $('.input-number');
-
-        for (var i = 0; i < input_type_number.length; i++) {
-
-            var intValue = Number(input_type_number[i].value);
-
-            $('.input-number')[i].value = formatNumber(intValue);
-
-            // console.log(formatNumber(intValue));
-        }
-    }
-
-    function formatNumber(number) {
-        //var int_number = Number(number);
-        var p = number.toFixed(2).split(".");
-        var minus = p[0].substring(0, 1);
-        if (minus == "-") {
-            p[0] = p[0].substring(1, p[0].length);
-
-            return "-" + p[0].split("").reverse().reduce(function (acc, number, i, orig) {
-                    return number + (i && !(i % 3) ? "," : "") + acc;
-                }, "") + "." + p[1];
-        }
-        else {
-            return "" + p[0].split("").reverse().reduce(function (acc, number, i, orig) {
-                    return number + (i && !(i % 3) ? "," : "") + acc;
-                }, "") + "." + p[1];
-        }
-    }
-
-    function label_format_number() {
-
-        var label_type_number = $(".label-number");
-
-        for (var i = 0; i < label_type_number.length; i++) {
-
-            var intValue = Number(label_type_number[i].innerHTML.trim());
-
-            $(".label-number")[i].innerHTML = formatNumber(intValue);
-
-        }
-    }
+    init_event({
+        document_on:[
+            'click,#button-save'
+        ]
+    });
 
     $(document).on("click", "#button-save", function () {
         $.ajax({
@@ -294,187 +256,6 @@
         });
     });
 
-    function validate_setting_default() {
-        var obj_setting_default = get_default_setting();
-        // console.log(JSON.stringify(obj_setting_default));
-        $.ajax({
-            url: '<?php echo base_url(); ?>user/validate_setting_default',
-            type: 'post',
-            data: "setting_default=" + JSON.stringify(obj_setting_default),
-            dataType: 'json',
-            crossDomain: true,
-            beforeSend: function () {
-                $('#button-save').button('loading');
-            },
-            complete: function () {
-                $('#button-save').button('reset');
-            },
-            success: function (json) {
-
-                // alert("เพิ่มข้อมูลผู้ใช้งานเสร็จสิ้น");
-
-            },
-            error: function (xhr, ajaxOptions, thrownError) {
-                alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
-            }
-        });
-    }
-
-    function get_default_setting() {
-
-        var array_setting_default = [];
-
-        var lotto_type = $("#tbody-setting-default").find("tr");
-        for (var i = 0; i < lotto_type.length; i++) {
-
-            var lotto_type_id = lotto_type[i].id.replace("lotto_type_id", "");
-
-            var tr_id = lotto_type[i].id;
-            // var intValue = Number(lotto_type[i].value);
-            var minimum = $("#" + tr_id).find("#minimum").val().replace(",", "");
-            var maximum = $("#" + tr_id).find("#maximum").val().replace(",", "");
-            var reward = $("#" + tr_id).find("#reward").val().replace(",", "");
-            var commission = $("#" + tr_id).find("#commission").val().replace(",", "");
-
-            var setting_default = {
-                lotto_type_id: lotto_type_id,
-                minimum: minimum,
-                maximum: maximum,
-                reward: reward,
-                commission: commission
-
-            };
-            array_setting_default.push(setting_default);
-
-        }
-
-        console.log(array_setting_default);
-
-        return array_setting_default;
-    }
-
-    function get_percent_setting() {
-        var array_percent_setting = [];
-        //---------  My Percent
-        var my_percents = $(".my_percent_user");
-        var sub_percents = $(".sub_percent_user");
-        for (var i = 0; i < my_percents.length; i++) {
-
-            var lotto_type_id = my_percents[i].id.replace("my_percent", "");
-            var my_percent = Number(my_percents[i].value);
-            var sub_percent = Number(sub_percents[i].value);
-
-            var percent = {
-                lotto_type_id: lotto_type_id,
-                my_percent: my_percent,
-                sub_percent: sub_percent,
-            }
-            array_percent_setting.push(percent);
-        }
-        return array_percent_setting;
-    }
-
-    $(document).on("focusout", "#minimum", function () {
-        var tr_id = this.closest("tr").id;
-        var value = Number(this.value.replace(",", ""));
-        var min_value = Number($('#' + tr_id).find('#minimum').attr('data-min').replace(",", ""));
-        var max_value = Number($('#' + tr_id).find('#minimum').attr('data-max').replace(",", ""));
-
-        if (value > max_value) {
-            this.value = max_value;
-            alert("รับสูงสุดได้ : " + max_value);
-        }
-//        if (value < min_value) {
-//            this.value = min_value;
-//            alert("รับขั้นต่ำได้ : " + min_value);
-//        }
-
-    });
-
-    $(document).on("focusout", "#reward", function () {
-        var tr_id = this.closest("tr").id;
-        var value = Number(this.value.replace(",", ""));
-        var min_value = Number($('#' + tr_id).find('#reward').attr('data-min').replace(",", ""));
-        var max_value = Number($('#' + tr_id).find('#reward').attr('data-max').replace(",", ""));
-
-        if (value > max_value) {
-            this.value = max_value;
-            alert("รับสูงสุดได้ : " + max_value);
-        }
-        if (value < min_value) {
-            this.value = min_value;
-            alert("รับขั้นต่ำได้ : " + min_value);
-        }
-    });
-
-    $(document).on("focusout", "#maximum", function (){
-        var tr_id = this.closest("tr").id;
-        var value = Number(this.value.replace(",", ""));
-        var min_value = Number($('#' + tr_id).find('#maximum').attr('data-min').replace(",", ""));
-        var max_value = Number($('#' + tr_id).find('#maximum').attr('data-max').replace(",", ""));
-
-//        if (value > max_value) {
-//            this.value = max_value;
-//            alert("รับสูงสุดได้ : " + max_value);
-//        }
-        if (value < min_value) {
-            this.value = min_value;
-            alert("รับขั้นต่ำได้ : " + min_value);
-        }
-
-    });
-
-    $(document).on("focusout", "#commission", function () {
-        var tr_id = this.closest("tr").id;
-        var value = Number(this.value.replace(",", ""));
-        var min_value = Number($('#' + tr_id).find('#commission').attr('data-min').replace(",", ""));
-        var max_value = Number($('#' + tr_id).find('#commission').attr('data-max').replace(",", ""));
-
-        if (value > max_value) {
-            this.value = formatNumber(max_value);
-            alert("รับสูงสุดได้ : " + max_value);
-        }
-        if (value < min_value) {
-            this.value = formatNumber(min_value);;
-            alert("รับขั้นต่ำได้ : " + min_value);
-        }
-
-    });
-
-    $(document).on("focusout", "#tbody-setting-default input", function () {
-        var arr_value = this.value.split(".");
-        if (arr_value.length < 2) {
-            this.value = formatNumber(Number(this.value));
-//            this.value = this.value+".00";
-        }
-    });
-
-    $(document).on("focusout", "#input-user-credit", function () {
-
-        var test = this.value;
-
-        var value = Number(this.value.replace(/,/g, ""));
-        var min_value = Number(0);
-        var max_value = Number(this.max);
-
-        if (max_value == "-1") {
-            this.value = formatNumber(value);
-            if (value < min_value) {
-                this.value = formatNumber(min_value);
-                alert("ให้เครดิตขั้นต่ำ 0.00 บาท ");
-            }
-        } else {
-            if (value > max_value) {
-                this.value = formatNumber(max_value);
-                alert("เครดิตของคุณมีไม่พอแบ่งให้ Sub Agent : " + formatNumber(max_value));
-            }
-            if (value < min_value) {
-                this.value = formatNumber(min_value);
-                alert("ให้เครดิตขั้นต่ำ 0.00 บาท ");
-            }
-        }
-    });
-
     function add_user() {
         $.ajax({
             url: '<?php echo base_url(); ?>user/add_user',
@@ -490,14 +271,12 @@
             },
             success: function (json) {
 
-                // alert("เพิ่มข้อมูลผู้ใช้งานเสร็จสิ้น");
-                add_default_setting(json.Data.user_id);
-                add_percent_setting(json.Data.user_id);
-
-                // upload file
-//                uploadImage(json.Data.user_id);
-//
-//                reloadListEmployee();
+                console.log(json);
+//                alert("เพิ่มข้อมูลผู้ใช้งานเสร็จสิ้น");
+                var result = confirm("เพิ่มข้อมูลผู้ใช้งานเสร็จสิ้น");
+                if (result == true) {
+                    window.open("<?php echo base_url(); ?>user?user_id=" + json.Data.user_id, "_self");
+                }
             },
             error: function (xhr, ajaxOptions, thrownError) {
                 alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
@@ -520,195 +299,15 @@
                 $('#button-save').button('reset');
             },
             success: function (json) {
-                // alert("แก้ไขข้อมูลผู้ใช้งานเสร็จสิ้น");
+                 alert("แก้ไขข้อมูลผู้ใช้งานเสร็จสิ้น");
 
-                edit_default_setting(user_id);
-                edit_percent_setting(user_id);
+//                edit_default_setting(user_id);
+//                edit_percent_setting(user_id);
             },
             error: function (xhr, ajaxOptions, thrownError) {
                 alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
             }
         });
     }
-
-    function add_default_setting(user_id) {
-
-        var str_json = JSON.stringify(get_default_setting());
-        console.log(str_json);
-        $.ajax({
-            url: '<?php echo base_url(); ?>user/add_default_setting',
-            type: 'post',
-            data: "default_setting=" + str_json + "&user_id=" + user_id,
-            dataType: 'json',
-            crossDomain: true,
-            beforeSend: function () {
-                $('#button-save').button('loading');
-            },
-            complete: function () {
-                $('#button-save').button('reset');
-            },
-            success: function (json) {
-
-                //alert("Save Default Setting Success.");
-            },
-            error: function (xhr, ajaxOptions, thrownError) {
-                alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
-            }
-        });
-    }
-
-    function add_percent_setting(user_id) {
-        var str_json = JSON.stringify(get_percent_setting());
-        $.ajax({
-            url: '<?php echo base_url(); ?>user/add_percent_setting',
-            type: 'post',
-            data: "percent_setting=" + str_json + "&user_id=" + user_id,
-            dataType: 'json',
-            crossDomain: true,
-            beforeSend: function () {
-                $('#button-save').button('loading');
-            },
-            complete: function () {
-                $('#button-save').button('reset');
-            },
-            success: function (json) {
-
-                // alert("Save Percent Setting Success.");
-
-                // upload file
-//                uploadImage(json.Data.user_id);
-//
-//                reloadListEmployee();
-                window.open("<?php echo base_url(); ?>user?user_id=" + user_id, "_self");
-            },
-            error: function (xhr, ajaxOptions, thrownError) {
-                alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
-            }
-        });
-    }
-
-    function edit_default_setting(user_id) {
-
-        var str_json = JSON.stringify(get_default_setting());
-        console.log(str_json);
-        $.ajax({
-            url: '<?php echo base_url(); ?>user/edit_default_setting',
-            type: 'post',
-            data: "default_setting=" + str_json + "&user_id=" + user_id,
-            dataType: 'json',
-            crossDomain: true,
-            beforeSend: function () {
-                $('#button-save').button('loading');
-            },
-            complete: function () {
-                $('#button-save').button('reset');
-            },
-            success: function (json) {
-
-                //alert("Save Default Setting Success.");
-            },
-            error: function (xhr, ajaxOptions, thrownError) {
-                alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
-            }
-        });
-    }
-
-    function edit_percent_setting(user_id) {
-        var str_json = JSON.stringify(get_percent_setting());
-        $.ajax({
-            url: '<?php echo base_url(); ?>user/edit_percent_setting',
-            type: 'post',
-            data: "percent_setting=" + str_json + "&user_id=" + user_id,
-            dataType: 'json',
-            crossDomain: true,
-            beforeSend: function () {
-                $('#button-save').button('loading');
-            },
-            complete: function () {
-                $('#button-save').button('reset');
-            },
-            success: function (json) {
-
-                window.open("<?php echo base_url(); ?>user?user_id=" + user_id, "_self");
-                //alert("Save Percent Setting Success.");
-
-                // upload file
-//                uploadImage(json.Data.user_id);
-//
-//                reloadListEmployee();
-            },
-            error: function (xhr, ajaxOptions, thrownError) {
-                alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
-            }
-        });
-    }
-
-
-
-    $(document).on("change", ".my_percent_user", function () {
-
-        console.log("..1");
-        var tr_id = this.closest("tr").id;
-        var value = Number(this.value.replace(",", ""));
-        var min_value = Number(this.min);
-        var max_value = Number(this.max);
-
-        if (value > max_value) {
-            this.value = max_value;
-            alert("แบ่งได้สูงสุดได้ : " + max_value);
-        }
-        if (value < min_value) {
-            this.value = min_value;
-            alert("แบ่งต่ำสุดได้ : " + min_value);
-        }
-
-
-        var lotto_type_id = this.id.replace("my_percent", "");
-        var percent = max_value - Number(this.value);
-        $("#sub_percent" + lotto_type_id).val(formatNumber(percent));
-
-    });
-
-    $(document).on("change", ".sub_percent_user", function () {
-        console.log("..2");
-
-        var tr_id = this.closest("tr").id;
-        var value = Number(this.value.replace(",", ""));
-        var min_value = Number(this.min);
-        var max_value = Number(this.max);
-
-        if (value > max_value) {
-            this.value = max_value;
-            alert("แบ่งได้สูงสุดได้ : " + max_value);
-        }
-        if (value < min_value) {
-            this.value = min_value;
-            alert("แบ่งต่ำสุดได้ : " + min_value);
-        }
-
-        var lotto_type_id = this.id.replace("sub_percent", "");
-        var percent = max_value - Number(this.value);
-        $("#my_percent" + lotto_type_id).val(formatNumber(percent));
-
-    });
-
-    $(document).on("focusout", ".my_percent_user", function () {
-        console.log("..3");
-        var arr_value = this.value.split(".");
-        if (arr_value.length < 2) {
-            this.value = formatNumber(Number(this.value));
-//            this.value = this.value+".00";
-        }
-    });
-
-    $(document).on("focusout", ".sub_percent_user", function () {
-        console.log("..4");
-        var arr_value = this.value.split(".");
-        if (arr_value.length < 2) {
-            this.value = formatNumber(Number(this.value));
-//            this.value = this.value+".00";
-        }
-    });
-
 
 </script>

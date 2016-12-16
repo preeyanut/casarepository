@@ -2,169 +2,6 @@
 
 class User_model extends CI_Model
 {
-    //------------------  get User or agent down
-    public function get_user_all()
-    {
-        $query = $this->db->query("SELECT * FROM user ");
-        return $query->result_array();
-    }
-
-    public function get_all_my_sub_user()
-    {
-        $query = $this->db->query("SELECT  user_id "
-            . " from    (SELECT * from user "
-            . " order by main_user_id) users_sorted, "
-            . " (select @previous := '" . $this->session->userdata("user_id") . "') initialisation "
-            . " where   find_in_set(main_user_id, @previous) > 0 "
-            . " and     @previous := concat(@previous, ',', user_id) "
-        );
-        $all_sub = $query->result_array();
-        $group_id = "";
-        foreach ($all_sub as $user) {
-            if (strlen($group_id) > 0) {
-                $group_id .= ",";
-            }
-            $group_id .= $user["user_id"];
-        }
-
-        //return $group_id;
-
-        if ($group_id != "") {
-            $query = $this->db->query(" SELECT user_id from user where user_id in ( " . $group_id . ") "
-                . " AND main_user_id=" . $this->session->userdata("user_id")
-            );
-        } else {
-            $query = $this->db->query(" SELECT user_id from user where  "
-                . "  main_user_id=" . $this->session->userdata("user_id")
-            );
-        }
-
-
-        $all_sub_user = $query->result_array();
-        $group_user_id = "";
-        foreach ($all_sub_user as $user) {
-            if (strlen($group_user_id) > 0) {
-                $group_user_id .= ",";
-            }
-            $group_user_id .= $user["user_id"];
-        }
-
-        return $group_user_id;
-    }
-
-    public function get_all_my_sub_user_same_as()
-    {
-        $query = $this->db->query("SELECT  user_id "
-            . " from    (SELECT * from user "
-            . " order by main_user_id) users_sorted, "
-            . " (select @previous := '" . $this->session->userdata("user_id") . "') initialisation "
-            . " where   find_in_set(main_user_id, @previous) > 0 "
-            . " and     @previous := concat(@previous, ',', user_id) "
-        );
-        $all_sub = $query->result_array();
-        $group_id = "";
-        foreach ($all_sub as $user) {
-            if (strlen($group_id) > 0) {
-                $group_id .= ",";
-            }
-            $group_id .= $user["user_id"];
-        }
-
-        //return $group_id;
-
-        if ($group_id != "") {
-            $query = $this->db->query(" SELECT user_id from user where user_id in ( " . $group_id . ") "
-                . " AND main_user_id=" . $this->session->userdata("user_id") . " AND user_group_id=3 "
-            );
-        } else {
-            $query = $this->db->query(" SELECT user_id from user where  "
-                . "  main_user_id=" . $this->session->userdata("user_id") . " AND user_group_id=3 "
-            );
-        }
-
-
-        $all_sub_user = $query->result_array();
-        $group_user_id = "";
-        foreach ($all_sub_user as $user) {
-            if (strlen($group_user_id) > 0) {
-                $group_user_id .= ",";
-            }
-            $group_user_id .= $user["user_id"];
-        }
-
-        return $group_user_id;
-    }
-
-    public function get_my_sub_user()
-    {
-        $query = $this->db->query(" SELECT  user_id "
-            . " from    (SELECT * from user "
-            . " order by main_user_id) users_sorted, "
-            . " (select @previous := '" . $this->session->userdata("user_id") . "') initialisation "
-            . " where   find_in_set(main_user_id, @previous) > 0 "
-            . " and     @previous := concat(@previous, ',', user_id) "
-        );
-        $all_sub = $query->result_array();
-        $group_id = "";
-        foreach ($all_sub as $user) {
-            if (strlen($group_id) > 0) {
-                $group_id .= ",";
-            }
-            $group_id .= $user["user_id"];
-        }
-
-        $query = $this->db->query(" SELECT user_id from user where user_id in ( " . $group_id . ") "
-            . " AND user_group_id=3 "
-        );
-
-        $all_sub_user = $query->result_array();
-        $group_user_id = "";
-        foreach ($all_sub_user as $user) {
-            if (strlen($group_id) > 0) {
-                $group_user_id .= ",";
-            }
-            $group_user_id .= $user["user_id"];
-        }
-
-        return $group_user_id;
-    }
-
-    public function get_my_sub_agent()
-    {
-        $query = $this->db->query(" SELECT  user_id "
-            . " from    (SELECT * from user "
-            . " order by main_user_id) users_sorted, "
-            . " (select @previous := '" . $this->session->userdata("user_id") . "') initialisation "
-            . " where   find_in_set(main_user_id, @previous) > 0 "
-            . " and     @previous := concat(@previous, ',', user_id) "
-        );
-        $all_sub = $query->result_array();
-        $group_id = "";
-        foreach ($all_sub as $user) {
-            if (strlen($group_id) > 0) {
-                $group_id .= ",";
-            }
-            $group_id .= $user["user_id"];
-        }
-
-        $query = $this->db->query(" SELECT user_id from user where user_id in ( " . $group_id . ") "
-            . " AND user_group_id=2 "
-        );
-
-        $all_sub_user = $query->result_array();
-        $group_user_id = "";
-        foreach ($all_sub_user as $user) {
-            if (strlen($group_id) > 0) {
-                $group_user_id .= ",";
-            }
-            $group_user_id .= $user["user_id"];
-        }
-
-        return $group_user_id;
-    }
-
-    //------------------  End get User or agent down
-
     public function add_user($data)
     {
         $this->load->library('encrypt');
@@ -177,17 +14,12 @@ class User_model extends CI_Model
             'lastname' => $data['lastname'],
             'user_email' => $data['user_email'],
             'user_telephone' => $data['user_telephone'],
-            // 'image' => $data['image'],
             'user_status' => (int)$data['user_status'],
-            'date_added' => date("Y-m-d H:i:s"),
 
-            'bank' => $data['bank'],
-            'bank_code' => $data['bank_code'],
-            'bank_name' => $data['bank_name'],
-
-            'user_credit' => str_replace(",", "", $data['user_credit']),
-            'main_user_id' => $this->session->userdata("user_id"),
-
+            'create_date' => date("Y-m-d H:i:s"),
+            'create_by' => $this->session->userdata("user_id"),
+            'update_date' => date("Y-m-d H:i:s"),
+            'update_by' => $this->session->userdata("user_id")
         );
 
         $this->db->insert('user', $data_array);
@@ -199,7 +31,7 @@ class User_model extends CI_Model
             . " user_code = '" . $user_code . "'"
             . " WHERE user_id = '" . (int)$insert_id . "'");
 
-        $this->decrease_agent_credit(str_replace(",", "", $data['user_credit']));
+//        $this->decrease_agent_credit(str_replace(",", "", $data['user_credit']));
 
         return $insert_id;
     }
@@ -218,137 +50,32 @@ class User_model extends CI_Model
         } else {
             $user_code = $user_id;
         }
-        $user_code = "CASABET" . $user_code;
+        $user_code = "ADMIN" . $user_code;
         return $user_code;
-    }
-
-    public function add_default_setting($data, $user_id)
-    {
-        $this->load->library('encrypt');
-
-        foreach ($data as $item) {
-
-            $data_array = array(
-                'lotto_type_id' => $item->lotto_type_id,
-                'minimum' => $item->minimum,
-                'maximum' => $item->maximum,
-                'limit_price' => $item->maximum,
-                'reward' => $item->reward,
-                'commission' => $item->commission,
-                'user_id' => $user_id,
-            );
-
-            $this->db->insert('default_setting', $data_array);
-        }
-
-        return true;
-    }
-
-    public function add_percent_setting($data, $user_id)
-    {
-        $this->load->library('encrypt');
-
-        foreach ($data as $item) {
-
-            $data_array = array(
-                'lotto_type_id' => $item->lotto_type_id,
-                'my_percent' => $item->my_percent,
-                'sub_percent' => $item->sub_percent,
-                'user_id' => $user_id,
-            );
-
-            $this->db->insert('percent_setting', $data_array);
-        }
-
-        return true;
-    }
-
-    public function get_user_credit($user_id)
-    {
-        $query = $this->db->query("SELECT user_credit  "
-            . " FROM `user`  "
-            . " WHERE user_id = '" . (int)$user_id . "'");
-
-        return $query->row_array();
     }
 
     public function edit_user($user_id, $data)
     {
-        $this->load->library('encryption');
-
-        //------------------  Increase Decrease Credit
-        $result_get_credit = $this->get_user_credit($user_id);
-        $old_credit_user = $result_get_credit["user_credit"];
-
-        if ($old_credit_user > floatval(str_replace(",", "", $data['user_credit']))) {
-            $gab_credit = $old_credit_user - floatval(str_replace(",", "", $data['user_credit']));
-            $this->increase_agent_credit($gab_credit);
-        } else {
-            $gab_credit = floatval(str_replace(",", "", $data['user_credit'])) - $old_credit_user;
-            $this->decrease_agent_credit($gab_credit);
-        }
-
-        $this->db->query("UPDATE `" . "" . "user` SET "
-            . " username = '" . $data['username'] . "'"
-            . ", user_group_id = '" . (int)$data['user_group_id'] . "'"
-            . ", firstname = '" . $data['firstname'] . "'"
-            . ", lastname = '" . $data['lastname'] . "'"
-            . ", user_email = '" . $data['user_email'] . "'"
-            . ", user_telephone = '" . $data['user_telephone'] . "'"
-
-            . ", user_status = '" . (int)$data['user_status'] . "'"
-
-            . ", bank = '" . $data['bank'] . "'"
-            . ", bank_code = '" . $data['bank_code'] . "'"
-            . ", bank_name = '" . $data['bank_name'] . "'"
-            . ", user_credit = '" . str_replace(",", "", $data['user_credit']) . "'"
-            . " WHERE user_id = '" . (int)$user_id . "'");
-
-    }
-
-    public function edit_default_setting($data, $user_id)
-    {
         $this->load->library('encrypt');
 
-        foreach ($data as $item) {
+        $data_array = array(
+            'username' => $data['username'],
+            'user_group_id' => (int)$data['user_group_id'],
+            'password' => $this->encrypt->encode($data['password']),
+            'firstname' => $data['firstname'],
+            'lastname' => $data['lastname'],
+            'user_email' => $data['user_email'],
+            'user_telephone' => $data['user_telephone'],
+            'user_status' => (int)$data['user_status'],
 
-            $this->db->query("UPDATE `" . "" . "default_setting` SET "
-                . " minimum = '" . $item->minimum . "'"
-                . ", maximum = '" . $item->maximum . "'"
-                . ", limit_price = '" . $item->maximum . "'"
-                . ", reward = '" . $item->reward . "'"
-                . ", commission = '" . $item->commission . "'"
-                . " WHERE user_id = '" . (int)$user_id . "' AND lotto_type_id=" . $item->lotto_type_id);
-        }
+            'update_date' => date("Y-m-d H:i:s"),
+            'update_by' => $this->session->userdata("user_id")
+        );
 
-        return true;
-    }
+        $this->db->where('user_id', $user_id);
+        $result = $this->db->update('user', $data_array);
 
-    public function edit_percent_setting($data, $user_id)
-    {
-        $this->load->library('encrypt');
-
-        //echo var_dump($data);
-
-        foreach ($data as $item) {
-
-            $this->db->query("UPDATE `" . "" . "percent_setting` SET "
-                . " my_percent = '" . $item->my_percent . "'"
-                . ", sub_percent = '" . $item->sub_percent . "'"
-                . " WHERE user_id = '" . (int)$user_id . "' AND lotto_type_id=" . $item->lotto_type_id);
-
-        }
-
-        return true;
-    }
-
-    public function update_image($user_id, $urlImage)
-    {
-
-        $this->db->query("UPDATE `" . "" . "user` SET "
-            . " image = '" . $urlImage . "' WHERE user_id = '" . (int)$user_id . "'");
-
-        return true;
+        return $result;
     }
 
     public function edit_password($user_id, $password)
@@ -796,6 +523,71 @@ class User_model extends CI_Model
             ->where('user.user_id', $main_agent);
         $data = $this->db->get();
         return $data->result_array();
+    }
+
+    public function search_filter($txtSearch, $start_filter, $filter_number, $status)
+    {
+        $str_sql = "";
+        if ($status != '-1' && $status != '') {
+            $str_sql .= " AND  user_status = " . $status;
+        }
+
+        $query = $this->db->query("SELECT user.*,CONCAT(u1.firstname, ' ', u1.lastname) as create_by_name "
+            . " ,CONCAT(u2.firstname, ' ', u2.lastname)  as update_by_name ,ug.name as user_group_name "
+            . " from user "
+            . " inner join  user as u1 on u1.user_id = user.create_by "
+            . " inner join  user as u2 on u2.user_id = user.update_by "
+            . " inner join  user_group as ug on ug.user_group_id = user.user_group_id "
+            . " WHERE  "
+            . " user.username  Like '%" . $txtSearch . "%' "
+            . " OR  user.firstname  Like '%" . $txtSearch . "%' "
+            . " OR  user.lastname  Like '%" . $txtSearch . "%' "
+            . " OR  user.user_email  Like '%" . $txtSearch . "%' "
+            . " OR  user.user_telephone  Like '%" . $txtSearch . "%' "
+
+            . $str_sql
+            . " Limit " . $start_filter . ", " . $filter_number . " "
+        );
+
+        return $query->result_array();
+    }
+
+    public function count()
+    {
+        $query = $this->db->query("SELECT COUNT(*) AS total FROM `" . "" . "user`");
+
+        $result = $query->result_array();
+
+        return $result;
+    }
+
+
+    public function get_total_by_search($txtSearch, $start_filter, $filter_number, $filter_status)
+    {
+
+        $str_sql = "";
+        if ($filter_status != "" || $filter_status != 'undefined') {
+            $str_sql .= " AND  user_status = 1";
+        }
+
+        $query = $this->db->query("SELECT DISTINCT *, (select count(*) from user "
+            . " WHERE  user.username  Like '%" . $txtSearch . "%' "
+            . " OR  user.firstname  Like '%" . $txtSearch . "%' "
+            . " OR  user.lastname  Like '%" . $txtSearch . "%' "
+            . " OR  user.user_email  Like '%" . $txtSearch . "%' "
+            . " OR  user.user_telephone  Like '%" . $txtSearch . "%' "
+            . " ) as total FROM `" . "" . "user` as main_user "
+            . " WHERE  main_user.username  Like '%" . $txtSearch . "%' "
+            . " OR  main_user.firstname  Like '%" . $txtSearch . "%' "
+            . " OR  main_user.lastname  Like '%" . $txtSearch . "%' "
+            . " OR  main_user.user_email  Like '%" . $txtSearch . "%' "
+            . " OR  main_user.user_telephone  Like '%" . $txtSearch . "%' "
+
+            . $str_sql
+            . " Limit " . $start_filter . ", " . $filter_number . " "
+        );
+
+        return $query->row_array('total');
     }
 
 }

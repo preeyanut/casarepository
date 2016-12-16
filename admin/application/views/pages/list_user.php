@@ -89,20 +89,21 @@
                                 <thead class="table-user">
                                 <tr>
                                     <td class="text-center">ลำดับ</td>
-                                    <td class="text-center">รหัสสมาชิก</td>
+                                    <td class="text-center">รหัส Admin</td>
                                     <td class="text-center">ชื่อสมาชิก</td>
                                     <td class="text-center">เบอร์โทรศัพท์</td>
-                                    <td class="text-center">ระดับ</td>
-                                    <td class="text-center">เครดิต</td>
-                                    <td class="text-center">ยอดค้าง</td>
+                                    <td class="text-center">อีเมล์</td>
+                                    <td class="text-center">กลุ่มผู้ใช้งาน</td>
                                     <td class="text-center">สถานะ</td>
+                                    <td class="text-center">พนักงานที่เพิ่ม</td>
+                                    <td class="text-center">เพิ่มวันที่</td>
+                                    <td class="text-center">พนักงานที่แก้ไข</td>
+                                    <td class="text-center">แก้ไขวันที่</td>
                                     <td class="text-center">จัดการ</td>
-
-
                                 </tr>
                                 </thead>
-                                <tbody id="tbody-user">
-                                <?php //echo var_dump($list) ; ?>
+                                <tbody id="tbody">
+<!--                                --><?php //echo var_dump($list) ; ?>
                                 <?php if ($list) {
                                     $count = 1; ?>
                                     <?php foreach ($list as $user) { ?>
@@ -114,13 +115,8 @@
                                             <td class="text-center"><?php echo $user['user_code']; ?></td>
                                             <td class="text-center"><?php echo $user['firstname'] . " " . $user['lastname']; ?></td>
                                             <td class="text-center"><?php echo $user['user_telephone']; ?></td>
+                                            <td class="text-center"><?php echo $user['user_email']; ?></td>
                                             <td class="text-center"><?php echo $user['user_group_name']; ?></td>
-                                            <td class="text-center"><label
-                                                    class="label-number"><?php echo $user['user_credit']; ?></label>
-                                            </td>
-                                            <td class="text-center"><label
-                                                    class="label-number"><?php echo $user['user_balance']; ?></label>
-                                            </td>
                                             <td class="text-center" style="color: <?php
                                             $str_status = "";
                                             switch ($user['user_status']) {
@@ -138,8 +134,11 @@
                                                     break;
                                             }
                                             ?> ">
-                                                <?php echo $str_status; ?>
-                                            </td>
+                                            <td class="text-center"><?php echo $user['create_by_name']; ?></td>
+                                            <td class="text-center"><?php echo $user['create_date']; ?></td>
+                                            <td class="text-center"><?php echo $user['update_by_name']; ?></td>
+                                            <td class="text-center"><?php echo $user['update_date']; ?></td>
+
                                             <td class="text-center">
                                                 <button type="button" name="button-edit<?php echo $user['user_id']; ?>"
                                                         id="button-edit" class="btn btn-warning button-edit">แก้ไข
@@ -208,73 +207,107 @@
 
 <script type="application/javascript">
 
-    function formatNumber(number){
-        var p = number.toFixed(2).split(".");
-        var minus = p[0].substring(0, 1);
-        if(minus=="-"){
-            p[0] = p[0].substring(1,p[0].length);
-            return "-" + p[0].split("").reverse().reduce(function (acc, number, i, orig) {
-                    return number + (i && !(i % 3) ? "," : "") + acc;
-                }, "") + "." + p[1];
+    init_event({
+        document_on:[
+            'keyup,#input-search'
+            ,'change,#filter-number'
+            ,'change,#filter-status'
+            ,'click,.button-edit'
+            ,'click,.paging'
+        ],document_ready:[
+            get_paging
+        ]
+    });
+
+    $(document).on("keyup", "#input-search", function () {
+        search_user();
+        get_paging();
+    });
+
+    $(document).on("change", "#filter-number", function () {
+        search_user();
+        get_paging();
+    });
+
+    $(document).on("change", "#filter-status", function () {
+        search_user();
+        get_paging();
+    });
+
+    $(document).on("click", ".button-edit", function () {
+        var user_id = this.name.replace("button-edit", "");
+        window.open("<?php echo base_url(); ?>user/get_form?user_id=" + user_id, "_self");
+    });
+
+    $(document).on("click", ".paging", function () {
+        var page_number = this.id.replace("page", "");
+        $(".paging").css("background-color", "#ffffff");
+        var max_page = $('.container-paging').find('li').length;
+        var current_page = $("#filter-page").val();
+        if (current_page == 0) {
+            current_page = 1;
         }
-        else{
-            return "" + p[0].split("").reverse().reduce(function (acc, number, i, orig) {
-                    return number + (i && !(i % 3) ? "," : "") + acc;
-                }, "") + "." + p[1];
+        if (page_number == "-1" && current_page > 1) {
+            $("#filter-page").val(current_page - 1);
+            $("#page" + (current_page - 1)).css("background-color", "#eeeeee");
+        } else if (page_number == "+1" && current_page < max_page) {
+            $("#filter-page").val(Number(current_page) + 1);
+            $("#page" + (Number(current_page) + 1)).css("background-color", "#eeeeee");
+        } else if (page_number != "-1" && page_number != "+1") {
+            $("#filter-page").val(page_number);
+            $("#page" + page_number).css("background-color", "#eeeeee");
+        } else {
+            $("#page" + (Number(current_page))).css("background-color", "#eeeeee");
         }
-    }
+        search_user();
+    });
 
     function reload_list_user(user_id) {
-        $("#tbody-user").empty();
+        $("#tbody").empty();
         $.ajax({
-            url: '<?php echo base_url(); ?>list_user/get_all_user',
+            url: '<?php echo base_url(); ?>list_user/get_all',
             type: 'post',
             data: "user_id=" + user_id,
             dataType: 'json',
             crossDomain: true,
-            beforeSend: function () { },
-            complete: function () { },
+            beforeSend: function () {
+            },
+            complete: function () {
+            },
             success: function (json) {
                 var data = json.Data;
-                var users = data["list"];
-                $("#tbody-user").empty();
-                for (var i = 0; i < users.length; i++) {
-                    var user = users[i];
+                var types = data["list"];
+                $("#tbody").empty();
+                for (var i = 0; i < types.length; i++) {
+                    var type = types[i];
 
                     var color_status = "";
                     var str_status = "";
 
-                    switch (user.user_status) {
+                    switch (list_user.list_user_status) {
                         case 0:
-                            color_status = "#00A65A";
-                            str_status = "ปกติ";
+                            color_status = "#8a0004";
+                            str_status = "ปิดการใช้งาน";
                             break;
                         case 1:
-                            color_status = "#DD4B39";
-                            str_status = "ถูกระงับ";
-                            break;
-                        case 2 :
-                            color_status = "#CCCCCC";
-                            str_status = "ปิดใช้งาน";
+                            str_status = "เปิดใช้งาน";
                             break;
                     }
 
-                    var html = "<tr class='tr_id" + user.user_id + "'  style='cursor: pointer;'>"
+                    var html = "<tr class='tr_id" + type.user_id + "'  style='cursor: pointer;'>"
                         + "<td class='text-center'>" + (i + 1) + "</td>"
-                        + "<td class='text-center'>" + user.user_code + "</td>"
-                        + "<td class='text-center'>" + user.firstname + " " + user.lastname + "</td>"
-                        + "<td class='text-center'>" + user.user_telephone + "</td>"
-                        + "<td class='text-center'>" + user.user_group_name + "</td>"
-                        + "<td class='text-center'><label class='label-number'>" + user.user_credit + "</label></td>"
-                        + "<td class='text-center'><label class='label-number'>" + user.user_balance + "</label></td>"
+                        + "<td class='text-center'>" + type.list_user_name + "</td>"
+                        + "<td class='text-center'>" + type.create_date + "</td>"
+                        + "<td class='text-center'>" + type.create_by_name + "</td>"
+                        + "<td class='text-center'>" + type.update_date + "</td>"
+                        + "<td class='text-center'>" + type.update_by_name + "</td>"
                         + "<td class='text-center' style='color: " + color_status + "'>"
                         + str_status + "</td>"
                         + "</tr>";
 
-
-                    $("#tbody-user").append(html);
+                    $("#tbody").append(html);
                 }
-                alert("get user OK");
+                alert("get  OK");
             },
             error: function (xhr, ajaxOptions, thrownError) {
                 alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
@@ -283,57 +316,54 @@
     }
 
     function search_user() {
+
         var txtSearch = $("#input-search").val();
         var filterNumber = $("#filter-number").val();
         var filterPage = $("#filter-page").val();
-        var filterStatus = $("#filter-user-status").val();
-        var filterUserGroup = $("#filter-user-group").val();
+        var filterStatus = $("#filter-status").val();
+
         $.ajax({
-            url: '<?php echo base_url(); ?>list_user/search_user',
+            url: '<?php echo base_url(); ?>list_user/search',
             type: 'post',
-            data: "txtSearch=" + txtSearch + "&filter-number=" + filterNumber + "&filter-page=" + filterPage+ "&filter-user-status=" + filterStatus+ "&filter-user-group=" + filterUserGroup,
+            data: "txtSearch=" + txtSearch + "&filter-number=" + filterNumber + "&filter-page=" + filterPage + "&filter-status=" + filterStatus,
             dataType: 'json',
             crossDomain: true,
-            beforeSend: function () { },
-            complete: function () { },
+            beforeSend: function () {
+            },
+            complete: function () {
+            },
             success: function (json) {
                 var data = json.Data;
-                var users = data["list"];
-                $("#tbody-user").empty();
-                for (var i = 0; i < users.length; i++) {
-                    var user = users[i];
+                var types = data["list"];
+                $("#tbody").empty();
+                for (var i = 0; i < types.length; i++) {
+                    var type = types[i];
                     var color_status = "";
                     var str_status = "";
-                    switch (Number(user.user_status)) {
+                    switch (Number(type.list_user_status)) {
                         case 0:
-                            color_status = "#00A65A";
-                            str_status = "ปกติ";
+                            color_status = "#8a0004";
+                            str_status = "ปิดการใช้งาน";
                             break;
                         case 1:
-                            color_status = "#DD4B39";
-                            str_status = "ถูกระงับ";
-                            break;
-                        case 2 :
-                            color_status = "#CCCCCC";
-                            str_status = "ปิดใช้งาน";
+                            str_status = "เปิดใช้งาน";
                             break;
                     }
-                    var html = "<tr class='tr_id" + user.user_id + "'  >"
+                    var html = "<tr class='tr_id" + type.user_id + "'  >"
                         + "<td class='text-center'>" + (i + 1) + "</td>"
-                        + "<td class='text-center'>" + user.user_code + "</td>"
-                        + "<td class='text-center'>" + user.firstname + " " + user.lastname + "</td>"
-                        + "<td class='text-center'>" + user.user_telephone + "</td>"
-                        + "<td class='text-center'>" + user.user_group_name + "</td>"
-                        + "<td class='text-center'><label class='label-number'>" + user.user_credit + "</label></td>"
-                        + "<td class='text-center'><label class='label-number'>" + user.user_balance + "</label></td>"
+                        + "<td class='text-center'>" + type.list_user_name + "</td>"
+                        + "<td class='text-center'>" + type.create_date + "</td>"
+                        + "<td class='text-center'>" + type.create_by_name + "</td>"
+                        + "<td class='text-center'>" + type.update_date + "</td>"
+                        + "<td class='text-center'>" + type.update_by_name + "</td>"
                         + "<td class='text-center' style='color: " + color_status + "'>"
                         + str_status + "</td>"
-                        + " <td class='text-center'><button type='button' name='button-edit" + user.user_id + "' "
+                        + " <td class='text-center'><button type='button' name='button-edit" + type.user_id + "' "
                         + " id='button-edit' class='btn btn-warning button-edit'>แก้ไข</button></td>"
                         + "</tr>";
-                    $("#tbody-user").append(html);
+                    $("#tbody").append(html);
                 }
-                label_format_number();
+//                label_format_number();
             },
             error: function (xhr, ajaxOptions, thrownError) {
                 alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
@@ -345,18 +375,25 @@
         var txtSearch = $("#input-search").val();
         var filterNumber = $("#filter-number").val();
         var filterPage = $("#filter-page").val();
-        var filterStatus = $("#filter-user-status").val();
-        var filterUserGroup = $("#filter-user-group").val();
+        var filterStatus = $("#filter-status").val();
 
+//        filterPage=1;
+//        console.log(txtSearch);
+//        console.log(filterNumber);
+//        console.log(filterPage);
+//        console.log(filterStatus);
         $.ajax({
             url: '<?php echo base_url(); ?>list_user/get_paging',
             type: 'post',
-            data:"txtSearch=" + txtSearch + "&filter-number=" + filterNumber + "&filter-page=" + filterPage+ "&filter-user-status=" + filterStatus+ "&filter-user-group=" + filterUserGroup,
+            data: "txtSearch=" + txtSearch + "&filter-number=" + filterNumber + "&filter-page=" + filterPage + "&filter-status=" + filterStatus,
             dataType: 'json',
             crossDomain: true,
-            beforeSend: function () { },
-            complete: function () { },
+            beforeSend: function () {
+            },
+            complete: function () {
+            },
             success: function (json) {
+                console.log(json);
                 var data = json.Data;
                 var paging = data["paging"];
                 $(".container-paging").empty();
@@ -370,29 +407,6 @@
                 alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
             }
         });
-    }
-
-    $(document).on("click", ".button-edit", function () {
-        var user_id = this.name.replace("button-edit", "");
-        window.open("<?php echo base_url(); ?>user?user_id=" + user_id, "_self");
-    });
-
-    function label_red_color() {
-
-        var label_type_number = $(".label-number");
-
-        for (var i = 0; i < label_type_number.length; i++) {
-
-            var intValue = Number(label_type_number[i].innerHTML.trim().replace(/,/g,""));
-
-            // $(".label-number")[i].innerHTML = formatNumber(intValue);
-
-            console.log(intValue);
-            if(intValue<0){
-                // console.log($('.label-number')[i]);
-                $('.label-number')[i].style = "color:red;";
-            }
-        }
     }
 
 </script>

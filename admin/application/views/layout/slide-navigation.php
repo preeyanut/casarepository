@@ -34,9 +34,9 @@
 				</a>
 			</li>
 
-			<!--                --><?php
-			//                if (in_array("my_balance", $access_permission) || in_array("change_password", $access_permission)) {
-			//                    ?>
+<!--			                --><?php
+//			                if (in_array("banner", $access_permission) || in_array("change_password", $access_permission)) {
+//			                    ?>
 			<li class="treeview">
 				<a href="#">
 					<i class="fa fa-file-image-o"></i>

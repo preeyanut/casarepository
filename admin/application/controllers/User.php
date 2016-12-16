@@ -8,8 +8,6 @@ class User extends CI_Controller
         parent::__construct();
         $this->load->model('User_model');
         $this->load->model('User_group_model');
-//        $this->load->model('Lotto_type_model');
-//        $this->load->model('Lotto_group_type_model');
         $this->load->library('auth_check');
 
         if (!$this->auth_check->hasPermission('access', 'user')) {
@@ -26,14 +24,7 @@ class User extends CI_Controller
     {
         $this->load->library('encrypt');
 
-       // echo var_dump($this->input->get('user_id')) ;
         if ($this->input->get('user_id')) {
-
-            $result_user_id = $this->User_model-> get_all_my_sub_user();
-            $array_user_id = explode(",",$result_user_id);
-            if(!in_array($this->input->get('user_id'),$array_user_id)){
-                redirect('user');
-            }
 
             $user_info = $this->User_model->get_user($this->input->get('user_id'));
 
@@ -55,14 +46,10 @@ class User extends CI_Controller
                 $data['user_telephone'] = $user_info['user_telephone'];
                 $data['user_status'] = $user_info['user_status'];
 
-                $data['bank'] = $user_info['bank'];
-                $data['bank_code'] = $user_info['bank_code'];
-                $data['bank_name'] = $user_info['bank_name'];
-                $data['user_credit'] = $user_info['user_credit'];
-
-//                $data["list_lotto_types"] = $this->Lotto_type_model->get_lotto_type_by_user_id($user_info['user_id']);
-//
-//                $data["list_lotto_types_precents"] = $this->Lotto_type_model->get_lotto_type_percent_by_user_id($user_info['user_id']);
+                $data['create_date'] = $user_info['create_date'];
+                $data['create_by'] = $user_info['create_by'];
+                $data['update_date'] = $user_info['update_date'];
+                $data['update_by'] = $user_info['update_by'];
             }
 
             $data["action"] = base_url() . "user/edit";
@@ -82,37 +69,20 @@ class User extends CI_Controller
             $data['user_telephone'] = "";
             $data['user_status'] = "";
 
-            $data['bank'] = "";
-            $data['bank_code'] = "";
-            $data['bank_name'] = "";
-            $data['user_credit'] = "";
+            $data['create_date'] = "";
+            $data['create_by'] = "";
+            $data['update_date'] = "";
+            $data['update_by'] = "";
 
             $data["action"] = base_url() . "user/add";
-
-//            $data["list_lotto_types"] = $this->Lotto_type_model->get_all_lotto_type();
-//
-//            $data["list_lotto_types_precents"] = $this->Lotto_type_model->get_lotto_type_percent();
-
         }
 
-        $resutl_my_credit = $this->User_model->get_my_credit();
-//        $data["my_credit"]  = $resutl_my_credit["user_credit"];
-//
-//        $data["list_lotto_group_types"] = $this->Lotto_group_type_model->get_all_lotto_group_type();
-
         $data["user_groups"] = $this->User_group_model->get_all_user_group();
-
-//        $result_my_percent = $this->User_model->get_my_percent();
-
-//        $data["my_percent"] =$result_my_percent["my_percent"];
-//        $data["sub_percent"] =$result_my_percent["sub_percent"];
-
-       // echo var_dump($data) ;
-
 
         $data["page"] = 'pages/user';
 
         $this->load->view('template', $data);
+
     }
 
     public function validate_form()
@@ -130,23 +100,7 @@ class User extends CI_Controller
         }
 
         if ((strlen(trim($this->input->post('firstname'))) < 1) || (strlen(trim($this->input->post('firstname'))) > 255)) {
-            $this->error['firstname'] = "กรุณากรอกข้อมูลชื่อพนักงาน";
-        }
-
-//        if ((strlen(trim($this->input->post('user_telephone'))) < 10) || (strlen(trim($this->input->post('user_telephone'))) > 255)) {
-//            $this->error['user_telephone'] = "กรุณากรอกข้อมูลเบอร์โทรศัพท์";
-//        }
-
-        if ($this->input->post('bank') === "0") {
-            $this->error['bank'] = "กรุณาเลือกธนาคาร";
-        }
-
-        if ((strlen(trim($this->input->post('bank_code'))) < 1) || (strlen(trim($this->input->post('bank_code'))) > 255)) {
-            $this->error['bank_code'] = "กรุณากรอกข้อมูลเลขที่บัญชี";
-        }
-
-        if ((strlen(trim($this->input->post('bank_name'))) < 1) || (strlen(trim($this->input->post('bank_name'))) > 255)) {
-            $this->error['bank_name'] = "กรุณากรอกข้อมูลชื่อบัญชี";
+            $this->error['firstname'] = "กรุณากรอกข้อมูลชื่อแอดมิน";
         }
 
         if ($this->input->post('user_id') == "" || ($this->input->post('user_id') == "" && $this->input->post('password') != "")) {
@@ -178,7 +132,6 @@ class User extends CI_Controller
         }
 
         $jsonResult['Result'] = true;
-        //$jsonResult['error'] = "";
         $jsonResult['Data'] = $data;
         echo json_encode($jsonResult);
     }

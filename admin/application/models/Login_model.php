@@ -41,11 +41,9 @@ class login_model extends CI_Model
 
             if($data['is_login']==='1'){
                 if($data['last_action']!==null&&$data['last_action']!==''){
-                    // echo var_dump(setting_time > time()-(int)$data['last_action']);
                     if($setting_time > time()-(int)$data['last_action']){
                         return 2;
                     }
-                    // return;
                 }
             }
 
@@ -74,15 +72,19 @@ class login_model extends CI_Model
     public function set_session($data,$tStamp)  //  No Language
     {
         $data = array(
-            'user_id' => $data["user_id"],
-            'user_group_id' => $data["user_group_id"],
-            'username' => $data["username"],
-            'firstname' => $data["firstname"],
-            'lastname' => $data["lastname"],
-            'user_email' => $data["user_email"],
-            'date_added' => $data["date_added"],
-            'user_status' => $data["user_status"],
-            //'image' => $this->details->image,
+            'username' => $data['username'],
+            'user_group_id' => (int)$data['user_group_id'],
+            'password' => $this->encrypt->encode($data['password']),
+            'firstname' => $data['firstname'],
+            'lastname' => $data['lastname'],
+            'user_email' => $data['user_email'],
+            'user_telephone' => $data['user_telephone'],
+            'user_status' => (int)$data['user_status'],
+
+            'create_date' => date("Y-m-d H:i:s"),
+            'create_by' => $this->session->userdata("user_id"),
+            'update_date' => date("Y-m-d H:i:s"),
+            'update_by' => $this->session->userdata("user_id"),
             'is_login' => true,
             'login_time' => $tStamp
         );
