@@ -5788,3 +5788,1168 @@ DEBUG - 2016-12-16 10:40:48 --> Global POST, GET and COOKIE data sanitized
 DEBUG - 2016-12-16 10:40:48 --> Session class already loaded. Second attempt ignored.
 DEBUG - 2016-12-16 10:40:48 --> Encryption: Auto-configured driver 'openssl'.
 DEBUG - 2016-12-16 10:40:48 --> Total execution time: 0.1115
+DEBUG - 2016-12-16 11:15:19 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:15:19 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:15:19 --> Total execution time: 0.0503
+DEBUG - 2016-12-16 11:15:20 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:15:20 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:15:20 --> Total execution time: 0.0578
+DEBUG - 2016-12-16 11:15:26 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:15:26 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:15:26 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:15:26 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:15:26 --> Total execution time: 0.0766
+DEBUG - 2016-12-16 11:15:26 --> Total execution time: 0.1407
+DEBUG - 2016-12-16 11:15:27 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:15:27 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:15:27 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:15:27 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:15:28 --> Total execution time: 0.0868
+DEBUG - 2016-12-16 11:15:28 --> Total execution time: 0.1980
+DEBUG - 2016-12-16 11:15:30 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:15:30 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:15:30 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:15:30 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:15:30 --> Total execution time: 0.0563
+DEBUG - 2016-12-16 11:15:30 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:15:30 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:15:30 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:15:30 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:15:30 --> Total execution time: 0.0952
+DEBUG - 2016-12-16 11:15:30 --> Total execution time: 0.0971
+DEBUG - 2016-12-16 11:15:31 --> Total execution time: 0.1377
+DEBUG - 2016-12-16 11:15:39 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:15:39 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:15:39 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 11:15:39 --> Encryption: Auto-configured driver 'openssl'.
+ERROR - 2016-12-16 11:15:39 --> Severity: Notice --> Undefined index: category_type_id C:\wamp64\www\casarepository\admin\application\controllers\Category_type.php 135
+ERROR - 2016-12-16 11:15:39 --> Severity: Notice --> Undefined variable: category_type_id C:\wamp64\www\casarepository\admin\application\views\pages\category_type_form.php 32
+ERROR - 2016-12-16 11:15:39 --> Severity: Notice --> Undefined variable: category_type_name C:\wamp64\www\casarepository\admin\application\views\pages\category_type_form.php 44
+ERROR - 2016-12-16 11:15:39 --> Severity: Notice --> Undefined variable: category_type_status C:\wamp64\www\casarepository\admin\application\views\pages\category_type_form.php 60
+ERROR - 2016-12-16 11:15:39 --> Severity: Notice --> Undefined variable: category_type_status C:\wamp64\www\casarepository\admin\application\views\pages\category_type_form.php 65
+ERROR - 2016-12-16 11:15:39 --> Severity: Notice --> Undefined variable: category_type_id C:\wamp64\www\casarepository\admin\application\views\pages\category_type_form.php 205
+DEBUG - 2016-12-16 11:15:39 --> Total execution time: 0.0686
+DEBUG - 2016-12-16 11:15:59 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:15:59 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:15:59 --> Total execution time: 0.0638
+DEBUG - 2016-12-16 11:15:59 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:15:59 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:15:59 --> Total execution time: 0.0751
+DEBUG - 2016-12-16 11:16:01 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:16:01 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:16:01 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 11:16:01 --> Encryption: Auto-configured driver 'openssl'.
+ERROR - 2016-12-16 11:16:01 --> Severity: Notice --> Undefined index: category_type_id C:\wamp64\www\casarepository\admin\application\controllers\Category_type.php 135
+ERROR - 2016-12-16 11:16:01 --> Severity: Notice --> Undefined variable: category_type_id C:\wamp64\www\casarepository\admin\application\views\pages\category_type_form.php 32
+ERROR - 2016-12-16 11:16:01 --> Severity: Notice --> Undefined variable: category_type_name C:\wamp64\www\casarepository\admin\application\views\pages\category_type_form.php 44
+ERROR - 2016-12-16 11:16:01 --> Severity: Notice --> Undefined variable: category_type_status C:\wamp64\www\casarepository\admin\application\views\pages\category_type_form.php 60
+ERROR - 2016-12-16 11:16:01 --> Severity: Notice --> Undefined variable: category_type_status C:\wamp64\www\casarepository\admin\application\views\pages\category_type_form.php 65
+ERROR - 2016-12-16 11:16:01 --> Severity: Notice --> Undefined variable: category_type_id C:\wamp64\www\casarepository\admin\application\views\pages\category_type_form.php 205
+DEBUG - 2016-12-16 11:16:01 --> Total execution time: 0.0846
+DEBUG - 2016-12-16 11:16:24 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:16:24 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:16:24 --> Total execution time: 0.0470
+DEBUG - 2016-12-16 11:16:24 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:16:24 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:16:24 --> Total execution time: 0.0677
+DEBUG - 2016-12-16 11:16:26 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:16:26 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:16:26 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 11:16:26 --> Encryption: Auto-configured driver 'openssl'.
+ERROR - 2016-12-16 11:16:26 --> Severity: Notice --> Undefined index: category_type_id C:\wamp64\www\casarepository\admin\application\controllers\Category_type.php 135
+ERROR - 2016-12-16 11:16:26 --> Severity: Notice --> Undefined variable: category_type_id C:\wamp64\www\casarepository\admin\application\views\pages\category_type_form.php 32
+ERROR - 2016-12-16 11:16:26 --> Severity: Notice --> Undefined variable: category_type_name C:\wamp64\www\casarepository\admin\application\views\pages\category_type_form.php 44
+ERROR - 2016-12-16 11:16:26 --> Severity: Notice --> Undefined variable: category_type_status C:\wamp64\www\casarepository\admin\application\views\pages\category_type_form.php 60
+ERROR - 2016-12-16 11:16:26 --> Severity: Notice --> Undefined variable: category_type_status C:\wamp64\www\casarepository\admin\application\views\pages\category_type_form.php 65
+ERROR - 2016-12-16 11:16:26 --> Severity: Notice --> Undefined variable: category_type_id C:\wamp64\www\casarepository\admin\application\views\pages\category_type_form.php 205
+DEBUG - 2016-12-16 11:16:26 --> Total execution time: 0.0954
+DEBUG - 2016-12-16 11:16:34 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:16:34 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:16:34 --> Total execution time: 0.0463
+DEBUG - 2016-12-16 11:16:34 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:16:34 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:16:34 --> Total execution time: 0.0708
+DEBUG - 2016-12-16 11:17:30 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:17:30 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:17:30 --> Total execution time: 0.0468
+DEBUG - 2016-12-16 11:17:30 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:17:30 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:17:30 --> Total execution time: 0.0710
+DEBUG - 2016-12-16 11:17:32 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:17:32 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:17:32 --> Total execution time: 0.0581
+DEBUG - 2016-12-16 11:17:32 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:17:32 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:17:32 --> Total execution time: 0.0442
+DEBUG - 2016-12-16 11:17:34 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:17:34 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:17:34 --> Total execution time: 0.0634
+DEBUG - 2016-12-16 11:17:35 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:17:35 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:17:35 --> Total execution time: 0.0430
+DEBUG - 2016-12-16 11:17:39 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:17:39 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:17:39 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:17:39 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:17:39 --> Total execution time: 0.0692
+DEBUG - 2016-12-16 11:17:39 --> Total execution time: 0.1098
+DEBUG - 2016-12-16 11:17:41 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:17:41 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:17:41 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:17:41 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:17:41 --> Total execution time: 0.0866
+DEBUG - 2016-12-16 11:17:41 --> Total execution time: 0.1246
+DEBUG - 2016-12-16 11:17:41 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:17:41 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:17:41 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:17:41 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:17:41 --> Total execution time: 0.0681
+DEBUG - 2016-12-16 11:17:41 --> Total execution time: 0.1011
+DEBUG - 2016-12-16 11:22:37 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:22:37 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:22:37 --> Total execution time: 0.0516
+DEBUG - 2016-12-16 11:22:38 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:22:38 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:22:38 --> Total execution time: 0.0472
+DEBUG - 2016-12-16 11:22:40 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:22:40 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:22:40 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 11:22:40 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 11:22:40 --> Total execution time: 0.0762
+DEBUG - 2016-12-16 11:22:42 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:22:42 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:22:43 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 11:22:43 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 11:22:43 --> Total execution time: 0.0728
+DEBUG - 2016-12-16 11:24:25 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:24:25 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:24:25 --> Total execution time: 0.0477
+DEBUG - 2016-12-16 11:24:25 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:24:25 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:24:25 --> Total execution time: 0.0832
+DEBUG - 2016-12-16 11:24:33 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:24:33 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:24:33 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:24:33 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:24:33 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:24:33 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:24:33 --> Total execution time: 0.0524
+DEBUG - 2016-12-16 11:24:33 --> Total execution time: 0.1047
+DEBUG - 2016-12-16 11:24:33 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 11:24:33 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 11:24:33 --> Total execution time: 0.1485
+DEBUG - 2016-12-16 11:24:42 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:24:42 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:24:42 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:24:42 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:24:42 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:24:42 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:24:42 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 11:24:42 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 11:24:42 --> Total execution time: 0.0614
+DEBUG - 2016-12-16 11:24:42 --> Total execution time: 0.1096
+DEBUG - 2016-12-16 11:24:42 --> Total execution time: 0.1406
+DEBUG - 2016-12-16 11:24:54 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:24:54 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:24:54 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:24:54 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:24:54 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:24:54 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:24:54 --> Total execution time: 0.0491
+DEBUG - 2016-12-16 11:24:54 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 11:24:54 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 11:24:54 --> Total execution time: 0.1282
+DEBUG - 2016-12-16 11:24:54 --> Total execution time: 0.1666
+DEBUG - 2016-12-16 11:24:56 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:24:56 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:24:56 --> Total execution time: 0.0528
+DEBUG - 2016-12-16 11:24:56 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:24:56 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:24:56 --> Total execution time: 0.0485
+DEBUG - 2016-12-16 11:25:05 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:25:05 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:25:05 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:25:05 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:25:05 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:25:05 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:25:05 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:25:05 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:25:05 --> Total execution time: 0.0554
+DEBUG - 2016-12-16 11:25:05 --> Total execution time: 0.0832
+DEBUG - 2016-12-16 11:25:05 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 11:25:05 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 11:25:05 --> Total execution time: 0.1380
+DEBUG - 2016-12-16 11:25:05 --> Total execution time: 0.1718
+DEBUG - 2016-12-16 11:25:51 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:25:51 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:25:51 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:25:51 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:25:51 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:25:51 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:25:51 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:25:51 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:25:51 --> Total execution time: 0.0580
+DEBUG - 2016-12-16 11:25:51 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 11:25:51 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 11:25:51 --> Total execution time: 0.1149
+DEBUG - 2016-12-16 11:25:51 --> Total execution time: 0.1431
+DEBUG - 2016-12-16 11:25:51 --> Total execution time: 0.1858
+DEBUG - 2016-12-16 11:25:57 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:25:57 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:25:57 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:25:57 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:25:57 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:25:57 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:25:57 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:25:57 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:25:57 --> Total execution time: 0.0519
+DEBUG - 2016-12-16 11:25:57 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 11:25:57 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 11:25:57 --> Total execution time: 0.1244
+DEBUG - 2016-12-16 11:25:57 --> Total execution time: 0.1602
+DEBUG - 2016-12-16 11:25:57 --> Total execution time: 0.1942
+DEBUG - 2016-12-16 11:26:01 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:26:01 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:26:01 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:26:01 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:26:01 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:26:01 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:26:01 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:26:01 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:26:01 --> Total execution time: 0.0505
+DEBUG - 2016-12-16 11:26:01 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 11:26:01 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 11:26:01 --> Total execution time: 0.1110
+DEBUG - 2016-12-16 11:26:01 --> Total execution time: 0.1534
+DEBUG - 2016-12-16 11:26:01 --> Total execution time: 0.2199
+DEBUG - 2016-12-16 11:26:02 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:26:02 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:26:02 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:26:02 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:26:02 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:26:02 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:26:02 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:26:02 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:26:02 --> Total execution time: 0.0505
+DEBUG - 2016-12-16 11:26:02 --> Total execution time: 0.0813
+DEBUG - 2016-12-16 11:26:02 --> Total execution time: 0.1165
+DEBUG - 2016-12-16 11:26:02 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 11:26:02 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 11:26:02 --> Total execution time: 0.1714
+DEBUG - 2016-12-16 11:26:02 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:26:02 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:26:02 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:26:02 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:26:02 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:26:02 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:26:02 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:26:02 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:26:02 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 11:26:02 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 11:26:02 --> Total execution time: 0.0682
+DEBUG - 2016-12-16 11:26:02 --> Total execution time: 0.0997
+DEBUG - 2016-12-16 11:26:02 --> Total execution time: 0.1349
+DEBUG - 2016-12-16 11:26:02 --> Total execution time: 0.1695
+DEBUG - 2016-12-16 11:26:02 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:26:02 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:26:02 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:26:02 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:26:02 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:26:02 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:26:02 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:26:02 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:26:03 --> Total execution time: 0.0496
+DEBUG - 2016-12-16 11:26:03 --> Total execution time: 0.0778
+DEBUG - 2016-12-16 11:26:03 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 11:26:03 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 11:26:03 --> Total execution time: 0.1365
+DEBUG - 2016-12-16 11:26:03 --> Total execution time: 0.1755
+DEBUG - 2016-12-16 11:26:03 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:26:03 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:26:03 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:26:03 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:26:03 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:26:03 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:26:03 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:26:03 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:26:03 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 11:26:03 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 11:26:03 --> Total execution time: 0.0576
+DEBUG - 2016-12-16 11:26:03 --> Total execution time: 0.0875
+DEBUG - 2016-12-16 11:26:03 --> Total execution time: 0.1219
+DEBUG - 2016-12-16 11:26:03 --> Total execution time: 0.1519
+DEBUG - 2016-12-16 11:26:03 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:26:03 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:26:03 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:26:03 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:26:03 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:26:03 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:26:03 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:26:03 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:26:03 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 11:26:03 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 11:26:03 --> Total execution time: 0.0610
+DEBUG - 2016-12-16 11:26:03 --> Total execution time: 0.0906
+DEBUG - 2016-12-16 11:26:03 --> Total execution time: 0.1240
+DEBUG - 2016-12-16 11:26:03 --> Total execution time: 0.1501
+DEBUG - 2016-12-16 11:26:12 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:26:13 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:26:13 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 11:26:13 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 11:26:13 --> Total execution time: 0.0645
+DEBUG - 2016-12-16 11:26:15 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:26:15 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:26:15 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:26:15 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:26:15 --> Total execution time: 0.0599
+DEBUG - 2016-12-16 11:26:15 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 11:26:15 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 11:26:15 --> Total execution time: 0.2142
+DEBUG - 2016-12-16 11:26:22 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:26:22 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:26:22 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:26:22 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:26:22 --> Total execution time: 0.0455
+DEBUG - 2016-12-16 11:26:22 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 11:26:23 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 11:26:23 --> Total execution time: 0.1044
+DEBUG - 2016-12-16 11:26:23 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:26:23 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:26:23 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 11:26:23 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 11:26:23 --> Total execution time: 0.0687
+DEBUG - 2016-12-16 11:26:28 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:26:28 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:26:28 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 11:26:28 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 11:26:28 --> Total execution time: 0.0562
+DEBUG - 2016-12-16 11:26:29 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:26:29 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:26:29 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 11:26:29 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 11:26:29 --> Total execution time: 0.0899
+DEBUG - 2016-12-16 11:26:32 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:26:32 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2016-12-16 11:26:32 --> 404 Page Not Found: Config_group/delete_config_group
+DEBUG - 2016-12-16 11:26:32 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:26:32 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:26:32 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 11:26:32 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 11:26:32 --> Total execution time: 0.0641
+DEBUG - 2016-12-16 11:28:42 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:28:42 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:28:43 --> Total execution time: 0.0475
+DEBUG - 2016-12-16 11:28:43 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:28:43 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:28:43 --> Total execution time: 0.0507
+DEBUG - 2016-12-16 11:28:47 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:28:47 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:28:48 --> Total execution time: 0.0553
+DEBUG - 2016-12-16 11:28:50 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:28:50 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:28:50 --> Total execution time: 0.0545
+DEBUG - 2016-12-16 11:30:07 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:30:07 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:30:07 --> Total execution time: 0.0462
+DEBUG - 2016-12-16 11:30:07 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:30:07 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:30:07 --> Total execution time: 0.0530
+DEBUG - 2016-12-16 11:30:07 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:30:07 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:30:07 --> Total execution time: 0.0446
+DEBUG - 2016-12-16 11:30:08 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:30:08 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:30:08 --> Total execution time: 0.0460
+DEBUG - 2016-12-16 11:30:08 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:30:08 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:30:08 --> Total execution time: 0.0631
+DEBUG - 2016-12-16 11:30:14 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:30:14 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:30:14 --> Total execution time: 0.0438
+DEBUG - 2016-12-16 11:30:20 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:30:20 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:30:20 --> Total execution time: 0.0453
+DEBUG - 2016-12-16 11:30:21 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:30:21 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:30:21 --> Total execution time: 0.0546
+DEBUG - 2016-12-16 11:30:21 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:30:21 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:30:21 --> Total execution time: 0.0483
+DEBUG - 2016-12-16 11:30:21 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:30:21 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:30:21 --> Total execution time: 0.0535
+DEBUG - 2016-12-16 11:31:10 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:31:10 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:31:10 --> Total execution time: 0.0439
+DEBUG - 2016-12-16 11:31:10 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:31:10 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:31:10 --> Total execution time: 0.0700
+DEBUG - 2016-12-16 11:31:43 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:31:43 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:31:43 --> Total execution time: 0.0443
+DEBUG - 2016-12-16 11:31:44 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:31:44 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:31:44 --> Total execution time: 0.0815
+DEBUG - 2016-12-16 11:31:46 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:31:46 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:31:46 --> Total execution time: 0.0593
+DEBUG - 2016-12-16 11:31:46 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:31:46 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:31:46 --> Total execution time: 0.0723
+DEBUG - 2016-12-16 11:31:50 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:31:50 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:31:50 --> UTF-8 Support Enabled
+ERROR - 2016-12-16 11:31:50 --> 404 Page Not Found: Config_group/delete_config_group
+DEBUG - 2016-12-16 11:31:50 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:31:50 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 11:31:50 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 11:31:50 --> Total execution time: 0.0616
+DEBUG - 2016-12-16 11:31:55 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:31:55 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:31:55 --> Total execution time: 0.0578
+DEBUG - 2016-12-16 11:31:55 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:31:55 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:31:55 --> Total execution time: 0.0870
+DEBUG - 2016-12-16 11:36:14 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:36:14 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:36:14 --> Total execution time: 0.0492
+DEBUG - 2016-12-16 11:36:14 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:36:14 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:36:14 --> Total execution time: 0.0729
+DEBUG - 2016-12-16 11:36:17 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:36:17 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:36:17 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:36:17 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2016-12-16 11:36:17 --> Severity: Error --> Call to undefined method Config_group::getall() C:\wamp64\www\casarepository\admin\application\controllers\Config_group.php 151
+DEBUG - 2016-12-16 11:36:17 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 11:36:17 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 11:36:17 --> Total execution time: 0.1213
+DEBUG - 2016-12-16 11:36:30 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:36:30 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:36:30 --> Total execution time: 0.0457
+DEBUG - 2016-12-16 11:36:30 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:36:30 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:36:30 --> Total execution time: 0.0679
+DEBUG - 2016-12-16 11:42:17 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:42:17 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:42:17 --> Total execution time: 0.0482
+DEBUG - 2016-12-16 11:42:17 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:42:17 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:42:17 --> Total execution time: 0.0596
+DEBUG - 2016-12-16 11:42:19 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:42:19 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2016-12-16 11:42:19 --> Severity: Notice --> Undefined property: Config_group::$Bank_list_model C:\wamp64\www\casarepository\admin\application\controllers\Config_group.php 148
+ERROR - 2016-12-16 11:42:19 --> Severity: Error --> Call to a member function delete_config_group() on null C:\wamp64\www\casarepository\admin\application\controllers\Config_group.php 148
+DEBUG - 2016-12-16 11:42:36 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:42:36 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2016-12-16 11:42:36 --> Severity: Error --> Call to undefined method Config_group::getall() C:\wamp64\www\casarepository\admin\application\controllers\Config_group.php 151
+DEBUG - 2016-12-16 11:43:26 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:43:26 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:43:26 --> Total execution time: 0.0560
+DEBUG - 2016-12-16 11:43:31 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:43:31 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:43:31 --> Total execution time: 0.0669
+DEBUG - 2016-12-16 11:43:32 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:43:32 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:43:32 --> Total execution time: 0.0590
+DEBUG - 2016-12-16 11:43:34 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:43:34 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:43:34 --> Total execution time: 0.0747
+DEBUG - 2016-12-16 11:43:37 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:43:37 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:43:37 --> Total execution time: 0.0699
+DEBUG - 2016-12-16 11:43:39 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:43:39 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:43:40 --> Total execution time: 0.0773
+DEBUG - 2016-12-16 11:43:40 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:43:40 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:43:40 --> Total execution time: 0.0589
+DEBUG - 2016-12-16 11:44:00 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:44:00 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:44:00 --> Total execution time: 0.0559
+DEBUG - 2016-12-16 11:44:00 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:44:00 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:44:00 --> Total execution time: 0.0502
+DEBUG - 2016-12-16 11:44:03 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:44:03 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:44:03 --> Total execution time: 0.0495
+DEBUG - 2016-12-16 11:44:04 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:44:04 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:44:04 --> Total execution time: 0.0527
+DEBUG - 2016-12-16 11:44:08 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:44:08 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2016-12-16 11:44:08 --> Severity: Error --> Call to undefined method Config_group::getall() C:\wamp64\www\casarepository\admin\application\controllers\Config_group.php 151
+DEBUG - 2016-12-16 11:45:16 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:45:16 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2016-12-16 11:45:16 --> Severity: Notice --> Undefined property: Config_group::$User_model C:\wamp64\www\casarepository\admin\application\controllers\Config_group.php 39
+ERROR - 2016-12-16 11:45:16 --> Severity: Error --> Call to a member function get_user_all() on null C:\wamp64\www\casarepository\admin\application\controllers\Config_group.php 39
+DEBUG - 2016-12-16 11:45:37 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:45:37 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:45:37 --> Total execution time: 0.0789
+DEBUG - 2016-12-16 11:45:37 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:45:37 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:45:37 --> Total execution time: 0.0548
+DEBUG - 2016-12-16 11:45:43 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:45:43 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:45:43 --> Total execution time: 0.0553
+DEBUG - 2016-12-16 11:45:43 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:45:43 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:45:43 --> Total execution time: 0.0616
+DEBUG - 2016-12-16 11:45:46 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:45:46 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:45:46 --> Total execution time: 0.0624
+DEBUG - 2016-12-16 11:45:47 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:45:47 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:45:47 --> Total execution time: 0.0518
+DEBUG - 2016-12-16 11:45:57 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:45:57 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:45:57 --> Total execution time: 0.0562
+DEBUG - 2016-12-16 11:45:57 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:45:57 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:45:57 --> Total execution time: 0.0761
+DEBUG - 2016-12-16 11:45:59 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:45:59 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:45:59 --> Total execution time: 0.0575
+DEBUG - 2016-12-16 11:46:00 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:46:00 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:46:00 --> Total execution time: 0.0747
+DEBUG - 2016-12-16 11:46:03 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:46:03 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2016-12-16 11:46:03 --> Severity: Notice --> Undefined property: Config_group::$User_model C:\wamp64\www\casarepository\admin\application\controllers\Config_group.php 39
+ERROR - 2016-12-16 11:46:03 --> Severity: Error --> Call to a member function get_user_all() on null C:\wamp64\www\casarepository\admin\application\controllers\Config_group.php 39
+DEBUG - 2016-12-16 11:46:29 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:46:29 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2016-12-16 11:46:29 --> Severity: Notice --> Undefined variable: action C:\wamp64\www\casarepository\admin\application\views\pages\config_group.php 30
+ERROR - 2016-12-16 11:46:29 --> Severity: Notice --> Undefined variable: config_group_id C:\wamp64\www\casarepository\admin\application\views\pages\config_group.php 33
+ERROR - 2016-12-16 11:46:29 --> Severity: Notice --> Undefined variable: config_group_name C:\wamp64\www\casarepository\admin\application\views\pages\config_group.php 44
+ERROR - 2016-12-16 11:46:29 --> Severity: Notice --> Undefined variable: priority_level C:\wamp64\www\casarepository\admin\application\views\pages\config_group.php 58
+ERROR - 2016-12-16 11:46:29 --> Severity: Notice --> Undefined variable: config_group_status C:\wamp64\www\casarepository\admin\application\views\pages\config_group.php 74
+ERROR - 2016-12-16 11:46:29 --> Severity: Notice --> Undefined variable: config_group_status C:\wamp64\www\casarepository\admin\application\views\pages\config_group.php 79
+DEBUG - 2016-12-16 11:46:29 --> Total execution time: 0.0758
+DEBUG - 2016-12-16 11:46:29 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:46:29 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:46:29 --> Total execution time: 0.0637
+DEBUG - 2016-12-16 11:47:08 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:47:08 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:47:08 --> Total execution time: 0.0494
+DEBUG - 2016-12-16 11:47:08 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:47:08 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:47:08 --> Total execution time: 0.0766
+DEBUG - 2016-12-16 11:47:18 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:47:18 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:47:18 --> Total execution time: 0.0607
+DEBUG - 2016-12-16 11:47:18 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:47:18 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:47:18 --> Total execution time: 0.0923
+DEBUG - 2016-12-16 11:48:00 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:48:00 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:48:00 --> Total execution time: 0.0731
+DEBUG - 2016-12-16 11:48:00 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:48:00 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:48:00 --> Total execution time: 0.0726
+DEBUG - 2016-12-16 11:48:02 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:48:02 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:48:02 --> Total execution time: 0.0465
+DEBUG - 2016-12-16 11:48:02 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:48:02 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:48:02 --> Total execution time: 0.0471
+DEBUG - 2016-12-16 11:48:05 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:48:05 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:48:05 --> Total execution time: 0.0669
+DEBUG - 2016-12-16 11:48:05 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:48:05 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:48:05 --> Total execution time: 0.0424
+DEBUG - 2016-12-16 11:48:10 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:48:10 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:48:10 --> Total execution time: 0.0466
+DEBUG - 2016-12-16 11:48:10 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:48:10 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:48:10 --> Total execution time: 0.0579
+DEBUG - 2016-12-16 11:48:11 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:48:11 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:48:11 --> Total execution time: 0.0566
+DEBUG - 2016-12-16 11:48:15 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:48:15 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:48:15 --> Total execution time: 0.0561
+DEBUG - 2016-12-16 11:48:32 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:48:32 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2016-12-16 11:48:32 --> Severity: Notice --> Undefined property: Config_group::$User_model C:\wamp64\www\casarepository\admin\application\controllers\Config_group.php 39
+ERROR - 2016-12-16 11:48:32 --> Severity: Error --> Call to a member function get_user_all() on null C:\wamp64\www\casarepository\admin\application\controllers\Config_group.php 39
+DEBUG - 2016-12-16 11:48:58 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:48:58 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:48:58 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 11:48:58 --> Encryption: Auto-configured driver 'openssl'.
+ERROR - 2016-12-16 11:48:58 --> Severity: Notice --> Undefined property: Config_group::$User_model C:\wamp64\www\casarepository\admin\application\controllers\Config_group.php 39
+ERROR - 2016-12-16 11:48:58 --> Severity: Error --> Call to a member function get_user_all() on null C:\wamp64\www\casarepository\admin\application\controllers\Config_group.php 39
+DEBUG - 2016-12-16 11:49:15 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:49:15 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:49:15 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 11:49:15 --> Encryption: Auto-configured driver 'openssl'.
+ERROR - 2016-12-16 11:49:15 --> Severity: Notice --> Undefined property: Config_group::$User_model C:\wamp64\www\casarepository\admin\application\controllers\Config_group.php 39
+ERROR - 2016-12-16 11:49:15 --> Severity: Error --> Call to a member function get_user_all() on null C:\wamp64\www\casarepository\admin\application\controllers\Config_group.php 39
+DEBUG - 2016-12-16 11:49:18 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:49:18 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:49:18 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 11:49:18 --> Encryption: Auto-configured driver 'openssl'.
+ERROR - 2016-12-16 11:49:18 --> Severity: Notice --> Undefined property: Config_group::$User_model C:\wamp64\www\casarepository\admin\application\controllers\Config_group.php 39
+ERROR - 2016-12-16 11:49:18 --> Severity: Error --> Call to a member function get_user_all() on null C:\wamp64\www\casarepository\admin\application\controllers\Config_group.php 39
+DEBUG - 2016-12-16 11:49:18 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:49:18 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:49:18 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 11:49:18 --> Encryption: Auto-configured driver 'openssl'.
+ERROR - 2016-12-16 11:49:18 --> Severity: Notice --> Undefined property: Config_group::$User_model C:\wamp64\www\casarepository\admin\application\controllers\Config_group.php 39
+ERROR - 2016-12-16 11:49:18 --> Severity: Error --> Call to a member function get_user_all() on null C:\wamp64\www\casarepository\admin\application\controllers\Config_group.php 39
+DEBUG - 2016-12-16 11:49:23 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:49:23 --> No URI present. Default controller set.
+DEBUG - 2016-12-16 11:49:23 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:49:23 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:49:23 --> No URI present. Default controller set.
+DEBUG - 2016-12-16 11:49:23 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:49:23 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:49:23 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:49:23 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 11:49:23 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 11:49:23 --> Total execution time: 0.1117
+DEBUG - 2016-12-16 11:49:25 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:49:25 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:49:25 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 11:49:25 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 11:49:25 --> Total execution time: 0.0816
+DEBUG - 2016-12-16 11:49:25 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:49:25 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:49:25 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 11:49:25 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 11:49:25 --> Total execution time: 0.0706
+DEBUG - 2016-12-16 11:49:31 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:49:31 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:49:31 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 11:49:31 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 11:49:31 --> Total execution time: 0.0528
+DEBUG - 2016-12-16 11:49:31 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:49:31 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:49:31 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 11:49:31 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 11:49:31 --> Total execution time: 0.0808
+DEBUG - 2016-12-16 11:49:33 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:49:33 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:49:33 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 11:49:33 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 11:49:33 --> Total execution time: 0.0774
+DEBUG - 2016-12-16 11:49:34 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:49:34 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:49:34 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 11:49:34 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 11:49:34 --> Total execution time: 0.0663
+DEBUG - 2016-12-16 11:49:36 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:49:36 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:49:36 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 11:49:36 --> Encryption: Auto-configured driver 'openssl'.
+ERROR - 2016-12-16 11:49:36 --> Severity: Notice --> Undefined property: Config_group::$User_model C:\wamp64\www\casarepository\admin\application\controllers\Config_group.php 39
+ERROR - 2016-12-16 11:49:36 --> Severity: Error --> Call to a member function get_user_all() on null C:\wamp64\www\casarepository\admin\application\controllers\Config_group.php 39
+DEBUG - 2016-12-16 11:50:19 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:50:19 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:50:19 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 11:50:19 --> Encryption: Auto-configured driver 'openssl'.
+ERROR - 2016-12-16 11:50:19 --> Severity: Notice --> Undefined variable: action C:\wamp64\www\casarepository\admin\application\views\pages\config_group.php 30
+ERROR - 2016-12-16 11:50:19 --> Severity: Notice --> Undefined variable: config_group_id C:\wamp64\www\casarepository\admin\application\views\pages\config_group.php 33
+ERROR - 2016-12-16 11:50:19 --> Severity: Notice --> Undefined variable: config_group_name C:\wamp64\www\casarepository\admin\application\views\pages\config_group.php 44
+ERROR - 2016-12-16 11:50:19 --> Severity: Notice --> Undefined variable: priority_level C:\wamp64\www\casarepository\admin\application\views\pages\config_group.php 58
+ERROR - 2016-12-16 11:50:19 --> Severity: Notice --> Undefined variable: config_group_status C:\wamp64\www\casarepository\admin\application\views\pages\config_group.php 74
+ERROR - 2016-12-16 11:50:19 --> Severity: Notice --> Undefined variable: config_group_status C:\wamp64\www\casarepository\admin\application\views\pages\config_group.php 79
+DEBUG - 2016-12-16 11:50:19 --> Total execution time: 0.1195
+DEBUG - 2016-12-16 11:50:19 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:50:19 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:50:19 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 11:50:19 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 11:50:19 --> Total execution time: 0.0713
+DEBUG - 2016-12-16 11:51:38 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:51:38 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:51:38 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 11:51:38 --> Encryption: Auto-configured driver 'openssl'.
+ERROR - 2016-12-16 11:51:38 --> Severity: Notice --> Undefined variable: config_group_id C:\wamp64\www\casarepository\admin\application\views\pages\config_group.php 33
+ERROR - 2016-12-16 11:51:38 --> Severity: Notice --> Undefined variable: config_group_name C:\wamp64\www\casarepository\admin\application\views\pages\config_group.php 44
+ERROR - 2016-12-16 11:51:38 --> Severity: Notice --> Undefined variable: priority_level C:\wamp64\www\casarepository\admin\application\views\pages\config_group.php 58
+ERROR - 2016-12-16 11:51:38 --> Severity: Notice --> Undefined variable: config_group_status C:\wamp64\www\casarepository\admin\application\views\pages\config_group.php 74
+ERROR - 2016-12-16 11:51:38 --> Severity: Notice --> Undefined variable: config_group_status C:\wamp64\www\casarepository\admin\application\views\pages\config_group.php 79
+ERROR - 2016-12-16 11:51:38 --> Severity: Notice --> Undefined variable: config_group_id C:\wamp64\www\casarepository\admin\application\views\pages\config_group.php 33
+ERROR - 2016-12-16 11:51:38 --> Severity: Notice --> Undefined variable: config_group_name C:\wamp64\www\casarepository\admin\application\views\pages\config_group.php 44
+ERROR - 2016-12-16 11:51:38 --> Severity: Notice --> Undefined variable: priority_level C:\wamp64\www\casarepository\admin\application\views\pages\config_group.php 58
+ERROR - 2016-12-16 11:51:38 --> Severity: Notice --> Undefined variable: config_group_status C:\wamp64\www\casarepository\admin\application\views\pages\config_group.php 74
+ERROR - 2016-12-16 11:51:38 --> Severity: Notice --> Undefined variable: config_group_status C:\wamp64\www\casarepository\admin\application\views\pages\config_group.php 79
+DEBUG - 2016-12-16 11:51:38 --> Total execution time: 0.0967
+DEBUG - 2016-12-16 11:51:38 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:51:38 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:51:38 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 11:51:38 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 11:51:38 --> Total execution time: 0.0567
+DEBUG - 2016-12-16 11:51:38 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:51:38 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:51:38 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 11:51:38 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 11:51:38 --> Total execution time: 0.0725
+DEBUG - 2016-12-16 11:51:40 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:51:40 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:51:40 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:51:40 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:51:40 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 11:51:40 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 11:51:40 --> Total execution time: 0.0637
+DEBUG - 2016-12-16 11:51:40 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 11:51:40 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 11:51:40 --> Total execution time: 0.1000
+DEBUG - 2016-12-16 11:51:40 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:51:40 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:51:40 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:51:40 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:51:40 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 11:51:40 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 11:51:40 --> Total execution time: 0.0874
+DEBUG - 2016-12-16 11:51:40 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 11:51:40 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 11:51:40 --> Total execution time: 0.0717
+DEBUG - 2016-12-16 11:52:28 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:52:28 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:52:28 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:52:28 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:52:28 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 11:52:28 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 11:52:28 --> Total execution time: 0.0677
+DEBUG - 2016-12-16 11:52:28 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 11:52:28 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 11:52:28 --> Total execution time: 0.1058
+DEBUG - 2016-12-16 11:52:28 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:52:28 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:52:28 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 11:52:28 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 11:52:28 --> Total execution time: 0.0961
+DEBUG - 2016-12-16 11:52:28 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:52:28 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:52:28 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 11:52:28 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 11:52:28 --> Total execution time: 0.0605
+DEBUG - 2016-12-16 11:52:31 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:52:31 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:52:31 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:52:31 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:52:31 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 11:52:31 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 11:52:31 --> Total execution time: 0.0890
+DEBUG - 2016-12-16 11:52:31 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 11:52:31 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 11:52:31 --> Total execution time: 0.1689
+DEBUG - 2016-12-16 11:52:31 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:52:31 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:52:31 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:52:31 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 11:52:31 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:52:31 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 11:52:31 --> Total execution time: 0.0847
+DEBUG - 2016-12-16 11:52:32 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 11:52:32 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 11:52:32 --> Total execution time: 0.0836
+DEBUG - 2016-12-16 11:52:37 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:52:37 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:52:37 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 11:52:37 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 11:52:37 --> Total execution time: 0.0856
+DEBUG - 2016-12-16 11:52:38 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:52:38 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:52:38 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 11:52:38 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 11:52:38 --> Total execution time: 0.0653
+DEBUG - 2016-12-16 11:52:39 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:52:39 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:52:40 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 11:52:40 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 11:52:40 --> Total execution time: 0.0658
+DEBUG - 2016-12-16 11:52:40 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:52:40 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:52:40 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 11:52:40 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 11:52:40 --> Total execution time: 0.0682
+DEBUG - 2016-12-16 11:53:20 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:53:20 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:53:20 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:53:20 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:53:20 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 11:53:20 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 11:53:20 --> Total execution time: 0.0578
+DEBUG - 2016-12-16 11:53:20 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 11:53:20 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 11:53:20 --> Total execution time: 0.1116
+DEBUG - 2016-12-16 11:53:20 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:53:20 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:53:20 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:53:20 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:53:20 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 11:53:20 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 11:53:20 --> Total execution time: 0.1091
+DEBUG - 2016-12-16 11:53:20 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 11:53:20 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 11:53:20 --> Total execution time: 0.1133
+DEBUG - 2016-12-16 11:53:26 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:53:26 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:53:26 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 11:53:26 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 11:53:26 --> Total execution time: 0.0746
+DEBUG - 2016-12-16 11:53:27 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:53:27 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:53:27 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 11:53:27 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 11:53:27 --> Total execution time: 0.0683
+DEBUG - 2016-12-16 11:53:29 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:53:29 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:53:29 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 11:53:29 --> Encryption: Auto-configured driver 'openssl'.
+ERROR - 2016-12-16 11:53:29 --> Severity: Notice --> Undefined variable: config_group_id C:\wamp64\www\casarepository\admin\application\views\pages\config_group.php 33
+ERROR - 2016-12-16 11:53:29 --> Severity: Notice --> Undefined variable: config_group_name C:\wamp64\www\casarepository\admin\application\views\pages\config_group.php 44
+ERROR - 2016-12-16 11:53:29 --> Severity: Notice --> Undefined variable: priority_level C:\wamp64\www\casarepository\admin\application\views\pages\config_group.php 58
+ERROR - 2016-12-16 11:53:29 --> Severity: Notice --> Undefined variable: config_group_status C:\wamp64\www\casarepository\admin\application\views\pages\config_group.php 74
+ERROR - 2016-12-16 11:53:29 --> Severity: Notice --> Undefined variable: config_group_status C:\wamp64\www\casarepository\admin\application\views\pages\config_group.php 79
+DEBUG - 2016-12-16 11:53:29 --> Total execution time: 0.0900
+DEBUG - 2016-12-16 11:53:30 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:53:30 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:53:30 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 11:53:30 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 11:53:30 --> Total execution time: 0.0632
+DEBUG - 2016-12-16 11:55:29 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:55:29 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:55:29 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 11:55:29 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 11:55:29 --> Total execution time: 0.0672
+DEBUG - 2016-12-16 11:55:30 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:55:30 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:55:30 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 11:55:30 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 11:55:30 --> Total execution time: 0.0618
+DEBUG - 2016-12-16 11:55:32 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:55:32 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:55:32 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 11:55:32 --> Encryption: Auto-configured driver 'openssl'.
+ERROR - 2016-12-16 11:55:32 --> Severity: Notice --> Undefined variable: config_group_id C:\wamp64\www\casarepository\admin\application\views\pages\config_group.php 33
+ERROR - 2016-12-16 11:55:32 --> Severity: Notice --> Undefined variable: config_group_name C:\wamp64\www\casarepository\admin\application\views\pages\config_group.php 44
+ERROR - 2016-12-16 11:55:32 --> Severity: Notice --> Undefined variable: priority_level C:\wamp64\www\casarepository\admin\application\views\pages\config_group.php 58
+ERROR - 2016-12-16 11:55:32 --> Severity: Notice --> Undefined variable: config_group_status C:\wamp64\www\casarepository\admin\application\views\pages\config_group.php 74
+ERROR - 2016-12-16 11:55:32 --> Severity: Notice --> Undefined variable: config_group_status C:\wamp64\www\casarepository\admin\application\views\pages\config_group.php 79
+DEBUG - 2016-12-16 11:55:32 --> Total execution time: 0.1085
+DEBUG - 2016-12-16 11:55:32 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 11:55:32 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 11:55:32 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 11:55:32 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 11:55:32 --> Total execution time: 0.0694
+DEBUG - 2016-12-16 12:00:49 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 12:00:49 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 12:00:49 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 12:00:49 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 12:00:49 --> Total execution time: 0.0559
+DEBUG - 2016-12-16 12:00:49 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 12:00:49 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 12:00:49 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 12:00:49 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 12:00:49 --> Total execution time: 0.0697
+DEBUG - 2016-12-16 12:00:54 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 12:00:54 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 12:00:54 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 12:00:54 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 12:00:54 --> Total execution time: 0.0769
+DEBUG - 2016-12-16 12:00:54 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 12:00:54 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 12:00:54 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 12:00:54 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 12:00:54 --> Total execution time: 0.0657
+DEBUG - 2016-12-16 12:00:56 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 12:00:56 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 12:00:56 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 12:00:56 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 12:00:56 --> Total execution time: 0.0578
+DEBUG - 2016-12-16 12:00:56 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 12:00:56 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 12:00:56 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 12:00:56 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 12:00:56 --> Total execution time: 0.0744
+DEBUG - 2016-12-16 12:01:01 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 12:01:01 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 12:01:01 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 12:01:01 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 12:01:01 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 12:01:01 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 12:01:01 --> Total execution time: 0.0565
+DEBUG - 2016-12-16 12:01:01 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 12:01:01 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 12:01:01 --> Total execution time: 0.2224
+DEBUG - 2016-12-16 12:01:01 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 12:01:01 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 12:01:01 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 12:01:01 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 12:01:01 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 12:01:01 --> Total execution time: 0.0839
+DEBUG - 2016-12-16 12:01:01 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 12:01:01 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 12:01:01 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 12:01:01 --> Total execution time: 0.0952
+DEBUG - 2016-12-16 12:01:06 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 12:01:06 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 12:01:06 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 12:01:06 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 12:01:06 --> Total execution time: 0.1100
+DEBUG - 2016-12-16 12:01:06 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 12:01:06 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 12:01:06 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 12:01:06 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 12:01:06 --> Total execution time: 0.0563
+DEBUG - 2016-12-16 12:01:14 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 12:01:14 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 12:01:14 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 12:01:14 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 12:01:14 --> Total execution time: 0.0528
+DEBUG - 2016-12-16 12:01:14 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 12:01:14 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 12:01:14 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 12:01:14 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 12:01:14 --> Total execution time: 0.0720
+DEBUG - 2016-12-16 12:01:18 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 12:01:18 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 12:01:18 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 12:01:18 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 12:01:18 --> Total execution time: 0.0913
+DEBUG - 2016-12-16 12:01:18 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 12:01:18 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 12:01:18 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 12:01:18 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 12:01:18 --> Total execution time: 0.0624
+DEBUG - 2016-12-16 12:01:22 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 12:01:22 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 12:01:22 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 12:01:22 --> Encryption: Auto-configured driver 'openssl'.
+ERROR - 2016-12-16 12:01:22 --> Query error: Unknown column 'button' in 'where clause' - Invalid query: DELETE FROM config_webpage_group WHERE config_group_id = button-delete16
+DEBUG - 2016-12-16 12:01:27 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 12:01:27 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 12:01:27 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 12:01:27 --> Encryption: Auto-configured driver 'openssl'.
+ERROR - 2016-12-16 12:01:27 --> Query error: Unknown column 'button' in 'where clause' - Invalid query: DELETE FROM config_webpage_group WHERE config_group_id = button-delete17
+DEBUG - 2016-12-16 12:01:33 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 12:01:33 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 12:01:33 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 12:01:33 --> Encryption: Auto-configured driver 'openssl'.
+ERROR - 2016-12-16 12:01:33 --> Query error: Unknown column 'button' in 'where clause' - Invalid query: DELETE FROM config_webpage_group WHERE config_group_id = button-delete16
+DEBUG - 2016-12-16 12:01:37 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 12:01:37 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 12:01:37 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 12:01:37 --> Encryption: Auto-configured driver 'openssl'.
+ERROR - 2016-12-16 12:01:37 --> Query error: Unknown column 'button' in 'where clause' - Invalid query: DELETE FROM config_webpage_group WHERE config_group_id = button-delete17
+DEBUG - 2016-12-16 12:05:04 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 12:05:04 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2016-12-16 12:05:04 --> 404 Page Not Found: Assets/css
+DEBUG - 2016-12-16 12:05:12 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 12:05:12 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 12:05:12 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 12:05:12 --> Encryption: Auto-configured driver 'openssl'.
+ERROR - 2016-12-16 12:05:12 --> Query error: Unknown column 'button' in 'where clause' - Invalid query: DELETE FROM config_webpage_group WHERE config_group_id = button-delete5
+DEBUG - 2016-12-16 12:06:06 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 12:06:06 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 12:06:06 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 12:06:06 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 12:06:06 --> Total execution time: 0.0841
+DEBUG - 2016-12-16 12:06:06 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 12:06:06 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2016-12-16 12:06:06 --> 404 Page Not Found: Assets/css
+DEBUG - 2016-12-16 12:06:07 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 12:06:07 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 12:06:07 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 12:06:07 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 12:06:07 --> Total execution time: 0.0651
+DEBUG - 2016-12-16 12:10:47 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 12:10:47 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 12:10:47 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 12:10:47 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 12:10:47 --> Total execution time: 0.0690
+DEBUG - 2016-12-16 12:10:47 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 12:10:47 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 12:10:47 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 12:10:47 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 12:10:47 --> Total execution time: 0.0729
+DEBUG - 2016-12-16 12:10:50 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 12:10:50 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 12:10:50 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 12:10:50 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 12:10:50 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 12:10:50 --> Encryption: Auto-configured driver 'openssl'.
+ERROR - 2016-12-16 12:10:50 --> Query error: Unknown column 'button' in 'where clause' - Invalid query: DELETE FROM config_webpage_group WHERE config_group_id = button-delete17
+DEBUG - 2016-12-16 12:10:50 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 12:10:50 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 12:10:50 --> Total execution time: 0.0823
+DEBUG - 2016-12-16 12:10:56 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 12:10:56 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 12:10:56 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 12:10:56 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 12:10:56 --> Total execution time: 0.0621
+DEBUG - 2016-12-16 12:11:38 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 12:11:38 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 12:11:38 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 12:11:38 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 12:11:38 --> Total execution time: 0.0899
+DEBUG - 2016-12-16 12:11:39 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 12:11:39 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2016-12-16 12:11:39 --> 404 Page Not Found: Assets/css
+DEBUG - 2016-12-16 12:11:39 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 12:11:39 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 12:11:39 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 12:11:39 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 12:11:39 --> Total execution time: 0.0687
+DEBUG - 2016-12-16 12:11:41 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 12:11:41 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 12:11:41 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 12:11:41 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 12:11:41 --> Total execution time: 0.0559
+DEBUG - 2016-12-16 12:11:42 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 12:11:42 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2016-12-16 12:11:42 --> 404 Page Not Found: Assets/css
+DEBUG - 2016-12-16 12:11:42 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 12:11:42 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 12:11:42 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 12:11:42 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 12:11:42 --> Total execution time: 0.0668
+DEBUG - 2016-12-16 12:11:44 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 12:11:44 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 12:11:44 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 12:11:44 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 12:11:44 --> Total execution time: 0.0662
+DEBUG - 2016-12-16 12:11:45 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 12:11:45 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2016-12-16 12:11:45 --> 404 Page Not Found: Assets/css
+DEBUG - 2016-12-16 12:11:45 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 12:11:45 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 12:11:45 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 12:11:45 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 12:11:45 --> Total execution time: 0.0702
+DEBUG - 2016-12-16 12:11:48 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 12:11:48 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 12:11:48 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 12:11:48 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 12:11:48 --> Total execution time: 0.0554
+DEBUG - 2016-12-16 12:11:48 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 12:11:48 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 12:11:48 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 12:11:48 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 12:11:48 --> Total execution time: 0.0800
+DEBUG - 2016-12-16 12:11:50 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 12:11:50 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 12:11:50 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 12:11:50 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 12:11:50 --> Total execution time: 0.0880
+DEBUG - 2016-12-16 12:11:51 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 12:11:51 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2016-12-16 12:11:51 --> 404 Page Not Found: Assets/css
+DEBUG - 2016-12-16 12:11:51 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 12:11:51 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 12:11:51 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 12:11:51 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 12:11:51 --> Total execution time: 0.0683
+DEBUG - 2016-12-16 12:12:59 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 12:12:59 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 12:12:59 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 12:12:59 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 12:12:59 --> Total execution time: 0.0556
+DEBUG - 2016-12-16 12:12:59 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 12:12:59 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 12:13:00 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 12:13:00 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 12:13:00 --> Total execution time: 0.0702
+DEBUG - 2016-12-16 12:13:01 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 12:13:01 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 12:13:01 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 12:13:01 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 12:13:01 --> Total execution time: 0.1045
+DEBUG - 2016-12-16 12:13:02 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 12:13:02 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2016-12-16 12:13:02 --> 404 Page Not Found: Assets/css
+DEBUG - 2016-12-16 12:13:02 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 12:13:02 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 12:13:02 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 12:13:02 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 12:13:02 --> Total execution time: 0.0630
+DEBUG - 2016-12-16 12:14:51 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 12:14:51 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 12:14:51 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 12:14:51 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 12:14:51 --> Total execution time: 0.0664
+DEBUG - 2016-12-16 12:14:51 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 12:14:51 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 12:14:52 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 12:14:52 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 12:14:52 --> Total execution time: 0.0582
+DEBUG - 2016-12-16 12:14:54 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 12:14:54 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 12:14:54 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 12:14:54 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 12:14:54 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 12:14:54 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 12:14:54 --> Total execution time: 0.0876
+DEBUG - 2016-12-16 12:14:54 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 12:14:54 --> Encryption: Auto-configured driver 'openssl'.
+ERROR - 2016-12-16 12:14:54 --> Severity: Notice --> Undefined variable: config_group_id C:\wamp64\www\casarepository\admin\application\views\pages\config_group.php 33
+ERROR - 2016-12-16 12:14:54 --> Severity: Notice --> Undefined variable: config_group_name C:\wamp64\www\casarepository\admin\application\views\pages\config_group.php 44
+ERROR - 2016-12-16 12:14:54 --> Severity: Notice --> Undefined variable: priority_level C:\wamp64\www\casarepository\admin\application\views\pages\config_group.php 58
+ERROR - 2016-12-16 12:14:54 --> Severity: Notice --> Undefined variable: config_group_status C:\wamp64\www\casarepository\admin\application\views\pages\config_group.php 74
+ERROR - 2016-12-16 12:14:54 --> Severity: Notice --> Undefined variable: config_group_status C:\wamp64\www\casarepository\admin\application\views\pages\config_group.php 79
+DEBUG - 2016-12-16 12:14:54 --> Total execution time: 0.1396
+DEBUG - 2016-12-16 12:14:56 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 12:14:56 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2016-12-16 12:14:56 --> 404 Page Not Found: Assets/css
+DEBUG - 2016-12-16 12:14:56 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 12:14:56 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 12:14:56 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 12:14:56 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 12:14:56 --> Total execution time: 0.0729
+DEBUG - 2016-12-16 12:15:09 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 12:15:09 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 12:15:09 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 12:15:09 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 12:15:09 --> Total execution time: 0.0702
+DEBUG - 2016-12-16 12:15:09 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 12:15:09 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 12:15:09 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 12:15:09 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 12:15:09 --> Total execution time: 0.0683
+DEBUG - 2016-12-16 12:15:47 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 12:15:47 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 12:15:47 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 12:15:47 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 12:15:47 --> Total execution time: 0.0733
+DEBUG - 2016-12-16 12:15:47 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 12:15:47 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 12:15:47 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 12:15:47 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 12:15:47 --> Total execution time: 0.0600
+DEBUG - 2016-12-16 12:15:50 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 12:15:50 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 12:15:50 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 12:15:50 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 12:15:50 --> Total execution time: 0.0636
+DEBUG - 2016-12-16 12:15:51 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 12:15:51 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 12:15:51 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 12:15:51 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 12:15:51 --> Total execution time: 0.0566
+DEBUG - 2016-12-16 12:15:53 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 12:15:53 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 12:15:53 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 12:15:53 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 12:15:53 --> Total execution time: 0.0670
+DEBUG - 2016-12-16 12:15:54 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 12:15:54 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 12:15:54 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 12:15:54 --> Encryption: Auto-configured driver 'openssl'.
+DEBUG - 2016-12-16 12:15:54 --> Total execution time: 0.0655
+DEBUG - 2016-12-16 12:16:00 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 12:16:00 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 12:16:00 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 12:16:00 --> Encryption: Auto-configured driver 'openssl'.
+ERROR - 2016-12-16 12:16:00 --> Severity: Notice --> Undefined variable: data C:\wamp64\www\casarepository\admin\application\controllers\Config_group.php 152
+DEBUG - 2016-12-16 12:16:00 --> Total execution time: 0.0589
+DEBUG - 2016-12-16 12:16:04 --> UTF-8 Support Enabled
+DEBUG - 2016-12-16 12:16:04 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-16 12:16:04 --> Session class already loaded. Second attempt ignored.
+DEBUG - 2016-12-16 12:16:04 --> Encryption: Auto-configured driver 'openssl'.
+ERROR - 2016-12-16 12:16:04 --> Severity: Notice --> Undefined variable: data C:\wamp64\www\casarepository\admin\application\controllers\Config_group.php 152
+DEBUG - 2016-12-16 12:16:04 --> Total execution time: 0.0736

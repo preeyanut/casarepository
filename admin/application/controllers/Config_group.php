@@ -8,11 +8,11 @@ class Config_group extends CI_Controller
         parent::__construct();
         $this->load->model('Config_group_model');
 
-//        $this->load->library('auth_check');
-//
-//        if (!$this->auth_check->hasPermission('access', 'user')) {
-//            redirect('permission');
-//        }
+        $this->load->library('auth_check');
+
+        if (!$this->auth_check->hasPermission('access', 'config_group')) {
+            redirect('permission');
+        }
     }
 
     public function index()
@@ -36,12 +36,12 @@ class Config_group extends CI_Controller
         }
 
         $data["list"] = $this->Config_group_model->getall();
-        $data_user = $this->User_model->get_user_all();
+        //$data_user = $this->User_model->get_user_all();
 
-        for($i=0;$i<count($data_user);$i++) {
-            $data['user_id'][] = $data_user[$i]['user_id'];
-            $data['username'][] = $data_user[$i]['username'];
-        }
+        //for ($i = 0; $i < count($data_user); $i++) {
+            //$data['user_id'][] = $data_user[$i]['user_id'];
+            //$data['username'][] = $data_user[$i]['username'];
+        //}
 
         $data["paging"] = $paging;
 
@@ -88,10 +88,10 @@ class Config_group extends CI_Controller
                     $data['config_group_status'] = $info['config_group_status'];
 
                 }
-               //for($i=0;$i<count($data_user);$i++) {
-                    //$data['user_id'][] = $data_user[$i]['user_id'];
-                    //$data['username'][] = $data_user[$i]['username'];
-               //}
+                //for($i=0;$i<count($data_user);$i++) {
+                //$data['user_id'][] = $data_user[$i]['user_id'];
+                //$data['username'][] = $data_user[$i]['username'];
+                //}
             }
 
             $data["action"] = base_url() . "config_group/edit_config_group";
@@ -141,6 +141,19 @@ class Config_group extends CI_Controller
     }
 
 
+    public function delete_config_group() {
+
+        if ($this->input->post()) {
+            $this->Config_group_model->delete_config_group($this->input->post("config_group_id"));
+        }
+
+        $jsonResult['Result'] = true;
+        //$jsonResult['error'] = "";
+        $jsonResult['Data'] = $data;
+        echo json_encode($jsonResult);
+    }
+
+
     public function validate_form()
     {
 
@@ -148,7 +161,7 @@ class Config_group extends CI_Controller
             $this->error['config_group_name'] = "กรุณากรอกชื่อwebpage";
         }
 
-        if ((strlen($this->input->post('priority_level')) < 3) || (strlen($this->input->post('priority_level')) > 255)) {
+        if ((strlen($this->input->post('priority_level')) < 1) || (strlen($this->input->post('priority_level')) > 255)) {
             $this->error['priority_level'] = "กรุณากรอกลำดับความสำคัญ";
         }
 

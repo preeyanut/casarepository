@@ -194,6 +194,10 @@
                                                         id="button-edit"
                                                         class="btn btn-warning button-edit">แก้ไข
                                                 </button>
+                                                <button type="button"
+                                                        name="button-delete<?php echo $config_group['config_group_id']; ?>"
+                                                        id="button-delete" class="btn btn-danger button-delete">ลบ
+                                                </button>
                                             </td>
                                         </tr>
                                     <?php } ?>
@@ -258,21 +262,65 @@
 
 <script type="application/javascript">
 
-    function formatNumber(number) {
-        var p = number.toFixed(2).split(".");
-        var minus = p[0].substring(0, 1);
-        if (minus == "-") {
-            p[0] = p[0].substring(1, p[0].length);
-            return "-" + p[0].split("").reverse().reduce(function (acc, number, i, orig) {
-                    return number + (i && !(i % 3) ? "," : "") + acc;
-                }, "") + "." + p[1];
-        }
-        else {
-            return "" + p[0].split("").reverse().reduce(function (acc, number, i, orig) {
-                    return number + (i && !(i % 3) ? "," : "") + acc;
-                }, "") + "." + p[1];
-        }
+
+    init_event({
+        document_on:[
+            'keyup,#input-search'
+            ,'click,#button-save'
+            ,'click,.button-edit'
+            ,'click,.button-delete'
+            ,'click,.paging'
+        ],document_ready:[
+            get_paging
+        ]
+    });
+
+    function add_config_group() {
+        $.ajax({
+            url: '<?php echo base_url(); ?>config_group/add_config_group',
+            type: 'post',
+            data: $('input , select'),
+            dataType: 'json',
+            crossDomain: true,
+            beforeSend: function () {
+                $('#button-save').button('loading');
+            },
+            complete: function () {
+                $('#button-save').button('reset');
+            },
+            success: function (json) {
+
+                alert("เพิ่มข้อมูลเสร็จสิ้น");
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+            }
+        });
     }
+
+    function edit_config_group() {
+        var config_group_id = $('input[name="config_group_id"]').val();
+        $.ajax({
+            url: '<?php echo base_url(); ?>config_group/edit_config_group',
+            type: 'post',
+            data: $('input , select'),
+            dataType: 'json',
+            crossDomain: true,
+            beforeSend: function () {
+                $('#button-save').button('loading');
+            },
+            complete: function () {
+                $('#button-save').button('reset');
+            },
+            success: function (json) {
+                alert("แก้ไขข้อมูลเสร็จสิ้น");
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+            }
+        });
+    }
+
 
     $(document).on("click", "#button-save", function () {
         $.ajax({
@@ -325,60 +373,12 @@
     });
 
     $(document).on("click", ".button-edit", function () {
-        var config_group_id = this.name.replace("button-edit-", "");
-        window.open("<?php echo base_url(); ?>config_group?config_group_id=" + config_group_id, "_self");
+        var config_group_id = this.name.replace("button-edit", "");
+        window.open("<?php echo base_url(); ?>config_group/get_form?config_group_id=" + config_group_id, "_self");
     });
 
-
-    function add_config_group() {
-        $.ajax({
-            url: '<?php echo base_url(); ?>config_group/add_config_group',
-            type: 'post',
-            data: $('input , select'),
-            dataType: 'json',
-            crossDomain: true,
-            beforeSend: function () {
-                $('#button-save').button('loading');
-            },
-            complete: function () {
-                $('#button-save').button('reset');
-            },
-            success: function (json) {
-
-                alert("เพิ่มข้อมูลเสร็จสิ้น");
-            },
-            error: function (xhr, ajaxOptions, thrownError) {
-                alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
-            }
-        });
-    }
-
-    function edit_config_group() {
-        var config_group_id = $('input[name="config_group_id"]').val();
-        $.ajax({
-            url: '<?php echo base_url(); ?>config_group/edit_config_group',
-            type: 'post',
-            data: $('input , select'),
-            dataType: 'json',
-            crossDomain: true,
-            beforeSend: function () {
-                $('#button-save').button('loading');
-            },
-            complete: function () {
-                $('#button-save').button('reset');
-            },
-            success: function (json) {
-                alert("แก้ไขข้อมูลเสร็จสิ้น");
-            },
-            error: function (xhr, ajaxOptions, thrownError) {
-                alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
-            }
-        });
-    }
-
-
     $(document).on("click", ".button-delete", function () {
-        var config_group_id = this.name.replace("button-delete-", "");
+        var config_group_id = this.name.replace("button-delete", "");
         var result = confirm("ยืนยันการลบข้อมูล");
         if (result == true) {
             $.ajax({
@@ -405,6 +405,43 @@
 
     });
 
+    $(document).on("keyup", "#input-search", function () {
+        search_user();
+        get_paging();
+    });
+
+    $(document).on("change", "#filter-number", function () {
+        search_user();
+        get_paging();
+    });
+
+    $(document).on("change", "#filter-status", function () {
+        search_user();
+        get_paging();
+    });
+
+    $(document).on("click", ".paging", function () {
+        var page_number = this.id.replace("page", "");
+        $(".paging").css("background-color", "#ffffff");
+        var max_page = $('.container-paging').find('li').length;
+        var current_page = $("#filter-page").val();
+        if (current_page == 0) {
+            current_page = 1;
+        }
+        if (page_number == "-1" && current_page > 1) {
+            $("#filter-page").val(current_page - 1);
+            $("#page" + (current_page - 1)).css("background-color", "#eeeeee");
+        } else if (page_number == "+1" && current_page < max_page) {
+            $("#filter-page").val(Number(current_page) + 1);
+            $("#page" + (Number(current_page) + 1)).css("background-color", "#eeeeee");
+        } else if (page_number != "-1" && page_number != "+1") {
+            $("#filter-page").val(page_number);
+            $("#page" + page_number).css("background-color", "#eeeeee");
+        } else {
+            $("#page" + (Number(current_page))).css("background-color", "#eeeeee");
+        }
+        search_user();
+    });
 
     function reload_config_group(config_group_id) {
         $("#tbody").empty();
@@ -459,7 +496,6 @@
             }
         });
     }
-
 
     function search_user() {
         var txtSearch = $("#input-search").val();
@@ -527,6 +563,11 @@
         var filterPage = $("#filter-page").val();
         var filterStatus = $("#filter-status").val();
 
+//        filterPage=1;
+//        console.log(txtSearch);
+//        console.log(filterNumber);
+//        console.log(filterPage);
+//        console.log(filterStatus);
         $.ajax({
             url: '<?php echo base_url(); ?>config_group/get_paging',
             type: 'post',
@@ -538,6 +579,7 @@
             complete: function () {
             },
             success: function (json) {
+                console.log(json);
                 var data = json.Data;
                 var paging = data["paging"];
                 $(".container-paging").empty();
@@ -553,9 +595,6 @@
         });
     }
 
-    $(document).on("click", ".button-edit", function () {
-        var config_group_id = this.name.replace("button-edit", "");
-        window.open("<?php echo base_url(); ?>config_group/get_form?config_group_id=" + config_group_id, "_self");
-    });
+
 
 </script>
