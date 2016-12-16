@@ -70,6 +70,7 @@
                                 <div class="col-md-2 col-xs-2" align="right">
                                     <label class="control-label" for="input-category-icon"> ไอคอน</label>
                                 </div>
+<<<<<<< HEAD
                                 <div class="col-md-10 col-xs-10">
                                     <select name="category_icon" class="form-control selectpicker">
                                         <option data-icon="fa fa-address-book-o" value="1" <?php if ($category_icon == 1) { ?>
@@ -97,6 +98,15 @@
                                         <option data-icon="fa fa-fax" value="12" <?php if ($category_icon == 12) { ?>
                                             selected="selected" <?php } ?>></option>
                                     </select>
+=======
+                                <div class="col-md-10 col-xs-10" data-type="radio">
+                                    <input type="radio" name="category_icon" value="1" <?php if($category_icon == 1){echo "checked";}?> >
+                                    <i class="fa fa-address-book-o"></i>
+                                    <input type="radio" name="category_icon" value="2" <?php if($category_icon == 2){echo "checked";}?> >
+                                    <i class="fa fa-address-book-o"></i>
+                                    <input type="radio" name="category_icon" value="3" <?php if($category_icon == 3){echo "checked";}?> >
+                                    <i class="fa fa-address-book-o"></i>
+>>>>>>> 70cc9b958668d79e3b31725afc2f2ec8f9967036
                                 </div>
                                 <div class="text-danger"></div>
                             </div>
@@ -117,6 +127,7 @@
 
                             <?php if($category_id != '') { ?>
 
+<<<<<<< HEAD
                                 <div class="form-group required col-md-12 col-xs-12">
                                     <div class="col-md-2 col-xs-2" align="right">
                                         <label class=" control-label" for="create_date">วันที่เพิ่ม</label>
@@ -129,6 +140,18 @@
                                                    class="form-control"/>
                                         </div>
                                         <div class="text-danger"></div>
+=======
+                            <div class="form-group required col-md-12 col-xs-12">
+                                <div class="col-md-2 col-xs-2" align="right">
+                                    <label class=" control-label" for="create_date">วันที่เพิ่ม</label>
+                                </div>
+                                <div class="col-md-10 col-xs-10">
+                                    <div class="">
+                                        <input type="text" name="create_date" value="<?php echo $create_date; ?>"
+                                               id="create_date"
+                                               disabled
+                                               class="form-control"/>
+>>>>>>> 70cc9b958668d79e3b31725afc2f2ec8f9967036
                                     </div>
                                 </div>
 
@@ -176,6 +199,8 @@
                                         <div class="text-danger"></div>
                                     </div>
                                 </div>
+
+                            <?php }?>
 
                             <?php }?>
 

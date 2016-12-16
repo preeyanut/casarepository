@@ -69,7 +69,11 @@
                                         </option>
                                         <option
                                                 value="1" <?php if ($bank_list_status == 1) { ?>
+<<<<<<< HEAD
                                             selected="selected" <?php } ?> >
+=======
+                                                selected="selected" <?php } ?> >
+>>>>>>> 70cc9b958668d79e3b31725afc2f2ec8f9967036
                                             เปิดใช้งาน
                                         </option>
 

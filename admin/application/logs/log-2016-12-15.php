@@ -1754,3 +1754,39 @@ ERROR - 2016-12-15 11:28:33 --> 404 Page Not Found: Assets/css
 DEBUG - 2016-12-15 11:28:57 --> UTF-8 Support Enabled
 DEBUG - 2016-12-15 11:28:57 --> Global POST, GET and COOKIE data sanitized
 DEBUG - 2016-12-15 11:28:57 --> Total execution time: 0.0668
+DEBUG - 2016-12-15 11:43:46 --> UTF-8 Support Enabled
+DEBUG - 2016-12-15 11:43:46 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-15 11:43:46 --> Total execution time: 0.0515
+DEBUG - 2016-12-15 11:43:46 --> UTF-8 Support Enabled
+DEBUG - 2016-12-15 11:43:46 --> UTF-8 Support Enabled
+DEBUG - 2016-12-15 11:43:46 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-15 11:43:46 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-15 11:43:46 --> Total execution time: 0.0472
+DEBUG - 2016-12-15 11:43:46 --> Total execution time: 0.0801
+DEBUG - 2016-12-15 11:43:46 --> UTF-8 Support Enabled
+DEBUG - 2016-12-15 11:43:46 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-15 11:43:46 --> Total execution time: 0.0570
+DEBUG - 2016-12-15 11:43:46 --> UTF-8 Support Enabled
+DEBUG - 2016-12-15 11:43:46 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2016-12-15 11:43:46 --> 404 Page Not Found: Assets/css
+DEBUG - 2016-12-15 11:43:47 --> UTF-8 Support Enabled
+DEBUG - 2016-12-15 11:43:47 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2016-12-15 11:43:47 --> 404 Page Not Found: Assets/css
+DEBUG - 2016-12-15 11:43:47 --> UTF-8 Support Enabled
+DEBUG - 2016-12-15 11:43:47 --> UTF-8 Support Enabled
+DEBUG - 2016-12-15 11:43:47 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-15 11:43:47 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-15 11:43:47 --> Total execution time: 0.0469
+DEBUG - 2016-12-15 11:43:47 --> Total execution time: 0.0772
+DEBUG - 2016-12-15 11:43:49 --> UTF-8 Support Enabled
+DEBUG - 2016-12-15 11:43:49 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-15 11:43:49 --> Total execution time: 0.0622
+DEBUG - 2016-12-15 11:43:50 --> UTF-8 Support Enabled
+DEBUG - 2016-12-15 11:43:50 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2016-12-15 11:43:50 --> UTF-8 Support Enabled
+DEBUG - 2016-12-15 11:43:50 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2016-12-15 11:43:50 --> 404 Page Not Found: Assets/css
+DEBUG - 2016-12-15 11:43:50 --> Total execution time: 0.0567
+DEBUG - 2016-12-15 11:43:50 --> UTF-8 Support Enabled
+DEBUG - 2016-12-15 11:43:50 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2016-12-15 11:43:50 --> 404 Page Not Found: Assets/css
