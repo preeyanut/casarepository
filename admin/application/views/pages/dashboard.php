@@ -4,9 +4,9 @@
         <div class="col-md-12 text-center">
             <div class="center-horizontal">
 
-                <div style="display: inline;position:relative;"><img src="assets/img/logo-test.png" style="height:120px;weight:120px;"></div>
-                <h1 ">
-                    Casabet <br><small>Casabet Lotto System</small>
+                <div style="display: inline;position:relative;"><img src="assets/img/casa-logo.png" style="height:250px;"></div>
+                <h1>
+                    CASA98THAILAND <br><small>Casa98thailand Backend System</small>
                 </h1>
 
             </div>
@@ -16,31 +16,8 @@
                 <div class="col-sm-12 form-horizontal ">
                     <div class="col-sm-4 center-horizontal" style="float: left;">
 
-<!--                        --><?php // echo $this->ckeditor->editor('', ''); ?>
-<!--                        <label class=" control-label" for="input-search" style="float: left">งวดวันที่-->
-<!--                            : </label>-->
-<!--                        <div class="col-sm-8">-->
-<!--                            <select id="filter-period-lotto" name="period_lotto"-->
-<!--                                    aria-controls="period_lotto"-->
-<!--                                    class="form-control input-sm input-xsmall input-inline">-->
-<!--                                --><?php //foreach ($period_lotto as $item) {
-//
-//                                    if ($item['lotto_result_date'] === $current_period) { ?>
-<!--                                        <option-->
-<!--                                            value="--><?php //echo $item['lotto_result_date']; ?><!--">--><?php //echo $item['lotto_result_date']; ?><!--</option> --><?php
-//                                    } else {
-//                                        ?>
-<!--                                        <option-->
-<!--                                            value="--><?php //echo $item['lotto_result_date']; ?><!--">--><?php //echo $item['lotto_result_date']; ?><!--</option> --><?php
-//                                    }
-//                                    ?>
-<!--                                --><?php //} ?>
-<!--                            </select>-->
-<!--                        </div>-->
                     </div>
-
                 </div>
-
             </div>
         </div>
     </div>
@@ -50,7 +27,7 @@
             <!-- small box -->
             <div class="small-box bg-aqua">
                 <div class="inner">
-                    <h3><?php echo $user_credit; ?></h3>
+                    <h3><?php //echo $user_credit; ?></h3>
                     <h4>เครดิตของคุณ</h4>
                 </div>
                 <div class="icon">
@@ -64,7 +41,7 @@
             <!-- small box -->
             <div class="small-box bg-green">
                 <div class="inner">
-                    <h3><?php echo $user_total_buy; ?></h3>
+                    <h3><?php //echo $user_total_buy; ?></h3>
                     <h4>ยอดพนันทั้งหมด</h4>
                 </div>
                 <div class="icon">
@@ -78,7 +55,7 @@
             <!-- small box -->
             <div class="small-box bg-yellow">
                 <div class="inner">
-                    <h3><?php echo $user_credit_balance; ?></h3>
+                    <h3><?php //echo $user_credit_balance; ?></h3>
                     <h4>เครดิตคงเหลือ</h4>
                 </div>
                 <div class="icon">
@@ -92,7 +69,7 @@
             <!-- small box -->
             <div class="small-box bg-red">
                 <div class="inner">
-                    <h3><?php echo $user_balance; ?></h3>
+                    <h3><?php //echo $user_balance; ?></h3>
                     <h4>ยอดค้างคงเหลือ</h4>
                 </div>
                 <div class="icon">
@@ -147,18 +124,6 @@
 </section>
 
 <script>
-
-    function readyLoad() {
-//        reloadListLotto();
-        format_to_money();
-        label_format_number();
-        h_format_number();
-    }
-
-    init_event({
-        notMaskMoney: true,
-        fn: [readyLoad]
-    });
 
     function reloadListLotto(){
 

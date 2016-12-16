@@ -179,17 +179,6 @@
 
 <script type="application/javascript">
 
-    init_event({
-        fn: [readyFn],
-        controlerPaging: 'bank_list/get_paging',
-        functionPaging: search_user,
-        disEvent: ["click,.button-edit"]
-    });
-
-    function readyFn() {
-        get_paging();
-    }
-
     function formatNumber(number) {
         var p = number.toFixed(2).split(".");
         var minus = p[0].substring(0, 1);

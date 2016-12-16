@@ -19,12 +19,12 @@ class Category_type extends CI_Controller
 
     public function index()
     {
-        $this->getall();
+        $this->get_all();
     }
 
-    public function getall()
+    public function get_all()
     {
-        $all_data = $this->Category_type_model->search_filter($this->input->post("txtSearch"), 0, 10, -1, -1);
+        $data_user = $this->Category_type_model->search_filter($this->input->post("txtSearch"), 0, 10, -1, -1);
 
         $total_user = $this->Category_type_model->count();
         $paging = (int)$total_user / 10;
@@ -36,17 +36,9 @@ class Category_type extends CI_Controller
             $paging++;
         }
 
-        $data["groups"] = $this->Category_type_model->getall();
-        $data_user = $this->User_model->get_user_all();
-
-        for($i=0;$i<count($data_user);$i++) {
-            $data['user_id'][] = $data_user[$i]['user_id'];
-            $data['username'][] = $data_user[$i]['username'];
-        }
-
         $data["paging"] = $paging;
 
-        $data["list"] = $all_data;
+        $data["list"] = $data_user;
 
         $data["page"] = 'pages/category_type';
 
@@ -59,7 +51,6 @@ class Category_type extends CI_Controller
 
         $filter_number = $this->input->post("filter-number");
         $page = $this->input->post("filter-page");
-
         $status = $this->input->post("filter-status");
 
         if ($filter_number == -1) {
@@ -67,16 +58,18 @@ class Category_type extends CI_Controller
         } else {
             $start_filter = $filter_number * $page;
             $total_user = $this->Category_type_model->get_total_by_search($this->input->post("txtSearch"), $start_filter, $filter_number, $status);
+
             if (!isset($total_user["total"])) {
-                $data["paging"] = 0;
+                $data["paging"] = 1;
                 $jsonResult['Data'] = $data;
                 echo json_encode($jsonResult);
                 return;
             }
             $paging = (int)((int)$total_user["total"] / (int)$filter_number);
             $over_page = (int)((int)$total_user["total"] % (int)$filter_number);
-            $page = 0;
 
+//            echo var_dump($total_user);
+//            exit(0);
             if ($paging == 0) {
                 $page = 1;
             } else {
@@ -112,10 +105,6 @@ class Category_type extends CI_Controller
                     $data['category_type_name'] = $info['category_type_name'];
                     $data['category_type_status'] = $info['category_type_status'];
                     $data['prioriy_level'] = $info['priority_level'];
-                    $data['type_status'] = $info['type_status'];
-
-                    $data['create_date'] = $info['create_date'];
-                    $data['create_by'] = $info['create_by'];
                 }
                 for($i=0;$i<count($data_user);$i++) {
                     $data['user_id'][] = $data_user[$i]['user_id'];
@@ -150,11 +139,11 @@ class Category_type extends CI_Controller
         $this->load->view('template', $data);
     }
 
-    public function add_type()
+    public function add_category_type()
     {
         $result =false;
         if ($this->input->post()) {
-            $data["category_type_id"] = $this->Category_type_model->add_type($this->input->post());
+            $data["category_type_id"] = $this->Category_type_model->add_category_type($this->input->post());
             if($data["category_type_id"]){
                 $result = true;
             }
@@ -184,14 +173,41 @@ class Category_type extends CI_Controller
 
 
 
-    public function edit_type()
+    public function edit_category_type()
     {
+        $result =false;
+
+        $data_category_type = $this->input->post('data_category_type');
+        $all_category_field = $this->input->post('category_field');
+
         if ($this->input->post()) {
-            $data["category_type_id"] = $this->Category_type_model->edit_type($this->input->post());
+            $data["category_type_id"] = $this->Category_type_model->edit_category_type($data_category_type);
+
+            $this->Category_type_model->delete_category_field($data_category_type['category_type_id']);
+
+            foreach($all_category_field as $item){
+                $data["category_field_id"] = $this->Category_type_model->add_category_field($item);
+            }
+            $result =true;
         }
 
-        $jsonResult['Result'] = true;
-        //$jsonResult['error'] = "";
+        $jsonResult['Result'] = $result;
+        $jsonResult['Data'] = $data;
+        echo json_encode($jsonResult);
+    }
+
+    public function edit_category_field()
+    {
+        $result =false;
+        if ($this->input->post()) {
+            $all_category_field = $this->input->post('category_field');
+            foreach($all_category_field as $item){
+                $data["category_field_id"] = $this->Category_type_model->add_category_field($item);
+            }
+            $result =true;
+        }
+
+        $jsonResult['Result'] = $result;
         $jsonResult['Data'] = $data;
         echo json_encode($jsonResult);
     }

@@ -85,23 +85,23 @@
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
-                    <div method="post" enctype="multipart/form-data" id="form-field"
-                         class=" box-body">
+                    <div  id="form-field"  class=" box-body">
 
                         <div class="row">
 
                             <div id="containner-category-field">
 
+
                                 <input id="count-field" type="hidden" value="<?php if ($category_field) {
                                     echo sizeof($category_field);
                                 } else {
                                     echo 0;
-                                } ?>"
+                                } ?>">
                                 <?php if ($category_field) {
-                                    $count = 0;
+                                    $count = 1;
                                     foreach ($category_field as $item) { ?>
 
-                                        <div id="field-type-<?= $count; ?> "
+                                        <div id="field-type-<?= $count; ?>"
                                              class="div-field-type form-group required col-md-12 col-xs-12">
                                             <div class="col-md-2 col-xs-2" align="right">
                                                 <label class=" control-label" for="input-field-type">ชื่อประเภท</label>
@@ -111,37 +111,37 @@
                                                     <select name="field_type" id="input-field-type"
                                                             class="form-control">
                                                         <option
-                                                            value="text" <?php if ($item->field_type == 'text') { ?>
+                                                            value="text" <?php if ($item['field_type'] == 'text') { ?>
                                                             selected="selected" <?php } ?> >
                                                             Text
                                                         </option>
                                                         <option
-                                                            value="textarea" <?php if ($item->field_type == 'textarea') { ?>
+                                                            value="textarea" <?php if ($item['field_type'] == 'textarea') { ?>
                                                             selected="selected" <?php } ?>>
                                                             Textarea
                                                         </option>
                                                         <option
-                                                            value="date" <?php if ($item->field_type == 'date') { ?>
+                                                            value="date" <?php if ($item['field_type'] == 'date') { ?>
                                                             selected="selected" <?php } ?>>
                                                             Radio button
                                                         </option>
                                                         <option
-                                                            value="time" <?php if ($item->field_type == 'time') { ?>
+                                                            value="time" <?php if ($item['field_type'] == 'time') { ?>
                                                             selected="selected" <?php } ?>>
                                                             Radio button
                                                         </option>
                                                         <option
-                                                            value="datetime" <?php if ($item->field_type == 'datetime') { ?>
+                                                            value="datetime" <?php if ($item['field_type'] == 'datetime') { ?>
                                                             selected="selected" <?php } ?>>
                                                             Radio button
                                                         </option>
                                                         <option
-                                                            value="video-url" <?php if ($item->field_type == 'video-url') { ?>
+                                                            value="video-url" <?php if ($item['field_type'] == 'video-url') { ?>
                                                             selected="selected" <?php } ?>>
                                                             Radio button
                                                         </option>
                                                         <option
-                                                            value="image" <?php if ($item->field_type == 'image') { ?>
+                                                            value="image" <?php if ($item['field_type'] == 'image') { ?>
                                                             selected="selected" <?php } ?>>
                                                             Radio button
                                                         </option>
@@ -151,18 +151,18 @@
                                             </div>
                                             <div class="col-md-3 col-xs-3">
                                                 <div class="">
-                                                    <input type="text" name="category_type_name"
-                                                           value="<?php echo $item->field_name; ?>"
-                                                           placeholder="ชื่อข้อมูล" id="input-type-name"
+                                                    <input type="text" name="field_name"
+                                                           value="<?php echo $item['field_name']; ?>"
+                                                           placeholder="ชื่อข้อมูล" id="input-field-name"
                                                            class="form-control"/>
                                                 </div>
                                                 <div class="text-danger"></div>
                                             </div>
                                             <div class="col-md-3 col-xs-3">
                                                 <div class="">
-                                                    <input type="text" name="category_type_name"
-                                                           value="<?php echo $item->field_id; ?>"
-                                                           placeholder="ชื่อระบุชนิดเจาะจง" id="input-type-name"
+                                                    <input type="text" name="field_id"
+                                                           value="<?php echo $item['field_id']; ?>"
+                                                           placeholder="ชื่อระบุชนิดเจาะจง" id="input-field-id"
                                                            class="form-control"/>
                                                 </div>
                                                 <div class="text-danger"></div>
@@ -170,14 +170,15 @@
 
                                             <div class="col-md-1 col-xs-1">
                                                 <div class="">
-                                                    <button type="button" id="button-save" class="btn btn-danger"> ลบ
+                                                    <button type="button" id="button-delete-<?= $count;?>" class="button-delete btn btn-danger"> ลบ
                                                     </button>
                                                 </div>
                                                 <div class="text-danger"></div>
                                             </div>
                                         </div>
-                                    <?php }
-                                    $count++; ?>
+                                        <?php
+                                        $count++;
+                                    } ?>
                                 <?php } ?>
                             </div>
 
@@ -193,15 +194,13 @@
                 </div>
                 <!-- /.box -->
             </div>
-            <!--/.col (left) -->
-        </div>
+
 
         <div class="col-md-12">
             <!-- general form elements -->
             <div class="box box-primary">
 
-                <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" id="form"
-                      class=" box-body">
+                <div id="div-button-submit" class="box-body">
 
                     <input type="hidden" name="category_type_id" value="<?php echo $category_type_id; ?>"
                            id="category_type_id" class="form-control"/>
@@ -243,33 +242,13 @@
 <script type="application/javascript">
 
     init_event({
-        fn: [readyLoad],
-        disEvent: ["click,#button-save", "focusout,#minimum", "focusout,#reward", "focusout,#maximum", "focusout,#commission"
-            , "focusout,#tbody-setting-default input", "focusout,#input-user-credit", "change,.my_percent_user"
-            , "change,.sub_percent_user", "focusout,.my_percent_user", "focusout.sub_percent_user"]
+       document_on:[
+           'click,#button-add-field'
+           ,'click,#button-save'
+           ,'click,.button-delete'
+       ]
+
     });
-
-    function readyLoad() {
-        $('.input-number').maskMoney();
-    }
-
-    function formatNumber(number) {
-        //var int_number = Number(number);
-        var p = number.toFixed(2).split(".");
-        var minus = p[0].substring(0, 1);
-        if (minus == "-") {
-            p[0] = p[0].substring(1, p[0].length);
-
-            return "-" + p[0].split("").reverse().reduce(function (acc, number, i, orig) {
-                    return number + (i && !(i % 3) ? "," : "") + acc;
-                }, "") + "." + p[1];
-        }
-        else {
-            return "" + p[0].split("").reverse().reduce(function (acc, number, i, orig) {
-                    return number + (i && !(i % 3) ? "," : "") + acc;
-                }, "") + "." + p[1];
-        }
-    }
 
     $(document).on("click", "#button-add-field", function () {
 
@@ -297,13 +276,13 @@
             + '</div>'
             + '<div class="col-md-3 col-xs-3">'
             + '<div class="">'
-            + '<input type="text" name="field_name"  placeholder="ชื่อข้อมูล" id="input-type-name" class="form-control"/> '
+            + '<input type="text" name="field_name"  placeholder="ชื่อข้อมูล" id="input-field-name" class="form-control"/> '
             + '</div>'
             + '<div class="text-danger"></div>'
             + '</div>'
             + '<div class="col-md-3 col-xs-3">'
             + ' <div class="">'
-            + '<input type="text" name="field_id" placeholder="ชื่อระบุชนิดเจาะจง" id="input-type-name" class="form-control"/>'
+            + '<input type="text" name="field_id" placeholder="ชื่อระบุชนิดเจาะจง" id="input-field-id" class="form-control"/>'
             + '</div>'
             + '<div class="text-danger"></div>'
             + '</div>'
@@ -338,28 +317,55 @@
 //        $('.form-group').removeClass('has-error');
 
         for (var i = 1; i <= all_category_type.length; i++) {
-            if($('#field-type-' + i + ' input[name="field_name"]').val().length != 0 && $('#field-type-' + i + ' input[name="field_id"]').val().length != 0 ){
+            if ($('#field-type-' + i + ' input[name="field_name"]').val().length != 0 && $('#field-type-' + i + ' input[name="field_id"]').val().length != 0) {
                 div_field_type_number.push(i);
-            }else if ($('#field-type-' + i + ' input[name="field_name"] ').val().length != 0 &&  $('#field-type-' + i + ' input[name="field_id"]').val().length == 0) {
-                    $('#field-type-' + i + ' input[name="field_id"]').after('<div class="text-danger error-text">กรุณาระบุชื่อเฉพาะ</div>');
-                    is_error = true;
-            }else if ($('#field-type-' + i + ' input[name="field_name"]').val().length == 0 && $('#field-type-' + i + ' input[name="field_id"]').val().length != 0) {
-                    $('#field-type-' + i + ' input[name="field_name"]').after('<div class="text-danger error-text">กรุณากรอกชื่อชนิดข้อมูล</div>');
-                    is_error = true;
+            } else if ($('#field-type-' + i + ' input[name="field_name"] ').val().length != 0 && $('#field-type-' + i + ' input[name="field_id"]').val().length == 0) {
+                $('#field-type-' + i + ' input[name="field_id"]').after('<div class="text-danger error-text">กรุณาระบุชื่อเฉพาะ</div>');
+                is_error = true;
+            } else if ($('#field-type-' + i + ' input[name="field_name"]').val().length == 0 && $('#field-type-' + i + ' input[name="field_id"]').val().length != 0) {
+                $('#field-type-' + i + ' input[name="field_name"]').after('<div class="text-danger error-text">กรุณากรอกชื่อชนิดข้อมูล</div>');
+                is_error = true;
             }
         }
         if (!is_error) {
             if ($('input[name="category_type_id"]').val()) {
-                edit_type();
+                edit_category_type(div_field_type_number);
             } else {
-                add_type(div_field_type_number);
+                add_category_type(div_field_type_number);
             }
         }
     });
 
-    function add_type(div_field_type_number) {
+    $(document).on("click", ".button-delete", function () {
+
+        var field_type_id = this.id.replace('button-delete-','');
+        console.log(field_type_id);
+
+        $('#field-type-'+field_type_id).remove();
+
+    });
+
+    function formatNumber(number) {
+        //var int_number = Number(number);
+        var p = number.toFixed(2).split(".");
+        var minus = p[0].substring(0, 1);
+        if (minus == "-") {
+            p[0] = p[0].substring(1, p[0].length);
+
+            return "-" + p[0].split("").reverse().reduce(function (acc, number, i, orig) {
+                    return number + (i && !(i % 3) ? "," : "") + acc;
+                }, "") + "." + p[1];
+        }
+        else {
+            return "" + p[0].split("").reverse().reduce(function (acc, number, i, orig) {
+                    return number + (i && !(i % 3) ? "," : "") + acc;
+                }, "") + "." + p[1];
+        }
+    }
+
+    function add_category_type(div_field_type_number) {
         $.ajax({
-            url: '<?php echo base_url(); ?>category_type/add_type',
+            url: '<?php echo base_url(); ?>category_type/add_category_type',
             type: 'post',
             data: $('input , select'),
             dataType: 'json',
@@ -372,11 +378,9 @@
             },
             success: function (json) {
                 console.log(json);
-                if(json.Result){
-
-                    add_category_field(json.Data.category_type_id,div_field_type_number);
-//                    alert("เพิ่มข้อมูลเสร็จสิ้น");
-                }else{
+                if (json.Result) {
+                    add_category_field(json.Data.category_type_id, div_field_type_number);
+                } else {
                     alert("เพิ่มข้อมูลผิดพลาด");
                 }
             },
@@ -386,20 +390,20 @@
         });
     }
 
-    function add_category_field(category_type_id,div_field_type_number) {
+    function add_category_field(category_type_id, div_field_type_number) {
 
         var category_field = [];
-        for(var i=0;i<div_field_type_number.length;i++){
+        for (var i = 0; i < div_field_type_number.length; i++) {
 
-            var field_type = $('#field-type-' + div_field_type_number[i]+' select[name="field_type"').val();
-            var field_name = $('#field-type-' + div_field_type_number[i]+' input[name="field_name"').val();
-            var field_id = $('#field-type-' + div_field_type_number[i]+' input[name="field_id"').val();
+            var field_type = $('#field-type-' + div_field_type_number[i] + ' select[name="field_type"').val();
+            var field_name = $('#field-type-' + div_field_type_number[i] + ' input[name="field_name"').val();
+            var field_id = $('#field-type-' + div_field_type_number[i] + ' input[name="field_id"').val();
 
-            var data_item ={
-                category_type_id:category_type_id
-                ,field_type:field_type
-                ,field_name:field_name
-                ,field_id:field_id
+            var data_item = {
+                category_type_id: category_type_id
+                , field_type: field_type
+                , field_name: field_name
+                , field_id: field_id
             };
             category_field.push(data_item);
         }
@@ -409,7 +413,7 @@
         $.ajax({
             url: '<?php echo base_url(); ?>category_type/add_category_field',
             type: 'post',
-            data: {category_field:category_field},
+            data: {category_field: category_field},
             dataType: 'json',
             crossDomain: true,
             beforeSend: function () {
@@ -420,9 +424,12 @@
             },
             success: function (json) {
                 console.log(json);
-                if(json.Result){
+                if (json.Result) {
                     alert("เพิ่มข้อมูลเสร็จสิ้น");
-                }else{
+                    clear_input_blank();
+                    ;
+
+                } else {
                     alert("เพิ่มข้อมูลผิดพลาด");
                 }
             },
@@ -432,12 +439,42 @@
         });
     }
 
-    function edit_type() {
+    function edit_category_type(div_field_type_number) {
+
         var category_type_id = $('input[name="category_type_id"]').val();
+        var category_type_name = $('input[name="category_type_name"]').val();
+        var category_type_status = $('select[name="category_type_status"]').val();
+
+        var data_category_type = {
+            category_type_id: category_type_id
+            , category_type_name: category_type_name
+            , category_type_status: category_type_status
+        };
+
+        console.log(data_category_type);
+
+        var category_field = [];
+        for (var i = 0; i < div_field_type_number.length; i++) {
+
+            var field_type = $('#field-type-' + div_field_type_number[i] + ' select[name="field_type"').val();
+            var field_name = $('#field-type-' + div_field_type_number[i] + ' input[name="field_name"').val();
+            var field_id = $('#field-type-' + div_field_type_number[i] + ' input[name="field_id"').val();
+
+            var data_item = {
+                category_type_id: category_type_id
+                , field_type: field_type
+                , field_name: field_name
+                , field_id: field_id
+            };
+            category_field.push(data_item);
+        }
+
+        console.log(category_field);
+
         $.ajax({
-            url: '<?php echo base_url(); ?>category_type/edit_type',
+            url: '<?php echo base_url(); ?>category_type/edit_category_type',
             type: 'post',
-            data: $('input , select'),
+            data: {data_category_type: data_category_type, category_field: category_field},
             dataType: 'json',
             crossDomain: true,
             beforeSend: function () {
@@ -453,6 +490,12 @@
                 alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
             }
         });
+    }
+
+    function clear_input_blank() {
+        $('#input-type-name').val('');
+        $('#input-status').val('0');
+        $('.div-field-type').remove();
     }
 
 </script>

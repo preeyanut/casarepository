@@ -200,22 +200,11 @@
 
 <script type="application/javascript">
 
-    init_event({
-        fn: [readyFn],
-        disEvent: ["click,#button-save","click,.button-edit","click,.button-delete"]
-    });
-
-    function readyFn(){
-//        $('#input-user-credit').maskMoney();
-//        $('.input-number').maskMoney();
-    }
-
     $(document).on("click", "#button-save", function (){
         $.ajax({
             url: '<?php echo base_url(); ?>user_group/validate_form',
             type: 'post',
             data: $('input , select'),
-            // data:  "abcd=1234",
             dataType: 'json',
             crossDomain: true,
             beforeSend: function () {

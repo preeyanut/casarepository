@@ -1,126 +1,118 @@
 <div id="header" class="header">
 
+    <title>Casa98thailand</title>
+
     <!--	--------------------------------------------  CSS ------------------------------------------------->
 
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.5/css/bootstrap.min.css">
+    <link href="<?= base_url() ?>assets/css/bootstrap.css" rel="stylesheet">
+    <link href="<?= base_url() ?>assets/css/main.css" rel="stylesheet">
+    <link href="<?= base_url() ?>assets/css/font-awesome.css" rel="stylesheet">
+    <link href="<?= base_url() ?>assets/css/style-switcher.css" rel="stylesheet">
+    <link href="<?= base_url() ?>assets/css/flaticon.css" rel="stylesheet">
+    <link href="<?= base_url() ?>assets/css/css_ajax.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="<?= base_url() ?>assets/css/jquery.datetimepicker.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css"><!-- font icon-->
 
-    <link rel="stylesheet" href="<?= base_url(); ?>assets/css/main.css">
+    <link rel="stylesheet" href="<?= base_url() ?>bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="<?= base_url() ?>dist/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="<?= base_url() ?>dist/css/main.css">
+    <link rel="stylesheet" href="<?= base_url() ?>dist/css/skins/_all-skins.min.css">
+    <link rel="stylesheet" href="<?= base_url() ?>plugins/iCheck/flat/blue.css">
+    <link rel="stylesheet" href="<?= base_url() ?>plugins/jvectormap/jquery-jvectormap-1.2.2.css">
+    <link rel="stylesheet" href="<?= base_url() ?>plugins/datepicker/datepicker3.css">
+    <link rel="stylesheet" href="<?= base_url() ?>plugins/daterangepicker/daterangepicker-bs3.css">
+    <link rel="stylesheet" href="<?= base_url() ?>plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
 
-    <link rel="stylesheet" href="<?= base_url() ?>assets/font-awesome/css/font-awesome.min.css">
     <!--	-------------------------------------------- End CSS ------------------------------------------------->
 
     <!--	--------------------------------------------  Javascript  ------------------------------------------------->
 
-    <script href="<?= base_url(); ?>assets/javascript/main.js"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.5/js/bootstrap.min.js"></script>
+    <script src="<?= base_url() ?>assets/js/jquery-2.1.4.min.js"></script>
+    <script id="moneyScript" src="<?= base_url() ?>assets/js/jquery.maskMoney.min.js"></script>
 
     <!--	-------------------------------------------- End Javascript ------------------------------------------------->
 
-    <style>
-        body {
+    <div id="annual"></div>
 
-        }
 
-        .container {
-            width: 100%;
-            height: 100%;
-            margin-left: auto;
-            margin-right: auto;
+    <script type="application/javascript">
 
-            padding: 0px;
+        var custom_load_page_data=false;
 
-            /*background-color: #ff0000;*/
-        :;
-        }
+        function init_event(data) {
+            custom_load_page_data = data;
 
-        @media (min-width: 1200px) {
-            .container {
-                width: 1170px;
+            if (custom_load_page_data.document_ready) {
+                for (var i = 0; i < custom_load_page_data.document_ready.length; i++) {
+                    custom_load_page_data.document_ready[i]();
+                }
             }
         }
 
-        .header-navigation {
-            text-align: center;
-            /*background-color: #ffe300;*/
-            border: 1px solid #ff0000;
-
-            min-height: 40px;
-            border-width: 0;
-            text-align: center;
-            background-color: #8d6525;
-            /* background-image: url(https://www.casa98th.com/assets/css/../img/layout/main-nav-bg.png); */
-            background-image: url(https://www.casa98th.com/assets/css/../img/main-nav-bg2.jpg);
-            /* background-repeat: no-repeat; */
-            background-position: top center;
-
+        function remove_init_event() {
+            if (typeof custom_load_page_data.document_on != 'undefined') {
+                for (var i = 0; i < custom_load_page_data.document_on.length; i++) {
+                    var data = custom_load_page_data.document_on[i].split(',');
+                    $(document).off(data[0], data[1]);
+                }
+            }
         }
 
-        .header-top {
-            width: 100%;
-            /*height: 150px;*/
-            height: 120px;
+        $(document).on("click", ".btn-logout", function () {
+            var result = confirm("ยืนยันการออกจากระบบ");
+            if (result === true) {
+                $.ajax({
+                    url: '<?php echo base_url(); ?>dashboard/logout',
+                    type: 'post',
+                    data: "user_id=0",
+                    dataType: 'json',
+                    crossDomain: true,
+                    beforeSend: function () {
+                        //  $('#button-delete').button('loading');
+                    },
+                    complete: function () {
+                        //$('#button-delete').button('reset');
+                    },
+                    success: function (json) {
+                        window.open("<?php echo base_url(); ?>", "_self");
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+                    }
+                });
+            }
+        });
+
+        $('.sidebar-menu').find('a').bind('click', function (ev) {
+            var urls = $(this)[0].href;
+            if (urls.indexOf('#') !== -1) {
+                return;
+            }
+            ev.preventDefault();
+            window.history.pushState({
+                title: 'casa98thailand',
+                url: urls
+            }, 'casa98thailand', urls);
+            load_custom_page(urls);
+        });
+
+
+        function load_custom_page(urls) {
+            remove_init_event();
+            $('#container-custom-load-page').html('Loading...');
+            $.post(urls, {'custom_load': 'true'}, function (data) {
+                if (data.indexOf("<!DOCTYPE html>") !== -1) {
+                    window.location.reload();
+                }
+                $('#container-custom-load-page').html('');
+                $('#container-custom-load-page').html(data);
+            }).fail(function () {
+                $('#container-custom-load-page').html('has error.');
+            });
         }
 
-        .float-left {
-            float: left;
-        }
-
-        .float-right {
-            float: right;
-        }
-
-        .text-center {
-            text-align: center;
-        }
-    </style>
-
-    <div id='header-top' class="header-top">
-        <div class="container">
-            <div id='header-top-left' class="header-top-left col-md-6 padding-0 float-left">
-                <img width="356" height="100" style="display: block !important;"
-                     src="https://www.casa98th.com/assets/img/logo-casa12092016.png" alt="แทงบอล ออนไลน์ ที่ casa98">
-            </div>
-            <div id='header-top-right' class="header-top-right col-md-6 padding-0 float-right text-center">
-
-
-                <div style="clear: both;margin-top: 20px;">
-                    <img src="https://www.casa98th.com/assets/img/layout/the-exclusive-society.png"
-                         alt="เวบแทงบอล สุดพิเศษ">
-                </div>
-                <div>
-                    <img src="https://www.casa98th.com/assets/img/layout/divider.png" alt="casa98">
-                </div>
-                <div style="margin-top: 5px;">
-                    <a href="https://line.me/ti/p/%40casa98th" class="pull-left"><img
-                            src="https://www.casa98th.com/assets/img/layout/line-id.png" alt="line id @casa98th"></a>
-                    <a href="" class="pull-right"
-                       style="margin-left: 10px"><img src="https://www.casa98th.com/assets/img/layout/call.png"
-                                                      alt="โทรแทงบอล 088-777-7762"></a>
-                </div>
-
-            </div>
-        </div>
-    </div>
-
-    <div id='header-navigation' class="header-navigation">
-
-        <div class="container">
-
-            <div class="col-md-2 padding-0">navigation1</div>
-            <div class="col-md-2 padding-0">navigation2</div>
-            <div class="col-md-2 padding-0">navigation3</div>
-            <div class="col-md-2 padding-0">navigation4</div>
-            <div class="col-md-2 padding-0">navigation5</div>
-            <div class="col-md-2 padding-0">navigation6</div>
-
-        </div>
-    </div>
-
+    </script>
 
 </div>
