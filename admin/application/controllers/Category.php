@@ -186,11 +186,8 @@ class Category extends CI_Controller
 
     public function delete_category()
     {
-<<<<<<< HEAD
-=======
 //        var_dump($this->input->post());
 
->>>>>>> 70cc9b958668d79e3b31725afc2f2ec8f9967036
         if ($this->input->get('category_id')) {
             $data["category_id"] = $this->Category_model->delete_category($this->input->get('category_id'));
         }
@@ -249,15 +246,9 @@ class Category extends CI_Controller
 //            $this->error['category_icon'] = "กรุณาเลือกไอคอน";
 //        }
 
-<<<<<<< HEAD
         if (empty($this->input->post('category_icon'))){
             $this->error['category_icon'] = "กรุณาเลือกไอคอน";
         }
-=======
-//        if ($this->input->post('category_icon')){
-//            $this->error['category_icon'] = "กรุณาเลือกไอคอน";
-//        }
->>>>>>> 70cc9b958668d79e3b31725afc2f2ec8f9967036
 
         if ((strlen($this->input->post('priority_level')) < 1) || (strlen($this->input->post('priority_level')) > 255)) {
             $this->error['priority_level'] = "กรุณากรอกระดับความสำคัญ";
