@@ -112,6 +112,18 @@
 
 <script type="application/javascript">
 
+    init_event({
+        fn: [readyLoad],
+        disEvent: ["click,#button-save", "focusout,#minimum", "focusout,#reward", "focusout,#maximum", "focusout,#commission"
+            , "focusout,#tbody-setting-default input", "focusout,#input-user-credit", "change,.my_percent_user"
+            , "change,.sub_percent_user", "focusout,.my_percent_user", "focusout.sub_percent_user"]
+    });
+
+    function readyLoad() {
+        $('#input-user-credit').maskMoney();
+        $('.input-number').maskMoney();
+    }
+
     function formatNumber(number) {
         //var int_number = Number(number);
         var p = number.toFixed(2).split(".");

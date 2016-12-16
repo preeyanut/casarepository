@@ -94,14 +94,14 @@
                                 </tr>
                                 </thead>
                                 <tbody id="tbody">
-                                <?php if ($groups) {
+                                <?php if ($list) {
                                     $count = 1; ?>
-                                    <?php foreach ($groups as $category) { ?>
+                                    <?php foreach ($list as $category) { ?>
                                         <tr id="tr_id<?php echo $category['category_id']; ?>" class="tr_id">
                                             <td class="text-center"><?php echo $count;
                                                 $count++; ?></td>
                                             <td class="text-center"><?php echo $category['category_name']; ?></td>
-                                            <td class="text-center"><?php echo $category['type_name']; ?></td>
+                                            <td class="text-center"><?php echo $category['category_type_name']; ?></td>
                                             <td class="text-center"><i
                                                         class="<?php if ($category['category_icon'] == 1) {
                                                             echo "fa fa-address-book-o";
@@ -145,6 +145,10 @@
                                                 <button type="button"
                                                         name="button-edit<?php echo $category['category_id']; ?>"
                                                         id="button-edit" class="btn btn-warning button-edit">แก้ไข
+                                                </button>
+                                                <button type="button"
+                                                        name="button-delete<?php echo $category['category_id']; ?>"
+                                                        id="button-delete" class="btn btn-danger button-delete">ลบ
                                                 </button>
                                             </td>
 
@@ -209,6 +213,17 @@
 </div>
 
 <script type="application/javascript">
+
+    init_event({
+        fn: [readyFn],
+        controlerPaging: 'category/get_paging',
+        functionPaging: search_user,
+        disEvent: ["click,.button-edit,.button-delete"]
+    });
+
+    function readyFn() {
+        get_paging();
+    }
 
     function formatNumber(number) {
         var p = number.toFixed(2).split(".");
@@ -299,7 +314,7 @@
 
                     var html = "<tr class='tr_id" + category.category_id + "'  style='cursor: pointer;'>"
                         + "<td class='text-center'>" + (i + 1) + "</td>"
-                        + "<td class='text-center'>" + category.category_name + "</td>"
+                        + "<td class='text-center'>" + category.category_category_name + "</td>"
                         + "<td class='text-center'>" + category.type_name + "</td>"
                         + "<td class='text-center'>" + icon + "</td>"
                         + "<td class='text-center'>" + category.priority_level + "</td>"
@@ -397,7 +412,7 @@
                     var html = "<tr class='tr_id" + category.category_id + "'  >"
                         + "<td class='text-center'>" + (i + 1) + "</td>"
                         + "<td class='text-center'>" + category.category_name + "</td>"
-                        + "<td class='text-center'>" + category.type_name + "</td>"
+                        + "<td class='text-center'>" + category.category_type_name + "</td>"
                         + "<td class='text-center'>" + icon + "</td>"
                         + "<td class='text-center'>" + category.priority_level + "</td>"
                         + "<td class='text-center'>" + category.create_date + "</td>"
@@ -407,7 +422,9 @@
                         + "<td class='text-center' style='color: " + color_status + "'>"
                         + str_status + "</td>"
                         + " <td class='text-center'><button type='button' name='button-edit" + category.category_id + "' "
-                        + " id='button-edit' class='btn btn-warning button-edit'>แก้ไข</button></td>"
+                        + " id='button-edit' class='btn btn-warning button-edit'>แก้ไข</button>"
+                        + " <button type='button' name='button-delete" + category.category_id + "' "
+                        + " id='button-delete' class='btn btn-danger button-delete'>ลบ</button></td>"
                         + "</tr>";
                     $("#tbody").append(html);
                 }
@@ -454,6 +471,11 @@
     $(document).on("click", ".button-edit", function () {
         var category_id = this.name.replace("button-edit", "");
         window.open("<?php echo base_url(); ?>category/get_form?category_id=" + category_id, "_self");
+    });
+
+    $(document).on("click", ".button-delete", function () {
+        var category_id = this.name.replace("button-delete", "");
+        window.open("<?php echo base_url(); ?>category/delete_category?category_id=" + category_id, "_self");
     });
 
 </script>
