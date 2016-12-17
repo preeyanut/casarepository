@@ -11,7 +11,7 @@ class Category_model extends CI_Model
             . " from category "
             . " inner join  user as u1 on u1.user_id = category.create_by "
             . " inner join  user as u2 on u2.user_id = category.update_by "
-            . " inner join  category_type on category_type.category_type_id = category.type_id");
+            . " inner join  category_type on category_type.category_type_id = category.category_type_id");
         return $query->result_array();
     }
 
@@ -27,7 +27,7 @@ class Category_model extends CI_Model
 
         $data_array = array(
             'category_name' => $data['category_name'],
-            'type_id' => $data['type_id'],
+            'category_type_id' => $data['category_type_id'],
             'category_icon' => $data['category_icon'],
             'priority_level' => $data['priority_level'],
             'category_status' => $data['category_status'],
@@ -55,7 +55,7 @@ class Category_model extends CI_Model
 
         $this->db->query("UPDATE `" . "" . "category` SET "
             . " category_name = '" . $data['category_name'] . "'"
-            . ", type_id = '" . $data['type_id'] . "'"
+            . ", category_type_id = '" . $data['category_type_id'] . "'"
             . ", category_icon = '" . $data['category_icon']. "'"
             . ", priority_level = '" . $data['priority_level'] . "'"
             . ", category_status = '" . (int)$data['category_status'] . "'"
@@ -93,7 +93,7 @@ class Category_model extends CI_Model
             . " from category "
             . " inner join  user as u1 on u1.user_id = category.create_by "
             . " inner join  user as u2 on u2.user_id = category.update_by "
-            . " inner join  category_type on category_type.category_type_id = category.type_id"
+            . " inner join  category_type on category_type.category_type_id = category.category_type_id"
             . " WHERE  category_name  Like '%" . $txtSearch . "%' "
             . $str_sql
             . " Limit " . $start_filter . ", " . $filter_number . " "
