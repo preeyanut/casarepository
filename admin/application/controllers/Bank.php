@@ -22,39 +22,39 @@ class Bank extends CI_Controller
         $this->getForm();
     }
 
-    public function getall()
-    {
-        $all_data = $this->Bank_list_model->search_filter($this->input->post("txtSearch"), 0, 10, -1);
-
-        $total_user = $this->Bank_list_model->count();
-        $paging = (int)$total_user / 10;
-        $over_page = $total_user % 10;
-
-        if ($paging == 0) {
-            $paging = 1;
-        }
-        if ($over_page != 0) {
-            $paging++;
-        }
-
-        $data["groups"] = $this->Bank_list_model->getall();
-
-        $data["paging"] = $paging;
-
-        $data["list"] = $all_data;
-
-//        var_dump($data);
-
-        $data["page"] = 'pages/bank_list';
-
-        $this->load->view('template', $data);
-
-    }
+//    public function get_all()
+//    {
+//        $all_data = $this->Bank_list_model->search_filter($this->input->post("txtSearch"), 0, 10, -1);
+//
+//        $total_user = $this->Bank_list_model->count();
+//        $paging = (int)$total_user / 10;
+//        $over_page = $total_user % 10;
+//
+//        if ($paging == 0) {
+//            $paging = 1;
+//        }
+//        if ($over_page != 0) {
+//            $paging++;
+//        }
+//
+//        $data["groups"] = $this->Bank_list_model->get_all();
+//
+//        $data["paging"] = $paging;
+//
+//        $data["list"] = $all_data;
+//
+////        var_dump($data);
+//
+//        $data["page"] = 'pages/bank_list';
+//
+//        $this->load->view('template', $data);
+//
+//    }
 
     public function get_all()
     {
 
-        $result = $this->bank_list_model->getall();
+        $result = $this->bank_list_model->get_all();
 
         $data["list"] = $result;
         $jsonResult['Result'] = true;
@@ -115,7 +115,7 @@ class Bank extends CI_Controller
 
 //        $result = array();
         if ($filter_number == -1) {
-            $result = $this->Bank_list_model->getall();
+            $result = $this->Bank_list_model->get_all();
         } else {
             $start_filter = $filter_number * $page;
             $result = $this->Bank_list_model->search_filter($this->input->post("txtSearch"), $start_filter, $filter_number, $status);
@@ -159,7 +159,7 @@ class Bank extends CI_Controller
             $data["bank_list_id"] = $this->Bank_list_model->delete_bank($this->input->get('bank_list_id'));
         }
 
-        $this->getall();
+        $this->get_all();
     }
 
     public function getForm()
@@ -199,7 +199,7 @@ class Bank extends CI_Controller
 
             $data["action"] = base_url() . "bank_list/add_bank";
 
-            $data["groups"] = $this->Bank_list_model->getall();
+            $data["groups"] = $this->Bank_list_model->get_all();
 
         }
 //        var_dump($data);

@@ -128,7 +128,7 @@
                 <!-- general form elements -->
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h3 class="box-title">ข้อมูล blog</h3>
+                        <h3 class="box-title">ข้อมูล Blog</h3>
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
@@ -359,7 +359,7 @@
 
     });
 
-    $(document).on("change", "#category_id", function () {
+    $(document).on("change", "select[name='category_id']", function () {
         get_field();
     });
 
@@ -546,44 +546,47 @@
                     success: function (json) {
                         console.log(json);
                         var blog_fields = json.Data.blog_field;
+                        if(json.Data.blog_field.length>0){
+                            $('#containner-blog-field').html('');
+                        }
                         var ckeditor = [];
                         for (var i = 0; i < blog_fields.length; i++) {
-                            var bolg_field = blog_fields[i];
+                            var blog_field = blog_fields[i];
 
                             var html_field = ' <div id="field-type-'+i+'"'
                                 +'class="div-field-type form-group required col-md-12 col-xs-12"> '
                                     +'<div class="col-md-2 col-xs-2" align="right">'
-                                +'<label class=" control-label" for="input-field-type">'+ bolg_field.field_id +'</label>'
+                                +'<label class=" control-label" for="input-field-type">'+ blog_field.field_id +'</label>'
                                 +'</div>'
                                 +'<div class="col-md-10 col-xs-10">'
                                 +' <div class="">';
 
 
 
-                            switch (bolg_field.field_type) {
+                            switch (blog_field.field_type) {
                                 case 'text' :
-                                    html_field += '<input type="text" id="' + bolg_field.field_id + '" name="' + bolg_field.field_id + '" class="form-control" value="' + '0' + '" />';
+                                    html_field += '<input type="text" id="' + blog_field.field_id + '" name="' + blog_field.field_id + '" class="form-control" value="' + '0' + '" />';
                                     break;
                                 case 'textarea' :
-                                    html_field += '<input type="textarea" id="' + bolg_field.field_id + '" name="' + bolg_field.field_id + '" class="form-control" value="' + '0' + '" />';
-                                    ckeditor.push(bolg_field.field_id);
+                                    html_field += '<input type="textarea" id="' + blog_field.field_id + '" name="' + blog_field.field_id + '" class="form-control" value="' + '0' + '" />';
+                                    ckeditor.push(blog_field.field_id);
                                     break;
                                 case 'date' :
-                                    html_field += '<input type="date" id="' + bolg_field.field_id + '" name="' + bolg_field.field_id + '" class="form-control" value="' + '0' + '" />';
+                                    html_field += '<input type="date" id="' + blog_field.field_id + '" name="' + blog_field.field_id + '" class="form-control" value="' + '0' + '" />';
                                     break;
                                 case 'time' :
-                                    html_field += '<input type="time" id="' + bolg_field.field_id + '" name="' + bolg_field.field_id + '" class="form-control" value="' + '0' + '" />';
+                                    html_field += '<input type="time" id="' + blog_field.field_id + '" name="' + blog_field.field_id + '" class="form-control" value="' + '0' + '" />';
                                     break;
                                 case 'datetime' :
-                                    html_field += '<input type="datetime" id="' + bolg_field.field_id + '" name="' + bolg_field.field_id + '" class="form-control" value="' + '0' + '" />';
+                                    html_field += '<input type="datetime" id="' + blog_field.field_id + '" name="' + blog_field.field_id + '" class="form-control" value="' + '0' + '" />';
                                     break;
                                 case 'video-url' :
-                                    html_field += '<input type="text" id="' + bolg_field.field_id + '" name="' + bolg_field.field_id + '" class="form-control" value="' + '0' + '" />';
+                                    html_field += '<input type="text" id="' + blog_field.field_id + '" name="' + blog_field.field_id + '" class="form-control" value="' + '0' + '" />';
                                     break;
                                 case 'image' :
-                                    html_field += '<a href="" id="a-' + bolg_field.field_id + '" data-toggle="image" class="img-thumbnail"><img id="img-' + bolg_field.field_id + '" style="max-width: 200px;" '
+                                    html_field += '<a href="" id="a-' + blog_field.field_id + '" data-toggle="image" class="img-thumbnail"><img id="img-' + blog_field.field_id + '" style="max-width: 200px;" '
                                         + ' src="<?= base_url() ?>assets\\images\\No-image-found.jpg" alt="" title="" data-placeholder="รูปสินค้า"/></a>'
-                                        + ' <input type="file" name="' + bolg_field.field_id + '" class="img-input"   value="0" id="input-image"/>';
+                                        + ' <input type="file" name="' + blog_field.field_id + '" class="img-input"   value="0" id="input-image"/>';
                                     break;
                             }
 

@@ -29,13 +29,8 @@ class Blog extends CI_Controller
         if ($this->input->get('blog_id')) {
 
             $data_info = $this->Blog_model->get_data($this->input->get('blog_id'));
-//            echo var_dump($data_info);
-//            exit(0);
 
             $blog_field = $this->Blog_model->get_blog_field($data_info[0]['category_type_id']);
-
-//            echo var_dump($blog_field);
-//            exit(0);
 
             $data['blog_field'] = $blog_field;
 
@@ -74,7 +69,9 @@ class Blog extends CI_Controller
             $data["action"] = base_url() . "blog/add_blog";
         }
 
-        $data["category"] = $this->Category_model->getall();
+        $data["category"] = $this->Category_model->get_all();
+
+        $data["category"] = $this->Category_model->get_all();
 
         $data["page"] = 'pages/blog_form';
 
@@ -230,7 +227,7 @@ class Blog extends CI_Controller
 
 //        $result = array();
         if ($filter_number == -1) {
-            $result = $this->Blog_model->getall();
+            $result = $this->Blog_model->get_all();
         } else {
             $start_filter = $filter_number * $page;
             $result = $this->Blog_model->search_filter($this->input->post("txtSearch"), $start_filter, $filter_number, $status);

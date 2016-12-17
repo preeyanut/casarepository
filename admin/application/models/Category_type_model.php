@@ -2,7 +2,7 @@
 
 class Category_type_model extends CI_Model
 {
-    public function getall()
+    public function get_all()
     {
 //        $query = $this->db->query("SELECT * FROM category_type");
 //        return $query->result_array();

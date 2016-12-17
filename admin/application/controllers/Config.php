@@ -28,7 +28,7 @@ class Config extends CI_Controller
     {
 
         //$data_user = $this->User_model->get_user_all();
-        $data_config_group = $this->Config_group_model->getall();
+        $data_config_group = $this->Config_group_model->get_all();
 
         if ($this->input->get('config_id')) {
 
@@ -105,10 +105,10 @@ class Config extends CI_Controller
 
             $data["action"] = base_url() . "config/add_config";
 
-            //$data["list"] = $this->Config_group_model->getall();
+            //$data["list"] = $this->Config_group_model->get_all();
 
         }
-        //$data["list"] = $this->Config_group_model->getall();
+        //$data["list"] = $this->Config_group_model->get_all();
         $data["page"] = 'pages/config_form';
 
         $this->load->view('template', $data);
