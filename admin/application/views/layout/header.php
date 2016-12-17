@@ -33,7 +33,6 @@
     <script src="<?= base_url() ?>assets/js/jquery-2.1.4.min.js"></script>
     <script id="moneyScript" src="<?= base_url() ?>assets/js/jquery.maskMoney.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/js/bootstrap-select.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/js/i18n/defaults-*.min.js"></script>
 
     <!--	-------------------------------------------- End Javascript ------------------------------------------------->
 
