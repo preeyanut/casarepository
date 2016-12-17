@@ -306,8 +306,10 @@
 <<<<<<< .merge_file_a04620
         window.open("<?php echo base_url(); ?>bank_list/getForm?bank_list_id=" + bank_list_id, "_self");
 =======
+
         window.open("<?php echo base_url(); ?>bank/getForm?bank_list_id=" + bank_list_id, "_self");
 >>>>>>> .merge_file_a14492
+
     });
 
     $(document).on("click", ".button-delete", function () {

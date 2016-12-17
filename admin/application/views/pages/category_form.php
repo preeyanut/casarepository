@@ -72,9 +72,11 @@
                                 </div>
                                 <div class="col-md-10 col-xs-10">
                                     <select name="category_icon" class="form-control selectpicker">
-                                        <option data-icon="fa fa-address-book-o" value="1" <?php if ($category_icon == 1) { ?>
+                                        <option data-icon="fa fa-address-book-o"
+                                                value="1" <?php if ($category_icon == 1) { ?>
                                             selected="selected" <?php } ?>></option>
-                                        <option data-icon="fa fa-area-chart" value="2" <?php if ($category_icon == 2) { ?>
+                                        <option data-icon="fa fa-area-chart"
+                                                value="2" <?php if ($category_icon == 2) { ?>
                                             selected="selected" <?php } ?>></option>
                                         <option data-icon="fa fa-book" value="3" <?php if ($category_icon == 3) { ?>
                                             selected="selected" <?php } ?>></option>
@@ -82,11 +84,14 @@
                                             selected="selected" <?php } ?>></option>
                                         <option data-icon="fa fa-film" value="5" <?php if ($category_icon == 5) { ?>
                                             selected="selected" <?php } ?>></option>
-                                        <option data-icon="fa fa-university" value="6" <?php if ($category_icon == 6) { ?>
+                                        <option data-icon="fa fa-university"
+                                                value="6" <?php if ($category_icon == 6) { ?>
                                             selected="selected" <?php } ?>></option>
-                                        <option data-icon="fa fa-file-text-o" value="7" <?php if ($category_icon == 7) { ?>
+                                        <option data-icon="fa fa-file-text-o"
+                                                value="7" <?php if ($category_icon == 7) { ?>
                                             selected="selected" <?php } ?>></option>
-                                        <option data-icon="fa fa-calendar-o" value="8" <?php if ($category_icon == 8) { ?>
+                                        <option data-icon="fa fa-calendar-o"
+                                                value="8" <?php if ($category_icon == 8) { ?>
                                             selected="selected" <?php } ?>></option>
                                         <option data-icon="fa fa-clone" value="9" <?php if ($category_icon == 9) { ?>
                                             selected="selected" <?php } ?>></option>
@@ -116,6 +121,7 @@
                             </div>
 
                             <?php if($category_id != '') { ?>
+                            <?php if ($category_id != '') { ?>
                                 <div class="form-group required col-md-12 col-xs-12">
                                     <div class="col-md-2 col-xs-2" align="right">
                                         <label class=" control-label" for="create_date">วันที่เพิ่ม</label>
@@ -177,6 +183,7 @@
                                 </div>
 
                             <?php }?>
+                            <?php } ?>
 
                             <div class="form-group required col-md-12 col-xs-12">
                                 <div class="col-md-2 col-xs-2" align="right">
@@ -300,18 +307,31 @@
 
 </div>
 
+
 <script type="application/javascript">
+
+    //    init_event({
+    //        fn: [readyLoad],
+    //        disEvent: ["click,#button-save", "focusout,#minimum", "focusout,#reward", "focusout,#maximum", "focusout,#commission"
+    //            , "focusout,#tbody-setting-default input", "focusout,#input-user-credit", "change,.my_percent_user"
+    //            , "change,.sub_percent_user", "focusout,.my_percent_user", "focusout.sub_percent_user"]
+    //    });
 
     init_event({
         fn: [readyLoad],
         disEvent: ["click,#button-save", "focusout,#minimum", "focusout,#reward", "focusout,#maximum", "focusout,#commission"
             , "focusout,#tbody-setting-default input", "focusout,#input-user-credit", "change,.my_percent_user"
             , "change,.sub_percent_user", "focusout,.my_percent_user", "focusout.sub_percent_user"]
+        document_on: [ 'click,#button-save'],
+        document_ready: [get_field, add_select_picker]
     });
 
     function readyLoad() {
         $('.input-number').maskMoney();
     }
+    //    function readyLoad() {
+    //        $('.input-number').maskMoney();
+    //    }
 
     function formatNumber(number) {
         //var int_number = Number(number);
@@ -329,7 +349,27 @@
                     return number + (i && !(i % 3) ? "," : "") + acc;
                 }, "") + "." + p[1];
         }
+    function add_select_picker() {
+        $('.selectpicker').selectpicker({style: 'btn-default', size: 4});
     }
+
+    //    function formatNumber(number) {
+    //        //var int_number = Number(number);
+    //        var p = number.toFixed(2).split(".");
+    //        var minus = p[0].substring(0, 1);
+    //        if (minus == "-") {
+    //            p[0] = p[0].substring(1, p[0].length);
+    //
+    //            return "-" + p[0].split("").reverse().reduce(function (acc, number, i, orig) {
+    //                    return number + (i && !(i % 3) ? "," : "") + acc;
+    //                }, "") + "." + p[1];
+    //        }
+    //        else {
+    //            return "" + p[0].split("").reverse().reduce(function (acc, number, i, orig) {
+    //                    return number + (i && !(i % 3) ? "," : "") + acc;
+    //                }, "") + "." + p[1];
+    //        }
+    //    }
 
     $(document).on("click", "#button-save", function () {
         $.ajax({

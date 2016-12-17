@@ -163,6 +163,7 @@
 					<!--                        --><?php //} ?>
 					<!--                        --><?php //if (in_array("addnew", $access_permission)) { ?>
 					<li><a href="<?= base_url(); ?>bank_list/getForm"><i class="fa fa-circle-o"></i>
+					<li><a href="<?= base_url(); ?>bank"><i class="fa fa-circle-o"></i>
 							เพิ่มรายการใหม่</a>
 					</li>
 					<!--                        --><?php //} ?>
