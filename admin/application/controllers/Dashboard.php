@@ -28,7 +28,6 @@ class Dashboard extends CI_Controller
 
         $this->load->library('auth_check');
 
-
         if (!$this->auth_check->hasPermission('access', 'dashboard')) {
             redirect('permission');
         }
@@ -41,10 +40,6 @@ class Dashboard extends CI_Controller
 
     public function getForm()
     {
-
-//        $user_info = $this->User_model->get_user($this->session->userdata("user_id"));
-//
-//        $data['user_group_id'] = $user_info;
 
         $data["page"] = 'pages/dashboard';
         $this->load->view('template', $data);

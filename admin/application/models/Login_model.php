@@ -40,11 +40,11 @@ class login_model extends CI_Model
         if ($password === $password_decode){
 
             if($data['is_login']==='1'){
-                if($data['last_action']!==null&&$data['last_action']!==''){
-                    if($setting_time > time()-(int)$data['last_action']){
-                        return 2;
-                    }
-                }
+//                if($data['last_action']!==null&&$data['last_action']!==''){
+//                    if($setting_time > time()-(int)$data['last_action']){
+//                        return 2;
+//                    }
+//                }
             }
 
             $tStamp = date("Y-m-d H:i:s");
@@ -63,6 +63,9 @@ class login_model extends CI_Model
 
             $this->stamp((int)$data["user_id"]);
 
+//            echo 1 ;
+//            exit(0);
+
            return (int)$data["user_status"];
         }
 
@@ -72,6 +75,7 @@ class login_model extends CI_Model
     public function set_session($data,$tStamp)  //  No Language
     {
         $data = array(
+            'user_id' => $data['user_id'],
             'username' => $data['username'],
             'user_group_id' => (int)$data['user_group_id'],
             'password' => $this->encrypt->encode($data['password']),
@@ -89,6 +93,9 @@ class login_model extends CI_Model
             'login_time' => $tStamp
         );
         $this->session->set_userdata($data);
+
+//        echo var_dump($data);
+//        exit(0);
     }
 
     public function lose_login($user_id,$login_time){
