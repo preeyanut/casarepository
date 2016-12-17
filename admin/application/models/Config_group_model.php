@@ -53,10 +53,8 @@ class Config_group_model extends CI_Model
 
     }
 
-    public function delete_config_group($config_group_id)
-    {
-        $this->load->library('encrypt');
-        $this->db->query("DELETE FROM config_webpage_group WHERE config_group_id = ". $config_group_id) ;
+    public function delete_config_group($config_group_id) {
+        $this->db->query("DELETE FROM `" . "" . "config_webpage_group` WHERE config_group_id = '" . (int)$config_group_id . "'");
     }
 
     public function count()
