@@ -12,7 +12,11 @@ class Bank_list extends CI_Controller
 
         $this->load->library('auth_check');
 
+<<<<<<< .merge_file_a08176
+        if (!$this->auth_check->hasPermission('access', 'customer')) {
+=======
         if (!$this->auth_check->hasPermission('access', 'bank_list')) {
+>>>>>>> .merge_file_a04620
             redirect('permission');
         }
     }
@@ -129,6 +133,33 @@ class Bank_list extends CI_Controller
         echo json_encode($jsonResult);
     }
 
+<<<<<<< .merge_file_a08176
+    public function add_bank()
+    {
+        if ($this->input->post()) {
+            $data["bank_list_id"] = $this->Bank_list_model->add_bank($this->input->post());
+        }
+
+        $jsonResult['Result'] = true;
+        //$jsonResult['error'] = "";
+        $jsonResult['Data'] = $data;
+        echo json_encode($jsonResult);
+    }
+
+    public function edit_bank()
+    {
+        if ($this->input->post()) {
+            $data["bank_list_id"] = $this->Bank_list_model->edit_bank($this->input->post());
+        }
+
+        $jsonResult['Result'] = true;
+        //$jsonResult['error'] = "";
+        $jsonResult['Data'] = $data;
+        echo json_encode($jsonResult);
+    }
+
+=======
+>>>>>>> .merge_file_a04620
     public function delete_bank()
     {
         if ($this->input->get('bank_list_id')) {
@@ -138,4 +169,73 @@ class Bank_list extends CI_Controller
         $this->getall();
     }
 
+<<<<<<< .merge_file_a08176
+    public function getForm()
+    {
+
+        if ($this->input->get('bank_list_id')) {
+
+            $data_info = $this->Bank_list_model->get_data($this->input->get('bank_list_id'));
+            $data_user = $this->User_model->get_user_all();
+
+//            var_dump($data_info, $data_user);
+            if (!empty($data_info)) {
+
+                $data['bank_list_id'] = $this->input->get('bank_list_id');
+
+                foreach ($data_info as $info) {
+                    $data['bank_list_name'] = $info['bank_list_name'];
+                    $data['bank_list_status'] = $info['bank_list_status'];
+                    $data['priority_level'] = $info['priority_level'];
+                }
+                for($i=0;$i<count($data_user);$i++) {
+                    $data['user_id'][] = $data_user[$i]['user_id'];
+                    $data['username'][] = $data_user[$i]['username'];
+                }
+            }
+
+            $data["action"] = base_url() . "bank_list/edit_bank";
+
+        } else {
+
+            $data['bank_list_id'] = "";
+            $data['bank_list_name'] = "";
+            $data['priority_level'] = "";
+            $data['bank_list_status'] = "";
+
+            $data['create_by'] = $this->input->get('user_id');
+
+            $data["action"] = base_url() . "bank_list/add_bank";
+
+            $data["groups"] = $this->Bank_list_model->getall();
+
+        }
+//        var_dump($data);
+        $data["page"] = 'pages/bank_form';
+
+        $this->load->view('template', $data);
+    }
+
+    public function validate_form()
+    {
+
+        if ((strlen($this->input->post('bank_name')) < 3) || (strlen($this->input->post('bank_name')) > 255)) {
+            $this->error['bank_name'] = "กรุณากรอกชื่อธนาคาร";
+        }
+
+        if ((strlen($this->input->post('priority_level')) < 1) || (strlen($this->input->post('priority_level')) > 255)) {
+            $this->error['priority_level'] = "กรุณากรอกความสำคัญ";
+        }
+
+        if (isset($this->error)) {
+            $jsonResult['error'] = $this->error;
+        }
+
+        $jsonResult['Result'] = true;
+        $jsonResult['Data'] = "";
+
+        echo json_encode($jsonResult);
+    }
+=======
+>>>>>>> .merge_file_a04620
 }

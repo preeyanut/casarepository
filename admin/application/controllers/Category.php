@@ -97,7 +97,7 @@ class Category extends CI_Controller
 
                 foreach ($data_info as $info) {
                     $data['category_name'] = $info['category_name'];
-                    $data['type_id'] = $info['type_id'];
+                    $data['category_type_id'] = $info['category_type_id'];
                     $data['category_icon'] = $info['category_icon'];
                     $data['priority_level'] = $info['priority_level'];
                     $data['category_status'] = $info['category_status'];
@@ -115,7 +115,7 @@ class Category extends CI_Controller
                 }
 
                 for ($i = 0; $i < count($data_type); $i++) {
-                    $data['category_type_id'][] = $data_type[$i]['category_type_id'];
+                    $data['type_id'][] = $data_type[$i]['category_type_id'];
                     $data['category_type_name'][] = $data_type[$i]['category_type_name'];
                 }
             }
@@ -126,7 +126,7 @@ class Category extends CI_Controller
 
             $data['category_id'] = "";
             $data['category_name'] = "";
-            $data['type_id'] = "";
+            $data['category_type_id'] = "";
             $data['category_icon'] = "";
             $data['priority_level'] = "";
             $data['category_status'] = "";
@@ -142,7 +142,7 @@ class Category extends CI_Controller
             $data['meta_description_eng'] = "";
 
             for ($i = 0; $i < count($data_type); $i++) {
-                $data['category_type_id'][] = $data_type[$i]['category_type_id'];
+                $data['type_id'][] = $data_type[$i]['category_type_id'];
                 $data['category_type_name'][] = $data_type[$i]['category_type_name'];
             }
 
