@@ -35,7 +35,7 @@ class Config_group extends CI_Controller
             $paging++;
         }
 
-        $data["list"] = $this->Config_group_model->getall();
+        $data["list"] = $this->Config_group_model->get_all();
         //$data_user = $this->User_model->get_user_all();
 
         //for ($i = 0; $i < count($data_user); $i++) {
@@ -59,7 +59,7 @@ class Config_group extends CI_Controller
     public function get_all()
 
     {
-        $data["list"] = $this->Config_group_model->getall();
+        $data["list"] = $this->Config_group_model->get_all();
 
         $jsonResult['Result'] = true;
         //$jsonResult['error'] = "";
@@ -106,10 +106,10 @@ class Config_group extends CI_Controller
 
             $data["action"] = base_url() . "config_group/add_config_group";
 
-            //$data["list"] = $this->Config_group_model->getall();
+            //$data["list"] = $this->Config_group_model->get_all();
 
         }
-        $data["list"] = $this->Config_group_model->getall();
+        $data["list"] = $this->Config_group_model->get_all();
         $data["page"] = 'pages/config_group';
 
         $this->load->view('template', $data);
@@ -227,7 +227,7 @@ class Config_group extends CI_Controller
 
 //        $result = array();
         if ($filter_number == -1) {
-            $result = $this->Config_group_model->getall();
+            $result = $this->Config_group_model->get_all();
         } else {
             $start_filter = $filter_number * $page;
             $result = $this->Config_group_model->search_filter($this->input->post("txtSearch"), $start_filter, $filter_number, $status);

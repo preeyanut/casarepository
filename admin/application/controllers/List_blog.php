@@ -139,7 +139,7 @@ class List_blog extends CI_Controller
 
             $data["action"] = base_url() . "blog/add_type";
 
-            $data["groups"] = $this->Blog_model->getall();
+            $data["groups"] = $this->Blog_model->get_all();
 
         }
 
@@ -233,7 +233,7 @@ class List_blog extends CI_Controller
         }
 
         if ($filter_number == -1) {
-            $result = $this->Blog_model->getall();
+            $result = $this->Blog_model->get_all();
         } else {
             $start_filter = $filter_number * $page;
             $result = $this->Blog_model->search_filter($this->input->post("txtSearch"), $start_filter, $filter_number, $status);

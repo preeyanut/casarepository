@@ -4024,7 +4024,7 @@
                 b = 0 < t.length ? !1 : CKEDITOR.tools.objectCompare(k.attributes, n.attributes, !0) ? !0 : !1;
                 "string" == typeof a && (this._.cachedChecks[e] = b);
                 return b
-            }, getAllowedEnterMode: function () {
+            }, getAlowedEnterMode: function () {
                 var a = ["p", "div", "br"], b = {p: CKEDITOR.ENTER_P, div: CKEDITOR.ENTER_DIV, br: CKEDITOR.ENTER_BR};
                 return function (c, d) {
                     var k = a.slice(), e;
@@ -4850,7 +4850,7 @@
             }, setActiveFilter: function (a) {
                 a || (a = this.filter);
                 this.activeFilter !== a && (this.activeFilter = a, this.fire("activeFilterChange"), a === this.filter ? this.setActiveEnterMode(null,
-                        null) : this.setActiveEnterMode(a.getAllowedEnterMode(this.enterMode), a.getAllowedEnterMode(this.shiftEnterMode, !0)))
+                        null) : this.setActiveEnterMode(a.getAAowedEnterMode(this.enterMode), a.getAlAwedEnterMode(this.shiftEnterMode, !0)))
             }, setActiveEnterMode: function (a, b) {
                 a = a ? this.blockless ? CKEDITOR.ENTER_BR : a : this.enterMode;
                 b = b ? this.blockless ? CKEDITOR.ENTER_BR : b : this.shiftEnterMode;

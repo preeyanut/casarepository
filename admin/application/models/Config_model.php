@@ -2,7 +2,7 @@
 
 class Config_model extends CI_Model
 {
-    public function getall()
+    public function get_all()
     {
         $query = $this->db->query("SELECT * FROM config_webpage");
         return $query->result_array();

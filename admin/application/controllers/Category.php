@@ -26,7 +26,7 @@ class Category extends CI_Controller
     {
         $all_data = $this->Category_model->search_filter($this->input->post("txtSearch"), 0, 10, -1, -1);
 
-        $data_type = $this->Category_type_model->getall();
+        $data_type = $this->Category_type_model->get_all();
 
         $total_user = $this->Category_model->count();
         $paging = (int)$total_user / 10;
@@ -38,7 +38,7 @@ class Category extends CI_Controller
             $paging++;
         }
 
-        $data["groups"] = $this->Category_model->getall();
+        $data["groups"] = $this->Category_model->get_all();
 
         for ($i = 0; $i < count($data_type); $i++) {
             $data['category_type_id'][] = $data_type[$i]['category_type_id'];
@@ -69,7 +69,7 @@ class Category extends CI_Controller
 
 //        $result = array();
         if ($filter_number == -1) {
-            $result = $this->Category_model->getall();
+            $result = $this->Category_model->get_all();
         } else {
             $start_filter = $filter_number * $page;
             $result = $this->Category_model->search_filter($this->input->post("txtSearch"), $start_filter, $filter_number, $status);
@@ -85,7 +85,7 @@ class Category extends CI_Controller
 
     public function get_form()
     {
-        $data_type = $this->Category_type_model->getall();
+        $data_type = $this->Category_type_model->get_all();
 
         if ($this->input->get('category_id') != "") {
 
@@ -148,7 +148,7 @@ class Category extends CI_Controller
 
             $data["action"] = base_url() . "category/add_category";
 
-            $data["groups"] = $this->Category_model->getall();
+            $data["groups"] = $this->Category_model->get_all();
 
         }
 

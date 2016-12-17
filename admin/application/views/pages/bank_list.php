@@ -24,10 +24,12 @@
                         <div class="col-md-11 col-xs-9"><h3 class="box-title">Bank List</h3></div>
                         <div class="col-md-1 col-xs-2">
 <<<<<<< .merge_file_a04620
+
                             <a href="<?= base_url() ?>bank_list/getForm">
 =======
                             <a href="<?= base_url() ?>bank">
 >>>>>>> .merge_file_a14492
+
                                 <button type="button" name="button-add" style="width: 100px"
                                         id="button-add" class="btn btn-primary ">New
                                 </button>
@@ -303,11 +305,17 @@
 
     $(document).on("click", ".button-edit", function () {
         var bank_list_id = this.name.replace("button-edit", "");
+<<<<<<< HEAD
 <<<<<<< .merge_file_a04620
         window.open("<?php echo base_url(); ?>bank_list/getForm?bank_list_id=" + bank_list_id, "_self");
 =======
+
         window.open("<?php echo base_url(); ?>bank/getForm?bank_list_id=" + bank_list_id, "_self");
 >>>>>>> .merge_file_a14492
+
+=======
+        window.open("<?php echo base_url(); ?>bank/getForm?bank_list_id=" + bank_list_id, "_self");
+>>>>>>> ab2e25edfeae6925b9794b6f153bb47c50425433
     });
 
     $(document).on("click", ".button-delete", function () {
