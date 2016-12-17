@@ -149,7 +149,7 @@ class Config_group extends CI_Controller
 
         $jsonResult['Result'] = true;
         //$jsonResult['error'] = "";
-        $jsonResult['Data'] = $data;
+        $jsonResult['Data'] = "";
         echo json_encode($jsonResult);
     }
 

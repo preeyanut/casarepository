@@ -342,8 +342,6 @@
 
 <script type="text/javascript">
 
-
-    init_event({document_on: ['click,#button-add-field', 'click,#button-save', 'click,.button-delete']});
     init_event({
         fn: [readyLoad],
         disEvent: ["click,#button-save", "click,.button-edit"]

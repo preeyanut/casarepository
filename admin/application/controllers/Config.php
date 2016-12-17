@@ -27,7 +27,7 @@ class Config extends CI_Controller
     public function get_form()
     {
 
-        $data_user = $this->User_model->get_user_all();
+        //$data_user = $this->User_model->get_user_all();
         $data_config_group = $this->Config_group_model->getall();
 
         if ($this->input->get('config_id')) {
@@ -62,10 +62,10 @@ class Config extends CI_Controller
                     $data['create_by'] = $info['create_by'];
 
                 }
-                for ($i = 0; $i < count($data_user); $i++) {
-                    $data['user_id'][] = $data_user[$i]['user_id'];
-                    $data['username'][] = $data_user[$i]['username'];
-                }
+                //for ($i = 0; $i < count($data_user); $i++) {
+                    //$data['user_id'][] = $data_user[$i]['user_id'];
+                    //$data['username'][] = $data_user[$i]['username'];
+                //}
 
                 for ($i = 0; $i < count($data_config_group); $i++) {
                     $data['config_group_id'][] = $data_config_group[$i]['config_group_id'];
@@ -95,10 +95,10 @@ class Config extends CI_Controller
             $data['twitter'] = "";
             $data['create_by'] = $this->input->get('user_id');
 
-            for ($i = 0; $i < count($data_user); $i++) {
-                $data['user_id'][] = $data_user[$i]['user_id'];
-                $data['username'][] = $data_user[$i]['username'];
-            }
+            //for ($i = 0; $i < count($data_user); $i++) {
+                //$data['user_id'][] = $data_user[$i]['user_id'];
+                //$data['username'][] = $data_user[$i]['username'];
+            //}
 
             for ($i = 0; $i < count($data_config_group); $i++) {
                 $data['config_group_id'][] = $data_config_group[$i]['config_group_id'];

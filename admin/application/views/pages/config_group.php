@@ -28,73 +28,74 @@
                     <!-- /.box-header -->
                     <!-- form start -->
                     <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" id="form"
-                                    class=" box-body">
+                          class=" box-body">
 
-                            <input type="hidden" name="config_group_id" value="<?php echo $config_group_id; ?>"
-                                   id="config_group_id" class="form-control"/>
+                        <input type="hidden" name="config_group_id" value="<?php echo $config_group_id; ?>"
+                               id="config_group_id" class="form-control"/>
 
-                            <div class="row">
+                        <div class="row">
 
-                                <div class="form-group required col-md-12 col-xs-12">
-                                    <div class="col-md-2 col-xs-2" align="right">
-                                        <label class=" control-label" for="input-type-name">Webpage Name</label>
-                                    </div>
-                                    <div class="col-md-10 col-xs-10">
-                                        <div class="">
-                                            <input type="text" name="config_group_name" value="<?php echo $config_group_name; ?>"
-                                                   placeholder="Webpage Name" id="input-config-name"
-                                                   class="form-control"/>
-                                        </div>
-                                        <div class="text-danger"></div>
-                                    </div>
+                            <div class="form-group required col-md-12 col-xs-12">
+                                <div class="col-md-2 col-xs-2" align="right">
+                                    <label class=" control-label" for="input-type-name">Webpage Name</label>
                                 </div>
-
-                                <div class="form-group required col-md-12 col-xs-12">
-                                    <div class="col-md-2 col-xs-2" align="right">
-                                        <label class=" control-label" for="input-priority-level">ลำดับความสำคัญ</label>
-                                    </div>
-                                    <div class="col-md-10 col-xs-10">
-                                        <div class="">
-                                            <input type="text" name="priority_level" value="<?php echo $priority_level; ?>"
-                                                   placeholder="ลำดับความสำคัญ" id="input-priority-level"
-                                                   class="form-control"/>
-                                        </div>
-                                        <div class="text-danger"></div>
-                                    </div>
-                                </div>
-
-                                <div class="form-group col-md-12 col-xs-12">
-                                    <div class="col-md-2 col-xs-2" align="right">
-                                        <label class=" control-label" for="input-status">สถานะ</label>
-                                    </div>
-                                    <div class="col-md-10 col-xs-10">
-                                        <div class="">
-                                            <select name="config_group_status" id="input-status" class="form-control">
-                                                <option
-                                                        value="0" <?php if ($config_group_status == 0) { ?>
-                                                    selected="selected" <?php } ?> >
-                                                    ปิดการใช้งาน
-                                                </option>
-                                                <option
-                                                        value="1" <?php if ($config_group_status == 1) { ?>
-                                                    selected="selected" <?php } ?>>
-                                                    เปิดใช้งาน
-                                                </option>
-
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="form-group col-md-6" style="text-align: right;">
-                                    <br>
+                                <div class="col-md-10 col-xs-10">
                                     <div class="">
-                                        <button type="button" id="button-save" class="btn btn-primary"> บันทึก</button>
-                                        <button type="reset" id="btn-reset" class="btn btn-default">ยกเลิก</button>
+                                        <input type="text" name="config_group_name"
+                                               value="<?php echo $config_group_name; ?>"
+                                               placeholder="Webpage Name" id="input-config-name"
+                                               class="form-control"/>
+                                    </div>
+                                    <div class="text-danger"></div>
+                                </div>
+                            </div>
+
+                            <div class="form-group required col-md-12 col-xs-12">
+                                <div class="col-md-2 col-xs-2" align="right">
+                                    <label class=" control-label" for="input-priority-level">ลำดับความสำคัญ</label>
+                                </div>
+                                <div class="col-md-10 col-xs-10">
+                                    <div class="">
+                                        <input type="text" name="priority_level" value="<?php echo $priority_level; ?>"
+                                               placeholder="ลำดับความสำคัญ" id="input-priority-level"
+                                               class="form-control"/>
+                                    </div>
+                                    <div class="text-danger"></div>
+                                </div>
+                            </div>
+
+                            <div class="form-group col-md-12 col-xs-12">
+                                <div class="col-md-2 col-xs-2" align="right">
+                                    <label class=" control-label" for="input-status">สถานะ</label>
+                                </div>
+                                <div class="col-md-10 col-xs-10">
+                                    <div class="">
+                                        <select name="config_group_status" id="input-status" class="form-control">
+                                            <option
+                                                    value="0" <?php if ($config_group_status == 0) { ?>
+                                                selected="selected" <?php } ?> >
+                                                ปิดการใช้งาน
+                                            </option>
+                                            <option
+                                                    value="1" <?php if ($config_group_status == 1) { ?>
+                                                selected="selected" <?php } ?>>
+                                                เปิดใช้งาน
+                                            </option>
+
+                                        </select>
                                     </div>
                                 </div>
-
                             </div>
+
+                            <div class="form-group col-md-6" style="text-align: right;">
+                                <br>
+                                <div class="">
+                                    <button type="button" id="button-save" class="btn btn-primary"> บันทึก</button>
+                                    <button type="reset" id="btn-reset" class="btn btn-default">ยกเลิก</button>
+                                </div>
+                            </div>
+
+                        </div>
                 </div>
                 <!-- /.box -->
             </div>
@@ -144,7 +145,8 @@
                             <div class="col-sm-4 col-xs-4 text-right">
                                 <label class="col-sm-3 col-xs-3 control-label" for="input-search">ค้นหา : </label>
                                 <div class="col-sm-9 col-xs-9">
-                                    <input type="text" name="search" placeholder="กรุณาใส่ข้อมูล...ค้นหา" id="input-search"
+                                    <input type="text" name="search" placeholder="กรุณาใส่ข้อมูล...ค้นหา"
+                                           id="input-search"
                                            class="form-control"/>
                                 </div>
                             </div>
@@ -154,7 +156,7 @@
 
 
                     <!-- form start -->
-                    <form action="<?php  ?>" method="post" enctype="multipart/form-data" id="form">
+                    <form action="<?php ?>" method="post" enctype="multipart/form-data" id="form">
                         <div class="table-responsive  box-body ">
                             <table class="table table-bordered table-hover">
                                 <thead>
@@ -180,9 +182,9 @@
                                             <td class="text-center"><?php echo $config_group['config_group_name']; ?></td>
                                             <!--<td class="text-center"><?php echo $config_group['priority_level']; ?></td>-->
                                             <td class="text-center"><?php echo $config_group['create_date']; ?></td>
-                                            <td class="text-center"><?php echo $config_group['create_by_name'];?></td>
+                                            <td class="text-center"><?php echo $config_group['create_by_name']; ?></td>
                                             <td class="text-center"><?php echo $config_group['update_date']; ?></td>
-                                            <td class="text-center"><?php echo $config_group['update_by_name'];?></td>
+                                            <td class="text-center"><?php echo $config_group['update_by_name']; ?></td>
                                             <?php if ($config_group['config_group_status'] == 0) { ?>
                                                 <td class="text-center text-disable">ปิดการใช้งาน</td>
                                             <?php } else { ?>
@@ -264,13 +266,13 @@
 
 
     init_event({
-        document_on:[
+        document_on: [
             'keyup,#input-search'
-            ,'click,#button-save'
-            ,'click,.button-edit'
-            ,'click,.button-delete'
-            ,'click,.paging'
-        ],document_ready:[
+            , 'click,#button-save'
+            , 'click,.button-edit'
+            , 'click,.button-delete'
+            , 'click,.paging'
+        ], document_ready: [
             get_paging
         ]
     });
@@ -291,6 +293,8 @@
             success: function (json) {
 
                 alert("เพิ่มข้อมูลเสร็จสิ้น");
+
+                reload_config_group();
             },
             error: function (xhr, ajaxOptions, thrownError) {
                 alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
@@ -314,6 +318,8 @@
             },
             success: function (json) {
                 alert("แก้ไขข้อมูลเสร็จสิ้น");
+
+                reload_config_group();
             },
             error: function (xhr, ajaxOptions, thrownError) {
                 alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
@@ -394,8 +400,8 @@
                     $('.button-delete').button('reset');
                 },
                 success: function (json) {
-                    // alert("Delete user_group OK");
-                    reloadListUserGroup();
+
+                    reload_config_group();
                 },
                 error: function (xhr, ajaxOptions, thrownError) {
                     alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
@@ -466,7 +472,7 @@
                     var color_status = "";
                     var str_status = "";
 
-                    switch (config_group.config_group_status) {
+                    switch (Number(config_group.config_group_status))  {
                         case 0:
                             color_status = "#8a0004";
                             str_status = "ปิดการใช้งาน";
@@ -485,11 +491,17 @@
                         + "<td class='text-center'>" + config_group.update_by_name + "</td>"
                         + "<td class='text-center' style='color: " + color_status + "'>"
                         + str_status + "</td>"
+                        + "<td class='text-center'>"
+                        + "<button type='button' name='button-edit" + config_group.config_group_id + "' id='button-edit' "
+                        + " class='btn btn-warning button-edit'>แก้ไข</button>"
+                        + " <button type='button' name='button-delete" + config_group.config_group_id + "' id='button-delete' "
+                        + " class='btn btn-danger button-delete'>ลบ</button>"
+                        + "</td>"
                         + "</tr>";
 
                     $("#tbody").append(html);
                 }
-                alert("get  OK");
+                //label_format_number();
             },
             error: function (xhr, ajaxOptions, thrownError) {
                 alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
@@ -503,7 +515,6 @@
         var filterPage = $("#filter-page").val();
         var filterStatus = $("#filter-status").val();
 
-        console.log('00000000000');
         $.ajax({
             url: '<?php echo base_url(); ?>config_group/search_user',
             type: 'post',
@@ -539,17 +550,21 @@
                         + "<td class='text-center'>" + (i + 1) + "</td>"
                         + "<td class='text-center'>" + config_group.config_group_name + "</td>"
                         + "<td class='text-center'>" + config_group.create_date + "</td>"
-                        + "<td class='text-center'>" + config_group.create_by_name+ "</td>"
+                        + "<td class='text-center'>" + config_group.create_by_name + "</td>"
                         + "<td class='text-center'>" + config_group.update_date + "</td>"
                         + "<td class='text-center'>" + config_group.update_by_name + "</td>"
                         + "<td class='text-center' style='color: " + color_status + "'>"
                         + str_status + "</td>"
-                        + " <td class='text-center'><button type='button' name='button-edit" + config_group.config_group_id + "' "
-                        + " id='button-edit' class='btn btn-warning button-edit'>แก้ไข</button></td>"
+                        + "<td class='text-center'>"
+                        + "<button type='button' name='button-edit" + config_group.config_group_id + "' id='button-edit' "
+                        + " class='btn btn-warning button-edit'>แก้ไข</button>"
+                        + " <button type='button' name='button-delete" + config_group.config_group_id + "' id='button-delete' "
+                        + " class='btn btn-danger button-delete'>ลบ</button>"
+                        + "</td>"
                         + "</tr>";
                     $("#tbody").append(html);
                 }
-                label_format_number();
+                //label_format_number();
             },
             error: function (xhr, ajaxOptions, thrownError) {
                 alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
@@ -594,7 +609,6 @@
             }
         });
     }
-
 
 
 </script>
