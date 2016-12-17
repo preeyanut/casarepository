@@ -144,7 +144,7 @@
 
     $(document).on("click", "#button-save", function () {
         $.ajax({
-            url: '<?php echo base_url(); ?>bank_list/validate_form',
+            url: '<?php echo base_url(); ?>bank/validate_form',
             type: 'post',
             data: $('input , select'),
             dataType: 'json',
@@ -194,7 +194,7 @@
 
     function add_bank() {
         $.ajax({
-            url: '<?php echo base_url(); ?>bank_list/add_bank',
+            url: '<?php echo base_url(); ?>bank/add_bank',
             type: 'post',
             data: $('input , select'),
             dataType: 'json',
@@ -207,7 +207,9 @@
             },
             success: function (json) {
 
-                alert("เพิ่มข้อมูลเสร็จสิ้น");
+                var reload = alert("เพิ่มข้อมูลเสร็จสิ้น");
+                if (reload)
+                    window.location="<?php echo base_url(); ?>bank"
             },
             error: function (xhr, ajaxOptions, thrownError) {
                 alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
@@ -218,7 +220,7 @@
     function edit_bank() {
         var bank_list_id = $('input[name="bank_list_id"]').val();
         $.ajax({
-            url: '<?php echo base_url(); ?>bank_list/edit_bank',
+            url: '<?php echo base_url(); ?>bank/edit_bank',
             type: 'post',
             data: $('input , select'),
             dataType: 'json',
