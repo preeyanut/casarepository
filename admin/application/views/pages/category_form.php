@@ -54,9 +54,9 @@
                                 </div>
                                 <div class="col-md-10 col-xs-10">
                                     <div class="">
-                                        <select name="type_id" id="input-type" class="form-control selectpicker">
-                                            <?php for ($i = 0; $i < count($category_type_id); $i++) { ?>
-                                                <option value="<?php echo $category_type_id[$i]; ?>" <?php if ($category_type_id[$i] == $type_id) { ?>
+                                        <select name="type_id" id="input-type" class="form-control ">
+                                            <?php for ($i = 0; $i < count($type_id); $i++) { ?>
+                                                <option value="<?php echo $type_id[$i]; ?>" <?php if ($type_id[$i] == $category_type_id) { ?>
                                                     selected="selected" <?php } ?> >
                                                     <?php echo $category_type_name[$i]; ?>
                                                 </option>
