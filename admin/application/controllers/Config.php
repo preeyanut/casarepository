@@ -9,6 +9,8 @@ class Config extends CI_Controller
         $this->load->model('Config_model');
         $this->load->model('Config_group_model');
         $this->load->model('User_model');
+        $this->load->library('ckeditor');
+        $this->load->library('ckfinder');
 
 
         $this->load->library('auth_check');
@@ -147,13 +149,13 @@ class Config extends CI_Controller
             $this->error['config_title'] = "กรุณากรอกข้อมูล title";
         }
 
-        if ((strlen($this->input->post('meta_keyword')) < 3) || (strlen($this->input->post('meta_keyword')) > 255)) {
-            $this->error['meta_keyword'] = "กรุณากรอกข้อมูล meta_keyword";
-        }
+        //if ((strlen($this->input->post('meta_keyword')) < 3) || (strlen($this->input->post('meta_keyword')) > 255)) {
+            //$this->error['meta_keyword'] = "กรุณากรอกข้อมูล meta_keyword";
+        //}
 
-        if ((strlen($this->input->post('meta_description')) < 3) || (strlen($this->input->post('meta_description')) > 255)) {
-            $this->error['meta_description'] = "กรุณากรอกข้อมูล meta_description";
-        }
+        //if ((strlen($this->input->post('meta_description')) < 3) || (strlen($this->input->post('meta_description')) > 255)) {
+            //$this->error['meta_description'] = "กรุณากรอกข้อมูล meta_description";
+        //}
 
         if ((strlen($this->input->post('login_link')) < 3) || (strlen($this->input->post('login_link')) > 255)) {
             $this->error['login_link'] = "กรุณากรอกข้อมูล login link";
@@ -172,7 +174,7 @@ class Config extends CI_Controller
         }
 
         if ((strlen($this->input->post('googleplus')) < 3) || (strlen($this->input->post('googleplus')) > 255)) {
-            $this->error['googleplus'] = "กรุณากรอกข้อมูล google-plus";
+            $this->error['googleplus'] = "กรุณากรอกข้อมูล googleplus";
         }
 
         if ((strlen($this->input->post('instagram')) < 3) || (strlen($this->input->post('instagram')) > 255)) {
