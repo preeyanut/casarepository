@@ -103,7 +103,6 @@ class Category_type_model extends CI_Model
         return $insert_id;
     }
 
-
     public function edit_category_type($data)
     {
         $data_array = array(
