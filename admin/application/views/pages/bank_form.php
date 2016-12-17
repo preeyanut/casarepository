@@ -144,11 +144,7 @@
 
     $(document).on("click", "#button-save", function () {
         $.ajax({
-<<<<<<< .merge_file_a05720
-            url: '<?php echo base_url(); ?>bank_list/validate_form',
-=======
             url: '<?php echo base_url(); ?>bank/validate_form',
->>>>>>> .merge_file_a12364
             type: 'post',
             data: $('input , select'),
             dataType: 'json',
@@ -198,11 +194,7 @@
 
     function add_bank() {
         $.ajax({
-<<<<<<< .merge_file_a05720
-            url: '<?php echo base_url(); ?>bank_list/add_bank',
-=======
             url: '<?php echo base_url(); ?>bank/add_bank',
->>>>>>> .merge_file_a12364
             type: 'post',
             data: $('input , select'),
             dataType: 'json',
@@ -215,13 +207,7 @@
             },
             success: function (json) {
 
-<<<<<<< .merge_file_a05720
                 alert("เพิ่มข้อมูลเสร็จสิ้น");
-=======
-                var reload = alert("เพิ่มข้อมูลเสร็จสิ้น");
-                if (reload)
-                    window.location="<?php echo base_url(); ?>bank"
->>>>>>> .merge_file_a12364
             },
             error: function (xhr, ajaxOptions, thrownError) {
                 alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
@@ -232,11 +218,7 @@
     function edit_bank() {
         var bank_list_id = $('input[name="bank_list_id"]').val();
         $.ajax({
-<<<<<<< .merge_file_a05720
-            url: '<?php echo base_url(); ?>bank_list/edit_bank',
-=======
             url: '<?php echo base_url(); ?>bank/edit_bank',
->>>>>>> .merge_file_a12364
             type: 'post',
             data: $('input , select'),
             dataType: 'json',

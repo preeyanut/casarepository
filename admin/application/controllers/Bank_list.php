@@ -51,17 +51,17 @@ class Bank_list extends CI_Controller
 
     }
 
-    public function get_all()
-    {
-
-        $result = $this->bank_list_model->get_all();
-
-        $data["list"] = $result;
-        $jsonResult['Result'] = true;
-        $jsonResult['Data'] = $data;
-
-        echo json_encode($jsonResult);
-    }
+//    public function get_all()
+//    {
+//
+//        $result = $this->bank_list_model->get_all();
+//
+//        $data["list"] = $result;
+//        $jsonResult['Result'] = true;
+//        $jsonResult['Data'] = $data;
+//
+//        echo json_encode($jsonResult);
+//    }
 
     public function get_paging()
     {
