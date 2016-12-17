@@ -34,8 +34,6 @@ class Blog extends CI_Controller
 
             $data['blog_field'] = $blog_field;
 
-//            $data_user = $this->User_model->get_user_all();
-
             if (!empty($data_info)) {
 
                 $data['blog_id'] = $this->input->get('blog_id');
@@ -69,7 +67,7 @@ class Blog extends CI_Controller
             $data["action"] = base_url() . "blog/add_blog";
         }
 
-        $data["category"] = $this->Category_model->get_all();
+        $data["all_priority_level"] = $this->Blog_model->get_all_priority();
 
         $data["category"] = $this->Category_model->get_all();
 

@@ -45,8 +45,6 @@ class Blog_model extends CI_Model
         return $query->result_array();
     }
 
-
-
     public function count()
     {
         $query = $this->db->query("SELECT COUNT(*) AS total FROM `" . "" . "blog`");
@@ -163,4 +161,16 @@ class Blog_model extends CI_Model
         return $query->result_array();
     }
 
+
+
+
+    public function get_all_priority(){
+
+        $this->db->select("blog.*");
+        $this->db->where('blog.blog_status',1);
+        $this->db->order_by("blog.priority_level","asc");
+        $query = $this->db->get('blog');
+
+        return $query->result_array();
+    }
 }

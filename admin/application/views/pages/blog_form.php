@@ -82,11 +82,12 @@
                                     <div class="">
                                         <select name="priority_level" id="input-priority-level"
                                                 class="form-control selectpicker">
-                                            <option
-                                                value="<?= $priority_level; ?>" <?php if ($priority_level == 0) { ?>
-                                                selected="selected" <?php } ?> >
-                                                <?= $priority_level; ?>
-                                            </option>
+                                            <?php foreach ($all_priority_level as $item) { ?>
+                                                <option value="<?= $item['priority_level']; ?>"
+                                                    <?php if ($item['priority_level'] == $priority_level) { ?> selected="selected" <?php } ?> >
+                                                    <?= $item['priority_level']; ?>
+                                                </option>
+                                            <?php } ?>
 
                                         </select>
 
