@@ -39,7 +39,7 @@
                                 <div class="col-md-2 col-xs-2" align="right">
                                     <label class=" control-label" for="input-type-name">Webpage Name</label>
                                 </div>
-                                <div class="col-md-10 col-xs-10">
+                                <div class="col-md-7 col-xs-7">
                                     <div class="">
                                         <input type="text" name="config_group_name"
                                                value="<?php echo $config_group_name; ?>"
@@ -54,7 +54,7 @@
                                 <div class="col-md-2 col-xs-2" align="right">
                                     <label class=" control-label" for="input-priority-level">ลำดับความสำคัญ</label>
                                 </div>
-                                <div class="col-md-10 col-xs-10">
+                                <div class="col-md-7 col-xs-7">
                                     <div class="">
                                         <input type="text" name="priority_level" value="<?php echo $priority_level; ?>"
                                                placeholder="ลำดับความสำคัญ" id="input-priority-level"
@@ -68,7 +68,7 @@
                                 <div class="col-md-2 col-xs-2" align="right">
                                     <label class=" control-label" for="input-status">สถานะ</label>
                                 </div>
-                                <div class="col-md-10 col-xs-10">
+                                <div class="col-md-7 col-xs-7">
                                     <div class="">
                                         <select name="config_group_status" id="input-status" class="form-control">
                                             <option
@@ -87,7 +87,7 @@
                                 </div>
                             </div>
 
-                            <div class="form-group col-md-6" style="text-align: right;">
+                            <div class="form-group col-md-5" style="text-align: right;">
                                 <br>
                                 <div class="">
                                     <button type="button" id="button-save" class="btn btn-primary"> บันทึก</button>

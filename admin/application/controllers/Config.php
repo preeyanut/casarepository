@@ -48,7 +48,6 @@ class Config extends CI_Controller
                     $data['login_link'] = $info['login_link'];
                     $data['config_content'] = $info['config_content'];
                     $data['config_image'] = $info['config_image'];
-                    $data['e-mail'] = $info['e-mail'];
                     $data['line_id'] = $info['line_id'];
                     $data['telephone'] = $info['telephone'];
                     $data['facebook'] = $info['facebook'];
@@ -85,7 +84,6 @@ class Config extends CI_Controller
             $data['login_link'] = "";
             $data['config_content'] = "";
             $data['config_image'] = "";
-            $data['e-mail'] = "";
             $data['line_id'] = "";
             $data['telephone'] = "";
             $data['facebook'] = "";
@@ -173,8 +171,8 @@ class Config extends CI_Controller
             $this->error['facebook'] = "กรุณากรอกข้อมูล facebook";
         }
 
-        if ((strlen($this->input->post('google-plus')) < 3) || (strlen($this->input->post('google-plus')) > 255)) {
-            $this->error['google-plus'] = "กรุณากรอกข้อมูล googleplus";
+        if ((strlen($this->input->post('googleplus')) < 3) || (strlen($this->input->post('googleplus')) > 255)) {
+            $this->error['googleplus'] = "กรุณากรอกข้อมูล google-plus";
         }
 
         if ((strlen($this->input->post('instagram')) < 3) || (strlen($this->input->post('instagram')) > 255)) {

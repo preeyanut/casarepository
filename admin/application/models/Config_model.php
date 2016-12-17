@@ -16,11 +16,10 @@ class Config_model extends CI_Model
 
     public function add_config($data){
 
-
         $this->load->library('encrypt');
 
         $data_array = array(
-            'config_id' => (int)$data['config_id'],
+
             'config_group_id' => (int)$data['config_group_id'],
             'config_title' => $data['config_title'],
             'meta_keyword' => $data['meta_keyword'],
@@ -30,7 +29,6 @@ class Config_model extends CI_Model
             //for contact and fronted setting
             'config_content' => $data['config_content'],
             'config_image' => $data['config_image'],
-            'e-mail' => $data['e-mail'],
             'line_id' => $data['line_id'],
             'telephone' => $data['telephone'],
             'facebook' => $data['facebook'],
