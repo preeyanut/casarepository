@@ -12,21 +12,17 @@ class Bank_list extends CI_Controller
 
         $this->load->library('auth_check');
 
-<<<<<<< .merge_file_a08176
-        if (!$this->auth_check->hasPermission('access', 'customer')) {
-=======
         if (!$this->auth_check->hasPermission('access', 'bank_list')) {
->>>>>>> .merge_file_a04620
             redirect('permission');
         }
     }
 
     public function index()
     {
-        $this->getall();
+        $this->get_all();
     }
 
-    public function getall()
+    public function get_all()
     {
         $all_data = $this->Bank_list_model->search_filter($this->input->post("txtSearch"), 0, 10, -1);
 
@@ -41,7 +37,7 @@ class Bank_list extends CI_Controller
             $paging++;
         }
 
-        $data["groups"] = $this->Bank_list_model->getall();
+        $data["groups"] = $this->Bank_list_model->get_all();
 
         $data["paging"] = $paging;
 
@@ -58,7 +54,7 @@ class Bank_list extends CI_Controller
     public function get_all()
     {
 
-        $result = $this->bank_list_model->getall();
+        $result = $this->bank_list_model->get_all();
 
         $data["list"] = $result;
         $jsonResult['Result'] = true;
@@ -119,7 +115,7 @@ class Bank_list extends CI_Controller
 
 //        $result = array();
         if ($filter_number == -1) {
-            $result = $this->Bank_list_model->getall();
+            $result = $this->Bank_list_model->get_all();
         } else {
             $start_filter = $filter_number * $page;
             $result = $this->Bank_list_model->search_filter($this->input->post("txtSearch"), $start_filter, $filter_number, $status);
@@ -133,7 +129,6 @@ class Bank_list extends CI_Controller
         echo json_encode($jsonResult);
     }
 
-<<<<<<< .merge_file_a08176
     public function add_bank()
     {
         if ($this->input->post()) {
@@ -158,18 +153,15 @@ class Bank_list extends CI_Controller
         echo json_encode($jsonResult);
     }
 
-=======
->>>>>>> .merge_file_a04620
     public function delete_bank()
     {
         if ($this->input->get('bank_list_id')) {
             $data["bank_list_id"] = $this->Bank_list_model->delete_bank($this->input->get('bank_list_id'));
         }
 
-        $this->getall();
+        $this->get_all();
     }
 
-<<<<<<< .merge_file_a08176
     public function getForm()
     {
 
@@ -207,7 +199,7 @@ class Bank_list extends CI_Controller
 
             $data["action"] = base_url() . "bank_list/add_bank";
 
-            $data["groups"] = $this->Bank_list_model->getall();
+            $data["groups"] = $this->Bank_list_model->get_all();
 
         }
 //        var_dump($data);
@@ -236,6 +228,4 @@ class Bank_list extends CI_Controller
 
         echo json_encode($jsonResult);
     }
-=======
->>>>>>> .merge_file_a04620
 }

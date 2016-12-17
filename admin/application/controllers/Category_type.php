@@ -128,7 +128,7 @@ class Category_type extends CI_Controller
 
             $data["action"] = base_url() . "category_type/add_type";
 
-            $data["groups"] = $this->Category_type_model->getall();
+            $data["groups"] = $this->Category_type_model->get_all();
 
         }
 
@@ -225,7 +225,7 @@ class Category_type extends CI_Controller
 
 //        $result = array();
         if ($filter_number == -1) {
-            $result = $this->Category_type_model->getall();
+            $result = $this->Category_type_model->get_all();
         } else {
             $start_filter = $filter_number * $page;
             $result = $this->Category_type_model->search_filter($this->input->post("txtSearch"), $start_filter, $filter_number, $status);
