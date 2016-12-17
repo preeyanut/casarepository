@@ -35,6 +35,18 @@ class Blog_model extends CI_Model
         return $query->result_array();
     }
 
+    public function get_blog_field_by_category_id($id)
+    {
+        $this->db->select("category_field.*");
+        $this->db->join('category', 'category.category_type_id = category_field.category_type_id');
+        $this->db->where('category.category_id',$id);
+        $query = $this->db->get('category_field');
+
+        return $query->result_array();
+    }
+
+
+
     public function count()
     {
         $query = $this->db->query("SELECT COUNT(*) AS total FROM `" . "" . "blog`");

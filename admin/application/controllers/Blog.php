@@ -8,6 +8,7 @@ class Blog extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Blog_model');
+        $this->load->model('Category_model');
         $this->load->model('User_model');
 
         $this->load->library('auth_check');
@@ -49,6 +50,10 @@ class Blog extends CI_Controller
                     $data['blog_title'] = $info['blog_title'];
                     $data['blog_status'] = $info['blog_status'];
                     $data['priority_level'] = $info['priority_level'];
+
+                    $data['category_id'] = $info['category_id'];
+                    $data['category_type_id'] = $info['category_type_id'];
+
                 }
             }
 
@@ -61,11 +66,15 @@ class Blog extends CI_Controller
             $data['blog_status'] = "";
             $data['priority_level'] = "";
 
+            $data['category_id'] = "";
+            $data['category_type_id'] ="";
 //            $data['create_date'] = date("Y-m-d H:i:s");
 //            $data['create_by'] = $this->session->userdata("user_id");
 
             $data["action"] = base_url() . "blog/add_blog";
         }
+
+        $data["category"] = $this->Category_model->getall();
 
         $data["page"] = 'pages/blog_form';
 
@@ -137,8 +146,6 @@ class Blog extends CI_Controller
         echo json_encode($jsonResult);
     }
 
-
-
     public function add_blog()
     {
         $result =false;
@@ -170,8 +177,6 @@ class Blog extends CI_Controller
         $jsonResult['Data'] = $data;
         echo json_encode($jsonResult);
     }
-
-
 
     public function edit_blog()
     {
@@ -239,7 +244,6 @@ class Blog extends CI_Controller
         echo json_encode($jsonResult);
     }
 
-
     public function validate_form()
     {
 
@@ -261,5 +265,17 @@ class Blog extends CI_Controller
         echo json_encode($jsonResult);
     }
 
+    public function get_field(){
+        $result =false;
+        $category_id = $this->input->post('category_id');
+        if($category_id){
+            $data['blog_field'] = $this->Blog_model->get_blog_field_by_category_id($category_id);
+            $result =true;
+        }
 
+
+        $jsonResult['Result'] = $result;
+        $jsonResult['Data'] = $data;
+        echo json_encode($jsonResult);
+    }
 }

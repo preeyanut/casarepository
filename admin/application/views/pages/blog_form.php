@@ -1,7 +1,9 @@
 <script type="text/javascript" src="<?= base_url() ?>assets/js/jquery.ajaxfileupload.js"></script>
+<!--<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/js/bootstrap-select.min.js"></script>-->
+<script type="text/javascript" src="<?= base_url() ?>assets/js/bootstrap-select.js"></script>
 <section class="content-header">
     <h1>
-        blog type
+        Blog type
         <small>Control panel</small>
     </h1>
     <ol class="breadcrumb">
@@ -14,7 +16,6 @@
 <div id="container-content">
 
     <section class="content">
-
 
         <div class="row">
             <!-- left column -->
@@ -32,18 +33,42 @@
                         <input type="hidden" name="blog_id" value="<?php echo $blog_id; ?>"
                                id="blog_id" class="form-control"/>
 
+                        <input type="hidden" name="category_type_id" value="<?php echo $category_type_id; ?>"
+                               id="category_type_id" class="form-control"/>
+
                         <div class="row">
 
                             <div class="form-group required col-md-12 col-xs-12">
                                 <div class="col-md-2 col-xs-2" align="right">
-                                    <label class=" control-label" for="input-type-name">ชื่อประเภท</label>
+                                    <label class=" control-label" for="input-type-name">ชื่อ Blog</label>
                                 </div>
                                 <div class="col-md-10 col-xs-10">
                                     <div class="">
                                         <input type="text" name="blog_title"
                                                value="<?php echo $blog_title; ?>"
-                                               placeholder="ชื่อประเภท" id="input-type-name"
+                                               placeholder="ชื่อ Blog" id="input-type-name"
                                                class="form-control"/>
+                                    </div>
+                                    <div class="text-danger"></div>
+                                </div>
+                            </div>
+
+                            <!--                            --><?php //echo var_dump($category);?>
+                            <div class="form-group required col-md-12 col-xs-12">
+                                <div class="col-md-2 col-xs-2" align="right">
+                                    <label class="control-label" for="input-category-id">ชื่อประเภท</label>
+                                </div>
+                                <div class="col-md-10 col-xs-10">
+                                    <div class="">
+                                        <select name="category_id" id="input-category-id"
+                                                class="form-control selectpicker">
+                                            <?php foreach ($category as $item) { ?>
+                                                <option value="<?= $item['category_id']; ?>"
+                                                    <?php if ($item['category_id'] == $category_id) { ?> selected="selected" <?php } ?> >
+                                                    <?= $item['category_name']; ?>
+                                                </option>
+                                            <?php } ?>
+                                        </select>
                                     </div>
                                     <div class="text-danger"></div>
                                 </div>
@@ -55,7 +80,8 @@
                                 </div>
                                 <div class="col-md-10 col-xs-10">
                                     <div class="">
-                                        <select name="blog_status" id="input-status" class="form-control">
+                                        <select name="priority_level" id="input-priority-level"
+                                                class="form-control selectpicker">
                                             <option
                                                 value="<?= $priority_level; ?>" <?php if ($priority_level == 0) { ?>
                                                 selected="selected" <?php } ?> >
@@ -75,7 +101,7 @@
                                 </div>
                                 <div class="col-md-10 col-xs-10">
                                     <div class="">
-                                        <select name="blog_status" id="input-status" class="form-control">
+                                        <select name="blog_status" id="input-status" class="form-control selectpicker">
                                             <option
                                                 value="0" <?php if ($blog_status == 0) { ?>
                                                 selected="selected" <?php } ?> >
@@ -97,6 +123,7 @@
                 <!-- /.box -->
             </div>
 
+
             <div class="col-md-12">
                 <!-- general form elements -->
                 <div class="box box-primary">
@@ -111,73 +138,69 @@
                         <div class="row">
 
                             <div id="containner-blog-field">
+                                <?php if (isset($blog_field)) { ?>
 
-                                <input id="count-field" type="hidden" value="<?php if ($blog_field) {
-                                    echo sizeof($blog_field);
-                                } else {
-                                    echo 0;
-                                } ?>">
 
-                                <?php if ($blog_field) {
-                                    $count = 1;
-                                    foreach ($blog_field as $item) {
-                                        $html_field = '';
-                                        switch ($item['field_type']) {
+                                    <?php if ($blog_field) {
+                                        $count = 1;
+                                        foreach ($blog_field as $item) {
+                                            $html_field = '';
+                                            switch ($item['field_type']) {
 
-                                            case 'text' :
-                                                $html_field = '<input type="text" id="' . $item['field_id'] . '" name="' . $item['field_id'] . '" class="form-control" value="' . '0' . '" />';
-                                                break;
-                                            case 'textarea' :
-                                                $html_field = '<input type="textarea" id="' . $item['field_id'] . '" name="' . $item['field_id'] . '" class="form-control" value="' . '0' . '" />';
-                                                $html_field = ' <script type="text/javascript"> CKEDITOR.replace( "' . $item['field_id'] . '" ); </script>';
-                                                break;
-                                            case 'date' :
-                                                $html_field = '<input type="date" id="' . $item['field_id'] . '" name="' . $item['field_id'] . '" class="form-control" value="' . '0' . '" />';
-                                                break;
-                                            case 'time' :
-                                                $html_field = '<input type="time" id="' . $item['field_id'] . '" name="' . $item['field_id'] . '" class="form-control" value="' . '0' . '" />';
-                                                break;
-                                            case 'datetime' :
-                                                $html_field = '<input type="datetime" id="' . $item['field_id'] . '" name="' . $item['field_id'] . '" class="form-control" value="' . '0' . '" />';
-                                                break;
-                                            case 'video-url' :
-                                                $html_field = '<input type="text" id="' . $item['field_id'] . '" name="' . $item['field_id'] . '" class="form-control" value="' . '0' . '" />';
-                                                break;
-                                            case 'image' :
-                                                $html_field = '<a href="" id="a-' . $item['field_id'] . '" data-toggle="image" class="img-thumbnail"><img id="img-' . $item['field_id'] . '" style="max-width: 200px;" '
-                                                    .' src="0" alt="" title="" data-placeholder="รูปสินค้า"/></a>'
-                                                    .' <input type="file" name="' . $item['field_id'] . '" class="img-input" style="margin: auto;"  value="0" id="input-image"/>';
-                                                break;
+                                                case 'text' :
+                                                    $html_field = '<input type="text" id="' . $item['field_id'] . '" name="' . $item['field_id'] . '" class="form-control" value="' . '0' . '" />';
+                                                    break;
+                                                case 'textarea' :
+                                                    $html_field = '<input type="textarea" id="' . $item['field_id'] . '" name="' . $item['field_id'] . '" class="form-control" value="' . '0' . '" />';
+                                                    $html_field .= ' <script type="text/javascript"> CKEDITOR.replace( "' . $item['field_id'] . '" ); </script>';
+                                                    break;
+                                                case 'date' :
+                                                    $html_field = '<input type="date" id="' . $item['field_id'] . '" name="' . $item['field_id'] . '" class="form-control" value="' . '0' . '" />';
+                                                    break;
+                                                case 'time' :
+                                                    $html_field = '<input type="time" id="' . $item['field_id'] . '" name="' . $item['field_id'] . '" class="form-control" value="' . '0' . '" />';
+                                                    break;
+                                                case 'datetime' :
+                                                    $html_field = '<input type="datetime" id="' . $item['field_id'] . '" name="' . $item['field_id'] . '" class="form-control" value="' . '0' . '" />';
+                                                    break;
+                                                case 'video-url' :
+                                                    $html_field = '<input type="text" id="' . $item['field_id'] . '" name="' . $item['field_id'] . '" class="form-control" value="' . '0' . '" />';
+                                                    break;
+                                                case 'image' :
+                                                    $html_field = '<a href="" id="a-' . $item['field_id'] . '" data-toggle="image" class="img-thumbnail"><img id="img-' . $item['field_id'] . '" style="max-width: 200px;" '
+                                                        . ' src="0" alt="" title="" data-placeholder="รูปสินค้า"/></a>'
+                                                        . ' <input type="file" name="' . $item['field_id'] . '" class="img-input"  value="0" id="input-image"/>';
+                                                    break;
 
-                                        } ?>
+                                            } ?>
 
-                                        <div id="field-type-<?= $count; ?>"
-                                             class="div-field-type form-group required col-md-12 col-xs-12">
-                                            <div class="col-md-2 col-xs-2" align="right">
-                                                <label class=" control-label"
-                                                       for="input-field-type"><?= $item['field_id']; ?></label>
-                                            </div>
-                                            <div class="col-md-10 col-xs-10">
-                                                <div class="">
-                                                    <?php echo $html_field; ?>
+                                            <div id="field-type-<?= $count; ?>"
+                                                 class="div-field-type form-group required col-md-12 col-xs-12">
+                                                <div class="col-md-2 col-xs-2" align="right">
+                                                    <label class=" control-label"
+                                                           for="input-field-type"><?= $item['field_id']; ?></label>
                                                 </div>
-                                                <div class="text-danger"></div>
+                                                <div class="col-md-10 col-xs-10">
+                                                    <div class="">
+                                                        <?php echo $html_field; ?>
+                                                    </div>
+                                                    <div class="text-danger"></div>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <?php
-                                        $count++;
-                                    } ?>
+                                            <?php
+                                            $count++;
+                                        } ?>
+                                    <?php } ?>
+
                                 <?php } ?>
                             </div>
 
                         </div>
 
-
                     </div>
                 </div>
                 <!-- /.box -->
             </div>
-
 
             <div class="col-md-12">
                 <!-- general form elements -->
@@ -218,6 +241,9 @@
                     </div>
                 </div>
                 <!-- /.row -->
+
+            </div>
+
     </section>
 
 </div>
@@ -229,6 +255,11 @@
             'click,#button-add-field'
             , 'click,#button-save'
             , 'click,.button-delete'
+            , 'change,#category_id'
+            , 'change,.img-input'
+        ], document_ready: [
+            get_field
+            ,add_select_picker
         ]
 
     });
@@ -327,6 +358,20 @@
         $('#field-type-' + field_type_id).remove();
 
     });
+
+    $(document).on("change", "#category_id", function () {
+        get_field();
+    });
+
+    $(document).on("change", ".img-input", function () {
+        show_thumbnail(this);
+    });
+
+    function add_select_picker(){
+        $('.selectpicker').selectpicker({
+            style: 'btn-default',
+        });
+    }
 
     function formatNumber(number) {
         //var int_number = Number(number);
@@ -481,9 +526,87 @@
         $('.div-field-type').remove();
     }
 
-    $(".img-input").change(function(){
-        show_thumbnail(this);
-    });
+    function get_field() {
+        var blog_id = $('#blog_id').val();
+        var category_id = $('select[name="category_id"]').val()
+        if (!blog_id) {
+
+            $.ajax({
+                    url: '<?php echo base_url(); ?>blog/get_field',
+                    type: 'post',
+                    data: {category_id: category_id},
+                    dataType: 'json',
+                    crossDomain: true,
+                    beforeSend: function () {
+//                    $('#button-save').button('loading');
+                    },
+                    complete: function () {
+//                    $('#button-save').button('reset');
+                    },
+                    success: function (json) {
+                        console.log(json);
+                        var blog_fields = json.Data.blog_field;
+                        var ckeditor = [];
+                        for (var i = 0; i < blog_fields.length; i++) {
+                            var bolg_field = blog_fields[i];
+
+                            var html_field = ' <div id="field-type-'+i+'"'
+                                +'class="div-field-type form-group required col-md-12 col-xs-12"> '
+                                    +'<div class="col-md-2 col-xs-2" align="right">'
+                                +'<label class=" control-label" for="input-field-type">'+ bolg_field.field_id +'</label>'
+                                +'</div>'
+                                +'<div class="col-md-10 col-xs-10">'
+                                +' <div class="">';
+
+
+
+                            switch (bolg_field.field_type) {
+                                case 'text' :
+                                    html_field += '<input type="text" id="' + bolg_field.field_id + '" name="' + bolg_field.field_id + '" class="form-control" value="' + '0' + '" />';
+                                    break;
+                                case 'textarea' :
+                                    html_field += '<input type="textarea" id="' + bolg_field.field_id + '" name="' + bolg_field.field_id + '" class="form-control" value="' + '0' + '" />';
+                                    ckeditor.push(bolg_field.field_id);
+                                    break;
+                                case 'date' :
+                                    html_field += '<input type="date" id="' + bolg_field.field_id + '" name="' + bolg_field.field_id + '" class="form-control" value="' + '0' + '" />';
+                                    break;
+                                case 'time' :
+                                    html_field += '<input type="time" id="' + bolg_field.field_id + '" name="' + bolg_field.field_id + '" class="form-control" value="' + '0' + '" />';
+                                    break;
+                                case 'datetime' :
+                                    html_field += '<input type="datetime" id="' + bolg_field.field_id + '" name="' + bolg_field.field_id + '" class="form-control" value="' + '0' + '" />';
+                                    break;
+                                case 'video-url' :
+                                    html_field += '<input type="text" id="' + bolg_field.field_id + '" name="' + bolg_field.field_id + '" class="form-control" value="' + '0' + '" />';
+                                    break;
+                                case 'image' :
+                                    html_field += '<a href="" id="a-' + bolg_field.field_id + '" data-toggle="image" class="img-thumbnail"><img id="img-' + bolg_field.field_id + '" style="max-width: 200px;" '
+                                        + ' src="<?= base_url() ?>assets\\images\\No-image-found.jpg" alt="" title="" data-placeholder="รูปสินค้า"/></a>'
+                                        + ' <input type="file" name="' + bolg_field.field_id + '" class="img-input"   value="0" id="input-image"/>';
+                                    break;
+                            }
+
+                            html_field += '</div>'
+                                +'<div class="text-danger"></div>'
+                                +'<div class="col-md-2 col-xs-2" align="right">'
+                                +'</div>'
+                               ;
+
+                            $('#containner-blog-field').append(html_field);
+                        }
+
+                        for (var i = 0; i < ckeditor.length; i++) {
+                            CKEDITOR.replace(ckeditor[i]);
+                        }
+                    }
+                    , error: function (xhr, ajaxOptions, thrownError) {
+                        alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+                    }
+                }
+            );
+        }
+    }
 
     function show_thumbnail(input) {
 
@@ -491,7 +614,7 @@
             var reader = new FileReader();
 
             reader.onload = function (e) {
-                $('#img-'+input.name).attr('src', e.target.result);
+                $('#img-' + input.name).attr('src', e.target.result);
             }
 
             reader.readAsDataURL(input.files[0]);

@@ -23,11 +23,9 @@
                     <div class="box-header with-border">
                         <div class="col-md-11 col-xs-9"><h3 class="box-title">Bank List</h3></div>
                         <div class="col-md-1 col-xs-2">
-<<<<<<< .merge_file_a04620
+
                             <a href="<?= base_url() ?>bank_list/getForm">
-=======
-                            <a href="<?= base_url() ?>bank">
->>>>>>> .merge_file_a14492
+
                                 <button type="button" name="button-add" style="width: 100px"
                                         id="button-add" class="btn btn-primary ">New
                                 </button>
@@ -209,25 +207,7 @@
         ]
     });
 
-//    function formatNumber(number) {
-//        var p = number.toFixed(2).split(".");
-//        var minus = p[0].substring(0, 1);
-//        if (minus == "-") {
-//            p[0] = p[0].substring(1, p[0].length);
-//            return "-" + p[0].split("").reverse().reduce(function (acc, number, i, orig) {
-//                    return number + (i && !(i % 3) ? "," : "") + acc;
-//                }, "") + "." + p[1];
-//        }
-//        else {
-//            return "" + p[0].split("").reverse().reduce(function (acc, number, i, orig) {
-//                    return number + (i && !(i % 3) ? "," : "") + acc;
-//                }, "") + "." + p[1];
-//        }
-//    }
-<<<<<<< .merge_file_a04620
-=======
 
->>>>>>> .merge_file_a14492
     $(document).on("keyup", "#input-search", function () {
         search_user();
         get_paging();
@@ -303,11 +283,7 @@
 
     $(document).on("click", ".button-edit", function () {
         var bank_list_id = this.name.replace("button-edit", "");
-<<<<<<< .merge_file_a04620
-        window.open("<?php echo base_url(); ?>bank_list/getForm?bank_list_id=" + bank_list_id, "_self");
-=======
         window.open("<?php echo base_url(); ?>bank/getForm?bank_list_id=" + bank_list_id, "_self");
->>>>>>> .merge_file_a14492
     });
 
     $(document).on("click", ".button-delete", function () {
@@ -345,7 +321,6 @@
         var filterPage = $("#filter-page").val();
         var filterStatus = $("#filter-status").val();
 
-//        console.log('00000000000');
         $.ajax({
             url: '<?php echo base_url(); ?>bank_list/search_user',
             type: 'post',

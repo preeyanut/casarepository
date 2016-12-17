@@ -12,11 +12,7 @@ class Bank_list extends CI_Controller
 
         $this->load->library('auth_check');
 
-<<<<<<< .merge_file_a08176
-        if (!$this->auth_check->hasPermission('access', 'customer')) {
-=======
         if (!$this->auth_check->hasPermission('access', 'bank_list')) {
->>>>>>> .merge_file_a04620
             redirect('permission');
         }
     }
@@ -133,7 +129,6 @@ class Bank_list extends CI_Controller
         echo json_encode($jsonResult);
     }
 
-<<<<<<< .merge_file_a08176
     public function add_bank()
     {
         if ($this->input->post()) {
@@ -158,8 +153,6 @@ class Bank_list extends CI_Controller
         echo json_encode($jsonResult);
     }
 
-=======
->>>>>>> .merge_file_a04620
     public function delete_bank()
     {
         if ($this->input->get('bank_list_id')) {
@@ -169,7 +162,6 @@ class Bank_list extends CI_Controller
         $this->getall();
     }
 
-<<<<<<< .merge_file_a08176
     public function getForm()
     {
 
@@ -236,6 +228,4 @@ class Bank_list extends CI_Controller
 
         echo json_encode($jsonResult);
     }
-=======
->>>>>>> .merge_file_a04620
 }
