@@ -287,7 +287,7 @@
                             <div class="form-group required col-md-12 col-xs-12">
                                 <div class="col-md-2 col-xs-2" align="right">
                                     <label class=" control-label"
-                                           for="input-config-config">Content</label>
+                                           for="input-config_content">Content</label>
                                 </div>
                                 <div class="col-md-9 col-xs-9">
                                     <div class="">
@@ -326,7 +326,7 @@
                                 </div>
                                 <div class="col-md-9 col-xs-9">
                                     <div class="">
-                                        <input type="text" name="line_id"
+                                        <input type="text" name="line-id"
                                                value="<?php echo $line_id; ?>"
                                                placeholder="" id="input-line-id"
                                                class="form-control"/>
@@ -342,7 +342,7 @@
                                 </div>
                                 <div class="col-md-9 col-xs-9">
                                     <div class="">
-                                        <input type="text" name="facebook"
+                                        <input type="text" name="face-book"
                                                value="<?php echo $facebook; ?>"
                                                placeholder="" id="input-facebook"
                                                class="form-control"/>
@@ -355,13 +355,13 @@
                             <div class="form-group required col-md-12 col-xs-12">
                                 <div class="col-md-2 col-xs-2" align="right">
                                     <label class=" control-label"
-                                           for="input-instagram">Instagram</label>
+                                           for="input-ins-tagram">Instagram</label>
                                 </div>
                                 <div class="col-md-9 col-xs-9">
                                     <div class="">
-                                        <input type="text" name="instagram"
+                                        <input type="text" name="ins-tagram"
                                                value="<?php echo $instagram; ?>"
-                                               placeholder="" id="input-instagram"
+                                               placeholder="" id="input-ins-tagram"
                                                class="form-control"/>
                                     </div>
                                     <div class="text-danger"></div>
@@ -371,13 +371,13 @@
                             <div class="form-group required col-md-12 col-xs-12">
                                 <div class="col-md-2 col-xs-2" align="right">
                                     <label class=" control-label"
-                                           for="input-google">Google Plus</label>
+                                           for="input-google-plus">Google Plus</label>
                                 </div>
                                 <div class="col-md-9 col-xs-9">
                                     <div class="">
-                                        <input type="text" name="googleplus"
+                                        <input type="text" name="google-plus"
                                                value="<?php echo $googleplus; ?>"
-                                               placeholder="" id="input-google"
+                                               placeholder="" id="input-google-plus"
                                                class="form-control"/>
                                     </div>
                                     <div class="text-danger"></div>
@@ -387,13 +387,13 @@
                             <div class="form-group required col-md-12 col-xs-12">
                                 <div class="col-md-2 col-xs-2" align="right">
                                     <label class=" control-label"
-                                           for="input-youtube">Youtube</label>
+                                           for="input-you-tube">Youtube</label>
                                 </div>
                                 <div class="col-md-9 col-xs-9">
                                     <div class="">
-                                        <input type="text" name="youtube"
+                                        <input type="text" name="you-tube"
                                                value="<?php echo $youtube; ?>"
-                                               placeholder="" id="input-youtube"
+                                               placeholder="" id="input-you-tube"
                                                class="form-control"/>
                                     </div>
                                     <div class="text-danger"></div>
@@ -404,8 +404,8 @@
                             <div class="form-group col-md-10" style="text-align: center;">
                                 <br>
                                 <div class="">
-                                    <button type="button" id="button-save" class="btn btn-primary"
-                                            name="button-save"> บันทึก
+                                    <button type="button" id="button-save-contact" class="btn btn-primary"
+                                            name="button-save-contact"> บันทึก
                                     </button>
                                     <button type="reset" id="btn-reset" class="btn btn-default">ยกเลิก</button>
                                 </div>
@@ -447,12 +447,13 @@
     init_event({
         document_on: [
             'click,#button-save'
+            ,'click,#button-save-contact'
             , 'click,.button-edit'
 
         ]
     });
 
-
+    <!--===================================== add fronted setting=============================================-->
     function add_config() {
         $.ajax({
             url: '<?php echo base_url(); ?>config/add_config',
@@ -477,10 +478,37 @@
         });
     }
 
+    <!--===================================== add Contact setting=============================================-->
+    function add_contact_setting() {
+        $.ajax({
+            url: '<?php echo base_url(); ?>config/add_contact_setting',
+            type: 'post',
+            data: $('input , select , textarea'),
+            dataType: 'json',
+            crossDomain: true,
+            beforeSend: function () {
+                $('#button-save-contact').button('loading');
+            },
+            complete: function () {
+                $('#button-save-contact').button('reset');
+            },
+            success: function (json) {
 
+                alert("เพิ่มข้อมูลเสร็จสิ้น");
+
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+            }
+        });
+    }
+
+
+
+    <!--===================================== add fronted setting=============================================-->
     $(document).on("click", "#button-save", function () {
         $.ajax({
-            url: '<?php echo base_url(); ?>config/validate_form',
+            url: '<?php echo base_url(); ?>config/validate_frontend_form',
             type: 'post',
             data: $('input , select , textarea'),
             dataType: 'json',
@@ -531,7 +559,70 @@
     });
 
 
-    <!-- dropdown change -->
+    <!--===================================== add Contact setting=============================================-->
+    $(document).on("click", "#button-save-contact", function () {
+        $.ajax({
+            url: '<?php echo base_url(); ?>config/validate_contact_form',
+            type: 'post',
+            data: $('input , select , textarea'),
+            dataType: 'json',
+            crossDomain: true,
+            beforeSend: function () {
+                $('#button-save-contact').button('loading');
+            },
+            complete: function () {
+                $('#button-save-contact').button('reset');
+            },
+            success: function (json) {
+                //alert("OK");
+
+                $('.alert, .text-danger').remove();
+                $('.form-group').removeClass('has-error');
+
+                if (json['error']) {
+
+                    var p = 0;
+                    for (var i = 0; i < Object.keys(json['error']).length; i++) {
+                        var input_name = Object.keys(json['error'])[i];
+                        $("input[name='" + input_name + "']").after('<div class="text-danger">' + json['error'][input_name] + '</div>');
+                        $("select[name='" + input_name + "']").after('<div class="text-danger">' + json['error'][input_name] + '</div>');
+                        p++;
+                    }
+
+                    // Highlight any found errors
+                    $('.text-danger').parentsUntil('.form-group').parent().addClass('has-error');
+                } else {
+
+                    console.log("0000");
+                    if ($('input[name="config_id"]').val()) {
+                        console.log("0000");
+//                        edit_config();
+                    } else {
+                        add_contact_setting();
+                    }
+
+                    $('#button-refresh').trigger('click');
+                    $('#content > .container-fluid').prepend('<div class="alert alert-success"><i class="fa fa-check-circle"></i> ' + json['success'] + ' <button type="button" class="close" data-dismiss="alert">&times;</button></div>');
+
+                }
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+            }
+        });
+    });
+
+
+
+
+
+
+
+
+
+
+
+    <!--========================= dropdown change ====================================-->
 
     $(document).ready(function () {
         change_config();
@@ -557,10 +648,3 @@
 
 </script>
 
-
-<!--Edittext-->
-<!--<script src="<?= base_url(); ?>assets/ckeditor/ckeditor.js"></script>
-
-<script type="text/javascript">
-    CKEDITOR.replace( 'edittext' );
-</script></script>-->
