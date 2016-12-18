@@ -200,37 +200,42 @@ class Blog extends CI_Controller
         $file_element_name = 'image';
         $image_name = "";
 
-        if (empty($_POST['bank_id'])){
+        if (empty($_POST['blog_id']))
+        {
             $status = "error";
             $msg = "Please enter a title";
         }else{
-            $image_name = $_POST['bank_id'];
+            $image_name = $_POST['blog_id'];
         }
 
-        if ($status != "error"){
-
-            $config['upload_path'] = 'assets\\\\img\\\\blog';
-            $image_url= 'assets\\\\img\\\\blog';
+        if ($status != "error")
+        {
+            $config['upload_path'] = 'assets\\\\img\\\\blog\\\\'.$_POST['blog_id'].'\\\\'.$_POST['category_field_id'];
+            $image_url= 'assets\\\\img\\\\blog\\\\'.$_POST['blog_id'].'\\\\'.$_POST['category_field_id'];
             $config['allowed_types'] = 'gif|jpg|png';
             $config['max_size'] = 1024 * 8;
             $config['encrypt_name'] = TRUE;
 
             $this->load->library('upload', $config);
 
-            if (!$this->upload->do_upload($file_element_name)){
+            if (!$this->upload->do_upload($file_element_name))
+            {
                 $status = 'error';
                 $msg = $this->upload->display_errors('', '');
             }
-            else{
+            else
+            {
                 $data = $this->upload->data();
                 $image_url = $image_url.'\\\\'.$data['file_name'];
-                $file_id = $this->Bank_model->updateImage($image_name,$image_url);
+                $file_id = $this->Blog_model->updateImage($image_name,$image_url);
 
-                if($file_id){
+                if($file_id)
+                {
                     $status = "success";
                     $msg = "File successfully uploaded";
                 }
-                else{
+                else
+                {
                     unlink($data['full_path']);
                     $status = "error";
                     $msg = "Something went wrong when saving the file, please try again.";

@@ -50,7 +50,7 @@ class Config extends CI_Controller
                     $data['login_link'] = $info['login_link'];
                     $data['email'] = $info['email'];
                     $data['config_content'] = $info['config_content'];
-                    $data['config_image'] = $info['config_image'];
+                    //$data['config_image'] = $info['config_image'];
                     $data['line_id'] = $info['line_id'];
                     $data['telephone'] = $info['telephone'];
                     $data['facebook'] = $info['facebook'];
@@ -87,7 +87,7 @@ class Config extends CI_Controller
             $data['login_link'] = "";
             $data['email'] = "";
             $data['config_content'] = "";
-            $data['config_image'] = "";
+            //$data['config_image'] = "";
             $data['line_id'] = "";
             $data['telephone'] = "";
             $data['facebook'] = "";
@@ -253,5 +253,51 @@ class Config extends CI_Controller
         echo json_encode($jsonResult);
     }
 
+    public function upload_file()
+    {
+        $status = "";
+        $msg = "";
+        $file_element_name = 'image';
+        $image_name = "";
 
+        if (empty($_POST['config_id'])){
+            $status = "error";
+            $msg = "Please enter a title";
+        }else{
+            $image_name = $_POST['config_id'];
+        }
+
+        if ($status != "error"){
+
+            $config['upload_path'] = 'assets\\\\img\\\\blog';
+            $image_url= 'assets\\\\img\\\\blog';
+            $config['allowed_types'] = 'gif|jpg|png';
+            $config['max_size'] = 1024 * 8;
+            $config['encrypt_name'] = TRUE;
+
+            $this->load->library('upload', $config);
+
+            if (!$this->upload->do_upload($file_element_name)){
+                $status = 'error';
+                $msg = $this->upload->display_errors('', '');
+            }
+            else{
+                $data = $this->upload->data();
+                $image_url = $image_url.'\\\\'.$data['file_name'];
+                $file_id = $this->Bank_model->updateImage($image_name,$image_url);
+
+                if($file_id){
+                    $status = "success";
+                    $msg = "File successfully uploaded";
+                }
+                else{
+                    unlink($data['full_path']);
+                    $status = "error";
+                    $msg = "Something went wrong when saving the file, please try again.";
+                }
+            }
+            @unlink($_FILES[$file_element_name]);
+        }
+        echo json_encode(array('status' => $status, 'msg' => $msg));
+    }
 }
