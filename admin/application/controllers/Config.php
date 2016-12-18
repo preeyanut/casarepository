@@ -48,6 +48,7 @@ class Config extends CI_Controller
                     $data['meta_keyword'] = $info['meta_keyword'];
                     $data['meta_description'] = $info['meta_description'];
                     $data['login_link'] = $info['login_link'];
+                    $data['email'] = $info['email'];
                     $data['config_content'] = $info['config_content'];
                     $data['config_image'] = $info['config_image'];
                     $data['line_id'] = $info['line_id'];
@@ -84,6 +85,7 @@ class Config extends CI_Controller
             $data['meta_keyword'] = "";
             $data['meta_description'] = "";
             $data['login_link'] = "";
+            $data['email'] = "";
             $data['config_content'] = "";
             $data['config_image'] = "";
             $data['line_id'] = "";
@@ -159,6 +161,10 @@ class Config extends CI_Controller
 
         if ((strlen($this->input->post('login_link')) < 3) || (strlen($this->input->post('login_link')) > 255)) {
             $this->error['login_link'] = "กรุณากรอกข้อมูล login link";
+        }
+
+        if ((strlen($this->input->post('email')) < 3) || (strlen($this->input->post('email')) > 255)) {
+            $this->error['email'] = "กรุณากรอกข้อมูล e-mail";
         }
 
         if ((strlen($this->input->post('line_id')) < 3) || (strlen($this->input->post('line_id')) > 255)) {

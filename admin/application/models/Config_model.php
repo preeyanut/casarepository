@@ -29,6 +29,7 @@ class Config_model extends CI_Model
 
             'config_content' => $data['config_content'],
             'config_image' => $data['config_image'],
+            'email' => $data['email'],
             'line_id' => $data['line_id'],
             'telephone' => $data['telephone'],
             'facebook' => $data['facebook'],
