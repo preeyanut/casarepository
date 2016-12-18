@@ -1,6 +1,6 @@
 <div id="footer" class="footer">
 
-	<script src="<?= base_url() ?>plugins/jQuery/jQuery-2.2.0.min.js"></script>
+<!--	<script src="--><?//= base_url() ?><!--plugins/jQuery/jQuery-2.2.0.min.js"></script>-->
 	<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 	<script>
 		$.widget.bridge('uibutton', $.ui.button);

@@ -112,6 +112,27 @@ class Blog_model extends CI_Model
         return $insert_id;
     }
 
+    public function add_blog_field($blog_id,$data)
+    {
+//        echo var_dump($data);
+        foreach($data as $item){
+            $data_array = array(
+                'blog_id' => $blog_id,
+                'category_field_id' => $item['category_field_id'],
+                'blog_value' => $item['blog_value'],
+                'create_date' => date("Y-m-d H:i:s"),
+                'create_by' => $this->session->userdata("user_id"),
+                'update_date' => date("Y-m-d H:i:s"),
+                'update_by' => $this->session->userdata("user_id")
+            );
+            $this->db->insert('blog_value', $data_array);
+//            $insert_id = $this->db->insert_id();
+        }
+
+        return true;
+    }
+
+
     public function add_category_field($data)
     {
         $data_array = array(

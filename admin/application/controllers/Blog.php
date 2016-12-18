@@ -145,30 +145,14 @@ class Blog extends CI_Controller
     {
         $result =false;
         if ($this->input->post()) {
-            $data["blog_id"] = $this->Blog_model->add_blog($this->input->post());
+            $data["blog_id"] = $this->Blog_model->add_blog($this->input->post('data_blog'));
             if($data["blog_id"]){
-                $result = true;
+                $result  = $this->Blog_model->add_blog_field($data["blog_id"],$this->input->post('data_blog_field'));
             }
         }
 
         $jsonResult['Result'] = $result;
         //$jsonResult['error'] = "";
-        $jsonResult['Data'] = $data;
-        echo json_encode($jsonResult);
-    }
-
-    public function add_category_field()
-    {
-        $result =false;
-        if ($this->input->post()) {
-            $all_category_field = $this->input->post('category_field');
-            foreach($all_category_field as $item){
-                $data["category_field_id"] = $this->Blog_model->add_category_field($item);
-            }
-            $result =true;
-        }
-
-        $jsonResult['Result'] = $result;
         $jsonResult['Data'] = $data;
         echo json_encode($jsonResult);
     }
@@ -196,70 +180,6 @@ class Blog extends CI_Controller
         echo json_encode($jsonResult);
     }
 
-    public function edit_category_field()
-    {
-        $result =false;
-        if ($this->input->post()) {
-            $all_category_field = $this->input->post('category_field');
-            foreach($all_category_field as $item){
-                $data["category_field_id"] = $this->Blog_model->add_category_field($item);
-            }
-            $result =true;
-        }
-
-        $jsonResult['Result'] = $result;
-        $jsonResult['Data'] = $data;
-        echo json_encode($jsonResult);
-    }
-
-    public function search()
-    {
-
-        $filter_number = $this->input->post("filter-number");
-        $page = $this->input->post("filter-page");
-        $status = $this->input->post("filter-status");
-
-        if ($page > 0) {
-            $page--;
-        }
-
-//        $result = array();
-        if ($filter_number == -1) {
-            $result = $this->Blog_model->get_all();
-        } else {
-            $start_filter = $filter_number * $page;
-            $result = $this->Blog_model->search_filter($this->input->post("txtSearch"), $start_filter, $filter_number, $status);
-        }
-
-        $data["list"] = $result;
-
-        $jsonResult['Result'] = true;
-        $jsonResult['Data'] = $data;
-
-        echo json_encode($jsonResult);
-    }
-
-    public function validate_form()
-    {
-
-        if ((strlen($this->input->post('blog_title')) < 3) || (strlen($this->input->post('blog_title')) > 255)) {
-            $this->error['blog_title'] = "???????????????????";
-        }
-
-        if ((strlen($this->input->post('priority_level')) < 1) || (strlen($this->input->post('priority_level')) > 255)) {
-            $this->error['priority_level'] = "???????????????????????";
-        }
-
-        if (isset($this->error)) {
-            $jsonResult['error'] = $this->error;
-        }
-
-        $jsonResult['Result'] = true;
-        $jsonResult['Data'] = "";
-
-        echo json_encode($jsonResult);
-    }
-
     public function get_field(){
         $result =false;
         $category_id = $this->input->post('category_id');
@@ -268,9 +188,56 @@ class Blog extends CI_Controller
             $result =true;
         }
 
-
         $jsonResult['Result'] = $result;
         $jsonResult['Data'] = $data;
         echo json_encode($jsonResult);
+    }
+
+    public function upload_file()
+    {
+        $status = "";
+        $msg = "";
+        $file_element_name = 'image';
+        $image_name = "";
+
+        if (empty($_POST['bank_id'])){
+            $status = "error";
+            $msg = "Please enter a title";
+        }else{
+            $image_name = $_POST['bank_id'];
+        }
+
+        if ($status != "error"){
+
+            $config['upload_path'] = 'assets\\\\img\\\\blog';
+            $image_url= 'assets\\\\img\\\\blog';
+            $config['allowed_types'] = 'gif|jpg|png';
+            $config['max_size'] = 1024 * 8;
+            $config['encrypt_name'] = TRUE;
+
+            $this->load->library('upload', $config);
+
+            if (!$this->upload->do_upload($file_element_name)){
+                $status = 'error';
+                $msg = $this->upload->display_errors('', '');
+            }
+            else{
+                $data = $this->upload->data();
+                $image_url = $image_url.'\\\\'.$data['file_name'];
+                $file_id = $this->Bank_model->updateImage($image_name,$image_url);
+
+                if($file_id){
+                    $status = "success";
+                    $msg = "File successfully uploaded";
+                }
+                else{
+                    unlink($data['full_path']);
+                    $status = "error";
+                    $msg = "Something went wrong when saving the file, please try again.";
+                }
+            }
+            @unlink($_FILES[$file_element_name]);
+        }
+        echo json_encode(array('status' => $status, 'msg' => $msg));
     }
 }
