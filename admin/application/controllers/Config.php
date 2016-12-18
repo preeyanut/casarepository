@@ -48,6 +48,7 @@ class Config extends CI_Controller
                     $data['meta_keyword'] = $info['meta_keyword'];
                     $data['meta_description'] = $info['meta_description'];
                     $data['login_link'] = $info['login_link'];
+                    $data['email'] = $info['email'];
                     $data['config_content'] = $info['config_content'];
                     $data['config_image'] = $info['config_image'];
                     $data['line_id'] = $info['line_id'];
@@ -84,6 +85,7 @@ class Config extends CI_Controller
             $data['meta_keyword'] = "";
             $data['meta_description'] = "";
             $data['login_link'] = "";
+            $data['email'] = "";
             $data['config_content'] = "";
             $data['config_image'] = "";
             $data['line_id'] = "";
@@ -129,6 +131,18 @@ class Config extends CI_Controller
         echo json_encode($jsonResult);
     }
 
+    public function add_contact_setting()
+    {
+        if ($this->input->post()) {
+            $data["config_id"] = $this->Config_model->add_contact_setting($this->input->post());
+        }
+
+        $jsonResult['Result'] = true;
+        //$jsonResult['error'] = "";
+        $jsonResult['Data'] = $data;
+        echo json_encode($jsonResult);
+    }
+
     public function edit_config()
     {
         if ($this->input->post()) {
@@ -142,7 +156,7 @@ class Config extends CI_Controller
     }
 
 
-    public function validate_form()
+    public function validate_frontend_form()
     {
 
         if ((strlen($this->input->post('config_title')) < 3) || (strlen($this->input->post('config_title')) > 255)) {
@@ -153,13 +167,14 @@ class Config extends CI_Controller
             $this->error['meta_keyword'] = "กรุณากรอกข้อมูล meta_keyword";
         }
 
-        if ((strlen($this->input->post('meta_description')) < 3) || (strlen($this->input->post('meta_description')) > 255)) {
+        if ((strlen($this->input->post('meta_description')) < 3) || (strlen($this->input->post('meta_description')) > 1000)) {
             $this->error['meta_description'] = "กรุณากรอกข้อมูล meta_description";
         }
 
         if ((strlen($this->input->post('login_link')) < 3) || (strlen($this->input->post('login_link')) > 255)) {
             $this->error['login_link'] = "กรุณากรอกข้อมูล login link";
         }
+
 
         if ((strlen($this->input->post('line_id')) < 3) || (strlen($this->input->post('line_id')) > 255)) {
             $this->error['line_id'] = "กรุณากรอกข้อมูล line id";
@@ -198,4 +213,45 @@ class Config extends CI_Controller
 
         echo json_encode($jsonResult);
     }
+
+
+    public function validate_contact_form()
+    {
+
+        if ((strlen($this->input->post('email')) < 3) || (strlen($this->input->post('email')) > 255)) {
+            $this->error['email'] = "กรุณากรอกข้อมูล E-mail";
+        }
+
+
+        if ((strlen($this->input->post('line-id')) < 3) || (strlen($this->input->post('line-id')) > 255)) {
+            $this->error['line-id'] = "กรุณากรอกข้อมูล line id";
+        }
+
+        if ((strlen($this->input->post('face-book')) < 3) || (strlen($this->input->post('face-book')) > 255)) {
+            $this->error['face-book'] = "กรุณากรอกข้อมูล facebook";
+        }
+
+        if ((strlen($this->input->post('google-plus')) < 3) || (strlen($this->input->post('google-plus')) > 255)) {
+            $this->error['google-plus'] = "กรุณากรอกข้อมูล googleplus";
+        }
+
+        if ((strlen($this->input->post('ins-tagram')) < 3) || (strlen($this->input->post('ins-tagram')) > 255)) {
+            $this->error['ins-tagram'] = "กรุณากรอกข้อมูล instagram";
+        }
+
+        if ((strlen($this->input->post('you-tube')) < 3) || (strlen($this->input->post('you-tube')) > 255)) {
+            $this->error['you-tube'] = "กรุณากรอกข้อมูล youtube";
+        }
+
+        if (isset($this->error)) {
+            $jsonResult['error'] = $this->error;
+        }
+
+        $jsonResult['Result'] = true;
+        $jsonResult['Data'] = "";
+
+        echo json_encode($jsonResult);
+    }
+
+
 }
