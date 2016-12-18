@@ -127,9 +127,9 @@ class Banner extends CI_Controller
             $this->error['banner_name'] = "กรุณากรอกชื่อแบนเนอร์";
         }
 
-//        if ((!($this->input->post('img')))) {
-//            $this->error['img'] = "เลือกรูปภาพ";
-//        }
+        if ((!($this->input->post('banner')))) {
+            $this->error['banner'] = "กรุณาเลือกรูปภาพ";
+        }
 
         if ((strlen($this->input->post('priority_level')) < 1) || (strlen($this->input->post('priority_level')) > 255)) {
             $this->error['priority_level'] = "กรุณากรอกความสำคัญ";

@@ -34,33 +34,29 @@
                 </a>
             </li>
 
-            <!--			                --><?php
-            //			                if (in_array("banner", $access_permission) || in_array("change_password", $access_permission)) {
-            //			                    ?>
-            <li class="treeview">
-                <a href="#">
-                    <i class="fa fa-file-image-o"></i>
-                    <span>แบนเนอร์</span>
-                    <span class="label label-primary pull-right"></span>
-                </a>
-                <ul class="treeview-menu">
-                    <!--                        --><?php //if (in_array("bank_list", $access_permission)) { ?>
-                    <li><a href="<?= base_url(); ?>banner"><i class="fa fa-circle-o"></i> แบนเนอร์ทั้งหมด</a>
-                    </li>
-                    <!--                        --><?php //} ?>
-                    <!--                        --><?php //if (in_array("addnew", $access_permission)) { ?>
-                    <li><a href="<?= base_url(); ?>banner/getForm"><i class="fa fa-circle-o"></i> เพิ่มแบนเนอร์ใหม่</a>
-                    </li>
-                    <!--                        --><?php //} ?>
-                    <!--                        --><?php //if (in_array("change_password", $access_permission)) { ?>
-                    <!--                            <li><a href="-->
-                    <? //= base_url(); ?><!--list_result"><i class="fa fa-circle-o"></i> ผลสลากรางวัล</a>-->
-                    <!--                            </li>-->
-                    <!--                        --><?php //} ?>
-                </ul>
-            </li>
+            <?php
+            if (in_array("banner", $access_permission ) || in_array("list_banner", $access_permission) ) {
+                ?>
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-file-image-o"></i>
+                        <span>แบนเนอร์</span>
+                        <span class="label label-primary pull-right"></span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <?php if (in_array("list_banner", $access_permission)) { ?>
+                            <li><a href="<?= base_url(); ?>list_banner"><i class="fa fa-circle-o"></i>
+                                    แบนเนอร์ทั้งหมด</a>
+                            </li>
+                        <?php } ?>
+                        <?php if (in_array("banner", $access_permission)) { ?>
+                            <li><a href="<?= base_url(); ?>banner"><i class="fa fa-circle-o"></i> เพิ่มแบนเนอร์ใหม่</a>
+                            </li>
+                        <?php } ?>
+                    </ul>
+                </li>
 
-            <!--                --><?php //} ?>
+            <?php } ?>
 
             <?php
             if (in_array("list_blog", $access_permission) || in_array("blog", $access_permission)) {
@@ -453,12 +449,12 @@
                         <?php } ?>
                         <?php if (in_array("lotto_type", $access_permission)) { ?>
                             <li><a href="<?= base_url() ?>lotto_type"><i
-                                        class="fa fa-circle-o"></i>จัดการชนิดหมายเลข</a>
+                                            class="fa fa-circle-o"></i>จัดการชนิดหมายเลข</a>
                             </li>
                         <?php } ?>
                         <?php if (in_array("limit_lotto", $access_permission)) { ?>
                             <li><a href="<?= base_url() ?>limit_lotto"><i
-                                        class="fa fa-circle-o"></i>จัดการเงินถือสู้</a>
+                                            class="fa fa-circle-o"></i>จัดการเงินถือสู้</a>
                             </li>
                         <?php } ?>
                         <?php if (in_array("report_over_lotto", $access_permission)) { ?>

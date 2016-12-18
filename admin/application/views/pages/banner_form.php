@@ -211,7 +211,7 @@
                 $('.form-group').removeClass('has-error');
 
                 if (json['error']) {
-                    alert("OK1");
+//                    alert("OK1");
                     var p = 0;
                     for (var i = 0; i < Object.keys(json['error']).length; i++) {
                         var input_name = Object.keys(json['error'])[i];
@@ -223,7 +223,7 @@
                     // Highlight any found errors
                     $('.text-danger').parentsUntil('.form-group').parent().addClass('has-error');
                 } else {
-                    alert("OK2");
+//                    alert("OK2");
                     if ($('input[name="banner_id"]').val()) {
                         edit_banner();
                     } else {
