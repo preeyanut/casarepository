@@ -1,6 +1,80 @@
 <script type="text/javascript" src="<?= base_url() ?>assets/js/jquery.ajaxfileupload.js"></script>
-<!--<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/js/bootstrap-select.min.js"></script>-->
 <script type="text/javascript" src="<?= base_url() ?>assets/js/bootstrap-select.js"></script>
+
+<!--<script src="--><?//= base_url() ?><!--assets/js/jquery-2.1.4.min.js"></script>-->
+<!--<script src="--><?//= base_url() ?><!--plugins/datepicker/bootstrap-min.js"></script>-->
+
+<script type="text/javascript" src="<?= base_url() ?>plugins/datepicker/bootstrap-datepicker.js"></script>
+
+<script type="text/javascript" src="<?= base_url() ?>plugins/datepicker/js/bootstrap-datetimepicker.min.js"></script>
+
+<script type="text/javascript" src="<?= base_url() ?>plugins/clockpicker/dist/bootstrap-clockpicker.min.js"></script>
+
+<link href="<?= base_url() ?>plugins/datepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="<?= base_url() ?>plugins/clockpicker/dist/bootstrap-clockpicker.min.css">
+
+<style>
+    .input-append .add-on:last-child, .input-append .btn:last-child, .input-append .btn-group:last-child > .dropdown-toggle {
+        -webkit-border-radius: 0 4px 4px 0;
+        -moz-border-radius: 0 4px 4px 0;
+        border-radius: 0 4px 4px 0;
+    }
+    .input-append .add-on, .input-append .btn, .input-append .btn-group {
+        margin-left: -1px;
+    }
+    .input-append .add-on, .input-prepend .add-on, .input-append .btn, .input-prepend .btn, .input-append .btn-group > .dropdown-toggle, .input-prepend .btn-group > .dropdown-toggle {
+        vertical-align: top;
+        -webkit-border-radius: 0;
+        -moz-border-radius: 0;
+        border-radius: 0;
+    }
+    .input-append .add-on, .input-prepend .add-on {
+        display: inline-block;
+        width: auto;
+        height: 34px;
+        min-width: 16px;
+        padding: 4px 5px;
+        font-size: 14px;
+        font-weight: normal;
+        line-height: 20px;
+        text-align: center;
+        text-shadow: 0 1px 0 #fff;
+        background-color: #eee;
+        border: 1px solid #ccc;
+        cursor: pointer;
+    }
+    .input-append, .input-prepend {
+        margin-bottom: 5px;
+        font-size: 0;
+        white-space: nowrap;
+        padding: 0px;
+    }
+    body {
+        margin: 0;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-size: 14px;
+        line-height: 20px;
+        color: #333;
+        background-color: #fff;
+    }
+    .input-datetime{
+        float: left;
+        min-width: 200px;
+        width: 20%;
+        /*padding: 0px;*/
+    }
+    .mar-top-5{
+        margin-top: 5px;
+    }
+    .bootstrap-datetimepicker-widget ul{
+        padding-left: 0px !important;
+    }
+    .time-picker,.date-picker{
+        min-width: 200px;
+        width: 20%;
+    }
+</style>
+
 <section class="content-header">
     <h1>
         Blog
@@ -18,6 +92,7 @@
     <section class="content">
 
         <div class="row">
+
             <!-- left column -->
             <div class="col-md-12">
                 <!-- general form elements -->
@@ -102,6 +177,7 @@
                                 </div>
                                 <div class="col-md-10 col-xs-10">
                                     <div class="">
+
                                         <select name="blog_status" id="input-status" class="form-control selectpicker">
                                             <option
                                                 value="0" <?php if ($blog_status == 0) { ?>
@@ -140,7 +216,6 @@
                             <div id="containner-blog-field">
                                 <?php if (isset($blog_field)) { ?>
 
-
                                     <?php if ($blog_field) {
                                         $count = 1;
                                         foreach ($blog_field as $item) {
@@ -148,28 +223,38 @@
                                             switch ($item['field_type']) {
 
                                                 case 'text' :
-                                                    $html_field = '<input type="text" id="' . $item['field_id'] . '" name="' . $item['field_id'] . '" class="form-control" value="' . '0' . '" />';
+                                                    $html_field = '<input type="text" id="' . $item['field_id'] . '" name="' . $item['field_id'] . '" class="form-control time-picker" value="' . '0' . '" />';
                                                     break;
                                                 case 'textarea' :
-                                                    $html_field = '<input type="textarea" id="' . $item['field_id'] . '" name="' . $item['field_id'] . '" class="form-control" value="' . '0' . '" />';
+                                                    $html_field = '<input type="textarea" id="' . $item['field_id'] . '" name="' . $item['field_id'] . '" class="form-control date-picker" value="' . '0' . '" />';
                                                     $html_field .= ' <script type="text/javascript"> CKEDITOR.replace( "' . $item['field_id'] . '" ); </script>';
                                                     break;
                                                 case 'date' :
-                                                    $html_field = '<input type="date" id="' . $item['field_id'] . '" name="' . $item['field_id'] . '" class="form-control" value="' . '0' . '" />';
+                                                    $html_field = '<input type="date" id="' . $item['field_id'] . '" name="' . $item['field_id'] . '" class="form-control datepicker" value="' . '0' . '" />';
                                                     break;
                                                 case 'time' :
-                                                    $html_field = '<input type="time" id="' . $item['field_id'] . '" name="' . $item['field_id'] . '" class="form-control" value="' . '0' . '" />';
+//                                                    $html_field = '<input type="time" id="' . $item['field_id'] . '" name="' . $item['field_id'] . '" class="form-control" value="' . '0' . '" />';
+
+                                                    $html_field = '  <div id="div-datetimepicker" class="input-append clockpicker">';
+                                                    $html_field .= '<input id="' . $item['field_id'] . '" type="text" class="form-control input-datetime" value="">';
+                                                    $html_field .= '<span class="input-group-addon add-on"><i class="fa fa-clock-o mar-top-5 icon-calendar"></i></span>';
+                                                    $html_field .= '</div>';
+
                                                     break;
                                                 case 'datetime' :
-                                                    $html_field = '<input type="datetime" id="' . $item['field_id'] . '" name="' . $item['field_id'] . '" class="form-control" value="' . '0' . '" />';
+                                                    $html_field = ' <div id="div-datetimepicker" class="input-append datetimepicker">';
+                                                    $html_field .= '<input id="'. $item['field_id'] .'" data-format="MM/dd/yyyy HH:mm:ss PP" type="text" class="form-control input-datetime" value=""/>';
+                                                    $html_field .= '<span class="add-on"><i class="fa fa-calendar mar-top-5"></i></span>';
+                                                    $html_field .= '</div>';
+
                                                     break;
                                                 case 'video-url' :
                                                     $html_field = '<input type="text" id="' . $item['field_id'] . '" name="' . $item['field_id'] . '" class="form-control" value="' . '0' . '" />';
                                                     break;
                                                 case 'image' :
-                                                    $html_field = '<a href="" id="a-' . $item['field_id'] . '" data-toggle="image" class="img-thumbnail"><img id="img-' . $item['field_id'] . '" style="max-width: 200px;" '
+                                                    $html_field = '<a href="" id="a-' . $item['field_id'] . '" data-toggle="image" class="img-thumbnail"><img id="img-' . $item['field_id'] . '" style="max-height: 500px;" '
                                                         . ' src="0" alt="" title="" data-placeholder="รูปสินค้า"/></a>'
-                                                        . ' <input type="file" name="' . $item['field_id'] . '" class="img-input"  value="0" id="input-image"/>';
+                                                        . ' <input type="file" name="' . $item['field_id'] . '" class="img-input btn btn-success"  value="0" id="input-image"/>';
                                                     break;
 
                                             } ?>
@@ -178,7 +263,7 @@
                                                  class="div-field-type form-group required col-md-12 col-xs-12">
                                                 <div class="col-md-2 col-xs-2" align="right">
                                                     <label class=" control-label"
-                                                           for="input-field-type"><?= $item['field_id']; ?></label>
+                                                           for="input-field-type"><?= $item['field_name']; ?></label>
                                                 </div>
                                                 <div class="col-md-10 col-xs-10">
                                                     <div class="">
@@ -248,7 +333,11 @@
 
 </div>
 
-<script type="application/javascript">
+<script type="text/javascript">
+
+</script>
+
+<script type="text/javascript">
 
     init_event({
         document_on: [
@@ -259,6 +348,7 @@
             , 'change,.img-input'
         ], document_ready: [
             get_field
+            ,make_datetimepicker
             ,add_select_picker
         ]
 
@@ -319,33 +409,28 @@
         var is_error = false;
 
         if (blog_title.length == 0) {
-            $("input[name='blog_title']").after('<div class="text-danger">กรุณากรอกประเภทหมวดหมู่</div>');
+            $("input[name='blog_title']").after('<div class="text-danger">กรุณากรอกชื่อ Blog</div>');
             is_error = true;
         }
 
         var all_blog = $('.div-field-type');
-        var div_field_type_number = [];
-//        div_field_type_number.push("00");
-
-//        $('.error-text').remove();
-//        $('.form-group').removeClass('has-error');
+        var blog_data = [];
 
         for (var i = 1; i <= all_blog.length; i++) {
-            if ($('#field-type-' + i + ' input[name="field_name"]').val().length != 0 && $('#field-type-' + i + ' input[name="field_id"]').val().length != 0) {
-                div_field_type_number.push(i);
-            } else if ($('#field-type-' + i + ' input[name="field_name"] ').val().length != 0 && $('#field-type-' + i + ' input[name="field_id"]').val().length == 0) {
-                $('#field-type-' + i + ' input[name="field_id"]').after('<div class="text-danger error-text">กรุณาระบุชื่อเฉพาะ</div>');
-                is_error = true;
-            } else if ($('#field-type-' + i + ' input[name="field_name"]').val().length == 0 && $('#field-type-' + i + ' input[name="field_id"]').val().length != 0) {
-                $('#field-type-' + i + ' input[name="field_name"]').after('<div class="text-danger error-text">กรุณากรอกชื่อชนิดข้อมูล</div>');
-                is_error = true;
-            }
+
+            var category_field_id = $('#field-type-' + i + ' .blog-value')[0].id;
+            var blog_value = $('#field-type-' + i + ' .blog-value').val();
+
+            var blog_data_item = {category_field_id:category_field_id,blog_value:blog_value}
+            blog_data.push(blog_data_item);
+
         }
+
         if (!is_error) {
             if ($('input[name="blog_id"]').val()) {
-                edit_blog(div_field_type_number);
+                edit_blog(blog_data);
             } else {
-                add_blog(div_field_type_number);
+                add_blog(blog_data);
             }
         }
     });
@@ -353,7 +438,7 @@
     $(document).on("click", ".button-delete", function () {
 
         var field_type_id = this.id.replace('button-delete-', '');
-        console.log(field_type_id);
+//        console.log(field_type_id);
 
         $('#field-type-' + field_type_id).remove();
 
@@ -371,6 +456,22 @@
         $('.selectpicker').selectpicker({
             style: 'btn-default',
         });
+    }
+
+    function make_datetimepicker(){
+        $('.datetimepicker').datetimepicker({
+            format: 'dd/MM/yyyy hh:mm:ss',
+            language: 'pt-BR'
+        });
+
+        $('.datepicker').datetimepicker({
+            format: 'dd/MM/yyyy',
+            language: 'pt-BR'
+        });
+    }
+
+    function make_timepicker(){
+        $('.clockpicker').clockpicker({donetext: 'Done'});
     }
 
     function formatNumber(number) {
@@ -391,11 +492,17 @@
         }
     }
 
-    function add_blog(div_field_type_number) {
+    function add_blog(data_blog_field) {
+        var blog_title = $('input[name="blog_title"]').val();
+        var blog_status = $('select[name="blog_status"]').val();
+        var data_blog ={blog_title:blog_title,blog_status:blog_status}
+        var data = {data_blog:data_blog,data_blog_field:data_blog_field}
+
+        console.log(data);
         $.ajax({
             url: '<?php echo base_url(); ?>blog/add_blog',
             type: 'post',
-            data: $('input , select'),
+            data: data,
             dataType: 'json',
             crossDomain: true,
             beforeSend: function () {
@@ -407,7 +514,7 @@
             success: function (json) {
                 console.log(json);
                 if (json.Result) {
-                    add_blog_field(json.Data.blog_id, div_field_type_number);
+//                    add_blog_field(json.Data.blog_id, div_field_type_number);
                 } else {
                     alert("เพิ่มข้อมูลผิดพลาด");
                 }
@@ -436,7 +543,7 @@
             blog_field.push(data_item);
         }
 
-        console.log(blog_field);
+//        console.log(blog_field);
 //
         $.ajax({
             url: '<?php echo base_url(); ?>blog/add_blog_field',
@@ -451,12 +558,10 @@
                 $('#button-save').button('reset');
             },
             success: function (json) {
-                console.log(json);
+//                console.log(json);
                 if (json.Result) {
                     alert("เพิ่มข้อมูลเสร็จสิ้น");
                     clear_input_blank();
-                    ;
-
                 } else {
                     alert("เพิ่มข้อมูลผิดพลาด");
                 }
@@ -479,7 +584,7 @@
             , blog_status: blog_status
         };
 
-        console.log(data_blog);
+//        console.log(data_blog);
 
         var blog_field = [];
         for (var i = 0; i < div_field_type_number.length; i++) {
@@ -497,7 +602,7 @@
             blog_field.push(data_item);
         }
 
-        console.log(blog_field);
+//        console.log(blog_field);
 
         $.ajax({
             url: '<?php echo base_url(); ?>blog/edit_blog',
@@ -544,49 +649,66 @@
 //                    $('#button-save').button('reset');
                     },
                     success: function (json) {
-                        console.log(json);
+//                        console.log(json);
                         var blog_fields = json.Data.blog_field;
                         if(json.Data.blog_field.length>0){
                             $('#containner-blog-field').html('');
                         }
                         var ckeditor = [];
+                        var count=1;
                         for (var i = 0; i < blog_fields.length; i++) {
+
                             var blog_field = blog_fields[i];
 
-                            var html_field = ' <div id="field-type-'+i+'"'
+                            var html_field = ' <div id="field-type-'+count+'"'
                                 +'class="div-field-type form-group required col-md-12 col-xs-12"> '
                                     +'<div class="col-md-2 col-xs-2" align="right">'
-                                +'<label class=" control-label" for="input-field-type">'+ blog_field.field_id +'</label>'
+                                +'<label class=" control-label" for="input-field-type">'+ blog_field.field_name +'</label>'
                                 +'</div>'
                                 +'<div class="col-md-10 col-xs-10">'
                                 +' <div class="">';
 
-
-
                             switch (blog_field.field_type) {
                                 case 'text' :
-                                    html_field += '<input type="text" id="' + blog_field.field_id + '" name="' + blog_field.field_id + '" class="form-control" value="' + '0' + '" />';
+                                    html_field += '<input type="text" id="' + blog_field.category_field_id + '" name="' + blog_field.field_id + '" class="form-control blog-value" value="' + '0' + '" />';
                                     break;
                                 case 'textarea' :
-                                    html_field += '<input type="textarea" id="' + blog_field.field_id + '" name="' + blog_field.field_id + '" class="form-control" value="' + '0' + '" />';
+                                    html_field += '<input type="textarea" id="' + blog_field.category_field_id + '" name="' + blog_field.field_id + '" class="form-control blog-value" value="' + '0' + '" />';
                                     ckeditor.push(blog_field.field_id);
                                     break;
                                 case 'date' :
-                                    html_field += '<input type="date" id="' + blog_field.field_id + '" name="' + blog_field.field_id + '" class="form-control" value="' + '0' + '" />';
+//                                    html_field += '<input type="date" id="' + blog_field.field_id + '" name="' + blog_field.field_id + '" class="form-control date-picker" value="' + '0' + '" />';
+
+                                    html_field += ' <div id="div-datepicker" class="input-append datepicker">';
+                                    html_field += '<input id="'+ blog_field.category_field_id +'" data-format="MM/dd/yyyy" type="text" class="form-control input-datetime blog-value" value=""/>';
+                                    html_field += '<span class="add-on"><i class="fa fa-calendar-o  mar-top-5"></i></span>';
+                                    html_field += '</div>';
+
                                     break;
                                 case 'time' :
-                                    html_field += '<input type="time" id="' + blog_field.field_id + '" name="' + blog_field.field_id + '" class="form-control" value="' + '0' + '" />';
+//                                    html_field += '<input type="time" id="' + blog_field.field_id + '" name="' + blog_field.field_id + '" class="form-control time-picker" value="' + '0' + '" />';
+
+                                    html_field += '  <div id="div-datetimepicker" class="input-append clockpicker">';
+                                    html_field += '<input id="' + blog_field.category_field_id + '" type="text" class="form-control input-datetime blog-value" value="">';
+                                    html_field += '<span class="input-group-addon add-on"><i class="fa fa-clock-o mar-top-5 icon-calendar"></i></span>';
+                                    html_field += '</div>';
                                     break;
                                 case 'datetime' :
-                                    html_field += '<input type="datetime" id="' + blog_field.field_id + '" name="' + blog_field.field_id + '" class="form-control" value="' + '0' + '" />';
+//                                    html_field += '<input type="datetime" id="' + blog_field.field_id + '" name="' + blog_field.field_id + '" class="form-control datetimepicker" value="' + '0' + '" />';
+
+                                    html_field += ' <div id="div-datetimepicker" class="input-append datetimepicker">';
+                                    html_field += '<input id="'+ blog_field.category_field_id +'" data-format="MM/dd/yyyy HH:mm:ss PP" type="text" class="form-control input-datetime blog-value" value=""/>';
+                                    html_field += '<span class="add-on"><i class="fa fa-calendar mar-top-5"></i></span>';
+                                    html_field += '</div>';
+
                                     break;
                                 case 'video-url' :
-                                    html_field += '<input type="text" id="' + blog_field.field_id + '" name="' + blog_field.field_id + '" class="form-control" value="' + '0' + '" />';
+                                    html_field += '<input type="text" id="' + blog_field.category_field_id + '" name="' + blog_field.field_id + '" class="form-control blog-value" value="' + '0' + '" />';
                                     break;
                                 case 'image' :
-                                    html_field += '<a href="" id="a-' + blog_field.field_id + '" data-toggle="image" class="img-thumbnail"><img id="img-' + blog_field.field_id + '" style="max-width: 200px;" '
+                                    html_field += '<a href="" id="a-' + blog_field.field_id + '" data-toggle="image" class="img-thumbnail"><img id="img-' + blog_field.field_id + '" style="max-height: 500px;" '
                                         + ' src="<?= base_url() ?>assets\\images\\No-image-found.jpg" alt="" title="" data-placeholder="รูปสินค้า"/></a>'
-                                        + ' <input type="file" name="' + blog_field.field_id + '" class="img-input"   value="0" id="input-image"/>';
+                                        + ' <input type="file" name="' + blog_field.field_id + '" class="img-input btn btn-warning blog-value"   value="0" id="' + blog_field.category_field_id + '"/>';
                                     break;
                             }
 
@@ -597,7 +719,11 @@
                                ;
 
                             $('#containner-blog-field').append(html_field);
+                            count++;
                         }
+
+                        make_datetimepicker();
+                        make_timepicker();
 
                         for (var i = 0; i < ckeditor.length; i++) {
                             CKEDITOR.replace(ckeditor[i]);
@@ -705,3 +831,5 @@
     }
 
 </script>
+
+

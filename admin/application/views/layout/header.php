@@ -26,6 +26,8 @@
     <link rel="stylesheet" href="<?= base_url() ?>plugins/daterangepicker/daterangepicker-bs3.css">
     <link rel="stylesheet" href="<?= base_url() ?>plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
 
+    <link href="<?= base_url() ?>plugins/datepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+
     <!--	-------------------------------------------- End CSS ------------------------------------------------->
 
     <!--	--------------------------------------------  Javascript  ------------------------------------------------->
@@ -34,6 +36,8 @@
     <script id="moneyScript" src="<?= base_url() ?>assets/js/jquery.maskMoney.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/js/bootstrap-select.min.js"></script>
 
+<!--    <script src="--><?//= base_url() ?><!--plugins/datepicker/bootstrap-min.js"></script>-->
+    <script src="<?= base_url() ?>plugins/datepicker/js/bootstrap-datetimepicker.min.js"></script>
 
     <!--	-------------------------------------------- End Javascript ------------------------------------------------->
 

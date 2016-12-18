@@ -93,7 +93,7 @@ class Category_type extends CI_Controller
         if ($this->input->get('category_type_id')) {
 
             $data_info = $this->Category_type_model->get_data($this->input->get('category_type_id'));
-            $data_user = $this->User_model->get_user_all();
+//            $data_user = $this->User_model->get_user_all();
 
 //            var_dump($data_info, $data_user);
             if (!empty($data_info)) {
@@ -106,10 +106,10 @@ class Category_type extends CI_Controller
                     $data['category_type_status'] = $info['category_type_status'];
                     $data['prioriy_level'] = $info['priority_level'];
                 }
-                for($i=0;$i<count($data_user);$i++) {
-                    $data['user_id'][] = $data_user[$i]['user_id'];
-                    $data['username'][] = $data_user[$i]['username'];
-                }
+//                for($i=0;$i<count($data_user);$i++) {
+//                    $data['user_id'][] = $data_user[$i]['user_id'];
+//                    $data['username'][] = $data_user[$i]['username'];
+//                }
             }
 
             $data["action"] = base_url() . "category_type/edit_type";

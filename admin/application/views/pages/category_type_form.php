@@ -123,27 +123,27 @@
                                                         <option
                                                             value="date" <?php if ($item['field_type'] == 'date') { ?>
                                                             selected="selected" <?php } ?>>
-                                                            Radio button
+                                                            Date
                                                         </option>
                                                         <option
                                                             value="time" <?php if ($item['field_type'] == 'time') { ?>
                                                             selected="selected" <?php } ?>>
-                                                            Radio button
+                                                            Time
                                                         </option>
                                                         <option
                                                             value="datetime" <?php if ($item['field_type'] == 'datetime') { ?>
                                                             selected="selected" <?php } ?>>
-                                                            Radio button
+                                                            Datetime
                                                         </option>
                                                         <option
                                                             value="video-url" <?php if ($item['field_type'] == 'video-url') { ?>
                                                             selected="selected" <?php } ?>>
-                                                            Radio button
+                                                            Video-URL
                                                         </option>
                                                         <option
                                                             value="image" <?php if ($item['field_type'] == 'image') { ?>
                                                             selected="selected" <?php } ?>>
-                                                            Radio button
+                                                            Image
                                                         </option>
                                                     </select>
                                                 </div>

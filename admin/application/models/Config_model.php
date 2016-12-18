@@ -20,7 +20,7 @@ class Config_model extends CI_Model
         $this->load->library('encrypt');
 
         $data_array = array(
-            'config_id' => (int)$data['config_id'],
+
             'config_group_id' => (int)$data['config_group_id'],
             'config_title' => $data['config_title'],
             'meta_keyword' => $data['meta_keyword'],
@@ -50,5 +50,34 @@ class Config_model extends CI_Model
         return $insert_id;
     }
 
+
+    public function add_contact_setting($data){
+
+
+        $this->load->library('encrypt');
+
+        $data_array = array(
+
+            'config_group_id' => (int)$data['config_group_id'],
+            'config_content' => $data['config_content'],
+            'config_image' => $data['config_image'],
+            'email' => $data['email'],
+            'line_id' => $data['line-id'],
+            'facebook' => $data['face-book'],
+            'googleplus' => $data['google-plus'],
+            'instagram' => $data['ins-tagram'],
+            'youtube' => $data['you-tube'],
+
+            'create_date' => date("Y-m-d H:i:s"),
+            'create_by' => $this->session->userdata("user_id"),
+            'update_date' => date("Y-m-d H:i:s"),
+            'update_by' => $this->session->userdata("user_id")
+        );
+
+        $this->db->insert('config_webpage', $data_array);
+        $insert_id = $this->db->insert_id();
+
+        return $insert_id;
+    }
 
 }
