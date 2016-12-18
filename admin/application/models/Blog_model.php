@@ -100,6 +100,7 @@ class Blog_model extends CI_Model
         $data_array = array(
             'blog_title' => $data['blog_title'],
             'blog_status' => (int)$data['blog_status'],
+            'priority_level' => (int)$data['priority_level'],
             'create_date' => date("Y-m-d H:i:s"),
             'create_by' => $this->session->userdata("user_id"),
             'update_date' => date("Y-m-d H:i:s"),
@@ -193,5 +194,13 @@ class Blog_model extends CI_Model
         $query = $this->db->get('blog');
 
         return $query->result_array();
+    }
+
+    public function updateImage($bank_id, $urlImage) {
+
+        $this->db->query("UPDATE `" . "" . "blog_value` SET "
+            ." bank_image = '". $urlImage  . "' WHERE bank_id = '". (int)$bank_id . "'");
+
+        return true;
     }
 }
