@@ -272,6 +272,8 @@
             , 'click,.button-edit'
             , 'click,.button-delete'
             , 'click,.paging'
+            , 'change,#filter-number'
+            , 'change,#filter-status'
         ], document_ready: [
             get_paging
         ]
