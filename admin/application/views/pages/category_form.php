@@ -72,11 +72,9 @@
                                 </div>
                                 <div class="col-md-10 col-xs-10">
                                     <select name="category_icon" class="form-control selectpicker">
-                                        <option data-icon="fa fa-address-book-o"
-                                                value="1" <?php if ($category_icon == 1) { ?>
+                                        <option data-icon="fa fa-address-book-o" value="1" <?php if ($category_icon == 1) { ?>
                                             selected="selected" <?php } ?>></option>
-                                        <option data-icon="fa fa-area-chart"
-                                                value="2" <?php if ($category_icon == 2) { ?>
+                                        <option data-icon="fa fa-area-chart" value="2" <?php if ($category_icon == 2) { ?>
                                             selected="selected" <?php } ?>></option>
                                         <option data-icon="fa fa-book" value="3" <?php if ($category_icon == 3) { ?>
                                             selected="selected" <?php } ?>></option>
@@ -84,14 +82,11 @@
                                             selected="selected" <?php } ?>></option>
                                         <option data-icon="fa fa-film" value="5" <?php if ($category_icon == 5) { ?>
                                             selected="selected" <?php } ?>></option>
-                                        <option data-icon="fa fa-university"
-                                                value="6" <?php if ($category_icon == 6) { ?>
+                                        <option data-icon="fa fa-university" value="6" <?php if ($category_icon == 6) { ?>
                                             selected="selected" <?php } ?>></option>
-                                        <option data-icon="fa fa-file-text-o"
-                                                value="7" <?php if ($category_icon == 7) { ?>
+                                        <option data-icon="fa fa-file-text-o" value="7" <?php if ($category_icon == 7) { ?>
                                             selected="selected" <?php } ?>></option>
-                                        <option data-icon="fa fa-calendar-o"
-                                                value="8" <?php if ($category_icon == 8) { ?>
+                                        <option data-icon="fa fa-calendar-o" value="8" <?php if ($category_icon == 8) { ?>
                                             selected="selected" <?php } ?>></option>
                                         <option data-icon="fa fa-clone" value="9" <?php if ($category_icon == 9) { ?>
                                             selected="selected" <?php } ?>></option>
@@ -120,69 +115,71 @@
                                 </div>
                             </div>
 
-                            <?php if($category_id != '') { ?>
                             <?php if ($category_id != '') { ?>
-                                <div class="form-group required col-md-12 col-xs-12">
-                                    <div class="col-md-2 col-xs-2" align="right">
-                                        <label class=" control-label" for="create_date">วันที่เพิ่ม</label>
-                                    </div>
-                                    <div class="col-md-10 col-xs-10">
-                                        <div class="">
-                                            <input type="text" name="create_date" value="<?php echo $create_date; ?>"
-                                                   id="create_date"
-                                                   disabled
-                                                   class="form-control"/>
+                                <?php if ($category_id != '') { ?>
+                                    <div class="form-group required col-md-12 col-xs-12">
+                                        <div class="col-md-2 col-xs-2" align="right">
+                                            <label class=" control-label" for="create_date">วันที่เพิ่ม</label>
                                         </div>
-                                        <div class="text-danger"></div>
-                                    </div>
-                                </div>
-
-                                <div class="form-group required col-md-12 col-xs-12">
-                                    <div class="col-md-2 col-xs-2" align="right">
-                                        <label class=" control-label" for="input-create-by">เพิ่มโดย</label>
-                                    </div>
-                                    <div class="col-md-10 col-xs-10">
-                                        <div class="">
-                                            <input type="text" name="create_by"
-                                                   value="<?php echo $create_by_name ?>"
-                                                   id="input-create-by" disabled
-                                                   class="form-control"/>
+                                        <div class="col-md-10 col-xs-10">
+                                            <div class="">
+                                                <input type="text" name="create_date"
+                                                       value="<?php echo $create_date; ?>"
+                                                       id="create_date"
+                                                       disabled
+                                                       class="form-control"/>
+                                            </div>
+                                            <div class="text-danger"></div>
                                         </div>
-                                        <div class="text-danger"></div>
                                     </div>
-                                </div>
 
-                                <div class="form-group required col-md-12 col-xs-12">
-                                    <div class="col-md-2 col-xs-2" align="right">
-                                        <label class=" control-label" for="create_date">วันที่แก้ไขล่าสุด</label>
-                                    </div>
-                                    <div class="col-md-10 col-xs-10">
-                                        <div class="">
-                                            <input type="text" name="create_date" value="<?php echo $update_date; ?>"
-                                                   id="create_date"
-                                                   disabled
-                                                   class="form-control"/>
+                                    <div class="form-group required col-md-12 col-xs-12">
+                                        <div class="col-md-2 col-xs-2" align="right">
+                                            <label class=" control-label" for="input-create-by">เพิ่มโดย</label>
                                         </div>
-                                        <div class="text-danger"></div>
-                                    </div>
-                                </div>
-
-                                <div class="form-group required col-md-12 col-xs-12">
-                                    <div class="col-md-2 col-xs-2" align="right">
-                                        <label class=" control-label" for="input-create-by">แก้ไขโดย</label>
-                                    </div>
-                                    <div class="col-md-10 col-xs-10">
-                                        <div class="">
-                                            <input type="text" name="create_by"
-                                                   value="<?php echo $update_by_name ?>"
-                                                   id="input-create-by" disabled
-                                                   class="form-control"/>
+                                        <div class="col-md-10 col-xs-10">
+                                            <div class="">
+                                                <input type="text" name="create_by"
+                                                       value="<?php echo $create_by_name ?>"
+                                                       id="input-create-by" disabled
+                                                       class="form-control"/>
+                                            </div>
+                                            <div class="text-danger"></div>
                                         </div>
-                                        <div class="text-danger"></div>
                                     </div>
-                                </div>
 
-                            <?php }?>
+                                    <div class="form-group required col-md-12 col-xs-12">
+                                        <div class="col-md-2 col-xs-2" align="right">
+                                            <label class=" control-label" for="create_date">วันที่แก้ไขล่าสุด</label>
+                                        </div>
+                                        <div class="col-md-10 col-xs-10">
+                                            <div class="">
+                                                <input type="text" name="create_date"
+                                                       value="<?php echo $update_date; ?>"
+                                                       id="create_date"
+                                                       disabled
+                                                       class="form-control"/>
+                                            </div>
+                                            <div class="text-danger"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group required col-md-12 col-xs-12">
+                                        <div class="col-md-2 col-xs-2" align="right">
+                                            <label class=" control-label" for="input-create-by">แก้ไขโดย</label>
+                                        </div>
+                                        <div class="col-md-10 col-xs-10">
+                                            <div class="">
+                                                <input type="text" name="create_by"
+                                                       value="<?php echo $update_by_name ?>"
+                                                       id="input-create-by" disabled
+                                                       class="form-control"/>
+                                            </div>
+                                            <div class="text-danger"></div>
+                                        </div>
+                                    </div>
+
+                                <?php } ?>
                             <?php } ?>
 
                             <div class="form-group required col-md-12 col-xs-12">
@@ -315,156 +312,135 @@
     //        disEvent: ["click,#button-save", "focusout,#minimum", "focusout,#reward", "focusout,#maximum", "focusout,#commission"
     //            , "focusout,#tbody-setting-default input", "focusout,#input-user-credit", "change,.my_percent_user"
     //            , "change,.sub_percent_user", "focusout,.my_percent_user", "focusout.sub_percent_user"]
+    //        document_on: [ 'click,#button-save'],
+    //        document_ready: [get_field, add_select_picker]
     //    });
 
     init_event({
-        fn: [readyLoad],
-        disEvent: ["click,#button-save", "focusout,#minimum", "focusout,#reward", "focusout,#maximum", "focusout,#commission"
-            , "focusout,#tbody-setting-default input", "focusout,#input-user-credit", "change,.my_percent_user"
-            , "change,.sub_percent_user", "focusout,.my_percent_user", "focusout.sub_percent_user"]
-        document_on: [ 'click,#button-save'],
-        document_ready: [get_field, add_select_picker]
+        document_on: ['click,#button-save'],
+        document_ready: [add_select_picker]
     });
 
-    function readyLoad() {
-        $('.input-number').maskMoney();
-    }
-    //    function readyLoad() {
-    //        $('.input-number').maskMoney();
-    //    }
+//    function readyLoad() {
+//        $('.input-number').maskMoney();
+//    }
 
-    function formatNumber(number) {
-        //var int_number = Number(number);
-        var p = number.toFixed(2).split(".");
-        var minus = p[0].substring(0, 1);
-        if (minus == "-") {
-            p[0] = p[0].substring(1, p[0].length);
+        //    function formatNumber(number) {
+        //        //var int_number = Number(number);
+        //        var p = number.toFixed(2).split(".");
+        //        var minus = p[0].substring(0, 1);
+        //        if (minus == "-") {
+        //            p[0] = p[0].substring(1, p[0].length);
+        //
+        //            return "-" + p[0].split("").reverse().reduce(function (acc, number, i, orig) {
+        //                    return number + (i && !(i % 3) ? "," : "") + acc;
+        //                }, "") + "." + p[1];
+        //        }
+        //        else {
+        //            return "" + p[0].split("").reverse().reduce(function (acc, number, i, orig) {
+        //                    return number + (i && !(i % 3) ? "," : "") + acc;
+        //                }, "") + "." + p[1];
+        //        }
+        //    }
 
-            return "-" + p[0].split("").reverse().reduce(function (acc, number, i, orig) {
-                    return number + (i && !(i % 3) ? "," : "") + acc;
-                }, "") + "." + p[1];
-        }
-        else {
-            return "" + p[0].split("").reverse().reduce(function (acc, number, i, orig) {
-                    return number + (i && !(i % 3) ? "," : "") + acc;
-                }, "") + "." + p[1];
-        }
-    function add_select_picker() {
-        $('.selectpicker').selectpicker({style: 'btn-default', size: 4});
-    }
+        $(document).on("click", "#button-save", function () {
+            $.ajax({
+                url: '<?php echo base_url(); ?>category/validate_form',
+                type: 'post',
+                data: $('input , select'),
+                dataType: 'json',
+                crossDomain: true,
+                beforeSend: function () {
+                    $('#button-save').button('loading');
+                },
+                complete: function () {
+                    $('#button-save').button('reset');
+                },
+                success: function (json) {
+                    //alert("OK");
 
-    //    function formatNumber(number) {
-    //        //var int_number = Number(number);
-    //        var p = number.toFixed(2).split(".");
-    //        var minus = p[0].substring(0, 1);
-    //        if (minus == "-") {
-    //            p[0] = p[0].substring(1, p[0].length);
-    //
-    //            return "-" + p[0].split("").reverse().reduce(function (acc, number, i, orig) {
-    //                    return number + (i && !(i % 3) ? "," : "") + acc;
-    //                }, "") + "." + p[1];
-    //        }
-    //        else {
-    //            return "" + p[0].split("").reverse().reduce(function (acc, number, i, orig) {
-    //                    return number + (i && !(i % 3) ? "," : "") + acc;
-    //                }, "") + "." + p[1];
-    //        }
-    //    }
+                    $('.alert, .text-danger').remove();
+                    $('.form-group').removeClass('has-error');
 
-    $(document).on("click", "#button-save", function () {
-        $.ajax({
-            url: '<?php echo base_url(); ?>category/validate_form',
-            type: 'post',
-            data: $('input , select'),
-            dataType: 'json',
-            crossDomain: true,
-            beforeSend: function () {
-                $('#button-save').button('loading');
-            },
-            complete: function () {
-                $('#button-save').button('reset');
-            },
-            success: function (json) {
-                //alert("OK");
+                    if (json['error']) {
 
-                $('.alert, .text-danger').remove();
-                $('.form-group').removeClass('has-error');
+                        var p = 0;
+                        for (var i = 0; i < Object.keys(json['error']).length; i++) {
+                            var input_name = Object.keys(json['error'])[i];
+                            $("input[name='" + input_name + "']").after('<div class="text-danger">' + json['error'][input_name] + '</div>');
+                            $("select[name='" + input_name + "']").after('<div class="text-danger">' + json['error'][input_name] + '</div>');
+                            p++;
+                        }
 
-                if (json['error']) {
-
-                    var p = 0;
-                    for (var i = 0; i < Object.keys(json['error']).length; i++) {
-                        var input_name = Object.keys(json['error'])[i];
-                        $("input[name='" + input_name + "']").after('<div class="text-danger">' + json['error'][input_name] + '</div>');
-                        $("select[name='" + input_name + "']").after('<div class="text-danger">' + json['error'][input_name] + '</div>');
-                        p++;
-                    }
-
-                    // Highlight any found errors
-                    $('.text-danger').parentsUntil('.form-group').parent().addClass('has-error');
-                } else {
-
-                    if ($('input[name="category_id"]').val()) {
-                        edit_category();
+                        // Highlight any found errors
+                        $('.text-danger').parentsUntil('.form-group').parent().addClass('has-error');
                     } else {
-                        add_category();
+
+                        if ($('input[name="category_id"]').val()) {
+                            edit_category();
+                        } else {
+                            add_category();
+                        }
+
+                        $('#button-refresh').trigger('click');
+                        $('#content > .container-fluid').prepend('<div class="alert alert-success"><i class="fa fa-check-circle"></i> ' + json['success'] + ' <button type="button" class="close" data-dismiss="alert">&times;</button></div>');
+
                     }
-
-                    $('#button-refresh').trigger('click');
-                    $('#content > .container-fluid').prepend('<div class="alert alert-success"><i class="fa fa-check-circle"></i> ' + json['success'] + ' <button type="button" class="close" data-dismiss="alert">&times;</button></div>');
-
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
                 }
-            },
-            error: function (xhr, ajaxOptions, thrownError) {
-                alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
-            }
+            });
         });
-    });
 
-    function add_category() {
-        $.ajax({
-            url: '<?php echo base_url(); ?>category/add_category',
-            type: 'post',
-            data: $('input , select'),
-            dataType: 'json',
-            crossDomain: true,
-            beforeSend: function () {
-                $('#button-save').button('loading');
-            },
-            complete: function () {
-                $('#button-save').button('reset');
-            },
-            success: function (json) {
+        function add_category() {
+            $.ajax({
+                url: '<?php echo base_url(); ?>category/add_category',
+                type: 'post',
+                data: $('input , select'),
+                dataType: 'json',
+                crossDomain: true,
+                beforeSend: function () {
+                    $('#button-save').button('loading');
+                },
+                complete: function () {
+                    $('#button-save').button('reset');
+                },
+                success: function (json) {
 
-                alert("เพิ่มข้อมูลเสร็จสิ้น");
-            },
-            error: function (xhr, ajaxOptions, thrownError) {
-                alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
-            }
-        });
-    }
+                    alert("เพิ่มข้อมูลเสร็จสิ้น");
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+                }
+            });
+        }
 
-    function edit_category() {
-        var category_id = $('input[name="category_id"]').val();
-        $.ajax({
-            url: '<?php echo base_url(); ?>category/edit_category',
-            type: 'post',
-            data: $('input , select'),
-            dataType: 'json',
-            crossDomain: true,
-            beforeSend: function () {
-                $('#button-save').button('loading');
-            },
-            complete: function () {
-                $('#button-save').button('reset');
-            },
-            success: function (json) {
-                alert("แก้ไขข้อมูลเสร็จสิ้น");
-            },
-            error: function (xhr, ajaxOptions, thrownError) {
-                alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
-            }
-        });
-    }
+        function edit_category() {
+            var category_id = $('input[name="category_id"]').val();
+            $.ajax({
+                url: '<?php echo base_url(); ?>category/edit_category',
+                type: 'post',
+                data: $('input , select'),
+                dataType: 'json',
+                crossDomain: true,
+                beforeSend: function () {
+                    $('#button-save').button('loading');
+                },
+                complete: function () {
+                    $('#button-save').button('reset');
+                },
+                success: function (json) {
+                    alert("แก้ไขข้อมูลเสร็จสิ้น");
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+                }
+            });
+        }
+
+        function add_select_picker() {
+            $('.selectpicker').selectpicker({style: 'btn-default', size: 4});
+        }
 
 </script>
