@@ -14,7 +14,7 @@ class Config_model extends CI_Model
     }
 
 
-    public function add_config($data){
+    public function add_frontend_setting($data){
 
 
         $this->load->library('encrypt');
@@ -60,7 +60,7 @@ class Config_model extends CI_Model
 
             'config_group_id' => (int)$data['config_group_id'],
             'config_content' => $data['config_content'],
-            'config_image' => $data['config-contact'],
+            'config_image' => $data['config_image'],
             'email' => $data['email'],
             'line_id' => $data['line-id'],
             'facebook' => $data['face-book'],
@@ -78,6 +78,16 @@ class Config_model extends CI_Model
         $insert_id = $this->db->insert_id();
 
         return $insert_id;
+    }
+
+    public function updateImage($config_id, $path) {
+        $data = array(
+            'config_image' => $path
+        );
+        $this->db->where(array('config_id'=>$config_id));
+        $this->db->update('config_image', $data);
+
+        return true;
     }
 
 }

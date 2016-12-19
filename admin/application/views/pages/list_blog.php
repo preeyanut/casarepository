@@ -128,6 +128,10 @@
                                                         name="button-edit<?php echo $item['blog_id']; ?>"
                                                         id="button-edit" class="btn btn-warning button-edit">แก้ไข
                                                 </button>
+                                                <button type="button"
+                                                        name="button-delete<?php echo $item['blog_id']; ?>"
+                                                        id="button-delete" class="btn btn-danger button-delete">ลบ
+                                                </button>
                                             </td>
 
                                         </tr>
@@ -197,6 +201,7 @@
             , 'change,#filter-number'
             , 'change,#filter-status'
             , 'click,.button-edit'
+            , 'click,.button-delete'
             , 'click,.paging'
         ], document_ready: [
             get_paging
@@ -223,6 +228,33 @@
         window.open("<?php echo base_url(); ?>blog/get_form?blog_id=" + blog_id, "_self");
     });
 
+    $(document).on("click", ".button-delete", function () {
+        var blog_id = this.name.replace("button-delete", "");
+        var result = confirm('คุณต้องการลบ blog นี้จริงหรือไม่?');
+        if(result){
+            $.ajax({
+                url: '<?php echo base_url(); ?>blog/delete_blog',
+                type: 'post',
+                data: "blog_id=" + blog_id,
+                dataType: 'json',
+                crossDomain: true,
+                beforeSend: function () {
+                },
+                complete: function () {
+                },
+                success: function (json) {
+                    if(json.Result){
+                        search_user();
+                        get_paging();
+                    }
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+                }
+            });
+        }
+    });
+
     $(document).on("click", ".paging", function () {
         var page_number = this.id.replace("page", "");
         $(".paging").css("background-color", "#ffffff");
@@ -246,65 +278,6 @@
         search_user();
     });
 
-    function reload_blog(blog_id) {
-        $("#tbody").empty();
-        $.ajax({
-            url: '<?php echo base_url(); ?>blog/get_all',
-            type: 'post',
-            data: "blog_id=" + blog_id,
-            dataType: 'json',
-            crossDomain: true,
-            beforeSend: function () {
-            },
-            complete: function () {
-            },
-            success: function (json) {
-                var data = json.Data;
-                var blogs = data["list"];
-                $("#tbody").empty();
-                for (var i = 0; i < blogs.length; i++) {
-                    var blog = blogs[i];
-
-                    var color_status = "";
-                    var str_status = "";
-
-                    switch (blog.blog_status) {
-                        case 0:
-                            color_status = "#8a0004";
-                            str_status = "ปิดการใช้งาน";
-                            break;
-                        case 1:
-                            str_status = "เปิดใช้งาน";
-                            break;
-                    }
-
-                    var html = "<tr class='tr_id" + blog.blog_id + "'  style='cursor: pointer;'>"
-                        + "<td class='text-center'>" + (i + 1) + "</td>"
-                        + "<td class='text-center'>" + blog.category_name + "</td>"
-                        + "<td class='text-center'><a href='<?= base_url(); ?>blog/get_form?blog_id="+ blog.blog_id+"'>" + blog.blog_title + "</a></td>"
-                        + "<td class='text-center'>" + blog.priority_level + "</td>"
-                        + "<td class='text-center'>" + str_status + "</td>"
-
-                        + "<td class='text-center'>" + blog.create_date + "</td>"
-                        + "<td class='text-center'>" + blog.create_by_name + "</td>"
-                        + "<td class='text-center'>" + blog.update_date + "</td>"
-                        + "<td class='text-center'>" + blog.update_by_name + "</td>"
-
-                        + " <td class='text-center'><button type='button' name='button-edit" + blog.blog_id + "' "
-                        + " id='button-edit' class='btn btn-warning button-edit'>แก้ไข</button></td>"
-                        + "</tr>";
-
-                    $("#tbody").append(html);
-                }
-                alert("get  OK");
-            },
-            error: function (xhr, ajaxOptions, thrownError) {
-                alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
-            }
-        });
-    }
-
-
     function search_user() {
 
         var txtSearch = $("#input-search").val();
@@ -313,7 +286,7 @@
         var filterStatus = $("#filter-status").val();
 
         $.ajax({
-            url: '<?php echo base_url(); ?>blog/search',
+            url: '<?php echo base_url(); ?>list_blog/search',
             type: 'post',
             data: "txtSearch=" + txtSearch + "&filter-number=" + filterNumber + "&filter-page=" + filterPage + "&filter-status=" + filterStatus,
             dataType: 'json',
@@ -352,7 +325,10 @@
                         + "<td class='text-center'>" + blog.update_by_name + "</td>"
 
                         + " <td class='text-center'><button type='button' name='button-edit" + blog.blog_id + "' "
-                        + " id='button-edit' class='btn btn-warning button-edit'>แก้ไข</button></td>"
+                        + " id='button-edit' class='btn btn-warning button-edit'>แก้ไข</button>"
+                        + " <button type='button' name='button-delete" + blog.blog_id + "' "
+                        + " id='button-delete' class='btn btn-danger button-delete'>ลบ</button></td>"
+
                         + "</tr>";
                     $("#tbody").append(html);
                 }
@@ -376,7 +352,7 @@
 //        console.log(filterPage);
 //        console.log(filterStatus);
         $.ajax({
-            url: '<?php echo base_url(); ?>blog/get_paging',
+            url: '<?php echo base_url(); ?>list_blog/get_paging',
             type: 'post',
             data: "txtSearch=" + txtSearch + "&filter-number=" + filterNumber + "&filter-page=" + filterPage + "&filter-status=" + filterStatus,
             dataType: 'json',

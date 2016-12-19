@@ -135,4 +135,14 @@ class Category_type_model extends CI_Model
         return $query->result_array();
     }
 
+    public function delete_category_type($category_type_id)
+    {
+
+        $this->db->where('category_type_id', $category_type_id);
+        $result = $this->db->delete('category_type');
+
+        return $result;
+    }
+
+
 }

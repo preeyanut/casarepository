@@ -85,7 +85,7 @@
 
                             <div class="form-group required col-md-12 col-xs-12">
                                 <div class="col-md-2 col-xs-2" align="right">
-                                    <label class=" control-label" for="input-img">Favicon</label>
+                                    <label class=" control-label" for="input-img">Favicon Image</label>
                                 </div>
 
                                 <div class="col-md-9 col-xs-9">
@@ -96,8 +96,31 @@
                                                  alt="" title="" data-placeholder="รูปสินค้า">
                                         </a>
 
-                                        <input type="file" name="config-frontend" class="img-input" value="<?php echo $config_image; ?>"
-                                               id="input-image">
+                                        <input type="file" name="config-frontend" class="img-input" value="0" id="input-image"/>
+                                    </div>
+
+                                    <div class="text-danger"></div>
+                                    <div class="col-md-2 col-xs-2" align="right"></div>
+                                </div>
+
+                                <div class="col-md-2 col-xs-2" align="right"></div>
+
+                            </div>
+
+                            <div class="form-group required col-md-12 col-xs-12">
+                                <div class="col-md-2 col-xs-2" align="right">
+                                    <label class=" control-label" for="input-img">Logo Image</label>
+                                </div>
+
+                                <div class="col-md-9 col-xs-9">
+                                    <div class="">
+                                        <a href="" id="a-test" data-toggle="image" class="img-thumbnail">
+                                            <img id="img-config-frontend" style="max-width: 500px;"
+                                                 src="http://localhost/casarepository/admin/assets\images\No-image-found.jpg"
+                                                 alt="" title="" data-placeholder="รูปสินค้า">
+                                        </a>
+
+                                        <input type="file" name="config-frontend" class="img-input" value="0" id="input-image"/>
                                     </div>
 
                                     <div class="text-danger"></div>
@@ -321,13 +344,12 @@
                                 <div class="col-md-9 col-xs-9">
                                     <div class="">
                                         <a href="" id="a-test" data-toggle="image" class="img-thumbnail">
-                                            <img id="img-config-contact" style="max-width: 500px;"
+                                            <img id="img-config_image" style="max-width: 500px;"
                                                  src="http://localhost/casarepository/admin/assets\images\No-image-found.jpg"
                                                  alt="" title="" data-placeholder="รูปสินค้า">
                                         </a>
 
-                                        <input type="file" name="config-contact" class="img-input" value="<?php echo $config_image; ?>"
-                                               id="input-image">
+                                        <input type="file" name="config_image" class="img-input" value="0" id="input-image"/>
                                     </div>
 
                                     <div class="text-danger"></div>
@@ -490,9 +512,9 @@
     });
 
     <!--===================================== add fronted setting=============================================-->
-    function add_config() {
+    function add_frontend_setting() {
         $.ajax({
-            url: '<?php echo base_url(); ?>config/add_config',
+            url: '<?php echo base_url(); ?>config/add_frontend_setting',
             type: 'post',
             data: $('input , select , textarea'),
             dataType: 'json',
@@ -535,7 +557,13 @@
             },
             success: function (json) {
 
-                alert("เพิ่มข้อมูลเสร็จสิ้น");
+                console.log(json);
+                if (json.Result) {
+                    uploadImage(json.Data.config_id);
+                    alert("เพิ่มข้อมูลเสร็จสิ้น");
+                } else {
+                    alert("เพิ่มข้อมูลผิดพลาด");
+                }
 
             },
             error: function (xhr, ajaxOptions, thrownError) {
@@ -698,74 +726,17 @@
         }
     }
 
-    var interval;
-
-    function applyAjaxFileUpload(element) {
-        $(element).AjaxFileUpload({
-            action: '<?php echo base_url(); ?>config/upload_file',
-            onChange: function (filename) {
-                // Create a span element to notify the blog of an upload in progress
-                var $span = $("<span />")
-                    .attr("class", $(this).attr("id"))
-                    .text("Uploading")
-                    .insertAfter($(this));
-
-                $(this).remove();
-
-                interval = window.setInterval(function () {
-                    var text = $span.text();
-                    if (text.length < 13) {
-                        $span.text(text + ".");
-                    } else {
-                        $span.text("Uploading");
-                    }
-                }, 200);
-            },
-            onSubmit: function (filename) {
-
-                return true;
-            },
-            onComplete: function (filename, response) {
-                window.clearInterval(interval);
-                var $span = $("span." + $(this).attr("id")).text(filename + " "),
-                    $fileInput = $("<input />")
-                        .attr({
-                            type: "file",
-                            name: $(this).attr("name"),
-                            id: $(this).attr("id")
-                        });
-
-                if (typeof(response.error) === "string") {
-                    $span.replaceWith($fileInput);
-
-                    applyAjaxFileUpload($fileInput);
-
-                    alert(response.error);
-
-                    return;
-                }
-
-                $("<a />")
-                    .attr("href", "#")
-                    .text("x")
-                    .bind("click", function (e) {
-                        $span.replaceWith($fileInput);
-
-                        applyAjaxFileUpload($fileInput);
-                    })
-                    .appendTo($span);
-            }
-        });
-    }
-
     function uploadImage(config_id) {
+
 
         var data = new FormData();
         jQuery.each(jQuery('#input-image')[0].files, function (i, file) {
             data.append('image', file);
         });
 
-        data.append('confid_id', confid_id);
+        data.append('config_id', config_id);
+
+        console.log(data);
         jQuery.ajax({
             url: '<?php echo base_url(); ?>config/upload_file',
             data: data,
@@ -774,8 +745,10 @@
             processData: false,
             type: 'POST',
             success: function (data) {
-                // alert(data);
+                console.log(data);
             }
         });
+
+
     }
 </script>

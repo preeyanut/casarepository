@@ -49,7 +49,7 @@ class Config extends CI_Controller
                     $data['login_link'] = $info['login_link'];
                     $data['email'] = $info['email'];
                     $data['config_content'] = $info['config_content'];
-                    $data['config_image'] = $info['config_image'];
+                    //$data['config_image'] = $info['config_image'];
                     $data['line_id'] = $info['line_id'];
                     $data['telephone'] = $info['telephone'];
                     $data['facebook'] = $info['facebook'];
@@ -106,7 +106,7 @@ class Config extends CI_Controller
                 $data['config_group_name'][] = $data_config_group[$i]['config_group_name'];
             }
 
-            $data["action"] = base_url() . "config/add_config";
+            $data["action"] = base_url() . "config/add_frontend_setting";
 
             //$data["list"] = $this->Config_group_model->get_all();
 
@@ -118,10 +118,10 @@ class Config extends CI_Controller
     }
 
 
-    public function add_config()
+    public function add_frontend_setting()
     {
         if ($this->input->post()) {
-            $data["config_id"] = $this->Config_model->add_config($this->input->post());
+            $data["config_id"] = $this->Config_model->add_frontend_setting($this->input->post());
         }
 
         $jsonResult['Result'] = true;
@@ -142,17 +142,17 @@ class Config extends CI_Controller
         echo json_encode($jsonResult);
     }
 
-    public function edit_config()
-    {
-        if ($this->input->post()) {
-            $data["config_id"] = $this->Config_model->edit_config($this->input->post());
-        }
+    //public function edit_config()
+    //{
+        //if ($this->input->post()) {
+            //$data["config_id"] = $this->Config_model->edit_config($this->input->post());
+        //}
 
-        $jsonResult['Result'] = true;
+        //$jsonResult['Result'] = true;
         //$jsonResult['error'] = "";
-        $jsonResult['Data'] = $data;
-        echo json_encode($jsonResult);
-    }
+        //$jsonResult['Data'] = $data;
+        //echo json_encode($jsonResult);
+    //}
 
 
     public function validate_frontend_form()
@@ -257,44 +257,47 @@ class Config extends CI_Controller
         $status = "";
         $msg = "";
         $file_element_name = 'image';
-        $image_name = "";
 
-        if (empty($_POST['config_id']))
-        {
+        if (empty($_POST['config_id'])) {
             $status = "error";
-            $msg = "Please enter a title";
-        }else{
-            $image_name = $_POST['config_id'];
+            $msg = "Please enter config_id";
+
+            echo json_encode(array('status' => $status, 'msg' => $msg));
+            return;
         }
 
-        if ($status != "error")
-        {
-            $config['upload_path'] = 'assets\\\\img\\\\config\\\\'.$_POST['config_id'];
-            $image_url= 'assets\\\\img\\\\config\\\\'.$_POST['config_id'];
+        if ($status != "error") {
+            $image_directory = 'assets\\img\\config\\' . $_POST['config_id'];
+            $image_path ='assets\\img\\config\\' . $_POST['config_id'] . '\\' . $_FILES['image']['name'];
+
+            $config['upload_path'] = $image_directory;
             $config['allowed_types'] = 'gif|jpg|png';
             $config['max_size'] = 1024 * 8;
-            $config['encrypt_name'] = TRUE;
+//            $config['encrypt_name'] = TRUE;
 
             $this->load->library('upload', $config);
 
-            if (!$this->upload->do_upload($file_element_name))
-            {
+            if (!file_exists($image_path)) {
+                if(!file_exists($image_directory)){
+                    mkdir($image_directory, 0777, true);
+                }
+            } else {
+                unlink($image_path);
+            }
+
+            if (!$this->upload->do_upload($file_element_name)) {
+
                 $status = 'error';
                 $msg = $this->upload->display_errors('', '');
-            }
-            else
-            {
-                $data = $this->upload->data();
-                $image_url = $image_url.'\\\\'.$data['file_name'];
-                $file_id = $this->Blog_model->updateImage($image_name,$image_url);
+            } else {
 
-                if($file_id)
-                {
+                $data = $this->upload->data();
+                $file_id = $this->Config_model->updateImage($_POST['config_id'],$image_path);
+
+                if ($file_id) {
                     $status = "success";
                     $msg = "File successfully uploaded";
-                }
-                else
-                {
+                } else {
                     unlink($data['full_path']);
                     $status = "error";
                     $msg = "Something went wrong when saving the file, please try again.";
