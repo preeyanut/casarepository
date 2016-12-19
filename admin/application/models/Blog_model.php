@@ -26,13 +26,24 @@ class Blog_model extends CI_Model
         return $query->result_array();
     }
 
-    public function get_blog_field($id)
+    public function get_blog_field($blog_id,$category_type_id)
     {
-        $this->db->select("category_field.*");
-        $this->db->where('category_field.category_type_id',$id);
-        $query = $this->db->get('category_field');
+        $this->db->select("blog.*,category_field.field_name,category_field.field_type,category_field.field_id,category_field.category_field_id,blog_value.blog_value");
+        $this->db->join('category', 'category.category_id = blog.category_id');
+        $this->db->join('category_type', 'category_type.category_type_id = category.category_type_id');
+        $this->db->join('category_field', 'category_field.category_type_id = category_type.category_type_id');
+        $this->db->join('blog_value', ' (blog_value.blog_id = blog.blog_id and blog_value.category_field_id = category_field.category_field_id)');
+        $this->db->where(array('blog_value.blog_id'=>$blog_id,'category_field.category_type_id'=>$category_type_id));
+        $this->db->order_by("category_field.category_field_id","asc");
+        $query = $this->db->get('blog');
 
         return $query->result_array();
+
+//        $this->db->select("category_field.*");
+//        $this->db->where('category_field.category_type_id',$id);
+//        $query = $this->db->get('category_field');
+//
+//        return $query->result_array();
     }
 
     public function get_blog_field_by_category_id($id)
@@ -99,6 +110,7 @@ class Blog_model extends CI_Model
 
         $data_array = array(
             'blog_title' => $data['blog_title'],
+            'category_id' => (int)$data['category_id'],
             'blog_status' => (int)$data['blog_status'],
             'priority_level' => (int)$data['priority_level'],
             'create_date' => date("Y-m-d H:i:s"),
@@ -115,7 +127,6 @@ class Blog_model extends CI_Model
 
     public function add_blog_field($blog_id,$data)
     {
-//        echo var_dump($data);
         foreach($data as $item){
             $data_array = array(
                 'blog_id' => $blog_id,
@@ -127,48 +138,35 @@ class Blog_model extends CI_Model
                 'update_by' => $this->session->userdata("user_id")
             );
             $this->db->insert('blog_value', $data_array);
-//            $insert_id = $this->db->insert_id();
         }
 
         return true;
-    }
-
-
-    public function add_category_field($data)
-    {
-        $data_array = array(
-            'blog_id' => $data['blog_id'],
-            'field_name' => $data['field_name'],
-            'field_type' => $data['field_type'],
-            'field_id' => $data['field_id'],
-            'create_date' => date("Y-m-d H:i:s"),
-            'create_by' => $this->session->userdata("user_id"),
-            'update_date' => date("Y-m-d H:i:s"),
-            'update_by' => $this->session->userdata("user_id")
-        );
-        $this->db->insert('category_field', $data_array);
-        $insert_id = $this->db->insert_id();
-        return $insert_id;
     }
 
     public function edit_blog($data)
     {
         $data_array = array(
             'blog_title' => $data['blog_title'],
-            'blog_status' => $data['blog_status'],
+            'category_id' => (int)$data['category_id'],
+            'blog_status' => (int)$data['blog_status'],
+            'priority_level' => (int)$data['priority_level'],
             'update_date' => date("Y-m-d H:i:s"),
             'update_by' => $this->session->userdata("user_id")
         );
+
         $this->db->where('blog_id', $data['blog_id']);
         $result = $this->db->update('blog', $data_array);
-        return $result;
+        $blog_id=0;
+        if($result){
+            $blog_id=$data['blog_id'];
+        }
+        return $blog_id;
     }
 
     public function delete_category_field($blog_id)
     {
-
         $this->db->where('blog_id', $blog_id);
-        $result = $this->db->delete('category_field');
+        $result = $this->db->delete('blog_value');
 
         return $result;
     }
@@ -185,9 +183,9 @@ class Blog_model extends CI_Model
 
     public function get_all_priority(){
 
-        $this->db->select("blog.*");
+        $this->db->select("blog.priority_level");
         $this->db->where('blog.blog_status',1);
-        $this->db->order_by("blog.priority_level","asc");
+        $this->db->order_by("blog.priority_level","desc");
         $query = $this->db->get('blog');
 
         return $query->result_array();

@@ -20,17 +20,20 @@ class Blog extends CI_Controller
 
     public function index()
     {
-        $this->get_all();
+        $this->get_form();
     }
 
     public function get_form()
     {
 
+
         if ($this->input->get('blog_id')) {
 
             $data_info = $this->Blog_model->get_data($this->input->get('blog_id'));
 
-            $blog_field = $this->Blog_model->get_blog_field($data_info[0]['category_type_id']);
+//            echo var_dump($data_info);
+//            exit(0);
+            $blog_field = $this->Blog_model->get_blog_field($data_info[0]['blog_id'],$data_info[0]['category_type_id']);
 
             $data['blog_field'] = $blog_field;
 
@@ -67,7 +70,19 @@ class Blog extends CI_Controller
             $data["action"] = base_url() . "blog/add_blog";
         }
 
-        $data["all_priority_level"] = $this->Blog_model->get_all_priority();
+        $all_priority_level = $this->Blog_model->get_all_priority();
+        if($all_priority_level){
+            $data_priority = array('priority_level' => (string)(sizeof($all_priority_level)+1));
+            array_unshift($all_priority_level,$data_priority);
+        }else{
+            $all_priority_level = array();
+            $data_priority = array('priority_level' => (string)(sizeof($all_priority_level)+1));
+            array_push($all_priority_level,$data_priority);
+        }
+//        echo var_dump($all_priority_level);
+//        exit(0);
+//        array_push($all_priority_level,parse_str((sizeof($all_priority_level)+1)));
+        $data["all_priority_level"] = $all_priority_level;
 
         $data["category"] = $this->Category_model->get_all();
 
@@ -160,19 +175,12 @@ class Blog extends CI_Controller
     public function edit_blog()
     {
         $result = false;
-
-        $data_blog = $this->input->post('data_blog');
-        $all_category_field = $this->input->post('category_field');
-
         if ($this->input->post()) {
-            $data["blog_id"] = $this->Blog_model->edit_blog($data_blog);
-
-            $this->Blog_model->delete_category_field($data_blog['blog_id']);
-
-            foreach ($all_category_field as $item) {
-                $data["category_field_id"] = $this->Blog_model->add_category_field($item);
+            $data["blog_id"] = $this->Blog_model->edit_blog($this->input->post('data_blog'));
+            if ($data["blog_id"]) {
+                $this->Blog_model->delete_category_field($data["blog_id"]);
+                $result = $this->Blog_model->add_blog_field($data["blog_id"], $this->input->post('data_blog_field'));
             }
-            $result = true;
         }
 
         $jsonResult['Result'] = $result;
@@ -220,7 +228,9 @@ class Blog extends CI_Controller
             $this->load->library('upload', $config);
 
             if (!file_exists($image_path)) {
-                mkdir($image_directory, 0777, true);
+                if(!file_exists($image_directory)){
+                    mkdir($image_directory, 0777, true);
+                }
             } else {
                 unlink($image_path);
             }
