@@ -183,9 +183,6 @@ class Blog_model extends CI_Model
         return $query->result_array();
     }
 
-
-
-
     public function get_all_priority(){
 
         $this->db->select("blog.*");
@@ -196,10 +193,12 @@ class Blog_model extends CI_Model
         return $query->result_array();
     }
 
-    public function updateImage($bank_id, $urlImage) {
-
-        $this->db->query("UPDATE `" . "" . "blog_value` SET "
-            ." bank_image = '". $urlImage  . "' WHERE bank_id = '". (int)$bank_id . "'");
+    public function updateImage($blog_id,$category_field_id, $path) {
+        $data = array(
+            'blog_value' => $path
+        );
+        $this->db->where(array('blog_id'=>$blog_id,'category_field_id'=>$category_field_id,));
+        $this->db->update('blog_value', $data);
 
         return true;
     }

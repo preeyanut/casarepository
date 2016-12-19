@@ -60,7 +60,7 @@ class Blog extends CI_Controller
             $data['priority_level'] = "";
 
             $data['category_id'] = "";
-            $data['category_type_id'] ="";
+            $data['category_type_id'] = "";
 //            $data['create_date'] = date("Y-m-d H:i:s");
 //            $data['create_by'] = $this->session->userdata("user_id");
 
@@ -143,11 +143,11 @@ class Blog extends CI_Controller
 
     public function add_blog()
     {
-        $result =false;
+        $result = false;
         if ($this->input->post()) {
             $data["blog_id"] = $this->Blog_model->add_blog($this->input->post('data_blog'));
-            if($data["blog_id"]){
-                $result  = $this->Blog_model->add_blog_field($data["blog_id"],$this->input->post('data_blog_field'));
+            if ($data["blog_id"]) {
+                $result = $this->Blog_model->add_blog_field($data["blog_id"], $this->input->post('data_blog_field'));
             }
         }
 
@@ -159,7 +159,7 @@ class Blog extends CI_Controller
 
     public function edit_blog()
     {
-        $result =false;
+        $result = false;
 
         $data_blog = $this->input->post('data_blog');
         $all_category_field = $this->input->post('category_field');
@@ -169,10 +169,10 @@ class Blog extends CI_Controller
 
             $this->Blog_model->delete_category_field($data_blog['blog_id']);
 
-            foreach($all_category_field as $item){
+            foreach ($all_category_field as $item) {
                 $data["category_field_id"] = $this->Blog_model->add_category_field($item);
             }
-            $result =true;
+            $result = true;
         }
 
         $jsonResult['Result'] = $result;
@@ -180,12 +180,13 @@ class Blog extends CI_Controller
         echo json_encode($jsonResult);
     }
 
-    public function get_field(){
-        $result =false;
+    public function get_field()
+    {
+        $result = false;
         $category_id = $this->input->post('category_id');
-        if($category_id){
+        if ($category_id) {
             $data['blog_field'] = $this->Blog_model->get_blog_field_by_category_id($category_id);
-            $result =true;
+            $result = true;
         }
 
         $jsonResult['Result'] = $result;
@@ -198,44 +199,45 @@ class Blog extends CI_Controller
         $status = "";
         $msg = "";
         $file_element_name = 'image';
-        $image_name = "";
 
-        if (empty($_POST['blog_id']))
-        {
+        if (empty($_POST['blog_id'])) {
             $status = "error";
-            $msg = "Please enter a title";
-        }else{
-            $image_name = $_POST['blog_id'];
+            $msg = "Please enter blog_id";
+
+            echo json_encode(array('status' => $status, 'msg' => $msg));
+            return;
         }
 
-        if ($status != "error")
-        {
-            $config['upload_path'] = 'assets\\\\img\\\\blog\\\\'.$_POST['blog_id'].'\\\\'.$_POST['category_field_id'];
-            $image_url= 'assets\\\\img\\\\blog\\\\'.$_POST['blog_id'].'\\\\'.$_POST['category_field_id'];
+        if ($status != "error") {
+            $image_directory = 'assets\\img\\blog\\' . $_POST['blog_id'] . '\\' . $_POST['category_field_id'];
+            $image_path ='assets\\img\\blog\\' . $_POST['blog_id'] . '\\' . $_POST['category_field_id'].'\\'.$_FILES['image']['name'];
+
+            $config['upload_path'] = $image_directory;
             $config['allowed_types'] = 'gif|jpg|png';
             $config['max_size'] = 1024 * 8;
-            $config['encrypt_name'] = TRUE;
+//            $config['encrypt_name'] = TRUE;
 
             $this->load->library('upload', $config);
 
-            if (!$this->upload->do_upload($file_element_name))
-            {
+            if (!file_exists($image_path)) {
+                mkdir($image_directory, 0777, true);
+            } else {
+                unlink($image_path);
+            }
+
+            if (!$this->upload->do_upload($file_element_name)) {
+
                 $status = 'error';
                 $msg = $this->upload->display_errors('', '');
-            }
-            else
-            {
-                $data = $this->upload->data();
-                $image_url = $image_url.'\\\\'.$data['file_name'];
-                $file_id = $this->Blog_model->updateImage($image_name,$image_url);
+            } else {
 
-                if($file_id)
-                {
+                $data = $this->upload->data();
+                $file_id = $this->Blog_model->updateImage($_POST['blog_id'],$_POST['category_field_id'],$image_path);
+
+                if ($file_id) {
                     $status = "success";
                     $msg = "File successfully uploaded";
-                }
-                else
-                {
+                } else {
                     unlink($data['full_path']);
                     $status = "error";
                     $msg = "Something went wrong when saving the file, please try again.";
