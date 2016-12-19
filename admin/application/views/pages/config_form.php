@@ -91,12 +91,13 @@
                                 <div class="col-md-9 col-xs-9">
                                     <div class="">
                                         <a href="" id="a-test" data-toggle="image" class="img-thumbnail">
-                                            <img id="img-config-setting" style="max-width: 500px;"
+                                            <img id="img-config-frontend" style="max-width: 500px;"
                                                  src="http://localhost/casarepository/admin/assets\images\No-image-found.jpg"
                                                  alt="" title="" data-placeholder="รูปสินค้า">
                                         </a>
 
-                                        <input type="file" name="config-setting" class="img-input" value="0" id="input-image">
+                                        <input type="file" name="config-frontend" class="img-input" value="<?php echo $config_image; ?>"
+                                               id="input-image">
                                     </div>
 
                                     <div class="text-danger"></div>
@@ -300,7 +301,7 @@
                                 </div>
                                 <div class="col-md-9 col-xs-9">
                                     <div class="">
-                                        <textarea type="text" name="config_content"
+                                        <textarea name="config_content"
                                                   value="<?php echo $config_content; ?>"
                                                   placeholder="" id="edittext"
                                                   class="form-control"></textarea>
@@ -320,12 +321,13 @@
                                 <div class="col-md-9 col-xs-9">
                                     <div class="">
                                         <a href="" id="a-test" data-toggle="image" class="img-thumbnail">
-                                            <img id="img-config-setting" style="max-width: 500px;"
+                                            <img id="img-config-contact" style="max-width: 500px;"
                                                  src="http://localhost/casarepository/admin/assets\images\No-image-found.jpg"
                                                  alt="" title="" data-placeholder="รูปสินค้า">
                                         </a>
 
-                                        <input type="file" name="config-setting" class="img-input" value="0" id="input-image">
+                                        <input type="file" name="config-contact" class="img-input" value="<?php echo $config_image; ?>"
+                                               id="input-image">
                                     </div>
 
                                     <div class="text-danger"></div>
@@ -514,6 +516,11 @@
 
     <!--===================================== add Contact setting=============================================-->
     function add_contact_setting() {
+
+        for (instance in CKEDITOR.instances) {
+            CKEDITOR.instances[instance].updateElement();
+        }
+
         $.ajax({
             url: '<?php echo base_url(); ?>config/add_contact_setting',
             type: 'post',
@@ -671,10 +678,7 @@
     }
 
 
-
-
-
-<!--==================add image ========================-->
+    <!--==================add image ========================-->
 
 
     $(document).on("change", ".img-input", function () {
@@ -754,13 +758,14 @@
         });
     }
 
-    function uploadImage(blog_id) {
+    function uploadImage(config_id) {
+
         var data = new FormData();
         jQuery.each(jQuery('#input-image')[0].files, function (i, file) {
             data.append('image', file);
         });
 
-        data.append('confid_id', blog_id);
+        data.append('confid_id', confid_id);
         jQuery.ajax({
             url: '<?php echo base_url(); ?>config/upload_file',
             data: data,
