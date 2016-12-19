@@ -1,4 +1,3 @@
-<script type="text/javascript" src="<?= base_url() ?>assets/js/jquery.ajaxfileupload.js"></script>
 <section class="content-header">
     <h1>
         Category Type
@@ -111,6 +110,10 @@
                                                         name="button-edit<?php echo $item['category_type_id']; ?>"
                                                         id="button-edit" class="btn btn-warning button-edit">แก้ไข
                                                 </button>
+                                                <button type="button"
+                                                        name="button-delete<?php echo $item['category_type_id']; ?>"
+                                                        id="button-delete" class="btn btn-danger button-delete">ลบ
+                                                </button>
                                             </td>
 
                                         </tr>
@@ -180,6 +183,7 @@
             ,'change,#filter-number'
             ,'change,#filter-status'
             ,'click,.button-edit'
+            ,'click,.button-delete'
             ,'click,.paging'
         ],document_ready:[
             get_paging
@@ -203,7 +207,34 @@
 
     $(document).on("click", ".button-edit", function () {
         var category_type_id = this.name.replace("button-edit", "");
-        window.open("<?php echo base_url(); ?>category_type/get_form?category_type_id=" + category_type_id, "_self");
+        window.open("<?php echo base_url(); ?>category_type?category_type_id=" + category_type_id, "_self");
+    });
+
+    $(document).on("click", ".button-delete", function () {
+        var category_type_id = this.name.replace("button-delete", "");
+        var result = confirm('คุณต้องการลบ Category Type นี้จริงหรือไม่?');
+        if(result){
+            $.ajax({
+                url: '<?php echo base_url(); ?>category_type/delete_category_type',
+                type: 'post',
+                data: "category_type_id=" + category_type_id,
+                dataType: 'json',
+                crossDomain: true,
+                beforeSend: function () {
+                },
+                complete: function () {
+                },
+                success: function (json) {
+                    if(json.Result){
+                        search_user();
+                        get_paging();
+                    }
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+                }
+            });
+        }
     });
 
     $(document).on("click", ".paging", function () {
@@ -229,59 +260,6 @@
         search_user();
     });
 
-    function reload_category_type(category_type_id) {
-        $("#tbody").empty();
-        $.ajax({
-            url: '<?php echo base_url(); ?>category_type/get_all',
-            type: 'post',
-            data: "category_type_id=" + category_type_id,
-            dataType: 'json',
-            crossDomain: true,
-            beforeSend: function () {
-            },
-            complete: function () {
-            },
-            success: function (json) {
-                var data = json.Data;
-                var types = data["list"];
-                $("#tbody").empty();
-                for (var i = 0; i < types.length; i++) {
-                    var type = types[i];
-
-                    var color_status = "";
-                    var str_status = "";
-
-                    switch (category_type.category_type_status) {
-                        case 0:
-                            color_status = "#8a0004";
-                            str_status = "ปิดการใช้งาน";
-                            break;
-                        case 1:
-                            str_status = "เปิดใช้งาน";
-                            break;
-                    }
-
-                    var html = "<tr class='tr_id" + type.category_type_id + "'  style='cursor: pointer;'>"
-                        + "<td class='text-center'>" + (i + 1) + "</td>"
-                        + "<td class='text-center'>" + type.category_type_name + "</td>"
-                        + "<td class='text-center'>" + type.create_date + "</td>"
-                        + "<td class='text-center'>" + type.create_by_name + "</td>"
-                        + "<td class='text-center'>" + type.update_date + "</td>"
-                        + "<td class='text-center'>" + type.update_by_name + "</td>"
-                        + "<td class='text-center' style='color: " + color_status + "'>"
-                        + str_status + "</td>"
-                        + "</tr>";
-
-                    $("#tbody").append(html);
-                }
-                alert("get  OK");
-            },
-            error: function (xhr, ajaxOptions, thrownError) {
-                alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
-            }
-        });
-    }
-
     function search_user() {
 
         var txtSearch = $("#input-search").val();
@@ -290,7 +268,7 @@
         var filterStatus = $("#filter-status").val();
 
         $.ajax({
-            url: '<?php echo base_url(); ?>category_type/search',
+            url: '<?php echo base_url(); ?>list_category_type/search',
             type: 'post',
             data: "txtSearch=" + txtSearch + "&filter-number=" + filterNumber + "&filter-page=" + filterPage + "&filter-status=" + filterStatus,
             dataType: 'json',
@@ -301,13 +279,13 @@
             },
             success: function (json) {
                 var data = json.Data;
-                var types = data["list"];
+                var category_types = data["list"];
                 $("#tbody").empty();
-                for (var i = 0; i < types.length; i++) {
-                    var type = types[i];
+                for (var i = 0; i < category_types.length; i++) {
+                    var category_type = category_types[i];
                     var color_status = "";
                     var str_status = "";
-                    switch (Number(type.category_type_status)) {
+                    switch (Number(category_type.category_type_status)) {
                         case 0:
                             color_status = "#8a0004";
                             str_status = "ปิดการใช้งาน";
@@ -316,21 +294,22 @@
                             str_status = "เปิดใช้งาน";
                             break;
                     }
-                    var html = "<tr class='tr_id" + type.category_type_id + "'  >"
+                    var html = "<tr class='tr_id" + category_type.category_type_id + "'  >"
                         + "<td class='text-center'>" + (i + 1) + "</td>"
-                        + "<td class='text-center'>" + type.category_type_name + "</td>"
-                        + "<td class='text-center'>" + type.create_date + "</td>"
-                        + "<td class='text-center'>" + type.create_by_name + "</td>"
-                        + "<td class='text-center'>" + type.update_date + "</td>"
-                        + "<td class='text-center'>" + type.update_by_name + "</td>"
+                        + "<td class='text-center'>" + category_type.category_type_name + "</td>"
+                        + "<td class='text-center'>" + category_type.create_date + "</td>"
+                        + "<td class='text-center'>" + category_type.create_by_name + "</td>"
+                        + "<td class='text-center'>" + category_type.update_date + "</td>"
+                        + "<td class='text-center'>" + category_type.update_by_name + "</td>"
                         + "<td class='text-center' style='color: " + color_status + "'>"
                         + str_status + "</td>"
-                        + " <td class='text-center'><button type='button' name='button-edit" + type.category_type_id + "' "
-                        + " id='button-edit' class='btn btn-warning button-edit'>แก้ไข</button></td>"
+                        + " <td class='text-center'><button type='button' name='button-edit" + category_type.category_type_id + "' "
+                        + " id='button-edit' class='btn btn-warning button-edit'>แก้ไข</button>"
+                        + " <button type='button' name='button-delete" + category_type.category_type_id + "' "
+                        + " id='button-delete' class='btn btn-danger button-delete'>ลบ</button></td>"
                         + "</tr>";
                     $("#tbody").append(html);
                 }
-//                label_format_number();
             },
             error: function (xhr, ajaxOptions, thrownError) {
                 alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
@@ -344,13 +323,8 @@
         var filterPage = $("#filter-page").val();
         var filterStatus = $("#filter-status").val();
 
-//        filterPage=1;
-//        console.log(txtSearch);
-//        console.log(filterNumber);
-//        console.log(filterPage);
-//        console.log(filterStatus);
         $.ajax({
-            url: '<?php echo base_url(); ?>category_type/get_paging',
+            url: '<?php echo base_url(); ?>list_category_type/get_paging',
             type: 'post',
             data: "txtSearch=" + txtSearch + "&filter-number=" + filterNumber + "&filter-page=" + filterPage + "&filter-status=" + filterStatus,
             dataType: 'json',

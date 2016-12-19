@@ -188,6 +188,20 @@ class Blog extends CI_Controller
         echo json_encode($jsonResult);
     }
 
+    public function delete_blog()
+    {
+        $result = false;
+        if ($this->input->post()) {
+            $this->Blog_model->delete_blog($this->input->post('blog_id'));
+            $this->Blog_model->delete_blog_value($this->input->post('blog_id'));
+            $result = true;
+        }
+
+        $jsonResult['Result'] = $result;
+        $jsonResult['Data'] = $result;
+        echo json_encode($jsonResult);
+    }
+
     public function get_field()
     {
         $result = false;

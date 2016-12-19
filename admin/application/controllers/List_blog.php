@@ -182,7 +182,6 @@ class List_blog extends CI_Controller
         echo json_encode($jsonResult);
     }
 
-
     public function edit_blog()
     {
         $result = false;
@@ -246,7 +245,6 @@ class List_blog extends CI_Controller
 
         echo json_encode($jsonResult);
     }
-
 
     public function validate_form()
     {
