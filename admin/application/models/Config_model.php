@@ -28,7 +28,7 @@ class Config_model extends CI_Model
             'login_link' => $data['login_link'],
 
             'config_content' => $data['config_content'],
-            //'config_image' => $data['config_image'],
+            'config_image' => $data['config-frontend'],
             'line_id' => $data['line_id'],
             'telephone' => $data['telephone'],
             'facebook' => $data['facebook'],
@@ -60,7 +60,7 @@ class Config_model extends CI_Model
 
             'config_group_id' => (int)$data['config_group_id'],
             'config_content' => $data['config_content'],
-            //'config_image' => $data['config_image'],
+            'config_image' => $data['config-contact'],
             'email' => $data['email'],
             'line_id' => $data['line-id'],
             'facebook' => $data['face-book'],
