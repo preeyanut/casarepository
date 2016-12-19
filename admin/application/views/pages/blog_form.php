@@ -1,8 +1,4 @@
-<script type="text/javascript" src="<?= base_url() ?>assets/js/jquery.ajaxfileupload.js"></script>
 <script type="text/javascript" src="<?= base_url() ?>assets/js/bootstrap-select.js"></script>
-
-<!--<script src="--><?//= base_url() ?><!--assets/js/jquery-2.1.4.min.js"></script>-->
-<!--<script src="--><?//= base_url() ?><!--plugins/datepicker/bootstrap-min.js"></script>-->
 
 <script type="text/javascript" src="<?= base_url() ?>plugins/datepicker/bootstrap-datepicker.js"></script>
 
@@ -11,6 +7,7 @@
 <script type="text/javascript" src="<?= base_url() ?>plugins/clockpicker/dist/bootstrap-clockpicker.min.js"></script>
 
 <link href="<?= base_url() ?>plugins/datepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+
 <link rel="stylesheet" type="text/css" href="<?= base_url() ?>plugins/clockpicker/dist/bootstrap-clockpicker.min.css">
 
 <style>
@@ -130,7 +127,6 @@
                                 </div>
                             </div>
 
-                            <!--                            --><?php //echo var_dump($category);?>
                             <div class="form-group required col-md-12 col-xs-12">
                                 <div class="col-md-2 col-xs-2" align="right">
                                     <label class="control-label" for="input-category-id">ชื่อประเภท</label>
@@ -547,9 +543,9 @@
         var blog_field = [];
         for (var i = 0; i < div_field_type_number.length; i++) {
 
-            var field_type = $('#field-type-' + div_field_type_number[i] + ' select[name="field_type"').val();
-            var field_name = $('#field-type-' + div_field_type_number[i] + ' input[name="field_name"').val();
-            var field_id = $('#field-type-' + div_field_type_number[i] + ' input[name="field_id"').val();
+            var field_type = $('#field-type-' + div_field_type_number[i] + ' select[name="field_type"]').val();
+            var field_name = $('#field-type-' + div_field_type_number[i] + ' input[name="field_name"]').val();
+            var field_id = $('#field-type-' + div_field_type_number[i] + ' input[name="field_id"]').val();
 
             var data_item = {
                 blog_id: blog_id
@@ -560,8 +556,6 @@
             blog_field.push(data_item);
         }
 
-//        console.log(blog_field);
-//
         $.ajax({
             url: '<?php echo base_url(); ?>blog/add_blog_field',
             type: 'post',
@@ -760,66 +754,6 @@
         }
     }
 
-    var interval;
-
-    function applyAjaxFileUpload(element) {
-        $(element).AjaxFileUpload({
-            action: '<?php echo base_url(); ?>blog/upload_file',
-            onChange: function (filename) {
-                // Create a span element to notify the blog of an upload in progress
-                var $span = $("<span />")
-                    .attr("class", $(this).attr("id"))
-                    .text("Uploading")
-                    .insertAfter($(this));
-
-                $(this).remove();
-
-                interval = window.setInterval(function () {
-                    var text = $span.text();
-                    if (text.length < 13) {
-                        $span.text(text + ".");
-                    } else {
-                        $span.text("Uploading");
-                    }
-                }, 200);
-            },
-            onSubmit: function (filename) {
-
-                return true;
-            },
-            onComplete: function (filename, response) {
-                window.clearInterval(interval);
-                var $span = $("span." + $(this).attr("id")).text(filename + " "),
-                    $fileInput = $("<input />")
-                        .attr({
-                            type: "file",
-                            name: $(this).attr("name"),
-                            id: $(this).attr("id")
-                        });
-
-                if (typeof(response.error) === "string") {
-                    $span.replaceWith($fileInput);
-
-                    applyAjaxFileUpload($fileInput);
-
-                    alert(response.error);
-
-                    return;
-                }
-
-                $("<a />")
-                    .attr("href", "#")
-                    .text("x")
-                    .bind("click", function (e) {
-                        $span.replaceWith($fileInput);
-
-                        applyAjaxFileUpload($fileInput);
-                    })
-                    .appendTo($span);
-            }
-        });
-    }
-
     function uploadImage(blog_id) {
 
         var all_blog = $('.div-field-type');
@@ -830,7 +764,6 @@
             var category_field_id = $('#field-type-' + i + ' .blog-value')[0].id;
 
             if(field_type == 'file'){
-//                var blog_value = jQuery('#'+category_field_id)[0].files[0].name
 
                 var data = new FormData();
                 jQuery.each(jQuery('#'+category_field_id)[0].files, function (i, file) {
@@ -848,7 +781,7 @@
                     processData: false,
                     type: 'POST',
                     success: function (data) {
-                        // alert(data);
+                       console.log(data);
                     }
                 });
             }
