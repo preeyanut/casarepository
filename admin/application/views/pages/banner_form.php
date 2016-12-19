@@ -57,7 +57,7 @@
                                 <div class="col-md-10 col-xs-10">
                                     <div class="">
                                         <a href="" id="a-test" data-toggle="image" class="img-thumbnail">
-                                            <img id="img-banner" style="max-width: 500px;" src="http://localhost/casarepository/admin/assets\images\No-image-found.jpg" alt="" title="" data-placeholder="รูปสินค้า">
+                                            <img id="img-banner" style="max-width: 500px;" src="<?php echo $banner_image;?>" alt="" title="" data-placeholder="รูปสินค้า">
                                         </a>
 
                                         <input type="file" name="banner" class="img-input" value="0" id="input-image"></div>
@@ -162,34 +162,29 @@
 <script type="application/javascript">
 
     init_event({
-        fn: [readyLoad],
-        disEvent: ["click,#button-save", "focusout,#minimum", "focusout,#reward", "focusout,#maximum", "focusout,#commission"
-            , "focusout,#tbody-setting-default input", "focusout,#input-user-credit", "change,.my_percent_user"
-            , "change,.sub_percent_user", "focusout,.my_percent_user", "focusout.sub_percent_user"]
+        document_on: [
+            , 'click,#button-save'
+            , 'change,.img-input'
+        ]
     });
 
-    function readyLoad() {
-        $('#input-user-credit').maskMoney();
-        $('.input-number').maskMoney();
-    }
-
-    function formatNumber(number) {
-        //var int_number = Number(number);
-        var p = number.toFixed(2).split(".");
-        var minus = p[0].substring(0, 1);
-        if (minus == "-") {
-            p[0] = p[0].substring(1, p[0].length);
-
-            return "-" + p[0].split("").reverse().reduce(function (acc, number, i, orig) {
-                    return number + (i && !(i % 3) ? "," : "") + acc;
-                }, "") + "." + p[1];
-        }
-        else {
-            return "" + p[0].split("").reverse().reduce(function (acc, number, i, orig) {
-                    return number + (i && !(i % 3) ? "," : "") + acc;
-                }, "") + "." + p[1];
-        }
-    }
+//    function formatNumber(number) {
+//        //var int_number = Number(number);
+//        var p = number.toFixed(2).split(".");
+//        var minus = p[0].substring(0, 1);
+//        if (minus == "-") {
+//            p[0] = p[0].substring(1, p[0].length);
+//
+//            return "-" + p[0].split("").reverse().reduce(function (acc, number, i, orig) {
+//                    return number + (i && !(i % 3) ? "," : "") + acc;
+//                }, "") + "." + p[1];
+//        }
+//        else {
+//            return "" + p[0].split("").reverse().reduce(function (acc, number, i, orig) {
+//                    return number + (i && !(i % 3) ? "," : "") + acc;
+//                }, "") + "." + p[1];
+//        }
+//    }
 
     $(document).on("click", "#button-save", function () {
         $.ajax({
@@ -241,11 +236,24 @@
         });
     });
 
+    $(document).on("change", ".img-input", function () {
+        show_thumbnail(this);
+    });
+
     function add_banner() {
+        var banner_name = $('input[name="banner_name"]').val();
+        var banner_url = $('input[name="banner_url"]').val();
+        var banner_status = $('select[name="banner_status"]').val();
+        var priority_level = $('input[name="priority_level"]').val();
+
+        var data_banner ={banner_name:banner_name,banner_url:banner_url,priority_level:priority_level,banner_status:banner_status}
+        var data = {data_banner:data_banner}
+
+        console.log(data);
         $.ajax({
             url: '<?php echo base_url(); ?>banner/add_banner',
             type: 'post',
-            data: $('input , select'),
+            data: data,
             dataType: 'json',
             crossDomain: true,
             beforeSend: function () {
@@ -255,8 +263,15 @@
                 $('#button-save').button('reset');
             },
             success: function (json) {
+//                console.log(json);
+                if (json.Result) {
+                    uploadImage(json.Data.banner_id);
+                    alert("เพิ่มข้อมูลสำเร็จ");
 
-                alert("เพิ่มข้อมูลเสร็จสิ้น");
+                    $('#banner_id').val(json.Data.banner_id);
+                } else {
+                    alert("เพิ่มข้อมูลผิดพลาด");
+                }
             },
             error: function (xhr, ajaxOptions, thrownError) {
                 alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
@@ -287,14 +302,6 @@
         });
     }
 
-</script>
-
-<script>
-
-    $(document).on("change", ".img-input", function () {
-        show_thumbnail(this);
-    });
-
     function show_thumbnail(input) {
 
         if (input.files && input.files[0]) {
@@ -306,6 +313,29 @@
 
             reader.readAsDataURL(input.files[0]);
         }
+    }
+
+    function uploadImage(banner_id) {
+        var data = new FormData();
+        jQuery.each(jQuery('#input-image')[0].files, function (i, file) {
+            data.append('image', file);
+        });
+
+        data.append('banner_id', banner_id);;
+
+
+        console.log(data);
+        jQuery.ajax({
+            url: '<?php echo base_url(); ?>banner/upload_file',
+            data: data,
+            cache: false,
+            contentType: false,
+            processData: false,
+            type: 'POST',
+            success: function (data) {
+                console.log(data);
+            }
+        });
     }
 
 </script>

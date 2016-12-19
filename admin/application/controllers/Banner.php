@@ -8,9 +8,9 @@ class Banner extends CI_Controller
         $this->load->library('auth_check');      //ฟังค์ชั่นการใช้สิทธิ์การเข้าถึง
         $this->load->model("Banner_model");
 
-//        if (!$this->auth_check->hasPermission('access', 'banner')) {
-//            redirect('permission');
-//        }
+        if (!$this->auth_check->hasPermission('access', 'banner')) {
+            redirect('permission');
+        }
 
     }
 
@@ -36,6 +36,7 @@ class Banner extends CI_Controller
                     $data['banner_status'] = $info['banner_status'];
                     $data['banner_image'] = $info['banner_image'];
                     $data['banner_url'] = $info['banner_url'];
+                    $data['banner_image'] = $info['banner_image'];
                 }
             }
 
@@ -56,6 +57,8 @@ class Banner extends CI_Controller
             $data["groups"] = $this->Banner_model->get_all();
 
         }
+
+//        var_dump($data);
         $data["page"] = 'pages/banner_form';
 
         $this->load->view('template', $data);
@@ -63,31 +66,9 @@ class Banner extends CI_Controller
 
     public function add_banner()
     {
-//        var_dump($this->input->post());
-//        if (isset($_FILES['test']['name']) && !empty($_FILES['test']['name'])) {
-//
-//            $config['upload_path'] = './assets/images/banner/';
-//            $config['max_size'] = '2048';
-//            $config['max_width'] = '1600';
-//            $config['max_height'] = '1000';
-//            $config['allowed_types'] = "jpg|png|gif|jpeg";
-//
-//            /* Load the upload library */
-//            $this->load->library('upload', $config);
-//            // setting file's mysterious name
-//
-//            if ($this->upload->do_upload("test")) {
-//                $filedata = $this->upload->data();
-//                $filename = date('Ymd-His') . $filedata['file_ext'];
-//                rename($filedata['full_path'], $filedata['file_path'] . $filename);
-//            }
-//        } else {
-//            $filename = '123456';
-//            // echo "ไม่มีรูปประกอบ";
-//        }
 
         if ($this->input->post()) {
-            $data["banner_id"] = $this->Banner_model->add_banner($this->input->post());
+            $data["banner_id"] = $this->Banner_model->add_banner($this->input->post('data_banner'));
         }
 
         $jsonResult['Result'] = true;
@@ -119,10 +100,65 @@ class Banner extends CI_Controller
         $this->get_all();
     }
 
+    public function upload_file()
+    {
+        $status = "";
+        $msg = "";
+        $file_element_name = 'image';
+
+        if (empty($_POST['banner_id'])) {
+            $status = "error";
+            $msg = "Please enter banner_id";
+
+            echo json_encode(array('status' => $status, 'msg' => $msg));
+            return;
+        }
+
+        if ($status != "error") {
+            $image_directory = 'assets\\img\\banner\\' . $_POST['banner_id'] ;
+            $image_path ='assets\\img\\banner\\' . $_POST['banner_id'] .'\\'.$_FILES['image']['name'];
+
+            $config['upload_path'] = $image_directory;
+            $config['allowed_types'] = 'gif|jpg|png';
+            $config['max_size'] = 1024 * 8;
+//            $config['encrypt_name'] = TRUE;
+
+            $this->load->library('upload', $config);
+
+            if (!file_exists($image_path)) {
+                if(!file_exists($image_directory)){
+                    mkdir($image_directory, 0777, true);
+                }
+            } else {
+                unlink($image_path);
+            }
+
+            if (!$this->upload->do_upload($file_element_name)) {
+
+                $status = 'error';
+                $msg = $this->upload->display_errors('', '');
+            } else {
+
+                $data = $this->upload->data();
+                $file_id = $this->Banner_model->updateImage($_POST['banner_id'],$image_path);
+
+                if ($file_id) {
+                    $status = "success";
+                    $msg = "File successfully uploaded";
+                } else {
+                    unlink($data['full_path']);
+                    $status = "error";
+                    $msg = "Something went wrong when saving the file, please try again.";
+                }
+            }
+            @unlink($_FILES[$file_element_name]);
+        }
+        echo json_encode(array('status' => $status, 'msg' => $msg));
+    }
+
     public function validate_form()
     {
 
-//        var_dump(($this->input->post('img')));
         if ((strlen($this->input->post('banner_name')) < 3) || (strlen($this->input->post('banner_name')) > 255)) {
             $this->error['banner_name'] = "กรุณากรอกชื่อแบนเนอร์";
         }

@@ -30,7 +30,6 @@ class Banner_model extends CI_Model
             'update_date' => date("Y-m-d H:i:s"),
             'update_by' => $this->session->userdata("user_id"),
 
-            'banner_image' => $data['banner'],
             'banner_url' => $data['banner_url']
 
         );
@@ -52,7 +51,6 @@ class Banner_model extends CI_Model
             . ", update_date = '" .  date("Y-m-d H:i:s") . "'"
             . ", update_by = '" . $this->session->userdata("user_id") . "'"
 
-            . ", banner_image = '" .  $data['banner_image'] . "'"
             . ", banner_url = '" . (int)$data['banner_url'] . "'"
 
             . " WHERE  banner_id = '" . (int)$data['banner_id'] . "'");
@@ -111,6 +109,16 @@ class Banner_model extends CI_Model
         );
 
         return $query->row_array('total');
+    }
+
+    public function updateImage($banner_id, $path) {
+        $data = array(
+            'banner_image' => $path
+        );
+        $this->db->where(array('banner_id'=>$banner_id));
+        $this->db->update('home_banner', $data);
+
+        return true;
     }
 
 }
