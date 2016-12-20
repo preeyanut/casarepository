@@ -78,6 +78,16 @@
         .text-center {
             text-align: center;
         }
+
+        .link-page{
+            height: 100%;
+            line-height: 2;
+            font-size: 20px;
+        }
+        .link-page a{
+            color: #000;
+        }
+
     </style>
 
     <div id='header-top' class="header-top">
@@ -112,12 +122,23 @@
 
         <div class="container">
 
-            <div class="col-md-2 padding-0">navigation1</div>
-            <div class="col-md-2 padding-0">navigation2</div>
-            <div class="col-md-2 padding-0">navigation3</div>
-            <div class="col-md-2 padding-0">navigation4</div>
-            <div class="col-md-2 padding-0">navigation5</div>
-            <div class="col-md-2 padding-0">navigation6</div>
+            <div class="col-md-2 padding-0 link-page">
+                <a href="<?= base_url(); ?>" >
+                   หน้าหลัก
+                </a>
+            </div>
+
+            <?php
+            foreach($navigation as $item){
+                ?>
+                <div class="col-md-2 padding-0 link-page">
+                    <a href="<?= base_url(); ?>blog?blog_id=<?= $item['blog_id']?>" >
+                        <?= $item['blog_title']?>
+                    </a>
+                </div>
+            <?php
+            }
+            ?>
 
         </div>
     </div>

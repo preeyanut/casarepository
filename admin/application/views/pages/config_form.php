@@ -91,12 +91,12 @@
                                 <div class="col-md-9 col-xs-9">
                                     <div class="">
                                         <a href="" id="a-test" data-toggle="image" class="img-thumbnail">
-                                            <img id="img-config-frontend" style="max-width: 500px;"
+                                            <img id="img-config-frontend-favicon" style="max-width: 500px;"
                                                  src="http://localhost/casarepository/admin/assets\images\No-image-found.jpg"
                                                  alt="" title="" data-placeholder="รูปสินค้า">
                                         </a>
 
-                                        <input type="file" name="config-frontend" class="img-input" value="0" id="input-image"/>
+                                        <input type="file" name="config-frontend-favicon" class="img-favicon-input" value="0" id="input-favicon-image"/>
                                     </div>
 
                                     <div class="text-danger"></div>
@@ -115,12 +115,12 @@
                                 <div class="col-md-9 col-xs-9">
                                     <div class="">
                                         <a href="" id="a-test" data-toggle="image" class="img-thumbnail">
-                                            <img id="img-config-frontend" style="max-width: 500px;"
+                                            <img id="img-config-frontend-logo" style="max-width: 500px;"
                                                  src="http://localhost/casarepository/admin/assets\images\No-image-found.jpg"
                                                  alt="" title="" data-placeholder="รูปสินค้า">
                                         </a>
 
-                                        <input type="file" name="config-frontend" class="img-input" value="0" id="input-image"/>
+                                        <input type="file" name="config-frontend-logo" class="img-logo-input" value="0" id="input-logo-image"/>
                                     </div>
 
                                     <div class="text-danger"></div>
@@ -294,8 +294,8 @@
                             <div class="form-group col-md-10" style="text-align: center;">
                                 <br>
                                 <div class="">
-                                    <button type="button" id="button-save" class="btn btn-primary"
-                                            name="button-save"> บันทึก
+                                    <button type="button" id="button-save-frontend" class="btn btn-primary"
+                                            name="button-save-frontend"> บันทึก
                                     </button>
                                     <button type="reset" id="btn-reset" class="btn btn-default">ยกเลิก</button>
                                 </div>
@@ -503,10 +503,12 @@
 
     init_event({
         document_on: [
-            'click,#button-save'
+            'click,#button-save-frontend'
             , 'click,#button-save-contact'
             , 'click,.button-edit'
             , 'change,.img-input'
+            , 'change,.img-favicon-input'
+            , 'change,.img-logo-input'
 
         ]
     });
@@ -520,14 +522,25 @@
             dataType: 'json',
             crossDomain: true,
             beforeSend: function () {
-                $('#button-save').button('loading');
+                $('#button-save-frontend').button('loading');
             },
             complete: function () {
-                $('#button-save').button('reset');
+                $('#button-save-frontend').button('reset');
             },
             success: function (json) {
 
-                alert("เพิ่มข้อมูลเสร็จสิ้น");
+                console.log(json);
+                if (json.Result) {
+
+                    upload_favicon(json.Data.config_id);
+
+                    upload_logo(json.Data.config_id);
+
+                    alert("เพิ่มข้อมูลเสร็จสิ้น");
+                } else {
+                    alert("เพิ่มข้อมูลผิดพลาด");
+                }
+
 
             },
             error: function (xhr, ajaxOptions, thrownError) {
@@ -559,7 +572,7 @@
 
                 console.log(json);
                 if (json.Result) {
-                    uploadImage(json.Data.config_id);
+                    upload_Contact_Image(json.Data.config_id);
                     alert("เพิ่มข้อมูลเสร็จสิ้น");
                 } else {
                     alert("เพิ่มข้อมูลผิดพลาด");
@@ -574,7 +587,7 @@
 
 
     <!--===================================== add fronted setting=============================================-->
-    $(document).on("click", "#button-save", function () {
+    $(document).on("click", "#button-save-frontend", function () {
         $.ajax({
             url: '<?php echo base_url(); ?>config/validate_frontend_form',
             type: 'post',
@@ -582,10 +595,10 @@
             dataType: 'json',
             crossDomain: true,
             beforeSend: function () {
-                $('#button-save').button('loading');
+                $('#button-save-frontend').button('loading');
             },
             complete: function () {
-                $('#button-save').button('reset');
+                $('#button-save-frontend').button('reset');
             },
             success: function (json) {
                 //alert("OK");
@@ -612,7 +625,7 @@
                         console.log("0000");
 //                        edit_config();
                     } else {
-                        add_config();
+                        add_frontend_setting();
                     }
 
                     $('#button-refresh').trigger('click');
@@ -713,6 +726,15 @@
         show_thumbnail(this);
     });
 
+    $(document).on("change", ".img-favicon-input", function () {
+        show_thumbnail(this);
+    });
+
+    $(document).on("change", ".img-logo-input", function () {
+        show_thumbnail(this);
+    });
+
+
     function show_thumbnail(input) {
 
         if (input.files && input.files[0]) {
@@ -726,7 +748,7 @@
         }
     }
 
-    function uploadImage(config_id) {
+    function upload_Contact_Image(config_id) {
 
 
         var data = new FormData();
@@ -738,7 +760,7 @@
 
         console.log(data);
         jQuery.ajax({
-            url: '<?php echo base_url(); ?>config/upload_file',
+            url: '<?php echo base_url(); ?>config/upload_Contact_Image',
             data: data,
             cache: false,
             contentType: false,
@@ -748,7 +770,53 @@
                 console.log(data);
             }
         });
+    }
+
+    function upload_favicon(config_id) {
 
 
+        var data = new FormData();
+        jQuery.each(jQuery('#input-favicon-image')[0].files, function (i, file) {
+            data.append('image', file);
+        });
+
+        data.append('config_id', config_id);
+
+        console.log(data);
+        jQuery.ajax({
+            url: '<?php echo base_url(); ?>config/upload_favicon',
+            data: data,
+            cache: false,
+            contentType: false,
+            processData: false,
+            type: 'POST',
+            success: function (data) {
+                console.log(data);
+            }
+        });
+    }
+
+    function upload_logo(config_id) {
+
+
+        var data = new FormData();
+        jQuery.each(jQuery('#input-logo-image')[0].files, function (i, file) {
+            data.append('image', file);
+        });
+
+        data.append('config_id', config_id);
+
+        console.log(data);
+        jQuery.ajax({
+            url: '<?php echo base_url(); ?>config/upload_logo',
+            data: data,
+            cache: false,
+            contentType: false,
+            processData: false,
+            type: 'POST',
+            success: function (data) {
+                console.log(data);
+            }
+        });
     }
 </script>

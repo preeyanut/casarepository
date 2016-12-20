@@ -252,7 +252,7 @@
                                                     break;
                                                 case 'image' :
                                                     $html_field = '<a href="" id="a-' . $item['field_id'] . '" data-toggle="image" class="img-thumbnail"><img id="img-' . $item['field_id'] . '" style="max-height: 500px;" '
-                                                        . ' src="'.$item['blog_value'].'" alt="" title="" data-placeholder="รูปสินค้า"/></a>'
+                                                        . ' src="'.base_url().$item['blog_value'].'" alt="" title="" data-placeholder="รูปสินค้า"/></a>'
                                                         . ' <input type="file" name="' . $item['field_id'] . '" class="img-input btn btn-warning blog-value" id="' . $item['category_field_id'] . '"/>';
                                                     break;
                                             } ?>
@@ -379,7 +379,7 @@
                 var blog_value = encodeURI(CKEDITOR.instances[category_field_id].getData());
             }else if(field_type == 'file'){
                 if(jQuery('#'+category_field_id)[0].files.length){
-                    var blog_value = 'assets/img/blog/'+blog_id+'/'+category_field_id+''+jQuery('#'+category_field_id)[0].files[0].name;
+                    var blog_value = 'assets/img/blog/'+blog_id+'/'+category_field_id+'/'+jQuery('#'+category_field_id)[0].files[0].name;
                 }else{
                     var blog_value="";
                 }

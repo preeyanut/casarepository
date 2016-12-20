@@ -49,7 +49,9 @@ class Config extends CI_Controller
                     $data['login_link'] = $info['login_link'];
                     $data['email'] = $info['email'];
                     $data['config_content'] = $info['config_content'];
-                    //$data['config_image'] = $info['config_image'];
+                    $data['contact_image'] = $info['contact_image'];
+                    $data['frontend_image'] = $info['frontend_image'];
+                    $data['logo_image'] = $info['logo_image'];
                     $data['line_id'] = $info['line_id'];
                     $data['telephone'] = $info['telephone'];
                     $data['facebook'] = $info['facebook'];
@@ -86,7 +88,9 @@ class Config extends CI_Controller
             $data['login_link'] = "";
             $data['email'] = "";
             $data['config_content'] = "";
-            $data['config_image'] = "";
+            $data['contact_image'] = "";
+            $data['frontend_image'] = "";
+            $data['logo_image'] = "";
             $data['line_id'] = "";
             $data['telephone'] = "";
             $data['facebook'] = "";
@@ -252,7 +256,7 @@ class Config extends CI_Controller
         echo json_encode($jsonResult);
     }
 
-    public function upload_file()
+    public function upload_Contact_Image()
     {
         $status = "";
         $msg = "";
@@ -292,7 +296,119 @@ class Config extends CI_Controller
             } else {
 
                 $data = $this->upload->data();
-                $file_id = $this->Config_model->updateImage($_POST['config_id'],$image_path);
+                $file_id = $this->Config_model->update_contact_Image($_POST['config_id'],$image_path);
+
+                if ($file_id) {
+                    $status = "success";
+                    $msg = "File successfully uploaded";
+                } else {
+                    unlink($data['full_path']);
+                    $status = "error";
+                    $msg = "Something went wrong when saving the file, please try again.";
+                }
+            }
+            @unlink($_FILES[$file_element_name]);
+        }
+        echo json_encode(array('status' => $status, 'msg' => $msg));
+    }
+
+    public function upload_favicon()
+    {
+        $status = "";
+        $msg = "";
+        $file_element_name = 'image';
+
+        if (empty($_POST['config_id'])) {
+            $status = "error";
+            $msg = "Please enter config_id";
+
+            echo json_encode(array('status' => $status, 'msg' => $msg));
+            return;
+        }
+
+        if ($status != "error") {
+            $image_directory = 'assets\\img\\config\\' . $_POST['config_id'];
+            $image_path ='assets\\img\\config\\' . $_POST['config_id'] . '\\' . $_FILES['image']['name'];
+
+            $config['upload_path'] = $image_directory;
+            $config['allowed_types'] = 'gif|jpg|png';
+            $config['max_size'] = 1024 * 8;
+//            $config['encrypt_name'] = TRUE;
+
+            $this->load->library('upload', $config);
+
+            if (!file_exists($image_path)) {
+                if(!file_exists($image_directory)){
+                    mkdir($image_directory, 0777, true);
+                }
+            } else {
+                unlink($image_path);
+            }
+
+            if (!$this->upload->do_upload($file_element_name)) {
+
+                $status = 'error';
+                $msg = $this->upload->display_errors('', '');
+            } else {
+
+                $data = $this->upload->data();
+                $file_id = $this->Config_model->update_favicon($_POST['config_id'],$image_path);
+
+                if ($file_id) {
+                    $status = "success";
+                    $msg = "File successfully uploaded";
+                } else {
+                    unlink($data['full_path']);
+                    $status = "error";
+                    $msg = "Something went wrong when saving the file, please try again.";
+                }
+            }
+            @unlink($_FILES[$file_element_name]);
+        }
+        echo json_encode(array('status' => $status, 'msg' => $msg));
+    }
+
+    public function upload_logo()
+    {
+        $status = "";
+        $msg = "";
+        $file_element_name = 'image';
+
+        if (empty($_POST['config_id'])) {
+            $status = "error";
+            $msg = "Please enter config_id";
+
+            echo json_encode(array('status' => $status, 'msg' => $msg));
+            return;
+        }
+
+        if ($status != "error") {
+            $image_directory = 'assets\\img\\config\\' . $_POST['config_id'];
+            $image_path ='assets\\img\\config\\' . $_POST['config_id'] . '\\' . $_FILES['image']['name'];
+
+            $config['upload_path'] = $image_directory;
+            $config['allowed_types'] = 'gif|jpg|png';
+            $config['max_size'] = 1024 * 8;
+//            $config['encrypt_name'] = TRUE;
+
+            $this->load->library('upload', $config);
+
+            if (!file_exists($image_path)) {
+                if(!file_exists($image_directory)){
+                    mkdir($image_directory, 0777, true);
+                }
+            } else {
+                unlink($image_path);
+            }
+
+            if (!$this->upload->do_upload($file_element_name)) {
+
+                $status = 'error';
+                $msg = $this->upload->display_errors('', '');
+            } else {
+
+                $data = $this->upload->data();
+                $file_id = $this->Config_model->update_logo($_POST['config_id'],$image_path);
 
                 if ($file_id) {
                     $status = "success";
