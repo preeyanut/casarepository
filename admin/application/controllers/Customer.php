@@ -105,7 +105,7 @@ class Customer extends CI_Controller
         $data["list"] = $all_customer;
 
         $data["page"] = 'pages/customer';
-        $this->load->view('pages',$data);
+        $this->load->view('template',$data);
     }
 
     public function validate_form()

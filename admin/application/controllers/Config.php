@@ -11,7 +11,6 @@ class Config extends CI_Controller
         $this->load->model('User_model');
 
 
-
         $this->load->library('auth_check');
 
         if (!$this->auth_check->hasPermission('access', 'user')) {
@@ -27,95 +26,51 @@ class Config extends CI_Controller
 
     public function get_form()
     {
+//        if ($this->input->get('config_id')) {
 
-        //$data_user = $this->User_model->get_user_all();
+//        $data_info = $this->Config_model->get_data($this->input->get('config_id'));
+        $data_info = $this->Config_model->get_data(1);
+
+        $data_info_contact = $this->Config_model->get_data_contact(2);
+
         $data_config_group = $this->Config_group_model->get_all();
 
-        if ($this->input->get('config_id')) {
+        if (!empty($data_info)) {
 
-            $data_info = $this->Config_model->get_data($this->input->get('config_id'));
-
-
-            //var_dump($data_info, $data_user);
-            if (!empty($data_info)) {
-
-                $data['config_id'] = $this->input->get('config_id');
-
-                foreach ($data_info as $info) {
-                    $data['config_title'] = $info['config_title'];
-                    $data['config_group_id'] = $info['config_group_id'];
-                    $data['meta_keyword'] = $info['meta_keyword'];
-                    $data['meta_description'] = $info['meta_description'];
-                    $data['login_link'] = $info['login_link'];
-                    $data['email'] = $info['email'];
-                    $data['config_content'] = $info['config_content'];
-                    $data['contact_image'] = $info['contact_image'];
-                    $data['frontend_image'] = $info['frontend_image'];
-                    $data['logo_image'] = $info['logo_image'];
-                    $data['line_id'] = $info['line_id'];
-                    $data['telephone'] = $info['telephone'];
-                    $data['facebook'] = $info['facebook'];
-                    $data['googleplus'] = $info['googleplus'];
-                    $data['instagram'] = $info['instagram'];
-                    $data['youtube'] = $info['youtube'];
-                    $data['twitter'] = $info['twitter'];
+//            ------------ Front End
+            $data['config_id'] = $data_info['config_id'];
+            $data['config_title'] = $data_info['config_title'];
+            $data['config_group_id'] = $data_info['config_group_id'];
+            $data['meta_keyword'] = $data_info['meta_keyword'];
+            $data['meta_description'] = $data_info['meta_description'];
+            $data['login_link'] = $data_info['login_link'];
+            $data['frontend_image'] = $data_info['frontend_image'];
+            $data['logo_image'] = $data_info['logo_image'];
+            $data['line_id'] = $data_info['line_id'];
+            $data['telephone'] = $data_info['telephone'];
+            $data['facebook'] = $data_info['facebook'];
+            $data['googleplus'] = $data_info['googleplus'];
+            $data['instagram'] = $data_info['instagram'];
+            $data['youtube'] = $data_info['youtube'];
+            $data['twitter'] = $data_info['twitter'];
 
 
-                    $data['create_date'] = $info['create_date'];
-                    $data['create_by'] = $info['create_by'];
 
-                }
-                //for ($i = 0; $i < count($data_user); $i++) {
-                    //$data['user_id'][] = $data_user[$i]['user_id'];
-                    //$data['username'][] = $data_user[$i]['username'];
-                //}
 
-                for ($i = 0; $i < count($data_config_group); $i++) {
-                    $data['config_group_id'][] = $data_config_group[$i]['config_group_id'];
-                    $data['config_group_name'][] = $data_config_group[$i]['config_group_name'];
-                }
-            }
 
-            $data["action"] = base_url() . "config/edit_config";
+            $data['create_date'] = $data_info['create_date'];
+            $data['create_by'] = $data_info['create_by'];
 
-        } else {
-
-            $data['config_id'] = "";
-            $data['config_group_id'] = "";
-            $data['config_title'] = "";
-            $data['meta_keyword'] = "";
-            $data['meta_description'] = "";
-            $data['login_link'] = "";
-            $data['email'] = "";
-            $data['config_content'] = "";
-            $data['contact_image'] = "";
-            $data['frontend_image'] = "";
-            $data['logo_image'] = "";
-            $data['line_id'] = "";
-            $data['telephone'] = "";
-            $data['facebook'] = "";
-            $data['googleplus'] = "";
-            $data['instagram'] = "";
-            $data['youtube'] = "";
-            $data['twitter'] = "";
-            $data['create_by'] = $this->input->get('user_id');
-
-            //for ($i = 0; $i < count($data_user); $i++) {
-                //$data['user_id'][] = $data_user[$i]['user_id'];
-                //$data['username'][] = $data_user[$i]['username'];
-            //}
-
-            for ($i = 0; $i < count($data_config_group); $i++) {
-                $data['config_group_id'][] = $data_config_group[$i]['config_group_id'];
-                $data['config_group_name'][] = $data_config_group[$i]['config_group_name'];
-            }
-
+            $data['config_group'] = $data_config_group;
             $data["action"] = base_url() . "config/add_frontend_setting";
-
-            //$data["list"] = $this->Config_group_model->get_all();
-
         }
-        //$data["list"] = $this->Config_group_model->get_all();
+        $data['config_content'] = $data_info_contact['config_content'];
+        $data['contact_image'] = $data_info_contact['contact_image'];
+        $data['email'] = $data_info_contact['email'];
+
+        $data["action"] = base_url() . "config/add_frontend_setting";
+//        }
+
         $data["page"] = 'pages/config_form';
 
         $this->load->view('template', $data);
@@ -124,11 +79,15 @@ class Config extends CI_Controller
 
     public function add_frontend_setting()
     {
+//        echo var_dump($this->input->post());
+        $result=false;
+
         if ($this->input->post()) {
-            $data["config_id"] = $this->Config_model->add_frontend_setting($this->input->post());
+            $result = $this->Config_model->add_frontend_setting($this->input->post());
+            $data['config_id'] = $this->input->post('config_id');
         }
 
-        $jsonResult['Result'] = true;
+        $jsonResult['Result'] = $result;
         //$jsonResult['error'] = "";
         $jsonResult['Data'] = $data;
         echo json_encode($jsonResult);
@@ -145,19 +104,6 @@ class Config extends CI_Controller
         $jsonResult['Data'] = $data;
         echo json_encode($jsonResult);
     }
-
-    //public function edit_config()
-    //{
-        //if ($this->input->post()) {
-            //$data["config_id"] = $this->Config_model->edit_config($this->input->post());
-        //}
-
-        //$jsonResult['Result'] = true;
-        //$jsonResult['error'] = "";
-        //$jsonResult['Data'] = $data;
-        //echo json_encode($jsonResult);
-    //}
-
 
     public function validate_frontend_form()
     {
@@ -217,7 +163,6 @@ class Config extends CI_Controller
         echo json_encode($jsonResult);
     }
 
-
     public function validate_contact_form()
     {
 
@@ -272,7 +217,7 @@ class Config extends CI_Controller
 
         if ($status != "error") {
             $image_directory = 'assets\\img\\config\\' . $_POST['config_id'];
-            $image_path ='assets\\img\\config\\' . $_POST['config_id'] . '\\' . $_FILES['image']['name'];
+            $image_path = 'assets\\img\\config\\' . $_POST['config_id'] . '\\' . $_FILES['image']['name'];
 
             $config['upload_path'] = $image_directory;
             $config['allowed_types'] = 'gif|jpg|png';
@@ -282,7 +227,7 @@ class Config extends CI_Controller
             $this->load->library('upload', $config);
 
             if (!file_exists($image_path)) {
-                if(!file_exists($image_directory)){
+                if (!file_exists($image_directory)) {
                     mkdir($image_directory, 0777, true);
                 }
             } else {
@@ -296,7 +241,7 @@ class Config extends CI_Controller
             } else {
 
                 $data = $this->upload->data();
-                $file_id = $this->Config_model->update_contact_Image($_POST['config_id'],$image_path);
+                $file_id = $this->Config_model->update_contact_Image($_POST['config_id'], $image_path);
 
                 if ($file_id) {
                     $status = "success";
@@ -314,6 +259,9 @@ class Config extends CI_Controller
 
     public function upload_favicon()
     {
+
+
+//        echo var_dump($_FILES['image']);
         $status = "";
         $msg = "";
         $file_element_name = 'image';
@@ -327,8 +275,10 @@ class Config extends CI_Controller
         }
 
         if ($status != "error") {
+
+            echo "-----";
             $image_directory = 'assets\\img\\config\\' . $_POST['config_id'];
-            $image_path ='assets\\img\\config\\' . $_POST['config_id'] . '\\' . $_FILES['image']['name'];
+            $image_path = 'assets\\img\\config\\' . $_POST['config_id'] . '\\' . $_FILES['image']['name'];
 
             $config['upload_path'] = $image_directory;
             $config['allowed_types'] = 'gif|jpg|png';
@@ -338,7 +288,7 @@ class Config extends CI_Controller
             $this->load->library('upload', $config);
 
             if (!file_exists($image_path)) {
-                if(!file_exists($image_directory)){
+                if (!file_exists($image_directory)) {
                     mkdir($image_directory, 0777, true);
                 }
             } else {
@@ -346,13 +296,11 @@ class Config extends CI_Controller
             }
 
             if (!$this->upload->do_upload($file_element_name)) {
-
                 $status = 'error';
                 $msg = $this->upload->display_errors('', '');
             } else {
-
                 $data = $this->upload->data();
-                $file_id = $this->Config_model->update_favicon($_POST['config_id'],$image_path);
+                $file_id = $this->Config_model->update_favicon($_POST['config_id'], $image_path);
 
                 if ($file_id) {
                     $status = "success";
@@ -370,6 +318,7 @@ class Config extends CI_Controller
 
     public function upload_logo()
     {
+//        echo var_dump($_FILES['image']);
         $status = "";
         $msg = "";
         $file_element_name = 'image';
@@ -384,7 +333,7 @@ class Config extends CI_Controller
 
         if ($status != "error") {
             $image_directory = 'assets\\img\\config\\' . $_POST['config_id'];
-            $image_path ='assets\\img\\config\\' . $_POST['config_id'] . '\\' . $_FILES['image']['name'];
+            $image_path = 'assets\\img\\config\\' . $_POST['config_id'] . '\\' . $_FILES['image']['name'];
 
             $config['upload_path'] = $image_directory;
             $config['allowed_types'] = 'gif|jpg|png';
@@ -394,7 +343,7 @@ class Config extends CI_Controller
             $this->load->library('upload', $config);
 
             if (!file_exists($image_path)) {
-                if(!file_exists($image_directory)){
+                if (!file_exists($image_directory)) {
                     mkdir($image_directory, 0777, true);
                 }
             } else {
@@ -408,7 +357,8 @@ class Config extends CI_Controller
             } else {
 
                 $data = $this->upload->data();
-                $file_id = $this->Config_model->update_logo($_POST['config_id'],$image_path);
+//                $image_path= '00';
+                $file_id = $this->Config_model->update_logo($_POST['config_id'], $image_path);
 
                 if ($file_id) {
                     $status = "success";

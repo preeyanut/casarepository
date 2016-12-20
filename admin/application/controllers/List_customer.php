@@ -119,7 +119,7 @@ class List_customer extends CI_Controller {
 		$data["list"] = $all_customer;
 
 		$data["page"] = 'pages/list_customer';
-		$this->load->view('pages',$data);
+		$this->load->view('template',$data);
 	}
 
 	private function get_under_customer($arr_main_customer_id){

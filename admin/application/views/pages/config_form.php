@@ -27,7 +27,7 @@
 
                     <!-- /.box-header -->
                     <!-- form start -->
-                    <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" id="form"
+                    <form action="<?php //echo $action; ?>" method="post" enctype="multipart/form-data" id="form"
                           class=" box-body">
 
                         <input type="hidden" name="config_id" value="<?php echo $config_id; ?>"
@@ -43,12 +43,17 @@
                                     <div class="">
                                         <select name="config_group_id" id="select-config" class="form-control"
                                                 onchange="change_config()">
-                                            <?php for ($i = 0; $i < count($config_group_id); $i++) { ?>
-                                                <option value="<?php echo $config_group_id[$i]; ?>" <?php if ($config_group_id[$i] == $config_group_id) { ?>
+                                            <?php
+
+                                            foreach ($config_group as $item) {
+                                                ?>
+                                                <option value="<?php echo $item['config_group_id']; ?>" <?php if ($item['config_group_id'] == $config_group_id) { ?>
                                                     selected="selected" <?php } ?> >
-                                                    <?php echo $config_group_name[$i]; ?>
+                                                    <?php echo $item['config_group_name']; ?>
                                                 </option>
-                                            <?php } ?>
+                                                <?php
+                                            }
+                                            ?>
                                         </select>
                                     </div>
                                 </div>
@@ -70,7 +75,7 @@
 
                             <div class="form-group required col-md-12 col-xs-12">
                                 <div class="col-md-2 col-xs-2" align="right">
-                                    <label class=" control-label" for="input-type-name">Title</label>
+                                    <label class=" control-label" for="input-config-title">Title</label>
                                 </div>
                                 <div class="col-md-9 col-xs-9">
                                     <div class="">
@@ -92,11 +97,11 @@
                                     <div class="">
                                         <a href="" id="a-test" data-toggle="image" class="img-thumbnail">
                                             <img id="img-config-frontend-favicon" style="max-width: 500px;"
-                                                 src="http://localhost/casarepository/admin/assets\images\No-image-found.jpg"
+                                                 src="<?php echo $frontend_image; ?>"
                                                  alt="" title="" data-placeholder="รูปสินค้า">
                                         </a>
-
-                                        <input type="file" name="config-frontend-favicon" class="img-favicon-input" value="0" id="input-favicon-image"/>
+                                        <input type="file" name="frontend_image" class="img-favicon-input"
+                                               value="0" id="input-favicon-image"/>
                                     </div>
 
                                     <div class="text-danger"></div>
@@ -116,11 +121,12 @@
                                     <div class="">
                                         <a href="" id="a-test" data-toggle="image" class="img-thumbnail">
                                             <img id="img-config-frontend-logo" style="max-width: 500px;"
-                                                 src="http://localhost/casarepository/admin/assets\images\No-image-found.jpg"
+                                                 src="<?php echo $logo_image; ?>"
                                                  alt="" title="" data-placeholder="รูปสินค้า">
                                         </a>
 
-                                        <input type="file" name="config-frontend-logo" class="img-logo-input" value="0" id="input-logo-image"/>
+                                        <input type="file" name="logo_image" class="img-logo-input" value="0"
+                                               id="input-logo-image"/>
                                     </div>
 
                                     <div class="text-danger"></div>
@@ -138,10 +144,10 @@
                                 </div>
                                 <div class="col-md-9 col-xs-9">
                                     <div class="">
-                                                <textarea type="text" name="meta_keyword"
-                                                          value="<?php echo $meta_keyword; ?>"
+                                                <textarea name="meta_keyword"
+                                                          value=""
                                                           placeholder="" id="input-meta-keyword"
-                                                          class="form-control"></textarea>
+                                                          class="form-control"><?php echo $meta_keyword; ?></textarea>
                                     </div>
                                     <div class="text-danger"></div>
                                 </div>
@@ -155,9 +161,9 @@
                                 <div class="col-md-9 col-xs-9">
                                     <div class="">
                                                 <textarea type="text" name="meta_description"
-                                                          value="<?php echo $meta_description; ?>"
+                                                          value=""
                                                           placeholder="" id="input-meta-description"
-                                                          class="form-control"></textarea>
+                                                          class="form-control"><?php echo $meta_description; ?></textarea>
                                     </div>
                                     <div class="text-danger"></div>
                                 </div>
@@ -325,9 +331,9 @@
                                 <div class="col-md-9 col-xs-9">
                                     <div class="">
                                         <textarea name="config_content"
-                                                  value="<?php echo $config_content; ?>"
+                                                  value=""
                                                   placeholder="" id="edittext"
-                                                  class="form-control"></textarea>
+                                                  class="form-control"><?php echo $config_content; ?></textarea>
                                         <script type="text/javascript">
                                             CKEDITOR.replace('edittext');
                                         </script>
@@ -349,7 +355,8 @@
                                                  alt="" title="" data-placeholder="รูปสินค้า">
                                         </a>
 
-                                        <input type="file" name="config_image" class="img-input" value="0" id="input-image"/>
+                                        <input type="file" name="config_image" class="img-input" value="0"
+                                               id="input-image"/>
                                     </div>
 
                                     <div class="text-danger"></div>
@@ -408,7 +415,6 @@
                                 </div>
                             </div>
 
-
                             <div class="form-group required col-md-12 col-xs-12">
                                 <div class="col-md-2 col-xs-2" align="right">
                                     <label class=" control-label"
@@ -457,7 +463,6 @@
                                 </div>
                             </div>
 
-
                             <div class="form-group col-md-10" style="text-align: center;">
                                 <br>
                                 <div class="">
@@ -474,6 +479,20 @@
                 </div>
 
                 <!-- Contact Setting Form-->
+
+                <!--<div class="box box-primary" id="contact-form">
+
+                    <div class="box-body">
+                        <div class="form-group col-md-10" style="text-align: center;">
+                            <br>
+                            <div class="">
+                                <button type="button" id="button-save" class="btn btn-primary" name="button-save"> บันทึก </button>
+                                <button type="reset" id="btn-reset" class="btn btn-default">ยกเลิก</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>-->
+
                 </form>
                 <!--/.col (left) -->
             </div>
@@ -532,6 +551,8 @@
                 console.log(json);
                 if (json.Result) {
 
+                    alert(json.Data.config_id);
+                    console.log(json);
                     upload_favicon(json.Data.config_id);
 
                     upload_logo(json.Data.config_id);
@@ -621,12 +642,8 @@
                 } else {
 
                     console.log("0000");
-                    if ($('input[name="config_id"]').val()) {
-                        console.log("0000");
-//                        edit_config();
-                    } else {
-                        add_frontend_setting();
-                    }
+                    add_frontend_setting();
+
 
                     $('#button-refresh').trigger('click');
                     $('#content > .container-fluid').prepend('<div class="alert alert-success"><i class="fa fa-check-circle"></i> ' + json['success'] + ' <button type="button" class="close" data-dismiss="alert">&times;</button></div>');
@@ -675,12 +692,8 @@
                 } else {
 
                     console.log("0000");
-                    if ($('input[name="config_id"]').val()) {
-                        console.log("0000");
-//                        edit_config();
-                    } else {
-                        add_contact_setting();
-                    }
+                    add_contact_setting();
+
 
                     $('#button-refresh').trigger('click');
                     $('#content > .container-fluid').prepend('<div class="alert alert-success"><i class="fa fa-check-circle"></i> ' + json['success'] + ' <button type="button" class="close" data-dismiss="alert">&times;</button></div>');
@@ -692,7 +705,6 @@
             }
         });
     });
-
 
     <!--========================= dropdown change ====================================-->
 
@@ -717,7 +729,6 @@
             document.getElementById('contact-form').style.display = 'block';
         }
     }
-
 
     <!--==================add image ========================-->
 
@@ -774,7 +785,6 @@
 
     function upload_favicon(config_id) {
 
-
         var data = new FormData();
         jQuery.each(jQuery('#input-favicon-image')[0].files, function (i, file) {
             data.append('image', file);
@@ -791,6 +801,7 @@
             processData: false,
             type: 'POST',
             success: function (data) {
+                console.log('upload_favicon');
                 console.log(data);
             }
         });
@@ -815,6 +826,7 @@
             processData: false,
             type: 'POST',
             success: function (data) {
+                console.log('upload_logo');
                 console.log(data);
             }
         });
