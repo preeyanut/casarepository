@@ -9,6 +9,7 @@ class Category extends CI_Controller
         $this->load->model('Category_model');
         $this->load->model('Category_type_model');
         $this->load->model('User_model');
+        $this->load->model('Blog_model');
 
         $this->load->library('auth_check');
 
@@ -186,10 +187,16 @@ class Category extends CI_Controller
 
     public function delete_category()
     {
-//        var_dump($this->input->post());
 
         if ($this->input->get('category_id')) {
-            $data["category_id"] = $this->Category_model->delete_category($this->input->get('category_id'));
+            $blog_id = $this->Blog_model->get_data($this->input->get('category_id'));
+//            var_dump($blog_id);
+            foreach ($blog_id as $blog_data) {
+//                var_dump($blog_data['blog_id']);
+            $this->Blog_model->delete_blog_value($blog_data['blog_id']);
+            $this->Blog_model->delete_blog($blog_data['blog_id']);
+            $this->Category_model->delete_category($this->input->get('category_id'));
+            }
         }
 
         $this->get_list();
@@ -246,7 +253,7 @@ class Category extends CI_Controller
 //            $this->error['category_icon'] = "กรุณาเลือกไอคอน";
 //        }
 
-        if (empty($this->input->post('category_icon'))){
+        if (empty($this->input->post('category_icon'))) {
             $this->error['category_icon'] = "กรุณาเลือกไอคอน";
         }
 

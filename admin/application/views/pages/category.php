@@ -214,32 +214,41 @@
 
 <script type="application/javascript">
 
+//    init_event({
+//        fn: [readyFn],
+//        controlerPaging: 'category/get_paging',
+//        functionPaging: search_user,
+//        disEvent: ["click,.button-edit,.button-delete"]
+//    });
+
     init_event({
-        fn: [readyFn],
-        controlerPaging: 'category/get_paging',
-        functionPaging: search_user,
-        disEvent: ["click,.button-edit,.button-delete"]
+        document_on: [
+            'keyup,#input-search'
+            , 'change,#filter-number'
+            , 'change,#filter-status'
+            , 'click,.button-edit'
+            , 'click,.button-delete'
+            , 'click,.paging'
+        ], document_ready: [
+            get_paging
+        ]
     });
 
-    function readyFn() {
-        get_paging();
-    }
-
-    function formatNumber(number) {
-        var p = number.toFixed(2).split(".");
-        var minus = p[0].substring(0, 1);
-        if (minus == "-") {
-            p[0] = p[0].substring(1, p[0].length);
-            return "-" + p[0].split("").reverse().reduce(function (acc, number, i, orig) {
-                    return number + (i && !(i % 3) ? "," : "") + acc;
-                }, "") + "." + p[1];
-        }
-        else {
-            return "" + p[0].split("").reverse().reduce(function (acc, number, i, orig) {
-                    return number + (i && !(i % 3) ? "," : "") + acc;
-                }, "") + "." + p[1];
-        }
-    }
+//    function formatNumber(number) {
+//        var p = number.toFixed(2).split(".");
+//        var minus = p[0].substring(0, 1);
+//        if (minus == "-") {
+//            p[0] = p[0].substring(1, p[0].length);
+//            return "-" + p[0].split("").reverse().reduce(function (acc, number, i, orig) {
+//                    return number + (i && !(i % 3) ? "," : "") + acc;
+//                }, "") + "." + p[1];
+//        }
+//        else {
+//            return "" + p[0].split("").reverse().reduce(function (acc, number, i, orig) {
+//                    return number + (i && !(i % 3) ? "," : "") + acc;
+//                }, "") + "." + p[1];
+//        }
+//    }
 
     function reload_category(category_id) {
         $("#tbody").empty();
@@ -474,8 +483,27 @@
     });
 
     $(document).on("click", ".button-delete", function () {
-        var category_id = this.name.replace("button-delete", "");
-        window.open("<?php echo base_url(); ?>category/delete_category?category_id=" + category_id, "_self");
+        if(confirm('คุณต้องการลบข้อมูลใช่หรือไม่')==true)
+        {
+            var category_id = this.name.replace("button-delete", "");
+            window.open("<?php echo base_url(); ?>category/delete_category?category_id=" + category_id, "_self");
+            alert("ลบข้อมูลสำเร็จ");
+        }
+     });
+
+    $(document).on("keyup", "#input-search", function () {
+        search_user();
+        get_paging();
+    });
+
+    $(document).on("change", "#filter-number", function () {
+        search_user();
+        get_paging();
+    });
+
+    $(document).on("change", "#filter-status", function () {
+        search_user();
+        get_paging();
     });
 
 </script>
