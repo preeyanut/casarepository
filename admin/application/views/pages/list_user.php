@@ -45,7 +45,7 @@
                                     <label class=" control-label" for="input-search" style="float: left">สถานะ
                                         : </label>
                                     <div class="col-sm-8">
-                                        <select id="filter-user-status" name="table_user_summay_master_length"
+                                        <select id="filter-status" name="table_user_summay_master_length"
                                                 aria-controls="table_user_summay_master"
                                                 class="form-control input-sm input-xsmall input-inline">
                                             <option value="-1">ทั้งหมด</option>
@@ -133,7 +133,7 @@
                                                     $str_status = "ปิดใช้งาน";
                                                     break;
                                             }
-                                            ?> ">
+                                            ?> "><?php echo $str_status; ?></td>
                                             <td class="text-center"><?php echo $user['create_by_name']; ?></td>
                                             <td class="text-center"><?php echo $user['create_date']; ?></td>
                                             <td class="text-center"><?php echo $user['update_by_name']; ?></td>
@@ -142,6 +142,10 @@
                                             <td class="text-center">
                                                 <button type="button" name="button-edit<?php echo $user['user_id']; ?>"
                                                         id="button-edit" class="btn btn-warning button-edit">แก้ไข
+                                                </button>
+                                                <button type="button"
+                                                        name="button-delete<?php echo $user['user_id']; ?>"
+                                                        id="button-delete" class="btn btn-danger button-delete">ลบ
                                                 </button>
                                             </td>
 
@@ -213,6 +217,7 @@
             ,'change,#filter-number'
             ,'change,#filter-status'
             ,'click,.button-edit'
+            ,'click,.button-delete'
             ,'click,.paging'
         ],document_ready:[
             get_paging
@@ -239,6 +244,33 @@
         window.open("<?php echo base_url(); ?>user/get_form?user_id=" + user_id, "_self");
     });
 
+    $(document).on("click", ".button-delete", function () {
+        var user_id = this.name.replace("button-delete", "");
+        var result = confirm('คุณต้องการลบ blog นี้จริงหรือไม่?');
+        if(result){
+            $.ajax({
+                url: '<?php echo base_url(); ?>user/delete_user',
+                type: 'post',
+                data: "user_id=" + user_id,
+                dataType: 'json',
+                crossDomain: true,
+                beforeSend: function () {
+                },
+                complete: function () {
+                },
+                success: function (json) {
+                    if(json.Result){
+                        search_user();
+                        get_paging();
+                    }
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+                }
+            });
+        }
+    });
+
     $(document).on("click", ".paging", function () {
         var page_number = this.id.replace("page", "");
         $(".paging").css("background-color", "#ffffff");
@@ -262,70 +294,19 @@
         search_user();
     });
 
-    function reload_list_user(user_id) {
-        $("#tbody").empty();
-        $.ajax({
-            url: '<?php echo base_url(); ?>list_user/get_all',
-            type: 'post',
-            data: "user_id=" + user_id,
-            dataType: 'json',
-            crossDomain: true,
-            beforeSend: function () {
-            },
-            complete: function () {
-            },
-            success: function (json) {
-                var data = json.Data;
-                var types = data["list"];
-                $("#tbody").empty();
-                for (var i = 0; i < types.length; i++) {
-                    var type = types[i];
-
-                    var color_status = "";
-                    var str_status = "";
-
-                    switch (list_user.list_user_status) {
-                        case 0:
-                            color_status = "#8a0004";
-                            str_status = "ปิดการใช้งาน";
-                            break;
-                        case 1:
-                            str_status = "เปิดใช้งาน";
-                            break;
-                    }
-
-                    var html = "<tr class='tr_id" + type.user_id + "'  style='cursor: pointer;'>"
-                        + "<td class='text-center'>" + (i + 1) + "</td>"
-                        + "<td class='text-center'>" + type.list_user_name + "</td>"
-                        + "<td class='text-center'>" + type.create_date + "</td>"
-                        + "<td class='text-center'>" + type.create_by_name + "</td>"
-                        + "<td class='text-center'>" + type.update_date + "</td>"
-                        + "<td class='text-center'>" + type.update_by_name + "</td>"
-                        + "<td class='text-center' style='color: " + color_status + "'>"
-                        + str_status + "</td>"
-                        + "</tr>";
-
-                    $("#tbody").append(html);
-                }
-                alert("get  OK");
-            },
-            error: function (xhr, ajaxOptions, thrownError) {
-                alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
-            }
-        });
-    }
-
     function search_user() {
 
         var txtSearch = $("#input-search").val();
         var filterNumber = $("#filter-number").val();
         var filterPage = $("#filter-page").val();
         var filterStatus = $("#filter-status").val();
+        var filterUserGroup = $("#filter-user-group").val();
 
         $.ajax({
-            url: '<?php echo base_url(); ?>list_user/search',
+            url: '<?php echo base_url(); ?>list_user/search_user',
             type: 'post',
-            data: "txtSearch=" + txtSearch + "&filter-number=" + filterNumber + "&filter-page=" + filterPage + "&filter-status=" + filterStatus,
+            data: "txtSearch=" + txtSearch + "&filter-number=" + filterNumber + "&filter-page=" + filterPage
+            + "&filter-status=" + filterStatus+ "&filter-user-group=" + filterUserGroup,
             dataType: 'json',
             crossDomain: true,
             beforeSend: function () {
@@ -334,33 +315,48 @@
             },
             success: function (json) {
                 var data = json.Data;
-                var types = data["list"];
+                var users = data["list"];
                 $("#tbody").empty();
-                for (var i = 0; i < types.length; i++) {
-                    var type = types[i];
+                for (var i = 0; i < users.length; i++) {
+                    var user = users[i];
                     var color_status = "";
                     var str_status = "";
-                    switch (Number(type.list_user_status)) {
+                    switch (Number(user.user_status)) {
                         case 0:
-                            color_status = "#8a0004";
-                            str_status = "ปิดการใช้งาน";
+                            color_status = "#00A65A";
+                            str_status = "ปกติ";
                             break;
                         case 1:
-                            str_status = "เปิดใช้งาน";
+                            color_status = "#DD4B39";
+                            str_status = "ปิดการใช้งาน";
+                            breakถูกระงับ
+                        case 2:
+                            color_status = "#CCCCCC";
+                            str_status = "ปิดใช้งาน";
                             break;
                     }
-                    var html = "<tr class='tr_id" + type.user_id + "'  >"
+                    var html = "<tr class='tr_id" + user.user_id + "'  >"
                         + "<td class='text-center'>" + (i + 1) + "</td>"
-                        + "<td class='text-center'>" + type.list_user_name + "</td>"
-                        + "<td class='text-center'>" + type.create_date + "</td>"
-                        + "<td class='text-center'>" + type.create_by_name + "</td>"
-                        + "<td class='text-center'>" + type.update_date + "</td>"
-                        + "<td class='text-center'>" + type.update_by_name + "</td>"
-                        + "<td class='text-center' style='color: " + color_status + "'>"
-                        + str_status + "</td>"
-                        + " <td class='text-center'><button type='button' name='button-edit" + type.user_id + "' "
-                        + " id='button-edit' class='btn btn-warning button-edit'>แก้ไข</button></td>"
+                        + "<td class='text-center'>" + user.user_code + "</td>"
+                        + "<td class='text-center'>" + user.firstname + " " + user.lastname +  "</td>"
+                        + "<td class='text-center'>" + user.user_telephone + "</td>"
+                        + "<td class='text-center'>" + user.user_email + "</td>"
+                        + "<td class='text-center'>" + user.user_group_name + "</td>"
+                        + "<td class='text-center' style='color:"+color_status+"'>" + str_status + "</td>"
+
+                        + "<td class='text-center'>" + user.create_by_name + "</td>"
+                        + "<td class='text-center'>" + user.create_date + "</td>"
+                        + "<td class='text-center'>" + user.update_by_name + "</td>"
+                        + "<td class='text-center'>" + user.update_date + "</td>"
+
+
+                        + " <td class='text-center'><button type='button' name='button-edit" + user.user_id + "' "
+                        + " id='button-edit' class='btn btn-warning button-edit'>แก้ไข</button>"
+                        + " <button type='button' name='button-delete" + user.user_id + "' "
+                        + " id='button-delete' class='btn btn-danger button-delete'>ลบ</button></td>"
+
                         + "</tr>";
+
                     $("#tbody").append(html);
                 }
 //                label_format_number();
@@ -377,11 +373,6 @@
         var filterPage = $("#filter-page").val();
         var filterStatus = $("#filter-status").val();
 
-//        filterPage=1;
-//        console.log(txtSearch);
-//        console.log(filterNumber);
-//        console.log(filterPage);
-//        console.log(filterStatus);
         $.ajax({
             url: '<?php echo base_url(); ?>list_user/get_paging',
             type: 'post',

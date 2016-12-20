@@ -136,34 +136,6 @@ class User extends CI_Controller
         echo json_encode($jsonResult);
     }
 
-    public function add_default_setting()
-    {
-
-        if ($this->input->post()) {
-            $data["result"] = $this->User_model->add_default_setting(json_decode($this->input->post('default_setting')), $this->input->post("user_id"));
-        }
-
-        $jsonResult['Result'] = true;
-        //$jsonResult['error'] = "";
-        $jsonResult['Data'] = $data;
-        echo json_encode($jsonResult);
-    }
-
-    public function add_percent_setting()
-    {
-
-        if ($this->input->post()) {
-
-            // echo var_dump(json_decode($this->input->post("percent_setting")));
-            $data["result"] = $this->User_model->add_percent_setting(json_decode($this->input->post("percent_setting")), $this->input->post("user_id"));
-        }
-
-        $jsonResult['Result'] = true;
-        //$jsonResult['error'] = "";
-        $jsonResult['Data'] = $data;
-        echo json_encode($jsonResult);
-    }
-
     public function edit_user()
     {
 
@@ -176,37 +148,7 @@ class User extends CI_Controller
         echo json_encode($jsonResult);
     }
 
-    public function edit_default_setting()
-    {
-
-        if ($this->input->post()) {
-            $data["result"] = $this->User_model->edit_default_setting(json_decode($this->input->post('default_setting')), $this->input->post("user_id"));
-        }
-
-        $jsonResult['Result'] = true;
-        //$jsonResult['error'] = "";
-        $jsonResult['Data'] = $data;
-        echo json_encode($jsonResult);
-    }
-
-    public function edit_percent_setting()
-    {
-
-       // echo var_dump($this->input->post());
-
-        if ($this->input->post()) {
-
-            // echo var_dump(json_decode($this->input->post("percent_setting")));
-            $data["result"] = $this->User_model->edit_percent_setting(json_decode($this->input->post("percent_setting")), $this->input->post("user_id"));
-        }
-
-        $jsonResult['Result'] = true;
-        //$jsonResult['error'] = "";
-        $jsonResult['Data'] = $data;
-        echo json_encode($jsonResult);
-    }
-
-    public function delete()
+    public function delete_user()
     {
 
         if ($this->input->post()) {
@@ -214,32 +156,7 @@ class User extends CI_Controller
         }
 
         $jsonResult['Result'] = true;
-        //$jsonResult['error'] = "";
         $jsonResult['Data'] = "";
-        echo json_encode($jsonResult);
-    }
-
-    public function get_all_user()
-    {
-
-        $data["list"] = $this->User_model->get_all_user();
-
-        $jsonResult['Result'] = true;
-        //$jsonResult['error'] = "";
-        $jsonResult['Data'] = $data;
-
-        echo json_encode($jsonResult);
-    }
-
-    public function search_user()
-    {
-
-        $data["list"] = $this->User_model->search_user($this->input->post("txtSearch"));
-
-        $jsonResult['Result'] = true;
-        //$jsonResult['error'] = "";
-        $jsonResult['Data'] = $data;
-
         echo json_encode($jsonResult);
     }
 
@@ -295,10 +212,6 @@ class User extends CI_Controller
             @unlink($_FILES[$file_element_name]);
         }
         echo json_encode(array('status' => $status, 'msg' => $msg));
-    }
-
-    public function check_credit_enough(){
-
     }
 
 }

@@ -239,8 +239,6 @@ class User_model extends CI_Model
 
     public function search_user_filter($txtSearch, $start_filter, $filter_number, $user_status, $user_group)
     {
-        $all_my_sub_user = $this->get_all_my_sub_user();
-
         $str_sql = "";
         if ($user_status != -1) {
             $str_sql .= " AND  user.user_status = " . $user_status;
@@ -248,18 +246,20 @@ class User_model extends CI_Model
         if ($user_group != -1) {
             $str_sql .= " AND  user_group.user_group_id = " . $user_group;
         }
-        if ($all_my_sub_user === '') {
-            return array();
-        }
+
         $query = $this->db->query("SELECT DISTINCT user.* ,user_group.name AS user_group_name  "
+            . " ,CONCAT(u1.firstname, ' ', u1.lastname) as create_by_name "
+            . " ,CONCAT(u2.firstname, ' ', u2.lastname)  as update_by_name"
             . " from user "
             . " inner join user_group on user_group.user_group_id = user.user_group_id "
+            . " inner join  user as u1 on u1.user_id = user.create_by "
+            . " inner join  user as u2 on u2.user_id = user.update_by "
+
             . " WHERE ( user.user_code  Like '%" . $txtSearch . "%' OR "
             . " user.firstname Like '%" . $txtSearch . "%' OR "
             . " user.lastname Like '%" . $txtSearch . "%' OR "
             . " user.user_telephone Like '%" . $txtSearch . "%' ) "
             . $str_sql
-            . " AND user.user_id in (" . $all_my_sub_user . ")"
             . " Limit " . $start_filter . ", " . $filter_number . " "
         );
 

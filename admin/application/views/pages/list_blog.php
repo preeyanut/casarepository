@@ -346,11 +346,6 @@
         var filterPage = $("#filter-page").val();
         var filterStatus = $("#filter-status").val();
 
-//        filterPage=1;
-//        console.log(txtSearch);
-//        console.log(filterNumber);
-//        console.log(filterPage);
-//        console.log(filterStatus);
         $.ajax({
             url: '<?php echo base_url(); ?>list_blog/get_paging',
             type: 'post',
