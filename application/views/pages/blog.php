@@ -41,52 +41,38 @@
 
                 foreach ($blog_data as $item) {
                     ?>
+                    </br>
                     <div class="row-body-center row margin-0">
                         <?php
                         switch ($item['field_type']) {
 
                             case 'text' :
-                                $html_field = '<input type="text" id="' . $item['category_field_id'] . '" name="' . $item['field_id'] . '" class="form-control blog-value" value="' . $item['blog_value'] . '" />';
+                                $html_field = '<label class="text-single">' . $item['blog_value'] . '</label>';
                                 break;
                             case 'textarea' :
-                                $html_field = '<input type="textarea" id="' . $item['category_field_id'] . '" name="' . $item['field_id'] . '" class="form-control date-picker blog-value" value="' . $item['blog_value'] . '" />';
-                                $html_field .= ' <script type="text/javascript"> CKEDITOR.replace( "' . $item['field_id'] . '" ); </script>';
-//                                                    $html_field .= ' <script type="text/javascript"> CKEDITOR.instances["' . $item['field_id'] . '"].setData(" ' . $item['blog_value'] . ' "); </script>';
-                                $html_field .= ' <script type="text/javascript"> CKEDITOR.instances["' . $item['category_field_id'] . '"].setData(decodeURI("' . $item['blog_value'] . '")); </script>';
+                                $html_field = urldecode ( $item['blog_value'] );
                                 break;
                             case 'date' :
-                                $html_field = ' <div id="div-datepicker" class="input-append datepicker">';
-                                $html_field .= '<input id="' . $item['category_field_id'] . '" data-format="MM/dd/yyyy" type="text" class="form-control input-datetime blog-value date-picker" disabled="" value="' . $item['blog_value'] . '">';
-                                $html_field .= '<span class="add-on"><i class="fa fa-calendar-o  mar-top-5 icon-calendar"></i></span>';
-                                $html_field .= '</div>';
+                                $html_field = '<label class="text-single">' . $item['blog_value'] . '</label>';
                                 break;
                             case 'time' :
-                                $html_field = '  <div id="div-timepicker" class="input-append clockpicker">';
-                                $html_field .= '<input id="' . $item['category_field_id'] . '" type="text" class="form-control input-datetime time-picker blog-value" disabled value="' . $item['blog_value'] . '">';
-                                $html_field .= '<span class="input-group-addon add-on"><i class="fa fa-clock-o mar-top-5 icon-calendar"></i></span>';
-                                $html_field .= '</div>';
+                                $html_field = '<label class="text-single">' . $item['blog_value'] . '</label>';
                                 break;
                             case 'datetime' :
-                                $html_field = ' <div id="div-datetimepicker" class="input-append datetimepicker">';
-                                $html_field .= '<input id="' . $item['category_field_id'] . '" data-format="MM/dd/yyyy HH:mm:ss PP" type="text" class="form-control input-datetime blog-value"  value="' . $item['blog_value'] . '"/>';
-                                $html_field .= '<span class="add-on"><i class="fa fa-calendar mar-top-5"></i></span>';
-                                $html_field .= '</div>';
+                                $html_field = '<label class="text-single">' . $item['blog_value'] . '</label>';
                                 break;
                             case 'video-url' :
-                                $html_field = '  <iframe width="100%" height="100%" src="' . $item['blog_value'] . '?rel=0&amp;autoplay=1" frameborder="0" allowfullscreen></iframe>';
+                                $html_field = ' <iframe style="width:70%;max-height:500px;min-height:500px" src="' . $item['blog_value'] . '?rel=0&amp;autoplay=1" frameborder="0" allowfullscreen></iframe>';
                                 break;
                             case 'image' :
-                                $html_field = '<img id="img-' . $item['field_id'] . '" style="max-height: 500px;" '
+                                $html_field = '<img id="img-' . $item['field_id'] . '" style="width:100%;max-height: 500px;" '
                                     . ' src="' . base_url() . 'admin/' . $item['blog_value'] . '" alt="" title="" data-placeholder="รูปสินค้า"/>';
                                 break;
                         }
                         echo $html_field;
                         ?>
                     </div>
-
                     <?php
-
-
                 }
                 ?>
             </div>

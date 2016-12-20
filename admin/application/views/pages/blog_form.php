@@ -209,6 +209,7 @@
                     <div id="form-field" class=" box-body">
 
                         <script src="<?= base_url(); ?>assets/ckeditor/ckeditor.js"></script>
+<!--                        <script src="--><?//= base_url(); ?><!--assets/ckfinder/ckfinder.js"></script>-->
                         <div class="row">
 
                             <div id="containner-blog-field">
@@ -225,7 +226,15 @@
                                                     break;
                                                 case 'textarea' :
                                                     $html_field = '<input type="textarea" id="' . $item['category_field_id'] . '" name="' . $item['field_id'] . '" class="form-control date-picker blog-value" value="' . $item['blog_value'] . '" />';
-                                                    $html_field .= ' <script type="text/javascript"> CKEDITOR.replace( "' . $item['field_id'] . '" ); </script>';
+//                                                    $html_field .= ' <script type="text/javascript"> CKEDITOR.replace( "' . $item['field_id'] . '" , {extraPlugins: "imageuploader"}); </script>';
+//                                                    $html_field .= ' <script type="text/javascript"> CKEDITOR.replace( "' . $item['field_id'] . '" ); </script>';
+                                                    $html_field .= ' <script type="text/javascript"> CKEDITOR.replace("content"
+ , {"language":"en","height":"400","filebrowserBrowseUrl":"'.base_url().'assets\/ckfinder\/ckfinder.html"
+ ,"filebrowserImageBrowseUrl":"'.base_url().'assets\/ckfinder\/ckfinder.html?type=Images"
+ ,"filebrowserFlashBrowseUrl":"'.base_url().'assets\/ckfinder\/ckfinder.html?type=Flash"
+ ,"filebrowserUploadUrl":"'.base_url().'assets\/ckfinder\/core\/connector\/php\/connector.php?command=QuickUpload&type=Files"
+ ,"filebrowserImageUploadUrl":"'.base_url().'assets\/ckfinder\/core\/connector\/php\/connector.php?command=QuickUpload&type=Images"
+ ,"filebrowserFlashUploadUrl":"'.base_url().'assets\/ckfinder\/core\/connector\/php\/connector.php?command=QuickUpload&type=Flash"}); </script>';
 //                                                    $html_field .= ' <script type="text/javascript"> CKEDITOR.instances["' . $item['field_id'] . '"].setData(" ' . $item['blog_value'] . ' "); </script>';
                                                     $html_field .= ' <script type="text/javascript"> CKEDITOR.instances["' . $item['category_field_id'] . '"].setData(decodeURI("' . $item['blog_value'] . '")); </script>';
                                                     break;
@@ -652,8 +661,7 @@
                     data: data,
                     cache: false,
                     contentType: false,
-                    processData: false,
-                    type: 'POST',
+                    processData: false,                    type: 'POST',
                     success: function (data) {
                        console.log(data);
                     }
