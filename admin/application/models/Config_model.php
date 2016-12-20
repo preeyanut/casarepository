@@ -26,9 +26,7 @@ class Config_model extends CI_Model
             'meta_keyword' => $data['meta_keyword'],
             'meta_description' => $data['meta_description'],
             'login_link' => $data['login_link'],
-
             'config_content' => $data['config_content'],
-            'config_image' => $data['config-frontend'],
             'line_id' => $data['line_id'],
             'telephone' => $data['telephone'],
             'facebook' => $data['facebook'],
@@ -60,7 +58,6 @@ class Config_model extends CI_Model
 
             'config_group_id' => (int)$data['config_group_id'],
             'config_content' => $data['config_content'],
-            'config_image' => $data['config_image'],
             'email' => $data['email'],
             'line_id' => $data['line-id'],
             'facebook' => $data['face-book'],
@@ -80,12 +77,32 @@ class Config_model extends CI_Model
         return $insert_id;
     }
 
-    public function updateImage($config_id, $path) {
+    public function update_contact_Image($config_id,$path) {
         $data = array(
-            'config_image' => $path
+            'contact_image' => $path
         );
         $this->db->where(array('config_id'=>$config_id));
-        $this->db->update('config_image', $data);
+        $this->db->update('config_webpage', $data);
+
+        return true;
+    }
+
+    public function update_favicon($config_id,$path) {
+        $data = array(
+            'frontend_image' => $path
+        );
+        $this->db->where(array('config_id'=>$config_id));
+        $this->db->update('config_webpage', $data);
+
+        return true;
+    }
+
+    public function update_logo($config_id,$path) {
+        $data = array(
+            'logo_image' => $path
+        );
+        $this->db->where(array('config_id'=>$config_id));
+        $this->db->update('config_webpage', $data);
 
         return true;
     }
