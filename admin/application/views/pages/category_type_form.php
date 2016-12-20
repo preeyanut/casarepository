@@ -253,6 +253,7 @@
     $(document).on("click", "#button-add-field", function () {
 
         var count_field = $('#count-field').val();
+        console.log(count_field);
         count_field++;
         $('#count-field').val(count_field);
         $('#containner-category-field').append(
@@ -288,7 +289,7 @@
             + '</div>'
             + '<div class="col-md-1 col-xs-1">'
             + '<div class="">'
-            + ' <button type="button" id="button-save" class="btn btn-danger"> ลบ</button>'
+            + ' <button type="button" id="button-delete-'+count_field+'" class="button-delete btn btn-danger"> ลบ</button>'
             + '</div>'
             + '<div class="text-danger"></div>'
             + '</div>'
@@ -344,24 +345,6 @@
         $('#field-type-'+field_type_id).remove();
 
     });
-
-    function formatNumber(number) {
-        //var int_number = Number(number);
-        var p = number.toFixed(2).split(".");
-        var minus = p[0].substring(0, 1);
-        if (minus == "-") {
-            p[0] = p[0].substring(1, p[0].length);
-
-            return "-" + p[0].split("").reverse().reduce(function (acc, number, i, orig) {
-                    return number + (i && !(i % 3) ? "," : "") + acc;
-                }, "") + "." + p[1];
-        }
-        else {
-            return "" + p[0].split("").reverse().reduce(function (acc, number, i, orig) {
-                    return number + (i && !(i % 3) ? "," : "") + acc;
-                }, "") + "." + p[1];
-        }
-    }
 
     function add_category_type(div_field_type_number) {
         $.ajax({
@@ -427,8 +410,6 @@
                 if (json.Result) {
                     alert("เพิ่มข้อมูลเสร็จสิ้น");
                     clear_input_blank();
-                    ;
-
                 } else {
                     alert("เพิ่มข้อมูลผิดพลาด");
                 }

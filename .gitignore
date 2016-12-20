@@ -7,3 +7,5 @@ admin/application/logs/log-2016-12-20.php
 .idea/New folder/modules.xml
 .idea/New folder/encodings.xml
 .idea/.name
+admin/application/controllers/Log.php
+admin/application/views/pages/log.php
