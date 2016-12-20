@@ -178,7 +178,7 @@ class Blog extends CI_Controller
         if ($this->input->post()) {
             $data["blog_id"] = $this->Blog_model->edit_blog($this->input->post('data_blog'));
             if ($data["blog_id"]) {
-                $this->Blog_model->delete_category_field($data["blog_id"]);
+                $this->Blog_model->delete_blog_value($data["blog_id"]);
                 $result = $this->Blog_model->add_blog_field($data["blog_id"], $this->input->post('data_blog_field'));
             }
         }
@@ -235,7 +235,7 @@ class Blog extends CI_Controller
             $image_path ='assets\\img\\blog\\' . $_POST['blog_id'] . '\\' . $_POST['category_field_id'].'\\'.$_FILES['image']['name'];
 
             $config['upload_path'] = $image_directory;
-            $config['allowed_types'] = 'gif|jpg|png';
+            $config['allowed_types'] = 'gif|jpg|png|jpeg';
             $config['max_size'] = 1024 * 8;
 //            $config['encrypt_name'] = TRUE;
 
