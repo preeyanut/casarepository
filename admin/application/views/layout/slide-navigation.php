@@ -82,33 +82,28 @@
             <?php } ?>
 
 
-            <!--                --><?php
-            //                if (in_array("my_balance", $access_permission) || in_array("change_password", $access_permission)) {
-            //                    ?>
-            <li class="treeview">
-                <a href="#">
-                    <i class="fa fa-navicon"></i>
-                    <span>หมวดหมู่</span>
-                    <span class="label label-primary pull-right"></span>
-                </a>
-                <ul class="treeview-menu">
-                    <!--                        --><?php //if (in_array("bank_list", $access_permission)) { ?>
-                    <li><a href="<?= base_url(); ?>category"><i class="fa fa-circle-o"></i> หมวดหมู่ทั้งหมด</a>
-                    </li>
-                    <!--                        --><?php //} ?>
-                    <!--                        --><?php //if (in_array("addnew", $access_permission)) { ?>
-                    <li><a href="<?= base_url(); ?>category/get_form"><i class="fa fa-circle-o"></i>
-                            เพิ่มหมวดหมู่ใหม่</a>
-                    </li>
-                    <!--                        --><?php //} ?>
-                    <!--                        --><?php //if (in_array("change_password", $access_permission)) { ?>
-                    <!--                            <li><a href="-->
-                    <? //= base_url(); ?><!--list_result"><i class="fa fa-circle-o"></i> ผลสลากรางวัล</a>-->
-                    <!--                            </li>-->
-                    <!--                        --><?php //} ?>
-                </ul>
-            </li>
-            <!--                --><?php //} ?>
+            <?php
+            if (in_array("category", $access_permission)) {
+                ?>
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-navicon"></i>
+                        <span>หมวดหมู่</span>
+                        <span class="label label-primary pull-right"></span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <?php if (in_array("category", $access_permission)) { ?>
+                            <li><a href="<?= base_url(); ?>category"><i class="fa fa-circle-o"></i> หมวดหมู่ทั้งหมด</a>
+                            </li>
+                        <?php } ?>
+                        <?php if (in_array("category", $access_permission)) { ?>
+                            <li><a href="<?= base_url(); ?>category/get_form"><i class="fa fa-circle-o"></i>
+                                    เพิ่มหมวดหมู่ใหม่</a>
+                            </li>
+                        <?php } ?>
+                    </ul>
+                </li>
+            <?php } ?>
 
             <?php
             if (in_array("list_category_type", $access_permission) || in_array("category_type", $access_permission)) {
@@ -130,44 +125,34 @@
                                     เพิ่มประเภทใหม่</a>
                             </li>
                         <?php } ?>
-                        <!--                        --><?php //if (in_array("change_password", $access_permission)) { ?>
-                        <!--                            <li><a href="-->
-                        <? //= base_url(); ?><!--list_result"><i class="fa fa-circle-o"></i> ผลสลากรางวัล</a>-->
-                        <!--                            </li>-->
-                        <!--                        --><?php //} ?>
                     </ul>
                 </li>
 
             <?php } ?>
 
 
-            <!--                --><?php
-            //                if (in_array("my_balance", $access_permission) || in_array("change_password", $access_permission)) {
-            //                    ?>
-            <li class="treeview">
-                <a href="#">
-                    <i class="fa fa-dollar"></i>
-                    <span>รายการธนาคาร</span>
-                    <span class="label label-primary pull-right"></span>
-                </a>
-                <ul class="treeview-menu">
-                    <!--                        --><?php //if (in_array("bank_list", $access_permission)) { ?>
-                    <li><a href="<?= base_url(); ?>list_bank"><i class="fa fa-circle-o"></i> รายการทั้งหมด</a>
-                    </li>
-                    <!--                        --><?php //} ?>
-                    <!--                        --><?php //if (in_array("addnew", $access_permission)) { ?>
-                    <li><a href="<?= base_url(); ?>list_bank/getForm"><i class="fa fa-circle-o"></i>
-                            เพิ่มรายการใหม่</a>
-                    </li>
-                    <!--                        --><?php //} ?>
-                    <!--                        --><?php //if (in_array("change_password", $access_permission)) { ?>
-                    <!--                            <li><a href="-->
-                    <? //= base_url(); ?><!--list_result"><i class="fa fa-circle-o"></i> ผลสลากรางวัล</a>-->
-                    <!--                            </li>-->
-                    <!--                        --><?php //} ?>
-                </ul>
-            </li>
-            <!--                --><?php //} ?>
+            <?php
+            if (in_array("bank_list", $access_permission) || in_array("bank", $access_permission)) {
+                ?>
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-dollar"></i>
+                        <span>รายการธนาคาร</span>
+                        <span class="label label-primary pull-right"></span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <?php if (in_array("bank_list", $access_permission)) { ?>
+                            <li><a href="<?= base_url(); ?>list_bank"><i class="fa fa-circle-o"></i> รายการทั้งหมด</a>
+                            </li>
+                        <?php } ?>
+                        <?php if (in_array("bank", $access_permission)) { ?>
+                            <li><a href="<?= base_url(); ?>bank"><i class="fa fa-circle-o"></i>
+                                    เพิ่มรายการใหม่</a>
+                            </li>
+                        <?php } ?>
+                    </ul>
+                </li>
+            <?php } ?>
 
 
             <!--                --><?php
@@ -450,12 +435,12 @@
                         <?php } ?>
                         <?php if (in_array("lotto_type", $access_permission)) { ?>
                             <li><a href="<?= base_url() ?>lotto_type"><i
-                                        class="fa fa-circle-o"></i>จัดการชนิดหมายเลข</a>
+                                            class="fa fa-circle-o"></i>จัดการชนิดหมายเลข</a>
                             </li>
                         <?php } ?>
                         <?php if (in_array("limit_lotto", $access_permission)) { ?>
                             <li><a href="<?= base_url() ?>limit_lotto"><i
-                                        class="fa fa-circle-o"></i>จัดการเงินถือสู้</a>
+                                            class="fa fa-circle-o"></i>จัดการเงินถือสู้</a>
                             </li>
                         <?php } ?>
                         <?php if (in_array("report_over_lotto", $access_permission)) { ?>
