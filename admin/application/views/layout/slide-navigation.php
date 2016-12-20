@@ -152,11 +152,11 @@
                 </a>
                 <ul class="treeview-menu">
                     <!--                        --><?php //if (in_array("bank_list", $access_permission)) { ?>
-                    <li><a href="<?= base_url(); ?>bank_list"><i class="fa fa-circle-o"></i> รายการทั้งหมด</a>
+                    <li><a href="<?= base_url(); ?>list_bank"><i class="fa fa-circle-o"></i> รายการทั้งหมด</a>
                     </li>
                     <!--                        --><?php //} ?>
                     <!--                        --><?php //if (in_array("addnew", $access_permission)) { ?>
-                    <li><a href="<?= base_url(); ?>bank_list/getForm"><i class="fa fa-circle-o"></i>
+                    <li><a href="<?= base_url(); ?>list_bank/getForm"><i class="fa fa-circle-o"></i>
                             เพิ่มรายการใหม่</a>
                     </li>
                     <!--                        --><?php //} ?>

@@ -186,13 +186,6 @@
 
 <script type="application/javascript">
 
-    //    init_event({
-    //        fn: [readyFn],
-    //        controlerPaging: 'bank_list/get_paging',
-    //        functionPaging: search_user,
-    //        disEvent: ["click,.button-edit,.button-delete"]
-    //    });
-
     init_event({
         document_on: [
             'keyup,#input-search'
@@ -205,21 +198,6 @@
         ]
     });
 
-//    function formatNumber(number) {
-//        var p = number.toFixed(2).split(".");
-//        var minus = p[0].substring(0, 1);
-//        if (minus == "-") {
-//            p[0] = p[0].substring(1, p[0].length);
-//            return "-" + p[0].split("").reverse().reduce(function (acc, number, i, orig) {
-//                    return number + (i && !(i % 3) ? "," : "") + acc;
-//                }, "") + "." + p[1];
-//        }
-//        else {
-//            return "" + p[0].split("").reverse().reduce(function (acc, number, i, orig) {
-//                    return number + (i && !(i % 3) ? "," : "") + acc;
-//                }, "") + "." + p[1];
-//        }
-//    }
     $(document).on("keyup", "#input-search", function () {
         search_user();
         get_paging();
@@ -238,7 +216,7 @@
     function reload_bank_list(bank_list_id) {
         $("#tbody").empty();
         $.ajax({
-            url: '<?php echo base_url(); ?>bank_list/get_all',
+            url: '<?php echo base_url(); ?>list_bank/get_all',
             type: 'post',
             data: "bank_list_id=" + bank_list_id,
             dataType: 'json',
@@ -302,7 +280,7 @@
     $(document).on("click", ".button-delete", function () {
 
         var bank_list_id = this.name.replace("button-delete", "");
-        window.open("<?php echo base_url(); ?>bank_list/delete_bank?bank_list_id=" + bank_list_id, "_self");
+        window.open("<?php echo base_url(); ?>list_bank/delete_bank?bank_list_id=" + bank_list_id, "_self");
     });
 
     $(document).on("click", ".paging", function () {
@@ -336,7 +314,7 @@
 
 //        console.log('00000000000');
         $.ajax({
-            url: '<?php echo base_url(); ?>bank_list/search_user',
+            url: '<?php echo base_url(); ?>list_bank/search_user',
             type: 'post',
             data: "txtSearch=" + txtSearch + "&filter-number=" + filterNumber + "&filter-page=" + filterPage + "&filter-status=" + filterStatus,
             dataType: 'json',
@@ -348,7 +326,6 @@
             success: function (json) {
                 var data = json.Data;
                 var banks = data["list"];
-                console.log(json);
                 $("#tbody").empty();
                 for (var i = 0; i < banks.length; i++) {
                     var bank = banks[i]
@@ -383,7 +360,6 @@
                         + "</tr>";
                     $("#tbody").append(html);
                 }
-                label_format_number();
             },
             error: function (xhr, ajaxOptions, thrownError) {
                 alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
@@ -398,7 +374,7 @@
         var filterStatus = $("#filter-status").val();
 
         $.ajax({
-            url: '<?php echo base_url(); ?>bank_list/get_paging',
+            url: '<?php echo base_url(); ?>list_bank/get_paging',
             type: 'post',
             data: "txtSearch=" + txtSearch + "&filter-number=" + filterNumber + "&filter-page=" + filterPage + "&filter-status=" + filterStatus,
             dataType: 'json',

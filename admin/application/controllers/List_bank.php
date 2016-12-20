@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Bank_list extends CI_Controller
+class List_bank extends CI_Controller
 {
 
     public function __construct()
@@ -45,7 +45,7 @@ class Bank_list extends CI_Controller
 
 //        var_dump($data);
 
-        $data["page"] = 'pages/bank_list';
+        $data["page"] = 'pages/list_bank';
 
         $this->load->view('template', $data);
 
@@ -186,7 +186,7 @@ class Bank_list extends CI_Controller
                 }
             }
 
-            $data["action"] = base_url() . "bank_list/edit_bank";
+            $data["action"] = base_url() . "List_bank/edit_bank";
 
         } else {
 
@@ -197,7 +197,7 @@ class Bank_list extends CI_Controller
 
             $data['create_by'] = $this->input->get('user_id');
 
-            $data["action"] = base_url() . "bank_list/add_bank";
+            $data["action"] = base_url() . "List_bank/add_bank";
 
             $data["groups"] = $this->Bank_list_model->get_all();
 
