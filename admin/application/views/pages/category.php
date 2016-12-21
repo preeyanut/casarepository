@@ -127,7 +127,13 @@
                                                             echo "fa fa-child";
                                                         } elseif ($category['category_icon'] == 12) {
                                                             echo "fa fa-fax";
-                                                        } ?>"></i>
+                                                        }elseif ($category['category_icon'] == 13) {
+                                                            echo "fa fa-credit-card";
+                                                        }elseif ($category['category_icon'] == 14) {
+                                                            echo "fa fa-map-o";
+                                                        } elseif ($category['category_icon'] == 15) {
+                                                            echo "fa fa-newspaper-o";
+                                                        }  ?>"></i>
                                             </td>
                                             <td class="text-center"><?php echo $category['priority_level']; ?></td>
                                             <td class="text-center"><?php echo $category['create_date']; ?></td>

@@ -189,7 +189,8 @@ class Category extends CI_Controller
     {
 
         if ($this->input->get('category_id')) {
-            $blog_id = $this->Blog_model->get_data($this->input->get('category_id'));
+            $blog_id = $this->Category_model->get_blog_id($this->input->get('category_id'));
+//            var_dump($this->input->get('category_id'));
 //            var_dump($blog_id);
             foreach ($blog_id as $blog_data) {
 //                var_dump($blog_data['blog_id']);

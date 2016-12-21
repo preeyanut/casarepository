@@ -96,6 +96,12 @@
                                             selected="selected" <?php } ?>></option>
                                         <option data-icon="fa fa-fax" value="12" <?php if ($category_icon == 12) { ?>
                                             selected="selected" <?php } ?>></option>
+                                        <option data-icon="fa fa-credit-card" value="13" <?php if ($category_icon == 13) { ?>
+                                            selected="selected" <?php } ?>></option>
+                                        <option data-icon="fa fa-map-o" value="14" <?php if ($category_icon == 14) { ?>
+                                            selected="selected" <?php } ?>></option>
+                                        <option data-icon="	fa fa-newspaper-o" value="14" <?php if ($category_icon == 15) { ?>
+                                            selected="selected" <?php } ?>></option>
                                     </select>
                                 </div>
                                 <div class="text-danger"></div>
