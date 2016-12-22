@@ -23,6 +23,7 @@ class List_customer extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('Customer_model');
+
 		$this->load->library('auth_check');
 
 		if (!$this->auth_check->hasPermission('access', 'list_customer')) {
@@ -32,8 +33,33 @@ class List_customer extends CI_Controller {
 
 	public function index()
 	{
-		$this->get_form();
+		$this->get_list();
 	}
+
+    public function get_list()
+    {
+        $all_customer = $this->Customer_model->search_customer_filter($this->input->post("txtSearch"),0,10,-1,-1);
+
+        $total_customer = $this->Customer_model->get_total_customers();
+        $paging = (int)$total_customer/10;
+        $over_page = $total_customer%10;
+        if($paging==0){
+            $paging=1;
+        }
+        if($over_page!=0){
+            $paging++;
+        }
+
+        $data["paging"] = $paging;
+
+        $data["list"] = $all_customer;
+
+        $data["page"] = 'pages/list_customer';
+        $this->load->view('template',$data);
+
+    }
+
+
 
 	public function get_form(){
 
@@ -101,22 +127,7 @@ class List_customer extends CI_Controller {
 			$data["action"] = base_url() . "customer/add";
 
 		}
-
-		$all_customer = $this->Customer_model->search_customer_filter($this->input->post("txtSearch"),0,10,-1,-1);
-
-		$total_customer = $this->Customer_model->get_total_customers();
-		$paging = (int)$total_customer/10;
-		$over_page = $total_customer%10;
-		if($paging==0){
-			$paging=1;
-		}
-		if($over_page!=0){
-			$paging++;
-		}
-
-		$data["paging"] = $paging;
-
-		$data["list"] = $all_customer;
+        $data["list"] = $this->Customer_model->get_total_customers();
 
 		$data["page"] = 'pages/list_customer';
 		$this->load->view('template',$data);
@@ -174,77 +185,73 @@ class List_customer extends CI_Controller {
 		echo json_encode($jsonResult);
 	}
 
-	public function search_customer() {
+    public function get_paging() {
 
-		$filter_number = $this->input->post("filter-number");
-		$page = $this->input->post("filter-page");
+        $filter_number = $this->input->post("filter-number");
+        $page = $this->input->post("filter-page");
 
-		$customer_status = $this->input->post("filter-customer-status");
-		$customer_group = $this->input->post("filter-customer-group");
-
-		if($page>0){
-			$page--;
-		}
-
-		$result = array();
-		if($filter_number==-1){
-			$result = $this->Customer_model->get_all_customer();
-		}else{
-			$start_filter = $filter_number*$page;
-			$result = $this->Customer_model->search_customer_filter($this->input->post("txtSearch"),$start_filter,$filter_number,$customer_status,$customer_group);
-		}
-
-		$data["list"] = $result;
-
-		$jsonResult['Result'] = true;
-		//$jsonResult['error'] = "";
-		$jsonResult['Data'] = $data;
-
-		echo json_encode($jsonResult);
-	}
-
-	public function get_paging() {
-
-		$filter_number = $this->input->post("filter-number");
-		$page = $this->input->post("filter-page");
-
-		$customer_status = $this->input->post("filter-customer-status");
-		$customer_group = $this->input->post("filter-customer-group");
+        $customer_status = $this->input->post("filter-customer-status");
+        $customer_group = $this->input->post("filter-customer-group");
 
 
-		if($filter_number==-1){
-			$page=1;
-		}else {
-			$start_filter = $filter_number*$page;
-			$total_customer = $this->Customer_model->get_total_customers_by_search($this->input->post("txtSearch"),$start_filter,$filter_number,$customer_status,$customer_group);
-			if(!isset($total_customer["total"])){
-				$data["paging"] = 0;
-				$jsonResult['Data'] = $data;
-				echo json_encode($jsonResult);
-				return;
-			}
-			$paging = (int)((int)$total_customer["total"] / (int)$filter_number);
-			$over_page = (int)((int)$total_customer["total"] % (int)$filter_number);
-			$page = 0;
+        if($filter_number==-1){
+            $page=1;
+        }else {
+            $start_filter = $filter_number*$page;
+            $total_customer = $this->Customer_model->get_total_by_search($this->input->post("txtSearch"),$start_filter,$filter_number,$customer_status,$customer_group);
+            if(!isset($total_customer["total"])){
+                $data["paging"] = 0;
+                $jsonResult['Data'] = $data;
+                echo json_encode($jsonResult);
+                return;
+            }
+            $paging = (int)((int)$total_customer["total"] / (int)$filter_number);
+            $over_page = (int)((int)$total_customer["total"] % (int)$filter_number);
+            $page = 0;
 
-			//echo "--".$total_customer["total"] ."--".$paging."---".$over_page;
-			if ($paging == 0) {
-				$page = 1;
-			} else {
-				$page = $paging;
-			}
+            //echo "--".$total_customer["total"] ."--".$paging."---".$over_page;
+            if ($paging == 0) {
+                $page = 1;
+            } else {
+                $page = $paging;
+            }
 
-			if ($over_page != 0 && $paging != 0) {
-				$page++;
-			}
-		}
+            if ($over_page != 0 && $paging != 0) {
+                $page++;
+            }
+        }
 
 
-		$data["paging"] = $page;
-		$jsonResult['Data'] = $data;
+        $data["paging"] = $page;
+        $jsonResult['Data'] = $data;
 
-		echo json_encode($jsonResult);
-	}
+        echo json_encode($jsonResult);
+    }
 
+    public function search_customer()
+    {
+        $filter_number = $this->input->post("filter-number");
+        $page = $this->input->post("filter-page");
+        $status = $this->input->post("filter-status");
+
+        if ($page > 0) {
+            $page--;
+        }
+
+//        $result = array();
+        if ($filter_number == -1) {
+            $result = $this->Customer_model->get_all_customer();
+        } else {
+            $start_filter = $filter_number * $page;
+            $result = $this->Customer_model->search_customer_filter($this->input->post("txtSearch"), $start_filter, $filter_number, $status);
+        }
+
+        $data["list"] = $result;
+
+        $jsonResult['Result'] = true;
+        $jsonResult['Data'] = $data;
+
+        echo json_encode($jsonResult);
+    }
 
 }

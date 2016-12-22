@@ -8,6 +8,9 @@ class Customer extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Customer_model');
+        $this->load->model('Bank_list_model');
+
+
 
         $this->load->library('auth_check');
 
@@ -29,11 +32,13 @@ class Customer extends CI_Controller
 
             $customer_info = $this->Customer_model->get_customer($this->input->get('customer_id'));
 
+
             if (!empty($customer_info)) {
 
                 //--  Don't Delete
 //				$password_result = $this->encrypt->encode($customer_info['password']);
 //				$password_decode = $this->encrypt->decode($this->encrypt->decode($password_result));
+
 
                 $data['customer_id'] = $customer_info['customer_id'];
                 $data['member_id'] = $customer_info['member_id'];
@@ -56,6 +61,9 @@ class Customer extends CI_Controller
                 $data['accept_by'] = $customer_info['accept_by'];
 
                 $data['customer_status'] = $customer_info['customer_status'];
+
+
+
             }
 
             $data["action"] = base_url() . "customer/edit";
@@ -75,7 +83,7 @@ class Customer extends CI_Controller
             $data['bank_name'] = "";
             $data['bank_account_name'] = "";
             $data['bank_account_number'] = "";
-
+            $data['money_open_account'] = "";
             $data['old_id_promotion'] = "";
 
             $data['submission_date'] = "";
@@ -84,7 +92,7 @@ class Customer extends CI_Controller
 
             $data['customer_status'] = "";
 
-            $data["action"] = base_url() . "customer/add";
+            $data["action"] = base_url() . "customer/add_customer";
 
         }
 
@@ -103,6 +111,8 @@ class Customer extends CI_Controller
         $data["paging"] = $paging;
 
         $data["list"] = $all_customer;
+
+        $data["bank_list"] = $this->Bank_list_model->get_all();
 
         $data["page"] = 'pages/customer';
         $this->load->view('template',$data);
@@ -159,10 +169,15 @@ class Customer extends CI_Controller
 //            $this->error['bank_name'] = "กรุณากรอกข้อมูลชื่อลูกค้า";
 //        }
 //        if ((strlen($this->input->post('bank_account_name')) < 3) || (strlen($this->input->post('bank_account_name')) > 255)) {
-//            $this->error['bank_account_name'] = "กรุณากรอกข้อมูลชื่อลูกค้า";
+//            $this->error['bank_account_name'] = "กรุณากรอกชื่อบัญชี";
 //        }
+//
 //        if ((strlen($this->input->post('bank_account_number')) < 3) || (strlen($this->input->post('bank_account_number')) > 255)) {
-//            $this->error['bank_account_number'] = "กรุณากรอกข้อมูลชื่อลูกค้า";
+//            $this->error['bank_account_number'] = "กรุณากรอกข้อมูลเลขที่บัญชี";
+//        }
+//
+//        if ((strlen($this->input->post('money_open_account')) < 3) || (strlen($this->input->post('money_open_account')) > 255)) {
+//            $this->error['money_open_account'] = "กรุณากรอกยอดเงินเปิดบัญชี";
 //        }
 
         if (isset($this->error)) {
@@ -367,9 +382,9 @@ class Customer extends CI_Controller
         echo json_encode(array('status' => $status, 'msg' => $msg));
     }
 
-    public function check_credit_enough(){
-
-    }
+//    public function check_credit_enough(){
+//
+//    }
 
     public function get_customer(){
 

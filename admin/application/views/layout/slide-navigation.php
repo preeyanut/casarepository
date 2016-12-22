@@ -277,11 +277,11 @@
                             </li>
                         <?php } ?>
                         <?php if (in_array("customer", $access_permission)) { ?>
-                            <li><a href="<?= base_url() ?>customer/get_form"><i class="fa fa-user-plus"></i> เพิ่มลูกค้า</a>
+                            <li><a href="<?= base_url() ?>customer"><i class="fa fa-user-plus"></i> เพิ่มลูกค้า</a>
                             </li>
                         <?php } ?>
                         <?php if (in_array("list_customer", $access_permission)) { ?>
-                            <li><a href="<?= base_url() ?>list_customer/get_form"><i class="fa fa-circle-o"></i>
+                            <li><a href="<?= base_url() ?>list_customer"><i class="fa fa-circle-o"></i>
                                     ลูกค้าทั้งหมด</a></li>
                         <?php } ?>
                     </ul>

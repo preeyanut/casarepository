@@ -187,6 +187,7 @@ class Customer_model extends CI_Model
             'bank_name' => $data['bank_name'],
             'bank_account_name' => $data['bank_account_name'],
             'bank_account_number' => $data['bank_account_number'],
+            'money_open_account' => $data['money_open_account'],
 
             'old_id_promotion' => $data['old_id_promotion'],
 
@@ -520,18 +521,14 @@ class Customer_model extends CI_Model
         return $query->result_array['total'];
     }
 
-    public function search_customer_filter($txtSearch, $start_filter, $filter_number, $customer_status, $customer_group)
+    public function search_customer_filter($txtSearch, $start_filter, $filter_number, $customer_status)
     {
-//        $all_my_sub_customer = $this->get_all_my_sub_customer();
 
         $str_sql = "";
         if ($customer_status != -1) {
             $str_sql .= " AND  customer.customer_status = " . $customer_status;
         }
-//        if ($customer_group != -1) {
-//            $str_sql .= " AND  customer_group.customer_group_id = " . $customer_group;
-//        }
-//        if($all_my_sub_customer===''){ return array(); }
+
         $query = $this->db->query("SELECT DISTINCT customer.* "
             . " from customer "
             . " WHERE ( customer.member_id  Like '%" . $txtSearch . "%' OR "
@@ -540,11 +537,10 @@ class Customer_model extends CI_Model
             . " customer.customer_telephone Like '%" . $txtSearch . "%' OR "
             . " customer.customer_line_id Like '%" . $txtSearch . "%' OR "
             . " customer.customer_email Like '%" . $txtSearch . "%' OR"
-
             . " customer.how_to_know_web Like '%" . $txtSearch . "%' OR"
             . " customer.bank_name Like '%" . $txtSearch . "%' OR"
             . " customer.bank_account_name Like '%" . $txtSearch . "%' OR"
-            . " customer.bank_account_number Like '%" . $txtSearch . "%' OR"
+            . " customer.money_open_account Like '%" . $txtSearch . "%' OR"
             . " customer.accept_by Like '%" . $txtSearch . "%' "
             . " ) "
             . $str_sql
@@ -584,7 +580,7 @@ class Customer_model extends CI_Model
         return $query->result_array();
     }
 
-    public function get_total_customers_by_search($txtSearch, $start_filter, $filter_number, $customer_status, $customer_group)
+    public function get_total_customers_by_search($txtSearch, $start_filter, $filter_number, $customer_status)
     {
         $all_my_sub_customer = $this->get_all_my_sub_customer();
 
@@ -592,9 +588,9 @@ class Customer_model extends CI_Model
         if ($customer_status != -1) {
             $str_sql .= " AND  customer.customer_status = " . $customer_status;
         }
-        if ($customer_group != -1) {
-            $str_sql .= " AND  customer_group.customer_group_id = " . $customer_group;
-        }
+//        if ($customer_group != -1) {
+//            $str_sql .= " AND  customer_group.customer_group_id = " . $customer_group;
+//        }
         if ($all_my_sub_customer === '') {
             return array();
         }
@@ -611,6 +607,23 @@ class Customer_model extends CI_Model
 
 //        $result=  $query->row_array();
 //        echo "-----".$txtSearch."------".$result["total"];
+        return $query->row_array('total');
+    }
+
+    public function get_total_by_search($txtSearch, $start_filter, $filter_number, $filter_status)
+    {
+
+        $str_sql = "";
+        if ($filter_status != '-1') {
+            $str_sql .= " AND  customer_status = " . $filter_status;
+        }
+
+        $query = $this->db->query("SELECT DISTINCT *, (select count(*) from customer ) as total FROM `" . "" . "customer` "
+            . " WHERE  customer_firstname  Like '%" . $txtSearch . "%' "
+            . $str_sql
+            . " Limit " . $start_filter . ", " . $filter_number . " "
+        );
+
         return $query->row_array('total');
     }
 
@@ -845,6 +858,7 @@ class Customer_model extends CI_Model
         $data = $this->db->get();
         return $data->result_array();
     }
+
     public function check_exist_customer_line_id($customer_line_id){
         $this->db->select('customer_id')
             ->from('customer')
@@ -853,6 +867,7 @@ class Customer_model extends CI_Model
         $data = $this->db->get();
         return $data->result_array();
     }
+
     public function check_exist_customer_email($customer_email){
         $this->db->select('customer_id')
             ->from('customer')

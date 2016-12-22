@@ -22,207 +22,8 @@
     <section class="content">
 
         <div class="row">
-            <!-- left column -->
-            <div class="col-md-6">
-                <!-- general form elements -->
-                <div class="row" style="margin: 0px">
-                    <div class="box box-primary">
-                        <div class="box-header with-border">
-                            <h3 class="box-title">ข้อมูลลูกค้า</h3>
-                        </div>
-                        <!-- /.box-header -->
-                        <!-- form start -->
-                        <div class="box-body">
-
-                            <input type="hidden" name="customer_id" value="<?php echo $customer_id; ?>"
-                                   id="customer_id" class="form-control"/>
-
-                            <div class="row">
-
-                                <div class="form-group required col-md-4">
-                                    <label class=" control-label" for="input-customer-firstname">ชื่อผู้ใช้งาน</label>
-
-                                    <div class="">
-                                        <input type="text" name="customer_firstname" value="<?php echo $customer_firstname; ?>"
-                                               placeholder="ชื่อผู้ใช้งาน" id="input-customer-firstname"
-                                               class="form-control"/>
-                                    </div>
-                                    <div class="text-danger"></div>
-                                </div>
-                                <div class="form-group required col-md-4">
-                                    <label class="control-label" for="input-customer-lastname">นามสกุล</label>
-
-                                    <div class="">
-                                        <input type="text" name="customer_lastname" value="<?php echo $customer_lastname; ?>"
-                                               placeholder="นามสกุล" id="input-customer-lastname"
-                                               class="form-control"/>
-                                    </div>
-                                    <div class="text-danger"></div>
-                                </div>
-                                <div class="form-group col-md-4">
-                                    <label class=" control-label" for="input-customer-type">สถานะ</label>
-
-                                    <div class="">
-                                        <select name="customer_status" id="input-status" class="form-control">
-
-                                            <option
-                                                value="0" <?php if ($customer_status === 0) { ?> selected="selected" <?php } ?> >
-                                                ปกติ
-                                            </option>
-                                            <option
-                                                value="1" <?php if ($customer_status === 1) { ?> selected="selected" <?php } ?>>
-                                                ระงับ
-                                            </option>
-                                            <option
-                                                value="2" <?php if ($customer_status === 2) { ?> selected="selected" <?php } ?>>
-                                                ปิดใช้งาน
-                                            </option>
-
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="form-group required col-md-4">
-                                    <label class=" control-label"
-                                           for="input-customer-line-id">Line ID</label>
-
-                                    <div class="">
-                                        <input type="text" min="0" name="customer_line_id"
-                                               value="<?php echo $customer_telephone; ?>"
-                                               placeholder="Line ID" id="input-customer-line-id"
-                                               class="form-control"/>
-                                    </div>
-                                    <div class="text-danger"></div>
-                                </div>
-                                <div class="form-group required col-md-4">
-                                    <label class=" control-label"
-                                           for="input-customer-telephone">เบอร์โทรศัพท์</label>
-
-                                    <div class="">
-                                        <input type="text" min="0" name="customer_telephone"
-                                               value="<?php echo $customer_telephone; ?>"
-                                               placeholder="เบอร์โทรศัพท์" id="input-customer-telephone"
-                                               class="form-control"/>
-                                    </div>
-                                    <div class="text-danger"></div>
-                                </div>
-                                <div class="form-group required col-md-4">
-                                    <label class=" control-label" for="input-email">อีเมล์</label>
-
-                                    <div class="">
-                                        <input type="text" name="customer_email" value="<?php echo $customer_email; ?>"
-                                               placeholder="อีเมล์" id="input-email" class="form-control"/>
-
-                                        <div class="text-danger"></div>
-                                    </div>
-                                    <div class="text-danger"></div>
-                                </div>
-
-                            </div>
-                        </div>
-
-                    </div>
-                    <!-- /.box -->
-                </div>
-                <div class="row" style="margin: 0px">
-                    <div class="box box-primary">
-                        <div class="box-header with-border">
-                            <h3 class="box-title">รายละเอียดลูกค้า</h3>
-                        </div>
-                        <!-- /.box-header -->
-                        <!-- form start -->
-                        <div class=" box-body">
-
-                            <div class="row">
-
-                                <div class="form-group required col-md-6">
-                                    <label class="control-label" for="input-member-id">Member ID</label>
-
-                                    <div class="">
-                                        <input type="text" name="member_id" value="<?php echo $member_id; ?>"
-                                               placeholder="นามสกุล" id="input-member-id"
-                                               class="form-control"/>
-                                    </div>
-                                    <div class="text-danger"></div>
-                                </div>
-
-                                <div class="form-group required col-md-6">
-                                    <label class=" control-label" for="input-customer_firstname">ช่องทางที่ลูกค้ารู้จัก</label>
-
-                                    <div class="">
-                                        <input type="text" name="how_to_know_web" value="<?php echo $how_to_know_web; ?>"
-                                               placeholder="ช่องทางที่ลูกค้ารู้จัก" id="input-how-to-know-web"
-                                               class="form-control"/>
-                                    </div>
-                                    <div class="text-danger"></div>
-                                </div>
-
-                            </div>
-
-                            <div class="row">
-                                <div class="form-group required col-md-12">
-                                    <label class=" control-label" for="input-bank-name">ธนาคาร</label>
-
-                                    <div class="">
-                                        <input type="text" name="bank_name" value="<?php echo $bank_name; ?>"
-                                               placeholder="ธนาคาร" id="input-bank-name" class="form-control"/>
-
-                                        <div class="text-danger"></div>
-                                    </div>
-                                    <div class="text-danger"></div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="form-group required col-md-6">
-                                    <label class=" control-label" for="input-bank-account-name">ชื่อบัญชี</label>
-
-                                    <div class="">
-                                        <input type="text" name="bank_account_name" value="<?php echo $bank_account_name; ?>"
-                                               placeholder="ชื่อบัญชี" id="input-bank-account-name" class="form-control"/>
-
-                                        <div class="text-danger"></div>
-                                    </div>
-                                    <div class="text-danger"></div>
-                                </div>
-                                <div class="form-group required col-md-6">
-                                    <label class=" control-label" for="input-bank-account-number">เลขบัญชี</label>
-
-                                    <div class="">
-                                        <input type="text" name="bank_account_number" value="<?php echo $bank_account_number; ?>"
-                                               placeholder="เลขบัญชี" id="input-bank-account-number" class="form-control"/>
-
-                                        <div class="text-danger"></div>
-                                    </div>
-                                    <div class="text-danger"></div>
-                                </div>
-
-                            </div>
-
-                            <div class="row">
-
-                                <div class="form-group required col-md-6">
-                                    <label class=" control-label" for="input-money-open-account">ยอดเงินเปิดบัญชี</label>
-
-                                    <div class="">
-                                        <input type="text" name="money_open_account" value="<?php echo $bank_account_number; ?>"
-                                               placeholder="ยอดเงินเปิดบัญชี" id="input-money-open-account" class="form-control"/>
-
-                                        <div class="text-danger"></div>
-                                    </div>
-                                    <div class="text-danger"></div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--/.col (left) -->
-
             <!-- right column -->
-            <div class="col-md-6">
+            <div class="col-md-12">
                 <!-- general form elements -->
                 <div class="box box-primary">
                     <div class="box-header with-border">
@@ -324,7 +125,7 @@
 
                                 </tr>
                                 </thead>
-                                <tbody id="tbody-customer">
+                                <tbody id="tbody">
                                 <?php //echo var_dump($list) ; ?>
                                 <?php if ($list) {
                                     $count = 1; ?>
@@ -419,19 +220,6 @@
             <!--/.col (right) -->
         </div>
 
-        <div class="row ">
-            <div class="col-sm-12">
-                <div class="box box-default ">
-                    <div class="box-header">
-                        <div class="col-sm-12" style="text-align: center;">
-                            <button type="button" id="button-save" class="btn btn-primary"> บันทึก</button>
-                            <button id="btn-reset" type="reset" class="btn btn-default">ยกเลิก</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
         <div class="display-none">
             <div class="box-body border-radius-none">
                 <div class="chart" id="line-chart" style="height: 250px;"></div>
@@ -452,139 +240,127 @@
 
 <script type="application/javascript">
 
-    function format_to_money() {
-        var input_type_number = $('.input-number');
-
-        for (var i = 0; i < input_type_number.length; i++) {
-
-            var intValue = Number(input_type_number[i].value);
-
-            $('.input-number')[i].value = formatNumber(intValue);
-
-            // console.log(formatNumber(intValue));
-        }
-    }
-
-    function formatNumber(number) {
-        //var int_number = Number(number);
-        var p = number.toFixed(2).split(".");
-        var minus = p[0].substring(0, 1);
-        if (minus == "-") {
-            p[0] = p[0].substring(1, p[0].length);
-
-            return "-" + p[0].split("").reverse().reduce(function (acc, number, i, orig) {
-                    return number + (i && !(i % 3) ? "," : "") + acc;
-                }, "") + "." + p[1];
-        }
-        else {
-            return "" + p[0].split("").reverse().reduce(function (acc, number, i, orig) {
-                    return number + (i && !(i % 3) ? "," : "") + acc;
-                }, "") + "." + p[1];
-        }
-    }
-
-    function label_format_number() {
-
-        var label_type_number = $(".label-number");
-
-        for (var i = 0; i < label_type_number.length; i++) {
-
-            var intValue = Number(label_type_number[i].innerHTML.trim());
-
-            $(".label-number")[i].innerHTML = formatNumber(intValue);
-
-        }
-    }
-
-    $(document).on("click", "#button-save", function () {
-        $.ajax({
-            url: '<?php echo base_url(); ?>customer/validate_form',
-            type: 'post',
-            data: $('input , select'),
-            // data:  "abcd=1234",
-            dataType: 'json',
-            crossDomain: true,
-            beforeSend: function () {
-                $('#button-save').button('loading');
-            },
-            complete: function () {
-                $('#button-save').button('reset');
-            },
-            success: function (json) {
-                //alert("OK");
-
-                $('.alert, .text-danger').remove();
-                $('.form-group').removeClass('has-error');
-
-                if (json['error']) {
-
-                    var p = 0;
-                    for (var i = 0; i < Object.keys(json['error']).length; i++) {
-                        var input_name = Object.keys(json['error'])[i];
-                        //var txterror = json['error'][input_name];
-                        $("input[name='" + input_name + "']").after('<div class="text-danger">' + json['error'][input_name] + '</div>');
-                        $("select[name='" + input_name + "']").after('<div class="text-danger">' + json['error'][input_name] + '</div>');
-                        p++;
-                    }
-
-                    // Highlight any found errors
-                    $('.text-danger').parentsUntil('.form-group').parent().addClass('has-error');
-                } else {
-
-                    if ($('input[name="customer_id"]').val()) {
-                        edit_customer();
-                    } else {
-                        add_customer();
-                    }
-
-                    $('#button-refresh').trigger('click');
-                    $('#content > .container-fluid').prepend('<div class="alert alert-success"><i class="fa fa-check-circle"></i> ' + json['success'] + ' <button type="button" class="close" data-dismiss="alert">&times;</button></div>');
-
-                }
-            },
-            error: function (xhr, ajaxOptions, thrownError) {
-                alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
-            }
-        });
+    init_event({
+        document_on:[
+            'keyup,#input-search'
+            ,'change,#filter-number'
+            ,'change,#filter-status'
+            ,'click,.button-edit'
+            ,'click,.paging'
+        ],document_ready:[
+            get_paging
+        ]
     });
 
-
-    function add_customer() {
-
-        $.ajax({
-            url: '<?php echo base_url(); ?>customer/add_customer',
-            type: 'post',
-            data: $('input , select'),
-            dataType: 'json',
-            crossDomain: true,
-            beforeSend: function () {
-                $('#button-save').button('loading');
-            },
-            complete: function () {
-                $('#button-save').button('reset');
-            },
-            success: function (json) {
-
-                 console.log(json);
-                 alert("เพิ่มข้อมูลผู้ใช้งานเสร็จสิ้น");
-
-                // upload file
-//                uploadImage(json.Data.customer_id);
+//    function format_to_money() {
+//        var input_type_number = $('.input-number');
 //
-//                reloadListEmployee();
-            },
-            error: function (xhr, ajaxOptions, thrownError) {
-                alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
-            }
-        });
-    }
+//        for (var i = 0; i < input_type_number.length; i++) {
+//
+//            var intValue = Number(input_type_number[i].value);
+//
+//            $('.input-number')[i].value = formatNumber(intValue);
+//
+//            // console.log(formatNumber(intValue));
+//        }
+//    }
+//
+//    function formatNumber(number) {
+//        //var int_number = Number(number);
+//        var p = number.toFixed(2).split(".");
+//        var minus = p[0].substring(0, 1);
+//        if (minus == "-") {
+//            p[0] = p[0].substring(1, p[0].length);
+//
+//            return "-" + p[0].split("").reverse().reduce(function (acc, number, i, orig) {
+//                    return number + (i && !(i % 3) ? "," : "") + acc;
+//                }, "") + "." + p[1];
+//        }
+//        else {
+//            return "" + p[0].split("").reverse().reduce(function (acc, number, i, orig) {
+//                    return number + (i && !(i % 3) ? "," : "") + acc;
+//                }, "") + "." + p[1];
+//        }
+//    }
+//
+//    function label_format_number() {
+//
+//        var label_type_number = $(".label-number");
+//
+//        for (var i = 0; i < label_type_number.length; i++) {
+//
+//            var intValue = Number(label_type_number[i].innerHTML.trim());
+//
+//            $(".label-number")[i].innerHTML = formatNumber(intValue);
+//
+//        }
+//    }
+
+    $(document).on("keyup", "#input-search", function () {
+        search_user();
+        get_paging();
+    });
+
+    $(document).on("change", "#filter-number", function () {
+        search_user();
+        get_paging();
+    });
+
+    $(document).on("change", "#filter-status", function () {
+        search_user();
+        get_paging();
+    });
+
+    $(document).on("click", ".button-edit", function () {
+        var customer_id = this.name.replace("button-edit", "");
+        window.open("<?php echo base_url(); ?>customer/get_form?customer_id=" + customer_id, "_self");
+    });
+
+//    $(document).on("click", ".button-edit", function () {
+//        var customer_id = this.name.replace("button-edit", "");
+//
+//        $.ajax({
+//            url: '<?php //echo base_url(); ?>//customer/get_customer',
+//            type: 'post',
+//            //data: $('input , select')+"&customer_id="+customer_id,
+//            data: {customer_id:customer_id},
+//            dataType: 'json',
+//            crossDomain: true,
+//            success: function (json) {
+//
+//                console.log(json);
+//
+//                console.log(json.Data.customer_info.customer_firstname);
+//                $('#input-customer-firstname').val(json.Data.customer_info.customer_firstname);
+//                $('#input-customer-lastname').val(json.Data.customer_info.customer_lastname);
+//                $('#input-customer-line-id').val(json.Data.customer_info.customer_line_id);
+//                $('#input-customer-telephone').val(json.Data.customer_info.customer_telephone);
+//                $('#input-customer-email').val(json.Data.customer_info.customer_email);
+//
+//                $('#input-member-id').val(json.Data.customer_info.member_id);
+//                $('#input-how-to-know-web').val(json.Data.customer_info.how_to_know_web);
+//                $('#input-bank-name').val(json.Data.customer_info.bank_name);
+//                $('#input-bank-account-name').val(json.Data.customer_info.bank_account_name);
+//                $('#input-bank-account-number').val(json.Data.customer_info.bank_account_number);
+//                $('#input-money-open-account').val(json.Data.customer_info.money_open_account);
+//
+////                alert("แก้ไขข้อมูลผู้ใช้งานเสร็จสิ้น");
+//
+////                edit_default_setting(customer_id);
+////                edit_percent_setting(customer_id);
+//            },
+//            error: function (xhr, ajaxOptions, thrownError) {
+//                alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+//            }
+//        });
+//    });
+
 
     function edit_customer() {
         var customer_id = $('input[name="customer_id"]').val();
         $.ajax({
             url: '<?php echo base_url(); ?>customer/edit_customer',
             type: 'post',
-            //data: $('input , select')+"&customer_id="+customer_id,
             data: $('input , select'),
             dataType: 'json',
             crossDomain: true,
@@ -595,46 +371,11 @@
                 $('#button-save').button('reset');
             },
             success: function (json) {
-                // alert("แก้ไขข้อมูลผู้ใช้งานเสร็จสิ้น");
 
-                edit_default_setting(customer_id);
-                edit_percent_setting(customer_id);
-            },
-            error: function (xhr, ajaxOptions, thrownError) {
-                alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
-            }
-        });
-    }
 
-    $(document).on("click", ".button-edit", function () {
-        var customer_id = this.name.replace("button-edit", "");
+                 alert("แก้ไขข้อมูลผู้ใช้งานเสร็จสิ้น");
 
-        $.ajax({
-            url: '<?php echo base_url(); ?>customer/get_customer',
-            type: 'post',
-            //data: $('input , select')+"&customer_id="+customer_id,
-            data: {customer_id:customer_id},
-            dataType: 'json',
-            crossDomain: true,
-            success: function (json) {
-
-                console.log(json);
-
-                console.log(json.Data.customer_info.customer_firstname);
-                $('#input-customer-firstname').val(json.Data.customer_info.customer_firstname);
-                $('#input-customer-lastname').val(json.Data.customer_info.customer_lastname);
-                $('#input-customer-line-id').val(json.Data.customer_info.customer_line_id);
-                $('#input-customer-telephone').val(json.Data.customer_info.customer_telephone);
-                $('#input-customer-email').val(json.Data.customer_info.customer_email);
-
-                $('#input-member-id').val(json.Data.customer_info.member_id);
-                $('#input-how-to-know-web').val(json.Data.customer_info.how_to_know_web);
-                $('#input-bank-name').val(json.Data.customer_info.bank_name);
-                $('#input-bank-account-name').val(json.Data.customer_info.bank_account_name);
-                $('#input-bank-account-number').val(json.Data.customer_info.bank_account_number);
-                $('#input-money-open-account').val(json.Data.customer_info.money_open_account);
-
-//                alert("แก้ไขข้อมูลผู้ใช้งานเสร็จสิ้น");
+                reload_list_customer();
 
 //                edit_default_setting(customer_id);
 //                edit_percent_setting(customer_id);
@@ -643,7 +384,185 @@
                 alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
             }
         });
-    });
+    }
 
+    function reload_list_customer(customer_id) {
+        $("#tbody").empty();
+        $.ajax({
+            url: '<?php echo base_url(); ?>list_customer/get_all_customer',
+            type: 'post',
+            data: "customer_id=" + customer_id,
+            dataType: 'json',
+            crossDomain: true,
+            beforeSend: function () {
+            },
+            complete: function () {
+            },
+            success: function (json) {
+                var data = json.Data;
+                var customers = data["list"];
+                $("#tbody").empty();
+                for (var i = 0; i < customers.length; i++) {
+                    var customer = customers[i];
+
+                    var color_status = "";
+                    var str_status = "";
+
+                    switch (list_customer.customer_status) {
+                        case 0:
+                            color_status = "#00A65A";
+                            $str_status = "ปกติ";
+                            break;
+                        case 1:
+                            color_status = "#DD4B39";
+                            $str_status = "ถูกระงับ";
+                            break;
+                        case 2 :
+                            color_status = "#CCCCCC";
+                            $str_status = "ปิดใช้งาน";
+                            break;
+                    }
+
+                    var html = "<tr class='tr_id" + customer.customer_id + "'  style='cursor: pointer;'>"
+                        + "<td class='text-center'>" + (i + 1) + "</td>"
+                        + "<td class='text-center'>" + customer.member_id + "</td>"
+                        + "<td class='text-center'>" + customer.submission_date + "</td>"
+                        + "<td class='text-center'>" + customer.customer_firstname + customer.customer_lastname +"</td>"
+                        + "<td class='text-center'>" + customer.customer_telephone + "</td>"
+                        + "<td class='text-center'>" + customer.customer_line_id + "</td>"
+                        + "<td class='text-center'>" + customer.customer_email + "</td>"
+                        + "<td class='text-center'>" + customer.how_to_know_web + "</td>"
+                        + "<td class='text-center'>" + customer.bank_name + "</td>"
+                        + "<td class='text-center'>" + customer.bank_account_name + "</td>"
+                        + "<td class='text-center'>" + customer.bank_account_number + "</td>"
+                        + "<td class='text-center'>" + customer.money_open_account + "</td>"
+                        + "<td class='text-center'>" + customer.old_id_promotion + "</td>"
+                        + "<td class='text-center'>" + customer.accept_by + "</td>"
+                        + "<td class='text-center'>" + customer.accept_date + "</td>"
+                        + "<td class='text-center'>" + customer.update_date + "</td>"
+                        + "<td class='text-center'>" + customer.update_by + "</td>"
+                        + "<td class='text-center' style='color: " + color_status + "'>"
+                        + str_status + "</td>"
+                        + "</tr>";
+
+                    $("#tbody").append(html);
+                }
+                alert("get  OK");
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+            }
+        });
+    }
+
+    function search_user() {
+
+        var txtSearch = $("#input-search").val();
+        var filterNumber = $("#filter-number").val();
+        var filterPage = $("#filter-page").val();
+        var filterStatus = $("#filter-status").val();
+
+        $.ajax({
+            url: '<?php echo base_url(); ?>list_customer/search_customer',
+            type: 'post',
+            data: "txtSearch=" + txtSearch + "&filter-number=" + filterNumber + "&filter-page=" + filterPage + "&filter-status=" + filterStatus,
+            dataType: 'json',
+            crossDomain: true,
+            beforeSend: function () {
+            },
+            complete: function () {
+            },
+            success: function (json) {
+                var data = json.Data;
+                var customers = data["list"];
+                $("#tbody").empty();
+                for (var i = 0; i < customers.length; i++) {
+                    var customer = customers[i];
+                    var color_status = "";
+                    var str_status = "";
+                    switch (Number(customer.customer_status)) {
+                        case 0:
+                            color_status = "#00A65A";
+                            str_status = "ปกติ";
+                            break;
+                        case 1:
+                            color_status = "#DD4B39";
+                            str_status = "ถูกระงับ";
+                            break;
+                        case 2 :
+                            color_status = "#CCCCCC";
+                            str_status = "ปิดใช้งาน";
+                            break;
+                    }
+                    var html = "<tr class='tr_id" + customer.customer_id + "'  >"
+                        + "<td class='text-center'>" + (i + 1) + "</td>"
+                        + "<td class='text-center'>" + customer.member_id + "</td>"
+                        + "<td class='text-center'>" + customer.submission_date + "</td>"
+                        + "<td class='text-center'>" + customer.customer_firstname + customer.customer_lastname +"</td>"
+                        + "<td class='text-center'>" + customer.customer_telephone + "</td>"
+                        + "<td class='text-center'>" + customer.customer_line_id + "</td>"
+                        + "<td class='text-center'>" + customer.customer_email + "</td>"
+                        + "<td class='text-center'>" + customer.how_to_know_web + "</td>"
+                        + "<td class='text-center'>" + customer.bank_name + "</td>"
+                        + "<td class='text-center'>" + customer.bank_account_name + "</td>"
+                        + "<td class='text-center'>" + customer.bank_account_number + "</td>"
+                        + "<td class='text-center'>" + customer.money_open_account + "</td>"
+                        + "<td class='text-center'>" + customer.old_id_promotion + "</td>"
+                        + "<td class='text-center'>" + customer.accept_by + "</td>"
+                        + "<td class='text-center'>" + customer.accept_date + "</td>"
+                        + "<td class='text-center'>" + customer.update_date + "</td>"
+                        + "<td class='text-center'>" + customer.update_by + "</td>"
+                        + "<td class='text-center' style='color: " + color_status + "'>"
+                        + str_status + "</td>"
+                        + " <td class='text-center'><button type='button' name='button-edit" + customer.customer_id + "' "
+                        + " id='button-edit' class='btn btn-warning button-edit'>แก้ไข</button></td>"
+                        + "</tr>";
+                    $("#tbody").append(html);
+                }
+//                label_format_number();
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+            }
+        });
+    }
+
+    function get_paging() {
+        var txtSearch = $("#input-search").val();
+        var filterNumber = $("#filter-number").val();
+        var filterPage = $("#filter-page").val();
+        var filterStatus = $("#filter-status").val();
+
+//        filterPage=1;
+//        console.log(txtSearch);
+//        console.log(filterNumber);
+//        console.log(filterPage);
+//        console.log(filterStatus);
+        $.ajax({
+            url: '<?php echo base_url(); ?>list_customer/get_paging',
+            type: 'post',
+            data: "txtSearch=" + txtSearch + "&filter-number=" + filterNumber + "&filter-page=" + filterPage + "&filter-status=" + filterStatus,
+            dataType: 'json',
+            crossDomain: true,
+            beforeSend: function () {
+            },
+            complete: function () {
+            },
+            success: function (json) {
+                console.log(json);
+                var data = json.Data;
+                var paging = data["paging"];
+                $(".container-paging").empty();
+                for (var i = 1; i <= paging; i++) {
+                    var html = "<li><a class='paging' href='#' id='page" + i + "'>" + i + "</a></li>";
+                    $(".container-paging").append(html);
+                }
+                $("#page1").css("background-color", "#eeeeee");
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+            }
+        });
+    }
 
 </script>
