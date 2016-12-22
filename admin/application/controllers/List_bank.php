@@ -12,7 +12,7 @@ class List_bank extends CI_Controller
 
         $this->load->library('auth_check');
 
-        if (!$this->auth_check->hasPermission('access', 'bank_list')) {
+        if (!$this->auth_check->hasPermission('access', 'list_bank')) {
             redirect('permission');
         }
     }

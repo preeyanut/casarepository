@@ -132,7 +132,7 @@
 
 
             <?php
-            if (in_array("bank_list", $access_permission) || in_array("bank", $access_permission)) {
+            if (in_array("list_bank", $access_permission) || in_array("bank", $access_permission)) {
                 ?>
                 <li class="treeview">
                     <a href="#">
@@ -141,7 +141,7 @@
                         <span class="label label-primary pull-right"></span>
                     </a>
                     <ul class="treeview-menu">
-                        <?php if (in_array("bank_list", $access_permission)) { ?>
+                        <?php if (in_array("list_bank", $access_permission)) { ?>
                             <li><a href="<?= base_url(); ?>list_bank"><i class="fa fa-circle-o"></i> รายการทั้งหมด</a>
                             </li>
                         <?php } ?>

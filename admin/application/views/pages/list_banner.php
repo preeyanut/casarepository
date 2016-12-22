@@ -66,7 +66,7 @@
                             <div class="col-sm-4 col-xs-4 text-right">
                                 <label class="col-sm-3 col-xs-3 control-label" for="input-search">ค้นหา </label>
                                 <div class="col-sm-9 col-xs-9">
-                                    <input type="text" name="search" placeholder="กรุณาใส่ชื่อธนาคาร เพื่อค้นหา"
+                                    <input type="text" name="search" placeholder="ค้นหา"
                                            id="input-search"
                                            class="form-control"/>
                                 </div>
@@ -81,7 +81,7 @@
                                 <thead class="table">
                                 <tr>
                                     <td class="text-center">ลำดับ</td>
-                                    <td class="text-center">ธนาคาร</td>
+                                    <td class="text-center">แบนเนอร์</td>
                                     <td class="text-center">ความสำคัญ</td>
                                     <td class="text-center">วันที่เพิ่ม</td>
                                     <td class="text-center">พนักงานที่เพิ่ม</td>
