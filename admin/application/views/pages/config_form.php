@@ -330,9 +330,7 @@
                                 </div>
                                 <div class="col-md-9 col-xs-9">
                                     <div class="">
-                                        <textarea name="config_content"
-                                                  value=""
-                                                  placeholder="" id="edittext"
+                                        <textarea name="config_content" value="" placeholder="" id="edittext"
                                                   class="form-control"><?php echo $config_content; ?></textarea>
                                         <script type="text/javascript">
                                             CKEDITOR.replace('edittext');
@@ -351,11 +349,11 @@
                                     <div class="">
                                         <a href="" id="a-test" data-toggle="image" class="img-thumbnail">
                                             <img id="img-config_image" style="max-width: 500px;"
-                                                 src="http://localhost/casarepository/admin/assets\images\No-image-found.jpg"
+                                                 src="<?php echo $contact_image; ?>"
                                                  alt="" title="" data-placeholder="รูปสินค้า">
                                         </a>
 
-                                        <input type="file" name="config_image" class="img-input" value="0"
+                                        <input type="file" name="contact_image" class="img-input" value="0"
                                                id="input-image"/>
                                     </div>
 
@@ -366,6 +364,7 @@
                                 <div class="col-md-2 col-xs-2" align="right"></div>
 
                             </div>
+
 
                             <div class="form-group required col-md-12 col-xs-12">
                                 <div class="col-md-2 col-xs-2" align="right">
@@ -551,11 +550,11 @@
                 console.log(json);
                 if (json.Result) {
 
-                    alert(json.Data.config_id);
+                    alert(json.Data.config_id=1);
                     console.log(json);
-                    upload_favicon(json.Data.config_id);
+                    upload_favicon(json.Data.config_id=1);
 
-                    upload_logo(json.Data.config_id);
+                    upload_logo(json.Data.config_id=1);
 
                     alert("เพิ่มข้อมูลเสร็จสิ้น");
                 } else {
@@ -593,7 +592,12 @@
 
                 console.log(json);
                 if (json.Result) {
-                    upload_Contact_Image(json.Data.config_id);
+
+                    alert(json.Data.config_id=2);
+                    console.log(json);
+
+                    upload_Contact_Image(json.Data.config_id=2);
+
                     alert("เพิ่มข้อมูลเสร็จสิ้น");
                 } else {
                     alert("เพิ่มข้อมูลผิดพลาด");
@@ -801,7 +805,7 @@
             processData: false,
             type: 'POST',
             success: function (data) {
-                console.log('upload_favicon');
+                //console.log('upload_favicon');
                 console.log(data);
             }
         });

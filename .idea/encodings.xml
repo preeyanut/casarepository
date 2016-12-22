@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project version="4">
-  <component name="Encoding">
-    <file url="file://$PROJECT_DIR$/admin/application/controllers/List_blog.php" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/admin/application/models/Blog_model.php" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/admin/application/views/pages/blog_form.php" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/admin/application/views/pages/list_blog.php" charset="UTF-8" />
-  </component>
-</project>

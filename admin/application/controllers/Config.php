@@ -64,11 +64,12 @@ class Config extends CI_Controller
             $data['config_group'] = $data_config_group;
             $data["action"] = base_url() . "config/add_frontend_setting";
         }
+        $data['config_group_id'] = $data_info['config_group_id'];
         $data['config_content'] = $data_info_contact['config_content'];
         $data['contact_image'] = $data_info_contact['contact_image'];
         $data['email'] = $data_info_contact['email'];
 
-        $data["action"] = base_url() . "config/add_frontend_setting";
+        $data["action"] = base_url() . "config/add_contact_setting";
 //        }
 
         $data["page"] = 'pages/config_form';
@@ -95,11 +96,14 @@ class Config extends CI_Controller
 
     public function add_contact_setting()
     {
+        $result=false;
+
         if ($this->input->post()) {
-            $data["config_id"] = $this->Config_model->add_contact_setting($this->input->post());
+            $result = $this->Config_model->add_contact_setting($this->input->post());
+            $data['config_id'] = $this->input->post('config_id');
         }
 
-        $jsonResult['Result'] = true;
+        $jsonResult['Result'] = $result;
         //$jsonResult['error'] = "";
         $jsonResult['Data'] = $data;
         echo json_encode($jsonResult);

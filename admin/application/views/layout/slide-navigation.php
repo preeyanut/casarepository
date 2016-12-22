@@ -334,7 +334,7 @@
                 </li>
 
                 <li class="treeview">
-                    <a href="<?= base_url(); ?>config/get_form">
+                    <a href="<?= base_url(); ?>config">
                         <i class="fa fa-gear"></i>
                         <span>ตั้งค่าเว็บ</span>
                         <span class="label label-primary pull-right"></span>
