@@ -158,23 +158,12 @@
                                 <div class="row">
 
                                     <div class="form-group required col-md-12 col-xs-12">
-                                        <div class="col-md-2 col-xs-2" align="right">
-                                            <label class="control-label" for="input-member-id">Member ID</label>
-                                        </div>
-                                        <div class="col-md-4 col-xs-4">
-                                            <div class="">
-                                                <input type="text" name="member_id" value="<?php echo $member_id; ?>"
-                                                       placeholder="Member ID" id="input-member-id"
-                                                       class="form-control"/>
-                                            </div>
-                                            <div class="text-danger"></div>
-                                        </div>
 
-                                        <div class="col-md-1 col-xs-1" align="right">
+                                        <div class="col-md-2 col-xs-2" align="right">
                                             <label class=" control-label" for="input-old-id-promotion">โปรโมชัน ID
                                                 เก่า</label>
                                         </div>
-                                        <div class="col-md-4 col-xs-4">
+                                        <div class="col-md-9 col-xs-9">
                                             <div class="">
                                                 <input type="text" name="old_id_promotion"
                                                        value="<?php echo $old_id_promotion; ?>"
@@ -207,10 +196,9 @@
                                         <div class="col-md-2 col-xs-2" align="right">
                                             <label class=" control-label" for="input-bank-name">ธนาคาร</label>
                                         </div>
-                                        <div class="col-md-5 col-xs-5">
+                                        <div class="col-md-9 col-xs-9">
                                             <div class="">
-                                                <select name="bank_name" id="input-bank-name"
-                                                        class="form-control selectpicker">
+                                                <select name="bank_name" id="input-bank-name" class="form-control">
                                                     <?php foreach ($bank_list as $item) { ?>
                                                         <option value="<?= $item['bank_list_name']; ?>"
                                                             <?php if ($item['bank_list_name'] == $bank_name) { ?> selected="selected" <?php } ?> >
@@ -242,7 +230,8 @@
 
                                     <div class="form-group required col-md-12 col-xs-12">
                                         <div class="col-md-2 col-xs-2" align="right">
-                                            <label class=" control-label" for="input-bank-account-number">เลขที่บัญชี</label>
+                                            <label class=" control-label"
+                                                   for="input-bank-account-number">เลขที่บัญชี</label>
                                         </div>
                                         <div class="col-md-9 col-xs-9">
                                             <div class="">
@@ -262,7 +251,7 @@
                                         <div class="col-md-9 col-xs-9">
                                             <div class="">
                                                 <input type="text" name="money_open_account"
-                                                       value="<?php echo $bank_account_number; ?>"
+                                                       value="<?php echo $money_open_account; ?>"
                                                        placeholder="ยอดเงินเปิดบัญชี" id="input-money-open-account"
                                                        class="form-control"/>
                                             </div>
@@ -330,49 +319,50 @@
         ]
     });
 
-//    function format_to_money() {
-//        var input_type_number = $('.input-number');
-//
-//        for (var i = 0; i < input_type_number.length; i++) {
-//
-//            var intValue = Number(input_type_number[i].value);
-//
-//            $('.input-number')[i].value = formatNumber(intValue);
-//
-//            // console.log(formatNumber(intValue));
-//        }
-//    }
-//
-//    function formatNumber(number) {
-//        //var int_number = Number(number);
-//        var p = number.toFixed(2).split(".");
-//        var minus = p[0].substring(0, 1);
-//        if (minus == "-") {
-//            p[0] = p[0].substring(1, p[0].length);
-//
-//            return "-" + p[0].split("").reverse().reduce(function (acc, number, i, orig) {
-//                    return number + (i && !(i % 3) ? "," : "") + acc;
-//                }, "") + "." + p[1];
-//        }
-//        else {
-//            return "" + p[0].split("").reverse().reduce(function (acc, number, i, orig) {
-//                    return number + (i && !(i % 3) ? "," : "") + acc;
-//                }, "") + "." + p[1];
-//        }
-//    }
-//
-//    function label_format_number() {
-//
-//        var label_type_number = $(".label-number");
-//
-//        for (var i = 0; i < label_type_number.length; i++) {
-//
-//            var intValue = Number(label_type_number[i].innerHTML.trim());
-//
-//            $(".label-number")[i].innerHTML = formatNumber(intValue);
-//
-//        }
-//    }
+
+    //    function format_to_money() {
+    //        var input_type_number = $('.input-number');
+    //
+    //        for (var i = 0; i < input_type_number.length; i++) {
+    //
+    //            var intValue = Number(input_type_number[i].value);
+    //
+    //            $('.input-number')[i].value = formatNumber(intValue);
+    //
+    //            // console.log(formatNumber(intValue));
+    //        }
+    //    }
+    //
+    //    function formatNumber(number) {
+    //        //var int_number = Number(number);
+    //        var p = number.toFixed(2).split(".");
+    //        var minus = p[0].substring(0, 1);
+    //        if (minus == "-") {
+    //            p[0] = p[0].substring(1, p[0].length);
+    //
+    //            return "-" + p[0].split("").reverse().reduce(function (acc, number, i, orig) {
+    //                    return number + (i && !(i % 3) ? "," : "") + acc;
+    //                }, "") + "." + p[1];
+    //        }
+    //        else {
+    //            return "" + p[0].split("").reverse().reduce(function (acc, number, i, orig) {
+    //                    return number + (i && !(i % 3) ? "," : "") + acc;
+    //                }, "") + "." + p[1];
+    //        }
+    //    }
+    //
+    //    function label_format_number() {
+    //
+    //        var label_type_number = $(".label-number");
+    //
+    //        for (var i = 0; i < label_type_number.length; i++) {
+    //
+    //            var intValue = Number(label_type_number[i].innerHTML.trim());
+    //
+    //            $(".label-number")[i].innerHTML = formatNumber(intValue);
+    //
+    //        }
+    //    }
 
     $(document).on("click", "#button-save", function () {
         $.ajax({
@@ -427,7 +417,6 @@
         });
     });
 
-
     function add_customer() {
         $.ajax({
             url: '<?php echo base_url(); ?>customer/add_customer',
@@ -457,31 +446,30 @@
     }
 
     function edit_customer() {
-        var customer_id = $('input[name="customer_id"]').val();
-        $.ajax({
-            url: '<?php echo base_url(); ?>customer/edit_customer',
-            type: 'post',
-            //data: $('input , select')+"&customer_id="+customer_id,
-            data: $('input , select'),
-            dataType: 'json',
-            crossDomain: true,
-            beforeSend: function () {
-                $('#button-save').button('loading');
-            },
-            complete: function () {
-                $('#button-save').button('reset');
-            },
-            success: function (json) {
-                alert("แก้ไขข้อมูลผู้ใช้งานเสร็จสิ้น");
+            var customer_id = $('input[name="customer_id"]').val();
+            $.ajax({
+                url: '<?php echo base_url(); ?>customer/edit_customer',
+                type: 'post',
+                data: $('input , select'),
+                dataType: 'json',
+                crossDomain: true,
+                beforeSend: function () {
+                    $('#button-save').button('loading');
+                },
+                complete: function () {
+                    $('#button-save').button('reset');
+                },
+                success: function (json) {
+                    alert("แก้ไขข้อมูลผู้ใช้งานเสร็จสิ้น");
 
-//                edit_default_setting(customer_id);
-//                edit_percent_setting(customer_id);
-            },
-            error: function (xhr, ajaxOptions, thrownError) {
-                alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
-            }
-        });
-    }
+    //                edit_default_setting(customer_id);
+    //                edit_percent_setting(customer_id);
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+                }
+            });
+        }
 
 
 </script>

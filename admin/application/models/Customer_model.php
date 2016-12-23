@@ -168,13 +168,23 @@ class Customer_model extends CI_Model
 
     //------------------  End get customer or agent down
 
+    public function get_all()
+    {
+        $query = $this->db->query("SELECT customer.*,CONCAT(u1.firstname, ' ', u1.lastname) as accept_by_name "
+            . " ,CONCAT(u2.firstname, ' ', u2.lastname)  as update_by_name "
+            . " from customer "
+            . " inner join  user as u1 on u1.user_id = customer.accept_by "
+            . " inner join  user as u2 on u2.user_id = customer.update_by ");
+        return $query->result_array();
+    }
+
     public function add_customer($data)
     {
         $this->load->library('encrypt');
 
         $data_array = array(
 
-            'member_id' => $data['member_id'],
+            //'member_id' => $data['member_id'],
 
             'customer_firstname' => $data['customer_firstname'],
             'customer_lastname' => $data['customer_lastname'],
@@ -192,11 +202,11 @@ class Customer_model extends CI_Model
             'old_id_promotion' => $data['old_id_promotion'],
 
             'submission_date' => date("Y-m-d H:i:s"),
-            'accept_date' =>  date("Y-m-d H:i:s"),
-            'accept_by' => $this->session->userdata("username"),
+            'accept_date' => date("Y-m-d H:i:s"),
+            'accept_by' => $this->session->userdata("user_id"),
 
-            'update_date' =>  date("Y-m-d H:i:s"),
-            'update_by' => $this->session->userdata("username"),
+            'update_date' => date("Y-m-d H:i:s"),
+            'update_by' => $this->session->userdata("user_id"),
             'customer_status' => (int)$data['customer_status'],
 
         );
@@ -204,34 +214,248 @@ class Customer_model extends CI_Model
         $this->db->insert('customer', $data_array);
         $insert_id = $this->db->insert_id();
 
-//        $customer_code = $this->get_customer_code($insert_id);
-//
-//        $this->db->query("UPDATE `" . "" . "customer` SET "
-//            . " customer_code = '" . $customer_code . "'"
-//            . " WHERE customer_id = '" . (int)$insert_id . "'");
-//
-//        $this->decrease_agent_credit(str_replace(",", "", $data['customer_credit']));
+        $member_id = $this->get_customer_code($insert_id);
+
+        $this->db->query("UPDATE `" . "" . "customer` SET "
+            . " member_id = '" . $member_id . "'"
+            . " WHERE customer_id = '" . (int)$insert_id . "'");
+
+        //$this->decrease_agent_credit(str_replace(",", "", $data['customer_credit']));
 
         return $insert_id;
     }
 
     public function get_customer_code($customer_id)
     {
-        $customer_code = "";
+        $member_id = "";
         if (strlen($customer_id) < 4) {
-            $customer_code .= "0" . $customer_id;
+            $member_id .= "0" . $customer_id;
             if (strlen($customer_id) < 3) {
-                $customer_code = "0" . $customer_code;
+                $member_id = "0" . $member_id;
                 if (strlen($customer_id) < 2) {
-                    $customer_code = "0" . $customer_code;
+                    $member_id = "0" . $member_id;
                 }
             }
         } else {
-            $customer_code = $customer_id;
+            $member_id = $customer_id;
         }
-        $customer_code = "CASABET" . $customer_code;
-        return $customer_code;
+        $member_id = "CASA" . $member_id;
+        return $member_id;
     }
+
+    public function edit_customer($customer_id,$data)
+    {
+        $this->load->library('encrypt');
+
+        $data_array = array(
+            'customer_firstname' => $data['customer_firstname'],
+            'customer_lastname' => $data['customer_lastname'],
+            'customer_telephone' => $data['customer_telephone'],
+            'customer_line_id' => $data['customer_line_id'],
+            'customer_email' => $data['customer_email'],
+            'how_to_know_web' => $data['how_to_know_web'],
+            'bank_name' => $data['bank_name'],
+            'bank_name' => $data['bank_name'],
+            'bank_account_name' => $data['bank_account_name'],
+            'bank_account_number' => $data['bank_account_number'],
+            'money_open_account' => (int)$data['money_open_account'],
+            'old_id_promotion' => $data['old_id_promotion'],
+            'old_id_promotion' => $data['old_id_promotion'],
+            'customer_status' => (int)$data['customer_status'],
+
+            'update_date' => date("Y-m-d H:i:s"),
+            'update_by' => $this->session->userdata("user_id")
+        );
+
+        $this->db->where('customer_id', $customer_id);
+        $result = $this->db->update('customer', $data_array);
+
+        return $result;
+    }
+
+    public function delete_customer($customer_id)
+    {
+        $this->db->query("DELETE FROM `" . "" . "customer` WHERE customer_id = '" . (int)$customer_id . "'");
+    }
+
+    public function count()
+    {
+        $query = $this->db->query("SELECT COUNT(*) AS total FROM `" . "" . "customer`");
+
+        $result = $query->result_array();
+
+        return $result;
+    }
+
+//    public function search_customer_filter($txtSearch, $start_filter, $filter_number, $status)
+//    {
+//
+//        $str_sql = "";
+//        if ($status != '-1' && $status != '') {
+//            $str_sql .= " AND  customer_status = " . $status;
+//        }
+//
+//
+//        $query = $this->db->query("SELECT customer.*,CONCAT(u1.firstname, ' ', u1.lastname) as accept_by_name "
+//            . " ,CONCAT(u2.firstname, ' ', u2.lastname)  as update_by_name "
+//            . " from customer "
+//            . " inner join  user as u1 on u1.user_id = customer.accept_by "
+//            . " inner join  user as u2 on u2.user_id = customer.update_by "
+//            . " WHERE  member_id  Like '%" . $txtSearch . "%' "
+////            . " OR  customer.customer_firstname  Like '%" . $txtSearch . "%' "
+////            . " OR  customer.customer_lastname  Like '%" . $txtSearch . "%' "
+////            . " OR  customer.customer_email  Like '%" . $txtSearch . "%' "
+////            . " OR  customer.customer_telephone  Like '%" . $txtSearch . "%' "
+////            . " OR  customer.customer_line_id  Like '%" . $txtSearch . "%' "
+//
+//            . $str_sql
+//            . " Limit " . $start_filter . ", " . $filter_number . " "
+//        );
+//
+//        return $query->result_array();
+//    }
+
+    public function search_filter($txtSearch, $start_filter, $filter_number, $filter_status)
+    {
+
+        $str_sql = "";
+        if ($filter_status != '-1' && $filter_status != '') {
+            $str_sql .= " AND  customer_status = " . $filter_status;
+        }
+
+        $query = $this->db->query("SELECT customer.*,CONCAT(u1.firstname, ' ', u1.lastname) as accept_by_name "
+            . " ,CONCAT(u2.firstname, ' ', u2.lastname)  as update_by_name "
+            . " from customer "
+            . " inner join  user as u1 on u1.user_id = customer.accept_by "
+            . " inner join  user as u2 on u2.user_id = customer.update_by "
+            . " WHERE  member_id  Like '%" . $txtSearch . "%' "
+            . " OR customer_firstname  Like '%" . $txtSearch . "%' "
+            . " OR customer_lastname  Like '%" . $txtSearch . "%' "
+            . " OR customer_email  Like '%" . $txtSearch . "%' "
+            . " OR customer_telephone  Like '%" . $txtSearch . "%' "
+            . " OR customer_line_id  Like '%" . $txtSearch . "%' "
+            . $str_sql
+            . " Limit " . $start_filter . ", " . $filter_number . " "
+        );
+
+        return $query->result_array();
+    }
+
+
+//    public function get_total_by_search($txtSearch, $start_filter, $filter_number, $filter_status)
+//    {
+//
+//        $str_sql = "";
+//        if ($filter_status != "" || $filter_status != 'undefined') {
+//            $str_sql .= " AND  customer_status";
+//        }
+//
+//        $query = $this->db->query("SELECT DISTINCT *, (select count(*) from customer "
+//            . " WHERE  customer.member_id  Like '%" . $txtSearch . "%' "
+//            . " OR  customer.customer_firstname  Like '%" . $txtSearch . "%' "
+//            . " OR  customer.customer_lastname  Like '%" . $txtSearch . "%' "
+//            . " OR  customer.customer_email  Like '%" . $txtSearch . "%' "
+//            . " OR  customer.customer_telephone  Like '%" . $txtSearch . "%' "
+//            . " OR  customer.customer_line_id  Like '%" . $txtSearch . "%' "
+//            . " ) as total FROM `" . "" . "customer` as main_customer "
+//            . " WHERE  main_customer.member_id  Like '%" . $txtSearch . "%' "
+//            . " OR  main_customer.customer_firstname  Like '%" . $txtSearch . "%' "
+//            . " OR  main_customer.customer_lastname  Like '%" . $txtSearch . "%' "
+//            . " OR  main_customer.customer_email  Like '%" . $txtSearch . "%' "
+//            . " OR  main_customer.customer_telephone  Like '%" . $txtSearch . "%' "
+//            . " OR  main_customer.customer_line_id  Like '%" . $txtSearch . "%' "
+//
+//            . $str_sql
+//            . " Limit " . $start_filter . ", " . $filter_number . " "
+//        );
+//
+//        return $query->row_array('total');
+//    }
+
+
+    public function get_total_by_search($txtSearch, $start_filter, $filter_number, $filter_status)
+    {
+
+        $str_sql = "";
+        if ($filter_status != '-1') {
+            $str_sql .= " AND  customer_status = " . $filter_status;
+        }
+
+        $query = $this->db->query("SELECT DISTINCT *, (select count(*) from customer ) as total FROM `" . "" . "customer` "
+            . " WHERE  member_id  Like '%" . $txtSearch . "%' "
+
+            . $str_sql
+            . " Limit " . $start_filter . ", " . $filter_number . " "
+        );
+
+        return $query->row_array('total');
+    }
+
+//    public function get_total_customers_by_search($txtSearch, $start_filter, $filter_number, $customer_status)
+//    {
+//        //$all_my_sub_customer = $this->get_all_my_sub_customer();
+//
+//        $str_sql = "";
+//        if ($customer_status != -1) {
+//            $str_sql .= " AND  customer.customer_status = " . $customer_status;
+//        }
+////        if ($customer_group != -1) {
+////            $str_sql .= " AND  customer_group.customer_group_id = " . $customer_group;
+////        }
+//        //if ($all_my_sub_customer === '') {
+//        //return array();
+//        //}
+//        $query = $this->db->query("SELECT DISTINCT *, COUNT(*) AS total FROM `" . "" . "customer` "
+//            . " inner join customer_group on customer_group.customer_group_id = customer.customer_group_id "
+//            . " WHERE ( customer.customer_code  Like '%" . $txtSearch . "%' OR "
+//            . " customer.firstname Like '%" . $txtSearch . "%' OR "
+//            . " customer.lastname Like '%" . $txtSearch . "%' OR "
+//            . " customer.customer_telephone Like '%" . $txtSearch . "%' ) "
+//            . $str_sql
+//            //. " AND customer.customer_id in (" . $all_my_sub_customer . ") "
+//            . " Limit " . $start_filter . ", " . $filter_number . " "
+//        );
+//
+////        $result=  $query->row_array();
+////        echo "-----".$txtSearch."------".$result["total"];
+//        return $query->row_array('total');
+//    }
+
+
+//    public function edit_customer($customer_id, $data)
+//    {
+//        $this->load->library('encryption');
+//
+//        //------------------  Increase Decrease Credit
+//        $result_get_credit = $this->get_customer_credit($customer_id);
+//        $old_credit_customer = $result_get_credit["customer_credit"];
+//
+//        if ($old_credit_customer > floatval(str_replace(",", "", $data['customer_credit']))) {
+//            $gab_credit = $old_credit_customer - floatval(str_replace(",", "", $data['customer_credit']));
+//            $this->increase_agent_credit($gab_credit);
+//        } else {
+//            $gab_credit = floatval(str_replace(",", "", $data['customer_credit'])) - $old_credit_customer;
+//            $this->decrease_agent_credit($gab_credit);
+//        }
+//
+//        $this->db->query("UPDATE `" . "" . "customer` SET "
+//            . " customername = '" . $data['customername'] . "'"
+//            . ", customer_group_id = '" . (int)$data['customer_group_id'] . "'"
+//            . ", firstname = '" . $data['firstname'] . "'"
+//            . ", lastname = '" . $data['lastname'] . "'"
+//            . ", customer_email = '" . $data['customer_email'] . "'"
+//            . ", customer_telephone = '" . $data['customer_telephone'] . "'"
+//
+//            . ", customer_status = '" . (int)$data['customer_status'] . "'"
+//
+//            . ", bank = '" . $data['bank'] . "'"
+//            . ", bank_code = '" . $data['bank_code'] . "'"
+//            . ", bank_name = '" . $data['bank_name'] . "'"
+//            . ", customer_credit = '" . str_replace(",", "", $data['customer_credit']) . "'"
+//            . " WHERE customer_id = '" . (int)$customer_id . "'");
+//
+//    }
+
 
     public function add_default_setting($data, $customer_id)
     {
@@ -281,40 +505,6 @@ class Customer_model extends CI_Model
             . " WHERE customer_id = '" . (int)$customer_id . "'");
 
         return $query->row_array();
-    }
-
-    public function edit_customer($customer_id, $data)
-    {
-        $this->load->library('encryption');
-
-        //------------------  Increase Decrease Credit
-        $result_get_credit = $this->get_customer_credit($customer_id);
-        $old_credit_customer = $result_get_credit["customer_credit"];
-
-        if ($old_credit_customer > floatval(str_replace(",", "", $data['customer_credit']))) {
-            $gab_credit = $old_credit_customer - floatval(str_replace(",", "", $data['customer_credit']));
-            $this->increase_agent_credit($gab_credit);
-        } else {
-            $gab_credit = floatval(str_replace(",", "", $data['customer_credit'])) - $old_credit_customer;
-            $this->decrease_agent_credit($gab_credit);
-        }
-
-        $this->db->query("UPDATE `" . "" . "customer` SET "
-            . " customername = '" . $data['customername'] . "'"
-            . ", customer_group_id = '" . (int)$data['customer_group_id'] . "'"
-            . ", firstname = '" . $data['firstname'] . "'"
-            . ", lastname = '" . $data['lastname'] . "'"
-            . ", customer_email = '" . $data['customer_email'] . "'"
-            . ", customer_telephone = '" . $data['customer_telephone'] . "'"
-
-            . ", customer_status = '" . (int)$data['customer_status'] . "'"
-
-            . ", bank = '" . $data['bank'] . "'"
-            . ", bank_code = '" . $data['bank_code'] . "'"
-            . ", bank_name = '" . $data['bank_name'] . "'"
-            . ", customer_credit = '" . str_replace(",", "", $data['customer_credit']) . "'"
-            . " WHERE customer_id = '" . (int)$customer_id . "'");
-
     }
 
     public function edit_default_setting($data, $customer_id)
@@ -372,11 +562,6 @@ class Customer_model extends CI_Model
         $this->db->query("UPDATE `" . "" . "customer` SET code = '" . $this->db->escape($code) . "' WHERE LCASE(email) = '" . $this->db->escape(utf8_strtolower($email)) . "'");
     }
 
-    public function delete_customer($customer_id)
-    {
-        $this->db->query("DELETE FROM `" . "" . "customer` WHERE customer_id = '" . (int)$customer_id . "'");
-    }
-
     public function get_customer($customer_id)
     {
         $query = $this->db->query("SELECT u.*  "
@@ -421,13 +606,13 @@ class Customer_model extends CI_Model
         return $query->result_array();
     }
 
-    public function search_customer($txtSearch)
-    {
-        $query = $this->db->query("SELECT DISTINCT * FROM `" . "" . "customer` WHERE customer_id Like '%" . $txtSearch . "%' OR "
-            . " firstname Like '%" . $txtSearch . "%' OR "
-            . " lastname Like '%" . $txtSearch . "%' ");
-        return $query->result_array();
-    }
+//    public function search_customer($txtSearch)
+//    {
+//        $query = $this->db->query("SELECT DISTINCT * FROM `" . "" . "customer` WHERE customer_id Like '%" . $txtSearch . "%' OR "
+//            . " firstname Like '%" . $txtSearch . "%' OR "
+//            . " lastname Like '%" . $txtSearch . "%' ");
+//        return $query->result_array();
+//    }
 
     public function get_customer_by_code($code)
     {
@@ -496,7 +681,6 @@ class Customer_model extends CI_Model
         return $result;
     }
 
-
     public function get_under_customer($main_customer_id)
     {
         $this->db->select('*')
@@ -521,111 +705,35 @@ class Customer_model extends CI_Model
         return $query->result_array['total'];
     }
 
-    public function search_customer_filter($txtSearch, $start_filter, $filter_number, $customer_status)
-    {
-
-        $str_sql = "";
-        if ($customer_status != -1) {
-            $str_sql .= " AND  customer.customer_status = " . $customer_status;
-        }
-
-        $query = $this->db->query("SELECT DISTINCT customer.* "
-            . " from customer "
-            . " WHERE ( customer.member_id  Like '%" . $txtSearch . "%' OR "
-            . " customer.customer_firstname Like '%" . $txtSearch . "%' OR "
-            . " customer.customer_lastname Like '%" . $txtSearch . "%' OR "
-            . " customer.customer_telephone Like '%" . $txtSearch . "%' OR "
-            . " customer.customer_line_id Like '%" . $txtSearch . "%' OR "
-            . " customer.customer_email Like '%" . $txtSearch . "%' OR"
-            . " customer.how_to_know_web Like '%" . $txtSearch . "%' OR"
-            . " customer.bank_name Like '%" . $txtSearch . "%' OR"
-            . " customer.bank_account_name Like '%" . $txtSearch . "%' OR"
-            . " customer.money_open_account Like '%" . $txtSearch . "%' OR"
-            . " customer.accept_by Like '%" . $txtSearch . "%' "
-            . " ) "
-            . $str_sql
-//            . " AND customer.customer_id in (" . $all_my_sub_customer . ")"
-            . " Limit " . $start_filter . ", " . $filter_number . " "
-        );
-
-        return $query->result_array();
-    }
-
-    public function search_customer_filter_same_as($txtSearch, $start_filter, $filter_number, $customer_status, $customer_group)
-    {
-        $all_my_sub_customer = $this->get_all_my_sub_customer_same_as();
-
-        $str_sql = "";
-        if ($customer_status != -1) {
-            $str_sql .= " AND  customer.customer_status = " . $customer_status;
-        }
-        if ($customer_group != -1) {
-            $str_sql .= " AND  customer_group.customer_group_id = " . $customer_group;
-        }
-        if ($all_my_sub_customer === '') {
-            return array();
-        }
-        $query = $this->db->query("SELECT DISTINCT customer.* ,customer_group.name AS customer_group_name  "
-            . " from customer "
-            . " inner join customer_group on customer_group.customer_group_id = customer.customer_group_id "
-            . " WHERE ( customer.customer_code  Like '%" . $txtSearch . "%' OR "
-            . " customer.firstname Like '%" . $txtSearch . "%' OR "
-            . " customer.lastname Like '%" . $txtSearch . "%' OR "
-            . " customer.customer_telephone Like '%" . $txtSearch . "%' ) "
-            . $str_sql
-            . " AND customer.customer_id in (" . $all_my_sub_customer . ")"
-            . " Limit " . $start_filter . ", " . $filter_number . " "
-        );
-
-        return $query->result_array();
-    }
-
-    public function get_total_customers_by_search($txtSearch, $start_filter, $filter_number, $customer_status)
-    {
-        $all_my_sub_customer = $this->get_all_my_sub_customer();
-
-        $str_sql = "";
-        if ($customer_status != -1) {
-            $str_sql .= " AND  customer.customer_status = " . $customer_status;
-        }
+//    public function search_customer_filter_same_as($txtSearch, $start_filter, $filter_number, $customer_status, $customer_group)
+//    {
+//        $all_my_sub_customer = $this->get_all_my_sub_customer_same_as();
+//
+//        $str_sql = "";
+//        if ($customer_status != -1) {
+//            $str_sql .= " AND  customer.customer_status = " . $customer_status;
+//        }
 //        if ($customer_group != -1) {
 //            $str_sql .= " AND  customer_group.customer_group_id = " . $customer_group;
 //        }
-        if ($all_my_sub_customer === '') {
-            return array();
-        }
-        $query = $this->db->query("SELECT DISTINCT *, COUNT(*) AS total FROM `" . "" . "customer` "
-            . " inner join customer_group on customer_group.customer_group_id = customer.customer_group_id "
-            . " WHERE ( customer.customer_code  Like '%" . $txtSearch . "%' OR "
-            . " customer.firstname Like '%" . $txtSearch . "%' OR "
-            . " customer.lastname Like '%" . $txtSearch . "%' OR "
-            . " customer.customer_telephone Like '%" . $txtSearch . "%' ) "
-            . $str_sql
-            . " AND customer.customer_id in (" . $all_my_sub_customer . ") "
-            . " Limit " . $start_filter . ", " . $filter_number . " "
-        );
+//        if ($all_my_sub_customer === '') {
+//            return array();
+//        }
+//        $query = $this->db->query("SELECT DISTINCT customer.* ,customer_group.name AS customer_group_name  "
+//            . " from customer "
+//            . " inner join customer_group on customer_group.customer_group_id = customer.customer_group_id "
+//            . " WHERE ( customer.customer_code  Like '%" . $txtSearch . "%' OR "
+//            . " customer.firstname Like '%" . $txtSearch . "%' OR "
+//            . " customer.lastname Like '%" . $txtSearch . "%' OR "
+//            . " customer.customer_telephone Like '%" . $txtSearch . "%' ) "
+//            . $str_sql
+//            . " AND customer.customer_id in (" . $all_my_sub_customer . ")"
+//            . " Limit " . $start_filter . ", " . $filter_number . " "
+//        );
+//
+//        return $query->result_array();
+//    }
 
-//        $result=  $query->row_array();
-//        echo "-----".$txtSearch."------".$result["total"];
-        return $query->row_array('total');
-    }
-
-    public function get_total_by_search($txtSearch, $start_filter, $filter_number, $filter_status)
-    {
-
-        $str_sql = "";
-        if ($filter_status != '-1') {
-            $str_sql .= " AND  customer_status = " . $filter_status;
-        }
-
-        $query = $this->db->query("SELECT DISTINCT *, (select count(*) from customer ) as total FROM `" . "" . "customer` "
-            . " WHERE  customer_firstname  Like '%" . $txtSearch . "%' "
-            . $str_sql
-            . " Limit " . $start_filter . ", " . $filter_number . " "
-        );
-
-        return $query->row_array('total');
-    }
 
     public function check_password($password)
     {
@@ -831,7 +939,7 @@ class Customer_model extends CI_Model
     {
         $this->db->select('customer_id')
             ->from('customer')
-            ->where(' (`customer`.`customer_firstname` ="'.$data['customer_firstname'].'" AND `customer`.`customer_lastname` = "'.$data['customer_lastname'].'")', NULL, FALSE)
+            ->where(' (`customer`.`customer_firstname` ="' . $data['customer_firstname'] . '" AND `customer`.`customer_lastname` = "' . $data['customer_lastname'] . '")', NULL, FALSE)
             ->or_where('customer.customer_telephone', $data['customer_telephone'])
             ->or_where('customer.customer_line_id', $data['customer_line_id'])
             ->or_where('customer.customer_email', $data['customer_email']);
@@ -841,16 +949,18 @@ class Customer_model extends CI_Model
         return $data->result_array();
     }
 
-    public function check_exist_customer_name($customer_firstname,$customer_lastname){
+    public function check_exist_customer_name($customer_firstname, $customer_lastname)
+    {
         $this->db->select('customer_id')
             ->from('customer')
-            ->where(' `customer`.`customer_firstname` ="'.$customer_firstname.'" AND `customer`.`customer_lastname` = "'.$customer_lastname.'" ', NULL, FALSE);
+            ->where(' `customer`.`customer_firstname` ="' . $customer_firstname . '" AND `customer`.`customer_lastname` = "' . $customer_lastname . '" ', NULL, FALSE);
 
         $data = $this->db->get();
         return $data->result_array();
     }
 
-    public function check_exist_customer_telephone($customer_telephone){
+    public function check_exist_customer_telephone($customer_telephone)
+    {
         $this->db->select('customer_id')
             ->from('customer')
             ->where('customer.customer_telephone', $customer_telephone);
@@ -859,7 +969,8 @@ class Customer_model extends CI_Model
         return $data->result_array();
     }
 
-    public function check_exist_customer_line_id($customer_line_id){
+    public function check_exist_customer_line_id($customer_line_id)
+    {
         $this->db->select('customer_id')
             ->from('customer')
             ->where('customer.customer_line_id', $customer_line_id);
@@ -868,7 +979,8 @@ class Customer_model extends CI_Model
         return $data->result_array();
     }
 
-    public function check_exist_customer_email($customer_email){
+    public function check_exist_customer_email($customer_email)
+    {
         $this->db->select('customer_id')
             ->from('customer')
             ->where('customer.customer_email', $customer_email);

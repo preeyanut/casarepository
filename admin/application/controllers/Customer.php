@@ -9,6 +9,7 @@ class Customer extends CI_Controller
         parent::__construct();
         $this->load->model('Customer_model');
         $this->load->model('Bank_list_model');
+        $this->load->model('User_model');
 
 
 
@@ -41,21 +42,19 @@ class Customer extends CI_Controller
 
 
                 $data['customer_id'] = $customer_info['customer_id'];
-                $data['member_id'] = $customer_info['member_id'];
+                //$data['member_id'] = $customer_info['member_id'];
 
                 $data['customer_firstname'] = $customer_info['customer_firstname'];
                 $data['customer_lastname'] = $customer_info['customer_lastname'];
                 $data['customer_telephone'] = $customer_info['customer_telephone'];
                 $data['customer_line_id'] = $customer_info['customer_line_id'];
                 $data['customer_email'] = $customer_info['customer_email'];
-
                 $data['how_to_know_web'] = $customer_info['how_to_know_web'];
                 $data['bank_name'] = $customer_info['bank_name'];
                 $data['bank_account_name'] = $customer_info['bank_account_name'];
                 $data['bank_account_number'] = $customer_info['bank_account_number'];
-
+                $data['money_open_account'] = $customer_info['money_open_account'];
                 $data['old_id_promotion'] = $customer_info['old_id_promotion'];
-
                 $data['submission_date'] = $customer_info['submission_date'];
                 $data['accept_date'] = $customer_info['accept_date'];
                 $data['accept_by'] = $customer_info['accept_by'];
@@ -66,12 +65,12 @@ class Customer extends CI_Controller
 
             }
 
-            $data["action"] = base_url() . "customer/edit";
+            $data["action"] = base_url() . "customer/edit_customer";
 
         } else {
 
             $data['customer_id'] = ""; "";
-            $data['member_id'] = "";
+            //$data['member_id'] = "";
 
             $data['customer_firstname'] = "";
             $data['customer_lastname'] = "";
@@ -88,34 +87,48 @@ class Customer extends CI_Controller
 
             $data['submission_date'] = "";
             $data['accept_date'] = "";
-            $data['accept_by'] = "";
+            //$data['accept_by'] = "";
 
             $data['customer_status'] = "";
+
+            $data['accept_by'] = $this->input->get('user_id');
+
+            $data["list"] = $this->Customer_model->get_all();
 
             $data["action"] = base_url() . "customer/add_customer";
 
         }
 
-        $all_customer = $this->Customer_model->search_customer_filter($this->input->post("txtSearch"),0,10,-1,-1);
-
-        $total_customer = $this->Customer_model->get_total_customers();
-        $paging = (int)$total_customer/10;
-        $over_page = $total_customer%10;
-        if($paging==0){
-            $paging=1;
-        }
-        if($over_page!=0){
-            $paging++;
-        }
-
-        $data["paging"] = $paging;
-
-        $data["list"] = $all_customer;
-
         $data["bank_list"] = $this->Bank_list_model->get_all();
 
         $data["page"] = 'pages/customer';
         $this->load->view('template',$data);
+    }
+
+
+    public function add_customer()
+    {
+
+        if ($this->input->post()) {
+            $data["customer_id"] = $this->Customer_model->add_customer($this->input->post());
+        }
+
+        $jsonResult['Result'] = true;
+        //$jsonResult['error'] = "";
+        $jsonResult['Data'] = $data;
+        echo json_encode($jsonResult);
+    }
+
+    public function edit_customer()
+    {
+
+        if ($this->input->post()) {
+            $this->Customer_model->edit_customer($this->input->post("customer_id"), $this->input->post());
+        }
+
+        $jsonResult['Result'] = true;
+        $jsonResult['Data'] = "";
+        echo json_encode($jsonResult);
     }
 
     public function validate_form()
@@ -134,51 +147,32 @@ class Customer extends CI_Controller
             $this->error['customer_line_id'] = "กรุณากรอกข้อมูลไลน์ลูกค้า";
         }
 
-        $result_check_is_exist = $this->Customer_model->check_exist_customer_by_data($this->input->post());
-        if( sizeof($result_check_is_exist)>0){
-
-            $check_exist_customer_name = $this->Customer_model->check_exist_customer_name($this->input->post('customer_firstname'),$this->input->post('customer_lastname'));
-            if( sizeof($check_exist_customer_name)>0){
-                $this->error['customer_firstname'] = "ชื่อและนามสกุลนี้มีในระบบแล้ว";
-                $this->error['customer_lastname'] = "ชื่อและนามสกุลนี้มีในระบบแล้ว";
-            }
-
-            $check_exist_customer_telephone = $this->Customer_model->check_exist_customer_telephone($this->input->post('customer_telephone'));
-            if( sizeof($check_exist_customer_telephone)>0){
-                $this->error['customer_telephone'] = "เบอร์โทรศัพท์นี้มีในระบบแล้ว";
-            }
-
-            $check_exist_customer_line_id = $this->Customer_model->check_exist_customer_line_id($this->input->post('customer_line_id'));
-            if( sizeof($check_exist_customer_line_id)>0){
-                $this->error['customer_line_id'] = "Lind IDนี้มีในระบบแล้ว";
-            }
-
+//        $result_check_is_exist = $this->Customer_model->check_exist_customer_by_data($this->input->post());
+//        if( sizeof($result_check_is_exist)>0){
+//
+//            $check_exist_customer_name = $this->Customer_model->check_exist_customer_name($this->input->post('customer_firstname'),$this->input->post('customer_lastname'));
+//            if( sizeof($check_exist_customer_name)>0){
+//                $this->error['customer_firstname'] = "ชื่อและนามสกุลนี้มีในระบบแล้ว";
+//                $this->error['customer_lastname'] = "ชื่อและนามสกุลนี้มีในระบบแล้ว";
+//            }
+//
+//
+//            $check_exist_customer_telephone = $this->Customer_model->check_exist_customer_telephone($this->input->post('customer_telephone'));
+//            if( sizeof($check_exist_customer_telephone)>0){
+//                $this->error['customer_telephone'] = "เบอร์โทรศัพท์นี้มีในระบบแล้ว";
+//            }
+//
+//            $check_exist_customer_line_id = $this->Customer_model->check_exist_customer_line_id($this->input->post('customer_line_id'));
+//            if( sizeof($check_exist_customer_line_id)>0){
+//                $this->error['customer_line_id'] = "Lind IDนี้มีในระบบแล้ว";
+//            }
+//
 //            $check_exist_customer_email = $this->Customer_model->check_exist_customer_email($this->input->post('customer_email'));
 //            if( sizeof($check_exist_customer_email)>0){
 //                $this->error['customer_email'] = "Email นี้มีในระบบแล้ว";
 //            }
-        }
-//        if ((strlen($this->input->post('customer_email')) < 3) || (strlen($this->input->post('customer_email')) > 255)) {
-//            $this->error['customer_email'] = "กรุณากรอกข้อมูลอีเมล์ลูกค้า";
 //        }
 
-//        if ((strlen($this->input->post('how_to_know_web')) < 3) || (strlen($this->input->post('how_to_know_web')) > 255)) {
-//            $this->error['how_to_know_web'] = "กรุณากรอกข้อมูลชื่อลูกค้า";
-//        }
-//        if ((strlen($this->input->post('bank_name')) < 3) || (strlen($this->input->post('bank_name')) > 255)) {
-//            $this->error['bank_name'] = "กรุณากรอกข้อมูลชื่อลูกค้า";
-//        }
-//        if ((strlen($this->input->post('bank_account_name')) < 3) || (strlen($this->input->post('bank_account_name')) > 255)) {
-//            $this->error['bank_account_name'] = "กรุณากรอกชื่อบัญชี";
-//        }
-//
-//        if ((strlen($this->input->post('bank_account_number')) < 3) || (strlen($this->input->post('bank_account_number')) > 255)) {
-//            $this->error['bank_account_number'] = "กรุณากรอกข้อมูลเลขที่บัญชี";
-//        }
-//
-//        if ((strlen($this->input->post('money_open_account')) < 3) || (strlen($this->input->post('money_open_account')) > 255)) {
-//            $this->error['money_open_account'] = "กรุณากรอกยอดเงินเปิดบัญชี";
-//        }
 
         if (isset($this->error)) {
             $jsonResult['error'] = $this->error;
@@ -187,24 +181,11 @@ class Customer extends CI_Controller
 
 
 //        echo var_dump($result_check_is_exist);
-        $data["is_exist"] = sizeof($result_check_is_exist);
+        //$data["is_exist"] = sizeof($result_check_is_exist);
 
         $jsonResult['Result'] = true;
         $jsonResult['Data'] = "";
 
-        echo json_encode($jsonResult);
-    }
-
-    public function add_customer()
-    {
-
-        if ($this->input->post()) {
-            $data["customer_id"] = $this->Customer_model->add_customer($this->input->post());
-        }
-
-        $jsonResult['Result'] = true;
-        //$jsonResult['error'] = "";
-        $jsonResult['Data'] = $data;
         echo json_encode($jsonResult);
     }
 

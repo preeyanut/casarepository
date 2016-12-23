@@ -334,20 +334,24 @@
                 </li>
 
                 <li class="treeview">
-                    <a href="<?= base_url(); ?>config">
-                        <i class="fa fa-gear"></i>
-                        <span>ตั้งค่าเว็บ</span>
-                        <span class="label label-primary pull-right"></span>
-                    </a>
+                    <?php if (in_array("config", $access_permission)) { ?>
+                        <a href="<?= base_url(); ?>config">
+                            <i class="fa fa-gear"></i>
+                            <span>ตั้งค่าเว็บ</span>
+                            <span class="label label-primary pull-right"></span>
+                        </a>
+                    <?php } ?>
                 </li>
 
-                <li class="treeview">
-                    <a href="<?= base_url(); ?>config_group/get_form">
-                        <i class="fa fa-gears"></i>
-                        <span>ขั้นสูง</span>
-                        <span class="label label-primary pull-right"></span>
-                    </a>
-                </li>
+                <?php if (in_array("config_group", $access_permission)) { ?>
+                    <li class="treeview">
+                        <a href="<?= base_url(); ?>config_group/get_form">
+                            <i class="fa fa-gears"></i>
+                            <span>ขั้นสูง</span>
+                            <span class="label label-primary pull-right"></span>
+                        </a>
+                    </li>
+                <?php } ?>
 
                 <li class="treeview">
                     <a href="#">

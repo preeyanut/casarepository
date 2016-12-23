@@ -23,6 +23,9 @@ class List_customer extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('Customer_model');
+        $this->load->model('User_model');
+
+
 
 		$this->load->library('auth_check');
 
@@ -38,27 +41,27 @@ class List_customer extends CI_Controller {
 
     public function get_list()
     {
-        $all_customer = $this->Customer_model->search_customer_filter($this->input->post("txtSearch"),0,10,-1,-1);
+        $all_data = $this->Customer_model->search_filter($this->input->post("txtSearch"), 0, 10, -1, -1);
 
-        $total_customer = $this->Customer_model->get_total_customers();
-        $paging = (int)$total_customer/10;
-        $over_page = $total_customer%10;
-        if($paging==0){
-            $paging=1;
+        $total_user = $this->Customer_model->count();
+        $paging = (int)$total_user / 10;
+        $over_page = $total_user % 10;
+        if ($paging == 0) {
+            $paging = 1;
         }
-        if($over_page!=0){
+        if ($over_page != 0) {
             $paging++;
         }
 
+        $data["list"] = $this->Customer_model->get_all();
         $data["paging"] = $paging;
 
-        $data["list"] = $all_customer;
+        $data["list"] = $all_data;
 
         $data["page"] = 'pages/list_customer';
         $this->load->view('template',$data);
 
     }
-
 
 
 	public function get_form(){
@@ -76,7 +79,7 @@ class List_customer extends CI_Controller {
 //				$password_decode = $this->encrypt->decode($this->encrypt->decode($password_result));
 
 				$data['customer_id'] = $customer_info['customer_id'];
-				$data['member_id'] = $customer_info['member_id'];
+				//$data['member_id'] = $customer_info['member_id'];
 
 				$data['customer_firstname'] = $customer_info['customer_firstname'];
 				$data['customer_lastname'] = $customer_info['customer_lastname'];
@@ -88,6 +91,7 @@ class List_customer extends CI_Controller {
 				$data['bank_name'] = $customer_info['bank_name'];
 				$data['bank_account_name'] = $customer_info['bank_account_name'];
 				$data['bank_account_number'] = $customer_info['bank_account_number'];
+                $data['money_open_account'] = $customer_info['money_open_account'];
 
 				$data['old_id_promotion'] = $customer_info['old_id_promotion'];
 
@@ -100,10 +104,12 @@ class List_customer extends CI_Controller {
 
 			$data["action"] = base_url() . "customer/edit";
 
-		} else {
+		}
+
+		else {
 
 			$data['customer_id'] = ""; "";
-			$data['member_id'] = "";
+			//$data['member_id'] = "";
 
 			$data['customer_firstname'] = "";
 			$data['customer_lastname'] = "";
@@ -115,7 +121,7 @@ class List_customer extends CI_Controller {
 			$data['bank_name'] = "";
 			$data['bank_account_name'] = "";
 			$data['bank_account_number'] = "";
-
+            $data['money_open_account'] = "";
 			$data['old_id_promotion'] = "";
 
 			$data['submission_date'] = "";
@@ -124,14 +130,51 @@ class List_customer extends CI_Controller {
 
 			$data['customer_status'] = "";
 
-			$data["action"] = base_url() . "customer/add";
+			$data["action"] = base_url() . "customer/add_customer";
 
 		}
-        $data["list"] = $this->Customer_model->get_total_customers();
+        $data["list"] = $this->Customer_model->get_all();
 
 		$data["page"] = 'pages/list_customer';
 		$this->load->view('template',$data);
 	}
+
+    public function add_customer()
+    {
+
+        if ($this->input->post()) {
+            $data["customer_id"] = $this->Customer_model->add_customer($this->input->post());
+        }
+
+        $jsonResult['Result'] = true;
+        //$jsonResult['error'] = "";
+        $jsonResult['Data'] = $data;
+        echo json_encode($jsonResult);
+    }
+
+    public function edit_customer()
+    {
+        if ($this->input->post()) {
+            $data["customer_id"] = $this->Customer_model->edit_customer($this->input->post());
+        }
+
+        $jsonResult['Result'] = true;
+        //$jsonResult['error'] = "";
+        $jsonResult['Data'] = $data;
+        echo json_encode($jsonResult);
+    }
+
+    public function delete_customer() {
+
+        if ($this->input->post()) {
+            $this->Customer_model->delete_customer($this->input->post("customer_id"));
+        }
+
+        $jsonResult['Result'] = true;
+        //$jsonResult['error'] = "";
+        $jsonResult['Data'] = "";
+        echo json_encode($jsonResult);
+    }
 
 	private function get_under_customer($arr_main_customer_id){
 		$ret = array();
@@ -151,32 +194,32 @@ class List_customer extends CI_Controller {
 		return $ret;
 	}
 
-	public function validate_form() {
-
-		if ((strlen($this->input->post('customer_name')) < 3) || (strlen($this->input->post('customer_name')) > 255)) {
-			$this->error['customer_name'] = "กรุณากรอกข้อมูลชื่อสินค้า";
-		}
-		//echo "---".$this->input->post('customer_name')."---";
-		if ($this->input->post('customer_id') =="") {
-			$customer_info = $this->Customer_model->get_customer_by_customer_name($this->input->post('customer_name'));
-			if ($customer_info) {
-				$this->error['customer_name'] = "ชื่อสินค้านี้ถูกใช้แล้ว";
-			}
-		}
-
-		if (isset($this->error)) {
-			$jsonResult['error'] = $this->error;
-		}
-
-		$jsonResult['Result'] = true;
-		$jsonResult['Data'] = "";
-
-		echo json_encode($jsonResult);
-	}
+//	public function validate_form() {
+//
+//		if ((strlen($this->input->post('customer_name')) < 3) || (strlen($this->input->post('customer_name')) > 255)) {
+//			$this->error['customer_name'] = "กรุณากรอกข้อมูลชื่อสินค้า";
+//		}
+//		//echo "---".$this->input->post('customer_name')."---";
+//		if ($this->input->post('customer_id') =="") {
+//			$customer_info = $this->Customer_model->get_customer_by_customer_name($this->input->post('customer_name'));
+//			if ($customer_info) {
+//				$this->error['customer_name'] = "ชื่อสินค้านี้ถูกใช้แล้ว";
+//			}
+//		}
+//
+//		if (isset($this->error)) {
+//			$jsonResult['error'] = $this->error;
+//		}
+//
+//		$jsonResult['Result'] = true;
+//		$jsonResult['Data'] = "";
+//
+//		echo json_encode($jsonResult);
+//	}
 
 	public function get_all_customer(){
 
-		 $result = $this->Customer_model->get_all_customer();
+		 $result = $this->Customer_model->get_all();
 
 		$data["list"] = $result;
 		$jsonResult['Result'] = true;
@@ -185,31 +228,28 @@ class List_customer extends CI_Controller {
 		echo json_encode($jsonResult);
 	}
 
-    public function get_paging() {
+    public function get_paging()
+    {
 
         $filter_number = $this->input->post("filter-number");
         $page = $this->input->post("filter-page");
+        $filter_status = $this->input->post("filter-status");
 
-        $customer_status = $this->input->post("filter-customer-status");
-        $customer_group = $this->input->post("filter-customer-group");
-
-
-        if($filter_number==-1){
-            $page=1;
-        }else {
-            $start_filter = $filter_number*$page;
-            $total_customer = $this->Customer_model->get_total_by_search($this->input->post("txtSearch"),$start_filter,$filter_number,$customer_status,$customer_group);
-            if(!isset($total_customer["total"])){
+        if ($filter_number == -1) {
+            $page = 1;
+        } else {
+            $start_filter = $filter_number * $page;
+            $total_user = $this->Customer_model->get_total_by_search($this->input->post("txtSearch"), $start_filter, $filter_number, $filter_status);
+            if (!isset($total_user["total"])) {
                 $data["paging"] = 0;
                 $jsonResult['Data'] = $data;
                 echo json_encode($jsonResult);
                 return;
             }
-            $paging = (int)((int)$total_customer["total"] / (int)$filter_number);
-            $over_page = (int)((int)$total_customer["total"] % (int)$filter_number);
+            $paging = (int)((int)$total_user["total"] / (int)$filter_number);
+            $over_page = (int)((int)$total_user["total"] % (int)$filter_number);
             $page = 0;
 
-            //echo "--".$total_customer["total"] ."--".$paging."---".$over_page;
             if ($paging == 0) {
                 $page = 1;
             } else {
@@ -220,7 +260,7 @@ class List_customer extends CI_Controller {
                 $page++;
             }
         }
-
+//        var_dump($this->input->post("filter-number"),$this->input->post("filter-page"),$this->input->post("filter-status"));
 
         $data["paging"] = $page;
         $jsonResult['Data'] = $data;
@@ -240,10 +280,10 @@ class List_customer extends CI_Controller {
 
 //        $result = array();
         if ($filter_number == -1) {
-            $result = $this->Customer_model->get_all_customer();
+            $result = $this->Customer_model->get_all();
         } else {
             $start_filter = $filter_number * $page;
-            $result = $this->Customer_model->search_customer_filter($this->input->post("txtSearch"), $start_filter, $filter_number, $status);
+            $result = $this->Customer_model->search_filter($this->input->post("txtSearch"), $start_filter, $filter_number, $status);
         }
 
         $data["list"] = $result;

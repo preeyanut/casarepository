@@ -11,7 +11,7 @@
 </section>
 
 <style>
-    #tbody-customer td,.table-customer td{
+    #tbody-customer td, .table-customer td {
         white-space: nowrap;
     }
 </style>
@@ -49,12 +49,11 @@
                                     <label class="control-label" for="input-search">แถว </label>
                                 </div>
                                 <div class="col-sm-4" style="float: left;">
-                                    <label class=" control-label" for="input-search" style="float: left">สถานะ
-                                        : </label>
+                                    <label class=" control-label" for="input-search" style="float: left">สถานะ: </label>
 
                                     <div class="col-sm-8">
-                                        <select id="filter-customer-status" name="table_customer_summay_master_length"
-                                                aria-controls="table_customer_summay_master"
+                                        <select id="filter-status" name="table_summay_master_length"
+                                                aria-controls="table_summay_master"
                                                 class="form-control input-sm input-xsmall input-inline">
                                             <option value="-1">ทั้งหมด</option>
                                             <option value="0">ปกติ</option>
@@ -63,7 +62,7 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-sm-4" style="float: left;">
+                                <!--<div class="col-sm-4" style="float: left;">
 
                                     <label class=" control-label" for="input-search" style="float: left">ระดับ
                                         : </label>
@@ -79,7 +78,7 @@
                                             <?php } ?>
                                         </select>
                                     </div>
-                                </div>
+                                </div>-->
                             </div>
                             <div class="col-sm-4 text-right">
                                 <label class="col-sm-3 control-label" for="input-search">ค้นหา : </label>
@@ -93,7 +92,8 @@
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
-                    <form action="<?php //echo $delete; ?>" method="post" enctype="multipart/form-data" id="form-customer">
+                    <form action="<?php //echo $delete; ?>" method="post" enctype="multipart/form-data"
+                          id="form-customer">
                         <div class="table-responsive  box-body ">
                             <table class="table table-bordered table-hover">
                                 <thead class="table-customer">
@@ -105,23 +105,18 @@
                                     <td class="text-center">เบอร์โทรศัพท์</td>
                                     <td class="text-center">Lind ID</td>
                                     <td class="text-center">Email</td>
-
                                     <td class="text-center">ช่องทางที่รู้จักเว็บ</td>
                                     <td class="text-center">ธนาคาร</td>
                                     <td class="text-center">ชื่อบัญชี</td>
                                     <td class="text-center">หมายเลขบัญชี</td>
                                     <td class="text-center">ยอดเงินเปิดบัญชี</td>
                                     <td class="text-center">หมายเลขโปรย้ายค่าย</td>
-
                                     <td class="text-center">รับลูกค้าโดย</td>
                                     <td class="text-center">วันที่รับลูกค้า</td>
                                     <td class="text-center">อัพเดทข้อมูลโดย</td>
                                     <td class="text-center">อัพเดทข้อมูลวันที่</td>
-
                                     <td class="text-center">สถานะลูกค้า</td>
-
                                     <td class="text-center">จัดการ</td>
-
 
                                 </tr>
                                 </thead>
@@ -132,7 +127,8 @@
                                     <?php foreach ($list as $customer) { ?>
                                         <tr id="tr_id<?php echo $customer['customer_id']; ?>" class="tr_id">
 
-                                            <td class="text-center"><?php echo $count; $count++; ?></td>
+                                            <td class="text-center"><?php echo $count;
+                                                $count++; ?></td>
                                             <td class="text-center"><?php echo $customer['member_id']; ?></td>
                                             <td class="text-center"><?php echo $customer['submission_date']; ?></td>
                                             <td class="text-center"><?php echo $customer['customer_firstname'] . " " . $customer['customer_lastname']; ?></td>
@@ -149,12 +145,10 @@
                                             </td>
 
                                             <td class="text-center"><?php echo $customer['old_id_promotion']; ?></td>
-
-                                            <td class="text-center"><?php echo $customer['accept_by']; ?></td>
+                                            <td class="text-center"><?php echo $customer['accept_by_name']; ?></td>
                                             <td class="text-center"><?php echo $customer['accept_date']; ?></td>
-                                            <td class="text-center"><?php echo $customer['update_by']; ?></td>
+                                            <td class="text-center"><?php echo $customer['update_by_name']; ?></td>
                                             <td class="text-center"><?php echo $customer['update_date']; ?></td>
-
                                             <td class="text-center" style="color: <?php
                                             $str_status = "";
                                             switch ($customer['customer_status']) {
@@ -175,11 +169,15 @@
                                                 <?php echo $str_status; ?>
                                             </td>
                                             <td class="text-center">
-                                                <button type="button" name="button-edit<?php echo $customer['customer_id']; ?>"
+                                                <button type="button"
+                                                        name="button-edit<?php echo $customer['customer_id']; ?>"
                                                         id="button-edit" class="btn btn-warning button-edit">แก้ไข
                                                 </button>
+                                                <button type="button"
+                                                        name="button-delete<?php echo $customer['customer_id']; ?>"
+                                                        id="button-delete" class="btn btn-danger button-delete">ลบ
+                                                </button>
                                             </td>
-
                                         </tr>
                                     <?php } ?>
                                 <?php } else { ?>
@@ -194,7 +192,7 @@
                                 <ul class="pagination" style="visibility: visible;">
                                     <li class="prev">
                                         <a class="paging" href="#" id="page-1" title="Prev"><i
-                                                class="fa fa-angle-left"></i></a>
+                                                    class="fa fa-angle-left"></i></a>
                                     </li>
                                 </ul>
                                 <div class="container-paging pagination">
@@ -205,7 +203,7 @@
 
                                     <li class="next">
                                         <a class="paging" href="#" id="page+1" title="Next"><i
-                                                class="fa fa-angle-right"></i></a>
+                                                    class="fa fa-angle-right"></i></a>
                                     </li>
                                 </ul>
                             </div>
@@ -241,119 +239,170 @@
 <script type="application/javascript">
 
     init_event({
-        document_on:[
+        document_on: [
             'keyup,#input-search'
-            ,'change,#filter-number'
-            ,'change,#filter-status'
-            ,'click,.button-edit'
-            ,'click,.paging'
-        ],document_ready:[
+            , 'change,#filter-number'
+            , 'change,#filter-status'
+            , 'click,.button-edit'
+            , 'click,.paging'
+        ], document_ready: [
             get_paging
         ]
     });
 
-//    function format_to_money() {
-//        var input_type_number = $('.input-number');
-//
-//        for (var i = 0; i < input_type_number.length; i++) {
-//
-//            var intValue = Number(input_type_number[i].value);
-//
-//            $('.input-number')[i].value = formatNumber(intValue);
-//
-//            // console.log(formatNumber(intValue));
-//        }
-//    }
-//
-//    function formatNumber(number) {
-//        //var int_number = Number(number);
-//        var p = number.toFixed(2).split(".");
-//        var minus = p[0].substring(0, 1);
-//        if (minus == "-") {
-//            p[0] = p[0].substring(1, p[0].length);
-//
-//            return "-" + p[0].split("").reverse().reduce(function (acc, number, i, orig) {
-//                    return number + (i && !(i % 3) ? "," : "") + acc;
-//                }, "") + "." + p[1];
-//        }
-//        else {
-//            return "" + p[0].split("").reverse().reduce(function (acc, number, i, orig) {
-//                    return number + (i && !(i % 3) ? "," : "") + acc;
-//                }, "") + "." + p[1];
-//        }
-//    }
-//
-//    function label_format_number() {
-//
-//        var label_type_number = $(".label-number");
-//
-//        for (var i = 0; i < label_type_number.length; i++) {
-//
-//            var intValue = Number(label_type_number[i].innerHTML.trim());
-//
-//            $(".label-number")[i].innerHTML = formatNumber(intValue);
-//
-//        }
-//    }
-
-    $(document).on("keyup", "#input-search", function () {
-        search_user();
-        get_paging();
-    });
-
-    $(document).on("change", "#filter-number", function () {
-        search_user();
-        get_paging();
-    });
-
-    $(document).on("change", "#filter-status", function () {
-        search_user();
-        get_paging();
-    });
-
+    //    function format_to_money() {
+    //        var input_type_number = $('.input-number');
+    //
+    //        for (var i = 0; i < input_type_number.length; i++) {
+    //
+    //            var intValue = Number(input_type_number[i].value);
+    //
+    //            $('.input-number')[i].value = formatNumber(intValue);
+    //
+    //            // console.log(formatNumber(intValue));
+    //        }
+    //    }
+    //
+    //    function formatNumber(number) {
+    //        //var int_number = Number(number);
+    //        var p = number.toFixed(2).split(".");
+    //        var minus = p[0].substring(0, 1);
+    //        if (minus == "-") {
+    //            p[0] = p[0].substring(1, p[0].length);
+    //
+    //            return "-" + p[0].split("").reverse().reduce(function (acc, number, i, orig) {
+    //                    return number + (i && !(i % 3) ? "," : "") + acc;
+    //                }, "") + "." + p[1];
+    //        }
+    //        else {
+    //            return "" + p[0].split("").reverse().reduce(function (acc, number, i, orig) {
+    //                    return number + (i && !(i % 3) ? "," : "") + acc;
+    //                }, "") + "." + p[1];
+    //        }
+    //    }
+    //
+    //    function label_format_number() {
+    //
+    //        var label_type_number = $(".label-number");
+    //
+    //        for (var i = 0; i < label_type_number.length; i++) {
+    //
+    //            var intValue = Number(label_type_number[i].innerHTML.trim());
+    //
+    //            $(".label-number")[i].innerHTML = formatNumber(intValue);
+    //
+    //        }
+    //    }
     $(document).on("click", ".button-edit", function () {
         var customer_id = this.name.replace("button-edit", "");
         window.open("<?php echo base_url(); ?>customer/get_form?customer_id=" + customer_id, "_self");
     });
 
-//    $(document).on("click", ".button-edit", function () {
-//        var customer_id = this.name.replace("button-edit", "");
-//
-//        $.ajax({
-//            url: '<?php //echo base_url(); ?>//customer/get_customer',
-//            type: 'post',
-//            //data: $('input , select')+"&customer_id="+customer_id,
-//            data: {customer_id:customer_id},
-//            dataType: 'json',
-//            crossDomain: true,
-//            success: function (json) {
-//
-//                console.log(json);
-//
-//                console.log(json.Data.customer_info.customer_firstname);
-//                $('#input-customer-firstname').val(json.Data.customer_info.customer_firstname);
-//                $('#input-customer-lastname').val(json.Data.customer_info.customer_lastname);
-//                $('#input-customer-line-id').val(json.Data.customer_info.customer_line_id);
-//                $('#input-customer-telephone').val(json.Data.customer_info.customer_telephone);
-//                $('#input-customer-email').val(json.Data.customer_info.customer_email);
-//
-//                $('#input-member-id').val(json.Data.customer_info.member_id);
-//                $('#input-how-to-know-web').val(json.Data.customer_info.how_to_know_web);
-//                $('#input-bank-name').val(json.Data.customer_info.bank_name);
-//                $('#input-bank-account-name').val(json.Data.customer_info.bank_account_name);
-//                $('#input-bank-account-number').val(json.Data.customer_info.bank_account_number);
-//                $('#input-money-open-account').val(json.Data.customer_info.money_open_account);
-//
-////                alert("แก้ไขข้อมูลผู้ใช้งานเสร็จสิ้น");
-//
-////                edit_default_setting(customer_id);
-////                edit_percent_setting(customer_id);
-//            },
-//            error: function (xhr, ajaxOptions, thrownError) {
-//                alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
-//            }
-//        });
-//    });
+    $(document).on("click", ".button-delete", function () {
+        var customer_id = this.name.replace("button-delete", "");
+        var result = confirm("ยืนยันการลบข้อมูล");
+        if (result == true) {
+            $.ajax({
+                url: '<?php echo base_url(); ?>list_customer/delete_customer',
+                type: 'post',
+                data: "customer_id=" + customer_id,
+                dataType: 'json',
+                crossDomain: true,
+                beforeSend: function () {
+                    $('.button-delete').button('loading');
+                },
+                complete: function () {
+                    $('.button-delete').button('reset');
+                },
+                success: function (json) {
+
+                    reload_list_customer();
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+                }
+            });
+        }
+
+    });
+
+
+    $(document).on("keyup", "#input-search", function () {
+        search_customer();
+        get_paging();
+    });
+
+    $(document).on("change", "#filter-number", function () {
+        search_customer();
+        get_paging();
+    });
+
+    $(document).on("change", "#filter-status", function () {
+        search_customer();
+        get_paging();
+    });
+
+    $(document).on("click", ".paging", function () {
+        var page_number = this.id.replace("page", "");
+        $(".paging").css("background-color", "#ffffff");
+        var max_page = $('.container-paging').find('li').length;
+        var current_page = $("#filter-page").val();
+        if (current_page == 0) {
+            current_page = 1;
+        }
+        if (page_number == "-1" && current_page > 1) {
+            $("#filter-page").val(current_page - 1);
+            $("#page" + (current_page - 1)).css("background-color", "#eeeeee");
+        } else if (page_number == "+1" && current_page < max_page) {
+            $("#filter-page").val(Number(current_page) + 1);
+            $("#page" + (Number(current_page) + 1)).css("background-color", "#eeeeee");
+        } else if (page_number != "-1" && page_number != "+1") {
+            $("#filter-page").val(page_number);
+            $("#page" + page_number).css("background-color", "#eeeeee");
+        } else {
+            $("#page" + (Number(current_page))).css("background-color", "#eeeeee");
+        }
+        search_customer();
+    });
+
+    //    $(document).on("click", ".button-edit", function () {
+    //        var customer_id = this.name.replace("button-edit", "");
+    //
+    //        $.ajax({
+    //            url: '<?php //echo base_url(); ?>//customer/get_customer',
+    //            type: 'post',
+    //            //data: $('input , select')+"&customer_id="+customer_id,
+    //            data: {customer_id:customer_id},
+    //            dataType: 'json',
+    //            crossDomain: true,
+    //            success: function (json) {
+    //
+    //                console.log(json);
+    //
+    //                console.log(json.Data.customer_info.customer_firstname);
+    //                $('#input-customer-firstname').val(json.Data.customer_info.customer_firstname);
+    //                $('#input-customer-lastname').val(json.Data.customer_info.customer_lastname);
+    //                $('#input-customer-line-id').val(json.Data.customer_info.customer_line_id);
+    //                $('#input-customer-telephone').val(json.Data.customer_info.customer_telephone);
+    //                $('#input-customer-email').val(json.Data.customer_info.customer_email);
+    //
+    //                $('#input-member-id').val(json.Data.customer_info.member_id);
+    //                $('#input-how-to-know-web').val(json.Data.customer_info.how_to_know_web);
+    //                $('#input-bank-name').val(json.Data.customer_info.bank_name);
+    //                $('#input-bank-account-name').val(json.Data.customer_info.bank_account_name);
+    //                $('#input-bank-account-number').val(json.Data.customer_info.bank_account_number);
+    //                $('#input-money-open-account').val(json.Data.customer_info.money_open_account);
+    //
+    ////                alert("แก้ไขข้อมูลผู้ใช้งานเสร็จสิ้น");
+    //
+    ////                edit_default_setting(customer_id);
+    ////                edit_percent_setting(customer_id);
+    //            },
+    //            error: function (xhr, ajaxOptions, thrownError) {
+    //                alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+    //            }
+    //        });
+    //    });
 
 
     function edit_customer() {
@@ -371,14 +420,10 @@
                 $('#button-save').button('reset');
             },
             success: function (json) {
+                alert("แก้ไขข้อมูลผู้ใช้งานเสร็จสิ้น");
 
+                //reload_list_customer();
 
-                 alert("แก้ไขข้อมูลผู้ใช้งานเสร็จสิ้น");
-
-                reload_list_customer();
-
-//                edit_default_setting(customer_id);
-//                edit_percent_setting(customer_id);
             },
             error: function (xhr, ajaxOptions, thrownError) {
                 alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
@@ -408,18 +453,18 @@
                     var color_status = "";
                     var str_status = "";
 
-                    switch (list_customer.customer_status) {
+                    switch (Number(customer.customer_status)) {
                         case 0:
                             color_status = "#00A65A";
-                            $str_status = "ปกติ";
+                            str_status = "ปกติ";
                             break;
                         case 1:
                             color_status = "#DD4B39";
-                            $str_status = "ถูกระงับ";
+                            str_status = "ถูกระงับ";
                             break;
                         case 2 :
                             color_status = "#CCCCCC";
-                            $str_status = "ปิดใช้งาน";
+                            str_status = "ปิดใช้งาน";
                             break;
                     }
 
@@ -427,7 +472,7 @@
                         + "<td class='text-center'>" + (i + 1) + "</td>"
                         + "<td class='text-center'>" + customer.member_id + "</td>"
                         + "<td class='text-center'>" + customer.submission_date + "</td>"
-                        + "<td class='text-center'>" + customer.customer_firstname + customer.customer_lastname +"</td>"
+                        + "<td class='text-center'>" + customer.customer_firstname + " " + customer.customer_lastname + "</td>"
                         + "<td class='text-center'>" + customer.customer_telephone + "</td>"
                         + "<td class='text-center'>" + customer.customer_line_id + "</td>"
                         + "<td class='text-center'>" + customer.customer_email + "</td>"
@@ -437,12 +482,18 @@
                         + "<td class='text-center'>" + customer.bank_account_number + "</td>"
                         + "<td class='text-center'>" + customer.money_open_account + "</td>"
                         + "<td class='text-center'>" + customer.old_id_promotion + "</td>"
-                        + "<td class='text-center'>" + customer.accept_by + "</td>"
+                        + "<td class='text-center'>" + customer.accept_by_name + "</td>"
                         + "<td class='text-center'>" + customer.accept_date + "</td>"
+                        + "<td class='text-center'>" + customer.update_by_name + "</td>"
                         + "<td class='text-center'>" + customer.update_date + "</td>"
-                        + "<td class='text-center'>" + customer.update_by + "</td>"
                         + "<td class='text-center' style='color: " + color_status + "'>"
                         + str_status + "</td>"
+                        + " <td class='text-center'>"
+                        + "<button type='button' name='button-edit" + customer.customer_id + "' "
+                        + " id='button-edit' class='btn btn-warning button-edit'>แก้ไข</button>"
+                        + " <button type='button' name='button-delete" + customer.customer_id + "' id='button-delete' "
+                        + " class='btn btn-danger button-delete'>ลบ</button>"
+                        + "</td>"
                         + "</tr>";
 
                     $("#tbody").append(html);
@@ -455,8 +506,7 @@
         });
     }
 
-    function search_user() {
-
+    function search_customer() {
         var txtSearch = $("#input-search").val();
         var filterNumber = $("#filter-number").val();
         var filterPage = $("#filter-page").val();
@@ -475,6 +525,8 @@
             success: function (json) {
                 var data = json.Data;
                 var customers = data["list"];
+                console.log(json);
+
                 $("#tbody").empty();
                 for (var i = 0; i < customers.length; i++) {
                     var customer = customers[i];
@@ -498,7 +550,7 @@
                         + "<td class='text-center'>" + (i + 1) + "</td>"
                         + "<td class='text-center'>" + customer.member_id + "</td>"
                         + "<td class='text-center'>" + customer.submission_date + "</td>"
-                        + "<td class='text-center'>" + customer.customer_firstname + customer.customer_lastname +"</td>"
+                        + "<td class='text-center'>" + customer.customer_firstname + " " + customer.customer_lastname + "</td>"
                         + "<td class='text-center'>" + customer.customer_telephone + "</td>"
                         + "<td class='text-center'>" + customer.customer_line_id + "</td>"
                         + "<td class='text-center'>" + customer.customer_email + "</td>"
@@ -508,14 +560,18 @@
                         + "<td class='text-center'>" + customer.bank_account_number + "</td>"
                         + "<td class='text-center'>" + customer.money_open_account + "</td>"
                         + "<td class='text-center'>" + customer.old_id_promotion + "</td>"
-                        + "<td class='text-center'>" + customer.accept_by + "</td>"
+                        + "<td class='text-center'>" + customer.accept_by_name + "</td>"
                         + "<td class='text-center'>" + customer.accept_date + "</td>"
+                        + "<td class='text-center'>" + customer.update_by_name + "</td>"
                         + "<td class='text-center'>" + customer.update_date + "</td>"
-                        + "<td class='text-center'>" + customer.update_by + "</td>"
                         + "<td class='text-center' style='color: " + color_status + "'>"
                         + str_status + "</td>"
-                        + " <td class='text-center'><button type='button' name='button-edit" + customer.customer_id + "' "
-                        + " id='button-edit' class='btn btn-warning button-edit'>แก้ไข</button></td>"
+                        + " <td class='text-center'>"
+                        + "<button type='button' name='button-edit" + customer.customer_id + "' "
+                        + " id='button-edit' class='btn btn-warning button-edit'>แก้ไข</button>"
+                        + " <button type='button' name='button-delete" + customer.customer_id + "' id='button-delete' "
+                        + " class='btn btn-danger button-delete'>ลบ</button>"
+                        + "</td>"
                         + "</tr>";
                     $("#tbody").append(html);
                 }
@@ -533,11 +589,6 @@
         var filterPage = $("#filter-page").val();
         var filterStatus = $("#filter-status").val();
 
-//        filterPage=1;
-//        console.log(txtSearch);
-//        console.log(filterNumber);
-//        console.log(filterPage);
-//        console.log(filterStatus);
         $.ajax({
             url: '<?php echo base_url(); ?>list_customer/get_paging',
             type: 'post',
@@ -549,7 +600,6 @@
             complete: function () {
             },
             success: function (json) {
-                console.log(json);
                 var data = json.Data;
                 var paging = data["paging"];
                 $(".container-paging").empty();
@@ -564,5 +614,6 @@
             }
         });
     }
+
 
 </script>

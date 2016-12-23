@@ -45,7 +45,7 @@
                                     <label class=" control-label" for="input-search" style="float: left">สถานะ
                                         : </label>
                                     <div class="col-sm-8">
-                                        <select id="filter-user-status" name="table_user_summay_master_length"
+                                        <select id="filter-status" name="table_user_summay_master_length"
                                                 aria-controls="table_user_summay_master"
                                                 class="form-control input-sm input-xsmall input-inline">
                                             <option value="-1">ทั้งหมด</option>
