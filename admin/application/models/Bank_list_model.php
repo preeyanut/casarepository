@@ -13,12 +13,14 @@ class Bank_list_model extends CI_Model
         return $query->result_array();
     }
 
-    public function get_data($id){
+    public function get_data($id)
+    {
         $query = $this->db->query("SELECT * FROM bank_list WHERE bank_list_id = " . $id);
         return $query->result_array();
     }
 
-    public function add_bank($data){
+    public function add_bank($data)
+    {
         $this->load->library('encrypt');
 
         $data_array = array(
@@ -35,25 +37,53 @@ class Bank_list_model extends CI_Model
         $this->db->insert('bank_list', $data_array);
         $insert_id = $this->db->insert_id();
 
+        $this->db->insert('log',
+            array('action' => 'add',
+            'action_table' => 'bank_list',
+            'action_date' => date("Y-m-d H:i:s"),
+            'action_by' => $this->session->userdata("user_id"),
+            'action_to' => (int)$data['bank_list_id'],
+            'sql_script' => 'insert')
+        );
+
         return $insert_id;
     }
 
-    public function edit_bank($data){
+    public function edit_bank($data)
+    {
         $this->load->library('encrypt');
 
         $this->db->query("UPDATE `" . "" . "bank_list` SET "
             . " bank_list_name = '" . $data['bank_name'] . "'"
             . ", priority_level = '" . $data['priority_level'] . "'"
             . ", bank_list_status = '" . (int)$data['bank_list_status'] . "'"
-            . ", update_date = '" .  date("Y-m-d H:i:s") . "'"
+            . ", update_date = '" . date("Y-m-d H:i:s") . "'"
             . ", update_by = '" . $this->session->userdata("user_id") . "'"
             . " WHERE  bank_list_id = '" . (int)$data['bank_list_id'] . "'");
 
+        $this->db->insert('log',
+            array('action' => 'edit',
+                'action_table' => 'bank_list',
+                'action_date' => date("Y-m-d H:i:s"),
+                'action_by' => $this->session->userdata("user_id"),
+                'action_to' => (int)$data['bank_list_id'],
+                'sql_script' => 'update')
+        );
     }
 
-    public function delete_bank($bank_id){
+    public function delete_bank($bank_id)
+    {
+        $this->db->insert('log',
+        array('action' => 'delete',
+            'action_table' => 'bank_list',
+            'action_date' => date("Y-m-d H:i:s"),
+            'action_by' => $this->session->userdata("user_id"),
+            'action_to' => $bank_id,
+            'sql_script' => 'delete')
+        );
+        
         $this->load->library('encrypt');
-        $this->db->query("DELETE FROM bank_list WHERE bank_list_id = ". $bank_id) ;
+        $this->db->query("DELETE FROM bank_list WHERE bank_list_id = " . $bank_id);
 
     }
 

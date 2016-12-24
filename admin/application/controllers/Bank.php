@@ -145,6 +145,7 @@ class Bank extends CI_Controller
     {
         if ($this->input->post()) {
             $data["bank_list_id"] = $this->Bank_list_model->edit_bank($this->input->post());
+
         }
 
         $jsonResult['Result'] = true;
@@ -156,6 +157,7 @@ class Bank extends CI_Controller
     public function delete_bank()
     {
         if ($this->input->get('bank_list_id')) {
+
             $data["bank_list_id"] = $this->Bank_list_model->delete_bank($this->input->get('bank_list_id'));
         }
 

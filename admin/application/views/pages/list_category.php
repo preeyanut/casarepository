@@ -286,6 +286,7 @@
                     var category = categorys[i];
                     var color_status = "";
                     var str_status = "";
+                    var icon = "";
                     switch (Number(category.category_status)) {
                         case 0:
                             color_status = "#8a0004";
