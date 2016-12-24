@@ -5,17 +5,22 @@ class Bank_list_model extends CI_Model
 
     public function get_all()
     {
-        $query = $this->db->query("SELECT bank_list.*,CONCAT(u1.firstname, ' ', u1.lastname) as create_by_name "
-            . " ,CONCAT(u2.firstname, ' ', u2.lastname)  as update_by_name "
-            . " from bank_list "
-            . " inner join  user as u1 on u1.user_id = bank_list.create_by "
-            . " inner join  user as u2 on u2.user_id = bank_list.update_by ");
+        $this->db->select('bank_list.*,CONCAT(u1.firstname + u1.lastname) as create_by_name');
+        $this->db->from('bank_list');
+        $this->db->join('user as u1','u1.user_id = bank_list.create_by','inner');
+        $this->db->join('user as u2','u2.user_id = bank_list.update_by','inner');
+        $query = $this->db->get();
+
         return $query->result_array();
     }
 
     public function get_data($id)
     {
-        $query = $this->db->query("SELECT * FROM bank_list WHERE bank_list_id = " . $id);
+        $this->db->select('*');
+        $this->db->from('bank_list');
+        $this->db->where('bank_list_id',$id);
+        $query = $this->db->get();
+
         return $query->result_array();
     }
 
@@ -37,14 +42,8 @@ class Bank_list_model extends CI_Model
         $this->db->insert('bank_list', $data_array);
         $insert_id = $this->db->insert_id();
 
-        $this->db->insert('log',
-            array('action' => 'add',
-            'action_table' => 'bank_list',
-            'action_date' => date("Y-m-d H:i:s"),
-            'action_by' => $this->session->userdata("user_id"),
-            'action_to' => (int)$data['bank_list_id'],
-            'sql_script' => 'insert')
-        );
+        $sql_data = json_encode ($data_array);
+        $this->add_log('add','bank',(int)$insert_id,$sql_data);
 
         return $insert_id;
     }
@@ -53,47 +52,40 @@ class Bank_list_model extends CI_Model
     {
         $this->load->library('encrypt');
 
-        $this->db->query("UPDATE `" . "" . "bank_list` SET "
-            . " bank_list_name = '" . $data['bank_name'] . "'"
-            . ", priority_level = '" . $data['priority_level'] . "'"
-            . ", bank_list_status = '" . (int)$data['bank_list_status'] . "'"
-            . ", update_date = '" . date("Y-m-d H:i:s") . "'"
-            . ", update_by = '" . $this->session->userdata("user_id") . "'"
-            . " WHERE  bank_list_id = '" . (int)$data['bank_list_id'] . "'");
-
-        $this->db->insert('log',
-            array('action' => 'edit',
-                'action_table' => 'bank_list',
-                'action_date' => date("Y-m-d H:i:s"),
-                'action_by' => $this->session->userdata("user_id"),
-                'action_to' => (int)$data['bank_list_id'],
-                'sql_script' => 'update')
+        $bank_data = array(
+            'bank_list_name' => $data['bank_name'],
+            'priority_level' => $data['priority_level'],
+            'bank_list_status'=> (int)$data['bank_list_status'],
+            'update_date'=> date("Y-m-d H:i:s"),
+            'update_by'=> $this->session->userdata("user_id"),
         );
+
+        $this->db->where('bank_list_id',(int)$data['bank_list_id']);
+        $this->db->update('bank_list',$bank_data);
+
+        $sql_data = json_encode ($data);
+        $this->add_log('edit','bank',(int)$data['bank_list_id'],$sql_data);
     }
 
     public function delete_bank($bank_id)
     {
-        $this->db->insert('log',
-        array('action' => 'delete',
-            'action_table' => 'bank_list',
-            'action_date' => date("Y-m-d H:i:s"),
-            'action_by' => $this->session->userdata("user_id"),
-            'action_to' => $bank_id,
-            'sql_script' => 'delete')
-        );
-        
+        $sql_data = 'delete data';
+        $this->add_log('delete','bank',$bank_id ,$sql_data);
+
         $this->load->library('encrypt');
-        $this->db->query("DELETE FROM bank_list WHERE bank_list_id = " . $bank_id);
+
+        $this->db->where('bank_list_id',$bank_id);
+        $this->db->delete('bank_list');
 
     }
 
     public function count()
     {
-        $query = $this->db->query("SELECT COUNT(*) AS total FROM `" . "" . "bank_list`");
+        $this->db->select('count(*) as total ');
+        $this->db->from('bank_list');
+        $query = $this->db->get();
 
-        $result = $query->result_array();
-
-        return $result;
+        return $query->result_array();
     }
 
     public function search_filter($txtSearch, $start_filter, $filter_number, $status)
@@ -115,6 +107,15 @@ class Bank_list_model extends CI_Model
             . " Limit " . $start_filter . ", " . $filter_number . " "
         );
 
+//        $this->db->select('bank_list.*,CONCAT(u1.firstname + u1.lastname) as create_by_name,CONCAT(u2.firstname + u2.lastname)  as update_by_name');
+//        $this->db->from('bank_list');
+//        $this->db->join('user as u1','u1.user_id = bank_list.create_by','inner');
+//        $this->db->join('user as u2','u2.user_id = bank_list.update_by','inner');
+////        $this->db->where('');
+//        $this->db->like('bank_list_name',$txtSearch);
+////        $this->db->limit($start_filter,$filter_number);
+//        $query = $this->db->get();
+
         return $query->result_array();
     }
 
@@ -133,5 +134,17 @@ class Bank_list_model extends CI_Model
         );
 
         return $query->row_array('total');
+    }
+
+    public function add_log($action,$action_table,$action_to,$sql_script){
+
+        $this->db->insert('log',
+            array('action' => $action,
+                'action_table' => $action_table,
+                'action_date' => date("Y-m-d H:i:s"),
+                'action_by' => $this->session->userdata("user_id"),
+                'action_to' => $action_to,
+                'sql_script' => $sql_script)
+        );
     }
 }
