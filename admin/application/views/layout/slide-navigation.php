@@ -354,14 +354,15 @@
                 </li>
             <?php } ?>
 
+            <?php if (in_array("log", $access_permission)) { ?>
             <li class="treeview">
-                <a href="#">
+                <a href="<?= base_url(); ?>log">
                     <i class="fa fa-hdd-o"></i>
                     <span>Log</span>
                     <span class="label label-primary pull-right"></span>
                 </a>
             </li>
-
+            <?php } ?>
 
             <?php
             if (in_array("report_estimate_profit", $access_permission)

@@ -192,6 +192,7 @@
             , 'change,#filter-number'
             , 'change,#filter-status'
             , 'click,.button-edit'
+            , 'click,.button-delete'
             , 'click,.paging'
         ], document_ready: [
             get_paging
@@ -281,6 +282,7 @@
 
         var bank_list_id = this.name.replace("button-delete", "");
         window.open("<?php echo base_url(); ?>list_bank/delete_bank?bank_list_id=" + bank_list_id, "_self");
+        alert("ลบข้อมูลสำเร็จ");
     });
 
     $(document).on("click", ".paging", function () {
