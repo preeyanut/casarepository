@@ -202,12 +202,12 @@ class Customer_model extends CI_Model
             'old_id_promotion' => $data['old_id_promotion'],
 
             'submission_date' => date("Y-m-d H:i:s"),
+            'customer_status' => (int)$data['customer_status'],
             'accept_date' => date("Y-m-d H:i:s"),
             'accept_by' => $this->session->userdata("user_id"),
 
             'update_date' => date("Y-m-d H:i:s"),
-            'update_by' => $this->session->userdata("user_id"),
-            'customer_status' => (int)$data['customer_status'],
+            'update_by' => $this->session->userdata("user_id")
 
         );
 
@@ -315,12 +315,12 @@ class Customer_model extends CI_Model
 //        return $query->result_array();
 //    }
 
-    public function search_filter($txtSearch, $start_filter, $filter_number, $filter_status)
+    public function search_filter($txtSearch, $start_filter, $filter_number, $status)
     {
 
         $str_sql = "";
-        if ($filter_status != '-1' && $filter_status != '') {
-            $str_sql .= " AND  customer_status = " . $filter_status;
+        if ($status != '-1' && $status != '') {
+            $str_sql .= " AND  customer_status = " . $status;
         }
 
         $query = $this->db->query("SELECT customer.*,CONCAT(u1.firstname, ' ', u1.lastname) as accept_by_name "
@@ -377,12 +377,17 @@ class Customer_model extends CI_Model
     {
 
         $str_sql = "";
-        if ($filter_status != '-1') {
-            $str_sql .= " AND  customer_status = " . $filter_status;
+        if ($filter_status != "" || $filter_status != 'undefined') {
+            $str_sql .= " AND  customer_status = 0";
         }
 
         $query = $this->db->query("SELECT DISTINCT *, (select count(*) from customer ) as total FROM `" . "" . "customer` "
             . " WHERE  member_id  Like '%" . $txtSearch . "%' "
+            . " OR customer_firstname  Like '%" . $txtSearch . "%' "
+            . " OR customer_lastname  Like '%" . $txtSearch . "%' "
+            . " OR customer_email  Like '%" . $txtSearch . "%' "
+            . " OR customer_telephone  Like '%" . $txtSearch . "%' "
+            . " OR customer_line_id  Like '%" . $txtSearch . "%' "
 
             . $str_sql
             . " Limit " . $start_filter . ", " . $filter_number . " "

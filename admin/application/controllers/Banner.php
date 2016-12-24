@@ -82,7 +82,7 @@ class Banner extends CI_Controller
 
 
         if ($this->input->post()) {
-            $data["banner_id"] = $this->Banner_model->edit_banner($this->input->post());
+            $data["banner_id"] = $this->Banner_model->edit_banner($this->input->post('data_banner'));
         }
 
         $jsonResult['Result'] = true;
