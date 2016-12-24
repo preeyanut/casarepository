@@ -65,79 +65,76 @@ class List_customer extends CI_Controller {
     }
 
 
-	public function get_form(){
-
-		$this->load->library('encrypt');
-
-		if ($this->input->get('customer_id')) {
-
-			$customer_info = $this->Customer_model->get_customer($this->input->get('customer_id'));
-
-			if (!empty($customer_info)) {
-
-				//--  Don't Delete
-//				$password_result = $this->encrypt->encode($customer_info['password']);
-//				$password_decode = $this->encrypt->decode($this->encrypt->decode($password_result));
-
-				$data['customer_id'] = $customer_info['customer_id'];
-				//$data['member_id'] = $customer_info['member_id'];
-
-				$data['customer_firstname'] = $customer_info['customer_firstname'];
-				$data['customer_lastname'] = $customer_info['customer_lastname'];
-				$data['customer_telephone'] = $customer_info['customer_telephone'];
-				$data['customer_line_id'] = $customer_info['customer_line_id'];
-				$data['customer_email'] = $customer_info['customer_email'];
-
-				$data['how_to_know_web'] = $customer_info['how_to_know_web'];
-				$data['bank_name'] = $customer_info['bank_name'];
-				$data['bank_account_name'] = $customer_info['bank_account_name'];
-				$data['bank_account_number'] = $customer_info['bank_account_number'];
-                $data['money_open_account'] = $customer_info['money_open_account'];
-
-				$data['old_id_promotion'] = $customer_info['old_id_promotion'];
-
-				$data['submission_date'] = $customer_info['submission_date'];
-				$data['accept_date'] = $customer_info['accept_date'];
-				$data['accept_by'] = $customer_info['accept_by'];
-
-				$data['customer_status'] = $customer_info['customer_status'];
-			}
-
-			$data["action"] = base_url() . "customer/edit";
-
-		}
-
-		else {
-
-			$data['customer_id'] = ""; "";
-			//$data['member_id'] = "";
-
-			$data['customer_firstname'] = "";
-			$data['customer_lastname'] = "";
-			$data['customer_telephone'] = "";
-			$data['customer_line_id'] = "";
-			$data['customer_email'] = "";
-
-			$data['how_to_know_web'] = "";
-			$data['bank_name'] = "";
-			$data['bank_account_name'] = "";
-			$data['bank_account_number'] = "";
-            $data['money_open_account'] = "";
-			$data['old_id_promotion'] = "";
-
-			$data['submission_date'] = "";
-			$data['accept_date'] = "";
-			$data['accept_by'] = "";
-			$data['customer_status'] = "";
-
-			$data["action"] = base_url() . "customer/add_customer";
-
-		}
-        $data["list"] = $this->Customer_model->get_all();
-
-		$data["page"] = 'pages/list_customer';
-		$this->load->view('template',$data);
-	}
+//	public function get_form(){
+//
+//		$this->load->library('encrypt');
+//
+//		if ($this->input->get('customer_id')) {
+//
+//			$customer_info = $this->Customer_model->get_data($this->input->get('customer_id'));
+//
+//			if (!empty($customer_info)) {
+//
+//				//--  Don't Delete
+////				$password_result = $this->encrypt->encode($customer_info['password']);
+////				$password_decode = $this->encrypt->decode($this->encrypt->decode($password_result));
+//
+//                $data['customer_id'] = $customer_info['customer_id'];
+//                //$data['member_id'] = $customer_info['member_id'];
+//
+//                $data['customer_firstname'] = $customer_info['customer_firstname'];
+//                $data['customer_lastname'] = $customer_info['customer_lastname'];
+//                $data['customer_telephone'] = $customer_info['customer_telephone'];
+//                $data['customer_line_id'] = $customer_info['customer_line_id'];
+//                $data['customer_email'] = $customer_info['customer_email'];
+//                $data['how_to_know_web'] = $customer_info['how_to_know_web'];
+//                $data['bank_name'] = $customer_info['bank_name'];
+//                $data['bank_account_name'] = $customer_info['bank_account_name'];
+//                $data['bank_account_number'] = $customer_info['bank_account_number'];
+//                $data['money_open_account'] = $customer_info['money_open_account'];
+//                $data['old_id_promotion'] = $customer_info['old_id_promotion'];
+//                //$data['submission_date'] = $customer_info['submission_date'];
+//                //$data['accept_date'] = $customer_info['accept_date'];
+//                //$data['accept_by'] = $customer_info['accept_by'];
+//                $data['customer_status'] = $customer_info['customer_status'];
+//			}
+//
+//			$data["action"] = base_url() . "customer/edit_customer";
+//
+//		}
+//
+//		else {
+//
+//            $data['customer_id'] = ""; "";
+//            //$data['member_id'] = "";
+//
+//            $data['customer_firstname'] = "";
+//            $data['customer_lastname'] = "";
+//            $data['customer_telephone'] = "";
+//            $data['customer_line_id'] = "";
+//            $data['customer_email'] = "";
+//
+//            $data['how_to_know_web'] = "";
+//            $data['bank_name'] = "";
+//            $data['bank_account_name'] = "";
+//            $data['bank_account_number'] = "";
+//            $data['money_open_account'] = "";
+//            $data['old_id_promotion'] = "";
+//            $data['submission_date'] = date("Y-m-d H:i:s");
+//            $data['customer_status'] = "";
+//            $data['accept_date'] = date("Y-m-d H:i:s");
+//            $data['accept_by'] = $this->session->userdata("user_id");
+//            $data['accept_by'] = $this->input->get('user_id');
+//
+//
+//            $data["action"] = base_url() . "customer/add_customer";
+//
+//		}
+//        $data["list"] = $this->Customer_model->get_all();
+//
+//		$data["page"] = 'pages/list_customer';
+//		$this->load->view('template',$data);
+//	}
 
     public function add_customer()
     {
@@ -154,13 +151,13 @@ class List_customer extends CI_Controller {
 
     public function edit_customer()
     {
+
         if ($this->input->post()) {
-            $data["customer_id"] = $this->Customer_model->edit_customer($this->input->post());
+            $this->Customer_model->edit_customer($this->input->post("customer_id"), $this->input->post());
         }
 
         $jsonResult['Result'] = true;
-        //$jsonResult['error'] = "";
-        $jsonResult['Data'] = $data;
+        $jsonResult['Data'] = "";
         echo json_encode($jsonResult);
     }
 

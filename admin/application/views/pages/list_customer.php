@@ -48,17 +48,16 @@
                                     </div>
                                     <label class="control-label" for="input-search">แถว </label>
                                 </div>
-                                <div class="col-sm-4" style="float: left;">
-                                    <label class=" control-label" for="input-search" style="float: left">สถานะ: </label>
-
-                                    <div class="col-sm-8">
+                                <div class="col-md-4 col-xs-6" style="float: left;">
+                                    <label class="col-sm-3 col-xs-3 control-label" for="input-search"
+                                           style="float: left">สถานะ </label>
+                                    <div class="col-md-9 col-xs-9">
                                         <select id="filter-status" name="table_summay_master_length"
                                                 aria-controls="table_summay_master"
                                                 class="form-control input-sm input-xsmall input-inline">
                                             <option value="-1">ทั้งหมด</option>
-                                            <option value="0">ปกติ</option>
-                                            <option value="1">ถูกระงับ</option>
-                                            <option value="2">ปิดใช้งาน</option>
+                                            <option value="0">ปิดการใช้งาน</option>
+                                            <option value="1">เปิดใช้งาน</option>
                                         </select>
                                     </div>
                                 </div>
@@ -149,25 +148,11 @@
                                             <td class="text-center"><?php echo $customer['accept_date']; ?></td>
                                             <td class="text-center"><?php echo $customer['update_by_name']; ?></td>
                                             <td class="text-center"><?php echo $customer['update_date']; ?></td>
-                                            <td class="text-center" style="color: <?php
-                                            $str_status = "";
-                                            switch ($customer['customer_status']) {
-                                                case 0:
-                                                    echo "#00A65A";
-                                                    $str_status = "ปกติ";
-                                                    break;
-                                                case 1:
-                                                    echo "#DD4B39";
-                                                    $str_status = "ถูกระงับ";
-                                                    break;
-                                                case 2 :
-                                                    echo "#CCCCCC";
-                                                    $str_status = "ปิดใช้งาน";
-                                                    break;
-                                            }
-                                            ?> ">
-                                                <?php echo $str_status; ?>
-                                            </td>
+                                            <?php if ($customer['customer_status'] == 0) { ?>
+                                                <td class="text-center text-disable">ปิดการใช้งาน</td>
+                                            <?php } else { ?>
+                                                <td class="text-center">เปิดใช้งาน</td>
+                                            <?php } ?>
                                             <td class="text-center">
                                                 <button type="button"
                                                         name="button-edit<?php echo $customer['customer_id']; ?>"
@@ -366,46 +351,6 @@
         search_customer();
     });
 
-    //    $(document).on("click", ".button-edit", function () {
-    //        var customer_id = this.name.replace("button-edit", "");
-    //
-    //        $.ajax({
-    //            url: '<?php //echo base_url(); ?>//customer/get_customer',
-    //            type: 'post',
-    //            //data: $('input , select')+"&customer_id="+customer_id,
-    //            data: {customer_id:customer_id},
-    //            dataType: 'json',
-    //            crossDomain: true,
-    //            success: function (json) {
-    //
-    //                console.log(json);
-    //
-    //                console.log(json.Data.customer_info.customer_firstname);
-    //                $('#input-customer-firstname').val(json.Data.customer_info.customer_firstname);
-    //                $('#input-customer-lastname').val(json.Data.customer_info.customer_lastname);
-    //                $('#input-customer-line-id').val(json.Data.customer_info.customer_line_id);
-    //                $('#input-customer-telephone').val(json.Data.customer_info.customer_telephone);
-    //                $('#input-customer-email').val(json.Data.customer_info.customer_email);
-    //
-    //                $('#input-member-id').val(json.Data.customer_info.member_id);
-    //                $('#input-how-to-know-web').val(json.Data.customer_info.how_to_know_web);
-    //                $('#input-bank-name').val(json.Data.customer_info.bank_name);
-    //                $('#input-bank-account-name').val(json.Data.customer_info.bank_account_name);
-    //                $('#input-bank-account-number').val(json.Data.customer_info.bank_account_number);
-    //                $('#input-money-open-account').val(json.Data.customer_info.money_open_account);
-    //
-    ////                alert("แก้ไขข้อมูลผู้ใช้งานเสร็จสิ้น");
-    //
-    ////                edit_default_setting(customer_id);
-    ////                edit_percent_setting(customer_id);
-    //            },
-    //            error: function (xhr, ajaxOptions, thrownError) {
-    //                alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
-    //            }
-    //        });
-    //    });
-
-
     function edit_customer() {
         var customer_id = $('input[name="customer_id"]').val();
         $.ajax({
@@ -456,16 +401,11 @@
 
                     switch (Number(customer.customer_status)) {
                         case 0:
-                            color_status = "#00A65A";
-                            str_status = "ปกติ";
+                            color_status = "#8a0004";
+                            str_status = "ปิดการใช้งาน";
                             break;
                         case 1:
-                            color_status = "#DD4B39";
-                            str_status = "ถูกระงับ";
-                            break;
-                        case 2 :
-                            color_status = "#CCCCCC";
-                            str_status = "ปิดใช้งาน";
+                            str_status = "เปิดใช้งาน";
                             break;
                     }
 
@@ -499,7 +439,7 @@
 
                     $("#tbody").append(html);
                 }
-                alert("get  OK");
+                //alert("get  OK");
             },
             error: function (xhr, ajaxOptions, thrownError) {
                 alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
@@ -536,16 +476,11 @@
                     var str_status = "";
                     switch (Number(customer.customer_status)) {
                         case 0:
-                            color_status = "#00A65A";
-                            str_status = "ปกติ";
+                            color_status = "#8a0004";
+                            str_status = "ปิดการใช้งาน";
                             break;
                         case 1:
-                            color_status = "#DD4B39";
-                            str_status = "ถูกระงับ";
-                            break;
-                        case 2 :
-                            color_status = "#CCCCCC";
-                            str_status = "ปิดใช้งาน";
+                            str_status = "เปิดใช้งาน";
                             break;
                     }
                     var html = "<tr class='tr_id" + customer.customer_id + "'  >"

@@ -114,31 +114,28 @@
                                 </div>
 
 
-                                <div class="form-group required col-md-12 col-xs-12">
+                                <div class="form-group col-md-12 col-xs-12">
                                     <div class="col-md-2 col-xs-2" align="right">
-                                        <label class=" control-label" for="input-customer-status">สถานะ</label>
+                                        <label class=" control-label" for="input-status">สถานะ</label>
                                     </div>
                                     <div class="col-md-9 col-xs-9">
                                         <div class="">
-                                            <select name="customer_status" id="input-customer-status"
-                                                    class="form-control">
-
+                                            <select name="customer_status" id="input-status" class="form-control">
                                                 <option
-                                                        value="0" <?php if ($customer_status === 0) { ?> selected="selected" <?php } ?> >
-                                                    ปกติ
+                                                        value="0" <?php if ($customer_status == 0) { ?>
+                                                    selected="selected" <?php } ?> >
+                                                    ปิดการใช้งาน
                                                 </option>
                                                 <option
-                                                        value="1" <?php if ($customer_status === 1) { ?> selected="selected" <?php } ?>>
-                                                    ระงับ
-                                                </option>
-                                                <option
-                                                        value="2" <?php if ($customer_status === 2) { ?> selected="selected" <?php } ?>>
-                                                    ปิดใช้งาน
+                                                        value="1" <?php if ($customer_status == 1) { ?>
+                                                    selected="selected" <?php } ?>>
+                                                    เปิดใช้งาน
                                                 </option>
 
                                             </select>
                                         </div>
                                     </div>
+                                </div>
 
                                 </div>
                             </div>

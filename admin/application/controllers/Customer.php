@@ -31,7 +31,7 @@ class Customer extends CI_Controller
 
         if ($this->input->get('customer_id')) {
 
-            $customer_info = $this->Customer_model->get_customer($this->input->get('customer_id'));
+            $customer_info = $this->Customer_model->get_data($this->input->get('customer_id'));
 
 
             if (!empty($customer_info)) {
@@ -55,10 +55,11 @@ class Customer extends CI_Controller
                 $data['bank_account_number'] = $customer_info['bank_account_number'];
                 $data['money_open_account'] = $customer_info['money_open_account'];
                 $data['old_id_promotion'] = $customer_info['old_id_promotion'];
-                $data['submission_date'] = $customer_info['submission_date'];
-                $data['accept_date'] = $customer_info['accept_date'];
-                $data['accept_by'] = $customer_info['accept_by'];
                 $data['customer_status'] = $customer_info['customer_status'];
+                //$data['submission_date'] = $customer_info['submission_date'];
+                //$data['accept_date'] = $customer_info['accept_date'];
+                //$data['accept_by'] = $customer_info['accept_by'];
+
 
 
 
@@ -83,14 +84,12 @@ class Customer extends CI_Controller
             $data['bank_account_number'] = "";
             $data['money_open_account'] = "";
             $data['old_id_promotion'] = "";
-
-            $data['submission_date'] = "";
-            $data['accept_date'] = "";
-            //$data['accept_by'] = "";
-
+            $data['submission_date'] = date("Y-m-d H:i:s");
             $data['customer_status'] = "";
-
+            $data['accept_date'] = date("Y-m-d H:i:s");
             $data['accept_by'] = $this->input->get('user_id');
+
+
 
             $data["list"] = $this->Customer_model->get_all();
 
