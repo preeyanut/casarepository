@@ -295,7 +295,7 @@
             success: function (json) {
 
                 alert("เพิ่มข้อมูลเสร็จสิ้น");
-
+                location.reload();
                 reload_config_group();
             },
             error: function (xhr, ajaxOptions, thrownError) {
