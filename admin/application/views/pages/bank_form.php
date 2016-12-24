@@ -206,8 +206,8 @@
                 $('#button-save').button('reset');
             },
             success: function (json) {
-
                 alert("เพิ่มข้อมูลเสร็จสิ้น");
+                location.reload();
             },
             error: function (xhr, ajaxOptions, thrownError) {
                 alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);

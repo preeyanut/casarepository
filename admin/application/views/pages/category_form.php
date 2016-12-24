@@ -72,9 +72,11 @@
                                 </div>
                                 <div class="col-md-10 col-xs-10">
                                     <select name="category_icon" class="form-control selectpicker">
-                                        <option data-icon="fa fa-address-book-o" value="1" <?php if ($category_icon == 1) { ?>
+                                        <option data-icon="fa fa-address-book-o"
+                                                value="1" <?php if ($category_icon == 1) { ?>
                                             selected="selected" <?php } ?>></option>
-                                        <option data-icon="fa fa-area-chart" value="2" <?php if ($category_icon == 2) { ?>
+                                        <option data-icon="fa fa-area-chart"
+                                                value="2" <?php if ($category_icon == 2) { ?>
                                             selected="selected" <?php } ?>></option>
                                         <option data-icon="fa fa-book" value="3" <?php if ($category_icon == 3) { ?>
                                             selected="selected" <?php } ?>></option>
@@ -82,11 +84,14 @@
                                             selected="selected" <?php } ?>></option>
                                         <option data-icon="fa fa-film" value="5" <?php if ($category_icon == 5) { ?>
                                             selected="selected" <?php } ?>></option>
-                                        <option data-icon="fa fa-university" value="6" <?php if ($category_icon == 6) { ?>
+                                        <option data-icon="fa fa-university"
+                                                value="6" <?php if ($category_icon == 6) { ?>
                                             selected="selected" <?php } ?>></option>
-                                        <option data-icon="fa fa-file-text-o" value="7" <?php if ($category_icon == 7) { ?>
+                                        <option data-icon="fa fa-file-text-o"
+                                                value="7" <?php if ($category_icon == 7) { ?>
                                             selected="selected" <?php } ?>></option>
-                                        <option data-icon="fa fa-calendar-o" value="8" <?php if ($category_icon == 8) { ?>
+                                        <option data-icon="fa fa-calendar-o"
+                                                value="8" <?php if ($category_icon == 8) { ?>
                                             selected="selected" <?php } ?>></option>
                                         <option data-icon="fa fa-clone" value="9" <?php if ($category_icon == 9) { ?>
                                             selected="selected" <?php } ?>></option>
@@ -96,11 +101,13 @@
                                             selected="selected" <?php } ?>></option>
                                         <option data-icon="fa fa-fax" value="12" <?php if ($category_icon == 12) { ?>
                                             selected="selected" <?php } ?>></option>
-                                        <option data-icon="fa fa-credit-card" value="13" <?php if ($category_icon == 13) { ?>
+                                        <option data-icon="fa fa-credit-card"
+                                                value="13" <?php if ($category_icon == 13) { ?>
                                             selected="selected" <?php } ?>></option>
                                         <option data-icon="fa fa-map-o" value="14" <?php if ($category_icon == 14) { ?>
                                             selected="selected" <?php } ?>></option>
-                                        <option data-icon="	fa fa-newspaper-o" value="14" <?php if ($category_icon == 15) { ?>
+                                        <option data-icon="	fa fa-newspaper-o"
+                                                value="14" <?php if ($category_icon == 15) { ?>
                                             selected="selected" <?php } ?>></option>
                                     </select>
                                 </div>
@@ -313,140 +320,110 @@
 
 <script type="application/javascript">
 
-    //    init_event({
-    //        fn: [readyLoad],
-    //        disEvent: ["click,#button-save", "focusout,#minimum", "focusout,#reward", "focusout,#maximum", "focusout,#commission"
-    //            , "focusout,#tbody-setting-default input", "focusout,#input-user-credit", "change,.my_percent_user"
-    //            , "change,.sub_percent_user", "focusout,.my_percent_user", "focusout.sub_percent_user"]
-    //        document_on: [ 'click,#button-save'],
-    //        document_ready: [get_field, add_select_picker]
-    //    });
-
     init_event({
         document_on: ['click,#button-save'],
         document_ready: [add_select_picker]
     });
 
-//    function readyLoad() {
-//        $('.input-number').maskMoney();
-//    }
 
-        //    function formatNumber(number) {
-        //        //var int_number = Number(number);
-        //        var p = number.toFixed(2).split(".");
-        //        var minus = p[0].substring(0, 1);
-        //        if (minus == "-") {
-        //            p[0] = p[0].substring(1, p[0].length);
-        //
-        //            return "-" + p[0].split("").reverse().reduce(function (acc, number, i, orig) {
-        //                    return number + (i && !(i % 3) ? "," : "") + acc;
-        //                }, "") + "." + p[1];
-        //        }
-        //        else {
-        //            return "" + p[0].split("").reverse().reduce(function (acc, number, i, orig) {
-        //                    return number + (i && !(i % 3) ? "," : "") + acc;
-        //                }, "") + "." + p[1];
-        //        }
-        //    }
+    $(document).on("click", "#button-save", function () {
+        $.ajax({
+            url: '<?php echo base_url(); ?>category/validate_form',
+            type: 'post',
+            data: $('input , select'),
+            dataType: 'json',
+            crossDomain: true,
+            beforeSend: function () {
+                $('#button-save').button('loading');
+            },
+            complete: function () {
+                $('#button-save').button('reset');
+            },
+            success: function (json) {
+                //alert("OK");
 
-        $(document).on("click", "#button-save", function () {
-            $.ajax({
-                url: '<?php echo base_url(); ?>category/validate_form',
-                type: 'post',
-                data: $('input , select'),
-                dataType: 'json',
-                crossDomain: true,
-                beforeSend: function () {
-                    $('#button-save').button('loading');
-                },
-                complete: function () {
-                    $('#button-save').button('reset');
-                },
-                success: function (json) {
-                    //alert("OK");
+                $('.alert, .text-danger').remove();
+                $('.form-group').removeClass('has-error');
 
-                    $('.alert, .text-danger').remove();
-                    $('.form-group').removeClass('has-error');
+                if (json['error']) {
 
-                    if (json['error']) {
-
-                        var p = 0;
-                        for (var i = 0; i < Object.keys(json['error']).length; i++) {
-                            var input_name = Object.keys(json['error'])[i];
-                            $("input[name='" + input_name + "']").after('<div class="text-danger">' + json['error'][input_name] + '</div>');
-                            $("select[name='" + input_name + "']").after('<div class="text-danger">' + json['error'][input_name] + '</div>');
-                            p++;
-                        }
-
-                        // Highlight any found errors
-                        $('.text-danger').parentsUntil('.form-group').parent().addClass('has-error');
-                    } else {
-
-                        if ($('input[name="category_id"]').val()) {
-                            edit_category();
-                        } else {
-                            add_category();
-                        }
-
-                        $('#button-refresh').trigger('click');
-                        $('#content > .container-fluid').prepend('<div class="alert alert-success"><i class="fa fa-check-circle"></i> ' + json['success'] + ' <button type="button" class="close" data-dismiss="alert">&times;</button></div>');
-
+                    var p = 0;
+                    for (var i = 0; i < Object.keys(json['error']).length; i++) {
+                        var input_name = Object.keys(json['error'])[i];
+                        $("input[name='" + input_name + "']").after('<div class="text-danger">' + json['error'][input_name] + '</div>');
+                        $("select[name='" + input_name + "']").after('<div class="text-danger">' + json['error'][input_name] + '</div>');
+                        p++;
                     }
-                },
-                error: function (xhr, ajaxOptions, thrownError) {
-                    alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+
+                    // Highlight any found errors
+                    $('.text-danger').parentsUntil('.form-group').parent().addClass('has-error');
+                } else {
+
+                    if ($('input[name="category_id"]').val()) {
+                        edit_category();
+                    } else {
+                        add_category();
+                    }
+
+                    $('#button-refresh').trigger('click');
+                    $('#content > .container-fluid').prepend('<div class="alert alert-success"><i class="fa fa-check-circle"></i> ' + json['success'] + ' <button type="button" class="close" data-dismiss="alert">&times;</button></div>');
+
                 }
-            });
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+            }
         });
+    });
 
-        function add_category() {
-            $.ajax({
-                url: '<?php echo base_url(); ?>category/add_category',
-                type: 'post',
-                data: $('input , select'),
-                dataType: 'json',
-                crossDomain: true,
-                beforeSend: function () {
-                    $('#button-save').button('loading');
-                },
-                complete: function () {
-                    $('#button-save').button('reset');
-                },
-                success: function (json) {
+    function add_category() {
+        $.ajax({
+            url: '<?php echo base_url(); ?>category/add_category',
+            type: 'post',
+            data: $('input , select'),
+            dataType: 'json',
+            crossDomain: true,
+            beforeSend: function () {
+                $('#button-save').button('loading');
+            },
+            complete: function () {
+                $('#button-save').button('reset');
+            },
+            success: function (json) {
+                alert("เพิ่มข้อมูลเสร็จสิ้น");
+                location.reload();
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+            }
+        });
+    }
 
-                    alert("เพิ่มข้อมูลเสร็จสิ้น");
-                },
-                error: function (xhr, ajaxOptions, thrownError) {
-                    alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
-                }
-            });
-        }
+    function edit_category() {
+        var category_id = $('input[name="category_id"]').val();
+        $.ajax({
+            url: '<?php echo base_url(); ?>category/edit_category',
+            type: 'post',
+            data: $('input , select'),
+            dataType: 'json',
+            crossDomain: true,
+            beforeSend: function () {
+                $('#button-save').button('loading');
+            },
+            complete: function () {
+                $('#button-save').button('reset');
+            },
+            success: function (json) {
+                alert("แก้ไขข้อมูลเสร็จสิ้น");
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+            }
+        });
+    }
 
-        function edit_category() {
-            var category_id = $('input[name="category_id"]').val();
-            $.ajax({
-                url: '<?php echo base_url(); ?>category/edit_category',
-                type: 'post',
-                data: $('input , select'),
-                dataType: 'json',
-                crossDomain: true,
-                beforeSend: function () {
-                    $('#button-save').button('loading');
-                },
-                complete: function () {
-                    $('#button-save').button('reset');
-                },
-                success: function (json) {
-                    alert("แก้ไขข้อมูลเสร็จสิ้น");
-                },
-                error: function (xhr, ajaxOptions, thrownError) {
-                    alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
-                }
-            });
-        }
-
-        function add_select_picker() {
-            $('.selectpicker').selectpicker({style: 'btn-default', size: 4});
-        }
+    function add_select_picker() {
+        $('.selectpicker').selectpicker({style: 'btn-default', size: 4});
+    }
 
 </script>
