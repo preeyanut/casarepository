@@ -221,7 +221,7 @@
 
 </div>
 
-<script type="application/javascript">
+<script type="text/javascript">
 
     init_event({
         document_on: [
@@ -236,49 +236,6 @@
         ]
     });
 
-    //    function format_to_money() {
-    //        var input_type_number = $('.input-number');
-    //
-    //        for (var i = 0; i < input_type_number.length; i++) {
-    //
-    //            var intValue = Number(input_type_number[i].value);
-    //
-    //            $('.input-number')[i].value = formatNumber(intValue);
-    //
-    //            // console.log(formatNumber(intValue));
-    //        }
-    //    }
-    //
-    //    function formatNumber(number) {
-    //        //var int_number = Number(number);
-    //        var p = number.toFixed(2).split(".");
-    //        var minus = p[0].substring(0, 1);
-    //        if (minus == "-") {
-    //            p[0] = p[0].substring(1, p[0].length);
-    //
-    //            return "-" + p[0].split("").reverse().reduce(function (acc, number, i, orig) {
-    //                    return number + (i && !(i % 3) ? "," : "") + acc;
-    //                }, "") + "." + p[1];
-    //        }
-    //        else {
-    //            return "" + p[0].split("").reverse().reduce(function (acc, number, i, orig) {
-    //                    return number + (i && !(i % 3) ? "," : "") + acc;
-    //                }, "") + "." + p[1];
-    //        }
-    //    }
-    //
-    //    function label_format_number() {
-    //
-    //        var label_type_number = $(".label-number");
-    //
-    //        for (var i = 0; i < label_type_number.length; i++) {
-    //
-    //            var intValue = Number(label_type_number[i].innerHTML.trim());
-    //
-    //            $(".label-number")[i].innerHTML = formatNumber(intValue);
-    //
-    //        }
-    //    }
     $(document).on("click", ".button-edit", function () {
         var customer_id = this.name.replace("button-edit", "");
         window.open("<?php echo base_url(); ?>customer/get_form?customer_id=" + customer_id, "_self");

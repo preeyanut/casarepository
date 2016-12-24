@@ -140,4 +140,38 @@ class Category_model extends CI_Model
         return $query->row_array('total');
     }
 
+    public function get_group_category_id($category_type_id){
+        $this->db->select('category.category_id');
+        $this->db->where('category_type_id', $category_type_id);
+        $query = $this->db->get('category');
+
+        return $query->result_array();
+    }
+
+    public function delete_group_category($category_id){
+
+        $this->db->where_in('category_id',$category_id);
+        $query = $this->db->delete('category');
+
+        return $query;
+    }
+
+    public function delete_group_category_field($category_type_id){
+
+        $this->db->where_in('category_type_id',$category_type_id);
+        $query = $this->db->delete('category_field');
+
+        return $query;
+    }
+
+    public function get_all_priority(){
+
+        $this->db->select("category.priority_level");
+        $this->db->where('category.category_status',1);
+        $this->db->order_by("category.priority_level","desc");
+        $query = $this->db->get('category');
+
+        return $query->result_array();
+    }
+
 }

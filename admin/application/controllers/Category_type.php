@@ -8,6 +8,8 @@ class Category_type extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Category_type_model');
+        $this->load->model('Category_model');
+        $this->load->model('Blog_model');
         $this->load->model('User_model');
 
         $this->load->library('auth_check');
@@ -69,10 +71,10 @@ class Category_type extends CI_Controller
 
     public function add_category_type()
     {
-        $result =false;
+        $result = false;
         if ($this->input->post()) {
             $data["category_type_id"] = $this->Category_type_model->add_category_type($this->input->post());
-            if($data["category_type_id"]){
+            if ($data["category_type_id"]) {
                 $result = true;
             }
         }
@@ -85,13 +87,13 @@ class Category_type extends CI_Controller
 
     public function add_category_field()
     {
-        $result =false;
+        $result = false;
         if ($this->input->post()) {
             $all_category_field = $this->input->post('category_field');
-            foreach($all_category_field as $item){
+            foreach ($all_category_field as $item) {
                 $data["category_field_id"] = $this->Category_type_model->add_category_field($item);
             }
-            $result =true;
+            $result = true;
         }
 
         $jsonResult['Result'] = $result;
@@ -101,7 +103,7 @@ class Category_type extends CI_Controller
 
     public function edit_category_type()
     {
-        $result =false;
+        $result = false;
 
         $data_category_type = $this->input->post('data_category_type');
         $all_category_field = $this->input->post('category_field');
@@ -111,10 +113,10 @@ class Category_type extends CI_Controller
 
             $this->Category_type_model->delete_category_field($data_category_type['category_type_id']);
 
-            foreach($all_category_field as $item){
+            foreach ($all_category_field as $item) {
                 $data["category_field_id"] = $this->Category_type_model->add_category_field($item);
             }
-            $result =true;
+            $result = true;
         }
 
         $jsonResult['Result'] = $result;
@@ -124,13 +126,13 @@ class Category_type extends CI_Controller
 
     public function edit_category_field()
     {
-        $result =false;
+        $result = false;
         if ($this->input->post()) {
             $all_category_field = $this->input->post('category_field');
-            foreach($all_category_field as $item){
+            foreach ($all_category_field as $item) {
                 $data["category_field_id"] = $this->Category_type_model->add_category_field($item);
             }
-            $result =true;
+            $result = true;
         }
 
         $jsonResult['Result'] = $result;
@@ -142,11 +144,35 @@ class Category_type extends CI_Controller
     {
         $result = false;
         if ($this->input->post()) {
+
+
+            $all_category_id = $this->Category_model->get_group_category_id($this->input->post('category_type_id'));
+            $category_id = '';
+            foreach($all_category_id as $item){
+                if(strlen($category_id)!==0){
+                    $category_id.=',';
+                }
+                $category_id.=$item['category_id'];
+            }
+
+            $all_blog_id = $this->Blog_model->get_group_blog_id($category_id);
+            $blog_id = '';
+            foreach($all_blog_id as $item){
+                if(strlen($blog_id)!==0){
+                    $blog_id.=',';
+                }
+                $blog_id.=$item['blog_id'];
+            }
+
+            $this->Blog_model->delete_group_blog_value($blog_id);
+            $this->Blog_model->delete_group_blog($category_id);
+
+            $this->Category_model->delete_category($category_id);
+            $this->Category_model->delete_group_category_field($this->input->post('category_type_id'));
             $this->Category_type_model->delete_category_type($this->input->post('category_type_id'));
-            //-----  Delete All Category
-            //-----  Delete All Blog
-//            $this->Category_type_model->delete_blog_value($this->input->post('blog_id'));
+
             $result = true;
+
         }
 
         $jsonResult['Result'] = $result;
