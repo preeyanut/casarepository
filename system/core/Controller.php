@@ -76,6 +76,8 @@ class CI_Controller {
 		}
 
 		$this->load =& load_class('Loader', 'core');
+        $this->load->model('Config_model');
+
 		$this->load->initialize();
 		log_message('info', 'Controller Class Initialized');
 	}
