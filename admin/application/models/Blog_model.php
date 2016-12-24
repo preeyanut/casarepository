@@ -228,7 +228,7 @@ class Blog_model extends CI_Model
     {
 
         $this->db->select("blog.priority_level");
-        $this->db->where(array('blog.blog_status'=> 1,'category_id'=>$category_id));
+        $this->db->where(array('blog.category_id'=>$category_id));
         $this->db->order_by("blog.priority_level", "desc");
         $query = $this->db->get('blog');
 

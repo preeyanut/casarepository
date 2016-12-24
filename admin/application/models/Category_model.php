@@ -90,12 +90,20 @@ class Category_model extends CI_Model
         $this->db->query("DELETE FROM category WHERE category_id = ". $category_id) ;
     }
 
-    public function search_filter($txtSearch, $start_filter, $filter_number, $status)
+    public function search_filter($txtSearch, $start_filter, $filter_number, $filter_status,$filter_category_type )
     {
 
         $str_sql = "";
-        if ($status != "" && $status != -1) {
-            $str_sql .= " AND  category_status = " . $status;
+        $limit= "";
+        if ($filter_status != "" && $filter_status != -1) {
+            $str_sql .= " AND  category_status = " . $filter_status;
+        }
+
+        if ($filter_category_type != '-1' && $filter_category_type != '') {
+            $str_sql .= " AND  category_type.category_type_id = " . $filter_category_type;
+        }
+        if($start_filter!==0 && $filter_number!==0){
+            $limit = " Limit " . $start_filter . ", " . $filter_number . " ";
         }
 
         $query = $this->db->query("SELECT category.*,CONCAT(u1.firstname, ' ', u1.lastname) as create_by_name "
@@ -107,7 +115,7 @@ class Category_model extends CI_Model
             . " inner join  category_type on category_type.category_type_id = category.category_type_id"
             . " WHERE  category_name  Like '%" . $txtSearch . "%' "
             . $str_sql
-            . " Limit " . $start_filter . ", " . $filter_number . " "
+            . $limit
         );
 
         return $query->result_array();
@@ -164,14 +172,16 @@ class Category_model extends CI_Model
         return $query;
     }
 
-    public function get_all_priority(){
+    public function get_all_priority($category_type_id){
 
         $this->db->select("category.priority_level");
-        $this->db->where('category.category_status',1);
+        $this->db->where(array('category.category_type_id'=>$category_type_id));
         $this->db->order_by("category.priority_level","desc");
         $query = $this->db->get('category');
 
         return $query->result_array();
     }
+
+
 
 }

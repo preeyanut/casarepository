@@ -206,7 +206,7 @@ class User extends CI_Controller
         echo json_encode($jsonResult);
     }
 
-    public function delete()
+    public function delete_user()
     {
 
         if ($this->input->post()) {
@@ -214,7 +214,6 @@ class User extends CI_Controller
         }
 
         $jsonResult['Result'] = true;
-        //$jsonResult['error'] = "";
         $jsonResult['Data'] = "";
         echo json_encode($jsonResult);
     }
