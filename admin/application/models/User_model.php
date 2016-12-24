@@ -104,11 +104,11 @@ class User_model extends CI_Model
 
     public function get_all_user()
     {
-        $all_my_sub_user = $this->get_all_my_sub_user();
+//        $all_my_sub_user = $this->get_all_my_sub_user();
 
         $query = $this->db->query("SELECT *, (SELECT ug.name FROM `" . ""
             . "user_group` ug WHERE ug.user_group_id = u.user_group_id) AS user_group_name FROM `" . "" . "user` u  "
-            . " WHERE u.user_id in (" . $all_my_sub_user . ")"
+//            . " WHERE u.user_id in (" . $all_my_sub_user . ")"
         );
 
         return $query->result_array();
@@ -239,7 +239,7 @@ class User_model extends CI_Model
 
     public function search_user_filter($txtSearch, $start_filter, $filter_number, $user_status, $user_group)
     {
-        $all_my_sub_user = $this->get_all_my_sub_user();
+//        $all_my_sub_user = $this->get_all_my_sub_user();
 
         $str_sql = "";
         if ($user_status != -1) {
@@ -248,9 +248,9 @@ class User_model extends CI_Model
         if ($user_group != -1) {
             $str_sql .= " AND  user_group.user_group_id = " . $user_group;
         }
-        if ($all_my_sub_user === '') {
-            return array();
-        }
+//        if ($all_my_sub_user === '') {
+//            return array();
+//        }
         $query = $this->db->query("SELECT DISTINCT user.* ,user_group.name AS user_group_name  "
             . " from user "
             . " inner join user_group on user_group.user_group_id = user.user_group_id "
@@ -259,7 +259,7 @@ class User_model extends CI_Model
             . " user.lastname Like '%" . $txtSearch . "%' OR "
             . " user.user_telephone Like '%" . $txtSearch . "%' ) "
             . $str_sql
-            . " AND user.user_id in (" . $all_my_sub_user . ")"
+//            . " AND user.user_id in (" . $all_my_sub_user . ")"
             . " Limit " . $start_filter . ", " . $filter_number . " "
         );
 
@@ -525,11 +525,18 @@ class User_model extends CI_Model
         return $data->result_array();
     }
 
-    public function search_filter($txtSearch, $start_filter, $filter_number, $status)
+    public function search_filter($txtSearch, $start_filter, $filter_number, $user_status, $user_group)
     {
         $str_sql = "";
-        if ($status != '-1' && $status != '') {
-            $str_sql .= " AND  user_status = " . $status;
+        $limit = '';
+        if ($user_status != '-1' && $user_status != '') {
+            $str_sql .= " AND  user.user_status = " . $user_status;
+        }
+        if ($user_group != '-1' && $user_group != '') {
+            $str_sql .= " AND  ug.user_group_id = " . $user_group;
+        }
+        if($start_filter!==0 && $filter_number!==0){
+            $limit = " Limit " . $start_filter . ", " . $filter_number . " ";
         }
 
         $query = $this->db->query("SELECT user.*,CONCAT(u1.firstname, ' ', u1.lastname) as create_by_name "
@@ -539,14 +546,14 @@ class User_model extends CI_Model
             . " inner join  user as u2 on u2.user_id = user.update_by "
             . " inner join  user_group as ug on ug.user_group_id = user.user_group_id "
             . " WHERE  "
-            . " user.username  Like '%" . $txtSearch . "%' "
+            . " ( user.username  Like '%" . $txtSearch . "%' "
             . " OR  user.firstname  Like '%" . $txtSearch . "%' "
             . " OR  user.lastname  Like '%" . $txtSearch . "%' "
             . " OR  user.user_email  Like '%" . $txtSearch . "%' "
-            . " OR  user.user_telephone  Like '%" . $txtSearch . "%' "
+            . " OR  user.user_telephone  Like '%" . $txtSearch . "%' ) "
 
             . $str_sql
-            . " Limit " . $start_filter . ", " . $filter_number . " "
+            . $limit
         );
 
         return $query->result_array();
@@ -560,7 +567,6 @@ class User_model extends CI_Model
 
         return $result;
     }
-
 
     public function get_total_by_search($txtSearch, $start_filter, $filter_number, $filter_status)
     {

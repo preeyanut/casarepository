@@ -50,6 +50,8 @@ class List_user extends CI_Controller {
 			$paging++;
 		}
 
+		$data["user_groups"] = $this->User_group_model->get_all_user_group();
+
 		$data["paging"] = $paging;
 
 		$data["list"] = $data_user;
@@ -116,25 +118,26 @@ class List_user extends CI_Controller {
 		$filter_number = $this->input->post("filter-number");
 		$page = $this->input->post("filter-page");
 
-		$user_status = $this->input->post("filter-user-status");
+		$user_status = $this->input->post("filter-status");
 		$user_group = $this->input->post("filter-user-group");
 
 		if($page>0){
 			$page--;
 		}
 
-		$result = array();
 		if($filter_number==-1){
-			$result = $this->User_model->get_all_user();
+//			$result = $this->User_model->get_all_user();
+			$start_filter =0;
+			$filter_number=0;
+			$result = $this->User_model->search_filter($this->input->post("txtSearch"),$start_filter,$filter_number,$user_status,$user_group);
 		}else{
 			$start_filter = $filter_number*$page;
-			$result = $this->User_model->search_user_filter($this->input->post("txtSearch"),$start_filter,$filter_number,$user_status,$user_group);
+			$result = $this->User_model->search_filter($this->input->post("txtSearch"),$start_filter,$filter_number,$user_status,$user_group);
 		}
 
 		$data["list"] = $result;
 
 		$jsonResult['Result'] = true;
-		//$jsonResult['error'] = "";
 		$jsonResult['Data'] = $data;
 
 		echo json_encode($jsonResult);

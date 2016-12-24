@@ -197,7 +197,7 @@
 
 </div>
 
-<script type="application/javascript">
+<script type="text/javascript">
 
     init_event({
         document_on:[

@@ -50,8 +50,7 @@
                                                 class="form-control input-sm input-xsmall input-inline">
                                             <option value="-1">ทั้งหมด</option>
                                             <option value="0">ปกติ</option>
-                                            <option value="1">ถูกระงับ</option>
-                                            <option value="2">ปิดใช้งาน</option>
+                                            <option value="1">ปิดใช้งาน</option>
                                         </select>
                                     </div>
                                 </div>
@@ -60,6 +59,7 @@
                                     <label class=" control-label" for="input-search" style="float: left">ระดับ
                                         : </label>
                                     <div class="col-sm-8">
+<!--                                        --><?php //echo var_dump($user_groups); ?>
                                         <select id="filter-user-group" name="table_user_summay_master_length"
                                                 aria-controls="table_user_summay_master"
                                                 class="form-control input-sm input-xsmall input-inline">
@@ -126,19 +126,14 @@
                                                     break;
                                                 case 1:
                                                     echo "#DD4B39";
-                                                    $str_status = "ถูกระงับ";
-                                                    break;
-                                                case 2 :
-                                                    echo "#CCCCCC";
                                                     $str_status = "ปิดใช้งาน";
                                                     break;
                                             }
-                                            ?> ">
+                                            ?> "> <?php echo $str_status?>
                                             <td class="text-center"><?php echo $user['create_by_name']; ?></td>
                                             <td class="text-center"><?php echo $user['create_date']; ?></td>
                                             <td class="text-center"><?php echo $user['update_by_name']; ?></td>
                                             <td class="text-center"><?php echo $user['update_date']; ?></td>
-
                                             <td class="text-center">
                                                 <button type="button" name="button-edit<?php echo $user['user_id']; ?>"
                                                         id="button-edit" class="btn btn-warning button-edit">แก้ไข
@@ -205,13 +200,14 @@
 
 </div>
 
-<script type="application/javascript">
+<script type="text/javascript">
 
     init_event({
         document_on:[
             'keyup,#input-search'
             ,'change,#filter-number'
             ,'change,#filter-status'
+            ,'change,#filter-user-group'
             ,'click,.button-edit'
             ,'click,.paging'
         ],document_ready:[
@@ -230,6 +226,11 @@
     });
 
     $(document).on("change", "#filter-status", function () {
+        search_user();
+        get_paging();
+    });
+
+    $(document).on("change", "#filter-user-group", function () {
         search_user();
         get_paging();
     });
@@ -321,11 +322,13 @@
         var filterNumber = $("#filter-number").val();
         var filterPage = $("#filter-page").val();
         var filterStatus = $("#filter-status").val();
+        var filterUserGroup= $("#filter-user-group").val();
 
         $.ajax({
-            url: '<?php echo base_url(); ?>list_user/search',
+            url: '<?php echo base_url(); ?>list_user/search_user',
             type: 'post',
-            data: "txtSearch=" + txtSearch + "&filter-number=" + filterNumber + "&filter-page=" + filterPage + "&filter-status=" + filterStatus,
+            data: "txtSearch=" + txtSearch + "&filter-number=" + filterNumber + "&filter-page=" + filterPage
+            + "&filter-status=" + filterStatus + "&filter-user-group=" + filterUserGroup,
             dataType: 'json',
             crossDomain: true,
             beforeSend: function () {
@@ -334,34 +337,44 @@
             },
             success: function (json) {
                 var data = json.Data;
-                var types = data["list"];
+                var users = data["list"];
                 $("#tbody").empty();
-                for (var i = 0; i < types.length; i++) {
-                    var type = types[i];
+                var count = 1;
+                for (var i = 0; i < users.length; i++) {
+                    var user = users[i];
                     var color_status = "";
                     var str_status = "";
-                    switch (Number(type.list_user_status)) {
+                    switch (Number(user.user_status)) {
                         case 0:
-                            color_status = "#8a0004";
-                            str_status = "ปิดการใช้งาน";
+                            color_status = "#00A65A";
+                            str_status = "ปกติ";
                             break;
                         case 1:
-                            str_status = "เปิดใช้งาน";
+                            color_status = "#DD4B39";
+                            str_status = "ปิดใช้งาน";
                             break;
                     }
-                    var html = "<tr class='tr_id" + type.user_id + "'  >"
-                        + "<td class='text-center'>" + (i + 1) + "</td>"
-                        + "<td class='text-center'>" + type.list_user_name + "</td>"
-                        + "<td class='text-center'>" + type.create_date + "</td>"
-                        + "<td class='text-center'>" + type.create_by_name + "</td>"
-                        + "<td class='text-center'>" + type.update_date + "</td>"
-                        + "<td class='text-center'>" + type.update_by_name + "</td>"
-                        + "<td class='text-center' style='color: " + color_status + "'>"
-                        + str_status + "</td>"
-                        + " <td class='text-center'><button type='button' name='button-edit" + type.user_id + "' "
-                        + " id='button-edit' class='btn btn-warning button-edit'>แก้ไข</button></td>"
-                        + "</tr>";
+                    var html = '<tr id="tr_id'+user.user_id+'" class="tr_id" >'
+                        + '<td class="text-center">'+count+'</td>'
+                        + '<td class="text-center">' + user.user_code +'</td>'
+                        + '<td class="text-center">' + user.firstname + ' '+ user.lastname+'</td>'
+                        + '<td class="text-center">' + user.user_telephone +'</td>'
+                        + '<td class="text-center">' + user.user_email+'</td>'
+                        + '<td class="text-center">' + user.user_group_name +'</td>'
+                        + '<td class="text-center" style="color: '+color_status+' ">'+str_status+'</td>'
+                        + '<td class="text-center">'+ user.create_by_name+'</td>'
+                        + '<td class="text-center">'+ user.create_date+'</td>'
+                        + '<td class="text-center">'+ user.update_by_name+'</td>'
+                        + '<td class="text-center">'+ user.update_date+'</td>'
+                        + '<td class="text-center">'
+                        + '<button type="button" name="button-edit'+user.user_id+'"'
+                        + 'id="button-edit" class="btn btn-warning button-edit">แก้ไข'
+                        + '</button>'
+                        + '</td>'
+                        + '</tr>';
+
                     $("#tbody").append(html);
+                    count++;
                 }
 //                label_format_number();
             },
