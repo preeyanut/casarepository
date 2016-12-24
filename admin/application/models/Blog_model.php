@@ -165,7 +165,7 @@ class Blog_model extends CI_Model
 
         $data_array = array(
             'blog_title' => $data['blog_title'],
-            'category_id' => (int)$data['category_id'],
+//            'category_id' => (int)$data['category_id'],
             'blog_status' => (int)$data['blog_status'],
             'priority_level' => (int)$data['priority_level'],
             'update_date' => date("Y-m-d H:i:s"),

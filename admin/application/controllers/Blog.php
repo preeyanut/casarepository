@@ -45,6 +45,7 @@ class Blog extends CI_Controller
                     $data['priority_level'] = $info['priority_level'];
 
                     $data['category_id'] = $info['category_id'];
+                    $data['category_name'] = $info['category_name'];
                     $data['category_type_id'] = $info['category_type_id'];
 
                 }
@@ -62,6 +63,7 @@ class Blog extends CI_Controller
             $data['priority_level'] = "";
 
             $data['category_id'] = "";
+            $data['category_name'] = "";
             $data['category_type_id'] = "";
 //            $data['create_date'] = date("Y-m-d H:i:s");
 //            $data['create_by'] = $this->session->userdata("user_id");
