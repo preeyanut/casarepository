@@ -96,7 +96,7 @@
                                 <div class="col-md-9 col-xs-9">
                                     <div class="">
                                         <a href="" id="a-test" data-toggle="image" class="img-thumbnail">
-                                            <img id="img-config-frontend-favicon" style="max-width: 500px;"
+                                            <img id="img-frontend_image" style="max-width: 500px;"
                                                  src="<?php echo $frontend_image; ?>"
                                                  alt="" title="" data-placeholder="รูปสินค้า">
                                         </a>
@@ -120,7 +120,7 @@
                                 <div class="col-md-9 col-xs-9">
                                     <div class="">
                                         <a href="" id="a-test" data-toggle="image" class="img-thumbnail">
-                                            <img id="img-config-frontend-logo" style="max-width: 500px;"
+                                            <img id="img-logo_image" style="max-width: 500px;"
                                                  src="<?php echo $logo_image; ?>"
                                                  alt="" title="" data-placeholder="รูปสินค้า">
                                         </a>
@@ -348,7 +348,7 @@
                                 <div class="col-md-9 col-xs-9">
                                     <div class="">
                                         <a href="" id="a-test" data-toggle="image" class="img-thumbnail">
-                                            <img id="img-config_image" style="max-width: 500px;"
+                                            <img id="img-contact_image" style="max-width: 500px;"
                                                  src="<?php echo $contact_image; ?>"
                                                  alt="" title="" data-placeholder="รูปสินค้า">
                                         </a>
