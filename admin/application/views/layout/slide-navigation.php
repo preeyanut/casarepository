@@ -287,6 +287,7 @@
                     </ul>
                 </li>
             <?php } ?>
+
             <?php
             if (in_array("user_group", $access_permission) || in_array("credit", $access_permission)
                 || in_array("commission", $access_permission)
@@ -330,38 +331,38 @@
                                     จัดการยอดคงค้าง</a></li>
                         <?php } ?>
                     </ul>
-
                 </li>
+            <?php } ?>
 
+            <?php if (in_array("config", $access_permission)) { ?>
                 <li class="treeview">
-                    <?php if (in_array("config", $access_permission)) { ?>
-                        <a href="<?= base_url(); ?>config">
-                            <i class="fa fa-gear"></i>
-                            <span>ตั้งค่าเว็บ</span>
-                            <span class="label label-primary pull-right"></span>
-                        </a>
-                    <?php } ?>
-                </li>
-
-                <?php if (in_array("config_group", $access_permission)) { ?>
-                    <li class="treeview">
-                        <a href="<?= base_url(); ?>config_group/get_form">
-                            <i class="fa fa-gears"></i>
-                            <span>ขั้นสูง</span>
-                            <span class="label label-primary pull-right"></span>
-                        </a>
-                    </li>
-                <?php } ?>
-
-                <li class="treeview">
-                    <a href="#">
-                        <i class="fa fa-hdd-o"></i>
-                        <span>Log</span>
+                    <a href="<?= base_url(); ?>config">
+                        <i class="fa fa-gear"></i>
+                        <span>ตั้งค่าเว็บ</span>
                         <span class="label label-primary pull-right"></span>
                     </a>
                 </li>
-
             <?php } ?>
+
+            <?php if (in_array("config_group", $access_permission)) { ?>
+                <li class="treeview">
+                    <a href="<?= base_url(); ?>config_group/get_form">
+                        <i class="fa fa-gears"></i>
+                        <span>ขั้นสูง</span>
+                        <span class="label label-primary pull-right"></span>
+                    </a>
+                </li>
+            <?php } ?>
+
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-hdd-o"></i>
+                    <span>Log</span>
+                    <span class="label label-primary pull-right"></span>
+                </a>
+            </li>
+
+
             <?php
             if (in_array("report_estimate_profit", $access_permission)
                 || in_array("report_bet_user", $access_permission)

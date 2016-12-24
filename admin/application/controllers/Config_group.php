@@ -8,6 +8,7 @@ class Config_group extends CI_Controller
         parent::__construct();
         $this->load->model('Config_group_model');
 
+
         $this->load->library('auth_check');
 
         if (!$this->auth_check->hasPermission('access', 'config_group')) {

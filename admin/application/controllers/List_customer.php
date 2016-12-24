@@ -58,6 +58,7 @@ class List_customer extends CI_Controller {
 
         $data["list"] = $all_data;
 
+      //var_dump($data);
         $data["page"] = 'pages/list_customer';
         $this->load->view('template',$data);
 
@@ -127,7 +128,6 @@ class List_customer extends CI_Controller {
 			$data['submission_date'] = "";
 			$data['accept_date'] = "";
 			$data['accept_by'] = "";
-
 			$data['customer_status'] = "";
 
 			$data["action"] = base_url() . "customer/add_customer";
@@ -233,13 +233,13 @@ class List_customer extends CI_Controller {
 
         $filter_number = $this->input->post("filter-number");
         $page = $this->input->post("filter-page");
-        $filter_status = $this->input->post("filter-status");
+        $status = $this->input->post("filter-status");
 
         if ($filter_number == -1) {
             $page = 1;
         } else {
             $start_filter = $filter_number * $page;
-            $total_user = $this->Customer_model->get_total_by_search($this->input->post("txtSearch"), $start_filter, $filter_number, $filter_status);
+            $total_user = $this->Customer_model->get_total_by_search($this->input->post("txtSearch"), $start_filter, $filter_number, $status);
             if (!isset($total_user["total"])) {
                 $data["paging"] = 0;
                 $jsonResult['Data'] = $data;
@@ -260,7 +260,7 @@ class List_customer extends CI_Controller {
                 $page++;
             }
         }
-//        var_dump($this->input->post("filter-number"),$this->input->post("filter-page"),$this->input->post("filter-status"));
+//var_dump($this->input->post("filter-number"),$this->input->post("filter-page"),$this->input->post("filter-status"));
 
         $data["paging"] = $page;
         $jsonResult['Data'] = $data;

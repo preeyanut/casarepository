@@ -530,6 +530,7 @@
             success: function (json) {
                 var data = json.Data;
                 var config_groups = data["list"];
+
                 console.log(json);
                 $("#tbody").empty();
                 for (var i = 0; i < config_groups.length; i++) {

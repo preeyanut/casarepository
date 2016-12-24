@@ -37,8 +37,8 @@
                                         : </label>
 
                                     <div class="col-sm-8">
-                                        <select id="filter-number" name="table_customer_summay_master_length"
-                                                aria-controls="table_customer_summay_master"
+                                        <select id="filter-number" name="table_summay_master_length"
+                                                aria-controls="table_summay_master"
                                                 class="form-control input-sm input-xsmall input-inline">
                                             <option value="10">10</option>
                                             <option value="25">25</option>
@@ -115,7 +115,7 @@
                                     <td class="text-center">วันที่รับลูกค้า</td>
                                     <td class="text-center">อัพเดทข้อมูลโดย</td>
                                     <td class="text-center">อัพเดทข้อมูลวันที่</td>
-                                    <td class="text-center">สถานะลูกค้า</td>
+                                    <td class="text-center">สถานะ</td>
                                     <td class="text-center">จัดการ</td>
 
                                 </tr>
@@ -244,6 +244,7 @@
             , 'change,#filter-number'
             , 'change,#filter-status'
             , 'click,.button-edit'
+            , 'click,.button-delete'
             , 'click,.paging'
         ], document_ready: [
             get_paging
@@ -525,7 +526,8 @@
             success: function (json) {
                 var data = json.Data;
                 var customers = data["list"];
-                console.log(json);
+
+                //console.log(json);
 
                 $("#tbody").empty();
                 for (var i = 0; i < customers.length; i++) {
@@ -600,6 +602,7 @@
             complete: function () {
             },
             success: function (json) {
+                console.log(json);
                 var data = json.Data;
                 var paging = data["paging"];
                 $(".container-paging").empty();

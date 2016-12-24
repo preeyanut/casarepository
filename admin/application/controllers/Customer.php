@@ -58,7 +58,6 @@ class Customer extends CI_Controller
                 $data['submission_date'] = $customer_info['submission_date'];
                 $data['accept_date'] = $customer_info['accept_date'];
                 $data['accept_by'] = $customer_info['accept_by'];
-
                 $data['customer_status'] = $customer_info['customer_status'];
 
 
@@ -130,6 +129,7 @@ class Customer extends CI_Controller
         $jsonResult['Data'] = "";
         echo json_encode($jsonResult);
     }
+
 
     public function validate_form()
     {

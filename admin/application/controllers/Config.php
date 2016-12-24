@@ -13,7 +13,7 @@ class Config extends CI_Controller
 
         $this->load->library('auth_check');
 
-        if (!$this->auth_check->hasPermission('access', 'user')) {
+        if (!$this->auth_check->hasPermission('access', 'config')) {
             redirect('permission');
         }
     }
