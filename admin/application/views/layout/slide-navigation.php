@@ -92,12 +92,12 @@
                         <span class="label label-primary pull-right"></span>
                     </a>
                     <ul class="treeview-menu">
-                        <?php if (in_array("category", $access_permission)) { ?>
-                            <li><a href="<?= base_url(); ?>category"><i class="fa fa-circle-o"></i> หมวดหมู่ทั้งหมด</a>
+                        <?php if (in_array("list_category", $access_permission)) { ?>
+                            <li><a href="<?= base_url(); ?>list_category"><i class="fa fa-circle-o"></i> หมวดหมู่ทั้งหมด</a>
                             </li>
                         <?php } ?>
                         <?php if (in_array("category", $access_permission)) { ?>
-                            <li><a href="<?= base_url(); ?>category/get_form"><i class="fa fa-circle-o"></i>
+                            <li><a href="<?= base_url(); ?>category"><i class="fa fa-circle-o"></i>
                                     เพิ่มหมวดหมู่ใหม่</a>
                             </li>
                         <?php } ?>

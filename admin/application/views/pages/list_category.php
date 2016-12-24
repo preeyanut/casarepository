@@ -63,6 +63,25 @@
                                     </div>
                                 </div>
 
+                                <div class="col-md-4 col-xs-6" style="float: left;">
+                                    <label class="col-sm-3 col-xs-3 control-label" for="input-search"
+                                           style="float: left">ประเภท </label>
+
+                                    <div class="col-md-9 col-xs-9">
+                                        <select id="filter-category-type" name="table_summay_master_length"
+                                                aria-controls="table_summay_master"
+                                                class="form-control input-sm input-xsmall input-inline">
+
+                                            <option value="-1" selected="selected">ทั้งหมด</option>
+                                            <?php foreach ($list_category_type as $item) { ?>
+                                                <option value="<?= $item['category_type_id']; ?>">
+                                                    <?= $item['category_type_name']; ?>
+                                                </option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+                                </div>
+
                             </div>
                             <div class="col-sm-4 col-xs-4 text-right">
                                 <label class="col-sm-3 col-xs-3 control-label" for="input-search">ค้นหา </label>
@@ -218,7 +237,7 @@
 
 </div>
 
-<script type="application/javascript">
+<script type="text/javascript">
 
 //    init_event({
 //        fn: [readyFn],
@@ -232,6 +251,7 @@
             'keyup,#input-search'
             , 'change,#filter-number'
             , 'change,#filter-status'
+            , 'change,#filter-category-type'
             , 'click,.button-edit'
             , 'click,.button-delete'
             , 'click,.paging'
@@ -240,127 +260,18 @@
         ]
     });
 
-//    function formatNumber(number) {
-//        var p = number.toFixed(2).split(".");
-//        var minus = p[0].substring(0, 1);
-//        if (minus == "-") {
-//            p[0] = p[0].substring(1, p[0].length);
-//            return "-" + p[0].split("").reverse().reduce(function (acc, number, i, orig) {
-//                    return number + (i && !(i % 3) ? "," : "") + acc;
-//                }, "") + "." + p[1];
-//        }
-//        else {
-//            return "" + p[0].split("").reverse().reduce(function (acc, number, i, orig) {
-//                    return number + (i && !(i % 3) ? "," : "") + acc;
-//                }, "") + "." + p[1];
-//        }
-//    }
-
-    function reload_category(category_id) {
-        $("#tbody").empty();
-        $.ajax({
-            url: '<?php echo base_url(); ?>category/get_all',
-            type: 'post',
-            data: "category_id=" + category_id,
-            dataType: 'json',
-            crossDomain: true,
-            beforeSend: function () {
-            },
-            complete: function () {
-            },
-            success: function (json) {
-                var data = json.Data;
-                var categorys = data["list"];
-                $("#tbody").empty();
-                for (var i = 0; i < categorys.length; i++) {
-                    var category = categorys[i];
-
-                    var color_status = "";
-                    var str_status = "";
-
-                    switch (category.category_status) {
-                        case 0:
-                            color_status = "#8a0004";
-                            str_status = "ปิดการใช้งาน";
-                            break;
-                        case 1:
-                            str_status = "เปิดใช้งาน";
-                            break;
-                    }
-
-                    switch (category.category_icon) {
-                        case 1:
-                            icon = "<i class=\"fa fa-address-book-o\"></i>";
-                            break;
-                        case 2:
-                            icon = "<i class=\"fa fa-area-chart\"></i>";
-                            break;
-                        case 3:
-                            icon = "<i class=\"fa fa-book\"></i>";
-                            break;
-                        case 4:
-                            icon = "<i class=\"fa fa-camera\"></i>";
-                            break;
-                        case 5:
-                            icon = "<i class=\"fa fa-film\"></i>";
-                            break;
-                        case 6:
-                            icon = "<i class=\"fa fa-university\"></i>";
-                            break;
-                        case 7:
-                            icon = "<i class=\"fa fa-file-text-o\"></i>";
-                            break;
-                        case 8:
-                            icon = "<i class=\"fa fa-calendar-o\"></i>";
-                            break;
-                        case 9:
-                            icon = "<i class=\"fa fa-clone\"></i>";
-                            break;
-                        case 10:
-                            icon = "<i class=\"fa fa-cubes\"></i>";
-                            break;
-                        case 11:
-                            icon = "<i class=\"fa fa-child\"></i>";
-                            break;
-                        case 12:
-                            icon = "<i class=\"fa fa-fax\"></i>";
-                            break;
-                    }
-
-                    var html = "<tr class='tr_id" + category.category_id + "'  style='cursor: pointer;'>"
-                        + "<td class='text-center'>" + (i + 1) + "</td>"
-                        + "<td class='text-center'>" + category.category_category_name + "</td>"
-                        + "<td class='text-center'>" + category.type_name + "</td>"
-                        + "<td class='text-center'>" + icon + "</td>"
-                        + "<td class='text-center'>" + category.priority_level + "</td>"
-                        + "<td class='text-center'>" + category.create_date + "</td>"
-                        + "<td class='text-center'>" + category.create_by_name + "</td>"
-                        + "<td class='text-center'>" + category.update_date + "</td>"
-                        + "<td class='text-center'>" + category.update_by_name + "</td>"
-                        + "<td class='text-center' style='color: " + color_status + "'>"
-                        + str_status + "</td>"
-                        + "</tr>";
-
-                    $("#tbody").append(html);
-                }
-                alert("get  OK");
-            },
-            error: function (xhr, ajaxOptions, thrownError) {
-                alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
-            }
-        });
-    }
-
     function search_user() {
         var txtSearch = $("#input-search").val();
         var filterNumber = $("#filter-number").val();
         var filterPage = $("#filter-page").val();
         var filterStatus = $("#filter-status").val();
+        var filterCategoryType = $("#filter-category-type").val();
 
         $.ajax({
-            url: '<?php echo base_url(); ?>category/search_user',
+            url: '<?php echo base_url(); ?>list_category/search_user',
             type: 'post',
-            data: "txtSearch=" + txtSearch + "&filter-number=" + filterNumber + "&filter-page=" + filterPage + "&filter-status=" + filterStatus,
+            data: "txtSearch=" + txtSearch + "&filter-number=" + filterNumber + "&filter-page=" + filterPage
+            + "&filter-status=" + filterStatus+ "&filter-category-type=" + filterCategoryType,
             dataType: 'json',
             crossDomain: true,
             beforeSend: function () {
@@ -375,6 +286,7 @@
                     var category = categorys[i];
                     var color_status = "";
                     var str_status = "";
+                    var icon = "";
                     switch (Number(category.category_status)) {
                         case 0:
                             color_status = "#8a0004";
@@ -456,11 +368,12 @@
         var filterNumber = $("#filter-number").val();
         var filterPage = $("#filter-page").val();
         var filterStatus = $("#filter-status").val();
-
+        var filterCategoryType = $("#filter-category-type").val();
         $.ajax({
-            url: '<?php echo base_url(); ?>category/get_paging',
+            url: '<?php echo base_url(); ?>list_category/get_paging',
             type: 'post',
-            data: "txtSearch=" + txtSearch + "&filter-number=" + filterNumber + "&filter-page=" + filterPage + "&filter-status=" + filterStatus,
+            data: "txtSearch=" + txtSearch + "&filter-number=" + filterNumber + "&filter-page=" + filterPage
+            + "&filter-status=" + filterStatus+ "&filter-category-type=" + filterCategoryType,
             dataType: 'json',
             crossDomain: true,
             beforeSend: function () {
@@ -508,6 +421,11 @@
     });
 
     $(document).on("change", "#filter-status", function () {
+        search_user();
+        get_paging();
+    });
+
+    $(document).on("change", "#filter-category-type", function () {
         search_user();
         get_paging();
     });

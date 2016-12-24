@@ -20,14 +20,14 @@ class Category extends CI_Controller
 
     public function index()
     {
-        $this->get_list();
+        $this->get_form();
     }
 
     public function get_form()
     {
         $data_type = $this->Category_type_model->get_all();
 
-        if ($this->input->get('category_id') != "") {
+        if ($this->input->get('category_id')) {
 
             $data_info = $this->Category_model->get_data($this->input->get('category_id'));
 
@@ -58,6 +58,8 @@ class Category extends CI_Controller
                     $data['type_id'][] = $data_type[$i]['category_type_id'];
                     $data['category_type_name'][] = $data_type[$i]['category_type_name'];
                 }
+
+                $all_priority_level = $this->Category_model->get_all_priority($info['category_type_id']);
             }
 
             $data["action"] = base_url() . "category/edit_category";
@@ -86,6 +88,8 @@ class Category extends CI_Controller
                 $data['category_type_name'][] = $data_type[$i]['category_type_name'];
             }
 
+            $all_priority_level = $this->Category_model->get_all_priority(1);
+
             $data["action"] = base_url() . "category/add_category";
 
             $data["groups"] = $this->Category_model->get_all();
@@ -93,10 +97,12 @@ class Category extends CI_Controller
         }
 
         //---------------------  Priority Level
-        $all_priority_level = $this->Category_model->get_all_priority();
+
         if($all_priority_level){
-            $data_priority = array('priority_level' => (string)(sizeof($all_priority_level)+1));
-            array_unshift($all_priority_level,$data_priority);
+            if(!$this->input->get('category_id')){
+                $data_priority = array('priority_level' => (string)(sizeof($all_priority_level)+1));
+                array_unshift($all_priority_level,$data_priority);
+            }
         }else{
             $all_priority_level = array();
             $data_priority = array('priority_level' => (string)(sizeof($all_priority_level)+1));
@@ -109,90 +115,24 @@ class Category extends CI_Controller
         $this->load->view('template', $data);
     }
 
-    public function get_list()
-    {
-        $all_data = $this->Category_model->search_filter($this->input->post("txtSearch"), 0, 10, -1, -1);
-
-        $data_type = $this->Category_type_model->get_all();
-
-        $total_user = $this->Category_model->count();
-        $paging = (int)$total_user / 10;
-        $over_page = $total_user % 10;
-        if ($paging == 0) {
-            $paging = 1;
-        }
-        if ($over_page != 0) {
-            $paging++;
-        }
-
-        $data["groups"] = $this->Category_model->get_all();
-
-        for ($i = 0; $i < count($data_type); $i++) {
-            $data['category_type_id'][] = $data_type[$i]['category_type_id'];
-            $data['category_type_name'][] = $data_type[$i]['category_type_name'];
-        }
-
-        $data["paging"] = $paging;
-
-        $data["list"] = $all_data;
-
-//        var_dump($data);
-
-        $data["page"] = 'pages/category';
-
-        $this->load->view('template', $data);
-    }
-
-    public function search_user()
-    {
-
-        $filter_number = $this->input->post("filter-number");
-        $page = $this->input->post("filter-page");
-        $status = $this->input->post("filter-status");
-
-        if ($page > 0) {
-            $page--;
-        }
-
-//        $result = array();
-        if ($filter_number == -1) {
-            $result = $this->Category_model->get_all();
-        } else {
-            $start_filter = $filter_number * $page;
-            $result = $this->Category_model->search_filter($this->input->post("txtSearch"), $start_filter, $filter_number, $status);
-        }
-
-        $data["list"] = $result;
-
-        $jsonResult['Result'] = true;
-        $jsonResult['Data'] = $data;
-
-        echo json_encode($jsonResult);
-    }
-
     public function add_category()
     {
         if ($this->input->post()) {
             $data["category_id"] = $this->Category_model->add_category($this->input->post());
         }
 
-//        var_dump($_POST["category_icon"]);
         $jsonResult['Result'] = true;
-        //$jsonResult['error'] = "";
         $jsonResult['Data'] = $data;
         echo json_encode($jsonResult);
     }
 
     public function edit_category()
     {
-//        var_dump($this->input->post());
-
         if ($this->input->post()) {
             $data["category_id"] = $this->Category_model->edit_category($this->input->post());
         }
 
         $jsonResult['Result'] = true;
-        //$jsonResult['error'] = "";
         $jsonResult['Data'] = $data;
         echo json_encode($jsonResult);
     }
@@ -202,10 +142,7 @@ class Category extends CI_Controller
 
         if ($this->input->get('category_id')) {
             $blog_id = $this->Category_model->get_blog_id($this->input->get('category_id'));
-//            var_dump($this->input->get('category_id'));
-//            var_dump($blog_id);
             foreach ($blog_id as $blog_data) {
-//                var_dump($blog_data['blog_id']);
             $this->Blog_model->delete_blog_value($blog_data['blog_id']);
             $this->Blog_model->delete_blog($blog_data['blog_id']);
             $this->Category_model->delete_category($this->input->get('category_id'));
@@ -215,56 +152,12 @@ class Category extends CI_Controller
         $this->get_list();
     }
 
-    public function get_paging()
-    {
-
-        $filter_number = $this->input->post("filter-number");
-        $page = $this->input->post("filter-page");
-
-        $status = $this->input->post("filter-status");
-
-        if ($filter_number == -1) {
-            $page = 1;
-        } else {
-            $start_filter = $filter_number * $page;
-            $total_user = $this->Category_model->get_total_by_search($this->input->post("txtSearch"), $start_filter, $filter_number, $status);
-            if (!isset($total_user["total"])) {
-                $data["paging"] = 0;
-                $jsonResult['Data'] = $data;
-                echo json_encode($jsonResult);
-                return;
-            }
-            $paging = (int)((int)$total_user["total"] / (int)$filter_number);
-            $over_page = (int)((int)$total_user["total"] % (int)$filter_number);
-            $page = 0;
-
-            if ($paging == 0) {
-                $page = 1;
-            } else {
-                $page = $paging;
-            }
-
-            if ($over_page != 0 && $paging != 0) {
-                $page++;
-            }
-        }
-
-        $data["paging"] = $page;
-        $jsonResult['Data'] = $data;
-
-        echo json_encode($jsonResult);
-    }
-
     public function validate_form()
     {
 
         if ((strlen($this->input->post('category_name')) < 3) || (strlen($this->input->post('category_name')) > 255)) {
             $this->error['category_name'] = "กรุณากรอกชื่อหมวดหมู่";
         }
-
-//        if ((strlen($this->input->post('category_icon')) < 3) || (strlen($this->input->post('category_icon')) > 255)) {
-//            $this->error['category_icon'] = "กรุณาเลือกไอคอน";
-//        }
 
         if (empty($this->input->post('category_icon'))) {
             $this->error['category_icon'] = "กรุณาเลือกไอคอน";
