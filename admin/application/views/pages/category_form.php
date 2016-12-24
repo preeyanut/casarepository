@@ -113,9 +113,16 @@
                                 </div>
                                 <div class="col-md-10 col-xs-10">
                                     <div class="">
-                                        <input type="text" name="priority_level" value="<?php echo $priority_level; ?>"
-                                               placeholder="ระดับ" id="input-priority"
-                                               class="form-control"/>
+                                        <select name="priority_level" id="input-priority-level"
+                                                class="form-control selectpicker">
+                                            <?php foreach ($all_priority_level as $item) { ?>
+                                                <option value="<?= $item['priority_level']; ?>"
+                                                    <?php if ($item['priority_level'] == $priority_level) { ?> selected="selected" <?php } ?> >
+                                                    <?= $item['priority_level']; ?>
+                                                </option>
+                                            <?php } ?>
+
+                                        </select>
                                     </div>
                                     <div class="text-danger"></div>
                                 </div>

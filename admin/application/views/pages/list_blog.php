@@ -64,6 +64,25 @@
                                         </select>
                                     </div>
                                 </div>
+
+                                <div class="col-md-4 col-xs-6" style="float: left;">
+                                    <label class="col-sm-3 col-xs-3 control-label" for="input-search"
+                                           style="float: left">ประเถท </label>
+
+                                    <div class="col-md-9 col-xs-9">
+                                        <select id="filter-category" name="table_summay_master_length"
+                                                aria-controls="table_summay_master"
+                                                class="form-control input-sm input-xsmall input-inline">
+
+                                            <option value="-1" selected="selected">ทั้งหมด</option>
+                                            <?php foreach ($list_category as $item) { ?>
+                                                <option value="<?= $item['category_id']; ?>">
+                                                    <?= $item['category_name']; ?>
+                                                </option>
+                                            <?php } ?>
+                                        </select>
+                                    </div>
+                                </div>
                             </div>
                             <div class="col-sm-4 col-xs-4 text-right">
                                 <label class="col-sm-3 col-xs-3 control-label" for="input-search">ค้นหา </label>
@@ -200,6 +219,7 @@
             'keyup,#input-search'
             , 'change,#filter-number'
             , 'change,#filter-status'
+            , 'change,#filter-category'
             , 'click,.button-edit'
             , 'click,.button-delete'
             , 'click,.paging'
@@ -219,6 +239,11 @@
     });
 
     $(document).on("change", "#filter-status", function () {
+        search_user();
+        get_paging();
+    })
+
+    $(document).on("change", "#filter-category", function () {
         search_user();
         get_paging();
     });
@@ -284,11 +309,13 @@
         var filterNumber = $("#filter-number").val();
         var filterPage = $("#filter-page").val();
         var filterStatus = $("#filter-status").val();
+        var filterCategory = $("#filter-category").val();
 
         $.ajax({
             url: '<?php echo base_url(); ?>list_blog/search',
             type: 'post',
-            data: "txtSearch=" + txtSearch + "&filter-number=" + filterNumber + "&filter-page=" + filterPage + "&filter-status=" + filterStatus,
+            data: "txtSearch=" + txtSearch + "&filter-number=" + filterNumber + "&filter-page="
+            + filterPage + "&filter-status=" + filterStatus + "&filter-category=" + filterCategory ,
             dataType: 'json',
             crossDomain: true,
             beforeSend: function () {
@@ -345,6 +372,7 @@
         var filterNumber = $("#filter-number").val();
         var filterPage = $("#filter-page").val();
         var filterStatus = $("#filter-status").val();
+        var filterCategory = $("#filter-category").val();
 
 //        filterPage=1;
 //        console.log(txtSearch);
@@ -354,7 +382,8 @@
         $.ajax({
             url: '<?php echo base_url(); ?>list_blog/get_paging',
             type: 'post',
-            data: "txtSearch=" + txtSearch + "&filter-number=" + filterNumber + "&filter-page=" + filterPage + "&filter-status=" + filterStatus,
+            data: "txtSearch=" + txtSearch + "&filter-number=" + filterNumber + "&filter-page="
+            + filterPage + "&filter-status=" + filterStatus + "&filter-category=" + filterCategory ,
             dataType: 'json',
             crossDomain: true,
             beforeSend: function () {

@@ -32,7 +32,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		background-size: 100% ;
 	}
 </style>
-<div id="container" class="body-container container">
+<div id="container" class="body-container">
 
 	<?php $this->load->view($page); ?>
 

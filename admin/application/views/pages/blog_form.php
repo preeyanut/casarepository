@@ -504,13 +504,14 @@
             },
             success: function (json) {
                 console.log(json);
+
                 if (json.Result) {
                     uploadImage(json.Data.blog_id);
-                    alert("เพิ่มข้อมูลสำเร็จ");
+                    alert("แก้ไขข้อมูลสำเร็จ");
 
                     $('#blog_id').val(json.Data.blog_id);
                 } else {
-                    alert("เพิ่มข้อมูลผิดพลาด");
+                    alert("แก้ไขข้อมูลผิดพลาด");
                 }
             },
             error: function (xhr, ajaxOptions, thrownError) {

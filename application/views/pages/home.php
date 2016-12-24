@@ -239,7 +239,7 @@
     }
 
     .top-area:after {
-        background: url(img/pattern.png) center repeat;
+        /*background: url(/admin/assets/img/blog/6/20/bg_product.jpg) center repeat;*/
         content: "";
         position: absolute;
         bottom: 0;
@@ -296,6 +296,9 @@
 
     /*-----------------------------------------  End Slide Banner  -------------------------------------------*/
 
+    .float-none{
+        float: none !important;
+    }
 </style>
 <!--<link rel='stylesheet' id='alpha-store-stylesheet-css'  href='--><? //= base_url();?><!--assets/css/style.css?ver=1.2.5' type='text/css' media='all' />-->
 <link rel='stylesheet' id='flexslider-css' href='<?= base_url(); ?>assets/css/flexslider.css?ver=2.6.3' type='text/css'
@@ -305,10 +308,9 @@
 <script type="text/javascript" src="<?= base_url(); ?>assets/javascript/customscript.js?ver=1.0.2"></script>
 <script type="text/javascript" src="<?= base_url(); ?>assets/javascript/jquery.flexslider-min.js?ver=2.6.3"></script>
 
+<div id="">
 
-<div id="container">
-
-    <div id='home-banner' class="home-banner">
+    <div id='home-banner' class="home-banner container">
         <div class="container">
             <div class="row margin-0">
                 <div class="col-xs-12 padding-0">
@@ -405,7 +407,7 @@
         </div>
     </div>
 
-    <div id='body-center' class="body-center">
+    <div id='body-center' class="body-center container">
 
         <div class="container">
 
@@ -469,6 +471,7 @@
                 <div class="col-xs-12 padding-0">
                     <img width="100%" src="http://casa98-th.com/images/banner.png" alt="">
                 </div>
+
                 <div class="col-xs-12 padding-0">
 
                     <div class="col-xs-3 padding-10">
@@ -488,194 +491,85 @@
 
             </div>
 
-            <div class="col-xs-12 padding-0">
-                <h1>Body</h1>
-                <?php $this->Home->get_blog('test'); ?>
-                <div class="top-area container-fluid">
-                    <div id="carousel-home" class="flexslider woocommerce">
-
-                        <div class="flex-viewport" style="overflow: hidden; position: relative;">
-                            <ul class="slides products"
-                                style="width: 1000%; transition-duration: 0s; transform: translate3d(0px, 0px, 0px);">
-
-                                    <li class="carousel-item c-item-1 id-11"
-                                        style="width: 272.4px; margin-right: 40px; float: left; display: block;">
-                                        <div class="flex-img">
-                                            <div class="top-carousel-img">
-                                                <img width="270" height="423"
-                                                     src="http://45.125.195.205:8008/assets/images/banner/adban1.jpg"
-                                                     class="attachment-alpha-store-carousel size-alpha-store-carousel wp-post-image"
-                                                     alt="%e0%b9%82%e0%b8%9b%e0%b8%a3%e0%b8%a2%e0%b9%89%e0%b8%b2%e0%b8%a2%e0%b8%84%e0%b9%88%e0%b8%b2%e0%b8%a22"
-                                                     draggable="false"></div>
-                                            <div class="top-carousel-heading">
-                                                <div class="top-carousel-title">
-                                                    Casa98th
-                                                </div>
-                                                <div class="price">
-                                                </div>
-                                                <a rel="nofollow" href="https://www.tded24.com/?product=test-copy-copy-copy"
-                                                   data-quantity="1" data-product_id="11" data-product_sku=""
-                                                   class="button product_type_simple ajax_add_to_cart">Read more</a></div>
-                                            <div class="carousel-heading-hover">
-                                                <div class="top-carousel-title-hover"><a
-                                                        href="https://www.tded24.com/?product=test-copy-copy-copy"
-                                                        title="Casa98th">Casa98th</a></div>
-                                                <div class="top-carousel-excerpt">
-                                                </div>
-                                                <div class="price-hover">
-                                                </div>
-                                                <a rel="nofollow" href="https://www.tded24.com/?product=test-copy-copy-copy"
-                                                   data-quantity="1" data-product_id="11" data-product_sku=""
-                                                   class="button product_type_simple ajax_add_to_cart">Read more</a></div>
-                                        </div>
-                                    </li>
-
-                                    <li class="carousel-item c-item-2 id-10"
-                                        style="width: 272.4px; margin-right: 40px; float: left; display: block;">
-                                        <div class="flex-img">
-                                            <div class="top-carousel-img">
-                                                <img width="270" height="423"
-                                                     src="http://45.125.195.205:8008/assets/images/banner/adban2.jpg"
-                                                     class="attachment-alpha-store-carousel size-alpha-store-carousel wp-post-image"
-                                                     alt="%e0%b8%ab%e0%b8%a7%e0%b8%a27-1" draggable="false"></div>
-
-                                            <div class="top-carousel-heading">
-                                                <div class="top-carousel-title">
-                                                    Casa98th
-                                                </div>
-                                                <div class="price">
-                                                </div>
-                                                <a rel="nofollow" href="https://www.tded24.com/?product=test-copy-copy"
-                                                   data-quantity="1" data-product_id="10" data-product_sku=""
-                                                   class="button product_type_simple ajax_add_to_cart">Read more</a></div>
-                                            <div class="carousel-heading-hover">
-                                                <div class="top-carousel-title-hover"><a
-                                                        href="https://www.tded24.com/?product=test-copy-copy"
-                                                        title="Casa98th">Casa98th</a></div>
-                                                <div class="top-carousel-excerpt">
-                                                </div>
-                                                <div class="price-hover">
-                                                </div>
-                                                <a rel="nofollow" href="https://www.tded24.com/?product=test-copy-copy"
-                                                   data-quantity="1" data-product_id="10" data-product_sku=""
-                                                   class="button product_type_simple ajax_add_to_cart">Read more</a></div>
-                                        </div>
-                                    </li>
-
-                                    <li class="carousel-item c-item-3 id-12"
-                                        style="width: 272.4px; margin-right: 40px; float: left; display: block;">
-                                        <div class="flex-img">
-                                            <div class="top-carousel-img">
-                                                <img width="270" height="423"
-                                                     src="http://45.125.195.205:8008/assets/images/banner/adban3.jpg"
-                                                     class="attachment-alpha-store-carousel size-alpha-store-carousel wp-post-image"
-                                                     alt="casino1" draggable="false"></div>
-
-                                            <div class="top-carousel-heading">
-                                                <div class="top-carousel-title">
-                                                    Casa98th
-                                                </div>
-                                                <div class="price">
-                                                </div>
-                                                <a rel="nofollow"
-                                                   href="https://www.tded24.com/?product=test-copy-copy-copy-copy"
-                                                   data-quantity="1" data-product_id="12" data-product_sku=""
-                                                   class="button product_type_simple ajax_add_to_cart">Read more</a></div>
-                                            <div class="carousel-heading-hover">
-                                                <div class="top-carousel-title-hover"><a
-                                                        href="https://www.tded24.com/?product=test-copy-copy-copy-copy"
-                                                        title="Casa98th">Casa98th</a></div>
-                                                <div class="top-carousel-excerpt">
-                                                </div>
-                                                <div class="price-hover">
-                                                </div>
-                                                <a rel="nofollow"
-                                                   href="https://www.tded24.com/?product=test-copy-copy-copy-copy"
-                                                   data-quantity="1" data-product_id="12" data-product_sku=""
-                                                   class="button product_type_simple ajax_add_to_cart">Read more</a></div>
-                                        </div>
-                                    </li>
-
-                                    <li class="carousel-item c-item-4 id-9"
-                                        style="width: 272.4px; margin-right: 40px; float: left; display: block;">
-                                        <div class="flex-img">
-                                            <div class="top-carousel-img">
-                                                <img width="270" height="423"
-                                                     src="http://45.125.195.205:8008/assets/images/banner/adban4.jpg"
-                                                     class="attachment-alpha-store-carousel size-alpha-store-carousel wp-post-image"
-                                                     alt="%e0%b8%ab%e0%b8%a7%e0%b8%a210" draggable="false"></div>
-
-                                            <div class="top-carousel-heading">
-                                                <div class="top-carousel-title">
-                                                    Casa98th
-                                                </div>
-                                                <div class="price">
-                                                </div>
-                                                <a rel="nofollow" href="https://www.tded24.com/?product=test-copy"
-                                                   data-quantity="1" data-product_id="9" data-product_sku=""
-                                                   class="button product_type_simple ajax_add_to_cart">Read more</a></div>
-                                            <div class="carousel-heading-hover">
-                                                <div class="top-carousel-title-hover"><a
-                                                        href="https://www.tded24.com/?product=test-copy" title="Casa98th">Casa98th</a>
-                                                </div>
-                                                <div class="top-carousel-excerpt">
-                                                </div>
-                                                <div class="price-hover">
-                                                </div>
-                                                <a rel="nofollow" href="https://www.tded24.com/?product=test-copy"
-                                                   data-quantity="1" data-product_id="9" data-product_sku=""
-                                                   class="button product_type_simple ajax_add_to_cart">Read more</a></div>
-                                        </div>
-                                    </li>
-
-                                    <li class="carousel-item c-item-5 id-5"
-                                        style="width: 272.4px; margin-right: 40px; float: left; display: block;">
-                                        <div class="flex-img">
-                                            <div class="top-carousel-img">
-                                                <img width="270" height="423"
-                                                     src="http://45.125.195.205:8008/assets/images/banner/adban5.jpg"
-                                                     class="attachment-alpha-store-carousel size-alpha-store-carousel wp-post-image"
-                                                     alt="%e0%b8%ab%e0%b8%a7%e0%b8%a24" draggable="false"></div>
-
-                                            <div class="top-carousel-heading">
-                                                <div class="top-carousel-title">
-                                                    Casa Lotto
-                                                </div>
-                                                <div class="price">
-                                                </div>
-                                                <a rel="nofollow" href="https://www.tded24.com/?product=test"
-                                                   data-quantity="1" data-product_id="5" data-product_sku=""
-                                                   class="button product_type_simple ajax_add_to_cart">Read more</a></div>
-                                            <div class="carousel-heading-hover">
-                                                <div class="top-carousel-title-hover"><a
-                                                        href="https://www.tded24.com/?product=test" title="Casa Lotto">Casa
-                                                        Lotto</a></div>
-                                                <div class="top-carousel-excerpt">
-                                                </div>
-                                                <div class="price-hover">
-                                                </div>
-                                                <a rel="nofollow" href="https://www.tded24.com/?product=test"
-                                                   data-quantity="1" data-product_id="5" data-product_sku=""
-                                                   class="button product_type_simple ajax_add_to_cart">Read more</a></div>
-                                        </div>
-                                    </li>
-                            </ul>
-                        </div>
-                        <ul class="flex-direction-nav">
-                            <li class="flex-nav-prev"><a class="flex-prev flex-disabled" href="#"
-                                                         tabindex="-1">Previous</a></li>
-                            <li class="flex-nav-next"><a class="flex-next flex-disabled" href="#" tabindex="-1">Next</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
-            </div>
-
         </div>
 
     </div>
 
+    <div class="col-xs-12 padding-0 float-none">
+        <h1>Body</h1>
+
+        <div class="top-area container-fluid">
+            <div id="carousel-home" class="flexslider woocommerce">
+
+                <div class="flex-viewport" style="overflow: hidden; position: relative;">
+                    <ul class="slides products"
+                        style="width: 1000%; transition-duration: 0s; transform: translate3d(0px, 0px, 0px);">
+
+                        <?php
+                        $count = 1;
+                        foreach ($news as $items ) {
+
+                            $meta_keyword ='การพนันออนไลน์';
+
+                            $blog_id =$items['blog_id'];
+                            $blog_url = base_url().'blog?blog_id='.$items['blog_id'];
+                            $blog_title = $items['blog_title'];
+
+                            foreach($items['news_info'] as $item){
+                                if($item['field_type'] ==='date' && $item['field_id']==='date-shower'){
+                                    $date_shower =  $item['blog_value'] ;
+                                }
+                                if($item['field_type'] ==='image' && $item['field_id']==='image'){
+                                    $image =  base_url().'admin/'.$item['blog_value'] ;
+                                }
+                            }
+                            ?>
+                            <li class="carousel-item c-item-<?= $count ;?> id-<?= $blog_id; ?>"
+                                style="width: 100%; margin-right: 40px; float: left; display: block;">
+                                <div class="flex-img">
+                                    <div class="top-carousel-img">
+                                        <img width="270" height="423"
+                                             src="<?= $image ?>"
+                                             class="attachment-alpha-store-carousel size-alpha-store-carousel wp-post-image"
+                                             alt="<?= $meta_keyword; ?>"
+                                             draggable="false"></div>
+                                    <div class="top-carousel-heading">
+                                        <div class="top-carousel-title">
+                                            <?=$blog_title ;?>
+                                        </div>
+                                        <div class="price">
+                                            <?=$blog_title ;?>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-heading-hover">
+                                        <div class="top-carousel-title-hover"><a
+                                                href="<?= $blog_url; ?>"
+                                                title="<?=$blog_title ;?>"><?=$blog_title ;?></a></div>
+                                        <div class="top-carousel-excerpt">
+                                        </div>
+                                        <div class="price-hover">
+                                        </div>
+                                        <a rel="nofollow" href="<?= $blog_url; ?>"
+                                           data-quantity="1" data-product_id="<?= $blog_id; ?>" data-product_sku=""
+                                           class="button product_type_simple ajax_add_to_cart">อ่าน</a></div>
+                                </div>
+                            </li>
+                            <?php
+                        }
+                        ?>
+
+                    </ul>
+                </div>
+                <ul class="flex-direction-nav">
+                    <li class="flex-nav-prev"><a class="flex-prev flex-disabled" href="#"
+                                                 tabindex="-1">Previous</a></li>
+                    <li class="flex-nav-next"><a class="flex-next flex-disabled" href="#" tabindex="-1">Next</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
 </div>
 
 <script type="text/javascript">

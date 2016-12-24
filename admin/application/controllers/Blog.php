@@ -30,9 +30,6 @@ class Blog extends CI_Controller
         if ($this->input->get('blog_id')) {
 
             $data_info = $this->Blog_model->get_data($this->input->get('blog_id'));
-
-//            echo var_dump($data_info);
-//            exit(0);
             $blog_field = $this->Blog_model->get_blog_field($data_info[0]['blog_id'],$data_info[0]['category_type_id']);
 
             $data['blog_field'] = $blog_field;
@@ -51,6 +48,8 @@ class Blog extends CI_Controller
                     $data['category_type_id'] = $info['category_type_id'];
 
                 }
+
+                $all_priority_level = $this->Blog_model->get_all_priority($info['category_id']);
             }
 
             $data["action"] = base_url() . "blog/edit_blog";
@@ -68,20 +67,23 @@ class Blog extends CI_Controller
 //            $data['create_by'] = $this->session->userdata("user_id");
 
             $data["action"] = base_url() . "blog/add_blog";
+
+            $all_priority_level = $this->Blog_model->get_all_priority(1);
         }
 
-        $all_priority_level = $this->Blog_model->get_all_priority();
+        //---------------------  Priority Level
+
         if($all_priority_level){
-            $data_priority = array('priority_level' => (string)(sizeof($all_priority_level)+1));
-            array_unshift($all_priority_level,$data_priority);
+            if(!$this->input->get('blog_id')){
+                $data_priority = array('priority_level' => (string)(sizeof($all_priority_level)+1));
+                array_unshift($all_priority_level,$data_priority);
+            }
         }else{
             $all_priority_level = array();
             $data_priority = array('priority_level' => (string)(sizeof($all_priority_level)+1));
             array_push($all_priority_level,$data_priority);
         }
-//        echo var_dump($all_priority_level);
-//        exit(0);
-//        array_push($all_priority_level,parse_str((sizeof($all_priority_level)+1)));
+
         $data["all_priority_level"] = $all_priority_level;
 
         $data["category"] = $this->Category_model->get_all();
