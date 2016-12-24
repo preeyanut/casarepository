@@ -145,7 +145,7 @@
                             <div class="col-sm-4 col-xs-4 text-right">
                                 <label class="col-sm-3 col-xs-3 control-label" for="input-search">ค้นหา : </label>
                                 <div class="col-sm-9 col-xs-9">
-                                    <input type="text" name="search" placeholder="กรุณาใส่ข้อมูล...ค้นหา"
+                                    <input type="text" name="search" placeholder="กรุณาใส่ config group name เพื่อค้นหา"
                                            id="input-search"
                                            class="form-control"/>
                                 </div>
@@ -295,7 +295,7 @@
             success: function (json) {
 
                 alert("เพิ่มข้อมูลเสร็จสิ้น");
-
+                location.reload();
                 reload_config_group();
             },
             error: function (xhr, ajaxOptions, thrownError) {

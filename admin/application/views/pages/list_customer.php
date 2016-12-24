@@ -258,8 +258,9 @@
                     $('.button-delete').button('reset');
                 },
                 success: function (json) {
-
+                    location.reload();
                     reload_list_customer();
+
                 },
                 error: function (xhr, ajaxOptions, thrownError) {
                     alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);

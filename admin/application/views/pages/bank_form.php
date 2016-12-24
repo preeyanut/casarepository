@@ -113,11 +113,13 @@
 <script type="application/javascript">
 
     init_event({
-        fn: [readyLoad],
-        disEvent: ["click,#button-save", "focusout,#minimum", "focusout,#reward", "focusout,#maximum", "focusout,#commission"
-            , "focusout,#tbody-setting-default input", "focusout,#input-user-credit", "change,.my_percent_user"
-            , "change,.sub_percent_user", "focusout,.my_percent_user", "focusout.sub_percent_user"]
+        document_on: [
+            'click,#button-save'
+        ], document_ready: [
+            readyLoad
+        ]
     });
+
 
     function readyLoad() {
         $('#input-user-credit').maskMoney();

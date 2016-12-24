@@ -137,132 +137,133 @@
                                     </div>
                                 </div>
 
-                                </div>
                             </div>
-
                         </div>
-                        <!-- /.box -->
+
                     </div>
-                    <div class="row" style="margin: 0px">
-                        <div class="box box-primary">
-                            <div class="box-header with-border">
-                                <h3 class="box-title">รายละเอียดลูกค้า</h3>
-                            </div>
-                            <!-- /.box-header -->
-                            <!-- form start -->
-                            <div class=" box-body">
+                    <!-- /.box -->
+                </div>
+                <div class="row" style="margin: 0px">
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">รายละเอียดลูกค้า</h3>
+                        </div>
+                        <!-- /.box-header -->
+                        <!-- form start -->
+                        <div class=" box-body">
 
-                                <div class="row">
+                            <div class="row">
 
-                                    <div class="form-group required col-md-12 col-xs-12">
+                                <div class="form-group required col-md-12 col-xs-12">
 
-                                        <div class="col-md-2 col-xs-2" align="right">
-                                            <label class=" control-label" for="input-old-id-promotion">โปรโมชัน ID
-                                                เก่า</label>
-                                        </div>
-                                        <div class="col-md-9 col-xs-9">
-                                            <div class="">
-                                                <input type="text" name="old_id_promotion"
-                                                       value="<?php echo $old_id_promotion; ?>"
-                                                       placeholder="โปรโมชัน ID เก่า" id="input-old-id-promotion"
-                                                       class="form-control"/>
-                                            </div>
-                                            <div class="text-danger"></div>
-                                        </div>
-
+                                    <div class="col-md-2 col-xs-2" align="right">
+                                        <label class=" control-label" for="input-old-id-promotion">โปรโมชัน ID
+                                            เก่า</label>
                                     </div>
-
-
-                                    <div class="form-group required col-md-12 col-xs-12">
-                                        <div class="col-md-2 col-xs-2" align="right">
-                                            <label class=" control-label" for="input-how-to-know-web">ช่องทางที่ลูกค้ารู้จัก</label>
-                                        </div>
-                                        <div class="col-md-9 col-xs-9">
-                                            <div class="">
-                                                <input type="text" name="how_to_know_web"
-                                                       value="<?php echo $how_to_know_web; ?>"
-                                                       placeholder="ช่องทางที่ลูกค้ารู้จัก" id="input-how-to-know-web"
-                                                       class="form-control"/>
-                                            </div>
-                                            <div class="text-danger"></div>
-                                        </div>
-                                    </div>
-
-
-                                    <div class="form-group col-md-12 col-xs-12">
-                                        <div class="col-md-2 col-xs-2" align="right">
-                                            <label class=" control-label" for="input-bank-name">ธนาคาร</label>
-                                        </div>
-                                        <div class="col-md-9 col-xs-9">
-                                            <div class="">
-                                                <select name="bank_name" id="input-bank-name" class="form-control">
-                                                    <?php foreach ($bank_list as $item) { ?>
-                                                        <option value="<?= $item['bank_list_name']; ?>"
-                                                            <?php if ($item['bank_list_name'] == $bank_name) { ?> selected="selected" <?php } ?> >
-                                                            <?= $item['bank_list_name']; ?>
-                                                        </option>
-                                                    <?php } ?>
-                                                </select>
-                                            </div>
+                                    <div class="col-md-9 col-xs-9">
+                                        <div class="">
+                                            <input type="text" name="old_id_promotion"
+                                                   value="<?php echo $old_id_promotion; ?>"
+                                                   placeholder="โปรโมชัน ID เก่า" id="input-old-id-promotion"
+                                                   class="form-control"/>
                                         </div>
                                         <div class="text-danger"></div>
-
-                                    </div>
-
-                                    <div class="form-group required col-md-12 col-xs-12">
-                                        <div class="col-md-2 col-xs-2" align="right">
-                                            <label class=" control-label"
-                                                   for="input-bank-account-name">ชื่อบัญชี</label>
-                                        </div>
-                                        <div class="col-md-9 col-xs-9">
-                                            <div class="">
-                                                <input type="text" name="bank_account_name"
-                                                       value="<?php echo $bank_account_name; ?>"
-                                                       placeholder="ชื่อบัญชี" id="input-bank-account-name"
-                                                       class="form-control"/>
-                                            </div>
-                                            <div class="text-danger"></div>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group required col-md-12 col-xs-12">
-                                        <div class="col-md-2 col-xs-2" align="right">
-                                            <label class=" control-label"
-                                                   for="input-bank-account-number">เลขที่บัญชี</label>
-                                        </div>
-                                        <div class="col-md-9 col-xs-9">
-                                            <div class="">
-                                                <input type="text" name="bank_account_number"
-                                                       value="<?php echo $bank_account_number; ?>"
-                                                       placeholder="เลขบัญชี" id="input-bank-account-number"
-                                                       class="form-control"/>
-                                            </div>
-                                            <div class="text-danger"></div>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group required col-md-12 col-xs-12">
-                                        <div class="col-md-2 col-xs-2" align="right">
-                                            <label class=" control-label" for="input-money-open-account">ยอดเงินเปิดบัญชี</label>
-                                        </div>
-                                        <div class="col-md-9 col-xs-9">
-                                            <div class="">
-                                                <input type="text" name="money_open_account"
-                                                       value="<?php echo $money_open_account; ?>"
-                                                       placeholder="ยอดเงินเปิดบัญชี" id="input-money-open-account"
-                                                       class="form-control"/>
-                                            </div>
-                                            <div class="text-danger"></div>
-                                        </div>
                                     </div>
 
                                 </div>
+
+
+                                <div class="form-group required col-md-12 col-xs-12">
+                                    <div class="col-md-2 col-xs-2" align="right">
+                                        <label class=" control-label"
+                                               for="input-how-to-know-web">ช่องทางที่ลูกค้ารู้จัก</label>
+                                    </div>
+                                    <div class="col-md-9 col-xs-9">
+                                        <div class="">
+                                            <input type="text" name="how_to_know_web"
+                                                   value="<?php echo $how_to_know_web; ?>"
+                                                   placeholder="ช่องทางที่ลูกค้ารู้จัก" id="input-how-to-know-web"
+                                                   class="form-control"/>
+                                        </div>
+                                        <div class="text-danger"></div>
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group col-md-12 col-xs-12">
+                                    <div class="col-md-2 col-xs-2" align="right">
+                                        <label class=" control-label" for="input-bank-name">ธนาคาร</label>
+                                    </div>
+                                    <div class="col-md-9 col-xs-9">
+                                        <div class="">
+                                            <select name="bank_name" id="input-bank-name" class="form-control">
+                                                <?php foreach ($bank_list as $item) { ?>
+                                                    <option value="<?= $item['bank_list_name']; ?>"
+                                                        <?php if ($item['bank_list_name'] == $bank_name) { ?> selected="selected" <?php } ?> >
+                                                        <?= $item['bank_list_name']; ?>
+                                                    </option>
+                                                <?php } ?>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="text-danger"></div>
+
+                                </div>
+
+                                <div class="form-group required col-md-12 col-xs-12">
+                                    <div class="col-md-2 col-xs-2" align="right">
+                                        <label class=" control-label"
+                                               for="input-bank-account-name">ชื่อบัญชี</label>
+                                    </div>
+                                    <div class="col-md-9 col-xs-9">
+                                        <div class="">
+                                            <input type="text" name="bank_account_name"
+                                                   value="<?php echo $bank_account_name; ?>"
+                                                   placeholder="ชื่อบัญชี" id="input-bank-account-name"
+                                                   class="form-control"/>
+                                        </div>
+                                        <div class="text-danger"></div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group required col-md-12 col-xs-12">
+                                    <div class="col-md-2 col-xs-2" align="right">
+                                        <label class=" control-label"
+                                               for="input-bank-account-number">เลขที่บัญชี</label>
+                                    </div>
+                                    <div class="col-md-9 col-xs-9">
+                                        <div class="">
+                                            <input type="text" name="bank_account_number"
+                                                   value="<?php echo $bank_account_number; ?>"
+                                                   placeholder="เลขบัญชี" id="input-bank-account-number"
+                                                   class="form-control"/>
+                                        </div>
+                                        <div class="text-danger"></div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group required col-md-12 col-xs-12">
+                                    <div class="col-md-2 col-xs-2" align="right">
+                                        <label class=" control-label"
+                                               for="input-money-open-account">ยอดเงินเปิดบัญชี</label>
+                                    </div>
+                                    <div class="col-md-9 col-xs-9">
+                                        <div class="">
+                                            <input type="text" name="money_open_account"
+                                                   value="<?php echo $money_open_account; ?>"
+                                                   placeholder="ยอดเงินเปิดบัญชี" id="input-money-open-account"
+                                                   class="form-control"/>
+                                        </div>
+                                        <div class="text-danger"></div>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                     </div>
                 </div>
-                <!--/.col (left) -->
             </div>
+            <!--/.col (left) -->
 
             <div class="col-md-12">
                 <!-- general form elements -->
@@ -304,6 +305,7 @@
                 </div>
                 <!-- /.row -->
             </div>
+        </div>
     </section>
 
 </div>
@@ -313,9 +315,14 @@
     init_event({
         document_on: [
             'click,#button-save'
+        ], document_ready: [
+            readyLoad
         ]
     });
 
+    function readyLoad() {
+
+    }
 
     //    function format_to_money() {
     //        var input_type_number = $('.input-number');
@@ -430,6 +437,7 @@
             success: function (json) {
 
                 alert("เพิ่มข้อมูลผู้ใช้งานเสร็จสิ้น");
+                location.reload();
 
                 // upload file
 //                uploadImage(json.Data.customer_id);
@@ -443,30 +451,30 @@
     }
 
     function edit_customer() {
-            var customer_id = $('input[name="customer_id"]').val();
-            $.ajax({
-                url: '<?php echo base_url(); ?>customer/edit_customer',
-                type: 'post',
-                data: $('input , select'),
-                dataType: 'json',
-                crossDomain: true,
-                beforeSend: function () {
-                    $('#button-save').button('loading');
-                },
-                complete: function () {
-                    $('#button-save').button('reset');
-                },
-                success: function (json) {
-                    alert("แก้ไขข้อมูลผู้ใช้งานเสร็จสิ้น");
+        var customer_id = $('input[name="customer_id"]').val();
+        $.ajax({
+            url: '<?php echo base_url(); ?>customer/edit_customer',
+            type: 'post',
+            data: $('input , select'),
+            dataType: 'json',
+            crossDomain: true,
+            beforeSend: function () {
+                $('#button-save').button('loading');
+            },
+            complete: function () {
+                $('#button-save').button('reset');
+            },
+            success: function (json) {
+                alert("แก้ไขข้อมูลผู้ใช้งานเสร็จสิ้น");
 
-    //                edit_default_setting(customer_id);
-    //                edit_percent_setting(customer_id);
-                },
-                error: function (xhr, ajaxOptions, thrownError) {
-                    alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
-                }
-            });
-        }
+                //                edit_default_setting(customer_id);
+                //                edit_percent_setting(customer_id);
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+            }
+        });
+    }
 
 
 </script>

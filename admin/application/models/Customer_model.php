@@ -244,7 +244,7 @@ class Customer_model extends CI_Model
         } else {
             $member_id = $customer_id;
         }
-        $member_id = "CASABET" . $member_id;
+        $member_id = "CASA_TH_" . $member_id;
         return $member_id;
     }
 
@@ -333,13 +333,13 @@ class Customer_model extends CI_Model
             . " from customer "
             . " inner join  user as u1 on u1.user_id = customer.accept_by "
             . " inner join  user as u2 on u2.user_id = customer.update_by "
-            . " WHERE  member_id  Like '%" . $txtSearch . "%' "
- //           . " OR customer_firstname  Like '%" . $txtSearch . "%' "
-//            . " OR customer_lastname  Like '%" . $txtSearch . "%' "
-//            . " OR customer_email  Like '%" . $txtSearch . "%' "
-//            . " OR customer_telephone  Like '%" . $txtSearch . "%' "
-//            . " OR customer_line_id  Like '%" . $txtSearch . "%' "
-//            . " OR customer_status Like '%" . $txtSearch . "%' "
+            . " WHERE  "
+            . " ( customer.member_id  Like '%" . $txtSearch . "%' "
+            . " OR  customer.customer_firstname  Like '%" . $txtSearch . "%' "
+            . " OR  customer.customer_lastname  Like '%" . $txtSearch . "%' "
+            . " OR  customer.customer_telephone  Like '%" . $txtSearch . "%' "
+            . " OR  customer.customer_line_id  Like '%" . $txtSearch . "%' ) "
+
             . $str_sql
             . " Limit " . $start_filter . ", " . $filter_number . " "
         );
