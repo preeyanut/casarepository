@@ -20,14 +20,14 @@ class Category extends CI_Controller
 
     public function index()
     {
-        $this->get_list();
+        $this->get_form();
     }
 
     public function get_form()
     {
         $data_type = $this->Category_type_model->get_all();
 
-        if ($this->input->get('category_id') != "") {
+        if ($this->input->get('category_id')) {
 
             $data_info = $this->Category_model->get_data($this->input->get('category_id'));
 
@@ -97,16 +97,17 @@ class Category extends CI_Controller
         }
 
         //---------------------  Priority Level
-//        $all_priority_level = $this->Category_model->get_all_priority();
-//        if($all_priority_level){
-//            $data_priority = array('priority_level' => (string)(sizeof($all_priority_level)+1));
-//            array_unshift($all_priority_level,$data_priority);
-//        }else{
-//            $all_priority_level = array();
-//            $data_priority = array('priority_level' => (string)(sizeof($all_priority_level)+1));
-//            array_push($all_priority_level,$data_priority);
-//        }
 
+        if($all_priority_level){
+            if(!$this->input->get('category_id')){
+                $data_priority = array('priority_level' => (string)(sizeof($all_priority_level)+1));
+                array_unshift($all_priority_level,$data_priority);
+            }
+        }else{
+            $all_priority_level = array();
+            $data_priority = array('priority_level' => (string)(sizeof($all_priority_level)+1));
+            array_push($all_priority_level,$data_priority);
+        }
         $data["all_priority_level"] = $all_priority_level;
 
         $data["page"] = 'pages/category_form';
@@ -120,23 +121,18 @@ class Category extends CI_Controller
             $data["category_id"] = $this->Category_model->add_category($this->input->post());
         }
 
-//        var_dump($_POST["category_icon"]);
         $jsonResult['Result'] = true;
-        //$jsonResult['error'] = "";
         $jsonResult['Data'] = $data;
         echo json_encode($jsonResult);
     }
 
     public function edit_category()
     {
-//        var_dump($this->input->post());
-
         if ($this->input->post()) {
             $data["category_id"] = $this->Category_model->edit_category($this->input->post());
         }
 
         $jsonResult['Result'] = true;
-        //$jsonResult['error'] = "";
         $jsonResult['Data'] = $data;
         echo json_encode($jsonResult);
     }
@@ -146,10 +142,7 @@ class Category extends CI_Controller
 
         if ($this->input->get('category_id')) {
             $blog_id = $this->Category_model->get_blog_id($this->input->get('category_id'));
-//            var_dump($this->input->get('category_id'));
-//            var_dump($blog_id);
             foreach ($blog_id as $blog_data) {
-//                var_dump($blog_data['blog_id']);
             $this->Blog_model->delete_blog_value($blog_data['blog_id']);
             $this->Blog_model->delete_blog($blog_data['blog_id']);
             $this->Category_model->delete_category($this->input->get('category_id'));
@@ -165,10 +158,6 @@ class Category extends CI_Controller
         if ((strlen($this->input->post('category_name')) < 3) || (strlen($this->input->post('category_name')) > 255)) {
             $this->error['category_name'] = "กรุณากรอกชื่อหมวดหมู่";
         }
-
-//        if ((strlen($this->input->post('category_icon')) < 3) || (strlen($this->input->post('category_icon')) > 255)) {
-//            $this->error['category_icon'] = "กรุณาเลือกไอคอน";
-//        }
 
         if (empty($this->input->post('category_icon'))) {
             $this->error['category_icon'] = "กรุณาเลือกไอคอน";
