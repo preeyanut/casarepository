@@ -51,7 +51,7 @@ class Banner_model extends CI_Model
             . ", update_date = '" .  date("Y-m-d H:i:s") . "'"
             . ", update_by = '" . $this->session->userdata("user_id") . "'"
 
-            . ", banner_url = '" . (int)$data['banner_url'] . "'"
+            . ", banner_url = '" . $data['banner_url'] . "'"
 
             . " WHERE  banner_id = '" . (int)$data['banner_id'] . "'");
 

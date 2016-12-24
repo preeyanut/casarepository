@@ -163,28 +163,10 @@
 
     init_event({
         document_on: [
-            , 'click,#button-save'
+             'click,#button-save'
             , 'change,.img-input'
         ]
     });
-
-//    function formatNumber(number) {
-//        //var int_number = Number(number);
-//        var p = number.toFixed(2).split(".");
-//        var minus = p[0].substring(0, 1);
-//        if (minus == "-") {
-//            p[0] = p[0].substring(1, p[0].length);
-//
-//            return "-" + p[0].split("").reverse().reduce(function (acc, number, i, orig) {
-//                    return number + (i && !(i % 3) ? "," : "") + acc;
-//                }, "") + "." + p[1];
-//        }
-//        else {
-//            return "" + p[0].split("").reverse().reduce(function (acc, number, i, orig) {
-//                    return number + (i && !(i % 3) ? "," : "") + acc;
-//                }, "") + "." + p[1];
-//        }
-//    }
 
     $(document).on("click", "#button-save", function () {
         $.ajax({
@@ -267,7 +249,7 @@
                 if (json.Result) {
                     uploadImage(json.Data.banner_id);
                     alert("เพิ่มข้อมูลสำเร็จ");
-
+                    location.reload();
                     $('#banner_id').val(json.Data.banner_id);
                 } else {
                     alert("เพิ่มข้อมูลผิดพลาด");
@@ -281,10 +263,19 @@
 
     function edit_banner() {
         var banner_id = $('input[name="banner_id"]').val();
+        var banner_name = $('input[name="banner_name"]').val();
+        var banner_url = $('input[name="banner_url"]').val();
+        var banner_status = $('select[name="banner_status"]').val();
+        var priority_level = $('input[name="priority_level"]').val();
+
+        var data_banner ={banner_name:banner_name,banner_url:banner_url,priority_level:priority_level,banner_status:banner_status,banner_id:banner_id}
+        var data = {data_banner:data_banner}
+
+        console.log(data);
         $.ajax({
             url: '<?php echo base_url(); ?>banner/edit_banner',
             type: 'post',
-            data: $('input , select'),
+            data: data,
             dataType: 'json',
             crossDomain: true,
             beforeSend: function () {
@@ -294,7 +285,15 @@
                 $('#button-save').button('reset');
             },
             success: function (json) {
-                alert("แก้ไขข้อมูลเสร็จสิ้น");
+//                console.log(json);
+                if (json.Result) {
+                    uploadImage(json.Data.banner_id);
+                    alert("แก้ไขข้อมูลสำเร็จ");
+
+                    $('#banner_id').val(json.Data.banner_id);
+                } else {
+                    alert("แก้ไขข้อมูลผิดพลาด");
+                }
             },
             error: function (xhr, ajaxOptions, thrownError) {
                 alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
