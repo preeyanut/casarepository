@@ -97,7 +97,7 @@ class List_category extends CI_Controller
         $status = $this->input->post("filter-status");
 
         if(!$this->input->post("filter-page")){
-            $page=1;
+            $page=0;
         }
 
         if ($filter_number == -1) {
@@ -105,6 +105,7 @@ class List_category extends CI_Controller
         } else {
             $start_filter = $filter_number * $page;
             $total_user = $this->Category_model->get_total_by_search($this->input->post("txtSearch"), $start_filter, $filter_number, $status);
+//            echo var_dump($total_user);
             if (!isset($total_user["total"])) {
                 $data["paging"] = 0;
                 $jsonResult['Data'] = $data;
@@ -113,7 +114,7 @@ class List_category extends CI_Controller
             }
             $paging = (int)((int)$total_user["total"] / (int)$filter_number);
             $over_page = (int)((int)$total_user["total"] % (int)$filter_number);
-            $page = 0;
+
 
             if ($paging == 0) {
                 $page = 1;

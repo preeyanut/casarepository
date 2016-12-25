@@ -60,7 +60,7 @@ class List_blog extends CI_Controller
         $category = $this->input->post("filter-category");
 
         if(!$this->input->post("filter-page")){
-            $page=1;
+            $page=0;
         }
 
         if ($filter_number == -1) {

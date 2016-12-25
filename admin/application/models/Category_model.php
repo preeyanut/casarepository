@@ -187,7 +187,7 @@ class Category_model extends CI_Model
 
         $this->db->select('*,(select count(*) from category ) as total');
         $this->db->from('category');
-        if ($filter_status != 'undefined' && $filter_status != '') {
+        if ($filter_status != '-1' && $filter_status != '') {
             $this->db->where('category_status', $filter_status);
         }
         $this->db->like('category_name', $txtSearch);

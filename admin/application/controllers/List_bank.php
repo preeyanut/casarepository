@@ -71,7 +71,7 @@ class List_bank extends CI_Controller
         $status = $this->input->post("filter-status");
 
         if(!$this->input->post("filter-page")){
-            $page=1;
+            $page=0;
         }
 
         if ($filter_number == -1) {
@@ -133,38 +133,38 @@ class List_bank extends CI_Controller
         echo json_encode($jsonResult);
     }
 
-    public function add_bank()
-    {
-        if ($this->input->post()) {
-            $data["bank_list_id"] = $this->Bank_list_model->add_bank($this->input->post());
-        }
-
-        $jsonResult['Result'] = true;
-        //$jsonResult['error'] = "";
-        $jsonResult['Data'] = $data;
-        echo json_encode($jsonResult);
-    }
-
-    public function edit_bank()
-    {
-        if ($this->input->post()) {
-            $data["bank_list_id"] = $this->Bank_list_model->edit_bank($this->input->post());
-        }
-
-        $jsonResult['Result'] = true;
-        //$jsonResult['error'] = "";
-        $jsonResult['Data'] = $data;
-        echo json_encode($jsonResult);
-    }
-
-    public function delete_bank()
-    {
-        if ($this->input->get('bank_list_id')) {
-            $data["bank_list_id"] = $this->Bank_list_model->delete_bank($this->input->get('bank_list_id'));
-        }
-
-        $this->get_all();
-    }
+//    public function add_bank()
+//    {
+//        if ($this->input->post()) {
+//            $data["bank_list_id"] = $this->Bank_list_model->add_bank($this->input->post());
+//        }
+//
+//        $jsonResult['Result'] = true;
+//        //$jsonResult['error'] = "";
+//        $jsonResult['Data'] = $data;
+//        echo json_encode($jsonResult);
+//    }
+//
+//    public function edit_bank()
+//    {
+//        if ($this->input->post()) {
+//            $data["bank_list_id"] = $this->Bank_list_model->edit_bank($this->input->post());
+//        }
+//
+//        $jsonResult['Result'] = true;
+//        //$jsonResult['error'] = "";
+//        $jsonResult['Data'] = $data;
+//        echo json_encode($jsonResult);
+//    }
+//
+//    public function delete_bank()
+//    {
+//        if ($this->input->get('bank_list_id')) {
+//            $data["bank_list_id"] = $this->Bank_list_model->delete_bank($this->input->get('bank_list_id'));
+//        }
+//
+//        $this->get_all();
+//    }
 
     public function getForm()
     {

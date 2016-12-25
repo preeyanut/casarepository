@@ -192,7 +192,7 @@ class Customer_model extends CI_Model
 
         $this->db->select('customer.*,CONCAT(u1.firstname ,\' \' , u1.lastname) as create_by_name,CONCAT(u2.firstname ,\' \' , u2.lastname) as update_by_name');
         $this->db->from('customer');
-        $this->db->join('user as u1', 'u1.user_id = customer.create_by', 'inner');
+        $this->db->join('user as u1', 'u1.user_id = customer.accept_by', 'inner');
         $this->db->join('user as u2', 'u2.user_id = customer.update_by', 'inner');
         $query = $this->db->get();
 
@@ -383,9 +383,9 @@ class Customer_model extends CI_Model
 //
 //        return $query->result_array();
 
-        $this->db->select('customer.*,CONCAT(u1.firstname ,\' \' , u1.lastname) as create_by_name,CONCAT(u2.firstname ,\' \' , u2.lastname)  as update_by_name');
+        $this->db->select('customer.*,CONCAT(u1.firstname ,\' \' , u1.lastname) as accept_by_name,CONCAT(u2.firstname ,\' \' , u2.lastname)  as update_by_name');
         $this->db->from('customer');
-        $this->db->join('user as u1', 'u1.user_id = customer.create_by', 'inner');
+        $this->db->join('user as u1', 'u1.user_id = customer.accept_by', 'inner');
         $this->db->join('user as u2', 'u2.user_id = customer.update_by', 'inner');
         if ($status != '-1' && $status != '') {
             $this->db->where('customer_status', $status);
@@ -458,7 +458,7 @@ class Customer_model extends CI_Model
 
         $this->db->select('*,(select count(*) from customer ) as total');
         $this->db->from('customer');
-        if ($filter_status != 'undefined' && $filter_status != '') {
+        if ($filter_status != '-1' && $filter_status != '') {
             $this->db->where('customer_status', $filter_status);
         }
         $this->db->like('member_id', $txtSearch);
