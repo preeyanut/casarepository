@@ -78,10 +78,12 @@ class Bank_list_model extends CI_Model
         if ($result) {
             $bank_list_id = $data['bank_list_id'];
         }
-        return $bank_list_id;
 
         $sql_data = json_encode($data);
         $this->add_log('edit', 'bank', (int)$data['bank_list_id'], $sql_data);
+
+        return $bank_list_id;
+
     }
 
     public function change_priority_level_down($bank_list_id, $old_priority_level, $new_priority_level)
