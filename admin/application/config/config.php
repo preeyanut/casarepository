@@ -25,7 +25,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 
 //$config['base_url'] = 'https://www.tded24.com/casa98th2/admin/';
-//$config['base_url'] = 'http://45.125.195.205:8008/admin';
+
+//$config['base_url'] = 'http://45.125.195.206:8008/admin';
 //
 $config['base_url'] = 'http://localhost/casarepository/admin';
 

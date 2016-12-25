@@ -59,6 +59,10 @@ class List_blog extends CI_Controller
         $status = $this->input->post("filter-status");
         $category = $this->input->post("filter-category");
 
+        if(!$this->input->post("filter-page")){
+            $page=1;
+        }
+
         if ($filter_number == -1) {
             $page = 1;
         } else {

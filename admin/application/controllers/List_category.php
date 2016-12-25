@@ -96,6 +96,10 @@ class List_category extends CI_Controller
 
         $status = $this->input->post("filter-status");
 
+        if(!$this->input->post("filter-page")){
+            $page=1;
+        }
+
         if ($filter_number == -1) {
             $page = 1;
         } else {
