@@ -282,6 +282,7 @@
 
         var banner_id = this.name.replace("button-delete", "");
         window.open("<?php echo base_url(); ?>list_banner/delete_banner?banner_id=" + banner_id, "_self");
+        alert('ลบข้อมูลสำเร็จ')ว
     });
 
     $(document).on("click", ".paging", function () {
