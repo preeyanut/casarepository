@@ -4,46 +4,50 @@ class Category_type_model extends CI_Model
 {
     public function get_all()
     {
-        $query = $this->db->query("SELECT category_type.*,CONCAT(u1.firstname, ' ', u1.lastname) as create_by_name "
-            . " ,CONCAT(u2.firstname, ' ', u2.lastname)  as update_by_name "
-            . " from category_type "
-            . " inner join  user as u1 on u1.user_id = category_type.create_by "
-            . " inner join  user as u2 on u2.user_id = category_type.update_by ");
+        $this->db->select('category_type.*,CONCAT(u1.firstname ,\' \' , u1.lastname) as create_by_name,CONCAT(u2.firstname ,\' \' , u2.lastname) as update_by_name');
+        $this->db->from('category_type');
+        $this->db->join('user as u1', 'u1.user_id = category_type.create_by', 'inner');
+        $this->db->join('user as u2', 'u2.user_id = category_type.update_by', 'inner');
+        $query = $this->db->get();
+
         return $query->result_array();
     }
 
     public function get_data($id)
     {
-        $query = $this->db->query("SELECT * FROM category_type WHERE category_type_id = " . $id);
+        $this->db->select('*');
+        $this->db->from('category_type');
+        $this->db->where('category_type_id', $id);
+        $query = $this->db->get();
+
         return $query->result_array();
+
     }
 
     public function count()
     {
-        $query = $this->db->query("SELECT COUNT(*) AS total FROM `" . "" . "category_type`");
 
-        $result = $query->result_array();
+        $this->db->select('count(*) as total ');
+        $this->db->from('category_type');
+        $query = $this->db->get();
 
-        return $result;
+        return $query->result_array();
+
     }
 
     public function search_filter($txtSearch, $start_filter, $filter_number, $status)
     {
-        $str_sql = "";
+
+        $this->db->select('category_type.*,CONCAT(u1.firstname ,\' \' , u1.lastname) as create_by_name,CONCAT(u2.firstname ,\' \' , u2.lastname)  as update_by_name');
+        $this->db->from('category_type');
+        $this->db->join('user as u1', 'u1.user_id = category_type.create_by', 'inner');
+        $this->db->join('user as u2', 'u2.user_id = category_type.update_by', 'inner');
         if ($status != '-1' && $status != '') {
-            $str_sql .= " AND  category_type_status = " . $status;
+            $this->db->where('category_type_status', $status);
         }
-
-        $query = $this->db->query("SELECT category_type.*,CONCAT(u1.firstname, ' ', u1.lastname) as create_by_name "
-            . " ,CONCAT(u2.firstname, ' ', u2.lastname)  as update_by_name "
-            . " from category_type "
-            . " inner join  user as u1 on u1.user_id = category_type.create_by "
-            . " inner join  user as u2 on u2.user_id = category_type.update_by "
-            . " WHERE  category_type_name  Like '%" . $txtSearch . "%' "
-
-            . $str_sql
-            . " Limit " . $start_filter . ", " . $filter_number . " "
-        );
+        $this->db->like('category_type_name', $txtSearch);
+        $this->db->limit($filter_number, $start_filter);
+        $query = $this->db->get();
 
         return $query->result_array();
     }
@@ -80,6 +84,9 @@ class Category_type_model extends CI_Model
         $this->db->insert('category_type', $data_array);
         $insert_id = $this->db->insert_id();
 
+        $sql_data = json_encode($data_array);
+        $this->add_log('add', 'category_type', (int)$insert_id, $sql_data);
+
         return $insert_id;
     }
 
@@ -110,6 +117,10 @@ class Category_type_model extends CI_Model
         );
         $this->db->where('category_type_id', $data['category_type_id']);
         $result = $this->db->update('category_type', $data_array);
+
+        $sql_data = json_encode($data);
+        $this->add_log('edit', 'category_type', (int)$data['category_type_id'], $sql_data);
+
         return $result;
     }
 
@@ -134,11 +145,25 @@ class Category_type_model extends CI_Model
 
     public function delete_category_type($category_type_id)
     {
+        $sql_data = 'delete data';
+        $this->add_log('delete', 'category_type', $category_type_id, $sql_data);
+
         $this->db->where('category_type_id', $category_type_id);
         $result = $this->db->delete('category_type');
 
         return $result;
     }
 
+    public function add_log($action, $action_table, $action_to, $sql_script)
+    {
 
+        $this->db->insert('log',
+            array('action' => $action,
+                'action_table' => $action_table,
+                'action_date' => date("Y-m-d H:i:s"),
+                'action_by' => $this->session->userdata("user_id"),
+                'action_to' => $action_to,
+                'sql_script' => $sql_script)
+        );
+    }
 }

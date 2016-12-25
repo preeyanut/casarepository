@@ -5,26 +5,26 @@ class Category_model extends CI_Model
 
     public function get_all()
     {
-        $query = $this->db->query("SELECT category.*,CONCAT(u1.firstname, ' ', u1.lastname) as create_by_name "
-            . " ,CONCAT(u2.firstname, ' ', u2.lastname)  as update_by_name "
-            . " ,category_type.category_type_name as type_name "
-            . " from category "
-            . " inner join  user as u1 on u1.user_id = category.create_by "
-            . " inner join  user as u2 on u2.user_id = category.update_by "
-            . " inner join  category_type on category_type.category_type_id = category.category_type_id");
+        $this->db->select('category.*,CONCAT(u1.firstname ,\' \' , u1.lastname) as create_by_name,CONCAT(u2.firstname ,\' \' , u2.lastname) as update_by_name,category_type.category_type_name as type_name');
+        $this->db->from('category');
+        $this->db->join('user as u1', 'u1.user_id = category.create_by', 'inner');
+        $this->db->join('user as u2', 'u2.user_id = category.update_by', 'inner');
+        $this->db->join('category_type', 'category_type.category_type_id = category.category_type_id', 'inner');
+        $query = $this->db->get();
+
         return $query->result_array();
     }
 
     public function get_data($id)
     {
-        $query = $this->db->query("SELECT category.*,CONCAT(u1.firstname, ' ', u1.lastname) as create_by_name "
-            . " ,CONCAT(u2.firstname, ' ', u2.lastname)  as update_by_name "
-            . " ,category_type.category_type_name as type_name "
-            . " from category "
-            . " inner join  user as u1 on u1.user_id = category.create_by "
-            . " inner join  user as u2 on u2.user_id = category.update_by "
-            . " inner join  category_type on category_type.category_type_id = category.category_type_id"
-            . " WHERE category_id = " . $id);
+        $this->db->select('category.*,CONCAT(u1.firstname ,\' \' , u1.lastname) as create_by_name,CONCAT(u2.firstname ,\' \' , u2.lastname) as update_by_name,category_type.category_type_name as type_name');
+        $this->db->from('category');
+        $this->db->join('user as u1', 'u1.user_id = category.create_by', 'inner');
+        $this->db->join('user as u2', 'u2.user_id = category.update_by', 'inner');
+        $this->db->join('category_type', 'category_type.category_type_id = category.category_type_id', 'inner');
+        $this->db->where('category_id',$id);
+        $query = $this->db->get();
+
         return $query->result_array();
     }
 
@@ -63,6 +63,9 @@ class Category_model extends CI_Model
 
         $this->db->insert('category', $data_array);
         $insert_id = $this->db->insert_id();
+
+        $sql_data = json_encode($data_array);
+        $this->add_log('add', 'category', (int)$insert_id, $sql_data);
 
         return $insert_id;
     }
@@ -104,6 +107,10 @@ class Category_model extends CI_Model
         if ($result) {
             $category_id = $data['category_id'];
         }
+
+        $sql_data = json_encode($data);
+        $this->add_log('edit', 'category', (int)$data['category_id'], $sql_data);
+
         return $category_id;
     }
 
@@ -128,38 +135,39 @@ class Category_model extends CI_Model
 
     public function delete_category($category_id)
     {
+        $sql_data = 'delete data';
+        $this->add_log('delete', 'category', $category_id, $sql_data);
+
         $this->load->library('encrypt');
 
-        $this->db->query("DELETE FROM category WHERE category_id = " . $category_id);
+        $this->db->where('category_id', $category_id);
+        $this->db->delete('category');
     }
 
     public function search_filter($txtSearch, $start_filter, $filter_number, $filter_status, $filter_category_type)
     {
 
-        $str_sql = "";
-        $limit = "";
-        if ($filter_status != "" && $filter_status != -1) {
-            $str_sql .= " AND  category_status = " . $filter_status;
+        $this->db->select('category.*,CONCAT(u1.firstname ,\' \' , u1.lastname) as create_by_name,CONCAT(u2.firstname ,\' \' , u2.lastname)  as update_by_name,category_type.category_type_name as category_type_name');
+        $this->db->from('category');
+        $this->db->join('user as u1', 'u1.user_id = category.create_by', 'inner');
+        $this->db->join('user as u2', 'u2.user_id = category.update_by', 'inner');
+        $this->db->join('category_type', 'category_type.category_type_id = category.category_type_id', 'inner');
+
+        if ($filter_status != '-1' && $filter_status != '') {
+            $this->db->where('category_status', $filter_status);
         }
 
         if ($filter_category_type != '-1' && $filter_category_type != '') {
-            $str_sql .= " AND  category_type.category_type_id = " . $filter_category_type;
-        }
-        if ($start_filter !== 0 && $filter_number !== 0) {
-            $limit = " Limit " . $start_filter . ", " . $filter_number . " ";
+            $this->db->where('category_type.category_type_id', $filter_category_type);
         }
 
-        $query = $this->db->query("SELECT category.*,CONCAT(u1.firstname, ' ', u1.lastname) as create_by_name "
-            . " ,CONCAT(u2.firstname, ' ', u2.lastname)  as update_by_name "
-            . " ,category_type.category_type_name as category_type_name "
-            . " from category "
-            . " inner join  user as u1 on u1.user_id = category.create_by "
-            . " inner join  user as u2 on u2.user_id = category.update_by "
-            . " inner join  category_type on category_type.category_type_id = category.category_type_id"
-            . " WHERE  category_name  Like '%" . $txtSearch . "%' "
-            . $str_sql
-            . $limit
-        );
+        $this->db->like('category_name', $txtSearch);
+
+        if ($start_filter != 0 && $filter_number != 0) {
+            $this->db->limit($filter_number, $start_filter);
+        }
+
+        $query = $this->db->get();
 
         return $query->result_array();
 
@@ -167,26 +175,24 @@ class Category_model extends CI_Model
 
     public function count()
     {
-        $query = $this->db->query("SELECT COUNT(*) AS total FROM `" . "" . "category`");
+        $this->db->select('count(*) as total ');
+        $this->db->from('category');
+        $query = $this->db->get();
 
-        $result = $query->result_array();
-
-        return $result;
+        return $query->result_array();
     }
 
     public function get_total_by_search($txtSearch, $start_filter, $filter_number, $filter_status)
     {
 
-        $str_sql = "";
-//        if ($filter_status != "" || $filter_status != 'undefined') {
-//            $str_sql .= " AND  category_status = 1"  ;
-//        }
-
-        $query = $this->db->query("SELECT DISTINCT *, (select count(*) from category ) as total FROM `" . "" . "category` "
-            . " WHERE  category_name  Like '%" . $txtSearch . "%' "
-            . $str_sql
-            . " Limit " . $start_filter . ", " . $filter_number . " "
-        );
+        $this->db->select('*,(select count(*) from category ) as total');
+        $this->db->from('category');
+        if ($filter_status != 'undefined' && $filter_status != '') {
+            $this->db->where('category_status', $filter_status);
+        }
+        $this->db->like('category_name', $txtSearch);
+        $this->db->limit($filter_number, $start_filter);
+        $query = $this->db->get();
 
         return $query->row_array('total');
     }
@@ -229,5 +235,17 @@ class Category_model extends CI_Model
         return $query->result_array();
     }
 
+    public function add_log($action, $action_table, $action_to, $sql_script)
+    {
+
+        $this->db->insert('log',
+            array('action' => $action,
+                'action_table' => $action_table,
+                'action_date' => date("Y-m-d H:i:s"),
+                'action_by' => $this->session->userdata("user_id"),
+                'action_to' => $action_to,
+                'sql_script' => $sql_script)
+        );
+    }
 
 }
