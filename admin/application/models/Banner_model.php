@@ -4,17 +4,24 @@ class Banner_model extends CI_Model
 {
     public function get_all()
     {
-        $query = $this->db->query("SELECT home_banner.*,CONCAT(u1.firstname, ' ', u1.lastname) as create_by_name "
-            . " ,CONCAT(u2.firstname, ' ', u2.lastname)  as update_by_name "
-            . " from home_banner "
-            . " inner join  user as u1 on u1.user_id = home_banner.create_by "
-            . " inner join  user as u2 on u2.user_id = home_banner.update_by ");
+        $this->db->select('home_banner.*,CONCAT(u1.firstname ,\' \' , u1.lastname) as create_by_name,CONCAT(u2.firstname ,\' \' , u2.lastname) as update_by_name');
+        $this->db->from('home_banner');
+        $this->db->join('user as u1','u1.user_id = home_banner.create_by','inner');
+        $this->db->join('user as u2','u2.user_id = home_banner.update_by','inner');
+        $query = $this->db->get();
+
         return $query->result_array();
     }
 
     public function get_data($id){
-        $query = $this->db->query("SELECT * FROM home_banner WHERE banner_id = " . $id);
+
+        $this->db->select('*');
+        $this->db->from('home_banner');
+        $this->db->where('banner_id',$id);
+        $query = $this->db->get();
+
         return $query->result_array();
+
     }
 
     public function add_banner($data){
@@ -37,76 +44,78 @@ class Banner_model extends CI_Model
         $this->db->insert('home_banner', $data_array);
         $insert_id = $this->db->insert_id();
 
+        $sql_data = json_encode ($data_array);
+        $this->add_log('add','banner',(int)$insert_id,$sql_data);
+
         return $insert_id;
     }
 
     public function edit_banner($data){
         $this->load->library('encrypt');
 
-        $this->db->query("UPDATE `" . "" . "home_banner` SET "
-            . " banner_name = '" . $data['banner_name'] . "'"
-            . ", priority_level = '" . $data['priority_level'] . "'"
-            . ", banner_status = '" . (int)$data['banner_status'] . "'"
+        $banner_data = array(
+            'banner_name' => $data['banner_name'],
+            'priority_level' => $data['priority_level'],
+            'banner_status'=> (int)$data['banner_status'],
+            'update_date'=> date("Y-m-d H:i:s"),
+            'update_by'=> $this->session->userdata("user_id"),
+            'banner_url'=> $data['banner_url'],
+        );
 
-            . ", update_date = '" .  date("Y-m-d H:i:s") . "'"
-            . ", update_by = '" . $this->session->userdata("user_id") . "'"
+        $this->db->where('banner_id',(int)$data['banner_id']);
+        $this->db->update('home_banner',$banner_data);
 
-            . ", banner_url = '" . $data['banner_url'] . "'"
-
-            . " WHERE  banner_id = '" . (int)$data['banner_id'] . "'");
-
+        $sql_data = json_encode ($data);
+        $this->add_log('edit','banner',(int)$data['banner_id'],$sql_data);
     }
 
     public function delete_banner($banner_id){
-        $this->load->library('encrypt');
-        $this->db->query("DELETE FROM home_banner WHERE banner_id = ". $banner_id) ;
+        $sql_data = 'delete data';
+        $this->add_log('delete','banner',$banner_id ,$sql_data);
 
+        $this->load->library('encrypt');
+
+        $this->db->where('banner_id',$banner_id);
+        $this->db->delete('home_banner');
     }
 
     public function count()
     {
-        $query = $this->db->query("SELECT COUNT(*) AS total FROM `" . "" . "home_banner`");
+        $this->db->select('count(*) as total ');
+        $this->db->from('home_banner');
+        $query = $this->db->get();
 
-        $result = $query->result_array();
-
-        return $result;
+        return $query->result_array();
     }
 
     public function search_filter($txtSearch, $start_filter, $filter_number, $status)
     {
-
-        $str_sql = "";
-        if ($status != '-1' && $status != '') {
-            $str_sql .= " AND  banner_status = " . $status;
+        $this->db->select('home_banner.*,CONCAT(u1.firstname ,\' \' , u1.lastname) as create_by_name,CONCAT(u2.firstname ,\' \' , u2.lastname)  as update_by_name');
+        $this->db->from('home_banner');
+        $this->db->join('user as u1','u1.user_id = home_banner.create_by','inner');
+        $this->db->join('user as u2','u2.user_id = home_banner.update_by','inner');
+        if($status != '-1' && $status != '') {
+            $this->db->where('banner_status',$status);
         }
-
-        $query = $this->db->query("SELECT home_banner.*,CONCAT(u1.firstname, ' ', u1.lastname) as create_by_name "
-            . " ,CONCAT(u2.firstname, ' ', u2.lastname)  as update_by_name "
-            . " from home_banner "
-            . " inner join  user as u1 on u1.user_id = home_banner.create_by "
-            . " inner join  user as u2 on u2.user_id = home_banner.update_by "
-            . " WHERE  banner_name  Like '%" . $txtSearch . "%' "
-
-            . $str_sql
-            . " Limit " . $start_filter . ", " . $filter_number . " "
-        );
+        $this->db->like('banner_name',$txtSearch);
+        $this->db->limit($filter_number,$start_filter);
+        $query = $this->db->get();
 
         return $query->result_array();
+
     }
 
     public function get_total_by_search($txtSearch, $start_filter, $filter_number, $filter_status)
     {
 
-        $str_sql = "";
-        if ($filter_status != '-1') {
-            $str_sql .= " AND  banner_status = " . $filter_status;
+        $this->db->select('*,(select count(*) from home_banner ) as total');
+        $this->db->from('home_banner');
+        if($filter_status != '-1' && $filter_status != '') {
+            $this->db->where('banner_status',$filter_status);
         }
-
-        $query = $this->db->query("SELECT DISTINCT *, (select count(*) from home_banner ) as total FROM `" . "" . "home_banner` "
-            . " WHERE  banner_name  Like '%" . $txtSearch . "%' "
-            . $str_sql
-            . " Limit " . $start_filter . ", " . $filter_number . " "
-        );
+        $this->db->like('banner_name',$txtSearch);
+        $this->db->limit($filter_number,$start_filter);
+        $query = $this->db->get();
 
         return $query->row_array('total');
     }
@@ -119,6 +128,18 @@ class Banner_model extends CI_Model
         $this->db->update('home_banner', $data);
 
         return true;
+    }
+
+    public function add_log($action,$action_table,$action_to,$sql_script){
+
+        $this->db->insert('log',
+            array('action' => $action,
+                'action_table' => $action_table,
+                'action_date' => date("Y-m-d H:i:s"),
+                'action_by' => $this->session->userdata("user_id"),
+                'action_to' => $action_to,
+                'sql_script' => $sql_script)
+        );
     }
 
 }
