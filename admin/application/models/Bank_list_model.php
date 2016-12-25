@@ -80,12 +80,11 @@ class Bank_list_model extends CI_Model
         }
         return $bank_list_id;
 
-
         $sql_data = json_encode($data);
         $this->add_log('edit', 'bank', (int)$data['bank_list_id'], $sql_data);
     }
 
-    public function change_priority_level_down($bank_list_id,$old_priority_level, $new_priority_level)
+    public function change_priority_level_down($bank_list_id, $old_priority_level, $new_priority_level)
     {
         $query = $this->db->query("update bank_list set priority_level = (priority_level-1) "
             . "where priority_level >" . $old_priority_level . " and priority_level <=" . $new_priority_level
@@ -94,7 +93,7 @@ class Bank_list_model extends CI_Model
         return $query;
     }
 
-    public function change_priority_level_up($bank_list_id,$old_priority_level, $new_priority_level)
+    public function change_priority_level_up($bank_list_id, $old_priority_level, $new_priority_level)
     {
         $query = $this->db->query("update blog set priority_level = (priority_level+1) "
             . "where priority_level >=" . $new_priority_level . " and priority_level <" . $old_priority_level
@@ -141,13 +140,13 @@ class Bank_list_model extends CI_Model
 
         $this->db->select('bank_list.*,CONCAT(u1.firstname ,\' \' , u1.lastname) as create_by_name,CONCAT(u2.firstname ,\' \' , u2.lastname)  as update_by_name');
         $this->db->from('bank_list');
-        $this->db->join('user as u1','u1.user_id = bank_list.create_by','inner');
-        $this->db->join('user as u2','u2.user_id = bank_list.update_by','inner');
-        if($status != '-1' && $status != '') {
-            $this->db->where('bank_list_status',$status);
+        $this->db->join('user as u1', 'u1.user_id = bank_list.create_by', 'inner');
+        $this->db->join('user as u2', 'u2.user_id = bank_list.update_by', 'inner');
+        if ($status != '-1' && $status != '') {
+            $this->db->where('bank_list_status', $status);
         }
-        $this->db->like('bank_list_name',$txtSearch);
-        $this->db->limit($filter_number,$start_filter);
+        $this->db->like('bank_list_name', $txtSearch);
+        $this->db->limit($filter_number, $start_filter);
         $query = $this->db->get();
 
         return $query->result_array();
@@ -158,11 +157,11 @@ class Bank_list_model extends CI_Model
 
         $this->db->select('*,(select count(*) from bank_list ) as total');
         $this->db->from('bank_list');
-        if($filter_status != '-1' && $filter_status != '') {
-        $this->db->where('bank_list_status',$filter_status);
-    }
-        $this->db->like('bank_list_name',$txtSearch);
-        $this->db->limit($filter_number,$start_filter);
+        if ($filter_status != '-1' && $filter_status != '') {
+            $this->db->where('bank_list_status', $filter_status);
+        }
+        $this->db->like('bank_list_name', $txtSearch);
+        $this->db->limit($filter_number, $start_filter);
         $query = $this->db->get();
 
         return $query->row_array('total');

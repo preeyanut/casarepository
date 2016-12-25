@@ -4,14 +4,12 @@ class Blog_model extends CI_Model
 {
     public function get_all()
     {
-//        $query = $this->db->query("SELECT * FROM blog");
-//        return $query->result_array();
 
-        $query = $this->db->query("SELECT blog.*,CONCAT(u1.firstname, ' ', u1.lastname) as create_by_name "
-            . " ,CONCAT(u2.firstname, ' ', u2.lastname)  as update_by_name "
-            . " from blog "
-            . " inner join  user as u1 on u1.user_id = blog.create_by "
-            . " inner join  user as u2 on u2.user_id = blog.update_by ");
+        $this->db->select('blog.*,CONCAT(u1.firstname ,\' \' , u1.lastname) as create_by_name,CONCAT(u2.firstname ,\' \' , u2.lastname) as update_by_name');
+        $this->db->join('user as u1', 'u1.user_id = blog.create_by', 'inner');
+        $this->db->join('user as u2', 'u2.user_id = blog.update_by', 'inner');
+        $query = $this->db->get('blog');
+
         return $query->result_array();
     }
 
@@ -39,11 +37,6 @@ class Blog_model extends CI_Model
 
         return $query->result_array();
 
-//        $this->db->select("category_field.*");
-//        $this->db->where('category_field.category_type_id',$id);
-//        $query = $this->db->get('category_field');
-//
-//        return $query->result_array();
     }
 
     public function get_blog_field_by_category_id($id)
@@ -58,39 +51,57 @@ class Blog_model extends CI_Model
 
     public function count()
     {
-        $query = $this->db->query("SELECT COUNT(*) AS total FROM `" . "" . "blog`");
-
-        $result = $query->result_array();
-
-        return $result;
-    }
-
-    public function search_filter($txtSearch, $start_filter, $filter_number, $filter_status,$filter_category)
-    {
-        $str_sql = "";
-        if ($filter_status != '-1' && $filter_status != '') {
-            $str_sql .= " AND  blog.blog_status = " . $filter_status;
-        }
-        if ($filter_category != -1) {
-            $str_sql .= " AND  blog.category_id = ".$filter_category;
-        }
-
-        $query = $this->db->query("SELECT blog.*,cate.category_name,CONCAT(u1.firstname, ' ', u1.lastname) as create_by_name "
-            . " ,CONCAT(u2.firstname, ' ', u2.lastname)  as update_by_name "
-            . " from blog "
-            . " inner join  category as cate on cate.category_id = blog.category_id "
-            . " inner join  user as u1 on u1.user_id = blog.create_by "
-            . " inner join  user as u2 on u2.user_id = blog.update_by "
-            . " WHERE  blog_title  Like '%" . $txtSearch . "%' "
-
-            . $str_sql
-            . " Limit " . $start_filter . ", " . $filter_number . " "
-        );
+        $this->db->select('count(*) as total ');
+        $this->db->from('blog');
+        $query = $this->db->get();
 
         return $query->result_array();
     }
 
-    public function get_total_by_search($txtSearch, $start_filter, $filter_number, $filter_status,$filter_category)
+    public function search_filter($txtSearch, $start_filter, $filter_number, $filter_status, $filter_category)
+    {
+//        $str_sql = "";
+//        if ($filter_status != '-1' && $filter_status != '') {
+//            $str_sql .= " AND  blog.blog_status = " . $filter_status;
+//        }
+//        if ($filter_category != -1) {
+//            $str_sql .= " AND  blog.category_id = ".$filter_category;
+//        }
+//
+//        $query = $this->db->query("SELECT blog.*,cate.category_name,CONCAT(u1.firstname, ' ', u1.lastname) as create_by_name "
+//            . " ,CONCAT(u2.firstname, ' ', u2.lastname)  as update_by_name "
+//            . " from blog "
+//            . " inner join  category as cate on cate.category_id = blog.category_id "
+//            . " inner join  user as u1 on u1.user_id = blog.create_by "
+//            . " inner join  user as u2 on u2.user_id = blog.update_by "
+//            . " WHERE  blog_title  Like '%" . $txtSearch . "%' "
+//
+//            . $str_sql
+//            . " Limit " . $start_filter . ", " . $filter_number . " "
+//        );
+//
+//        return $query->result_array();
+
+
+        $this->db->select('blog.*,cate.category_name,CONCAT(u1.firstname ,\' \' , u1.lastname) as create_by_name,CONCAT(u2.firstname ,\' \' , u2.lastname)  as update_by_name');
+        $this->db->from('blog');
+        $this->db->join('category as cate', 'cate.category_id = blog.category_id', 'inner');
+        $this->db->join('user as u1', 'u1.user_id = blog.create_by', 'inner');
+        $this->db->join('user as u2', 'u2.user_id = blog.update_by', 'inner');
+        if ($filter_status != '-1' && $filter_status != '') {
+            $this->db->where('blog.blog_status', $filter_status);
+        }
+        if ($filter_category != '-1') {
+            $this->db->where('blog.category_id', $filter_category);
+        }
+        $this->db->like('blog_title', $txtSearch);
+        $this->db->limit($filter_number, $start_filter);
+        $query = $this->db->get();
+
+        return $query->result_array();
+    }
+
+    public function get_total_by_search($txtSearch, $start_filter, $filter_number, $filter_status, $filter_category)
     {
 
         $str_sql = "";
@@ -110,6 +121,7 @@ class Blog_model extends CI_Model
         );
 
         return $query->row_array('total');
+
     }
 
     public function add_blog($data)
@@ -128,6 +140,9 @@ class Blog_model extends CI_Model
 
         $this->db->insert('blog', $data_array);
         $insert_id = $this->db->insert_id();
+
+        $sql_data = json_encode($data_array);
+        $this->add_log('add', 'blog', (int)$insert_id, $sql_data);
 
         return $insert_id;
     }
@@ -158,9 +173,9 @@ class Blog_model extends CI_Model
         $blog_info = $this->db->get('blog')->row_array();
 
         if ((int)$blog_info['priority_level'] < (int)$data['priority_level']) {
-            $this->change_priority_level_down((int)$blog_info['category_id'],(int)$blog_info['priority_level'], (int)$data['priority_level']);
+            $this->change_priority_level_down((int)$blog_info['category_id'], (int)$blog_info['priority_level'], (int)$data['priority_level']);
         } else if ((int)$blog_info['priority_level'] > (int)$data['priority_level']) {
-            $this->change_priority_level_up((int)$blog_info['category_id'],(int)$blog_info['priority_level'], (int)$data['priority_level']);
+            $this->change_priority_level_up((int)$blog_info['category_id'], (int)$blog_info['priority_level'], (int)$data['priority_level']);
         }
 
         $data_array = array(
@@ -178,29 +193,35 @@ class Blog_model extends CI_Model
         if ($result) {
             $blog_id = $data['blog_id'];
         }
+
+        $sql_data = json_encode($data_array);
+        $this->add_log('edit', 'blog', $data['blog_id'], $sql_data);
         return $blog_id;
     }
 
-    public function change_priority_level_down($category_id,$old_priority_level, $new_priority_level)
+    public function change_priority_level_down($category_id, $old_priority_level, $new_priority_level)
     {
         $query = $this->db->query("update blog set priority_level = (priority_level-1) "
-          ."where priority_level >".$old_priority_level." and priority_level <=".$new_priority_level
-            ." and  category_id =".$category_id);
+            . "where priority_level >" . $old_priority_level . " and priority_level <=" . $new_priority_level
+            . " and  category_id =" . $category_id);
 
         return $query;
     }
 
-    public function  change_priority_level_up($category_id,$old_priority_level, $new_priority_level)
+    public function change_priority_level_up($category_id, $old_priority_level, $new_priority_level)
     {
         $query = $this->db->query("update blog set priority_level = (priority_level+1) "
-            ."where priority_level >=".$new_priority_level." and priority_level <".$old_priority_level
-            ." and  category_id =".$category_id);
+            . "where priority_level >=" . $new_priority_level . " and priority_level <" . $old_priority_level
+            . " and  category_id =" . $category_id);
 
         return $query;
     }
 
     public function delete_blog($blog_id)
     {
+        $sql_data = 'delete data';
+        $this->add_log('delete', 'blog', $blog_id, $sql_data);
+
         $this->db->where('blog_id', $blog_id);
         $result = $this->db->delete('blog');
         return $result;
@@ -228,7 +249,7 @@ class Blog_model extends CI_Model
     {
 
         $this->db->select("blog.priority_level");
-        $this->db->where(array('blog.category_id'=>$category_id));
+        $this->db->where(array('blog.category_id' => $category_id));
         $this->db->order_by("blog.priority_level", "desc");
         $query = $this->db->get('blog');
 
@@ -269,12 +290,23 @@ class Blog_model extends CI_Model
     public function delete_group_blog_value($blog_id)
     {
 
-
         $this->db->where_in('blog_id', $blog_id);
         $query = $this->db->delete("blog_value");
 
         return $query;
     }
 
+    public function add_log($action, $action_table, $action_to, $sql_script)
+    {
+
+        $this->db->insert('log',
+            array('action' => $action,
+                'action_table' => $action_table,
+                'action_date' => date("Y-m-d H:i:s"),
+                'action_by' => $this->session->userdata("user_id"),
+                'action_to' => $action_to,
+                'sql_script' => $sql_script)
+        );
+    }
 
 }
