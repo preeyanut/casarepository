@@ -170,9 +170,9 @@ class Bank extends CI_Controller
         if ($this->input->get('bank_list_id')) {
 
             $data_info = $this->Bank_list_model->get_data($this->input->get('bank_list_id'));
-//            $data_user = $this->User_model->get_user_all();
 
-//            var_dump($data_info, $data_user);
+
+//            var_dump($data_info);
             if (!empty($data_info)) {
 
                 $data['bank_list_id'] = $this->input->get('bank_list_id');
@@ -182,10 +182,9 @@ class Bank extends CI_Controller
                     $data['bank_list_status'] = $info['bank_list_status'];
                     $data['priority_level'] = $info['priority_level'];
                 }
-//                for($i=0;$i<count($data_user);$i++) {
-//                    $data['user_id'][] = $data_user[$i]['user_id'];
-//                    $data['username'][] = $data_user[$i]['username'];
-//                }
+
+                $all_priority_level = $this->Bank_list_model->get_all_priority($info['bank_list_id']);
+
             }
 
             $data["action"] = base_url() . "bank_list/edit_bank";
@@ -196,38 +195,38 @@ class Bank extends CI_Controller
             $data['bank_list_name'] = "";
             $data['priority_level'] = "";
             $data['bank_list_status'] = "";
-
-            $data['create_by'] = $this->input->get('user_id');
+            $data['create_date'] = date("Y-m-d H:i:s");
+            $data['create_by'] = $this->session->userdata("user_id");
 
             $data["action"] = base_url() . "bank_list/add_bank";
 
+            $all_priority_level = $this->Bank_list_model->get_all_priority(1);
 
         }
 
         //---------------------  Priority Level
-        $all_priority_level = $this->Bank_list_model->get_all_priority(1);
+        //var_dump($all_priority_level);
 
-        if($all_priority_level){
-            if(!$this->input->get('bank_list_id')){
-                $data_priority = array('priority_level' => (string)(sizeof($all_priority_level)+1));
-                array_unshift($all_priority_level,$data_priority);
+        if ($all_priority_level) {
+            if (!$this->input->get('bank_list_id')) {
+                $data_priority = array('priority_level' => (string)(sizeof($all_priority_level) + 1));
+                array_unshift($all_priority_level, $data_priority);
             }
-        }else{
+        } else {
             $all_priority_level = array();
-            $data_priority = array('priority_level' => (string)(sizeof($all_priority_level)+1));
-            array_push($all_priority_level,$data_priority);
+            $data_priority = array('priority_level' => (string)(sizeof($all_priority_level) + 1));
+            array_push($all_priority_level, $data_priority);
         }
 
         $data["all_priority_level"] = $all_priority_level;
 
-        $data["groups"] = $this->Bank_list_model->get_all();
+        $data["list"] = $this->Bank_list_model->get_all();
 
-//        var_dump($data);
+        //var_dump($data);
         $data["page"] = 'pages/bank_form';
 
-        $this->load->view('template', $data);
+       $this->load->view('template', $data);
     }
-
 
 
     public function validate_form()

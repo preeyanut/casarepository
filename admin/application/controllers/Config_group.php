@@ -40,8 +40,8 @@ class Config_group extends CI_Controller
         //$data_user = $this->User_model->get_user_all();
 
         //for ($i = 0; $i < count($data_user); $i++) {
-            //$data['user_id'][] = $data_user[$i]['user_id'];
-            //$data['username'][] = $data_user[$i]['username'];
+        //$data['user_id'][] = $data_user[$i]['user_id'];
+        //$data['username'][] = $data_user[$i]['username'];
         //}
 
         $data["paging"] = $paging;
@@ -85,7 +85,7 @@ class Config_group extends CI_Controller
 
                 foreach ($data_info as $info) {
                     $data['config_group_name'] = $info['config_group_name'];
-                    $data['priority_level'] = $info['priority_level'];
+                    //$data['priority_level'] = $info['priority_level'];
                     $data['config_group_status'] = $info['config_group_status'];
 
                 }
@@ -101,15 +101,18 @@ class Config_group extends CI_Controller
 
             $data['config_group_id'] = "";
             $data['config_group_name'] = "";
-            $data['priority_level'] = "";
+            //$data['priority_level'] = "";
             $data['config_group_status'] = "";
-            $data['create_by'] = $this->input->get('user_id');
+            $data['create_date'] = date("Y-m-d H:i:s");
+            $data['create_by'] = $this->session->userdata("user_id");
 
             $data["action"] = base_url() . "config_group/add_config_group";
 
             //$data["list"] = $this->Config_group_model->get_all();
 
         }
+
+        //var_dump($data);
         $data["list"] = $this->Config_group_model->get_all();
         $data["page"] = 'pages/config_group';
 
@@ -142,7 +145,8 @@ class Config_group extends CI_Controller
     }
 
 
-    public function delete_config_group() {
+    public function delete_config_group()
+    {
 
         if ($this->input->post()) {
             $this->Config_group_model->delete_config_group($this->input->post("config_group_id"));
