@@ -47,7 +47,7 @@ class user_group_model extends CI_Model{
         $this->db->where('u.user_group_id', (int)$user_group_id);
         $query = $this->db->get();
 
-        return $query->result_array();
+        return $query->row_array();
 	}
 
 	public function get_all_user_group() {
