@@ -170,17 +170,34 @@ class Customer_model extends CI_Model
 
     public function get_data($id)
     {
-        $query = $this->db->query("SELECT * FROM customer WHERE customer_id = " . $id);
-        return $query->row_array();
+//        $query = $this->db->query("SELECT * FROM customer WHERE customer_id = " . $id);
+//        return $query->row_array();
+
+        $this->db->select('*');
+        $this->db->from('customer');
+        $this->db->where('customer_id', $id);
+        $query = $this->db->get();
+
+        return $query->result_array();
     }
+
     public function get_all()
     {
-        $query = $this->db->query("SELECT customer.*,CONCAT(u1.firstname, ' ', u1.lastname) as accept_by_name "
-            . " ,CONCAT(u2.firstname, ' ', u2.lastname)  as update_by_name "
-            . " from customer "
-            . " inner join  user as u1 on u1.user_id = customer.accept_by "
-            . " inner join  user as u2 on u2.user_id = customer.update_by ");
+//        $query = $this->db->query("SELECT customer.*,CONCAT(u1.firstname, ' ', u1.lastname) as accept_by_name "
+//            . " ,CONCAT(u2.firstname, ' ', u2.lastname)  as update_by_name "
+//            . " from customer "
+//            . " inner join  user as u1 on u1.user_id = customer.accept_by "
+//            . " inner join  user as u2 on u2.user_id = customer.update_by ");
+//        return $query->result_array();
+
+        $this->db->select('customer.*,CONCAT(u1.firstname ,\' \' , u1.lastname) as create_by_name,CONCAT(u2.firstname ,\' \' , u2.lastname) as update_by_name');
+        $this->db->from('customer');
+        $this->db->join('user as u1', 'u1.user_id = customer.create_by', 'inner');
+        $this->db->join('user as u2', 'u2.user_id = customer.update_by', 'inner');
+        $query = $this->db->get();
+
         return $query->result_array();
+
     }
 
     public function add_customer($data)
@@ -225,6 +242,10 @@ class Customer_model extends CI_Model
             . " member_id = '" . $member_id . "'"
             . " WHERE customer_id = '" . (int)$insert_id . "'");
 
+
+        $sql_data = json_encode($data_array);
+        $this->add_log('add', 'customer', (int)$insert_id, $sql_data);
+
         //$this->decrease_agent_credit(str_replace(",", "", $data['customer_credit']));
 
         return $insert_id;
@@ -248,7 +269,7 @@ class Customer_model extends CI_Model
         return $member_id;
     }
 
-    public function edit_customer($customer_id,$data)
+    public function edit_customer($customer_id, $data)
     {
         $this->load->library('encrypt');
 
@@ -275,21 +296,37 @@ class Customer_model extends CI_Model
         $this->db->where('customer_id', $customer_id);
         $result = $this->db->update('customer', $data_array);
 
+        $sql_data = json_encode($data);
+        $this->add_log('edit', 'customer', (int)$customer_id, $sql_data);
+
         return $result;
     }
 
     public function delete_customer($customer_id)
     {
-        $this->db->query("DELETE FROM `" . "" . "customer` WHERE customer_id = '" . (int)$customer_id . "'");
+//        $this->db->query("DELETE FROM `" . "" . "customer` WHERE customer_id = '" . (int)$customer_id . "'");
+
+        $sql_data = 'delete data';
+        $this->add_log('delete', 'customer', $customer_id, $sql_data);
+
+        $this->db->where('customer_id', $customer_id);
+        $this->db->delete('customer');
     }
 
     public function count()
     {
-        $query = $this->db->query("SELECT COUNT(*) AS total FROM `" . "" . "customer`");
+//        $query = $this->db->query("SELECT COUNT(*) AS total FROM `" . "" . "customer`");
+//
+//        $result = $query->result_array();
+//
+//        return $result;
 
-        $result = $query->result_array();
+        $this->db->select('count(*) as total ');
+        $this->db->from('customer');
+        $query = $this->db->get();
 
-        return $result;
+        return $query->result_array();
+
     }
 
 //    public function search_customer_filter($txtSearch, $start_filter, $filter_number, $status)
@@ -323,26 +360,43 @@ class Customer_model extends CI_Model
     public function search_filter($txtSearch, $start_filter, $filter_number, $status)
     {
 
-        $str_sql = "";
+//        $str_sql = "";
+//        if ($status != '-1' && $status != '') {
+//            $str_sql .= " AND  customer_status = " . $status;
+//        }
+//
+//        $query = $this->db->query("SELECT customer.*,CONCAT(u1.firstname, ' ', u1.lastname) as accept_by_name "
+//            . " ,CONCAT(u2.firstname, ' ', u2.lastname)  as update_by_name "
+//            . " from customer "
+//            . " inner join  user as u1 on u1.user_id = customer.accept_by "
+//            . " inner join  user as u2 on u2.user_id = customer.update_by "
+//            . " WHERE  "
+//            . " ( customer.member_id  Like '%" . $txtSearch . "%' "
+//            . " OR  customer.customer_firstname  Like '%" . $txtSearch . "%' "
+//            . " OR  customer.customer_lastname  Like '%" . $txtSearch . "%' "
+//            . " OR  customer.customer_telephone  Like '%" . $txtSearch . "%' "
+//            . " OR  customer.customer_line_id  Like '%" . $txtSearch . "%' ) "
+//
+//            . $str_sql
+//            . " Limit " . $start_filter . ", " . $filter_number . " "
+//        );
+//
+//        return $query->result_array();
+
+        $this->db->select('customer.*,CONCAT(u1.firstname ,\' \' , u1.lastname) as create_by_name,CONCAT(u2.firstname ,\' \' , u2.lastname)  as update_by_name');
+        $this->db->from('customer');
+        $this->db->join('user as u1', 'u1.user_id = customer.create_by', 'inner');
+        $this->db->join('user as u2', 'u2.user_id = customer.update_by', 'inner');
         if ($status != '-1' && $status != '') {
-            $str_sql .= " AND  customer_status = " . $status;
+            $this->db->where('customer_status', $status);
         }
-
-        $query = $this->db->query("SELECT customer.*,CONCAT(u1.firstname, ' ', u1.lastname) as accept_by_name "
-            . " ,CONCAT(u2.firstname, ' ', u2.lastname)  as update_by_name "
-            . " from customer "
-            . " inner join  user as u1 on u1.user_id = customer.accept_by "
-            . " inner join  user as u2 on u2.user_id = customer.update_by "
-            . " WHERE  "
-            . " ( customer.member_id  Like '%" . $txtSearch . "%' "
-            . " OR  customer.customer_firstname  Like '%" . $txtSearch . "%' "
-            . " OR  customer.customer_lastname  Like '%" . $txtSearch . "%' "
-            . " OR  customer.customer_telephone  Like '%" . $txtSearch . "%' "
-            . " OR  customer.customer_line_id  Like '%" . $txtSearch . "%' ) "
-
-            . $str_sql
-            . " Limit " . $start_filter . ", " . $filter_number . " "
-        );
+        $this->db->like('customer.member_id', $txtSearch);
+        $this->db->like('customer.customer_firstname', $txtSearch);
+        $this->db->like('customer.customer_lastname', $txtSearch);
+        $this->db->like('customer.customer_telephone', $txtSearch);
+        $this->db->like('customer.customer_line_id', $txtSearch);
+        $this->db->limit($filter_number, $start_filter);
+        $query = $this->db->get();
 
         return $query->result_array();
     }
@@ -382,23 +436,40 @@ class Customer_model extends CI_Model
     public function get_total_by_search($txtSearch, $start_filter, $filter_number, $filter_status)
     {
 
-        $str_sql = "";
-        if ($filter_status != "" || $filter_status != 'undefined') {
-            $str_sql .= " AND  customer_status";
+//        $str_sql = "";
+//        if ($filter_status != "" || $filter_status != 'undefined') {
+//            $str_sql .= " AND  customer_status";
+//        }
+//
+//        $query = $this->db->query("SELECT DISTINCT *, (select count(*) from customer ) as total FROM `" . "" . "customer` "
+//            . " WHERE  member_id  Like '%" . $txtSearch . "%' "
+//            . " OR customer_firstname  Like '%" . $txtSearch . "%' "
+//            . " OR customer_lastname  Like '%" . $txtSearch . "%' "
+//            . " OR customer_email  Like '%" . $txtSearch . "%' "
+//            . " OR customer_telephone  Like '%" . $txtSearch . "%' "
+//            . " OR customer_line_id  Like '%" . $txtSearch . "%' "
+//            //. " OR customer_status  Like '%" . $txtSearch . "%' "
+//
+//            . $str_sql
+//            . " Limit " . $start_filter . ", " . $filter_number . " "
+//        );
+//
+//        return $query->row_array('total');
+
+        $this->db->select('*,(select count(*) from customer ) as total');
+        $this->db->from('customer');
+        if ($filter_status != 'undefined' && $filter_status != '') {
+            $this->db->where('customer_status', $filter_status);
         }
-
-        $query = $this->db->query("SELECT DISTINCT *, (select count(*) from customer ) as total FROM `" . "" . "customer` "
-            . " WHERE  member_id  Like '%" . $txtSearch . "%' "
-            . " OR customer_firstname  Like '%" . $txtSearch . "%' "
-            . " OR customer_lastname  Like '%" . $txtSearch . "%' "
-            . " OR customer_email  Like '%" . $txtSearch . "%' "
-            . " OR customer_telephone  Like '%" . $txtSearch . "%' "
-            . " OR customer_line_id  Like '%" . $txtSearch . "%' "
-            //. " OR customer_status  Like '%" . $txtSearch . "%' "
-
-            . $str_sql
-            . " Limit " . $start_filter . ", " . $filter_number . " "
-        );
+        $this->db->like('member_id', $txtSearch);
+        $this->db->like('customer_firstname', $txtSearch);
+        $this->db->like('customer_lastname', $txtSearch);
+        $this->db->like('customer_email', $txtSearch);
+        $this->db->like('customer_telephone', $txtSearch);
+        $this->db->like('customer_line_id', $txtSearch);
+        $this->db->like('customer_status', $txtSearch);
+        $this->db->limit($filter_number, $start_filter);
+        $query = $this->db->get();
 
         return $query->row_array('total');
     }
@@ -512,9 +583,16 @@ class Customer_model extends CI_Model
 
     public function get_customer_credit($customer_id)
     {
-        $query = $this->db->query("SELECT customer_credit  "
-            . " FROM `customer`  "
-            . " WHERE customer_id = '" . (int)$customer_id . "'");
+//        $query = $this->db->query("SELECT customer_credit  "
+//            . " FROM `customer`  "
+//            . " WHERE customer_id = '" . (int)$customer_id . "'");
+//
+//        return $query->row_array();
+
+        $this->db->select('customer_credit');
+        $this->db->from('customer');
+        $this->db->where('customer_id', (int)$customer_id);
+        $query = $this->db->get();
 
         return $query->row_array();
     }
@@ -540,8 +618,6 @@ class Customer_model extends CI_Model
     public function edit_percent_setting($data, $customer_id)
     {
         $this->load->library('encrypt');
-
-        //echo var_dump($data);
 
         foreach ($data as $item) {
 
@@ -576,9 +652,16 @@ class Customer_model extends CI_Model
 
     public function get_customer($customer_id)
     {
-        $query = $this->db->query("SELECT u.*  "
-            . " FROM `" . "" . "customer` u " . " "
-            . " WHERE u.customer_id = '" . (int)$customer_id . "'");
+//        $query = $this->db->query("SELECT u.*  "
+//            . " FROM `" . "" . "customer` u " . " "
+//            . " WHERE u.customer_id = '" . (int)$customer_id . "'");
+//
+//        return $query->row_array();
+
+        $this->db->select('u.*');
+        $this->db->from('customer u');
+        $this->db->where('u.customer_id', (int)$customer_id);
+        $query = $this->db->get();
 
         return $query->row_array();
     }
@@ -587,9 +670,16 @@ class Customer_model extends CI_Model
     {
         $all_my_sub_customer = $this->get_all_my_sub_customer();
 
-        $query = $this->db->query("SELECT * FROM `" . "" . "customer` u  "
-            . " WHERE u.customer_id in (" . $all_my_sub_customer . ")"
-        );
+//        $query = $this->db->query("SELECT * FROM `" . "" . "customer` u  "
+//            . " WHERE u.customer_id in (" . $all_my_sub_customer . ")"
+//        );
+//
+//        return $query->result_array();
+
+        $this->db->select('*');
+        $this->db->from('customer u');
+        $this->db->where_in(' u.customer_id', $all_my_sub_customer);
+        $query = $this->db->get();
 
         return $query->result_array();
     }
@@ -598,23 +688,44 @@ class Customer_model extends CI_Model
     {
         $all_my_sub_customer = $this->get_all_my_sub_customer_same_as();
 
-        $query = $this->db->query("SELECT *, (SELECT ug.name FROM `" . ""
-            . "customer_group` ug WHERE ug.customer_group_id = u.customer_group_id) AS customer_group_name FROM `" . "" . "customer` u  "
-            . " WHERE u.customer_id in (" . $all_my_sub_customer . ")"
-        );
+//        $query = $this->db->query("SELECT *, (SELECT ug.name FROM `" . ""
+//            . "customer_group` ug WHERE ug.customer_group_id = u.customer_group_id) AS customer_group_name FROM `" . "" . "customer` u  "
+//            . " WHERE u.customer_id in (" . $all_my_sub_customer . ")"
+//        );
+//
+//        return $query->result_array();
+
+        $this->db->select('*,(SELECT ug.name FROM customer_group ug WHERE ug.customer_group_id = u.customer_group_id) AS customer_group_name');
+        $this->db->from('customer u');
+        $this->db->where_in('u.customer_id', $all_my_sub_customer);
+        $query = $this->db->get();
 
         return $query->result_array();
     }
 
     public function get_all_customer_agent()
     {
-        $query = $this->db->query("SELECT * FROM `" . "" . "customer` WHERE `customer`.customer_status < 3 ");
+//        $query = $this->db->query("SELECT * FROM `" . "" . "customer` WHERE `customer`.customer_status < 3 ");
+//        return $query->result_array();
+
+        $this->db->select('*');
+        $this->db->from('customer');
+        $this->db->where('customer_status <',3);
+        $query = $this->db->get();
+
         return $query->result_array();
     }
 
     public function get_customer_by_customername($customername)
     {
-        $query = $this->db->query("SELECT * FROM `" . "" . "customer` WHERE customername = " . $this->db->escape($customername) . "");
+//        $query = $this->db->query("SELECT * FROM `" . "" . "customer` WHERE customername = " . $this->db->escape($customername) . "");
+//        return $query->result_array();
+
+        $this->db->select('*');
+        $this->db->from('customer');
+        $this->db->where('customername',$this->db->escape($customername));
+        $query = $this->db->get();
+
         return $query->result_array();
     }
 
@@ -628,9 +739,16 @@ class Customer_model extends CI_Model
 
     public function get_customer_by_code($code)
     {
-        $query = $this->db->query("SELECT * FROM `" . "" . "customer` WHERE code = '" . $this->db->escape($code) . "' AND code != ''");
+//        $query = $this->db->query("SELECT * FROM `" . "" . "customer` WHERE code = '" . $this->db->escape($code) . "' AND code != ''");
+//
+//        return $query->result_array;
 
-        return $query->result_array;
+        $this->db->select('*');
+        $this->db->from('customer');
+        $this->db->where('code',$this->db->escape($code));
+        $query = $this->db->get();
+
+        return $query->result_array();
     }
 
     public function get_customers($data = array())
@@ -674,23 +792,33 @@ class Customer_model extends CI_Model
 
     public function get_total_customers()
     {
-        $query = $this->db->query("SELECT COUNT(*) AS total FROM `" . "" . "customer`");
+//        $query = $this->db->query("SELECT COUNT(*) AS total FROM `" . "" . "customer`");
+//
+//        $result = $query->result_array();
+//
+//        return $result;
 
-        //echo var_dump($query->result_array());
+        $this->db->select('COUNT(*) AS total');
+        $this->db->from('customer');
+        $query = $this->db->get();
 
-        $result = $query->result_array();
+        return $query->result_array();
 
-//        return $query->result_array['total'];
-
-        return $result;
     }
 
     public function get_total_customers_same_as()
     {
         $all_my_sub_customer = $this->get_all_my_sub_customer_same_as();
-        $query = $this->db->query("SELECT COUNT(*) AS total FROM `" . "" . "customer` " . " where customer_id in (" . $all_my_sub_customer . ")");
-        $result = $query->result_array();
-        return $result;
+//        $query = $this->db->query("SELECT COUNT(*) AS total FROM `" . "" . "customer` " . " where customer_id in (" . $all_my_sub_customer . ")");
+//        $result = $query->result_array();
+//        return $result;
+
+        $this->db->select('COUNT(*) AS total');
+        $this->db->from('customer');
+        $this->db->where_in('customer_id',$all_my_sub_customer);
+        $query = $this->db->get();
+
+        return $query->result_array();
     }
 
     public function get_under_customer($main_customer_id)
@@ -705,16 +833,31 @@ class Customer_model extends CI_Model
 
     public function get_total_customers_by_group_id($customer_group_id)
     {
-        $query = $this->db->query("SELECT COUNT(*) AS total FROM `" . "" . "customer` WHERE customer_group_id = '" . (int)$customer_group_id . "'");
+//        $query = $this->db->query("SELECT COUNT(*) AS total FROM `" . "" . "customer` WHERE customer_group_id = '" . (int)$customer_group_id . "'");
+//
+//        return $query->result_array['total'];
 
-        return $query->result_array['total'];
+        $this->db->select('COUNT(*) AS total');
+        $this->db->from('customer');
+        $this->db->where('customer_group_id',(int)$customer_group_id);
+        $query = $this->db->get();
+
+        return $query->result_array('total');
     }
 
     public function get_total_customers_by_email($email)
     {
-        $query = $this->db->query("SELECT COUNT(*) AS total FROM `" . "" . "customer` WHERE LCASE(email) = '" . $this->db->escape(utf8_strtolower($email)) . "'");
+//        $query = $this->db->query("SELECT COUNT(*) AS total FROM `" . "" . "customer` WHERE LCASE(email) = '" . $this->db->escape(utf8_strtolower($email)) . "'");
+//
+//        return $query->result_array['total'];
 
-        return $query->result_array['total'];
+        $this->db->select('COUNT(*) AS total');
+        $this->db->from('customer');
+        $this->db->where('LCASE(email)',$this->db->escape(utf8_strtolower($email)));
+        $query = $this->db->get();
+
+        return $query->result_array('total');
+
     }
 
 //    public function search_customer_filter_same_as($txtSearch, $start_filter, $filter_number, $customer_status, $customer_group)
@@ -880,16 +1023,30 @@ class Customer_model extends CI_Model
 
     public function get_my_percent()
     {
-        $query = $this->db->query("select * from percent_setting where customer_id= " . $this->session->customerdata("customer_id")
-        );
+//        $query = $this->db->query("select * from percent_setting where customer_id= " . $this->session->customerdata("customer_id")
+//        );
+//
+//        return $query->row_array();
+
+        $this->db->select('*');
+        $this->db->from('percent_setting');
+        $this->db->where('customer_id', $this->session->customerdata("customer_id"));
+        $query = $this->db->get();
 
         return $query->row_array();
     }
 
     public function get_my_credit()
     {
-        $query = $this->db->query("select customer_credit from `customer` where customer_id= " . $this->session->customerdata("customer_id")
-        );
+//        $query = $this->db->query("select customer_credit from `customer` where customer_id= " . $this->session->customerdata("customer_id")
+//        );
+//
+//        return $query->row_array();
+
+        $this->db->select('customer_credit');
+        $this->db->from('customer');
+        $this->db->where('customer_id', $this->session->customerdata("customer_id"));
+        $query = $this->db->get();
 
         return $query->row_array();
     }
@@ -902,8 +1059,16 @@ class Customer_model extends CI_Model
 
     public function get_customer_agent_percent_setting($customer_id, $lotto_type_id)
     {
-        $query = $this->db->query("select * from percent_setting where customer_id= " . $customer_id . " AND lotto_type_id = " . $lotto_type_id . " "
-        );
+//        $query = $this->db->query("select * from percent_setting where customer_id= " . $customer_id . " AND lotto_type_id = " . $lotto_type_id . " "
+//        );
+//
+//        return $query->row_array();
+
+        $this->db->select('*');
+        $this->db->from('percent_setting');
+        $this->db->where('customer_id', $customer_id);
+        $this->db->where('lotto_type_id', $lotto_type_id);
+        $query = $this->db->get();
 
         return $query->row_array();
     }
@@ -924,9 +1089,18 @@ class Customer_model extends CI_Model
 
     public function get_customer_agent_default_setting($customer_id, $lotto_type_id)
     {
-        $query = $this->db->query("select * from default_setting where customer_id= " . $customer_id . " AND lotto_type_id = " . $lotto_type_id . " "
-        );
+//        $query = $this->db->query("select * from default_setting where customer_id= " . $customer_id . " AND lotto_type_id = " . $lotto_type_id . " "
+//        );
+//        return $query->row_array();
+
+        $this->db->select('*');
+        $this->db->from('default_setting');
+        $this->db->where('customer_id', $customer_id);
+        $this->db->where('lotto_type_id', $lotto_type_id);
+        $query = $this->db->get();
+
         return $query->row_array();
+
     }
 
     public function get_main_agent_for_carry($customer_id)
@@ -1001,4 +1175,16 @@ class Customer_model extends CI_Model
         return $data->result_array();
     }
 
+    public function add_log($action, $action_table, $action_to, $sql_script)
+    {
+
+        $this->db->insert('log',
+            array('action' => $action,
+                'action_table' => $action_table,
+                'action_date' => date("Y-m-d H:i:s"),
+                'action_by' => $this->session->userdata("user_id"),
+                'action_to' => $action_to,
+                'sql_script' => $sql_script)
+        );
+    }
 }
