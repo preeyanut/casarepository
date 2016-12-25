@@ -5,7 +5,7 @@ class Bank_list_model extends CI_Model
 
     public function get_all()
     {
-        $this->db->select('bank_list.*,CONCAT(u1.firstname + u1.lastname) as create_by_name');
+        $this->db->select('bank_list.*,CONCAT(u1.firstname ,\' \' , u1.lastname) as create_by_name,CONCAT(u2.firstname ,\' \' , u2.lastname) as update_by_name');
         $this->db->from('bank_list');
         $this->db->join('user as u1', 'u1.user_id = bank_list.create_by', 'inner');
         $this->db->join('user as u2', 'u2.user_id = bank_list.update_by', 'inner');
@@ -139,30 +139,16 @@ class Bank_list_model extends CI_Model
     public function search_filter($txtSearch, $start_filter, $filter_number, $status)
     {
 
-        $str_sql = "";
-        if ($status != '-1' && $status != '') {
-            $str_sql .= " AND  bank_list_status = " . $status;
+        $this->db->select('bank_list.*,CONCAT(u1.firstname ,\' \' , u1.lastname) as create_by_name,CONCAT(u2.firstname ,\' \' , u2.lastname)  as update_by_name');
+        $this->db->from('bank_list');
+        $this->db->join('user as u1','u1.user_id = bank_list.create_by','inner');
+        $this->db->join('user as u2','u2.user_id = bank_list.update_by','inner');
+        if($status != '-1' && $status != '') {
+            $this->db->where('bank_list_status',$status);
         }
-
-        $query = $this->db->query("SELECT bank_list.*,CONCAT(u1.firstname, ' ', u1.lastname) as create_by_name "
-            . " ,CONCAT(u2.firstname, ' ', u2.lastname)  as update_by_name "
-            . " from bank_list "
-            . " inner join  user as u1 on u1.user_id = bank_list.create_by "
-            . " inner join  user as u2 on u2.user_id = bank_list.update_by "
-            . " WHERE  bank_list_name  Like '%" . $txtSearch . "%' "
-
-            . $str_sql
-            . " Limit " . $start_filter . ", " . $filter_number . " "
-        );
-
-//        $this->db->select('bank_list.*,CONCAT(u1.firstname + u1.lastname) as create_by_name,CONCAT(u2.firstname + u2.lastname)  as update_by_name');
-//        $this->db->from('bank_list');
-//        $this->db->join('user as u1','u1.user_id = bank_list.create_by','inner');
-//        $this->db->join('user as u2','u2.user_id = bank_list.update_by','inner');
-////        $this->db->where('');
-//        $this->db->like('bank_list_name',$txtSearch);
-////        $this->db->limit($start_filter,$filter_number);
-//        $query = $this->db->get();
+        $this->db->like('bank_list_name',$txtSearch);
+        $this->db->limit($filter_number,$start_filter);
+        $query = $this->db->get();
 
         return $query->result_array();
     }
@@ -170,16 +156,14 @@ class Bank_list_model extends CI_Model
     public function get_total_by_search($txtSearch, $start_filter, $filter_number, $filter_status)
     {
 
-        $str_sql = "";
-        if ($filter_status != '-1') {
-            $str_sql .= " AND  bank_list_status = " . $filter_status;
-        }
-
-        $query = $this->db->query("SELECT DISTINCT *, (select count(*) from bank_list ) as total FROM `" . "" . "bank_list` "
-            . " WHERE  bank_list_name  Like '%" . $txtSearch . "%' "
-            . $str_sql
-            . " Limit " . $start_filter . ", " . $filter_number . " "
-        );
+        $this->db->select('*,(select count(*) from bank_list ) as total');
+        $this->db->from('bank_list');
+        if($filter_status != '-1' && $filter_status != '') {
+        $this->db->where('bank_list_status',$filter_status);
+    }
+        $this->db->like('bank_list_name',$txtSearch);
+        $this->db->limit($filter_number,$start_filter);
+        $query = $this->db->get();
 
         return $query->row_array('total');
     }
