@@ -193,6 +193,7 @@
             , 'change,#filter-number'
             , 'change,#filter-status'
             , 'click,.button-edit'
+            , 'click,.button-delete'
             , 'click,.paging'
         ], document_ready: [
             get_paging
@@ -282,7 +283,7 @@
 
         var banner_id = this.name.replace("button-delete", "");
         window.open("<?php echo base_url(); ?>list_banner/delete_banner?banner_id=" + banner_id, "_self");
-        alert('ลบข้อมูลสำเร็จ')ว
+        alert('ลบข้อมูลสำเร็จ');
     });
 
     $(document).on("click", ".paging", function () {

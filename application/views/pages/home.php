@@ -1,8 +1,67 @@
 <style>
+
+    @font-face {
+        font-family: 'Sukhumvit Set';
+        src: url("../fonts/SukhumvitSet-SemiBold.eot");
+        src: url("../fonts/SukhumvitSet-SemiBold.eot?#iefix") format("embedded-opentype"), url("../fonts/SukhumvitSet-SemiBold.woff2") format("woff2"), url("../fonts/SukhumvitSet-SemiBold.woff") format("woff"), url("../fonts/SukhumvitSet-SemiBold.ttf") format("truetype"), url("../fonts/SukhumvitSet-SemiBold.svg#SukhumvitSet-SemiBold") format("svg");
+        font-weight: 600;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: 'Sukhumvit Set';
+        src: url("../fonts/SukhumvitSet-Medium.eot");
+        src: url("../fonts/SukhumvitSet-Medium.eot?#iefix") format("embedded-opentype"), url("../fonts/SukhumvitSet-Medium.woff2") format("woff2"), url("../fonts/SukhumvitSet-Medium.woff") format("woff"), url("../fonts/SukhumvitSet-Medium.ttf") format("truetype"), url("../fonts/SukhumvitSet-Medium.svg#SukhumvitSet-Medium") format("svg");
+        font-weight: 500;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: 'Sukhumvit Set';
+        src: url("../fonts/SukhumvitSet-Text.eot");
+        src: url("../fonts/SukhumvitSet-Text.eot?#iefix") format("embedded-opentype"), url("../fonts/SukhumvitSet-Text.woff2") format("woff2"), url("../fonts/SukhumvitSet-Text.woff") format("woff"), url("../fonts/SukhumvitSet-Text.ttf") format("truetype"), url("../fonts/SukhumvitSet-Text.svg#SukhumvitSet-Text") format("svg");
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: 'Sukhumvit Set';
+        src: url("../fonts/SukhumvitSet-Thin.eot");
+        src: url("../fonts/SukhumvitSet-Thin.eot?#iefix") format("embedded-opentype"), url("../fonts/SukhumvitSet-Thin.woff2") format("woff2"), url("../fonts/SukhumvitSet-Thin.woff") format("woff"), url("../fonts/SukhumvitSet-Thin.ttf") format("truetype"), url("../fonts/SukhumvitSet-Thin.svg#SukhumvitSet-Thin") format("svg");
+        font-weight: 100;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: 'Sukhumvit Set';
+        src: url("../fonts/SukhumvitSet-Bold.eot");
+        src: url("../fonts/SukhumvitSet-Bold.eot?#iefix") format("embedded-opentype"), url("../fonts/SukhumvitSet-Bold.woff2") format("woff2"), url("../fonts/SukhumvitSet-Bold.woff") format("woff"), url("../fonts/SukhumvitSet-Bold.ttf") format("truetype"), url("../fonts/SukhumvitSet-Bold.svg#SukhumvitSet-Bold") format("svg");
+        font-weight: bold;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: 'Sukhumvit Set';
+        src: url("SukhumvitSet-Light.eot");
+        src: url("SukhumvitSet-Light.eot?#iefix") format("embedded-opentype"), url("SukhumvitSet-Light.woff2") format("woff2"), url("SukhumvitSet-Light.woff") format("woff"), url("SukhumvitSet-Light.ttf") format("truetype"), url("SukhumvitSet-Light.svg#SukhumvitSet-Light") format("svg");
+        font-weight: 300;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: 'Supermarket';
+        src: url("../fonts/supermarket.ttf");
+        font-style: normal;
+    }
+
+    body {
+        font-family: "Supermarket" !important;
+    }
+
     .register-guild {
         height: 100%;
-        border: 1px solid #ff0000;
-        background-color: #F5E85E;
+        /*border: 1px solid #ff0000;*/
+        /*background-color: #F5E85E;*/
         /*background-image: url(http://casa98-th.com/images/casa/bg.jpg);*/
         /*background-image: url(https://www.casa98th.com/assets/css/../img/main-nav-bg2.jpg);*/
         /*background-repeat: no-repeat;*/
@@ -13,13 +72,13 @@
         height: 350px;
         /*background-color: #12ff00;*/
         padding: 0px;
-        border: 1px solid #ff0000;
+        /*border: 1px solid #ff0000;*/
     }
 
     .register-form {
         height: 100%;
-        background-color: #F5E85E;
-        border: 1px solid #ff0000;
+        /*background-color: #F5E85E;*/
+        /*border: 1px solid #ff0000;*/
         /*background-color: #ff00c1;*/
         /*background-image: url(https://www.casa98th.com/assets/css/../img/main-nav-bg2.jpg);*/
     }
@@ -71,8 +130,8 @@
     }
 
     .register-guild p {
-        font-weight: 600;
-
+        /*font-weight: 600;*/
+        font-size: 20px;
     }
 
     .img-responsive {
@@ -234,7 +293,7 @@
         background-position: center top;
         margin: 0;
         padding: 0 10%;
-        border-bottom: 10px solid #D3D3D3;
+        /*border-bottom: 10px solid #D3D3D3;*/
         z-index: 0;
     }
 
@@ -252,8 +311,8 @@
     }
 
     .top-carousel-img {
-        border-left: 8px solid #fff;
-        border-right: 8px solid #fff;
+        /*border-left: 8px solid #fff;*/
+        /*border-right: 8px solid #fff;*/
     }
 
     .top-carousel-img img {
@@ -296,7 +355,7 @@
 
     /*-----------------------------------------  End Slide Banner  -------------------------------------------*/
 
-    .float-none{
+    .float-none {
         float: none !important;
     }
 </style>
@@ -309,6 +368,7 @@
 <script type="text/javascript" src="<?= base_url(); ?>assets/javascript/jquery.flexslider-min.js?ver=2.6.3"></script>
 
 <div id="">
+
 
     <div id='home-banner' class="home-banner container">
         <div class="container">
@@ -407,13 +467,93 @@
         </div>
     </div>
 
-    <div id='body-center' class="body-center container">
+    <div class="col-xs-12  float-none" style="background: url(assets/images/bggold3.png) center repeat;padding-bottom: 10px;padding-top: 10px;">
+
+        <div class="top-area container-fluid">
+            <div id="carousel-home" class="flexslider woocommerce">
+
+                <div class="flex-viewport" style="overflow: hidden; position: relative;">
+                    <ul class="slides products"
+                        style="width: 1000%; transition-duration: 0s; transform: translate3d(0px, 0px, 0px);">
+
+                        <?php
+                        $count = 1;
+                        foreach ($news as $items) {
+
+                            $meta_keyword = 'การพนันออนไลน์';
+
+                            $blog_id = $items['blog_id'];
+                            $blog_url = base_url() . 'blog?blog_id=' . $items['blog_id'];
+                            $blog_title = $items['blog_title'];
+
+                            foreach ($items['news_info'] as $item) {
+                                if ($item['field_type'] === 'date' && $item['field_id'] === 'date-shower') {
+                                    $date_shower = $item['blog_value'];
+                                }
+                                if ($item['field_type'] === 'image' && $item['field_id'] === 'image') {
+                                    $image = base_url() . 'admin/' . $item['blog_value'];
+                                }
+                            }
+                            ?>
+                            <li class="carousel-item c-item-<?= $count; ?> id-<?= $blog_id; ?>"
+                                style="width: 100%; margin-right: 40px; float: left; display: block;">
+                                <div class="flex-img">
+                                    <div class="top-carousel-img">
+                                        <img width="270" height="423"
+                                             src="<?= $image ?>"
+                                             class="attachment-alpha-store-carousel size-alpha-store-carousel wp-post-image"
+                                             alt="<?= $meta_keyword; ?>"
+                                             draggable="false"></div>
+                                    <div class="top-carousel-heading">
+                                        <div class="top-carousel-title">
+                                            <?= $blog_title; ?>
+                                        </div>
+                                        <!--                                        <div class="price">-->
+                                        <!--                                            --><?//= $blog_title; ?>
+                                        <!--                                        </div>-->
+                                    </div>
+                                    <div class="carousel-heading-hover">
+                                        <div class="top-carousel-title-hover"><a
+                                                href="<?= $blog_url; ?>"
+                                                title="<?= $blog_title; ?>"><?= $blog_title; ?></a></div>
+                                        <div class="top-carousel-excerpt">
+                                        </div>
+                                        <div class="price-hover">
+                                        </div>
+                                        <a rel="nofollow" href="<?= $blog_url; ?>"
+                                           data-quantity="1" data-product_id="<?= $blog_id; ?>" data-product_sku=""
+                                           class="button product_type_simple ajax_add_to_cart">อ่าน</a></div>
+                                </div>
+                            </li>
+                            <?php
+                        }
+                        ?>
+
+                    </ul>
+                </div>
+                <ul class="flex-direction-nav">
+                    <li class="flex-nav-prev"><a class="flex-prev flex-disabled" href="#"
+                                                 tabindex="-1">Previous</a></li>
+                    <li class="flex-nav-next"><a class="flex-next flex-disabled" href="#" tabindex="-1">Next</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div id='body-center' class="body-center container" style="    background: url(assets/images/bggold2.png) ;">
 
         <div class="container">
 
+            <div class="col-xs-12 padding-0">
+                <img width="100%" src="http://casa98-th.com/images/banner.png" alt="">
+            </div>
+
             <div class="row-body-top row margin-0">
-                <div class="col-sm-3 register-guild padding-0">
-                    <p>ขั้นตอนการสมัคร</p>
+                <div class="col-sm-3 register-guild " style="padding: 20px">
+                    <p style="    font-size: 23px; font-weight: 500; text-decoration: underline;">ขั้นตอนการสมัคร</p>
 
                     <p>1.สมัครผ่านหน้าเว็บไซต์ หรือ แอดไลน์ @casa98th</p>
 
@@ -432,7 +572,7 @@
 
                 <div class="col-sm-3 register-form padding-0">
 
-                    <div class="col-xs-12 padding-0">
+                    <div class="col-xs-12 ">
                         <form id="form-register" class="form-register" method="post" name="form">
 
                             <div class="display-none">
@@ -491,85 +631,111 @@
 
             </div>
 
-        </div>
+            <div class="row-body-center row margin-0">
 
-    </div>
-
-    <div class="col-xs-12 padding-0 float-none">
-        <h1>Body</h1>
-
-        <div class="top-area container-fluid">
-            <div id="carousel-home" class="flexslider woocommerce">
-
-                <div class="flex-viewport" style="overflow: hidden; position: relative;">
-                    <ul class="slides products"
-                        style="width: 1000%; transition-duration: 0s; transform: translate3d(0px, 0px, 0px);">
-
-                        <?php
-                        $count = 1;
-                        foreach ($news as $items ) {
-
-                            $meta_keyword ='การพนันออนไลน์';
-
-                            $blog_id =$items['blog_id'];
-                            $blog_url = base_url().'blog?blog_id='.$items['blog_id'];
-                            $blog_title = $items['blog_title'];
-
-                            foreach($items['news_info'] as $item){
-                                if($item['field_type'] ==='date' && $item['field_id']==='date-shower'){
-                                    $date_shower =  $item['blog_value'] ;
-                                }
-                                if($item['field_type'] ==='image' && $item['field_id']==='image'){
-                                    $image =  base_url().'admin/'.$item['blog_value'] ;
-                                }
-                            }
-                            ?>
-                            <li class="carousel-item c-item-<?= $count ;?> id-<?= $blog_id; ?>"
-                                style="width: 100%; margin-right: 40px; float: left; display: block;">
-                                <div class="flex-img">
-                                    <div class="top-carousel-img">
-                                        <img width="270" height="423"
-                                             src="<?= $image ?>"
-                                             class="attachment-alpha-store-carousel size-alpha-store-carousel wp-post-image"
-                                             alt="<?= $meta_keyword; ?>"
-                                             draggable="false"></div>
-                                    <div class="top-carousel-heading">
-                                        <div class="top-carousel-title">
-                                            <?=$blog_title ;?>
-                                        </div>
-                                        <div class="price">
-                                            <?=$blog_title ;?>
-                                        </div>
-                                    </div>
-                                    <div class="carousel-heading-hover">
-                                        <div class="top-carousel-title-hover"><a
-                                                href="<?= $blog_url; ?>"
-                                                title="<?=$blog_title ;?>"><?=$blog_title ;?></a></div>
-                                        <div class="top-carousel-excerpt">
-                                        </div>
-                                        <div class="price-hover">
-                                        </div>
-                                        <a rel="nofollow" href="<?= $blog_url; ?>"
-                                           data-quantity="1" data-product_id="<?= $blog_id; ?>" data-product_sku=""
-                                           class="button product_type_simple ajax_add_to_cart">อ่าน</a></div>
-                                </div>
-                            </li>
-                            <?php
-                        }
-                        ?>
-
-                    </ul>
+                <div class="col-xs-12 padding-0">
+                    <img width="100%" src="http://casa98-th.com/images/banner.png" alt="">
                 </div>
-                <ul class="flex-direction-nav">
-                    <li class="flex-nav-prev"><a class="flex-prev flex-disabled" href="#"
-                                                 tabindex="-1">Previous</a></li>
-                    <li class="flex-nav-next"><a class="flex-next flex-disabled" href="#" tabindex="-1">Next</a>
-                    </li>
-                </ul>
+
+                <div class="col-xs-12 padding-0">
+
+                    <div class="col-xs-3 padding-10">
+                        <img width="100%" src="<?= base_url(); ?>assets/images/banner/adban6.jpg" alt="">
+                    </div>
+                    <div class="col-xs-3 padding-10">
+                        <img width="100%" src="<?= base_url(); ?>assets/images/banner/adban1.jpg" alt="">
+                    </div>
+                    <div class="col-xs-3 padding-10">
+                        <img width="100%" src="<?= base_url(); ?>assets/images/banner/adban2.jpg" alt="">
+                    </div>
+                    <div class="col-xs-3 padding-10">
+                        <img width="100%" src="<?= base_url(); ?>assets/images/banner/adban3.jpg" alt="">
+                    </div>
+
+                </div>
+
             </div>
+
         </div>
 
     </div>
+
+<!--    <div class="col-xs-12 padding-0 float-none">-->
+<!--        <h1>Body</h1>-->
+<!---->
+<!--        <div class="top-area container-fluid">-->
+<!--            <div id="carousel-home" class="flexslider woocommerce">-->
+<!---->
+<!--                <div class="flex-viewport" style="overflow: hidden; position: relative;">-->
+<!--                    <ul class="slides products"-->
+<!--                        style="width: 1000%; transition-duration: 0s; transform: translate3d(0px, 0px, 0px);">-->
+<!---->
+<!--                        --><?php
+//                        $count = 1;
+//                        foreach ($news as $items) {
+//
+//                            $meta_keyword = 'การพนันออนไลน์';
+//
+//                            $blog_id = $items['blog_id'];
+//                            $blog_url = base_url() . 'blog?blog_id=' . $items['blog_id'];
+//                            $blog_title = $items['blog_title'];
+//
+//                            foreach ($items['news_info'] as $item) {
+//                                if ($item['field_type'] === 'date' && $item['field_id'] === 'date-shower') {
+//                                    $date_shower = $item['blog_value'];
+//                                }
+//                                if ($item['field_type'] === 'image' && $item['field_id'] === 'image') {
+//                                    $image = base_url() . 'admin/' . $item['blog_value'];
+//                                }
+//                            }
+//                            ?>
+<!--                            <li class="carousel-item c-item---><?//= $count; ?><!-- id---><?//= $blog_id; ?><!--"-->
+<!--                                style="width: 100%; margin-right: 40px; float: left; display: block;">-->
+<!--                                <div class="flex-img">-->
+<!--                                    <div class="top-carousel-img">-->
+<!--                                        <img width="270" height="423"-->
+<!--                                             src="--><?//= $image ?><!--"-->
+<!--                                             class="attachment-alpha-store-carousel size-alpha-store-carousel wp-post-image"-->
+<!--                                             alt="--><?//= $meta_keyword; ?><!--"-->
+<!--                                             draggable="false"></div>-->
+<!--                                    <div class="top-carousel-heading">-->
+<!--                                        <div class="top-carousel-title">-->
+<!--                                            --><?//= $blog_title; ?>
+<!--                                        </div>-->
+<!--<!--                                        <div class="price">-->-->
+<!--<!--                                            -->--><?////= $blog_title; ?>
+<!--<!--                                        </div>-->-->
+<!--                                    </div>-->
+<!--                                    <div class="carousel-heading-hover">-->
+<!--                                        <div class="top-carousel-title-hover"><a-->
+<!--                                                href="--><?//= $blog_url; ?><!--"-->
+<!--                                                title="--><?//= $blog_title; ?><!--">--><?//= $blog_title; ?><!--</a></div>-->
+<!--                                        <div class="top-carousel-excerpt">-->
+<!--                                        </div>-->
+<!--                                        <div class="price-hover">-->
+<!--                                        </div>-->
+<!--                                        <a rel="nofollow" href="--><?//= $blog_url; ?><!--"-->
+<!--                                           data-quantity="1" data-product_id="--><?//= $blog_id; ?><!--" data-product_sku=""-->
+<!--                                           class="button product_type_simple ajax_add_to_cart">อ่าน</a></div>-->
+<!--                                </div>-->
+<!--                            </li>-->
+<!--                            --><?php
+//                        }
+//                        ?>
+<!---->
+<!--                    </ul>-->
+<!--                </div>-->
+<!--                <ul class="flex-direction-nav">-->
+<!--                    <li class="flex-nav-prev"><a class="flex-prev flex-disabled" href="#"-->
+<!--                                                 tabindex="-1">Previous</a></li>-->
+<!--                    <li class="flex-nav-next"><a class="flex-next flex-disabled" href="#" tabindex="-1">Next</a>-->
+<!--                    </li>-->
+<!--                </ul>-->
+<!--            </div>-->
+<!--        </div>-->
+<!---->
+<!--    </div>-->
+
 </div>
 
 <script type="text/javascript">

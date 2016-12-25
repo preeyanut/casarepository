@@ -31,6 +31,8 @@ class Banner_model extends CI_Model
             'banner_name' => $data['banner_name'],
             'priority_level' => $data['priority_level'],
             'banner_status' => (int)$data['banner_status'],
+            'banner_image' => $data['banner_image'],
+
 
             'create_date' => date("Y-m-d H:i:s"),
             'create_by' => $this->session->userdata("user_id"),
@@ -53,6 +55,18 @@ class Banner_model extends CI_Model
     public function edit_banner($data){
         $this->load->library('encrypt');
 
+
+        //---------  set priority
+        $this->db->select('home_banner.priority_level');
+        $this->db->where('banner_id', $data['banner_id']);
+        $banner_info = $this->db->get('home_banner')->row_array();
+
+        if ((int)$banner_info['priority_level'] < (int)$data['priority_level']) {
+            $this->change_priority_level_down((int)$banner_info['priority_level'], (int)$data['priority_level']);
+        } else if ((int)$banner_info['priority_level'] > (int)$data['priority_level']) {
+            $this->change_priority_level_up((int)$banner_info['priority_level'], (int)$data['priority_level']);
+        }
+
         $banner_data = array(
             'banner_name' => $data['banner_name'],
             'priority_level' => $data['priority_level'],
@@ -63,10 +77,27 @@ class Banner_model extends CI_Model
         );
 
         $this->db->where('banner_id',(int)$data['banner_id']);
-        $this->db->update('home_banner',$banner_data);
+        $result = $this->db->update('home_banner', $banner_data);
+        //$banner_id = 0;
+
+        if ($result) {
+            $banner_id = $data['banner_id'];
+        }
+        return $banner_id;
 
         $sql_data = json_encode ($data);
         $this->add_log('edit','banner',(int)$data['banner_id'],$sql_data);
+    }
+
+    public function get_all_priority()
+    {
+
+        $this->db->select("home_banner.priority_level");
+        //$this->db->where(array('bank_list.bank_list_id' => $bank_list_id));
+        $this->db->order_by("home_banner.priority_level", "desc");
+        $query = $this->db->get('home_banner');
+
+        return $query->result_array();
     }
 
     public function delete_banner($banner_id){

@@ -26,6 +26,7 @@ class Banner extends CI_Controller
 
             $data_info = $this->Banner_model->get_data($this->input->get('banner_id'));
 
+            //var_dump($data);
             if (!empty($data_info)) {
 
                 $data['banner_id'] = $this->input->get('banner_id');
@@ -38,6 +39,7 @@ class Banner extends CI_Controller
                     $data['banner_url'] = $info['banner_url'];
                     $data['banner_image'] = $info['banner_image'];
                 }
+                $all_priority_level = $this->Banner_model->get_all_priority($info['banner_id']);
             }
 
             $data["action"] = base_url() . "banner/edit_banner";
@@ -54,11 +56,29 @@ class Banner extends CI_Controller
 
             $data["action"] = base_url() . "banner/add_banner";
 
+            $all_priority_level = $this->Banner_model->get_all_priority(1);
+
             $data["groups"] = $this->Banner_model->get_all();
 
         }
 
-//        var_dump($data);
+//---------------------  Priority Level
+        //var_dump($all_priority_level);
+
+        if ($all_priority_level) {
+            if (!$this->input->get('banner_id')) {
+                $data_priority = array('priority_level' => (string)(sizeof($all_priority_level) + 1));
+                array_unshift($all_priority_level, $data_priority);
+            }
+        } else {
+            $all_priority_level = array();
+            $data_priority = array('priority_level' => (string)(sizeof($all_priority_level) + 1));
+            array_push($all_priority_level, $data_priority);
+        }
+
+        $data["all_priority_level"] = $all_priority_level;
+
+        //var_dump($data);
         $data["page"] = 'pages/banner_form';
 
         $this->load->view('template', $data);
@@ -115,18 +135,18 @@ class Banner extends CI_Controller
         }
 
         if ($status != "error") {
-            $image_directory = 'assets\\img\\banner\\' . $_POST['banner_id'] ;
-            $image_path ='assets\\img\\banner\\' . $_POST['banner_id'] .'\\'.$_FILES['image']['name'];
+            $image_directory = 'assets\\img\\banner\\' . $_POST['banner_id'];
+            $image_path = 'assets\\img\\banner\\' . $_POST['banner_id'] . '\\' . $_FILES['image']['name'];
 
             $config['upload_path'] = $image_directory;
-            $config['allowed_types'] = 'gif|jpg|png';
+            $config['allowed_types'] = 'gif|jpg|png|jpeg';
             $config['max_size'] = 1024 * 8;
 //            $config['encrypt_name'] = TRUE;
 
             $this->load->library('upload', $config);
 
             if (!file_exists($image_path)) {
-                if(!file_exists($image_directory)){
+                if (!file_exists($image_directory)) {
                     mkdir($image_directory, 0777, true);
                 }
             } else {
@@ -140,7 +160,7 @@ class Banner extends CI_Controller
             } else {
 
                 $data = $this->upload->data();
-                $file_id = $this->Banner_model->updateImage($_POST['banner_id'],$image_path);
+                $file_id = $this->Banner_model->updateImage($_POST['banner_id'], $image_path);
 
                 if ($file_id) {
                     $status = "success";
@@ -163,9 +183,9 @@ class Banner extends CI_Controller
             $this->error['banner_name'] = "กรุณากรอกชื่อแบนเนอร์";
         }
 
-        if ((!($this->input->post('banner')))) {
-            $this->error['banner'] = "กรุณาเลือกรูปภาพ";
-        }
+        //if ((!($this->input->post('banner')))) {
+            //$this->error['banner'] = "กรุณาเลือกรูปภาพ";
+        //}
 
         if ((strlen($this->input->post('priority_level')) < 1) || (strlen($this->input->post('priority_level')) > 255)) {
             $this->error['priority_level'] = "กรุณากรอกความสำคัญ";

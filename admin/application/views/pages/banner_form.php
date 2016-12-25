@@ -51,16 +51,17 @@
 
                             <div class="form-group required col-md-12 col-xs-12">
                                 <div class="col-md-2 col-xs-2" align="right">
-                                    <label class=" control-label" for="input-img">รูปแบนเนอร์</label>
+                                    <label class=" control-label" for="input-img">Banner Image</label>
                                 </div>
 
-                                <div class="col-md-10 col-xs-10">
+                                <div class="col-md-9 col-xs-9">
                                     <div class="">
                                         <a href="" id="a-test" data-toggle="image" class="img-thumbnail">
-                                            <img id="img-banner" style="max-width: 500px;" src="<?php echo $banner_image;?>" alt="" title="" data-placeholder="รูปสินค้า">
+                                            <img id="img-banner_image" style="max-width: 500px;" src="<?php echo base_url().$banner_image; ?>" alt="" title="" data-placeholder="รูปสินค้า">
                                         </a>
 
-                                        <input type="file" name="banner" class="img-input" value="0" id="input-image"></div>
+                                        <input type="file" name="banner_image" class="img-input" value="0" id="input-image"/>
+                                    </div>
 
                                     <div class="text-danger"></div>
                                     <div class="col-md-2 col-xs-2" align="right"></div>
@@ -92,9 +93,15 @@
 
                                 <div class="col-md-10 col-xs-10">
                                     <div class="">
-                                        <input type="text" name="priority_level" value="<?php echo $priority_level; ?>"
-                                               placeholder="ความสำคัญ" id="input-priority"
-                                               class="form-control"/>
+                                        <select name="priority_level" id="input-priority" class="form-control" >
+                                            <?php foreach ($all_priority_level as $item) { ?>
+                                                <option value="<?= $item['priority_level']; ?>"
+                                                    <?php if ($item['priority_level'] == $priority_level) { ?> selected="selected" <?php } ?> >
+                                                    <?= $item['priority_level']; ?>
+                                                </option>
+                                            <?php } ?>
+
+                                        </select>
                                     </div>
                                     <div class="text-danger"></div>
                                 </div>
@@ -218,17 +225,15 @@
         });
     });
 
-    $(document).on("change", ".img-input", function () {
-        show_thumbnail(this);
-    });
 
     function add_banner() {
         var banner_name = $('input[name="banner_name"]').val();
         var banner_url = $('input[name="banner_url"]').val();
         var banner_status = $('select[name="banner_status"]').val();
-        var priority_level = $('input[name="priority_level"]').val();
+        var priority_level = $('select[name="priority_level"]').val();
+        var banner_image = $('input[name="banner_image"]').val();
 
-        var data_banner ={banner_name:banner_name,banner_url:banner_url,priority_level:priority_level,banner_status:banner_status}
+        var data_banner ={banner_name:banner_name,banner_url:banner_url,priority_level:priority_level,banner_status:banner_status,banner_image:banner_image}
         var data = {data_banner:data_banner}
 
         console.log(data);
@@ -266,9 +271,10 @@
         var banner_name = $('input[name="banner_name"]').val();
         var banner_url = $('input[name="banner_url"]').val();
         var banner_status = $('select[name="banner_status"]').val();
-        var priority_level = $('input[name="priority_level"]').val();
+        var priority_level = $('select[name="priority_level"]').val();
+        var banner_image = $('input[name="banner_image"]').val();
 
-        var data_banner ={banner_name:banner_name,banner_url:banner_url,priority_level:priority_level,banner_status:banner_status,banner_id:banner_id}
+        var data_banner ={banner_name:banner_name,banner_url:banner_url,priority_level:priority_level,banner_status:banner_status,banner_id:banner_id,banner_image:banner_image}
         var data = {data_banner:data_banner}
 
         console.log(data);
@@ -300,6 +306,10 @@
             }
         });
     }
+
+    $(document).on("change", ".img-input", function () {
+        show_thumbnail(this);
+    });
 
     function show_thumbnail(input) {
 

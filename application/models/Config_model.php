@@ -9,18 +9,19 @@ class Config_model extends CI_Model
         $this->db->order_by("config_webpage.config_id", "asc");
         $query = $this->db->get('config_webpage.config_id = 1');
 
-        return $query->result_array();
+        return $query->row_array('config_title');
 
     }
 
     public function get_config_meta_keyword()
     {
+
         $this->db->select("config_webpage.config_id,config_webpage.meta_keyword");
         $this->db->join('config_webpage_group', 'config_webpage_group.config_group_id = 5');
         $this->db->order_by("config_webpage.config_id", "asc");
         $query = $this->db->get('config_webpage.config_id = 1');
 
-        return $query->result_array();
+        return $query->row_array('meta_keyword');
 
     }
 
@@ -31,7 +32,7 @@ class Config_model extends CI_Model
         $this->db->order_by("config_webpage.config_id", "asc");
         $query = $this->db->get('config_webpage.config_id = 1');
 
-        return $query->result_array();
+        return $query->row_array('meta_description');
 
     }
 
@@ -42,7 +43,7 @@ class Config_model extends CI_Model
         $this->db->order_by("config_webpage.config_id", "asc");
         $query = $this->db->get('config_webpage.config_id = 1');
 
-        return $query->result_array();
+        return $query->row_array('frontend_image');
 
     }
 
@@ -53,7 +54,7 @@ class Config_model extends CI_Model
         $this->db->order_by("config_webpage.config_id", "asc");
         $query = $this->db->get('config_webpage.config_id = 1');
 
-        return $query->result_array();
+        return $query->row_array('logo_image');
 
     }
 
@@ -64,7 +65,7 @@ class Config_model extends CI_Model
         $this->db->order_by("config_webpage.config_id", "asc");
         $query = $this->db->get('config_webpage.config_id = 1');
 
-        return $query->result_array();
+        return $query->row_array('login_link');
 
     }
 
@@ -75,7 +76,7 @@ class Config_model extends CI_Model
         $this->db->order_by("config_webpage.config_id", "asc");
         $query = $this->db->get('config_webpage.config_id = 1');
 
-        return $query->result_array();
+        return $query->row_array('line_id');
 
     }
 
@@ -86,7 +87,7 @@ class Config_model extends CI_Model
         $this->db->order_by("config_webpage.config_id", "asc");
         $query = $this->db->get('config_webpage.config_id = 1');
 
-        return $query->result_array();
+        return $query->row_array('telephone');
 
     }
 
@@ -97,7 +98,7 @@ class Config_model extends CI_Model
         $this->db->order_by("config_webpage.config_id", "asc");
         $query = $this->db->get('config_webpage.config_id = 1');
 
-        return $query->result_array();
+        return $query->row_array('facebook');
 
     }
 
@@ -108,7 +109,7 @@ class Config_model extends CI_Model
         $this->db->order_by("config_webpage.config_id", "asc");
         $query = $this->db->get('config_webpage.config_id = 1');
 
-        return $query->result_array();
+        return $query->row_array('googleplus');
 
     }
 
@@ -119,7 +120,7 @@ class Config_model extends CI_Model
         $this->db->order_by("config_webpage.config_id", "asc");
         $query = $this->db->get('config_webpage.config_id = 1');
 
-        return $query->result_array();
+        return $query->row_array('instagram');
 
     }
 
@@ -130,7 +131,7 @@ class Config_model extends CI_Model
         $this->db->order_by("config_webpage.config_id", "asc");
         $query = $this->db->get('config_webpage.config_id = 1');
 
-        return $query->result_array();
+        return $query->row_array('youtube');
 
     }
 
@@ -141,7 +142,7 @@ class Config_model extends CI_Model
         $this->db->order_by("config_webpage.config_id", "asc");
         $query = $this->db->get('config_webpage.config_id = 1');
 
-        return $query->result_array();
+        return $query->row_array('twitter');
 
     }
 
@@ -156,7 +157,7 @@ class Config_model extends CI_Model
         $this->db->order_by("config_webpage.config_id", "asc");
         $query = $this->db->get('config_webpage.config_id = 2');
 
-        return $query->result_array();
+        return $query->row_array('contact_image');
 
     }
 
@@ -167,7 +168,7 @@ class Config_model extends CI_Model
         $this->db->order_by("config_webpage.config_id", "asc");
         $query = $this->db->get('config_webpage.config_id = 2');
 
-        return $query->result_array();
+        return $query->row_array('config_content');
 
     }
 
@@ -178,7 +179,7 @@ class Config_model extends CI_Model
         $this->db->order_by("config_webpage.config_id", "asc");
         $query = $this->db->get('config_webpage.config_id = 2');
 
-        return $query->result_array();
+        return $query->row_array('email');
 
     }
 
@@ -189,7 +190,7 @@ class Config_model extends CI_Model
         $this->db->order_by("config_webpage.config_id", "asc");
         $query = $this->db->get('config_webpage.config_id = 2');
 
-        return $query->result_array();
+        return $query->row_array('line_id');
 
     }
 
@@ -200,7 +201,7 @@ class Config_model extends CI_Model
         $this->db->order_by("config_webpage.config_id", "asc");
         $query = $this->db->get('config_webpage.config_id = 2');
 
-        return $query->result_array();
+        return $query->row_array('facebook');
 
     }
 
@@ -211,7 +212,7 @@ class Config_model extends CI_Model
         $this->db->order_by("config_webpage.config_id", "asc");
         $query = $this->db->get('config_webpage.config_id = 2');
 
-        return $query->result_array();
+        return $query->row_array('instagram');
 
     }
 
@@ -222,7 +223,7 @@ class Config_model extends CI_Model
         $this->db->order_by("config_webpage.config_id", "asc");
         $query = $this->db->get('config_webpage.config_id = 2');
 
-        return $query->result_array();
+        return $query->row_array('googleplus');
 
     }
 
@@ -233,7 +234,7 @@ class Config_model extends CI_Model
         $this->db->order_by("config_webpage.config_id", "asc");
         $query = $this->db->get('config_webpage.config_id = 2');
 
-        return $query->result_array();
+        return $query->row_array('youtube');
 
     }
 }
