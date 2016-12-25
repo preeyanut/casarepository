@@ -3,7 +3,8 @@
 	<style>
 		.footer{
 			/*background-color: #532300;*/
-			border: 1px solid #ff0000;
+			/*border: 1px solid #ff0000;*/
+			font-size: 23px;
 		}
 
 		.footer-fa{
@@ -44,12 +45,13 @@
 		.footer .container{
 			font-weight: 500;
 		}
+
 	</style>
 
 	<div class="container" style="    margin-bottom: 15px;">
 
 		<div class="col-sm-4 footer-left">
-			<div class="copyright">© 2016 CASA98th. All rights reserved.</div>
+			<div class="copyright">2016 CASA98th. All rights reserved.</div>
 		</div>
 		<div class="col-sm-4 footer-center">
 
