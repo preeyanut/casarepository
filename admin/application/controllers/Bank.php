@@ -201,14 +201,34 @@ class Bank extends CI_Controller
 
             $data["action"] = base_url() . "bank_list/add_bank";
 
-            $data["groups"] = $this->Bank_list_model->get_all();
 
         }
+
+        //---------------------  Priority Level
+        $all_priority_level = $this->Bank_list_model->get_all_priority(1);
+
+        if($all_priority_level){
+            if(!$this->input->get('bank_list_id')){
+                $data_priority = array('priority_level' => (string)(sizeof($all_priority_level)+1));
+                array_unshift($all_priority_level,$data_priority);
+            }
+        }else{
+            $all_priority_level = array();
+            $data_priority = array('priority_level' => (string)(sizeof($all_priority_level)+1));
+            array_push($all_priority_level,$data_priority);
+        }
+
+        $data["all_priority_level"] = $all_priority_level;
+
+        $data["groups"] = $this->Bank_list_model->get_all();
+
 //        var_dump($data);
         $data["page"] = 'pages/bank_form';
 
         $this->load->view('template', $data);
     }
+
+
 
     public function validate_form()
     {
