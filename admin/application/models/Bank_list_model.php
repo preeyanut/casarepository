@@ -5,7 +5,7 @@ class Bank_list_model extends CI_Model
 
     public function get_all()
     {
-        $this->db->select('bank_list.*,CONCAT(u1.firstname + u1.lastname) as create_by_name');
+        $this->db->select('bank_list.*,CONCAT(u1.firstname ,\' \' , u1.lastname) as create_by_name,CONCAT(u2.firstname ,\' \' , u2.lastname) as update_by_name');
         $this->db->from('bank_list');
         $this->db->join('user as u1','u1.user_id = bank_list.create_by','inner');
         $this->db->join('user as u2','u2.user_id = bank_list.update_by','inner');
@@ -91,7 +91,7 @@ class Bank_list_model extends CI_Model
     public function search_filter($txtSearch, $start_filter, $filter_number, $status)
     {
 
-        $this->db->select('bank_list.*,CONCAT(u1.firstname + u1.lastname) as create_by_name,CONCAT(u2.firstname + u2.lastname)  as update_by_name');
+        $this->db->select('bank_list.*,CONCAT(u1.firstname ,\' \' , u1.lastname) as create_by_name,CONCAT(u2.firstname ,\' \' , u2.lastname)  as update_by_name');
         $this->db->from('bank_list');
         $this->db->join('user as u1','u1.user_id = bank_list.create_by','inner');
         $this->db->join('user as u2','u2.user_id = bank_list.update_by','inner');
