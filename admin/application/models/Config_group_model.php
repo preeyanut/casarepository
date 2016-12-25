@@ -25,7 +25,7 @@ class Config_group_model extends CI_Model
         $data_array = array(
             'config_group_id' => (int)$data['config_group_id'],
             'config_group_name' => $data['config_group_name'],
-            'priority_level' => (int)$data['priority_level'],
+            //'priority_level' => (int)$data['priority_level'],
             'config_group_status' => (int)$data['config_group_status'],
             'create_date' => date("Y-m-d H:i:s"),
             'create_by' => $this->session->userdata("user_id"),
@@ -45,7 +45,7 @@ class Config_group_model extends CI_Model
 
         $this->db->query("UPDATE `" . "" . "config_webpage_group` SET "
             . " config_group_name = '" . $data['config_group_name'] . "'"
-            . ", priority_level = '" . (int)$data['priority_level'] . "'"
+            //. ", priority_level = '" . (int)$data['priority_level'] . "'"
             . ", config_group_status = '" . (int)$data['config_group_status'] . "'"
             . ", update_date = '" . date("Y-m-d H:i:s") . "'"
             . ", update_by = '" . $this->session->userdata("user_id") . "'"

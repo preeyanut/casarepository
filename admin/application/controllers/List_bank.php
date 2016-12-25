@@ -37,7 +37,7 @@ class List_bank extends CI_Controller
             $paging++;
         }
 
-        $data["groups"] = $this->Bank_list_model->get_all();
+        $data["list"] = $this->Bank_list_model->get_all();
 
         $data["paging"] = $paging;
 
@@ -199,7 +199,7 @@ class List_bank extends CI_Controller
 
             $data["action"] = base_url() . "List_bank/add_bank";
 
-            $data["groups"] = $this->Bank_list_model->get_all();
+            $data["list"] = $this->Bank_list_model->get_all();
 
         }
 //        var_dump($data);

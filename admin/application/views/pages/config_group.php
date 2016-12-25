@@ -50,7 +50,7 @@
                                 </div>
                             </div>
 
-                            <div class="form-group required col-md-12 col-xs-12">
+                            <!--<div class="form-group required col-md-12 col-xs-12">
                                 <div class="col-md-2 col-xs-2" align="right">
                                     <label class=" control-label" for="input-priority-level">ลำดับความสำคัญ</label>
                                 </div>
@@ -62,7 +62,7 @@
                                     </div>
                                     <div class="text-danger"></div>
                                 </div>
-                            </div>
+                            </div>-->
 
                             <div class="form-group col-md-12 col-xs-12">
                                 <div class="col-md-2 col-xs-2" align="right">
