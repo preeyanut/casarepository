@@ -219,20 +219,24 @@ class Blog_model extends CI_Model
 
     public function delete_blog($blog_id)
     {
-        $sql_data = 'delete data';
-        $this->add_log('delete', 'blog', $blog_id, $sql_data);
+        if($blog_id != '') {
+            $sql_data = 'delete data';
+            $this->add_log('delete', 'blog', $blog_id, $sql_data);
 
-        $this->db->where('blog_id', $blog_id);
-        $result = $this->db->delete('blog');
-        return $result;
+            $this->db->where('blog_id', $blog_id);
+            $result = $this->db->delete('blog');
+            return $result;
+        }
     }
 
     public function delete_blog_value($blog_id)
     {
-        $this->db->where('blog_id', $blog_id);
-        $result = $this->db->delete('blog_value');
+        if($blog_id != '') {
+            $this->db->where('blog_id', $blog_id);
+            $result = $this->db->delete('blog_value');
 
-        return $result;
+            return $result;
+        }
     }
 
     public function get_category_field($blog_id)

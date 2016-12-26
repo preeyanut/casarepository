@@ -51,18 +51,6 @@ class Bank extends CI_Controller
 //
 //    }
 
-    public function get_all()
-    {
-
-        $result = $this->bank_list_model->get_all();
-
-        $data["list"] = $result;
-        $jsonResult['Result'] = true;
-        $jsonResult['Data'] = $data;
-
-        echo json_encode($jsonResult);
-    }
-
     public function get_paging()
     {
 
@@ -152,16 +140,6 @@ class Bank extends CI_Controller
         //$jsonResult['error'] = "";
         $jsonResult['Data'] = $data;
         echo json_encode($jsonResult);
-    }
-
-    public function delete_bank()
-    {
-        if ($this->input->get('bank_list_id')) {
-
-            $data["bank_list_id"] = $this->Bank_list_model->delete_bank($this->input->get('bank_list_id'));
-        }
-
-        $this->get_all();
     }
 
     public function getForm()

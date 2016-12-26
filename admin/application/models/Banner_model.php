@@ -80,13 +80,14 @@ class Banner_model extends CI_Model
         $result = $this->db->update('home_banner', $banner_data);
         //$banner_id = 0;
 
+        $sql_data = json_encode ($data);
+        $this->add_log('edit','banner',(int)$data['banner_id'],$sql_data);
+
         if ($result) {
             $banner_id = $data['banner_id'];
         }
         return $banner_id;
 
-        $sql_data = json_encode ($data);
-        $this->add_log('edit','banner',(int)$data['banner_id'],$sql_data);
     }
 
     public function get_all_priority()

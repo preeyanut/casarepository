@@ -284,8 +284,6 @@
         window.open("<?php echo base_url(); ?>list_bank/delete_bank?bank_list_id=" + bank_list_id, "_self");
         alert("ลบข้อมูลสำเร็จ");
 
-        location.reload();
-        reload_bank_list();
     });
 
     $(document).on("click", ".paging", function () {

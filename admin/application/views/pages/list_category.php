@@ -405,7 +405,7 @@
         if(confirm('คุณต้องการลบข้อมูลใช่หรือไม่')==true)
         {
             var category_id = this.name.replace("button-delete", "");
-            window.open("<?php echo base_url(); ?>category/delete_category?category_id=" + category_id, "_self");
+            window.open("<?php echo base_url(); ?>list_category/delete_category?category_id=" + category_id, "_self");
             alert("ลบข้อมูลสำเร็จ");
         }
      });

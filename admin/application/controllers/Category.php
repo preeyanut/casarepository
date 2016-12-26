@@ -137,21 +137,6 @@ class Category extends CI_Controller
         echo json_encode($jsonResult);
     }
 
-    public function delete_category()
-    {
-
-        if ($this->input->get('category_id')) {
-            $blog_id = $this->Category_model->get_blog_id($this->input->get('category_id'));
-            foreach ($blog_id as $blog_data) {
-            $this->Blog_model->delete_blog_value($blog_data['blog_id']);
-            $this->Blog_model->delete_blog($blog_data['blog_id']);
-            $this->Category_model->delete_category($this->input->get('category_id'));
-            }
-        }
-
-        $this->get_list();
-    }
-
     public function validate_form()
     {
 
