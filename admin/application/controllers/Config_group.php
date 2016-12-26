@@ -85,7 +85,6 @@ class Config_group extends CI_Controller
 
                 foreach ($data_info as $info) {
                     $data['config_group_name'] = $info['config_group_name'];
-                    //$data['priority_level'] = $info['priority_level'];
                     $data['config_group_status'] = $info['config_group_status'];
 
                 }
@@ -101,7 +100,6 @@ class Config_group extends CI_Controller
 
             $data['config_group_id'] = "";
             $data['config_group_name'] = "";
-            //$data['priority_level'] = "";
             $data['config_group_status'] = "";
             $data['create_date'] = date("Y-m-d H:i:s");
             $data['create_by'] = $this->session->userdata("user_id");
@@ -166,9 +164,6 @@ class Config_group extends CI_Controller
             $this->error['config_group_name'] = "กรุณากรอกชื่อwebpage";
         }
 
-        if ((strlen($this->input->post('priority_level')) < 1) || (strlen($this->input->post('priority_level')) > 255)) {
-            $this->error['priority_level'] = "กรุณากรอกลำดับความสำคัญ";
-        }
 
         if (isset($this->error)) {
             $jsonResult['error'] = $this->error;
@@ -188,7 +183,7 @@ class Config_group extends CI_Controller
         $status = $this->input->post("filter-status");
 
         if(!$this->input->post("filter-page")){
-            $page=1;
+            $page=0;
         }
 
         if ($filter_number == -1) {

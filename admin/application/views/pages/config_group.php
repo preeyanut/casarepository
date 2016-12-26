@@ -50,20 +50,6 @@
                                 </div>
                             </div>
 
-                            <!--<div class="form-group required col-md-12 col-xs-12">
-                                <div class="col-md-2 col-xs-2" align="right">
-                                    <label class=" control-label" for="input-priority-level">ลำดับความสำคัญ</label>
-                                </div>
-                                <div class="col-md-7 col-xs-7">
-                                    <div class="">
-                                        <input type="text" name="priority_level" value="<?php echo $priority_level; ?>"
-                                               placeholder="ลำดับความสำคัญ" id="input-priority-level"
-                                               class="form-control"/>
-                                    </div>
-                                    <div class="text-danger"></div>
-                                </div>
-                            </div>-->
-
                             <div class="form-group col-md-12 col-xs-12">
                                 <div class="col-md-2 col-xs-2" align="right">
                                     <label class=" control-label" for="input-status">สถานะ</label>
@@ -163,7 +149,6 @@
                                 <tr>
                                     <td class="text-center">ลำดับ</td>
                                     <td class="text-center">Config Group Name</td>
-                                    <!--<td class="text-center">ความสำคัญ</td>-->
                                     <td class="text-center">วันที่เพิ่ม</td>
                                     <td class="text-center">พนักงานที่เพิ่ม</td>
                                     <td class="text-center">แก้ไขล่าสุด</td>
@@ -180,7 +165,6 @@
                                             <td class="text-center"><?php echo $count;
                                                 $count++; ?></td>
                                             <td class="text-center"><?php echo $config_group['config_group_name']; ?></td>
-                                            <!--<td class="text-center"><?php echo $config_group['priority_level']; ?></td>-->
                                             <td class="text-center"><?php echo $config_group['create_date']; ?></td>
                                             <td class="text-center"><?php echo $config_group['create_by_name']; ?></td>
                                             <td class="text-center"><?php echo $config_group['update_date']; ?></td>
