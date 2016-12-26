@@ -356,7 +356,7 @@
 
             <?php if (in_array("log", $access_permission)) { ?>
             <li class="treeview">
-                <a href="<?= base_url(); ?>log">
+                <a href="<?= base_url(); ?>action_log">
                     <i class="fa fa-hdd-o"></i>
                     <span>Log</span>
                     <span class="label label-primary pull-right"></span>
