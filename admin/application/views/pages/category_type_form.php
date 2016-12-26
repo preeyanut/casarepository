@@ -316,20 +316,22 @@
         var all_category_type = $('.div-field-type');
         var category_field = [];
         var div_field_type_number = [];
-        for (var i = 1; i < div_field_type_number.length; i++) {
+        for (var i = 0; i < all_category_type.length; i++) {
 
             var field_type = $('#field-type-' + div_field_type_number[i] + ' select[name="field_type"').val();
             var field_name = $('#field-type-' + div_field_type_number[i] + ' input[name="field_name"').val();
             var field_id = $('#field-type-' + div_field_type_number[i] + ' input[name="field_id"').val();
 
             var data_item = {
-                category_type_id: category_type_id
-                , field_type: field_type
+                 field_type: field_type
                 , field_name: field_name
                 , field_id: field_id
             };
             category_field.push(data_item);
         }
+
+        console.log('-----------');
+        console.log(category_field);
 
         if (category_field.length === 0 && all_category_type.length > 0) {
 
@@ -363,6 +365,9 @@
             alert('กรุณาเพิ่มข้อชนิดข้อมูล อย่างน้อย 1 ชนิด');
             is_error = true;
         }
+
+        console.log('+++++++++++++++++');
+        console.log(div_field_type_number);
 
         if (!is_error) {
             if ($('input[name="category_type_id"]').val()) {
@@ -445,7 +450,7 @@
                 console.log(json);
                 if (json.Result) {
                     alert("เพิ่มข้อมูลเสร็จสิ้น");
-                    clear_input_blank();
+//                    clear_input_blank();
                 } else {
                     alert("เพิ่มข้อมูลผิดพลาด");
                 }
