@@ -13,7 +13,7 @@ class List_category extends CI_Controller
 
         $this->load->library('auth_check');
 
-        if (!$this->auth_check->hasPermission('access', 'user')) {
+        if (!$this->auth_check->hasPermission('access', 'list_category')) {
             redirect('permission');
         }
     }
@@ -22,7 +22,7 @@ class List_category extends CI_Controller
     {
         $this->get_all();
     }
-    
+
     public function get_all()
     {
         $all_data = $this->Category_model->search_filter($this->input->post("txtSearch"), 0, 10, -1, -1);
@@ -71,13 +71,13 @@ class List_category extends CI_Controller
             $page--;
         }
 
-        if($filter_number==-1){
-            $start_filter =0;
-            $filter_number=0;
-            $result = $this->Category_model->search_filter($this->input->post("txtSearch"),$start_filter,$filter_number,$filter_status,$filter_category_type);
-        }else {
+        if ($filter_number == -1) {
+            $start_filter = 0;
+            $filter_number = 0;
+            $result = $this->Category_model->search_filter($this->input->post("txtSearch"), $start_filter, $filter_number, $filter_status, $filter_category_type);
+        } else {
             $start_filter = $filter_number * $page;
-            $result = $this->Category_model->search_filter($this->input->post("txtSearch"), $start_filter, $filter_number, $filter_status,$filter_category_type);
+            $result = $this->Category_model->search_filter($this->input->post("txtSearch"), $start_filter, $filter_number, $filter_status, $filter_category_type);
         }
 
         $data["list"] = $result;
@@ -88,6 +88,20 @@ class List_category extends CI_Controller
         echo json_encode($jsonResult);
     }
 
+    public function delete_category()
+    {
+        if ($this->input->get('category_id')) {
+            $blog_id = $this->Category_model->get_blog_id($this->input->get('category_id'));
+            foreach ($blog_id as $blog_data) {
+                $this->Blog_model->delete_blog_value($blog_data['blog_id']);
+                $this->Blog_model->delete_blog($blog_data['blog_id']);
+            }
+            $this->Category_model->delete_category($this->input->get('category_id'));
+        }
+
+        $this->get_all();
+    }
+
     public function get_paging()
     {
 
@@ -96,8 +110,8 @@ class List_category extends CI_Controller
 
         $status = $this->input->post("filter-status");
 
-        if(!$this->input->post("filter-page")){
-            $page=0;
+        if (!$this->input->post("filter-page")) {
+            $page = 0;
         }
 
         if ($filter_number == -1) {

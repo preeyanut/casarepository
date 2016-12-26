@@ -30,12 +30,13 @@ class Category_model extends CI_Model
 
     public function get_blog_id($id)
     {
-        $this->db->select(" blog.*,category.category_name,category_type.category_type_id ");
+        $this->db->select(" blog.*,category.category_name ");
+        $this->db->from('blog');
         $this->db->join('category', 'category.category_id = blog.category_id');
-        $this->db->join('category_type', 'category_type.category_type_id = category.category_type_id');
+//        $this->db->join('category_type', 'category_type.category_type_id = category.category_type_id');
         $this->db->where('blog.category_id', $id);
 
-        $query = $this->db->get('blog');
+        $query = $this->db->get();
         return $query->result_array();
     }
 
