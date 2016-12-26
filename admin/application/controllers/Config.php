@@ -58,8 +58,8 @@ class Config extends CI_Controller
 
 
 
-            $data['create_date'] = $data_info['create_date'];
-            $data['create_by'] = $data_info['create_by'];
+            $data['create_date'] = date("Y-m-d H:i:s");
+            $data['create_by'] = $this->session->userdata("user_id");
 
             $data['config_group'] = $data_config_group;
             $data["action"] = base_url() . "config/add_frontend_setting";
@@ -68,6 +68,7 @@ class Config extends CI_Controller
         $data['config_content'] = $data_info_contact['config_content'];
         $data['contact_image'] = $data_info_contact['contact_image'];
         $data['email'] = $data_info_contact['email'];
+
 
         $data["action"] = base_url() . "config/add_contact_setting";
 //        }
