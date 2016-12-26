@@ -391,10 +391,10 @@ class Customer_model extends CI_Model
             $this->db->where('customer_status', $status);
         }
         $this->db->like('customer.member_id', $txtSearch);
-        $this->db->like('customer.customer_firstname', $txtSearch);
-        $this->db->like('customer.customer_lastname', $txtSearch);
-        $this->db->like('customer.customer_telephone', $txtSearch);
-        $this->db->like('customer.customer_line_id', $txtSearch);
+//        $this->db->like('customer.customer_firstname', $txtSearch);
+//        $this->db->like('customer.customer_lastname', $txtSearch);
+//        $this->db->like('customer.customer_telephone', $txtSearch);
+//        $this->db->like('customer.customer_line_id', $txtSearch);
         $this->db->limit($filter_number, $start_filter);
         $query = $this->db->get();
 
