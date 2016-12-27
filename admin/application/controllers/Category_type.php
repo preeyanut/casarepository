@@ -14,7 +14,7 @@ class Category_type extends CI_Controller
 
         $this->load->library('auth_check');
 
-        if (!$this->auth_check->hasPermission('access', 'customer')) {
+        if (!$this->auth_check->hasPermission('access', 'category_type')) {
             redirect('permission');
         }
     }

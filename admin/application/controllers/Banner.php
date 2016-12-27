@@ -52,7 +52,7 @@ class Banner extends CI_Controller
             $data['banner_image'] = "";
             $data['banner_url'] = "";
 
-            $data['create_by'] = $this->input->get('user_id');
+            $data['create_by'] = $this->session->userdata("user_id");
 
             $data["action"] = base_url() . "banner/add_banner";
 

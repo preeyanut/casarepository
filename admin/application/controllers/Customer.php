@@ -87,7 +87,7 @@ class Customer extends CI_Controller
             $data['submission_date'] = date("Y-m-d H:i:s");
             $data['customer_status'] = "";
             $data['accept_date'] = date("Y-m-d H:i:s");
-            $data['accept_by'] = $this->input->get('user_id');
+            $data['accept_by'] = $this->session->userdata("user_id");
 
 
 
