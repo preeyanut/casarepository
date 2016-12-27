@@ -67,6 +67,10 @@ class List_category extends CI_Controller
 
         $filter_category_type = $this->input->post("filter-category-type");
 
+        if(!$this->input->post("filter-page")){
+            $page=0;
+        }
+
         if ($page > 0) {
             $page--;
         }

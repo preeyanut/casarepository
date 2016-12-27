@@ -111,7 +111,7 @@
     .home-banner-item {
         position: absolute;
         z-index: 3;
-        width: 100%;
+        /*width: 100%;*/
     }
 
     .btn-banner-register {
@@ -316,7 +316,7 @@
     }
 
     .top-carousel-img img {
-        width: 100%
+        /*width: 100%*/
     }
 
     .top-carousel-heading {
@@ -439,7 +439,8 @@
                                 style="width: 100%; margin-right: 40px; float: left; display: block;">
                                 <div class="flex-img">
                                     <div class="top-carousel-img">
-                                        <img width="270" height="423"
+                                        <img
+                                             width="270" height="423"
                                              src="<?= $image ?>"
                                              class="attachment-alpha-store-carousel size-alpha-store-carousel wp-post-image"
                                              alt="<?= $meta_keyword; ?>"

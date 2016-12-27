@@ -101,6 +101,10 @@ class List_bank extends CI_Controller
         $page = $this->input->post("filter-page");
         $status = $this->input->post("filter-status");
 
+        if(!$this->input->post("filter-page")){
+            $page=0;
+        }
+
         if ($page > 0) {
             $page--;
         }

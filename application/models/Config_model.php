@@ -6,10 +6,12 @@ class Config_model extends CI_Model
     {
         $this->db->select("config_webpage.config_id,config_webpage.config_title");
         $this->db->join('config_webpage_group', 'config_webpage_group.config_group_id = 1');
-        $this->db->order_by("config_webpage.config_id", "asc");
-        $query = $this->db->get('config_webpage.config_id = 1');
 
-        return $query->row_array('config_title');
+        $this->db->where('config_webpage.config_id','1');
+        $this->db->order_by("config_webpage.config_id", "asc");
+        $query = $this->db->get('config_webpage');
+
+        return $query->row('config_title');
 
     }
 
@@ -18,10 +20,12 @@ class Config_model extends CI_Model
 
         $this->db->select("config_webpage.config_id,config_webpage.meta_keyword");
         $this->db->join('config_webpage_group', 'config_webpage_group.config_group_id = 1');
-        $this->db->order_by("config_webpage.config_id", "asc");
-        $query = $this->db->get('config_webpage.config_id = 1');
 
-        return $query->row_array('meta_keyword');
+        $this->db->where('config_webpage.config_id','1');
+        $this->db->order_by("config_webpage.config_id", "asc");
+        $query = $this->db->get('config_webpage');
+
+        return $query->row('meta_keyword');
 
     }
 
@@ -29,10 +33,12 @@ class Config_model extends CI_Model
     {
         $this->db->select("config_webpage.config_id,config_webpage.meta_description");
         $this->db->join('config_webpage_group', 'config_webpage_group.config_group_id = 1');
-        $this->db->order_by("config_webpage.config_id", "asc");
-        $query = $this->db->get('config_webpage.config_id = 1');
 
-        return $query->row_array('meta_description');
+        $this->db->where('config_webpage.config_id','1');
+        $this->db->order_by("config_webpage.config_id", "asc");
+        $query = $this->db->get('config_webpage');
+
+        return $query->row('meta_description');
 
     }
 
@@ -40,10 +46,12 @@ class Config_model extends CI_Model
     {
         $this->db->select("config_webpage.config_id,config_webpage.frontend_image");
         $this->db->join('config_webpage_group', 'config_webpage_group.config_group_id = 1');
-        $this->db->order_by("config_webpage.config_id", "asc");
-        $query = $this->db->get('config_webpage.config_id = 1');
 
-        return $query->row_array('frontend_image');
+        $this->db->where('config_webpage.config_id','1');
+        $this->db->order_by("config_webpage.config_id", "asc");
+        $query = $this->db->get('config_webpage');
+
+        return $query->row('frontend_image');
 
     }
 
@@ -51,10 +59,12 @@ class Config_model extends CI_Model
     {
         $this->db->select("config_webpage.config_id,config_webpage.logo_image");
         $this->db->join('config_webpage_group', 'config_webpage_group.config_group_id = 1');
-        $this->db->order_by("config_webpage.config_id", "asc");
-        $query = $this->db->get('config_webpage.config_id = 1');
 
-        return $query->row_array('logo_image');
+        $this->db->where('config_webpage.config_id','1');
+        $this->db->order_by("config_webpage.config_id", "asc");
+        $query = $this->db->get('config_webpage');
+
+        return $query->row('logo_image');
 
     }
 
@@ -62,10 +72,12 @@ class Config_model extends CI_Model
     {
         $this->db->select("config_webpage.config_id,config_webpage.login_link");
         $this->db->join('config_webpage_group', 'config_webpage_group.config_group_id = 1');
-        $this->db->order_by("config_webpage.config_id", "asc");
-        $query = $this->db->get('config_webpage.config_id = 1');
 
-        return $query->row_array('login_link');
+        $this->db->where('config_webpage.config_id','1');
+        $this->db->order_by("config_webpage.config_id", "asc");
+        $query = $this->db->get('config_webpage');
+
+        return $query->row('login_link');
 
     }
 
@@ -73,10 +85,12 @@ class Config_model extends CI_Model
     {
         $this->db->select("config_webpage.config_id,config_webpage.line_id");
         $this->db->join('config_webpage_group', 'config_webpage_group.config_group_id = 1');
-        $this->db->order_by("config_webpage.config_id", "asc");
-        $query = $this->db->get('config_webpage.config_id = 1');
 
-        return $query->row_array('line_id');
+        $this->db->where('config_webpage.config_id','1');
+        $this->db->order_by("config_webpage.config_id", "asc");
+        $query = $this->db->get('config_webpage');
+
+        return $query->row('line_id');
 
     }
 
@@ -84,10 +98,12 @@ class Config_model extends CI_Model
     {
         $this->db->select("config_webpage.config_id,config_webpage.telephone");
         $this->db->join('config_webpage_group', 'config_webpage_group.config_group_id = 1');
-        $this->db->order_by("config_webpage.config_id", "asc");
-        $query = $this->db->get('config_webpage.config_id = 1');
 
-        return $query->row_array('telephone');
+        $this->db->where('config_webpage.config_id','1');
+        $this->db->order_by("config_webpage.config_id", "asc");
+        $query = $this->db->get('config_webpage');
+
+        return $query->row('telephone');
 
     }
 
@@ -95,10 +111,12 @@ class Config_model extends CI_Model
     {
         $this->db->select("config_webpage.config_id,config_webpage.facebook");
         $this->db->join('config_webpage_group', 'config_webpage_group.config_group_id = 1');
-        $this->db->order_by("config_webpage.config_id", "asc");
-        $query = $this->db->get('config_webpage.config_id = 1');
 
-        return $query->row_array('facebook');
+        $this->db->where('config_webpage.config_id','1');
+        $this->db->order_by("config_webpage.config_id", "asc");
+        $query = $this->db->get('config_webpage');
+
+        return $query->row('facebook');
 
     }
 
@@ -106,10 +124,12 @@ class Config_model extends CI_Model
     {
         $this->db->select("config_webpage.config_id,config_webpage.googleplus");
         $this->db->join('config_webpage_group', 'config_webpage_group.config_group_id = 1');
-        $this->db->order_by("config_webpage.config_id", "asc");
-        $query = $this->db->get('config_webpage.config_id = 1');
 
-        return $query->row_array('googleplus');
+        $this->db->where('config_webpage.config_id','1');
+        $this->db->order_by("config_webpage.config_id", "asc");
+        $query = $this->db->get('config_webpage');
+
+        return $query->row('googleplus');
 
     }
 
@@ -117,10 +137,12 @@ class Config_model extends CI_Model
     {
         $this->db->select("config_webpage.config_id,config_webpage.instagram");
         $this->db->join('config_webpage_group', 'config_webpage_group.config_group_id = 1');
-        $this->db->order_by("config_webpage.config_id", "asc");
-        $query = $this->db->get('config_webpage.config_id = 1');
 
-        return $query->row_array('instagram');
+        $this->db->where('config_webpage.config_id','1');
+        $this->db->order_by("config_webpage.config_id", "asc");
+        $query = $this->db->get('config_webpage');
+
+        return $query->row('instagram');
 
     }
 
@@ -128,10 +150,12 @@ class Config_model extends CI_Model
     {
         $this->db->select("config_webpage.config_id,config_webpage.youtube");
         $this->db->join('config_webpage_group', 'config_webpage_group.config_group_id = 1');
-        $this->db->order_by("config_webpage.config_id", "asc");
-        $query = $this->db->get('config_webpage.config_id = 1');
 
-        return $query->row_array('youtube');
+        $this->db->where('config_webpage.config_id','1');
+        $this->db->order_by("config_webpage.config_id", "asc");
+        $query = $this->db->get('config_webpage');
+
+        return $query->row('youtube');
 
     }
 
@@ -139,10 +163,12 @@ class Config_model extends CI_Model
     {
         $this->db->select("config_webpage.config_id,config_webpage.twitter");
         $this->db->join('config_webpage_group', 'config_webpage_group.config_group_id = 1');
-        $this->db->order_by("config_webpage.config_id", "asc");
-        $query = $this->db->get('config_webpage.config_id = 1');
 
-        return $query->row_array('twitter');
+        $this->db->where('config_webpage.config_id','1');
+        $this->db->order_by("config_webpage.config_id", "asc");
+        $query = $this->db->get('config_webpage');
+
+        return $query->row('twitter');
 
     }
 
@@ -154,10 +180,12 @@ class Config_model extends CI_Model
     {
         $this->db->select("config_webpage.config_id,config_webpage.contact_image");
         $this->db->join('config_webpage_group', 'config_webpage_group.config_group_id = 2');
-        $this->db->order_by("config_webpage.config_id", "asc");
-        $query = $this->db->get('config_webpage.config_id = 2');
 
-        return $query->row_array('contact_image');
+        $this->db->where('config_webpage.config_id','2');
+        $this->db->order_by("config_webpage.config_id", "asc");
+        $query = $this->db->get('config_webpage');
+
+        return $query->row('contact_image');
 
     }
 
@@ -165,10 +193,12 @@ class Config_model extends CI_Model
     {
         $this->db->select("config_webpage.config_id,config_webpage.config_content");
         $this->db->join('config_webpage_group', 'config_webpage_group.config_group_id = 2');
-        $this->db->order_by("config_webpage.config_id", "asc");
-        $query = $this->db->get('config_webpage.config_id = 2');
 
-        return $query->row_array('config_content');
+        $this->db->where('config_webpage.config_id','2');
+        $this->db->order_by("config_webpage.config_id", "asc");
+        $query = $this->db->get('config_webpage');
+
+        return $query->row('config_content');
 
     }
 
@@ -176,10 +206,12 @@ class Config_model extends CI_Model
     {
         $this->db->select("config_webpage.config_id,config_webpage.email");
         $this->db->join('config_webpage_group', 'config_webpage_group.config_group_id = 2');
-        $this->db->order_by("config_webpage.config_id", "asc");
-        $query = $this->db->get('config_webpage.config_id = 2');
 
-        return $query->row_array('email');
+        $this->db->where('config_webpage.config_id','2');
+        $this->db->order_by("config_webpage.config_id", "asc");
+        $query = $this->db->get('config_webpage');
+
+        return $query->row('email');
 
     }
 
@@ -187,10 +219,12 @@ class Config_model extends CI_Model
     {
         $this->db->select("config_webpage.config_id,config_webpage.line_id");
         $this->db->join('config_webpage_group', 'config_webpage_group.config_group_id = 2');
-        $this->db->order_by("config_webpage.config_id", "asc");
-        $query = $this->db->get('config_webpage.config_id = 2');
 
-        return $query->row_array('line_id');
+        $this->db->where('config_webpage.config_id','2');
+        $this->db->order_by("config_webpage.config_id", "asc");
+        $query = $this->db->get('config_webpage');
+
+        return $query->row('line_id');
 
     }
 
@@ -198,10 +232,12 @@ class Config_model extends CI_Model
     {
         $this->db->select("config_webpage.config_id,config_webpage.facebook");
         $this->db->join('config_webpage_group', 'config_webpage_group.config_group_id = 2');
-        $this->db->order_by("config_webpage.config_id", "asc");
-        $query = $this->db->get('config_webpage.config_id = 2');
 
-        return $query->row_array('facebook');
+        $this->db->where('config_webpage.config_id','2');
+        $this->db->order_by("config_webpage.config_id", "asc");
+        $query = $this->db->get('config_webpage');
+
+        return $query->row('facebook');
 
     }
 
@@ -209,10 +245,12 @@ class Config_model extends CI_Model
     {
         $this->db->select("config_webpage.config_id,config_webpage.instagram");
         $this->db->join('config_webpage_group', 'config_webpage_group.config_group_id = 2');
-        $this->db->order_by("config_webpage.config_id", "asc");
-        $query = $this->db->get('config_webpage.config_id = 2');
 
-        return $query->row_array('instagram');
+        $this->db->where('config_webpage.config_id','2');
+        $this->db->order_by("config_webpage.config_id", "asc");
+        $query = $this->db->get('config_webpage');
+
+        return $query->row('instagram');
 
     }
 
@@ -220,10 +258,12 @@ class Config_model extends CI_Model
     {
         $this->db->select("config_webpage.config_id,config_webpage.googleplus");
         $this->db->join('config_webpage_group', 'config_webpage_group.config_group_id = 2');
-        $this->db->order_by("config_webpage.config_id", "asc");
-        $query = $this->db->get('config_webpage.config_id = 2');
 
-        return $query->row_array('googleplus');
+        $this->db->where('config_webpage.config_id','2');
+        $this->db->order_by("config_webpage.config_id", "asc");
+        $query = $this->db->get('config_webpage');
+
+        return $query->row('googleplus');
 
     }
 
@@ -231,10 +271,12 @@ class Config_model extends CI_Model
     {
         $this->db->select("config_webpage.config_id,config_webpage.youtube");
         $this->db->join('config_webpage_group', 'config_webpage_group.config_group_id = 2');
-        $this->db->order_by("config_webpage.config_id", "asc");
-        $query = $this->db->get('config_webpage.config_id = 2');
 
-        return $query->row_array('youtube');
+        $this->db->where('config_webpage.config_id','2');
+        $this->db->order_by("config_webpage.config_id", "asc");
+        $query = $this->db->get('config_webpage');
+
+        return $query->row('youtube');
 
     }
 }

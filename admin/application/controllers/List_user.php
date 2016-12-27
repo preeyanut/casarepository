@@ -121,6 +121,10 @@ class List_user extends CI_Controller {
 		$user_status = $this->input->post("filter-status");
 		$user_group = $this->input->post("filter-user-group");
 
+		if(!$this->input->post("filter-page")){
+			$page=0;
+		}
+
 		if($page>0){
 			$page--;
 		}
