@@ -94,22 +94,23 @@
         <div class="container">
             <div id='header-top-left' class="header-top-left col-md-6 padding-0 float-left">
                 <img width="356" height="100" style="display: block !important;"
-                     src="https://www.casa98th.com/assets/img/logo-casa12092016.png" alt="แทงบอล ออนไลน์ ที่ casa98">
+                     src="<?= base_url().'admin/'.$this->Config_model->get_config_logo_image() ?>" alt="<?= $this->Config_model->get_config_meta_keyword() ?>">
             </div>
             <div id='header-top-right' class="header-top-right col-md-6 padding-0 float-right text-center">
 
-
                 <div style="clear: both;margin-top: 20px;">
                     <img src="https://www.casa98th.com/assets/img/layout/the-exclusive-society.png"
-                         alt="เวบแทงบอล สุดพิเศษ">
+                         alt="<?= $this->Config_model->get_config_meta_keyword() ?>">
                 </div>
+
                 <div>
-                    <img src="https://www.casa98th.com/assets/img/layout/divider.png" alt="casa98">
+                    <img src="https://www.casa98th.com/assets/img/layout/divider.png" alt="<?= $this->Config_model->get_config_meta_keyword() ?>">
                 </div>
+
                 <div style="margin-top: 5px;">
                     <a href="https://line.me/ti/p/%40casa98th" class="pull-left"><img
                             src="https://www.casa98th.com/assets/img/layout/line-id.png" alt="line id @casa98th"></a>
-                    <a href="" class="pull-right"
+                    <a href="#" class="pull-right"
                        style="margin-left: 10px"><img src="https://www.casa98th.com/assets/img/layout/call.png"
                                                       alt="โทรแทงบอล 088-777-7762"></a>
                 </div>

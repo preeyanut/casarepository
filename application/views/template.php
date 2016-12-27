@@ -11,7 +11,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <!--	---------------------  Config Web Default ------------------------>
 
 <!--    --><?php //echo var_dump($this->Config_model->get_config_title()) ; ?>
-    <title><?= $this->Config_model->get_config_title(); ?></title>
+    <title><?= $this->Config_model->get_config_webname() ?></title>
 
     <meta name="keywords" content="<?= $this->Config_model->get_config_meta_keyword(); ?>">
     <meta name="description" content="<?= $this->Config_model->get_config_meta_description(); ?>">

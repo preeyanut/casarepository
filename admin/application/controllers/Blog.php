@@ -212,6 +212,23 @@ class Blog extends CI_Controller
         $category_id = $this->input->post('category_id');
         if ($category_id) {
             $data['blog_field'] = $this->Blog_model->get_blog_field_by_category_id($category_id);
+
+            $all_priority_level = $this->Blog_model->get_all_priority($category_id);
+            //---------------------  Priority Level
+
+            if($all_priority_level){
+                if(!$this->input->get('category_id')){
+                    $data_priority = array('priority_level' => (string)(sizeof($all_priority_level)+1));
+                    array_unshift($all_priority_level,$data_priority);
+                }
+            }else{
+                $all_priority_level = array();
+                $data_priority = array('priority_level' => (string)(sizeof($all_priority_level)+1));
+                array_push($all_priority_level,$data_priority);
+            }
+
+            $data["all_priority_level"] = $all_priority_level;
+
             $result = true;
         }
 

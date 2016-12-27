@@ -176,7 +176,7 @@
                                 <div class="col-md-10 col-xs-10">
                                     <div class="">
                                         <select name="priority_level" id="input-priority-level"
-                                                class="form-control selectpicker">
+                                                class="form-control ">
                                             <?php foreach ($all_priority_level as $item) { ?>
                                                 <option value="<?= $item['priority_level']; ?>"
                                                     <?php if ($item['priority_level'] == $priority_level) { ?> selected="selected" <?php } ?> >
@@ -249,15 +249,13 @@
                                                     break;
                                                 case 'textarea' :
                                                     $html_field = '<input type="textarea" id="' . $item['category_field_id'] . '" name="' . $item['field_id'] . '" class="form-control date-picker blog-value" value="' . $item['blog_value'] . '" />';
-//                                                    $html_field .= ' <script type="text/javascript"> CKEDITOR.replace( "' . $item['field_id'] . '" , {extraPlugins: "imageuploader"}); </script>';
-//                                                    $html_field .= ' <script type="text/javascript"> CKEDITOR.replace( "' . $item['field_id'] . '" ); </script>';
                                                     $html_field .= ' <script type="text/javascript"> CKEDITOR.replace("content"
- , {"language":"en","height":"400","filebrowserBrowseUrl":"' . base_url() . 'assets\/ckfinder\/ckfinder.html"
- ,"filebrowserImageBrowseUrl":"' . base_url() . 'assets\/ckfinder\/ckfinder.html?type=Images"
- ,"filebrowserFlashBrowseUrl":"' . base_url() . 'assets\/ckfinder\/ckfinder.html?type=Flash"
- ,"filebrowserUploadUrl":"' . base_url() . 'assets\/ckfinder\/core\/connector\/php\/connector.php?command=QuickUpload&type=Files"
- ,"filebrowserImageUploadUrl":"' . base_url() . 'assets\/ckfinder\/core\/connector\/php\/connector.php?command=QuickUpload&type=Images"
- ,"filebrowserFlashUploadUrl":"' . base_url() . 'assets\/ckfinder\/core\/connector\/php\/connector.php?command=QuickUpload&type=Flash"}); </script>';
+                                                     , {"language":"en","height":"400","filebrowserBrowseUrl":"' . base_url() . 'assets\/ckfinder\/ckfinder.html"
+                                                     ,"filebrowserImageBrowseUrl":"' . base_url() . 'assets\/ckfinder\/ckfinder.html?type=Images"
+                                                     ,"filebrowserFlashBrowseUrl":"' . base_url() . 'assets\/ckfinder\/ckfinder.html?type=Flash"
+                                                     ,"filebrowserUploadUrl":"' . base_url() . 'assets\/ckfinder\/core\/connector\/php\/connector.php?command=QuickUpload&type=Files"
+                                                     ,"filebrowserImageUploadUrl":"' . base_url() . 'assets\/ckfinder\/core\/connector\/php\/connector.php?command=QuickUpload&type=Images"
+                                                     ,"filebrowserFlashUploadUrl":"' . base_url() . 'assets\/ckfinder\/core\/connector\/php\/connector.php?command=QuickUpload&type=Flash"}); </script>';
 //                                                    $html_field .= ' <script type="text/javascript"> CKEDITOR.instances["' . $item['field_id'] . '"].setData(" ' . $item['blog_value'] . ' "); </script>';
                                                     $html_field .= ' <script type="text/javascript"> CKEDITOR.instances["' . $item['category_field_id'] . '"].setData(decodeURI("' . $item['blog_value'] . '")); </script>';
                                                     break;
@@ -283,7 +281,7 @@
                                                     $html_field = '<input type="text" id="' . $item['category_field_id'] . '" name="' . $item['field_id'] . '" class="form-control blog-value" value="' . $item['blog_value'] . '" />';
                                                     break;
                                                 case 'image' :
-                                                    $html_field = '<a href="" id="a-' . $item['field_id'] . '" data-toggle="image" class="img-thumbnail"><img id="img-' . $item['field_id'] . '" style="max-height: 500px;" '
+                                                    $html_field = '<a href="#" id="a-' . $item['field_id'] . '" data-toggle="image" class="img-thumbnail"><img id="img-' . $item['field_id'] . '" style="max-height: 500px;" '
                                                         . ' src="' . base_url() . $item['blog_value'] . '" alt="" title="" data-placeholder="รูปสินค้า"/></a>'
                                                         . ' <input type="file" name="' . $item['field_id'] . '" class="img-input btn btn-warning blog-value" id="' . $item['category_field_id'] . '" value="' . $item['blog_value'] . '" />';
                                                     break;
@@ -497,7 +495,7 @@
                 if (json.Result) {
                     uploadImage(json.Data.blog_id);
                     alert("เพิ่มข้อมูลสำเร็จ");
-
+                    location.reload();
                     $('#blog_id').val(json.Data.blog_id);
                 } else {
                     alert("เพิ่มข้อมูลผิดพลาด");
@@ -580,7 +578,15 @@
 //                    $('#button-save').button('reset');
                     },
                     success: function (json) {
-//                        console.log(json);
+                        console.log(json.Data.all_priority_level);
+
+                        var priorities = json.Data.all_priority_level;
+
+                        $('#input-priority-level').find('option').remove();
+                        for (var i = 0; i < priorities.length; i++) {
+                            $('#input-priority-level').append('<option value="'+priorities[i].priority_level+'">'+priorities[i].priority_level+'</option>')
+                        }
+
                         var blog_fields = json.Data.blog_field;
                         if (json.Data.blog_field.length > 0) {
                             $('#containner-blog-field').html('');
@@ -631,8 +637,8 @@
                                     html_field += '<input type="text" id="' + blog_field.category_field_id + '" name="' + blog_field.field_id + '" class="form-control blog-value" value="" />';
                                     break;
                                 case 'image' :
-                                    html_field += '<a href="" id="a-' + blog_field.field_id + '" data-toggle="image" class="img-thumbnail"><img id="img-' + blog_field.field_id + '" style="max-height: 500px;" '
-                                        + ' src="<?= base_url() ?>assets\\images\\No-image-found.jpg" alt="" title="" data-placeholder="รูปสินค้า"/></a>'
+                                    html_field += '<a href="#" id="a-' + blog_field.field_id + '" data-toggle="image" class="img-thumbnail"><img id="img-' + blog_field.field_id + '" style="max-height: 500px;" '
+                                        + ' src="<?= base_url() ?>assets/img/No-image-found.jpg" alt="" title="" data-placeholder="รูปสินค้า"/></a>'
                                         + ' <input type="file" name="' + blog_field.field_id + '" class="img-input btn btn-warning blog-value" id="' + blog_field.category_field_id + '"/>';
                                     break;
                             }

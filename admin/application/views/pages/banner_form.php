@@ -56,8 +56,15 @@
 
                                 <div class="col-md-9 col-xs-9">
                                     <div class="">
-                                        <a href="" id="a-test" data-toggle="image" class="img-thumbnail">
-                                            <img id="img-banner_image" style="max-width: 500px;" src="<?php echo base_url().$banner_image; ?>" alt="" title="" data-placeholder="รูปสินค้า">
+                                        <a href="#" id="a-test" data-toggle="image" class="img-thumbnail">
+                                            <img id="img-banner_image" style="max-width: 500px;" src="<?php
+                                            if($banner_image){
+                                                echo base_url().$banner_image;
+                                            }else{
+                                                echo base_url().'assets/img/No-image-found.jpg';
+                                            }
+
+                                            ?>" alt="" title="" data-placeholder="รูปสินค้า">
                                         </a>
 
                                         <input type="file" name="banner_image" class="img-input" value="0" id="input-image"/>

@@ -15,7 +15,6 @@
 
     <section class="content">
 
-
         <div class="row">
             <!-- left column -->
             <div class="col-md-12">
@@ -61,17 +60,29 @@
                         </div>
                 </div>
 
-
                 <div class="box box-primary" id="frontend-form">
                     <div class="box-header with-border">
                         <h3 class="box-title">ข้อมูล Frontend Setting</h3>
                     </div>
 
-
                     <!-- Fronted Setting Form-->
                     <div class="box-body">
                         <div class="row">
 
+                            <div class="form-group required col-md-12 col-xs-12">
+                                <div class="col-md-2 col-xs-2" align="right">
+                                    <label class=" control-label" for="input-config-webname">Web Name</label>
+                                </div>
+                                <div class="col-md-9 col-xs-9">
+                                    <div class="">
+                                        <input type="text" name="config_webname"
+                                               value="<?php echo $config_webname; ?>"
+                                               placeholder="" id="input-config-webname"
+                                               class="form-control"/>
+                                    </div>
+                                    <div class="text-danger"></div>
+                                </div>
+                            </div>
 
                             <div class="form-group required col-md-12 col-xs-12">
                                 <div class="col-md-2 col-xs-2" align="right">
@@ -182,118 +193,6 @@
                                 </div>
                             </div>
 
-                            <div class="form-group required col-md-12 col-xs-12">
-                                <div class="col-md-2 col-xs-2" align="right">
-                                    <label class=" control-label"
-                                           for="input-line-id">Line ID</label>
-                                </div>
-                                <div class="col-md-9 col-xs-9">
-                                    <div class="">
-                                        <input type="text" name="line_id"
-                                               value="<?php echo $line_id; ?>"
-                                               placeholder="" id="input-line-id"
-                                               class="form-control"/>
-                                    </div>
-                                    <div class="text-danger"></div>
-                                </div>
-                            </div>
-
-                            <div class="form-group required col-md-12 col-xs-12">
-                                <div class="col-md-2 col-xs-2" align="right">
-                                    <label class=" control-label"
-                                           for="input-telephone">Telephone Number</label>
-                                </div>
-                                <div class="col-md-9 col-xs-9">
-                                    <div class="">
-                                        <input type="text" name="telephone"
-                                               value="<?php echo $telephone; ?>"
-                                               placeholder="" id="input-telephone"
-                                               class="form-control"/>
-                                    </div>
-                                    <div class="text-danger"></div>
-                                </div>
-                            </div>
-
-                            <div class="form-group required col-md-12 col-xs-12">
-                                <div class="col-md-2 col-xs-2" align="right">
-                                    <label class=" control-label"
-                                           for="input-facebook">Facebook</label>
-                                </div>
-                                <div class="col-md-9 col-xs-9">
-                                    <div class="">
-                                        <input type="text" name="facebook"
-                                               value="<?php echo $facebook; ?>"
-                                               placeholder="" id="input-facebook"
-                                               class="form-control"/>
-                                    </div>
-                                    <div class="text-danger"></div>
-                                </div>
-                            </div>
-
-                            <div class="form-group required col-md-12 col-xs-12">
-                                <div class="col-md-2 col-xs-2" align="right">
-                                    <label class=" control-label"
-                                           for="input-google">Google Plus</label>
-                                </div>
-                                <div class="col-md-9 col-xs-9">
-                                    <div class="">
-                                        <input type="text" name="googleplus"
-                                               value="<?php echo $googleplus; ?>"
-                                               placeholder="" id="input-google"
-                                               class="form-control"/>
-                                    </div>
-                                    <div class="text-danger"></div>
-                                </div>
-                            </div>
-
-                            <div class="form-group required col-md-12 col-xs-12">
-                                <div class="col-md-2 col-xs-2" align="right">
-                                    <label class=" control-label"
-                                           for="input-instagram">Instagram</label>
-                                </div>
-                                <div class="col-md-9 col-xs-9">
-                                    <div class="">
-                                        <input type="text" name="instagram"
-                                               value="<?php echo $instagram; ?>"
-                                               placeholder="" id="input-instagram"
-                                               class="form-control"/>
-                                    </div>
-                                    <div class="text-danger"></div>
-                                </div>
-                            </div>
-
-                            <div class="form-group required col-md-12 col-xs-12">
-                                <div class="col-md-2 col-xs-2" align="right">
-                                    <label class=" control-label"
-                                           for="input-youtube">Youtube</label>
-                                </div>
-                                <div class="col-md-9 col-xs-9">
-                                    <div class="">
-                                        <input type="text" name="youtube"
-                                               value="<?php echo $youtube; ?>"
-                                               placeholder="" id="input-youtube"
-                                               class="form-control"/>
-                                    </div>
-                                    <div class="text-danger"></div>
-                                </div>
-                            </div>
-
-                            <div class="form-group required col-md-12 col-xs-12">
-                                <div class="col-md-2 col-xs-2" align="right">
-                                    <label class=" control-label"
-                                           for="input-twitter">Twitter</label>
-                                </div>
-                                <div class="col-md-9 col-xs-9">
-                                    <div class="">
-                                        <input type="text" name="twitter"
-                                               value="<?php echo $twitter; ?>"
-                                               placeholder="" id="input-twitter"
-                                               class="form-control"/>
-                                    </div>
-                                    <div class="text-danger"></div>
-                                </div>
-                            </div>
-
                             <div class="form-group col-md-10" style="text-align: center;">
                                 <br>
                                 <div class="">
@@ -308,7 +207,6 @@
                     </div>
                 </div>
 
-
                 <!-- Contact Setting Form-->
                 <div class="box box-primary" id="contact-form">
                     <div class="box-header with-border">
@@ -318,7 +216,6 @@
 
                         <script src="<?= base_url(); ?>assets/ckeditor/ckeditor.js"></script>
                         <div class="row">
-
 
                             <div class="form-group required col-md-12 col-xs-12">
                                 <div class="col-md-2 col-xs-2" align="right">
@@ -362,6 +259,21 @@
 
                             </div>
 
+                            <div class="form-group required col-md-12 col-xs-12">
+                                <div class="col-md-2 col-xs-2" align="right">
+                                    <label class=" control-label"
+                                           for="input-telephone">Telephone Number</label>
+                                </div>
+                                <div class="col-md-9 col-xs-9">
+                                    <div class="">
+                                        <input type="text" name="telephone"
+                                               value="<?php echo $telephone; ?>"
+                                               placeholder="" id="input-telephone"
+                                               class="form-control"/>
+                                    </div>
+                                    <div class="text-danger"></div>
+                                </div>
+                            </div>
 
                             <div class="form-group required col-md-12 col-xs-12">
                                 <div class="col-md-2 col-xs-2" align="right">
@@ -386,7 +298,7 @@
                                 </div>
                                 <div class="col-md-9 col-xs-9">
                                     <div class="">
-                                        <input type="text" name="line-id"
+                                        <input type="text" name="line_id"
                                                value="<?php echo $line_id; ?>"
                                                placeholder="" id="input-line-id"
                                                class="form-control"/>
@@ -402,7 +314,7 @@
                                 </div>
                                 <div class="col-md-9 col-xs-9">
                                     <div class="">
-                                        <input type="text" name="face-book"
+                                        <input type="text" name="facebook"
                                                value="<?php echo $facebook; ?>"
                                                placeholder="" id="input-facebook"
                                                class="form-control"/>
@@ -418,9 +330,25 @@
                                 </div>
                                 <div class="col-md-9 col-xs-9">
                                     <div class="">
-                                        <input type="text" name="ins-tagram"
+                                        <input type="text" name="instagram"
                                                value="<?php echo $instagram; ?>"
                                                placeholder="" id="input-ins-tagram"
+                                               class="form-control"/>
+                                    </div>
+                                    <div class="text-danger"></div>
+                                </div>
+                            </div>
+
+                            <div class="form-group required col-md-12 col-xs-12">
+                                <div class="col-md-2 col-xs-2" align="right">
+                                    <label class=" control-label"
+                                           for="input-twitter">Twitter</label>
+                                </div>
+                                <div class="col-md-9 col-xs-9">
+                                    <div class="">
+                                        <input type="text" name="twitter"
+                                               value="<?php echo $twitter; ?>"
+                                               placeholder="" id="input-twitter"
                                                class="form-control"/>
                                     </div>
                                     <div class="text-danger"></div>
@@ -434,7 +362,7 @@
                                 </div>
                                 <div class="col-md-9 col-xs-9">
                                     <div class="">
-                                        <input type="text" name="google-plus"
+                                        <input type="text" name="googleplus"
                                                value="<?php echo $googleplus; ?>"
                                                placeholder="" id="input-google-plus"
                                                class="form-control"/>
@@ -450,7 +378,7 @@
                                 </div>
                                 <div class="col-md-9 col-xs-9">
                                     <div class="">
-                                        <input type="text" name="you-tube"
+                                        <input type="text" name="youtube"
                                                value="<?php echo $youtube; ?>"
                                                placeholder="" id="input-you-tube"
                                                class="form-control"/>
@@ -474,21 +402,6 @@
                     </div>
                 </div>
 
-                <!-- Contact Setting Form-->
-
-                <!--<div class="box box-primary" id="contact-form">
-
-                    <div class="box-body">
-                        <div class="form-group col-md-10" style="text-align: center;">
-                            <br>
-                            <div class="">
-                                <button type="button" id="button-save" class="btn btn-primary" name="button-save"> บันทึก </button>
-                                <button type="reset" id="btn-reset" class="btn btn-default">ยกเลิก</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>-->
-
                 </form>
                 <!--/.col (left) -->
             </div>
@@ -509,10 +422,10 @@
             </div>
             <!-- /.row -->
         </div>
+
     </section>
 
 </div>
-
 
 <script type="text/javascript">
 
@@ -547,7 +460,7 @@
                 console.log(json);
                 if (json.Result) {
 
-                    alert(json.Data.config_id=1);
+//                    alert(json.Data.config_id=1);
                     console.log(json);
                     upload_favicon(json.Data.config_id=1);
 
@@ -590,7 +503,7 @@
                 console.log(json);
                 if (json.Result) {
 
-                    alert(json.Data.config_id=2);
+//                    alert(json.Data.config_id=2);
                     console.log(json);
 
                     upload_Contact_Image(json.Data.config_id=2);
@@ -763,73 +676,96 @@
     function upload_Contact_Image(config_id) {
 
 
-        var data = new FormData();
-        jQuery.each(jQuery('#input-image')[0].files, function (i, file) {
-            data.append('image', file);
-        });
+        var check_value = $('#input-image').val();
+        if (check_value) {
 
-        data.append('config_id', config_id);
+            var data = new FormData();
+            jQuery.each(jQuery('#input-image')[0].files, function (i, file) {
+                data.append('image', file);
+            });
 
-        console.log(data);
-        jQuery.ajax({
-            url: '<?php echo base_url(); ?>config/upload_Contact_Image',
-            data: data,
-            cache: false,
-            contentType: false,
-            processData: false,
-            type: 'POST',
-            success: function (data) {
-                console.log(data);
-            }
-        });
+            data.append('config_id', config_id);
+
+            console.log(data);
+            jQuery.ajax({
+                url: '<?php echo base_url(); ?>config/upload_Contact_Image',
+                data: data,
+                cache: false,
+                contentType: false,
+                processData: false,
+                type: 'POST',
+                success: function (data) {
+                    console.log(data);
+                }
+            });
+
+        } else {
+            console.log('New Image is empty.')
+        }
+
+
     }
 
     function upload_favicon(config_id) {
 
-        var data = new FormData();
-        jQuery.each(jQuery('#input-favicon-image')[0].files, function (i, file) {
-            data.append('image', file);
-        });
+        var check_value = $('#input-favicon-image').val();
+        if (check_value) {
 
-        data.append('config_id', config_id);
+            var data = new FormData();
+            jQuery.each(jQuery('#input-favicon-image')[0].files, function (i, file) {
+                data.append('image', file);
+            });
 
-        console.log(data);
-        jQuery.ajax({
-            url: '<?php echo base_url(); ?>config/upload_favicon',
-            data: data,
-            cache: false,
-            contentType: false,
-            processData: false,
-            type: 'POST',
-            success: function (data) {
-                //console.log('upload_favicon');
-                console.log(data);
-            }
-        });
+            data.append('config_id', config_id);
+
+            console.log(data);
+            jQuery.ajax({
+                url: '<?php echo base_url(); ?>config/upload_favicon',
+                data: data,
+                cache: false,
+                contentType: false,
+                processData: false,
+                type: 'POST',
+                success: function (data) {
+                    //console.log('upload_favicon');
+                    console.log(data);
+                }
+            });
+
+        } else {
+            console.log('New Image is empty.')
+        }
     }
 
     function upload_logo(config_id) {
 
+        var check_value = $('#input-logo-image').val();
+        if (check_value) {
 
-        var data = new FormData();
-        jQuery.each(jQuery('#input-logo-image')[0].files, function (i, file) {
-            data.append('image', file);
-        });
+            var data = new FormData();
+            jQuery.each(jQuery('#input-logo-image')[0].files, function (i, file) {
+                data.append('image', file);
+            });
 
-        data.append('config_id', config_id);
+            data.append('config_id', config_id);
 
-        console.log(data);
-        jQuery.ajax({
-            url: '<?php echo base_url(); ?>config/upload_logo',
-            data: data,
-            cache: false,
-            contentType: false,
-            processData: false,
-            type: 'POST',
-            success: function (data) {
-                console.log('upload_logo');
-                console.log(data);
-            }
-        });
+            console.log(data);
+            jQuery.ajax({
+                url: '<?php echo base_url(); ?>config/upload_logo',
+                data: data,
+                cache: false,
+                contentType: false,
+                processData: false,
+                type: 'POST',
+                success: function (data) {
+                    console.log('upload_logo');
+                    console.log(data);
+                }
+            });
+
+        } else {
+            console.log('New Image is empty.')
+        }
+
     }
 </script>

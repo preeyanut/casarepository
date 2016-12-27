@@ -4,9 +4,6 @@ class Config_model extends CI_Model
 {
     public function get_all()
     {
-//        $query = $this->db->query("SELECT * FROM config_webpage");
-//        return $query->result_array();
-
         $this->db->select('*');
         $this->db->from('config_webpage');
         $query = $this->db->get();
@@ -16,9 +13,6 @@ class Config_model extends CI_Model
 
     public function get_data($id)
     {
-//        $query = $this->db->query("SELECT * FROM config_webpage WHERE config_id = " . $id);
-//        return $query->row_array();
-
         $this->db->select('*');
         $this->db->from('config_webpage');
         $this->db->where('config_id', $id);
@@ -29,8 +23,6 @@ class Config_model extends CI_Model
 
     public function get_data_contact($id)
     {
-//        $query = $this->db->query("SELECT * FROM config_webpage WHERE config_id = " . $id);
-//        return $query->row_array();
 
         $this->db->select('*');
         $this->db->from('config_webpage');
@@ -41,87 +33,20 @@ class Config_model extends CI_Model
 
     }
 
-
-    //public function add_frontend_setting($data){
-
-
-    //$this->load->library('encrypt');
-
-    //$data_array = array(
-
-    //'config_group_id' => (int)$data['config_group_id'],
-    //'config_title' => $data['config_title'],
-    //'meta_keyword' => $data['meta_keyword'],
-    //'meta_description' => $data['meta_description'],
-    //'login_link' => $data['login_link'],
-    //'line_id' => $data['line_id'],
-    //'telephone' => $data['telephone'],
-    //'facebook' => $data['facebook'],
-    //'googleplus' => $data['googleplus'],
-    //'instagram' => $data['instagram'],
-    //'youtube' => $data['youtube'],
-    //'twitter' => $data['twitter'],
-
-
-    //'create_date' => date("Y-m-d H:i:s"),
-    //'create_by' => $this->session->userdata("user_id"),
-    //'update_date' => date("Y-m-d H:i:s"),
-    //'update_by' => $this->session->userdata("user_id")
-    //);
-
-    //$this->db->insert('config_webpage', $data_array);
-    //$insert_id = $this->db->insert_id();
-
-    //return $insert_id;
-    //}
-
     public function add_frontend_setting($data)
     {
         $this->load->library('encrypt');
 
-//        $result = $this->db->query("UPDATE `" . "" . "config_webpage` SET "
-//            . " config_group_id = '" . $data['config_group_id'] . "'"
-//            . ", config_title = '" . $data['config_title'] . "'"
-//            . ", frontend_image = '" . $data['frontend_image'] . "'"
-//            . ", logo_image = '" . $data['logo_image'] . "'"
-//            . ", meta_keyword = '" . $data['meta_keyword'] . "'"
-//            . ", meta_description = '" . $data['meta_description'] . "'"
-//            . ", login_link = '" . $data['login_link'] . "'"
-//            . ", line_id = '" . $data['line_id'] . "'"
-
-//            . ", telephone = '" . $data['telephone'] . "'"
-//            . ", facebook = '" . $data['facebook'] . "'"
-//            . ", googleplus = '" . $data['googleplus'] . "'"
-//            . ", instagram = '" . $data['instagram'] . "'"
-//            . ", youtube = '" . $data['youtube'] . "'"
-//            . ", twitter = '" . $data['twitter'] . "'"
-//
-//            . ", create_date = '" . date("Y-m-d H:i:s") . "'"
-//            . ", create_by = '" . $this->session->userdata("user_id") . "'"
-//            . ", update_date = '" . date("Y-m-d H:i:s") . "'"
-//            . ", update_by = '" . $this->session->userdata("user_id") . "'"
-//            . " WHERE  config_id = 1");
-//
-//        return $result;
-
         $data_array = array(
             'config_group_id' => (int)$data['config_group_id'],
+            'config_webname' => $data['config_webname'],
             'config_title' => $data['config_title'],
-            'frontend_image' => $data['frontend_image'],
-            'logo_image' => $data['logo_image'],
+//            'frontend_image' => $data['frontend_image'],
+//            'logo_image' => $data['logo_image'],
             'meta_keyword' => $data['meta_keyword'],
             'meta_description' => $data['meta_description'],
             'login_link' => $data['login_link'],
-            'line_id' => $data['line_id'],
-            'telephone' => $data['telephone'],
-            'facebook' => $data['facebook'],
-            'googleplus' => $data['googleplus'],
-            'instagram' => $data['instagram'],
-            'youtube' => $data['youtube'],
-            'twitter' => $data['twitter'],
 
-            'create_date' => date("Y-m-d H:i:s"),
-            'create_by' => $this->session->userdata("user_id"),
             'update_date' => date("Y-m-d H:i:s"),
             'update_by' => $this->session->userdata("user_id"),
 
@@ -136,65 +61,16 @@ class Config_model extends CI_Model
         return $result;
     }
 
-
-//    public function add_contact_setting($data){
-//
-//
-//        $this->load->library('encrypt');
-//
-//        $data_array = array(
-//
-//            'config_group_id' => (int)$data['config_group_id'],
-//            'config_content' => $data['config_content'],
-//            'email' => $data['email'],
-//            'line_id' => $data['line-id'],
-//            'facebook' => $data['face-book'],
-//            'googleplus' => $data['google-plus'],
-//            'instagram' => $data['ins-tagram'],
-//            'youtube' => $data['you-tube'],
-//
-//            'create_date' => date("Y-m-d H:i:s"),
-//            'create_by' => $this->session->userdata("user_id"),
-//            'update_date' => date("Y-m-d H:i:s"),
-//            'update_by' => $this->session->userdata("user_id")
-//        );
-//
-//        $this->db->insert('config_webpage', $data_array);
-//        $insert_id = $this->db->insert_id();
-//
-//        return $insert_id;
-//    }
-
-
     public function add_contact_setting($data)
     {
         $this->load->library('encrypt');
 
-//        $result = $this->db->query("UPDATE `" . "" . "config_webpage` SET "
-//            . " config_group_id = '" . $data['config_group_id'] . "'"
-//            . ", config_content = '" . $data['config_content'] . "'"
-//            . ", contact_image = '" . $data['contact_image'] . "'"
-//            . ", email = '" . $data['email'] . "'"
-//            . ", line_id = '" . $data['line_id'] . "'"
-//            . ", facebook = '" . $data['facebook'] . "'"
-//            . ", instagram = '" . $data['instagram'] . "'"
-//            . ", googleplus = '" . $data['googleplus'] . "'"
-//            . ", youtube = '" . $data['youtube'] . "'"
-//
-//
-//            . ", create_date = '" . date("Y-m-d H:i:s") . "'"
-//            . ", create_by = '" . $this->session->userdata("user_id") . "'"
-//            . ", update_date = '" . date("Y-m-d H:i:s") . "'"
-//            . ", update_by = '" . $this->session->userdata("user_id") . "'"
-//            . " WHERE  config_id = 2");
-//
-//        return $result;
-
         $data_array = array(
             'config_group_id' => (int)$data['config_group_id'],
             'config_content' => $data['config_content'],
-            'contact_image' => $data['contact_image'],
+//            'contact_image' => $data['contact_image'],
 
+            'telephone' => $data['telephone'],
             'email' => $data['email'],
             'line_id' => $data['line_id'],
             'facebook' => $data['facebook'],
@@ -202,18 +78,16 @@ class Config_model extends CI_Model
             'instagram' => $data['instagram'],
             'youtube' => $data['youtube'],
 
-            'create_date' => date("Y-m-d H:i:s"),
-            'create_by' => $this->session->userdata("user_id"),
             'update_date' => date("Y-m-d H:i:s"),
             'update_by' => $this->session->userdata("user_id"),
 
         );
 
-        $this->db->where('config_id', 2);
+        $this->db->where('config_id', 1);
         $result = $this->db->update('config_webpage', $data_array);
 
         $sql_data = json_encode($data_array);
-        $this->add_log('edit', 'config_webpage', 2, $sql_data);
+        $this->add_log('edit', 'config_webpage', 1, $sql_data);
 
         return $result;
     }

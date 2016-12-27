@@ -358,6 +358,10 @@
     .float-none {
         float: none !important;
     }
+    .product_type_simple{
+        color: #ecd542;
+        font-size: 25px;
+    }
 </style>
 <!--<link rel='stylesheet' id='alpha-store-stylesheet-css'  href='--><? //= base_url();?><!--assets/css/style.css?ver=1.2.5' type='text/css' media='all' />-->
 <link rel='stylesheet' id='flexslider-css' href='<?= base_url(); ?>assets/css/flexslider.css?ver=2.6.3' type='text/css'
@@ -462,9 +466,7 @@
                                             <!--                                        </div>-->
                                         </div>
                                         <div class="carousel-heading-hover">
-                                            <div class="top-carousel-title-hover"><a
-                                                    href="<?= $blog_url; ?>"
-                                                    title="<?= $blog_title; ?>"><?= $blog_title; ?></a></div>
+                                            <div class="top-carousel-title-hover"><?= $blog_title; ?></div>
                                             <div class="top-carousel-excerpt">
                                             </div>
                                             <div class="price-hover">
@@ -502,7 +504,7 @@
             </div>
 
             <div class="row-body-top row margin-0">
-                <div class="col-sm-3 register-guild " style="padding: 20px">
+                <div class="col-sm-3 register-guild " style="padding: 20px; color: #4b2113;">
                     <p style="    font-size: 23px; font-weight: 500; text-decoration: underline;">ขั้นตอนการสมัคร</p>
 
                     <p>1.สมัครผ่านหน้าเว็บไซต์ หรือ แอดไลน์ @casa98th</p>
