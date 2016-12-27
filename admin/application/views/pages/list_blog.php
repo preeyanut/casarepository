@@ -67,7 +67,7 @@
 
                                 <div class="col-md-4 col-xs-6" style="float: left;">
                                     <label class="col-sm-3 col-xs-3 control-label" for="input-search"
-                                           style="float: left">ประเถท </label>
+                                           style="float: left">ประเภท </label>
 
                                     <div class="col-md-9 col-xs-9">
                                         <select id="filter-category" name="table_summay_master_length"

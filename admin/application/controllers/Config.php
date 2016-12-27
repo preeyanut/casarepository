@@ -54,12 +54,8 @@ class Config extends CI_Controller
             $data['youtube'] = $data_info['youtube'];
             $data['twitter'] = $data_info['twitter'];
 
-
-
-
-
-            $data['create_date'] = date("Y-m-d H:i:s");
-            $data['create_by'] = $this->session->userdata("user_id");
+            $data['create_date'] = $data_info['create_date'];
+            $data['create_by'] = $data_info['create_by'];
 
             $data['config_group'] = $data_config_group;
             $data["action"] = base_url() . "config/add_frontend_setting";
@@ -68,7 +64,6 @@ class Config extends CI_Controller
         $data['config_content'] = $data_info_contact['config_content'];
         $data['contact_image'] = $data_info_contact['contact_image'];
         $data['email'] = $data_info_contact['email'];
-
 
         $data["action"] = base_url() . "config/add_contact_setting";
 //        }
@@ -221,8 +216,8 @@ class Config extends CI_Controller
         }
 
         if ($status != "error") {
-            $image_directory = 'assets\\img\\config\\' . $_POST['config_id'];
-            $image_path = 'assets\\img\\config\\' . $_POST['config_id'] . '\\' . $_FILES['image']['name'];
+            $image_directory = 'assets/img/config/' . $_POST['config_id'];
+            $image_path = 'assets/img/config/' . $_POST['config_id'] . '/' . $_FILES['image']['name'];
 
             $config['upload_path'] = $image_directory;
             $config['allowed_types'] = 'gif|jpg|png|jpeg';
@@ -282,8 +277,8 @@ class Config extends CI_Controller
         if ($status != "error") {
 
             echo "-----";
-            $image_directory = 'assets\\img\\config\\' . $_POST['config_id'];
-            $image_path = 'assets\\img\\config\\' . $_POST['config_id'] . '\\' . $_FILES['image']['name'];
+            $image_directory = 'assets/img/config/' . $_POST['config_id'];
+            $image_path = 'assets/img/config/' . $_POST['config_id'] . '/' . $_FILES['image']['name'];
 
             $config['upload_path'] = $image_directory;
             $config['allowed_types'] = 'gif|jpg|png|jpeg';
@@ -323,6 +318,7 @@ class Config extends CI_Controller
 
     public function upload_logo()
     {
+
 //        echo var_dump($_FILES['image']);
         $status = "";
         $msg = "";
@@ -337,8 +333,8 @@ class Config extends CI_Controller
         }
 
         if ($status != "error") {
-            $image_directory = 'assets\\img\\config\\' . $_POST['config_id'];
-            $image_path = 'assets\\img\\config\\' . $_POST['config_id'] . '\\' . $_FILES['image']['name'];
+            $image_directory = 'assets/img/config/' . $_POST['config_id'];
+            $image_path = 'assets/img/config/' . $_POST['config_id'] . '/' . $_FILES['image']['name'];
 
             $config['upload_path'] = $image_directory;
             $config['allowed_types'] = 'gif|jpg|png|jpeg';
