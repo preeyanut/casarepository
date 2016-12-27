@@ -19,18 +19,19 @@ class Home extends CI_Controller
 
         $data_banners = $this->Home_model->get_banners();
 //        var_dump($data_banners);
-        foreach($news as $item){
+        if($news){
+            foreach($news as $item){
 
-            $news_info=  $this->Home_model->get_news_field($item['blog_id']);
+                $news_info=  $this->Home_model->get_news_field($item['blog_id']);
 
-            $data_news[] = array(
-                'blog_id' => $item['blog_id']
-              ,'blog_title' => $item['blog_title']
-              ,'news_info' => $news_info
-            );
-
+                $data_news[] = array(
+                    'blog_id' => $item['blog_id']
+                    ,'blog_title' => $item['blog_title']
+                    ,'news_info' => $news_info
+                );
+            }
+            $data['news'] = $data_news;
         }
-        $data['news'] = $data_news;
 
         $data['home_banners'] = $data_banners;
 

@@ -378,26 +378,31 @@
                         <div class="w3-content w3-section banner-slide div-banner-slide">
 
                             <?php
-                            $count =0;
-                            foreach($home_banners as $item){
-                                ?>
-                                <div class="home-banner-item ">
-                                    <a class="hidden-xs mySlides-btn btn-banner-register"
-                                       href="<?= base_url(); ?>">
-                                        <img id="btn-register-<?=$count ?>"
-                                             src="<?= base_url(); ?>assets/images/btn-register.png"
-                                             alt="ลงทะเบียนเล่น Casa98" class="img-btn-register" style="display: none;">
-                                    </a>
-                                    <a href="<?= base_url(); ?>">
-                                        <img id="img-slide-<?=$count ?>"
-                                             src="<?= base_url().'admin/'.$item['banner_image'] ?>"
-                                             class="img-responsive mySlides "
-                                             alt="เว็บตรง สู่ Casa98 บอลออนไลน์ ราคาบอล ดีที่สุด" style="display: none;">
-                                    </a>
-                                </div>
+                            $count = 0;
+                            if ($home_banners) {
+                                foreach ($home_banners as $item) {
+                                    ?>
+                                    <div class="home-banner-item ">
+                                        <a class="hidden-xs mySlides-btn btn-banner-register"
+                                           href="<?= base_url(); ?>">
+                                            <img id="btn-register-<?= $count ?>"
+                                                 src="<?= base_url(); ?>assets/images/btn-register.png"
+                                                 alt="ลงทะเบียนเล่น Casa98" class="img-btn-register"
+                                                 style="display: none;">
+                                        </a>
+                                        <a href="<?= base_url(); ?>">
+                                            <img id="img-slide-<?= $count ?>"
+                                                 src="<?= base_url() . 'admin/' . $item['banner_image'] ?>"
+                                                 class="img-responsive mySlides "
+                                                 alt="เว็บตรง สู่ Casa98 บอลออนไลน์ ราคาบอล ดีที่สุด"
+                                                 style="display: none;">
+                                        </a>
+                                    </div>
 
-                                <?php
-                                $count++;
+                                    <?php
+                                    $count++;
+                                }
+
                             } ?>
 
                         </div>
@@ -407,7 +412,8 @@
         </div>
     </div>
 
-    <div class="col-xs-12  float-none" style="background: url(assets/images/bggold3.png) center repeat;padding-bottom: 10px;padding-top: 10px;">
+    <div class="col-xs-12  float-none"
+         style="background: url(assets/images/bggold3.png) center repeat;padding-bottom: 10px;padding-top: 10px;">
 
         <div class="top-area container-fluid">
             <div id="carousel-home" class="flexslider woocommerce">
@@ -417,57 +423,61 @@
                         style="width: 1000%; transition-duration: 0s; transform: translate3d(0px, 0px, 0px);">
 
                         <?php
-                        $count = 1;
-                        foreach ($news as $items) {
 
-                            $meta_keyword = 'การพนันออนไลน์';
+                        if (isset($news)) {
+                            $count = 1;
+                            foreach ($news as $items) {
 
-                            $blog_id = $items['blog_id'];
-                            $blog_url = base_url() . 'blog?blog_id=' . $items['blog_id'];
-                            $blog_title = $items['blog_title'];
+                                $meta_keyword = 'การพนันออนไลน์';
 
-                            foreach ($items['news_info'] as $item) {
-                                if ($item['field_type'] === 'date' && $item['field_id'] === 'date-shower') {
-                                    $date_shower = $item['blog_value'];
+                                $blog_id = $items['blog_id'];
+                                $blog_url = base_url() . 'blog?blog_id=' . $items['blog_id'];
+                                $blog_title = $items['blog_title'];
+
+                                foreach ($items['news_info'] as $item) {
+                                    if ($item['field_type'] === 'date' && $item['field_id'] === 'date-shower') {
+                                        $date_shower = $item['blog_value'];
+                                    }
+                                    if ($item['field_type'] === 'image' && $item['field_id'] === 'image') {
+                                        $image = base_url() . 'admin/' . $item['blog_value'];
+                                    }
                                 }
-                                if ($item['field_type'] === 'image' && $item['field_id'] === 'image') {
-                                    $image = base_url() . 'admin/' . $item['blog_value'];
-                                }
-                            }
-                            ?>
-                            <li class="carousel-item c-item-<?= $count; ?> id-<?= $blog_id; ?>"
-                                style="width: 100%; margin-right: 40px; float: left; display: block;">
-                                <div class="flex-img">
-                                    <div class="top-carousel-img">
-                                        <img
-                                             width="270" height="423"
-                                             src="<?= $image ?>"
-                                             class="attachment-alpha-store-carousel size-alpha-store-carousel wp-post-image"
-                                             alt="<?= $meta_keyword; ?>"
-                                             draggable="false"></div>
-                                    <div class="top-carousel-heading">
-                                        <div class="top-carousel-title">
-                                            <?= $blog_title; ?>
+                                ?>
+                                <li class="carousel-item c-item-<?= $count; ?> id-<?= $blog_id; ?>"
+                                    style="width: 100%; margin-right: 40px; float: left; display: block;">
+                                    <div class="flex-img">
+                                        <div class="top-carousel-img">
+                                            <img
+                                                width="270" height="423"
+                                                src="<?= $image ?>"
+                                                class="attachment-alpha-store-carousel size-alpha-store-carousel wp-post-image"
+                                                alt="<?= $meta_keyword; ?>"
+                                                draggable="false"></div>
+                                        <div class="top-carousel-heading">
+                                            <div class="top-carousel-title">
+                                                <?= $blog_title; ?>
+                                            </div>
+                                            <!--                                        <div class="price">-->
+                                            <!--                                            --><?//= $blog_title; ?>
+                                            <!--                                        </div>-->
                                         </div>
-                                        <!--                                        <div class="price">-->
-                                        <!--                                            --><?//= $blog_title; ?>
-                                        <!--                                        </div>-->
+                                        <div class="carousel-heading-hover">
+                                            <div class="top-carousel-title-hover"><a
+                                                    href="<?= $blog_url; ?>"
+                                                    title="<?= $blog_title; ?>"><?= $blog_title; ?></a></div>
+                                            <div class="top-carousel-excerpt">
+                                            </div>
+                                            <div class="price-hover">
+                                            </div>
+                                            <a rel="nofollow" href="<?= $blog_url; ?>"
+                                               data-quantity="1" data-product_id="<?= $blog_id; ?>" data-product_sku=""
+                                               class="button product_type_simple ajax_add_to_cart">อ่าน</a></div>
                                     </div>
-                                    <div class="carousel-heading-hover">
-                                        <div class="top-carousel-title-hover"><a
-                                                href="<?= $blog_url; ?>"
-                                                title="<?= $blog_title; ?>"><?= $blog_title; ?></a></div>
-                                        <div class="top-carousel-excerpt">
-                                        </div>
-                                        <div class="price-hover">
-                                        </div>
-                                        <a rel="nofollow" href="<?= $blog_url; ?>"
-                                           data-quantity="1" data-product_id="<?= $blog_id; ?>" data-product_sku=""
-                                           class="button product_type_simple ajax_add_to_cart">อ่าน</a></div>
-                                </div>
-                            </li>
-                            <?php
+                                </li>
+                                <?php
+                            }
                         }
+
                         ?>
 
                     </ul>
@@ -600,81 +610,84 @@
 
     </div>
 
-<!--    <div class="col-xs-12 padding-0 float-none">-->
-<!--        <h1>Body</h1>-->
-<!---->
-<!--        <div class="top-area container-fluid">-->
-<!--            <div id="carousel-home" class="flexslider woocommerce">-->
-<!---->
-<!--                <div class="flex-viewport" style="overflow: hidden; position: relative;">-->
-<!--                    <ul class="slides products"-->
-<!--                        style="width: 1000%; transition-duration: 0s; transform: translate3d(0px, 0px, 0px);">-->
-<!---->
-<!--                        --><?php
-//                        $count = 1;
-//                        foreach ($news as $items) {
-//
-//                            $meta_keyword = 'การพนันออนไลน์';
-//
-//                            $blog_id = $items['blog_id'];
-//                            $blog_url = base_url() . 'blog?blog_id=' . $items['blog_id'];
-//                            $blog_title = $items['blog_title'];
-//
-//                            foreach ($items['news_info'] as $item) {
-//                                if ($item['field_type'] === 'date' && $item['field_id'] === 'date-shower') {
-//                                    $date_shower = $item['blog_value'];
-//                                }
-//                                if ($item['field_type'] === 'image' && $item['field_id'] === 'image') {
-//                                    $image = base_url() . 'admin/' . $item['blog_value'];
-//                                }
-//                            }
-//                            ?>
-<!--                            <li class="carousel-item c-item---><?//= $count; ?><!-- id---><?//= $blog_id; ?><!--"-->
-<!--                                style="width: 100%; margin-right: 40px; float: left; display: block;">-->
-<!--                                <div class="flex-img">-->
-<!--                                    <div class="top-carousel-img">-->
-<!--                                        <img width="270" height="423"-->
-<!--                                             src="--><?//= $image ?><!--"-->
-<!--                                             class="attachment-alpha-store-carousel size-alpha-store-carousel wp-post-image"-->
-<!--                                             alt="--><?//= $meta_keyword; ?><!--"-->
-<!--                                             draggable="false"></div>-->
-<!--                                    <div class="top-carousel-heading">-->
-<!--                                        <div class="top-carousel-title">-->
-<!--                                            --><?//= $blog_title; ?>
-<!--                                        </div>-->
-<!--<!--                                        <div class="price">-->-->
-<!--<!--                                            -->--><?////= $blog_title; ?>
-<!--<!--                                        </div>-->-->
-<!--                                    </div>-->
-<!--                                    <div class="carousel-heading-hover">-->
-<!--                                        <div class="top-carousel-title-hover"><a-->
-<!--                                                href="--><?//= $blog_url; ?><!--"-->
-<!--                                                title="--><?//= $blog_title; ?><!--">--><?//= $blog_title; ?><!--</a></div>-->
-<!--                                        <div class="top-carousel-excerpt">-->
-<!--                                        </div>-->
-<!--                                        <div class="price-hover">-->
-<!--                                        </div>-->
-<!--                                        <a rel="nofollow" href="--><?//= $blog_url; ?><!--"-->
-<!--                                           data-quantity="1" data-product_id="--><?//= $blog_id; ?><!--" data-product_sku=""-->
-<!--                                           class="button product_type_simple ajax_add_to_cart">อ่าน</a></div>-->
-<!--                                </div>-->
-<!--                            </li>-->
-<!--                            --><?php
-//                        }
-//                        ?>
-<!---->
-<!--                    </ul>-->
-<!--                </div>-->
-<!--                <ul class="flex-direction-nav">-->
-<!--                    <li class="flex-nav-prev"><a class="flex-prev flex-disabled" href="#"-->
-<!--                                                 tabindex="-1">Previous</a></li>-->
-<!--                    <li class="flex-nav-next"><a class="flex-next flex-disabled" href="#" tabindex="-1">Next</a>-->
-<!--                    </li>-->
-<!--                </ul>-->
-<!--            </div>-->
-<!--        </div>-->
-<!---->
-<!--    </div>-->
+    <!--    <div class="col-xs-12 padding-0 float-none">-->
+    <!--        <h1>Body</h1>-->
+    <!---->
+    <!--        <div class="top-area container-fluid">-->
+    <!--            <div id="carousel-home" class="flexslider woocommerce">-->
+    <!---->
+    <!--                <div class="flex-viewport" style="overflow: hidden; position: relative;">-->
+    <!--                    <ul class="slides products"-->
+    <!--                        style="width: 1000%; transition-duration: 0s; transform: translate3d(0px, 0px, 0px);">-->
+    <!---->
+    <!--                        --><?php
+    //                        $count = 1;
+    //                        foreach ($news as $items) {
+    //
+    //                            $meta_keyword = 'การพนันออนไลน์';
+    //
+    //                            $blog_id = $items['blog_id'];
+    //                            $blog_url = base_url() . 'blog?blog_id=' . $items['blog_id'];
+    //                            $blog_title = $items['blog_title'];
+    //
+    //                            foreach ($items['news_info'] as $item) {
+    //                                if ($item['field_type'] === 'date' && $item['field_id'] === 'date-shower') {
+    //                                    $date_shower = $item['blog_value'];
+    //                                }
+    //                                if ($item['field_type'] === 'image' && $item['field_id'] === 'image') {
+    //                                    $image = base_url() . 'admin/' . $item['blog_value'];
+    //                                }
+    //                            }
+    //                            ?>
+    <!--                            <li class="carousel-item c-item---><? //= $count; ?><!-- id--->
+    <? //= $blog_id; ?><!--"-->
+    <!--                                style="width: 100%; margin-right: 40px; float: left; display: block;">-->
+    <!--                                <div class="flex-img">-->
+    <!--                                    <div class="top-carousel-img">-->
+    <!--                                        <img width="270" height="423"-->
+    <!--                                             src="--><? //= $image ?><!--"-->
+    <!--                                             class="attachment-alpha-store-carousel size-alpha-store-carousel wp-post-image"-->
+    <!--                                             alt="--><? //= $meta_keyword; ?><!--"-->
+    <!--                                             draggable="false"></div>-->
+    <!--                                    <div class="top-carousel-heading">-->
+    <!--                                        <div class="top-carousel-title">-->
+    <!--                                            --><? //= $blog_title; ?>
+    <!--                                        </div>-->
+    <!--<!--                                        <div class="price">-->-->
+    <!--<!--                                            -->--><? ////= $blog_title; ?>
+    <!--<!--                                        </div>-->-->
+    <!--                                    </div>-->
+    <!--                                    <div class="carousel-heading-hover">-->
+    <!--                                        <div class="top-carousel-title-hover"><a-->
+    <!--                                                href="--><? //= $blog_url; ?><!--"-->
+    <!--                                                title="--><? //= $blog_title; ?><!--">-->
+    <? //= $blog_title; ?><!--</a></div>-->
+    <!--                                        <div class="top-carousel-excerpt">-->
+    <!--                                        </div>-->
+    <!--                                        <div class="price-hover">-->
+    <!--                                        </div>-->
+    <!--                                        <a rel="nofollow" href="--><? //= $blog_url; ?><!--"-->
+    <!--                                           data-quantity="1" data-product_id="-->
+    <? //= $blog_id; ?><!--" data-product_sku=""-->
+    <!--                                           class="button product_type_simple ajax_add_to_cart">อ่าน</a></div>-->
+    <!--                                </div>-->
+    <!--                            </li>-->
+    <!--                            --><?php
+    //                        }
+    //                        ?>
+    <!---->
+    <!--                    </ul>-->
+    <!--                </div>-->
+    <!--                <ul class="flex-direction-nav">-->
+    <!--                    <li class="flex-nav-prev"><a class="flex-prev flex-disabled" href="#"-->
+    <!--                                                 tabindex="-1">Previous</a></li>-->
+    <!--                    <li class="flex-nav-next"><a class="flex-next flex-disabled" href="#" tabindex="-1">Next</a>-->
+    <!--                    </li>-->
+    <!--                </ul>-->
+    <!--            </div>-->
+    <!--        </div>-->
+    <!---->
+    <!--    </div>-->
 
 </div>
 
