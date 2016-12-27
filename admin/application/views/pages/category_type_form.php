@@ -450,7 +450,7 @@
                 console.log(json);
                 if (json.Result) {
                     alert("เพิ่มข้อมูลเสร็จสิ้น");
-//                    clear_input_blank();
+                    clear_input_blank();
                 } else {
                     alert("เพิ่มข้อมูลผิดพลาด");
                 }
@@ -518,6 +518,7 @@
         $('#input-type-name').val('');
         $('#input-status').val('0');
         $('.div-field-type').remove();
+        $('#count-field').val('0');
     }
 
 </script>

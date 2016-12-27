@@ -329,8 +329,8 @@ class Customer extends CI_Controller
 
         if ($status != "error") {
             //$config['upload_path'] = 'assets\img\\'.$image_name.'\\';
-            $config['upload_path'] = 'assets\\\\img\\\\user';
-            $image_url = 'assets\\\\img\\\\user';
+            $config['upload_path'] = 'assets/img/user';
+            $image_url = 'assets/img/user';
             $config['allowed_types'] = 'gif|jpg|png';
             $config['max_size'] = 1024 * 8;
             $config['encrypt_name'] = TRUE;
@@ -345,7 +345,7 @@ class Customer extends CI_Controller
                 $data = $this->upload->data();
                 //$image_url
                 //$file_id = $this->files_model->insert_file($data['file_name'], $_POST['title']);
-                $image_url = $image_url . '\\\\' . $data['file_name'];
+                $image_url = $image_url . '/' . $data['file_name'];
                 $file_id = $this->User_model->update_image($image_name, $image_url);
 
                 if ($file_id) {

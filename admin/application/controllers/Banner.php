@@ -122,6 +122,10 @@ class Banner extends CI_Controller
 
     public function upload_file()
     {
+
+//        echo '000000000';
+//        mkdir('assets/img/banner/' . $_POST['banner_id'], 0777, true);
+
         $status = "";
         $msg = "";
         $file_element_name = 'image';
@@ -135,8 +139,8 @@ class Banner extends CI_Controller
         }
 
         if ($status != "error") {
-            $image_directory = 'assets\\img\\banner\\' . $_POST['banner_id'];
-            $image_path = 'assets\\img\\banner\\' . $_POST['banner_id'] . '\\' . $_FILES['image']['name'];
+            $image_directory = 'assets/img/banner/' . $_POST['banner_id'];
+            $image_path = 'assets/img/banner/' . $_POST['banner_id'] . '/' . $_FILES['image']['name'];
 
             $config['upload_path'] = $image_directory;
             $config['allowed_types'] = 'gif|jpg|png|jpeg';

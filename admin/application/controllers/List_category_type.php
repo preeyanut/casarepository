@@ -98,11 +98,13 @@ class List_category_type extends CI_Controller
         $page = $this->input->post("filter-page");
         $status = $this->input->post("filter-status");
 
+        if (!$this->input->post("filter-page")) {
+            $page = 0;
+        }
+
         if ($page > 0) {
             $page--;
         }
-
-//        $result = array();
         if ($filter_number == -1) {
             $result = $this->Category_type_model->get_all();
         } else {

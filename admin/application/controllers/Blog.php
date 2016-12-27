@@ -235,8 +235,8 @@ class Blog extends CI_Controller
         }
 
         if ($status != "error") {
-            $image_directory = 'assets\\img\\blog\\' . $_POST['blog_id'] . '\\' . $_POST['category_field_id'];
-            $image_path ='assets\\img\\blog\\' . $_POST['blog_id'] . '\\' . $_POST['category_field_id'].'\\'.$_FILES['image']['name'];
+            $image_directory = 'assets/img/blog/' . $_POST['blog_id'] . '/' . $_POST['category_field_id'];
+            $image_path ='assets/img/blog/' . $_POST['blog_id'] . '/' . $_POST['category_field_id'].'/'.$_FILES['image']['name'];
 
             $config['upload_path'] = $image_directory;
             $config['allowed_types'] = 'gif|jpg|png|jpeg';
