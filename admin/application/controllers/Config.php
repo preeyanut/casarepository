@@ -225,7 +225,7 @@ class Config extends CI_Controller
             $image_path = 'assets\\img\\config\\' . $_POST['config_id'] . '\\' . $_FILES['image']['name'];
 
             $config['upload_path'] = $image_directory;
-            $config['allowed_types'] = 'gif|jpg|png|ico';
+            $config['allowed_types'] = 'gif|jpg|png|jpeg';
             $config['max_size'] = 1024 * 8;
 //            $config['encrypt_name'] = TRUE;
 
@@ -286,7 +286,7 @@ class Config extends CI_Controller
             $image_path = 'assets\\img\\config\\' . $_POST['config_id'] . '\\' . $_FILES['image']['name'];
 
             $config['upload_path'] = $image_directory;
-            $config['allowed_types'] = 'gif|jpg|png';
+            $config['allowed_types'] = 'gif|jpg|png|jpeg';
             $config['max_size'] = 1024 * 8;
 //            $config['encrypt_name'] = TRUE;
 
@@ -341,7 +341,7 @@ class Config extends CI_Controller
             $image_path = 'assets\\img\\config\\' . $_POST['config_id'] . '\\' . $_FILES['image']['name'];
 
             $config['upload_path'] = $image_directory;
-            $config['allowed_types'] = 'gif|jpg|png';
+            $config['allowed_types'] = 'gif|jpg|png|jpeg';
             $config['max_size'] = 1024 * 8;
 //            $config['encrypt_name'] = TRUE;
 

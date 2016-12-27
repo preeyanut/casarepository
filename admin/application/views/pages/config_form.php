@@ -96,7 +96,7 @@
                                 <div class="col-md-9 col-xs-9">
                                     <div class="">
                                         <a href="" id="a-test" data-toggle="image" class="img-thumbnail">
-                                            <img id="img-frontend_image" style="max-width: 500px;" src="<?php echo $frontend_image; ?>" alt="" title="" data-placeholder="รูปสินค้า">
+                                            <img id="img-frontend_image" style="max-width: 500px;" src="<?php echo base_url().$frontend_image; ?>" alt="" title="" data-placeholder="รูปสินค้า">
                                         </a>
                                         <input type="file" name="frontend_image" class="img-favicon-input" value="0" id="input-favicon-image"/>
                                     </div>
@@ -118,7 +118,7 @@
                                     <div class="">
                                         <a href="" id="a-test" data-toggle="image" class="img-thumbnail">
                                             <img id="img-logo_image" style="max-width: 500px;"
-                                                 src="<?php echo $logo_image; ?>"
+                                                 src="<?php echo base_url().$logo_image; ?>"
                                                  alt="" title="" data-placeholder="รูปสินค้า">
                                         </a>
 
@@ -346,7 +346,7 @@
                                     <div class="">
                                         <a href="" id="a-test" data-toggle="image" class="img-thumbnail">
                                             <img id="img-contact_image" style="max-width: 500px;"
-                                                 src="<?php echo $contact_image; ?>"
+                                                 src="<?php echo base_url().$contact_image; ?>"
                                                  alt="" title="" data-placeholder="รูปสินค้า">
                                         </a>
 
