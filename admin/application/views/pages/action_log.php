@@ -244,11 +244,12 @@
 
     function get_paging() {
         var txtSearch = $("#input-search").val();
+        var filterPage = $("#filter-page").val();
 
         $.ajax({
             url: '<?php echo base_url(); ?>action_log/get_paging',
             type: 'post',
-            data: "txtSearch=" + txtSearch,
+            data: "txtSearch=" + txtSearch + "&filter-page=" + filterPage,
             dataType: 'json',
             crossDomain: true,
             beforeSend: function () {
@@ -273,11 +274,12 @@
 
     function search_user() {
         var txtSearch = $("#input-search").val();
+        var filterPage = $("#filter-page").val();
 
         $.ajax({
             url: '<?php echo base_url(); ?>action_log/search_user',
             type: 'post',
-            data: "txtSearch=" + txtSearch ,
+            data: "txtSearch=" + txtSearch + "&filter-page=" + filterPage ,
             dataType: 'json',
             crossDomain: true,
             beforeSend: function () {

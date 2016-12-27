@@ -39,8 +39,6 @@ class Action_log extends CI_Controller
 
         $this->load->view('template', $data);
 
-//        var_dump($data);
-
     }
 
     public function get_paging()
@@ -86,18 +84,9 @@ class Action_log extends CI_Controller
 
     public function search_user()
     {
-//        $result = $this->Log_model->search_filter($this->input->post("txtSearch"));
-//
-//        $data["list"] = $result;
-//
-//        $jsonResult['Result'] = true;
-//        $jsonResult['Data'] = $data;
-//
-//        echo json_encode($jsonResult);
 
         $filter_number = 50;
         $page = $this->input->post("filter-page");
-
         if ($page > 0) {
             $page--;
         }
@@ -106,7 +95,6 @@ class Action_log extends CI_Controller
         $result = $this->Log_model->search_filter($this->input->post("txtSearch"), $start_filter, $filter_number);
 
         $data["list"] = $result;
-
         $jsonResult['Result'] = true;
         $jsonResult['Data'] = $data;
 
