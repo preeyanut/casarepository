@@ -376,90 +376,30 @@
                 <div class="col-xs-12 padding-0">
                     <div class="home-banner-animate">
                         <div class="w3-content w3-section banner-slide div-banner-slide">
-                            <div class="home-banner-item ">
-                                <a class="hidden-xs mySlides-btn btn-banner-register"
-                                   href="https://www.casa98th.com/index.php/register">
-                                    <img id="btn-register-0"
-                                         src="https://www.casa98th.com/assets/img/layout/btn-register.png"
-                                         alt="ลงทะเบียนเล่น Casa98" class="img-btn-register" style="display: none;">
-                                </a>
-                                <a href="https://www.casa98th.com/index.php/register">
-                                    <img id="img-slide-0"
-                                         src="https://www.casa98th.com//uploads/home_banner6/home_banner_6.jpeg"
-                                         class="img-responsive mySlides "
-                                         alt="เว็บตรง สู่ Casa98 บอลออนไลน์ ราคาบอล ดีที่สุด" style="display: none;">
-                                </a>
-                            </div>
-                            <div class="home-banner-item ">
-                                <a class="hidden-xs mySlides-btn btn-banner-register"
-                                   href="https://www.casa98th.com/index.php/register">
-                                    <img id="btn-register-1"
-                                         src="https://www.casa98th.com/assets/img/layout/btn-register.png"
-                                         alt="ลงทะเบียนเล่น Casa98" class="img-btn-register" style="display: inline;">
-                                </a>
-                                <a href="https://www.casa98th.com/index.php/register">
-                                    <img id="img-slide-1"
-                                         src="https://www.casa98th.com//uploads/home_banner7/home_banner_7.jpeg"
-                                         class="img-responsive mySlides "
-                                         alt="เว็บตรง สู่ Casa98 บอลออนไลน์ ราคาบอล ดีที่สุด" style="display: block;">
-                                </a>
-                            </div>
-                            <div class="home-banner-item ">
-                                <a class="hidden-xs mySlides-btn btn-banner-register"
-                                   href="https://www.casa98th.com/index.php/register">
-                                    <img id="btn-register-2"
-                                         src="https://www.casa98th.com/assets/img/layout/btn-register.png"
-                                         alt="ลงทะเบียนเล่น Casa98" class="img-btn-register" style="display: none;">
-                                </a>
-                                <a href="https://www.casa98th.com/index.php/register">
-                                    <img id="img-slide-2"
-                                         src="https://www.casa98th.com//uploads/home_banner8/home_banner_8.jpeg"
-                                         class="img-responsive mySlides "
-                                         alt="เว็บตรง สู่ Casa98 บอลออนไลน์ ราคาบอล ดีที่สุด" style="display: none;">
-                                </a>
-                            </div>
-                            <div class="home-banner-item ">
-                                <a class="hidden-xs mySlides-btn btn-banner-register"
-                                   href="https://www.casa98th.com/index.php/register">
-                                    <img id="btn-register-3"
-                                         src="https://www.casa98th.com/assets/img/layout/btn-register.png"
-                                         alt="ลงทะเบียนเล่น Casa98" class="img-btn-register" style="display: none;">
-                                </a>
-                                <a href="https://www.casa98th.com/index.php/register">
-                                    <img id="img-slide-3"
-                                         src="https://www.casa98th.com//uploads/home_banner10/home_banner_10.jpeg"
-                                         class="img-responsive mySlides "
-                                         alt="เว็บตรง สู่ Casa98 บอลออนไลน์ ราคาบอล ดีที่สุด" style="display: none;">
-                                </a>
-                            </div>
-                            <div class="home-banner-item ">
-                                <a class="hidden-xs mySlides-btn btn-banner-register"
-                                   href="https://www.casa98th.com/index.php/register">
-                                    <img id="btn-register-4"
-                                         src="https://www.casa98th.com/assets/img/layout/btn-register.png"
-                                         alt="ลงทะเบียนเล่น Casa98" class="img-btn-register" style="display: none;">
-                                </a>
-                                <a href="javascript:void(0);">
-                                    <img id="img-slide-4"
-                                         src="https://www.casa98th.com//uploads/home_banner11/home_banner_11.jpeg"
-                                         class="img-responsive mySlides "
-                                         alt="เว็บตรง สู่ Casa98 บอลออนไลน์ ราคาบอล ดีที่สุด" style="display: none;">
-                                </a>
-                            </div>
-                            <div class="home-banner-item ">
-                                <a class="hidden-xs mySlides-btn btn-banner-register"
-                                   href="https://www.casa98th.com/index.php/register">
-                                    <img id="btn-register-5"
-                                         src="https://www.casa98th.com/assets/img/layout/btn-register.png"
-                                         alt="ลงทะเบียนเล่น Casa98" class="img-btn-register" style="display: none;">
-                                </a>
-                                <a href="javascript:void(0);">
-                                    <img id="img-slide-5"
-                                         src="https://www.casa98th.com//uploads/home_banner12/home_banner_12.jpeg"
-                                         class="img-responsive mySlides "
-                                         alt="เว็บตรง สู่ Casa98 บอลออนไลน์ ราคาบอล ดีที่สุด" style="display: none;">
-                                </a>
-                            </div>
+
+                            <?php
+                            $count =0;
+                            foreach($home_banners as $item){
+                                ?>
+                                <div class="home-banner-item ">
+                                    <a class="hidden-xs mySlides-btn btn-banner-register"
+                                       href="<?= base_url(); ?>">
+                                        <img id="btn-register-<?=$count ?>"
+                                             src="<?= base_url(); ?>assets/images/btn-register.png"
+                                             alt="ลงทะเบียนเล่น Casa98" class="img-btn-register" style="display: none;">
+                                    </a>
+                                    <a href="<?= base_url(); ?>">
+                                        <img id="img-slide-<?=$count ?>"
+                                             src="<?= base_url().'admin/'.$item['banner_image'] ?>"
+                                             class="img-responsive mySlides "
+                                             alt="เว็บตรง สู่ Casa98 บอลออนไลน์ ราคาบอล ดีที่สุด" style="display: none;">
+                                    </a>
+                                </div>
+
+                                <?php
+                                $count++;
+                            } ?>
+
                         </div>
                     </div>
                 </div>
@@ -541,7 +481,6 @@
         </div>
 
     </div>
-
 
     <div id='body-center' class="body-center container" style="    background: url(assets/images/bggold2.png) ;">
 

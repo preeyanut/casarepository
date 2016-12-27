@@ -16,7 +16,9 @@ class Home extends CI_Controller
         $data['navigation'] = $navigation;
 
         $news=  $this->Home_model->get_news(5);
-//        var_dump($news );
+
+        $data_banners = $this->Home_model->get_banners();
+//        var_dump($data_banners);
         foreach($news as $item){
 
             $news_info=  $this->Home_model->get_news_field($item['blog_id']);
@@ -29,6 +31,8 @@ class Home extends CI_Controller
 
         }
         $data['news'] = $data_news;
+
+        $data['home_banners'] = $data_banners;
 
 //        echo var_dump($news);
         $data['page'] = 'pages/home';
