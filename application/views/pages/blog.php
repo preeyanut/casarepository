@@ -34,18 +34,15 @@
         <div class="container">
 
             <div class="row-body-top text-center row margin-0">
-                <h6>Body Top</h6>
-
+                </br>
                 <h1 class="font-white"><?= $blog_title; ?></h1>
             </div>
 
             <div class="row-body-center row margin-0">
-                <h6>Body Center</h6>
                 <?php
 
                 foreach ($blog_data as $item) {
                     ?>
-                    </br>
                     <div class="row-body-center row margin-0">
                         <?php
                         if($item['blog_value']){
@@ -83,7 +80,6 @@
             </div>
 
             <div class="col-xs-12 text-center padding-0">
-                <h6>Body Footer</h6>
 
             </div>
 
