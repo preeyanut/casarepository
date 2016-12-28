@@ -10,6 +10,7 @@ class Blog_model extends CI_Model
         $this->db->join('category_field', 'category_field.category_type_id = category_type.category_type_id');
         $this->db->join('blog_value', ' (blog_value.blog_id = blog.blog_id and blog_value.category_field_id = category_field.category_field_id)');
         $this->db->where(array('blog_value.blog_id'=>$blog_id));
+        $this->db->order_by("blog_value.blog_value_id","asc");
         $query = $this->db->get('blog');
 
         return $query->result_array();

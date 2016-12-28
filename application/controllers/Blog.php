@@ -22,6 +22,8 @@ class Blog extends CI_Controller
             $blog_id = $this->input->get('blog_id');
             $blog_data= $this->Blog_model->get_blog_data($blog_id);
 
+//            var_dump($blog_data);
+
             $data['blog_id'] = $blog_data[0]['blog_id'];
             $data['blog_title'] = $blog_data[0]['blog_title'];
             $data['blog_data'] = $blog_data;

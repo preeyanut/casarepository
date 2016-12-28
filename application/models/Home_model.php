@@ -7,13 +7,13 @@ class Home_model extends CI_Model
         $this->db->select("blog.blog_id,blog.blog_title");
         $this->db->join('category', 'category.category_id = blog.category_id');
         $this->db->where(array('category.category_name'=>'Page','blog.blog_status'=>1));
-        $this->db->order_by("blog.blog_id","asc");
+        $this->db->order_by("blog.priority_level","asc");
         $query = $this->db->get('blog');
 
         return $query->result_array();
     }
 
-    public function get_news_field($blog_id)
+    public function get_blog_field($blog_id)
     {
         $this->db->select("blog.*,category_field.field_name,category_field.field_type,category_field.field_id,category_field.category_field_id,blog_value.blog_value");
         $this->db->join('category', 'category.category_id = blog.category_id');
@@ -49,13 +49,24 @@ class Home_model extends CI_Model
         return $query->result_array();
     }
 
-    public function get_hilights()
+    public function get_hilights($limit)
     {
         $this->db->select("blog.blog_id,blog.blog_title");
         $this->db->join('category', 'category.category_id = blog.category_id');
         $this->db->where('category.category_name','Hilight');
         $this->db->order_by("blog.blog_id","asc");
-        $query = $this->db->get('blog');
+        $query = $this->db->get('blog',$limit);
+
+        return $query->result_array();
+    }
+
+    public function get_casa_guide($limit)
+    {
+        $this->db->select("blog.blog_id,blog.blog_title");
+        $this->db->join('category', 'category.category_id = blog.category_id');
+        $this->db->where('category.category_name','CASA GUIDE');
+        $this->db->order_by("blog.blog_id","asc");
+        $query = $this->db->get('blog',$limit);
 
         return $query->result_array();
     }
@@ -78,5 +89,6 @@ class Home_model extends CI_Model
         $query = $this->db->get('home_banner');
         return $query->result_array();
     }
+
 
 }

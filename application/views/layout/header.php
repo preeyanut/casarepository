@@ -123,7 +123,7 @@
 
         <div class="container">
 
-            <div class="col-md-2 padding-0 link-page">
+            <div class=" padding-0 link-page" style="width: <?php echo 100/ (sizeof($navigation)+1); ?>%;float: left">
                 <a href="<?= base_url(); ?>" >
                    หน้าหลัก
                 </a>
@@ -132,7 +132,7 @@
             <?php
             foreach($navigation as $item){
                 ?>
-                <div class="col-md-2 padding-0 link-page">
+                <div class="padding-0 link-page" style="width: <?php echo 100/ (sizeof($navigation)+1); ?>%;float: left">
                     <a href="<?= base_url(); ?>blog?blog_id=<?= $item['blog_id']?>" >
                         <?= $item['blog_title']?>
                     </a>

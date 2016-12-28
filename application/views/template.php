@@ -102,6 +102,65 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <body>
 
 <style>
+
+    @font-face {
+        font-family: 'Sukhumvit Set';
+        src: url("../fonts/SukhumvitSet-SemiBold.eot");
+        src: url("../fonts/SukhumvitSet-SemiBold.eot?#iefix") format("embedded-opentype"), url("../fonts/SukhumvitSet-SemiBold.woff2") format("woff2"), url("../fonts/SukhumvitSet-SemiBold.woff") format("woff"), url("../fonts/SukhumvitSet-SemiBold.ttf") format("truetype"), url("../fonts/SukhumvitSet-SemiBold.svg#SukhumvitSet-SemiBold") format("svg");
+        font-weight: 600;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: 'Sukhumvit Set';
+        src: url("../fonts/SukhumvitSet-Medium.eot");
+        src: url("../fonts/SukhumvitSet-Medium.eot?#iefix") format("embedded-opentype"), url("../fonts/SukhumvitSet-Medium.woff2") format("woff2"), url("../fonts/SukhumvitSet-Medium.woff") format("woff"), url("../fonts/SukhumvitSet-Medium.ttf") format("truetype"), url("../fonts/SukhumvitSet-Medium.svg#SukhumvitSet-Medium") format("svg");
+        font-weight: 500;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: 'Sukhumvit Set';
+        src: url("../fonts/SukhumvitSet-Text.eot");
+        src: url("../fonts/SukhumvitSet-Text.eot?#iefix") format("embedded-opentype"), url("../fonts/SukhumvitSet-Text.woff2") format("woff2"), url("../fonts/SukhumvitSet-Text.woff") format("woff"), url("../fonts/SukhumvitSet-Text.ttf") format("truetype"), url("../fonts/SukhumvitSet-Text.svg#SukhumvitSet-Text") format("svg");
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: 'Sukhumvit Set';
+        src: url("../fonts/SukhumvitSet-Thin.eot");
+        src: url("../fonts/SukhumvitSet-Thin.eot?#iefix") format("embedded-opentype"), url("../fonts/SukhumvitSet-Thin.woff2") format("woff2"), url("../fonts/SukhumvitSet-Thin.woff") format("woff"), url("../fonts/SukhumvitSet-Thin.ttf") format("truetype"), url("../fonts/SukhumvitSet-Thin.svg#SukhumvitSet-Thin") format("svg");
+        font-weight: 100;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: 'Sukhumvit Set';
+        src: url("../fonts/SukhumvitSet-Bold.eot");
+        src: url("../fonts/SukhumvitSet-Bold.eot?#iefix") format("embedded-opentype"), url("../fonts/SukhumvitSet-Bold.woff2") format("woff2"), url("../fonts/SukhumvitSet-Bold.woff") format("woff"), url("../fonts/SukhumvitSet-Bold.ttf") format("truetype"), url("../fonts/SukhumvitSet-Bold.svg#SukhumvitSet-Bold") format("svg");
+        font-weight: bold;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: 'Sukhumvit Set';
+        src: url("SukhumvitSet-Light.eot");
+        src: url("SukhumvitSet-Light.eot?#iefix") format("embedded-opentype"), url("SukhumvitSet-Light.woff2") format("woff2"), url("SukhumvitSet-Light.woff") format("woff"), url("SukhumvitSet-Light.ttf") format("truetype"), url("SukhumvitSet-Light.svg#SukhumvitSet-Light") format("svg");
+        font-weight: 300;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: 'Supermarket';
+        src: url("../fonts/supermarket.ttf");
+        font-style: normal;
+    }
+
+    body {
+        font-family: "Supermarket" !important;
+    }
+
     .body-container {
         /*border: 1px solid #ff0000;*/
     }

@@ -2,14 +2,17 @@
     .margin-0 {
         margin: 0px !important;
     }
-    .row-body-center{
+
+    .row-body-center {
         text-align: center;
     }
-    .text-center{
+
+    .text-center {
         text-align: center;
     }
-    .font-white{
-        color : #fff;
+
+    .font-white {
+        color: #fff;
     }
 </style>
 
@@ -32,6 +35,7 @@
 
             <div class="row-body-top text-center row margin-0">
                 <h6>Body Top</h6>
+
                 <h1 class="font-white"><?= $blog_title; ?></h1>
             </div>
 
@@ -44,32 +48,33 @@
                     </br>
                     <div class="row-body-center row margin-0">
                         <?php
-                        switch ($item['field_type']) {
-
-                            case 'text' :
-                                $html_field = '<label class="text-single">' . $item['blog_value'] . '</label>';
-                                break;
-                            case 'textarea' :
-                                $html_field = urldecode ( $item['blog_value'] );
-                                break;
-                            case 'date' :
-                                $html_field = '<label class="text-single">' . $item['blog_value'] . '</label>';
-                                break;
-                            case 'time' :
-                                $html_field = '<label class="text-single">' . $item['blog_value'] . '</label>';
-                                break;
-                            case 'datetime' :
-                                $html_field = '<label class="text-single">' . $item['blog_value'] . '</label>';
-                                break;
-                            case 'video-url' :
-                                $html_field = ' <iframe style="width:70%;max-height:500px;min-height:500px" src="' . $item['blog_value'] . '?rel=0&amp;autoplay=1" frameborder="0" allowfullscreen></iframe>';
-                                break;
-                            case 'image' :
-                                $html_field = '<img id="img-' . $item['field_id'] . '" style="width:100%;max-height: 500px;" '
-                                    . ' src="' . base_url() . 'admin/' . $item['blog_value'] . '" alt="" title="" data-placeholder="รูปสินค้า"/>';
-                                break;
-                        }
+                        if($item['blog_value']){
+                            switch ($item['field_type']) {
+                                case 'text' :
+                                    $html_field = '<label class="text-single">' . $item['blog_value'] . '</label>';
+                                    break;
+                                case 'textarea' :
+                                    $html_field = urldecode ( $item['blog_value'] );
+                                    break;
+                                case 'date' :
+                                    $html_field = '<label class="text-single">' . $item['blog_value'] . '</label>';
+                                    break;
+                                case 'time' :
+                                    $html_field = '<label class="text-single">' . $item['blog_value'] . '</label>';
+                                    break;
+                                case 'datetime' :
+                                    $html_field = '<label class="text-single">' . $item['blog_value'] . '</label>';
+                                    break;
+                                case 'video-url' :
+                                    $html_field = ' <iframe style="width:70%;max-height:500px;min-height:500px" src="' . $item['blog_value'] . '?rel=0&amp;autoplay=1" frameborder="0" allowfullscreen></iframe>';
+                                    break;
+                                case 'image' :
+                                    $html_field = '<img id="img-' . $item['field_id'] . '" style="max-height: 500px;" '
+                                        . ' src="' . base_url() . 'admin/' . $item['blog_value'] . '" alt="" title="" data-placeholder="รูปสินค้า"/>';
+                                    break;
+                            }
                         echo $html_field;
+                        }
                         ?>
                     </div>
                     <?php

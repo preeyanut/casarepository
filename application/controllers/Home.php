@@ -8,49 +8,76 @@ class Home extends CI_Controller
         parent::__construct();
         $this->load->model('Home_model');
     }
+
     public function index()
     {
-
-        $navigation =  $this->Home_model->get_pages();
-
+        //------------------ Get Page
+        $navigation = $this->Home_model->get_pages();
         $data['navigation'] = $navigation;
-
-        $news=  $this->Home_model->get_news(5);
-
+        //------------------ Get Banner
         $data_banners = $this->Home_model->get_banners();
-//        var_dump($data_banners);
-        if($news){
-            foreach($news as $item){
+        $data['home_banners'] = $data_banners;
 
-                $news_info=  $this->Home_model->get_news_field($item['blog_id']);
+        //------------------ Get CASA GUIDE
+        $casa_guides = $this->Home_model->get_casa_guide(4);
 
+        if ($casa_guides) {
+            foreach ($casa_guides as $item) {
+                $casa_guide_info = $this->Home_model->get_blog_field($item['blog_id']);
+                $data_casa_guides[] = array(
+                    'blog_id' => $item['blog_id']
+                    , 'blog_title' => $item['blog_title']
+                    , 'casa_guide_info' => $casa_guide_info
+                );
+            }
+            $data['casa_guides'] = $data_casa_guides;
+        }
+
+        $news = $this->Home_model->get_news(5);
+        if ($news) {
+            foreach ($news as $item) {
+                $news_info = $this->Home_model->get_blog_field($item['blog_id']);
                 $data_news[] = array(
                     'blog_id' => $item['blog_id']
-                    ,'blog_title' => $item['blog_title']
-                    ,'news_info' => $news_info
+                , 'blog_title' => $item['blog_title']
+                , 'news_info' => $news_info
                 );
             }
             $data['news'] = $data_news;
         }
 
-        $data['home_banners'] = $data_banners;
+        $hilights = $this->Home_model->get_hilights(4);
 
-//        echo var_dump($news);
+        if ($hilights) {
+            foreach ($hilights as $item) {
+                $hilights_info = $this->Home_model->get_blog_field($item['blog_id']);
+                $data_hilights[] = array(
+                    'blog_id' => $item['blog_id']
+                , 'blog_title' => $item['blog_title']
+                , 'hilights_info' => $hilights_info
+                );
+            }
+            $data['hilights'] = $data_hilights;
+        }
+
         $data['page'] = 'pages/home';
         $this->load->view('template', $data);
     }
 
-    public function get_pages(){
+    public function get_pages()
+    {
 
 
         echo '----------------';
     }
 
-    public function get_news(){
+    public function get_news()
+    {
         echo '----------------';
     }
 
-    public function get_blog(){
+    public function get_blog()
+    {
         echo '----------------';
     }
 }
