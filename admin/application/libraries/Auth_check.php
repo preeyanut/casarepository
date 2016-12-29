@@ -106,7 +106,7 @@ class Auth_check
             if (isset($row)){
                 $user_group_id = $row['user_group_id'];
                 $user_group_row = $this->SC->user_group_model->get_user_group($user_group_id);
-//                echo var_dump($user_group_row);
+                //echo var_dump($user_group_id);
                 //echo var_dump(json_decode($user_group_row['permission'], true));
                 $permissions = json_decode($user_group_row['permission'], true);
 

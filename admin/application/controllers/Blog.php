@@ -232,6 +232,8 @@ class Blog extends CI_Controller
             $result = true;
         }
 
+
+
         $jsonResult['Result'] = $result;
         $jsonResult['Data'] = $data;
         echo json_encode($jsonResult);

@@ -1,6 +1,6 @@
 <div id="header" class="header">
 
-    <title><?= $this->Config_model->get_config_webname() ?></title>
+    <title>Casa98thailand</title>
 
     <!--	--------------------------------------------  CSS ------------------------------------------------->
 

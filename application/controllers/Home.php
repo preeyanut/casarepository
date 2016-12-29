@@ -20,7 +20,6 @@ class Home extends CI_Controller
 
         //------------------ Get CASA GUIDE
         $casa_guides = $this->Home_model->get_casa_guide(4);
-
         if ($casa_guides) {
             foreach ($casa_guides as $item) {
                 $casa_guide_info = $this->Home_model->get_blog_field($item['blog_id']);

@@ -24,8 +24,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 
-//$config['base_url'] = 'http://45.125.195.206:8008/';
-$config['base_url'] = 'http://localhost/casarepository/';
+$config['base_url'] = 'http://45.125.195.206:8008/';
+//$config['base_url'] = 'http://localhost/casarepository/';
 
 /*
 |--------------------------------------------------------------------------
