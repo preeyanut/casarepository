@@ -20,16 +20,23 @@ class Blog extends CI_Controller
             $navigation =  $this->Home_model->get_pages();
 
             $blog_id = $this->input->get('blog_id');
-            $blog_data= $this->Blog_model->get_blog_data($blog_id);
+
+            if($blog_id == true){
+                $this->get_list_news();
+
+            }else {
+                $blog_data = $this->Blog_model->get_blog_data($blog_id);
 
 //            var_dump($blog_data);
 
-            $data['blog_id'] = $blog_data[0]['blog_id'];
-            $data['blog_title'] = $blog_data[0]['blog_title'];
-            $data['blog_data'] = $blog_data;
-            $data['navigation'] = $navigation;
+                $data['blog_id'] = $blog_data[0]['blog_id'];
+                $data['blog_title'] = $blog_data[0]['blog_title'];
+                $data['blog_data'] = $blog_data;
+                $data['navigation'] = $navigation;
+            }
 
         }
+
 
         $data['page'] = 'pages/blog';
         $this->load->view('template', $data);
