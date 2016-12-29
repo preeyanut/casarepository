@@ -27,6 +27,17 @@ class Blog_model extends CI_Model
         return $query->result_array();
     }
 
+    public function get_list_news()
+    {
+        $this->db->select("blog.blog_id,blog.blog_title");
+        $this->db->join('category', 'category.category_id = blog.category_id');
+        $this->db->where('category.category_name','List News');
+        $this->db->order_by("blog.blog_id","asc");
+        $query = $this->db->get('blog');
+
+        return $query->result_array();
+    }
+
     public function get_promotions()
     {
         $this->db->select("blog.blog_id,blog.blog_title");
@@ -49,11 +60,33 @@ class Blog_model extends CI_Model
         return $query->result_array();
     }
 
+    public function get_list_hilights()
+    {
+        $this->db->select("blog.blog_id,blog.blog_title");
+        $this->db->join('category', 'category.category_id = blog.category_id');
+        $this->db->where('category.category_name','List Hilight');
+        $this->db->order_by("blog.blog_id","asc");
+        $query = $this->db->get('blog');
+
+        return $query->result_array();
+    }
+
     public function get_blogs()
     {
         $this->db->select("blog.blog_id,blog.blog_title");
         $this->db->join('category', 'category.category_id = blog.category_id');
         $this->db->where('category.category_name','Blog');
+        $this->db->order_by("blog.blog_id","asc");
+        $query = $this->db->get('blog');
+
+        return $query->result_array();
+    }
+
+    public function get_list_casaguide()
+    {
+        $this->db->select("blog.blog_id,blog.blog_title");
+        $this->db->join('category', 'category.category_id = blog.category_id');
+        $this->db->where('category.category_name','List Casa_guide');
         $this->db->order_by("blog.blog_id","asc");
         $query = $this->db->get('blog');
 

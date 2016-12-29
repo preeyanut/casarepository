@@ -1,6 +1,10 @@
 <div id="header" class="header">
 
+<<<<<<< HEAD
     <title>Casa98thailand</title>
+=======
+    <!-------<title><//?= //$this->Config_model->get_config_webname()?></title>-->
+>>>>>>> 57ba7b8acec83218ecbefa2f8b7d76c52ed0f40f
 
     <!--	--------------------------------------------  CSS ------------------------------------------------->
 
