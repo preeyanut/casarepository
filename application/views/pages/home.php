@@ -395,11 +395,11 @@
                                     <div class="flex-img">
                                         <div class="top-carousel-img">
                                             <img
-                                                width="270" height="423"
-                                                src="<?= $image ?>"
-                                                class="attachment-alpha-store-carousel size-alpha-store-carousel wp-post-image"
-                                                alt="<?= $meta_keyword; ?>"
-                                                draggable="false"></div>
+                                                    width="270" height="423"
+                                                    src="<?= $image ?>"
+                                                    class="attachment-alpha-store-carousel size-alpha-store-carousel wp-post-image"
+                                                    alt="<?= $meta_keyword; ?>"
+                                                    draggable="false"></div>
                                         <div class="top-carousel-heading">
                                             <div class="top-carousel-title">
                                                 <?= $blog_title; ?>
@@ -490,7 +490,7 @@
 
                             .btn-submit {
                                 background-color: #36a929;
-                                border-radius: 5px;
+                                border-radius: 7px;
                                 border: 0px;
                                 height: 30px;
                             }
@@ -510,15 +510,18 @@
                             }
                         </style>
 
-                        <h2>สมัครสมาชิก</h2>
 
-                        <form id="callus" target="_self" class="form-register" onsubmit=""
+
+                        <form id="register" target="_self" class="form-register" onsubmit=""
                               action="javascript: postContactToGoogle()">
+                            <h2>สมัครสมาชิก</h2>
                             <fieldset class="field-input">
-                                <input id="name" class="col-sm-10 input-register" type="text" name="name" placeholder="ชื่อ :">
+                                <input id="name" class="col-sm-10 input-register" type="text" name="name"
+                                       placeholder="ชื่อ :">
                             </fieldset>
                             <fieldset class="field-input">
-                                <input id="sname" class="col-sm-10 input-register" type="text" name="sname" placeholder="นามสกุล : ">
+                                <input id="sname" class="col-sm-10 input-register" type="text" name="sname"
+                                       placeholder="นามสกุล : ">
                             </fieldset>
                             <fieldset class="field-input">
                                 <input id="phone-number" class="col-sm-10 input-register " type="text"
@@ -529,17 +532,21 @@
                                        name="Line-ID" placeholder="Line ID : ">
                             </fieldset>
                             <fieldset class="field-input">
-                                <input id="email" class="col-sm-10 input-register" type="email" name="email" placeholder="E-mail : ">
+                                <input id="email" class="col-sm-10 input-register" type="email" name="email"
+                                       placeholder="E-mail : ">
                             </fieldset>
 
                             <fieldset class="field-input">
                                 <div style="width: 100%; display: block; float: right;text-align: center;">
-                                    <button id="send" type="button" class="btn-submit">
+                                    <button id="register1" type="button" class="btn-submit">
                                         สมัครสมาชิก
                                     </button>
+
+<!--                                    <button id="login1" type="button" class="btn-submit">-->
+<!--                                        เข้าสู่ระบบ-->
+<!--                                    </button>-->
                                 </div>
                             </fieldset>
-
 
                             <div style="width: 100%; display: block; float: right; padding-top: 15px;">
                                 <div class="requestSubmited" style="display:none; text-align: center;">Your request has
@@ -548,35 +555,78 @@
                             </div>
                         </form>
 
-                        <!--                        <form id="form-register" class="form-register" method="post" name="form">-->
-                        <!---->
-                        <!--                            <div class="display-none">-->
-                        <!--                                <div class="col-xs-12">-->
-                        <!--                                    <input id="username" name="user"-->
-                        <!--                                           class="form-control input-login-mobile username-input"-->
-                        <!--                                           type="text" placeholder="username">-->
-                        <!--                                    <input id="password" name="pass"-->
-                        <!--                                           class="form-control input-login-mobile mar-left-5 password-input"-->
-                        <!--                                           type="password"-->
-                        <!--                                           placeholder="password">-->
-                        <!--                                </div>-->
-                        <!--                                <div class="col-xs-12 text-center mar-top-21 ">-->
-                        <!---->
-                        <!--                                    <img src="https://www.casa98th.com/getCodeImage.php?main-mobile=1"-->
-                        <!--                                         class="img-code-mobile">-->
-                        <!---->
-                        <!--                                    <input type="text" id="code" name="code" class="input-code-mobile"-->
-                        <!--                                           placeholder="รหัส">-->
-                        <!---->
-                        <!--                                    <a href="#" class="btn-submit-mobile">-->
-                        <!--                                        <img class="btn-login-mobile"-->
-                        <!--                                             src="https://www.casa98th.com/assets/img/btn-login.png"-->
-                        <!--                                             alt="เข้าสู่ระบบ แทงบอล Casa98">-->
-                        <!--                                    </a>-->
-                        <!--                                </div>-->
-                        <!--                            </div>-->
-                        <!---->
-                        <!--                        </form>-->
+<!--                        <form id="login" target="_self" class="form-register" onsubmit=""-->
+<!--                              action="javascript: postContactToGoogle()">-->
+<!--                            <h2>เข้าสู่ระบบ</h2>-->
+<!--                            <fieldset class="field-input">-->
+<!--                                <input id="name" class="col-sm-10 input-register" type="text" name="name"-->
+<!--                                       placeholder="ชื่อ :">-->
+<!--                            </fieldset>-->
+<!--                            <fieldset class="field-input">-->
+<!--                                <input id="sname" class="col-sm-10 input-register" type="text" name="sname"-->
+<!--                                       placeholder="นามสกุล : ">-->
+<!--                            </fieldset>-->
+<!--                            <fieldset class="field-input">-->
+<!--                                <input id="phone-number" class="col-sm-10 input-register " type="text"-->
+<!--                                       name="phone-number" placeholder="เบอร์โทรศัพท์ : ">-->
+<!--                            </fieldset>-->
+<!--                            <fieldset class="field-input">-->
+<!--                                <input id="line-id" class="col-sm-10 input-register " type="text"-->
+<!--                                       name="Line-ID" placeholder="Line ID : ">-->
+<!--                            </fieldset>-->
+<!--                            <fieldset class="field-input">-->
+<!--                                <input id="email" class="col-sm-10 input-register" type="email" name="email"-->
+<!--                                       placeholder="E-mail : ">-->
+<!--                            </fieldset>-->
+<!---->
+<!--                            <fieldset class="field-input">-->
+<!--                                <div style="width: 100%; display: block; float: right;text-align: center;">-->
+<!--                                    <button id="register2" type="button" class="btn-submit">-->
+<!--                                        สมัครสมาชิก-->
+<!--                                    </button>-->
+<!---->
+<!--                                    <button id="login2" type="button" class="btn-submit">-->
+<!--                                        เข้าสู่ระบบ-->
+<!--                                    </button>-->
+<!--                                </div>-->
+<!--                            </fieldset>-->
+<!---->
+<!--                            <div style="width: 100%; display: block; float: right; padding-top: 15px;">-->
+<!--                                <div class="requestSubmited" style="display:none; text-align: center;">Your request has-->
+<!--                                    been sent!-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </form>-->
+
+                        <!--                                                <form id="form-register" class="form-register" method="post" name="form">-->
+                        <!--                        -->
+                        <!--                                                    <div class="display-none">-->
+                        <!--                                                        <div class="col-xs-12">-->
+                        <!--                                                            <input id="username" name="user"-->
+                        <!--                                                                   class="form-control input-login-mobile username-input"-->
+                        <!--                                                                   type="text" placeholder="username">-->
+                        <!--                                                            <input id="password" name="pass"-->
+                        <!--                                                                   class="form-control input-login-mobile mar-left-5 password-input"-->
+                        <!--                                                                   type="password"-->
+                        <!--                                                                   placeholder="password">-->
+                        <!--                                                        </div>-->
+                        <!--                                                        <div class="col-xs-12 text-center mar-top-21 ">-->
+                        <!--                        -->
+                        <!--                                                            <img src="https://www.casa98th.com/getCodeImage.php?main-mobile=1"-->
+                        <!--                                                                 class="img-code-mobile">-->
+                        <!--                        -->
+                        <!--                                                            <input type="text" id="code" name="code" class="input-code-mobile"-->
+                        <!--                                                                   placeholder="รหัส">-->
+                        <!--                        -->
+                        <!--                                                            <a href="#" class="btn-submit-mobile">-->
+                        <!--                                                                <img class="btn-login-mobile"-->
+                        <!--                                                                     src="https://www.casa98th.com/assets/img/btn-login.png"-->
+                        <!--                                                                     alt="เข้าสู่ระบบ แทงบอล Casa98">-->
+                        <!--                                                            </a>-->
+                        <!--                                                        </div>-->
+                        <!--                                                    </div>-->
+                        <!--                        -->
+                        <!--                                                </form>-->
                     </div>
                 </div>
             </div>
@@ -793,9 +843,73 @@
         setTimeout(carousel, 10000); // Change image every 10 seconds
     }
 
+    $(document).on('click', '.btn-submit', function () {
+        postContactToGoogle();
+    });
+
+    function postContactToGoogle() {
+        var name = $('#name').val();
+        var sname = $('#sname').val();
+        var phonenumber = $('#phone-number').val();
+        var lineid = $('#line-id').val();
+        var email = $('#email').val();
+
+        $.ajax({
+//                url: "https://docs.google.com/forms/d/14OpOkDrn2Si--TjHP0AnJ_AxDUubFwSWL8bRh7IRYBA/formResponse",
+//            url: "https://docs.google.com/forms/d/e/1FAIpQLSeaONiW_LSrFzAf7Q16BLGJ1Yey6Z-UGnhetbzaEcNT-7g27w/formResponse",
+            url: "https://docs.google.com/forms/d/e/1FAIpQLScEh4FLc6-rndPb_RPJ0wS2gs-IvsDCRdSclR8vFRjGQ_KjaQ/formResponse",
+            data: {
+                'entry.497544943': name,
+                'entry.1332461462': sname,
+                'entry.945056523': phonenumber,
+                'entry.64143949': lineid,
+                'entry.454765789': email
+            },
+            type: "POST",
+            dataType: "xml",
+            statusCode: {
+                0: function () {
+
+                    $('#name').val('');
+                    $('#sname').val('');
+                    $('#phone-number').val('');
+                    $('#line-id').val('');
+                    $('#email').val('');
+                },
+                200: function () {
+                    $('#name').val('');
+                    $('#sname').val('');
+                    $('#phone-number').val('');
+                    $('#line-id').val('');
+                    $('#email').val('');
+                }
+            }
+        });
+
+    }
+
 </script>
 
+<script>
+    //    $(document).ready(function(){
+    //        $("button").click(function(){
+    //            $("#callus").toggle("slow");
+    //        });
+    //    });
 
+//    $("#login1").click(function () {
+//        $("#register").hide("slow");
+//        $("#login").show("slow");
+//
+//    });
+
+//    $("#register2").click(function () {
+//
+//        $("#register").show("slow");
+//        $("#login").hide("slow");
+//
+//    });
+</script>
 
 
 
